@@ -8,7 +8,7 @@ describe('Button', function() {
       instance = null;
 
   beforeEach(function() {
-    instance = TestUtils.renderIntoDocument(<Button waves='effect light'>Stuff</Button>);
+    instance = TestUtils.renderIntoDocument(<Button effect>Stuff</Button>);
   });
 
   it('should output a button', function() {
@@ -17,6 +17,11 @@ describe('Button', function() {
 
   it('should output a component with btn class', function() {
     expect(instance.getDOMNode().className).toContain('btn');
+  });
+
+  it('should apply effects', function() {
+    expect(instance.getDOMNode().className).toContain('waves-effect');
+    expect(instance.getDOMNode().className).toContain('waves-light');
   });
 
 });
