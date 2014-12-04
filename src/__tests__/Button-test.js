@@ -11,8 +11,8 @@ describe('Button', function() {
     instance = TestUtils.renderIntoDocument(<Button waves='effect light'>Stuff</Button>);
   });
 
-  it('adds btn class to anchor', function() {
-    expect(instance.getDOMNode().className).toContain('btn');
+  it('should output a button', function() {
+    expect(instance.getDOMNode().nodeName).toBe('BUTTON');
   });
 
 });
