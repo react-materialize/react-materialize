@@ -15,4 +15,8 @@ describe('Button', function() {
     expect(instance.getDOMNode().nodeName).toBe('BUTTON');
   });
 
+  it('should output a component with btn class', function() {
+    expect(instance.getDOMNode().className).toContain('btn');
+  });
+
 });

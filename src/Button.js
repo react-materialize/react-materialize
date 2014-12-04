@@ -1,8 +1,11 @@
 /** @jsx React.DOM */
 
-var React = require('react');
+var React = require('react'),
+    BaseMixin = require('./BaseMixin'),
+    joinClasses = require('react/lib/joinClasses');
 
 var Button = React.createClass({
+  mixins: [BaseMixin],
   propTypes: {
     node: React.PropTypes.node
   },
