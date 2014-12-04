@@ -7,6 +7,10 @@ module.exports = {
   WAVES: [
     'effect',
     'light'
+  ],
+  SIZES: [
+    's',
+    'm',
+    'l'
   ]
-
 };
