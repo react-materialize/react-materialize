@@ -12,5 +12,9 @@ module.exports = {
     's',
     'm',
     'l'
+  ],
+  SCALES: [
+    'big',
+    'small'
   ]
 };
