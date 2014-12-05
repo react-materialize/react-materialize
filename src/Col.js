@@ -1,4 +1,4 @@
-var React = require('react'),
+var React = require('react/addons'),
     cx = React.addons.classSet,
     constants = require('./constants');
 
@@ -34,3 +34,5 @@ var Col = React.createClass({
     );
   }
 });
+
+module.exports = Col;

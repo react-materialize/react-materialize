@@ -1,0 +1,101 @@
+$default-color: #00bcd4 !default; 
+$card-padding: 16px !default;
+$footer-font-color: #000 !default;
+
+.card-panel {
+  padding: 1rem;
+  margin: 8px 0;
+  @include border-radius(2px);
+  @extend .z-depth-1;
+}
+
+.card {
+  margin-top: 10px;
+  @include box-sizing(border-box);
+  @include border-radius(2px);
+
+
+  span.card-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+  }
+  @extend .z-depth-1;
+
+
+  &.small {
+    height: 300px;
+    position: relative;
+
+    .card-image {
+      overflow: hidden;
+      height: 150px;
+    }
+    .card-content {
+      overflow: hidden;
+      height: 150px;
+    }
+    .card-action {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+
+    // Image background for content
+    img {
+      @include border-radius(2px 2px 0 0);
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: -1;
+    }
+
+    span.card-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: $card-padding;
+    }
+
+  }
+
+  .card-content {
+    padding: $card-padding;
+    @include border-radius(0 0 2px 2px);
+    @include box-sizing(border-box);
+
+    p {
+      margin: 0;
+      color: inherit;
+    }
+    span.card-title {
+      line-height: 48px;
+    }
+  }
+
+  .card-action {
+    border-top: 1px solid rgba(160,160,160,.2);
+    padding: $card-padding;
+
+    a {
+      color: color("orange", "accent-2");
+      margin-right: $card-padding;
+      @include transition(color .3s ease);
+      text-transform: uppercase;
+
+      &:hover { color: lighten(color("orange", "accent-2"), 20%); }
+    }
+  }
+
+
+}

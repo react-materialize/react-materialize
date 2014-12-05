@@ -1,0 +1,20 @@
+.materialboxed {
+  cursor: zoom-in;
+  position: relative;
+  
+  &:hover {
+    will-change: left, top;
+  }
+}
+
+.materialboxed.active {
+  cursor: zoom-out;
+}
+
+#materialbox-overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  background-color: #292929;
+  z-index: 999;
+}
