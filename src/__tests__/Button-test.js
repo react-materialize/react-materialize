@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 jest.dontMock('../Button');
+jest.dontMock('../constants');
 describe('Button', function() {
   var React = require('react/addons'),
       TestUtils = React.addons.TestUtils,
@@ -22,6 +23,26 @@ describe('Button', function() {
   it('should apply effects', function() {
     expect(instance.getDOMNode().className).toContain('waves-effect');
     expect(instance.getDOMNode().className).toContain('waves-light');
+  });
+
+  it('should apply large styles', function() {
+    instance = TestUtils.renderIntoDocument(<Button large>Stuff</Button>);
+    expect(instance.getDOMNode().className).toContain('btn-large');
+  });
+
+  it('should apply floating styles', function() {
+    instance = TestUtils.renderIntoDocument(<Button floating>Stuff</Button>);
+    expect(instance.getDOMNode().className).toContain('btn-floating');
+  });
+
+  it('should apply flat styles', function() {
+    instance = TestUtils.renderIntoDocument(<Button flat>Stuff</Button>);
+    expect(instance.getDOMNode().className).toContain('btn-flat');
+  });
+
+  it('should apply disable styles', function() {
+    instance = TestUtils.renderIntoDocument(<Button disabled>Stuff</Button>);
+    expect(instance.getDOMNode().className).toContain('disabled');
   });
 
 });
