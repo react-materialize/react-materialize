@@ -9,7 +9,7 @@ var React = require('react'),
 var Button = React.createClass({
   propTypes: {
     node: React.PropTypes.node,
-    effect: React.PropTypes.bool,
+    waves: React.PropTypes.bool,
     large: React.PropTypes.bool,
     floating: React.PropTypes.bool,
     disabled: React.PropTypes.bool
@@ -19,9 +19,13 @@ var Button = React.createClass({
     var classes = {
       btn: true,
       disabled: this.props.disabled,
-      'waves-effect': this.props.effect,
-      'waves-light': this.props.effect
+      'waves-effect': this.props.effect
     };
+
+    if (constants.WAVES.indexOf(this.props.effect) > -1) {
+      classes['waves-' + this.props.effect] = true;
+    }
+
     constants.STYLES.forEach(style => {
       classes['btn-' + style] = this.props[style];
     });

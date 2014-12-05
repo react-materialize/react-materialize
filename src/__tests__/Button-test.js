@@ -20,9 +20,12 @@ describe('Button', function() {
     expect(instance.getDOMNode().className).toContain('btn');
   });
 
-  it('should apply effects', function() {
+  it('should apply waves', function() {
     expect(instance.getDOMNode().className).toContain('waves-effect');
-    expect(instance.getDOMNode().className).toContain('waves-light');
+  });
+
+  it('should apply waves with color', function() {
+    expect(instance.getDOMNode().className).toContain('waves-effect');
   });
 
   it('should apply large styles', function() {
