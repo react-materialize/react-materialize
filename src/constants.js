@@ -5,8 +5,13 @@ module.exports = {
     'flat'
   ],
   WAVES: [
-    'effect',
-    'light'
+    'light',
+    'red',
+    'yellow',
+    'orange',
+    'purple',
+    'green',
+    'teal'
   ],
   SIZES: [
     's',
