@@ -5,7 +5,7 @@ var React = require('react/addons'),
 var Icon = React.createClass({
   propTypes: {
     placement: React.PropTypes.oneOf(['left', 'right']),
-    mdi: React.PropTypes.oneOf(['file-cloud', 'content-add', 'content-send']).isRequired
+    mdi: React.PropTypes.oneOf(constants.ICONS).isRequired
   },
   render() {
     var classes = {};

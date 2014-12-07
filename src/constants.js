@@ -21,5 +21,14 @@ module.exports = {
   SCALES: [
     'big',
     'small'
+  ],
+  ICONS: [
+    'file-cloud',
+    'content-add',
+    'content-send',
+    'acton-search',
+    'action-view-module',
+    'navigation-refresh',
+    'navigation-more-vert'
   ]
 };

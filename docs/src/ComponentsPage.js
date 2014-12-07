@@ -2,7 +2,9 @@ var React = require('react'),
     Row = require('../../src/Row'),
     Col = require('../../src/Col'),
     Button = require('../../src/Button'),
-    Icon = require('../../src/Icon');
+    Icon = require('../../src/Icon'),
+    Navbar = require('../../src/Navbar'),
+    NavItem = require('../../src/NavItem');
 
 var ComponentsPage = React.createClass({
   render() {
@@ -57,6 +59,38 @@ var ComponentsPage = React.createClass({
               <Button disabled>Button</Button>
               <Button flat disabled>Button</Button>
               <Button floating disabled><Icon mdi='content-add'/></Button>
+            </Col>
+            <h2 className='header'>
+              Navbar
+            </h2>
+            <h4 className='col s12'>
+              Right Aligned Links
+            </h4>
+            <Col s={12}>
+              <Navbar brand='logo'>
+                <NavItem href='get-started.html'>Getting started</NavItem>
+                <NavItem href='components.html'>Components</NavItem>
+              </Navbar>
+            </Col>
+            <h4 className='col s12'>
+              Left Aligned Links
+            </h4>
+            <Col s={12}>
+              <Navbar brand='logo' left>
+                <NavItem href='get-started.html'>Getting started</NavItem>
+                <NavItem href='components.html'>Components</NavItem>
+              </Navbar>
+            </Col>
+            <h4 className='col s12'>
+              Icon Links
+            </h4>
+            <Col s={12}>
+              <Navbar brand='logo'>
+                <NavItem href='get-started.html'><Icon mdi='action-search'/></NavItem>
+                <NavItem href='get-started.html'><Icon mdi='action-view-module'/></NavItem>
+                <NavItem href='get-started.html'><Icon mdi='navigation-refresh'/></NavItem>
+                <NavItem href='get-started.html'><Icon mdi='navigation-more-vert'/></NavItem>
+              </Navbar>
             </Col>
           </div>
         </Col>

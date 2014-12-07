@@ -1,15 +1,26 @@
-var React = require('react');
+var React = require('react/addons'),
+    cx = React.addons.classSet,
+    joinClasses = require('react/lib/joinClasses');
 
 var Navbar = React.createClass({
   propTypes: {
-    brand: React.PropTypes.node
+    brand: React.PropTypes.node,
+    left: React.PropTypes.bool
   },
   render() {
+    var {brand, className, ...props} = this.props;
+    var classes = {
+      left: this.props.left
+    };
+    var brandClasses = {
+      'brand-logo': true,
+      right: this.props.left
+    };
     return (
       <nav>
         <div className='nav-wrapper'>
-          <a href='#' className='brand-logo'>{this.props.brand}</a>
-          <ul className='right side-nav' id='nav-mobile'>
+          <a href='#' className={cx(brandClasses)}>{brand}</a>
+          <ul className={joinClasses(className, cx(classes))} id='nav-mobile'>
             {this.props.children}
           </ul>
           <a className='button-collapse' href='#'
