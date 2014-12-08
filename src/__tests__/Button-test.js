@@ -9,7 +9,7 @@ describe('Button', function() {
       instance = null;
 
   beforeEach(function() {
-    instance = TestUtils.renderIntoDocument(<Button effect>Stuff</Button>);
+    instance = TestUtils.renderIntoDocument(<Button waves='effect'>Stuff</Button>);
   });
 
   it('should output a button', function() {
