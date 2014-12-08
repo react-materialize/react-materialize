@@ -6,7 +6,8 @@ var React = require('react'),
     Navbar = require('../../src/Navbar'),
     NavItem = require('../../src/NavItem'),
     Card = require('../../src/Card'),
-    CardTitle = require('../../src/CardTitle');
+    CardTitle = require('../../src/CardTitle'),
+    Preloader = require('../../src/Preloader');
 
 var ComponentsPage = React.createClass({
   render() {
@@ -115,6 +116,18 @@ var ComponentsPage = React.createClass({
                 actions={[<a href='#'>This is a Link</a>]}>;
                 I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
               </Card>
+            </Col>
+            <h2 className='header'>
+              Preloader
+            </h2>
+            <Col s={4}>
+              <Preloader size='big'/>
+            </Col>
+            <Col s={4}>
+              <Preloader />
+            </Col>
+            <Col s={4}>
+              <Preloader size='small'/>
             </Col>
           </div>
         </Col>
