@@ -150,6 +150,17 @@ var ComponentsPage = React.createClass({
             </h4>
             <Col s={12}>
               <Collection>
+                <CollectionItem href='#'>Alvin</CollectionItem>
+                <CollectionItem href='#' active>Alvin</CollectionItem>
+                <CollectionItem href='#'>Alvin</CollectionItem>
+                <CollectionItem href='#'>Alvin</CollectionItem>
+              </Collection>
+            </Col>
+            <h4 className='col s12'>
+              Collection with header
+            </h4>
+            <Col s={12}>
+              <Collection header='First Names'>
                 <CollectionItem>Alvin</CollectionItem>
                 <CollectionItem>Alvin</CollectionItem>
                 <CollectionItem>Alvin</CollectionItem>
