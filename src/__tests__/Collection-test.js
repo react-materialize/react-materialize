@@ -46,4 +46,17 @@ describe('Collection', function() {
     expect(instance.getDOMNode().firstChild.firstChild.innerHTML).toBe('First Names');
   });
 
+  it('should render anchor if href is present', function() {
+    instance = TestUtils.renderIntoDocument(
+      <Collection>
+        <CollectionItem href='#'>Alvin</CollectionItem>
+        <CollectionItem href='#' className='active'>Alvin</CollectionItem>
+        <CollectionItem href='#'>Alvin</CollectionItem>
+        <CollectionItem href='#'>Alvin</CollectionItem>
+      </Collection>
+    );
+    expect(instance.getDOMNode().nodeName).toBe('DIV');
+    expect(instance.getDOMNode().firstChild.nodeName).toBe('A');
+  });
+
 });

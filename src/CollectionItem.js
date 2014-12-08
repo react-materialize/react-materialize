@@ -4,18 +4,23 @@ var React = require('react/addons'),
 
 var CollectionItem = React.createClass({
   propTypes: {
-    active: React.PropTypes.bool
+    active: React.PropTypes.bool,
+    href: React.PropTypes.string
   },
   render() {
     var classes = {
       'collection-item': true,
       active: this.props.active
     };
+    var C = this.isAnchor() ? 'a' : 'li';
     return (
-      <li className={cx(classes)}>
+      <C className={cx(classes)}>
         {this.props.children}
-      </li>
+      </C>
     );
+  },
+  isAnchor() {
+    return this.props.href !== null;
   }
 });
 

@@ -7,7 +7,9 @@ var React = require('react'),
     NavItem = require('../../src/NavItem'),
     Card = require('../../src/Card'),
     CardTitle = require('../../src/CardTitle'),
-    Preloader = require('../../src/Preloader');
+    Preloader = require('../../src/Preloader'),
+    Collection = require('../../src/Collection'),
+    CollectionItem = require('../../src/CollectionItem');
 
 var ComponentsPage = React.createClass({
   render() {
@@ -128,6 +130,31 @@ var ComponentsPage = React.createClass({
             </Col>
             <Col s={4}>
               <Preloader size='small'/>
+            </Col>
+            <h2 className='header'>
+              Collections
+            </h2>
+            <h4 className='col s12'>
+              Basic
+            </h4>
+            <Col s={12}>
+              <Collection>
+                <CollectionItem>Alvin</CollectionItem>
+                <CollectionItem>Alvin</CollectionItem>
+                <CollectionItem>Alvin</CollectionItem>
+                <CollectionItem>Alvin</CollectionItem>
+              </Collection>
+            </Col>
+            <h4 className='col s12'>
+              Basic with different HTML structure
+            </h4>
+            <Col s={12}>
+              <Collection>
+                <CollectionItem>Alvin</CollectionItem>
+                <CollectionItem>Alvin</CollectionItem>
+                <CollectionItem>Alvin</CollectionItem>
+                <CollectionItem>Alvin</CollectionItem>
+              </Collection>
             </Col>
           </div>
         </Col>

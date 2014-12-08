@@ -11,11 +11,17 @@ var Collection = React.createClass({
       collection: true,
       'with-header': !!this.props.header
     };
+    var C = 'ul';
+    React.Children.forEach(this.props.children, child => {
+      if (child.props.href) {
+        C = 'div';
+      }
+    });
     return (
-      <ul className={cx(classes)}>
-        {this.renderHeader()}
+      <C className={cx(classes)}>
+        {this.props.header ? this.renderHeader() : null}
         {this.props.children}
-      </ul>
+      </C>
     );
   },
   renderHeader() {
