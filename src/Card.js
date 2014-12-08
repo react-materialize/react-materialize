@@ -5,26 +5,18 @@ var React = require('react'),
 var Card = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
-    image: React.PropTypes.string,
     textClassName: React.PropTypes.string
   },
 
   render() {
-    var {title, className, textClassName, image, actions, children, ...props} = this.props;
-    var cardImage = null;
+    var {title, header, className, textClassName, actions, children, ...props} = this.props;
     var classes = { card: true };
-    if (image) {
-      cardImage = <img src={image} />;
-    }
-
     return (
       <div {...props}
         className={joinClasses(className, cx(classes))} >
-        <div className='card-image'>
-          {cardImage}
-          <span className='card-title'>{title}</span>
-        </div>
+        {header}
         <div className={joinClasses('card-content', textClassName)}>
+          {title ? this.renderTitle(title) : null}
           <p>{children}</p>
         </div>
         <div className='card-action'>
@@ -32,6 +24,9 @@ var Card = React.createClass({
         </div>
       </div>
     );
+  },
+  renderTitle(title) {
+    return <span className='card-title'>{title}</span>;
   }
 });
 

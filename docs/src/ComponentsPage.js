@@ -5,7 +5,8 @@ var React = require('react'),
     Icon = require('../../src/Icon'),
     Navbar = require('../../src/Navbar'),
     NavItem = require('../../src/NavItem'),
-    Card = require('../../src/Card');
+    Card = require('../../src/Card'),
+    CardTitle = require('../../src/CardTitle');
 
 var ComponentsPage = React.createClass({
   render() {
@@ -96,17 +97,33 @@ var ComponentsPage = React.createClass({
             <h2 className='header'>
               Cards
             </h2>
-            <Col s={12}>
+            <Col s={12} m={6}>
               <Card className='blue-grey darken-1' textClassName='white-text' title='Card title' actions={[<a href='#'>This is a link</a>]}>
                 I am a very simple card.
+              </Card>
+            </Col>
+            <Col s={12} m={6}>
+              <Card className='small'
+                header={<CardTitle image='assets/sample-1.jpg'>Card Title</CardTitle>}
+                actions={[<a href='#'>This is a Link</a>]}>
+                I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
+              </Card>
+            </Col>
+            <Col s={12}>
+              <Card className='small'
+                header={<CardTitle image='assets/sample-1.jpg'>Card Title</CardTitle>}
+                actions={[<a href='#'>This is a Link</a>]}>;
+                I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
               </Card>
             </Col>
           </div>
         </Col>
         <Col m={3}>
           <ul className='section table-of-contents'>
-            <li><a href='#'>Buttons</a></li>
-            <li><a href='#'>Cards</a></li>
+            <li><a href='#'>Button</a></li>
+            <li><a href='#'>Navbar</a></li>
+            <li><a href='#'>Card</a></li>
+            <li><a href='#'>Preloader</a></li>
           </ul>
         </Col>
       </Row>
