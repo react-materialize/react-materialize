@@ -9,7 +9,10 @@ var React = require('react'),
     CardTitle = require('../../src/CardTitle'),
     Preloader = require('../../src/Preloader'),
     Collection = require('../../src/Collection'),
-    CollectionItem = require('../../src/CollectionItem');
+    CollectionItem = require('../../src/CollectionItem'),
+    Toast = require('../../src/Toast'),
+    Modal = require('../../src/Modal'),
+    ModalTrigger = require('../../src/ModalTrigger');
 
 var ComponentsPage = React.createClass({
   render() {
@@ -166,6 +169,24 @@ var ComponentsPage = React.createClass({
                 <CollectionItem>Alvin</CollectionItem>
                 <CollectionItem>Alvin</CollectionItem>
               </Collection>
+            </Col>
+            <h4 className='col s12'>
+              Toast
+            </h4>
+            <Col s={12}>
+              <Toast>hello</Toast>
+            </Col>
+            <h4 className='col s12'>
+              Modal
+            </h4>
+            <Col s={12}>
+              <ModalTrigger modal={
+                <Modal header='Modal Header'>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                </Modal>
+              }>
+                <Button waves='light'>Modal</Button>
+              </ModalTrigger>
             </Col>
           </div>
         </Col>
