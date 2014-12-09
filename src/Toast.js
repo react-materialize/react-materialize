@@ -3,13 +3,18 @@ var React = require('react/addons'),
     joinClasses = require('react/lib/joinClasses');
 
 var Toast = React.createClass({
+  propTypes: {
+    rounded: React.PropTypes.bool
+  },
+
   render() {
     var classes = {
-      toast: true
+      toast: true,
+      rounded: this.props.rounded
     };
     var style = {
       top: '35px',
-      opacity: 0
+      opacity: 1
     };
     var {className, children, ...props} = this.props;
     return (

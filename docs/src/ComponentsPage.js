@@ -13,6 +13,7 @@ var React = require('react'),
     Collapsible = require('../../src/Collapsible'),
     CollapsibleItem = require('../../src/CollapsibleItem'),
     Toast = require('../../src/Toast'),
+    OverlayTrigger = require('../../src/OverlayTrigger'),
     Modal = require('../../src/Modal'),
     ModalTrigger = require('../../src/ModalTrigger');
 
@@ -176,7 +177,9 @@ var ComponentsPage = React.createClass({
               Toast
             </h4>
             <Col s={12}>
-              <Toast>hello</Toast>
+              <OverlayTrigger overlay={<Toast>Toast!</Toast>}>
+                <Button>Toast!</Button>
+              </OverlayTrigger>
             </Col>
             <h4 className='col s12'>
               Modal
