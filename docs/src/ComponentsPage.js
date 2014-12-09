@@ -222,7 +222,11 @@ var ComponentsPage = React.createClass({
                 </CollapsibleItem>
               </Collapsible>
             </Col>
-
+            <h4 className='col s12'>
+              Dropdown
+            </h4>
+            <Col s={12}>
+            </Col>
           </div>
         </Col>
         <Col m={3}>
