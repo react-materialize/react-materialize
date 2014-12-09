@@ -10,6 +10,8 @@ var React = require('react'),
     Preloader = require('../../src/Preloader'),
     Collection = require('../../src/Collection'),
     CollectionItem = require('../../src/CollectionItem'),
+    Collapsible = require('../../src/Collapsible'),
+    CollapsibleItem = require('../../src/CollapsibleItem'),
     Toast = require('../../src/Toast'),
     Modal = require('../../src/Modal'),
     ModalTrigger = require('../../src/ModalTrigger');
@@ -188,6 +190,39 @@ var ComponentsPage = React.createClass({
                 <Button waves='light'>Modal</Button>
               </ModalTrigger>
             </Col>
+            <h4 className='col s12'>
+              Collapsible
+            </h4>
+            <Col s={12}>
+              <Collapsible>
+                <CollapsibleItem header='First' mdi='image-filter-drama'>
+                  Lorem ipsum dolor sit amet.
+                </CollapsibleItem>
+                <CollapsibleItem header='Second' mdi='maps-place'>
+                  Lorem ipsum dolor sit amet.
+                </CollapsibleItem>
+                <CollapsibleItem header='Third' mdi='social-whatshot'>
+                  Lorem ipsum dolor sit amet.
+                </CollapsibleItem>
+              </Collapsible>
+            </Col>
+            <h4 className='col s12'>
+              Accordion
+            </h4>
+            <Col s={12}>
+              <Collapsible accordion defaultActiveKey={1}>
+                <CollapsibleItem header='First' mdi='image-filter-drama' eventKey={1}>
+                  Lorem ipsum dolor sit amet.
+                </CollapsibleItem>
+                <CollapsibleItem header='Second' mdi='maps-place' eventKey={2}>
+                  Lorem ipsum dolor sit amet.
+                </CollapsibleItem>
+                <CollapsibleItem header='Third' mdi='social-whatshot' eventKey={3}>
+                  Lorem ipsum dolor sit amet.
+                </CollapsibleItem>
+              </Collapsible>
+            </Col>
+
           </div>
         </Col>
         <Col m={3}>
@@ -196,6 +231,9 @@ var ComponentsPage = React.createClass({
             <li><a href='#'>Navbar</a></li>
             <li><a href='#'>Card</a></li>
             <li><a href='#'>Preloader</a></li>
+            <li><a href='#'>Toast</a></li>
+            <li><a href='#'>Modal</a></li>
+            <li><a href='#'>Collapsible</a></li>
           </ul>
         </Col>
       </Row>
