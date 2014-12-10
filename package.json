@@ -4,7 +4,7 @@
   "description": "Material design for react",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "node node_modules/jest-cli/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "gulp-jshint": "^1.9.0",
     "gulp-react": "^2.0.0",
     "jest": "^0.1.37",
+    "jest-cli": "^0.2.0",
     "react": "~0.12.0",
     "react-tools": "^0.12.1"
   },
