@@ -1,7 +1,10 @@
 react-materialize
 =================
 
-Material design components for react, powered by materializecss
+Material design components for react, powered by [materializecss](http://materializecss.com/)
+
+[![Build
+Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=master)](https://travis-ci.org/react-materialize/react-materialize)
 
 Examples
 ---------
