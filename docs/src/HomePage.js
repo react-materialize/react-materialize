@@ -2,7 +2,7 @@ var React = require('react');
 
 var HomePage = React.createClass({
   render() {
-    return <h2>Material Components for React</h2>;
+    return <h3 className='header'>Material design Components for React</h3>;
   }
 });
 

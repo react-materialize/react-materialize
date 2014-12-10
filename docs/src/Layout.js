@@ -8,11 +8,15 @@ var Layout = React.createClass({
   render() {
     return (
       <div>
-        <MainNav />
-        <main role='main'>
+        <div className='container'>
+          <MainNav />
+        </div>
+        <main role='main' className='container'>
           <RouteHandler />
         </main>
-        <PageFooter />
+        <div className='container'>
+          <PageFooter />
+        </div>
       </div>
     );
   }

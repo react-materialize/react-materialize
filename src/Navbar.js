@@ -19,14 +19,14 @@ var Navbar = React.createClass({
     return (
       <nav>
         <div className='nav-wrapper'>
-          <a href='#' className={cx(brandClasses)}>{brand}</a>
-          <ul className={joinClasses(className, cx(classes))} id='nav-mobile'>
-            {this.props.children}
-          </ul>
+          <a href='/' className={cx(brandClasses)}>{brand}</a>
           <a className='button-collapse' href='#'
             data-activates='nav-mobile'>
             <i className='mdi-navigation-menu'></i>
           </a>
+          <ul className={joinClasses(className, cx(classes))} id='nav-mobile'>
+            {this.props.children}
+          </ul>
         </div>
       </nav>
     );
