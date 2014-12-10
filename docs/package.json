@@ -6,12 +6,13 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js && browserify client.js -t reactify -o ./assets/bundle.js",
+    "build": "node build.js && browserify client.js -o ./assets/bundle.js",
     "clean": "rm *.html assets/bundle.js"
   },
   "author": "Isaiah Peng <issaria@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "brfs": "^1.2.0",
     "browserify": "^7.0.0",
     "envify": "^3.2.0",
     "express": "^4.10.4",
@@ -22,8 +23,14 @@
     "uglify-js": "^2.4.15"
   },
   "browserify": {
-      "transform": [
-          ["reactify", {"es6": true}]
-      ]
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ],
+      "brfs"
+    ]
   }
 }
