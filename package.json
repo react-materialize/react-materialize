@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/isaiah/react-materialize.git"
+    "url": "https://github.com/react-materialize/react-materialize.git"
   },
   "keywords": [
     "material",
@@ -18,9 +18,9 @@
   "author": "Isaiah Peng",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/isaiah/react-materialize/issues"
+    "url": "https://github.com/react-materialize/react-materialize/issues"
   },
-  "homepage": "https://github.com/isaiah/react-materialize",
+  "homepage": "https://github.com/react-materialize/react-materialize",
   "peerDependencies": {
     "react": ">=0.12"
   },
