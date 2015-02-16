@@ -3,12 +3,15 @@
 // Mixins
 @import "components/prefixer";
 @import "components/mixins";
+@import "components/color";
+
+// Variables;
+@import "components/variables";
 
 // Reset
 @import "components/normalize";
 
 // components
-@import "components/color";
 @import "components/global";
 @import "components/icons-material-design";
 @import "components/grid";
@@ -29,6 +32,7 @@
 @import "components/table_of_contents";
 @import "components/sideNav";
 @import "components/preloader";
+@import "components/slider";
 @import "components/date_picker/default.scss";
 @import "components/date_picker/default.date.scss";
 @import "components/date_picker/default.time.scss";
