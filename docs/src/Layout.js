@@ -7,16 +7,12 @@ var React = require('react'),
 var Layout = React.createClass({
   render() {
     return (
-      <div>
-        <div className='container'>
-          <MainNav />
-        </div>
-        <main role='main' className='container'>
+      <div className='container'>
+        <MainNav />
+        <main role='main'>
           <RouteHandler />
         </main>
-        <div className='container'>
-          <PageFooter />
-        </div>
+        <PageFooter />
       </div>
     );
   }

@@ -15,7 +15,7 @@ window.React = React;
 
 var routes = (
   <Route path='/' handler={Layout}>
-    <DefaultRoute handler={HomePage} />
+    <DefaultRoute handler={GettingStartedPage} />
     <Route path='/index.html' handler={HomePage} name='home' />
     <Route path='/get-started.html' handler={GettingStartedPage} name='gs' />
     <Route path='/components.html' handler={ComponentsPage} name='comp' />

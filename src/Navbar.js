@@ -10,7 +10,7 @@ var Navbar = React.createClass({
   render() {
     var {brand, className, ...props} = this.props;
     var classes = {
-      left: this.props.left
+      right: this.props.right
     };
     var brandClasses = {
       'brand-logo': true,
@@ -24,7 +24,7 @@ var Navbar = React.createClass({
             data-activates='nav-mobile'>
             <i className='mdi-navigation-menu'></i>
           </a>
-          <ul className={joinClasses(className, cx(classes))} id='nav-mobile'>
+          <ul className={joinClasses(className, cx(classes))}>
             {this.props.children}
           </ul>
         </div>
