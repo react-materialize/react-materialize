@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react'),
     Row = require('../../src/Row'),
     Col = require('../../src/Col');

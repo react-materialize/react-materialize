@@ -1,6 +1,6 @@
-var React = require('react'),
-    Navbar = require('../../src/Navbar');
-    NavItem = require('../../src/NavItem');
+var React = require('react');
+var Navbar = require('../../src/Navbar');
+var NavItem = require('../../src/NavItem');
 
 var MainNav = React.createClass({
   render() {
