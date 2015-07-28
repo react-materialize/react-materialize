@@ -1,35 +1,33 @@
 var React = require('react/addons'),
     cloneWithProps = require('react/lib/cloneWithProps'),
-    OverlayMixin = require('./OverlayMixin');
+    Overlay = require('./Overlay');
 
-var cx = React.addons.classSet;
-var ModalTrigger = React.createClass({
-  mixins: [OverlayMixin],
-
-  propTypes: {
+export default class ModalTrigger extends Overlay {
+  static propTypes = {
     modal: React.PropTypes.node.isRequired
-  },
+  }
 
-  getInitialState() {
-    return {isOverlayShown: false};
-  },
+  constructor(props) {
+    super(props);
+    this.state = {isOverlayShown: false};
+  }
 
   render() {
     var child = React.Children.only(this.props.children);
     return cloneWithProps(child, {onClick: this.toggle});
-  },
+  }
 
   toggle() {
     this.setState({
       isOverlayShown: !this.state.isOverlayShown
     });
-  },
+  }
 
   hide() {
     this.setState({
       isOverlayShown: false
     });
-  },
+  }
 
   renderOverlay() {
     if (!this.state.isOverlayShown) {
@@ -37,6 +35,4 @@ var ModalTrigger = React.createClass({
     }
     return cloneWithProps(this.props.modal, {onRequestHide: this.hide});
   }
-});
-
-module.exports = ModalTrigger;
+}

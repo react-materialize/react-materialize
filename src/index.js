@@ -13,6 +13,7 @@ module.exports = {
   ModalTrigger: require('./ModalTrigger'),
   Navbar: require('./Navbar'),
   NavItem: require('./NavItem'),
+  Overlay: require('./Overlay'),
   OverlayTrigger: require('./OverlayTrigger'),
   Panel: require('./Panel'),
   Preloader: require('./Preloader'),

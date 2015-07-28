@@ -1,19 +1,18 @@
 var React = require('react'),
     joinClasses = require('react/lib/joinClasses'),
     cloneWithProps = require('react/lib/cloneWithProps'),
-    OverlayMixin = require('./OverlayMixin');
+    Overlay = require('./Overlay');
 
-var cx = React.addons.classSet;
-var OverlayTrigger = React.createClass({
-  mixins: [OverlayMixin],
-
-  propTypes: {
+export default class OverlayTrigger extends Overlay {
+  static propTypes = {
     overlay: React.PropTypes.node
-  },
+  }
 
-  getInitialState() {
-    return {isOverlayShown: false};
-  },
+  constructor(props) {
+    super(props);
+    this.state = {isOverlayShown: false};
+    this.toggle = this.toggle.bind(this);
+  }
 
   render() {
     var {overlay, children, ...props} = this.props;
@@ -22,18 +21,16 @@ var OverlayTrigger = React.createClass({
       child,
       {onClick: this.toggle}
     );
-  },
+  }
 
   renderOverlay() {
     if (!this.state.isOverlayShown) {
       return <span />;
     }
     return this.props.overlay;
-  },
+  }
 
   toggle() {
     this.setState({isOverlayShown: !this.state.isOverlayShown});
   }
-});
-
-module.exports = OverlayTrigger;
+}

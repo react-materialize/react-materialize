@@ -1,11 +1,27 @@
 var fs = require('fs'); // brfs bug
+var path = require('path');
 var React = require('react'),
+    ReactPlayground = require('./ReactPlayground'),
     Row = require('../../src/Row'),
     Col = require('../../src/Col'),
-    ReactPlayground = require('./ReactPlayground');
+    Button = require('../../src/Button'),
+    Icon = require('../../src/Icon'),
+    Navbar = require('../../src/Navbar'),
+    NavItem = require('../../src/NavItem'),
+    Card = require('../../src/Card'),
+    CardTitle = require('../../src/CardTitle'),
+    Preloader = require('../../src/Preloader'),
+    Collection = require('../../src/Collection'),
+    CollectionItem = require('../../src/CollectionItem'),
+    Collapsible = require('../../src/Collapsible'),
+    CollapsibleItem = require('../../src/CollapsibleItem'),
+    Toast = require('../../src/Toast'),
+    Modal = require('../../src/Modal');
 
-var ComponentsPage = React.createClass({
+
+class ComponentsPage extends React.Component {
   render() {
+    var raisedButtons = fs.readFileSync(path.join(__dirname, '../examples/RaisedButtons.js'), 'utf8');
     return (
       <Row>
         <Col m={9}>
@@ -18,127 +34,9 @@ var ComponentsPage = React.createClass({
               Raised
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/RaisedButtons.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Floating
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/FloatingButton.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Flat
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/FloatingButton.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Submit Button
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/SubmitButton.js', 'utf8')} />
-            </Col>
-            <h3 className='header'>Additional Style</h3>
-            <h4 className='col s12'>
-              Large
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/LargeButtons.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Disabled
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/DisabledButtons.js', 'utf8')} />
-            </Col>
-            <h2 className='header'>
-              Navbar
-            </h2>
-            <h4 className='col s12'>
-              Right Aligned Links
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/RightAlignedNavbar.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Left Aligned Links
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/LeftAlignedNavbar.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Icon Links
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/IconLinksNavbar.js', 'utf8')} />
-            </Col>
-            <h2 className='header'>
-              Cards
-            </h2>
-            <Col s={12} m={6}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/CardSimple.js', 'utf8')} />
-            </Col>
-            <Col s={12} m={6}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/CardImage.js', 'utf8')} />
-            </Col>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/CardFull.js', 'utf8')} />
-            </Col>
-            <h2 className='header'>
-              Preloader
-            </h2>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/Preloaders.js', 'utf8')} />
-            </Col>
-            <h2 className='header'>
-              Collections
-            </h2>
-            <h4 className='col s12'>
-              Basic
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/BasicCollection.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Basic with different HTML structure
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/CollectionWithHref.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Collection with header
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/CollectionWithHeader.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Toast
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/Toast.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Modal
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/Modal.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Collapsible
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/Collapsible.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Accordion
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(__dirname + '/../examples/Accordion.js', 'utf8')} />
-            </Col>
-            <h4 className='col s12'>
-              Dropdown
-            </h4>
-            <Col s={12}>
+              <ReactPlayground code={raisedButtons}>
+                <raisedButtons />
+              </ReactPlayground>
             </Col>
           </div>
         </Col>
@@ -156,6 +54,6 @@ var ComponentsPage = React.createClass({
       </Row>
     );
   }
-});
+}
 
-module.exports = ComponentsPage;
+export default ComponentsPage;

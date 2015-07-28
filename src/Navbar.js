@@ -1,4 +1,5 @@
 var React = require('react/addons'),
+    Col = require('./Col'),
     joinClasses = require('react/lib/joinClasses');
 
 var cx = React.addons.classSet;

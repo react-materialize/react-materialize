@@ -6,6 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "build": "node build.js && webpack --progress --colors",
+    "watch": "node build.js && webpack --progress --colors --watch",
     "clean": "rm *.html assets/bundle.js"
   },
   "repository": "https://github.com/react-materialize/react-materialize.git",
