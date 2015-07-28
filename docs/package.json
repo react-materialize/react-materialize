@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.js && browserify client.js -o ./assets/bundle.js",
     "clean": "rm *.html assets/bundle.js"
   },
@@ -18,8 +17,8 @@
     "envify": "^3.2.0",
     "express": "^4.10.4",
     "node-jsx": "^0.12.4",
-    "react": "^0.12.1",
-    "react-router": "^0.11.4",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
     "reactify": "^0.17.1",
     "uglify-js": "^2.4.15"
   },
