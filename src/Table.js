@@ -1,7 +1,7 @@
 var React = require('react/addons'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses');
 
+var cx = React.addons.classSet;
 var Table = React.createClass({
   propTypes: {
     centered: React.PropTypes.bool,

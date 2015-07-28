@@ -1,8 +1,7 @@
 var React = require('react/addons'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses'),
     constants = require('./constants');
-
+var cx = React.addons.classSet;
 var Preloader = React.createClass({
   propTypes: {
     size: React.PropTypes.oneOf(constants.SCALES),

@@ -1,7 +1,7 @@
 var React = require('react/addons'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses');
 
+var cx = React.addons.classSet;
 var Toast = React.createClass({
   propTypes: {
     rounded: React.PropTypes.bool

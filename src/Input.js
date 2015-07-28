@@ -1,7 +1,7 @@
 var React = require('react/addons'),
-    cx = React.addons.classSet,
     constants = require('./constants');
 
+var cx = React.addons.classSet;
 var Input = React.createClass({
   propTypes: {
     s: React.PropTypes.number,

@@ -1,7 +1,7 @@
 var React = require('react/addons'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses');
 
+var cx = React.addons.classSet;
 var Navbar = React.createClass({
   propTypes: {
     brand: React.PropTypes.node,

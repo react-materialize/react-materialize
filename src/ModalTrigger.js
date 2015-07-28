@@ -1,8 +1,8 @@
 var React = require('react/addons'),
-    cx = React.addons.classSet,
     cloneWithProps = require('react/lib/cloneWithProps'),
     OverlayMixin = require('./OverlayMixin');
 
+var cx = React.addons.classSet;
 var ModalTrigger = React.createClass({
   mixins: [OverlayMixin],
 

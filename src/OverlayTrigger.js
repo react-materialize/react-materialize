@@ -1,9 +1,9 @@
 var React = require('react'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses'),
     cloneWithProps = require('react/lib/cloneWithProps'),
     OverlayMixin = require('./OverlayMixin');
 
+var cx = React.addons.classSet;
 var OverlayTrigger = React.createClass({
   mixins: [OverlayMixin],
 

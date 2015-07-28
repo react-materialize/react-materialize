@@ -1,6 +1,7 @@
 var React = require('react'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses');
+
+var cx = React.addons.classSet;
 
 var Card = React.createClass({
   propTypes: {

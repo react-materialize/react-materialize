@@ -1,7 +1,7 @@
 var React = require('react'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses');
 
+var cx = React.addons.classSet;
 var Panel = React.createClass({
   render() {
     var classes = {

@@ -1,9 +1,8 @@
 var React = require('react'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses'),
-    constants = require('./constants'),
-    BaseMixin = require('./BaseMixin');
+    constants = require('./constants');
 
+var cx = React.addons.classSet;
 var Button = React.createClass({
   propTypes: {
     node: React.PropTypes.node,

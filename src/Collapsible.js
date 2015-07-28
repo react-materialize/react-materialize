@@ -1,8 +1,8 @@
 var React = require('react/addons'),
-    cx = React.addons.classSet,
     joinClasses = require('react/lib/joinClasses'),
     cloneWithProps = require('react/lib/cloneWithProps');
 
+var cx = React.addons.classSet;
 var Collapsible = React.createClass({
   propTypes: {
     accordion: React.PropTypes.bool.isRequired
