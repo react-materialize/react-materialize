@@ -9,6 +9,7 @@
     "build": "node build.js && browserify client.js -o ./assets/bundle.js",
     "clean": "rm *.html assets/bundle.js"
   },
+  "repository": "https://github.com/react-materialize/react-materialize.git",
   "author": "Isaiah Peng <issaria@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -32,5 +33,10 @@
       ],
       "brfs"
     ]
+  },
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "materialize-css": "^0.96.1",
+    "prismjs": "0.0.1"
   }
 }
