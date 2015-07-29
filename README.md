@@ -8,6 +8,23 @@ Material design components for react, powered by [materializecss](http://materia
 [![Build
 Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=master)](https://travis-ci.org/react-materialize/react-materialize)
 
+Get started
+===========
+
+CommonJS
+--------
+
+```
+$ npm install react-materializecss
+
+
+var Button = require('react-materializecss').Button;
+
+// with ES6 modules
+import {Button} from 'react-materializecss';
+
+```
+
 Examples
 ---------
 
