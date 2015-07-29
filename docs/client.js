@@ -3,13 +3,13 @@
 
 var React = require('react'),
     Router = require('react-router'),
-    Route = Router.Route,
-    DefaultRoute = Router.DefaultRoute,
-    Root = require('./src/Root'),
     Layout = require('./src/Layout'),
     HomePage = require('./src/HomePage'),
     GettingStartedPage = require('./src/GettingStartedPage'),
     ComponentsPage = require('./src/ComponentsPage');
+
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
 
 window.React = React;
 
@@ -23,5 +23,5 @@ var routes = (
 );
 
 Router.run(routes, Router.HistoryLocation, function(Handler) {
-  React.render(<Handler />, document.getElementById('app'));
+  React.render(<Handler />, document.body);
 });

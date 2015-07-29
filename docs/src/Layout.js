@@ -1,17 +1,15 @@
 var React = require('react'),
     Router = require('react-router'),
-    RouteHandler = Router.RouteHandler,
     MainNav = require('./MainNav'),
     PageFooter = require('./PageFooter');
+var RouteHandler = Router.RouteHandler;
 
 var Layout = React.createClass({
   render() {
     return (
-      <div className='container'>
+      <div>
         <MainNav />
-        <main role='main'>
-          <RouteHandler />
-        </main>
+        <RouteHandler />
         <PageFooter />
       </div>
     );

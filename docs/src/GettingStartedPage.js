@@ -23,7 +23,7 @@ var GettingStartedPage = React.createClass({
           <h4>Set Up</h4>
           <pre>
             <code className='language-markup'>
-              $ npm install react-materialize
+              $ npm install react-materializecss
             </code>
           </pre>
         </Col>

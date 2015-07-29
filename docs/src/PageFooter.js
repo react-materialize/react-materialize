@@ -1,6 +1,5 @@
 import React from 'react';
 import Footer from '../../src/Footer';
-import Button from '../../src/Button';
 
 class PageFooter extends React.Component {
   render() {
@@ -28,8 +27,8 @@ class PageFooter extends React.Component {
         <p className="grey-text text-lighten-4">
           We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.
         </p>
-        <Button href="https://gitter.im/react-materialize/react-materialize?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat at https://gitter.im/react-materialize/react-materialize" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg"/>
-        </Button>
+        <a href="https://gitter.im/react-materialize/react-materialize?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat at https://gitter.im/react-materialize/react-materialize" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg"/>
+        </a>
       </Footer>
     );
   }

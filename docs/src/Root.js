@@ -23,16 +23,16 @@ var Root = React.createClass({
         '<link href="node_modules/materialize-css/bin/materialize.css" rel="stylesheet" type="text/css" media="screen"/>' +
         '<link href="assets/docs.css" rel="stylesheet" type="text/css" media="screen"/>' +
         '<link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" type="text/css" media="screen"/>' +
+        '<script src="node_modules/jquery/dist/jquery.js"></script>' +
+        '<script src="node_modules/materialize-css/bin/materialize.js"></script>' +
         '<script src="node_modules/prismjs/prism.js"></script>'
     };
     return (
       <html>
         <head dangerouslySetInnerHTML={header} />
         <body>
-          <div id='app'>
-          </div>
-          <script src='assets/bundle.js' type='text/javascript'/>
         </body>
+        <script src="assets/bundle.js" type="text/javascript"/>
       </html>
     );
   }

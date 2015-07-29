@@ -19,6 +19,7 @@ module.exports = {
   Panel: require('./Panel'),
   Preloader: require('./Preloader'),
   Row: require('./Row'),
+  SideNav: require('./SideNav'),
   TabArea: require('./TabArea'),
   Table: require('./Table'),
   Toast: require('./Toast')
