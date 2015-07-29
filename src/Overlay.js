@@ -5,6 +5,19 @@ export default class Overlay extends React.Component {
     container: React.PropTypes.any.isRequired
   }
 
+  static defaultProps = {
+    container: {
+      // Provide `getDOMNode` fn mocking a React component API. The `document.body`
+      // reference needs to be contained within this function so that it is not accessed
+      // in environments where it would not be defined, e.g. nodejs. Equally this is needed
+      // before the body is defined where `document.body === null`, this ensures
+      // `document.body` is only accessed after componentDidMount.
+      getDOMNode: function getDOMNode() {
+        return document.body;
+      }
+    }
+  }
+
   constructor(props) {
     super(props);
   }
