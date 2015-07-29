@@ -1,0 +1,31 @@
+{
+  "name": "react-materialize",
+  "version": "0.12.0",
+  "homepage": "https://react-materialize.github.io",
+  "authors": [
+    "Isaiah Peng <issaria@gmail.com>"
+  ],
+  "description": "React components for Materializecss",
+  "main": "src/index.js",
+  "keywords": [
+    "react",
+    "material design"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-materialize/react-materialize.git"
+  },
+  "moduleType": [
+    "node",
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
