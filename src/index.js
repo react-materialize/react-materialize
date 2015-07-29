@@ -7,6 +7,7 @@ module.exports = {
   CollapsibleItem: require('./CollapsibleItem'),
   Collection: require('./Collection'),
   CollectionItem: require('./CollectionItem'),
+  Footer: require('./Footer'),
   Icon: require('./Icon'),
   Input: require('./Input'),
   Modal: require('./Modal'),
