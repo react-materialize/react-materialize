@@ -1,5 +1,4 @@
 var React = require('react/addons'),
-    cloneWithProps = require('react/lib/cloneWithProps'),
     cx = require('classnames');
 
 var Collapsible = React.createClass({
@@ -37,7 +36,7 @@ var Collapsible = React.createClass({
       props.onSelect = this.handleSelect;
     }
 
-    return cloneWithProps(child, props);
+    return React.cloneElement(child, props);
   },
 
   handleSelect(key) {
