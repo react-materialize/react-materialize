@@ -1,5 +1,5 @@
 var React = require('react/addons'),
-    joinClasses = require('react/lib/joinClasses');
+    cx = require('classnames');
 
 var Row = React.createClass({
   propTypes: {
@@ -13,7 +13,7 @@ var Row = React.createClass({
   render() {
     var C = this.props.node;
     return (
-      <C className={joinClasses('row', this.props.className)}
+      <C className={cx('row', this.props.className)}
         {...this.props}>
         {this.props.children}
       </C>

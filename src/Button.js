@@ -1,8 +1,7 @@
 var React = require('react'),
-    joinClasses = require('react/lib/joinClasses'),
-    constants = require('./constants');
+    constants = require('./constants'),
+    cx = require('classnames');
 
-var cx = React.addons.classSet;
 var Button = React.createClass({
   propTypes: {
     node: React.PropTypes.node,
@@ -28,17 +27,6 @@ var Button = React.createClass({
     });
     return (
       <C {...this.props} className={cx(classes)}>
-        {this.props.children}
-      </C>
-    );
-  },
-  renderAnchor(classes) {
-    var C = this.props.node || 'a';
-    var href = this.props.href || '#';
-    return (
-      <C {...this.props}
-        href={href}
-        className={cx(classes)}>
         {this.props.children}
       </C>
     );

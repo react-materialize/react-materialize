@@ -2,6 +2,8 @@
 
 jest.dontMock('../Button');
 jest.dontMock('../constants');
+jest.dontMock('classnames');
+
 describe('Button', function() {
   var React = require('react/addons'),
       TestUtils = React.addons.TestUtils,

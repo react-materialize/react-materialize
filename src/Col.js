@@ -1,7 +1,6 @@
 var React = require('react/addons'),
-    constants = require('./constants');
-
-var cx = React.addons.classSet;
+    constants = require('./constants'),
+    cx = require('classnames');
 
 var Col = React.createClass({
   propTypes: {

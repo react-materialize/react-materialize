@@ -1,7 +1,7 @@
 var React = require('react/addons'),
-    constants = require('./constants');
+    constants = require('./constants'),
+    cx = require('classnames');
 
-var cx = React.addons.classSet;
 var Icon = React.createClass({
   propTypes: {
     placement: React.PropTypes.oneOf(['left', 'right']),

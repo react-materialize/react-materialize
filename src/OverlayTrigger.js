@@ -1,5 +1,4 @@
 var React = require('react'),
-    joinClasses = require('react/lib/joinClasses'),
     cloneWithProps = require('react/lib/cloneWithProps'),
     Overlay = require('./Overlay');
 
