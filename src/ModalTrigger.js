@@ -1,5 +1,4 @@
 var React = require('react/addons'),
-    cloneWithProps = require('react/lib/cloneWithProps'),
     Overlay = require('./Overlay');
 
 export default class ModalTrigger extends Overlay {
@@ -14,7 +13,7 @@ export default class ModalTrigger extends Overlay {
 
   render() {
     var child = React.Children.only(this.props.children);
-    return cloneWithProps(child, {onClick: this.toggle});
+    return React.cloneElement(child, {onClick: this.toggle});
   }
 
   toggle() {
@@ -29,10 +28,4 @@ export default class ModalTrigger extends Overlay {
     });
   }
 
-  renderOverlay() {
-    if (!this.state.isOverlayShown) {
-      return <span />;
-    }
-    return cloneWithProps(this.props.modal, {onRequestHide: this.hide});
-  }
 }

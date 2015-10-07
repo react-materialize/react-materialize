@@ -1,5 +1,4 @@
 var React = require('react'),
-    cloneWithProps = require('react/lib/cloneWithProps'),
     Overlay = require('./Overlay');
 
 export default class OverlayTrigger extends Overlay {
@@ -16,7 +15,7 @@ export default class OverlayTrigger extends Overlay {
   render() {
     var {overlay, children, ...props} = this.props;
     var child = React.Children.only(children);
-    return cloneWithProps(
+    return React.cloneElement(
       child,
       {onClick: this.toggle}
     );
