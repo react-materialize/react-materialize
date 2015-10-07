@@ -1,6 +1,6 @@
 var React = require('react'),
-    joinClasses = require('react/lib/joinClasses');
-var cx = React.addons.classSet;
+    cx = require('classnames');
+
 var NavItem = React.createClass({
   propTypes: {
     href: React.PropTypes.string

@@ -41,5 +41,8 @@
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react"
     ]
+  },
+  "dependencies": {
+    "classnames": "^2.1.3"
   }
 }

@@ -1,8 +1,7 @@
 var React = require('react/addons'),
-    joinClasses = require('react/lib/joinClasses'),
-    Icon = require('./Icon');
+    Icon = require('./Icon'),
+    cx = require('classnames');
 
-var cx = React.addons.classSet;
 var CollapsibleItem = React.createClass({
   propTypes: {
     header: React.PropTypes.string.isRequired,

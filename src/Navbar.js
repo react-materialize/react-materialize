@@ -1,8 +1,7 @@
 var React = require('react/addons'),
     Col = require('./Col'),
-    joinClasses = require('react/lib/joinClasses');
+    cx = require('classnames');
 
-var cx = React.addons.classSet;
 var Navbar = React.createClass({
   propTypes: {
     brand: React.PropTypes.node,
@@ -26,7 +25,7 @@ var Navbar = React.createClass({
               data-activates='nav-mobile'>
               <i className='mdi-navigation-menu'></i>
             </a>
-            <ul className={joinClasses(className, cx(classes))}>
+            <ul className={cx(className, classes)}>
               {this.props.children}
             </ul>
           </Col>

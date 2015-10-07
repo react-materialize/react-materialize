@@ -1,8 +1,6 @@
 var React = require('react/addons'),
-    joinClasses = require('react/lib/joinClasses'),
-    Button = require('./Button');
-
-var cx = React.addons.classSet;
+    Button = require('./Button'),
+    cx = require('classnames');
 
 var Modal = React.createClass({
   propTypes: {
