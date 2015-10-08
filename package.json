@@ -32,6 +32,7 @@
     "jest": "^0.1.40",
     "jest-cli": "^0.2.0",
     "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.0",
     "transform-loader": "^0.2.2",
     "webpack": "^1.10.5"
   },

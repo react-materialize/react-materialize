@@ -2,8 +2,8 @@ jest.dontMock('../Panel');
 jest.dontMock('classnames');
 
 describe('Panel', function() {
-  var React = require('react/addons'),
-      TestUtils = React.addons.TestUtils,
+  var React = require('react'),
+      TestUtils = require('react-addons-test-utils'),
       Panel = require('../Panel'),
       instance = null;
 

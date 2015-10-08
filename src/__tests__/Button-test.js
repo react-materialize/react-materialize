@@ -1,12 +1,10 @@
-/** @jsx React.DOM */
-
 jest.dontMock('../Button');
 jest.dontMock('../constants');
 jest.dontMock('classnames');
 
 describe('Button', function() {
-  var React = require('react/addons'),
-      TestUtils = React.addons.TestUtils,
+  var React = require('react'),
+      TestUtils = require('react-addons-test-utils'),
       Button = require('../Button'),
       instance = null;
 

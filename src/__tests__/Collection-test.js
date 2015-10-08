@@ -3,8 +3,8 @@ jest.dontMock('../CollectionItem');
 jest.dontMock('classnames');
 
 describe('Collection', function() {
-  var React = require('react/addons'),
-      TestUtils = React.addons.TestUtils,
+  var React = require('react'),
+      TestUtils = require('react-addons-test-utils'),
       Collection = require('../Collection'),
       CollectionItem = require('../CollectionItem'),
       instance = null;

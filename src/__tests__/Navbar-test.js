@@ -1,8 +1,8 @@
 jest.dontMock('../Navbar');
 
 describe('Navbar', function() {
-  var React = require('react/addons'),
-      TestUtils = React.addons.TestUtils,
+  var React = require('react'),
+      TestUtils = require('react-addons-test-utils'),
       Navbar = require('../Navbar'),
       instance = null;
 
