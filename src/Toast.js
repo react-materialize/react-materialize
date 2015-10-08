@@ -1,10 +1,19 @@
 var React = require('react/addons'),
     cx = require('classnames');
 
-var Toast = React.createClass({
-  propTypes: {
+var Button = require('./Button');
+var Materialize = require('imports?jQuery=jquery!materialize-css/bin/materialize.js');
+
+class Toast extends React.Component{
+  static propTypes = {
+    toast: React.PropTypes.string.isRequired,
     rounded: React.PropTypes.bool
-  },
+  }
+
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
 
   render() {
     var classes = {
@@ -17,13 +26,15 @@ var Toast = React.createClass({
     };
     var {className, children, ...props} = this.props;
     return (
-      <div className={cx(className, classes)} style={style}>
-        <span>
-          {children}
-        </span>
-      </div>
+      <Button onClick={this.onClick}>
+        {children}
+      </Button>
     );
   }
-});
 
-module.exports = Toast;
+  onClick() {
+    Materialize.toast(this.props.toast, 1000);
+  }
+}
+
+export default Toast;
