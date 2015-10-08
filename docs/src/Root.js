@@ -1,5 +1,5 @@
-var React = require('react'),
-    Router = require('react-router');
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 var Root = React.createClass({
   statics: {
@@ -12,7 +12,7 @@ var Root = React.createClass({
     },
     renderToString: function(props) {
       return "<!doctype html>" +
-        React.renderToString(<Root {...props} />);
+        ReactDOMServer.renderToString(<Root {...props} />);
     }
   },
   render: function() {
@@ -31,8 +31,9 @@ var Root = React.createClass({
       <html>
         <head dangerouslySetInnerHTML={header} />
         <body>
+          <div id="app"></div>
+          <script src="assets/bundle.js" type="text/javascript"/>
         </body>
-        <script src="assets/bundle.js" type="text/javascript"/>
       </html>
     );
   }

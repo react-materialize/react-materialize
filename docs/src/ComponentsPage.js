@@ -1,10 +1,8 @@
-var fs = require('fs');
-var path = require('path');
-var React = require('react'),
-    Row = require('../../src/Row'),
-    Col = require('../../src/Col'),
-    ReactPlayground = require('./ReactPlayground'),
-    raisedButtons = require('../examples/RaisedButton');
+import React from 'react';
+import Row from '../../src/Row';
+import Col from '../../src/Col';
+import ReactPlayground from './ReactPlayground';
+import raisedButtons from '../examples/RaisedButton';
 
 import floatingButtons from '../examples/FloatingButton';
 import flatButtons from '../examples/FlatButton';
@@ -25,6 +23,9 @@ import toast from '../examples/Toast';
 import modal from '../examples/Modal';
 import collapsible from '../examples/Collapsible';
 import accordion from '../examples/Accordion';
+
+var path = require('path');
+var fs = require('fs');
 
 var ComponentsPage = React.createClass({
   render() {

@@ -1,19 +1,17 @@
+import {Router} from 'react-router';
+
 var React = require('react'),
-    Router = require('react-router'),
     MainNav = require('./MainNav'),
     PageFooter = require('./PageFooter');
-var RouteHandler = Router.RouteHandler;
 
-var Layout = React.createClass({
+export default class Layout extends React.Component {
   render() {
     return (
       <div>
         <MainNav />
-        <RouteHandler />
+        {this.props.children || "hello world"}
         <PageFooter />
       </div>
     );
   }
-});
-
-module.exports = Layout;
+}
