@@ -11,12 +11,13 @@ Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=mas
 Get started
 ===========
 
+You'll have to load `materialize.css` and `materialize.js` globally in the page.
+
 CommonJS
 --------
 
 ```
 $ npm install react-materializecss
-
 
 var Button = require('react-materializecss').Button;
 
