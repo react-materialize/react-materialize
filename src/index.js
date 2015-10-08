@@ -11,7 +11,6 @@ module.exports = {
   Icon: require('./Icon'),
   Input: require('./Input'),
   Modal: require('./Modal'),
-  ModalTrigger: require('./ModalTrigger'),
   Navbar: require('./Navbar'),
   NavItem: require('./NavItem'),
   Overlay: require('./Overlay'),

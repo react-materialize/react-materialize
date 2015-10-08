@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class Overlay extends React.Component {
   static propTypes = {
@@ -51,7 +52,7 @@ export default class Overlay extends React.Component {
     }
 
     // Save reference to help testing
-    this._overlayInstance = React.render(this.renderOverlay(), this._overlayTarget);
+    this._overlayInstance = ReactDOM.render(this.renderOverlay(), this._overlayTarget);
   }
 
   _unrenderOverlay() {

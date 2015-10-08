@@ -1,10 +1,9 @@
-var React = require('react/addons'),
-    cx = require('classnames');
+import React from 'react/addons';
+import cx from 'classnames';
 
-var Button = require('./Button');
-var Materialize = require('imports?jQuery=jquery!materialize-css/bin/materialize.js');
+import Button from './Button';
 
-class Toast extends React.Component{
+export default class Toast extends React.Component{
   static propTypes = {
     toast: React.PropTypes.string.isRequired,
     rounded: React.PropTypes.bool
@@ -36,5 +35,3 @@ class Toast extends React.Component{
     Materialize.toast(this.props.toast, 1000);
   }
 }
-
-export default Toast;

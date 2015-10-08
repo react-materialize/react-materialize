@@ -10,6 +10,7 @@ export default class OverlayTrigger extends Overlay {
     super(props);
     this.state = {isOverlayShown: false};
     this.toggle = this.toggle.bind(this);
+    this.renderOverlay = this.renderOverlay.bind(this);
   }
 
   render() {
