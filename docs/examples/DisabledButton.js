@@ -7,5 +7,5 @@ export default
   <Button large disabled>Button</Button>
   <Button disabled>Button</Button>
   <Button flat disabled>Button</Button>
-  <Button floating disabled><Icon mdi='content-add'/></Button>
+  <Button floating disabled><Icon>add</Icon></Button>
 </div>;

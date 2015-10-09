@@ -3,4 +3,4 @@ import Button from '../../src/Button';
 import Icon from '../../src/Icon';
 
 export default
-<Button floating><Icon mdi='content-add'/></Button>;
+<Button floating><Icon>add</Icon></Button>;

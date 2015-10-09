@@ -1,21 +1,8 @@
-var React = require('react/addons'),
-    constants = require('./constants'),
-    cx = require('classnames');
+import React from 'react/addons';
+import constants from './constants';
+import cx from 'classnames';
 
-var Preloader = React.createClass({
-  propTypes: {
-    size: React.PropTypes.oneOf(constants.SCALES),
-    active: React.PropTypes.bool,
-    colors: React.PropTypes.array
-  },
-
-  getDefaultProps() {
-    return {
-      active: true,
-      colors: ['blue', 'red', 'yellow', 'green']
-    };
-  },
-
+class Preloader extends React.Component {
   render() {
     var classes = {
       'preloader-wrapper': true,
@@ -46,6 +33,17 @@ var Preloader = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = Preloader;
+Preloader.propTypes = {
+    size: React.PropTypes.oneOf(constants.SCALES),
+    active: React.PropTypes.bool,
+    colors: React.PropTypes.array
+};
+
+Preloader.defaultProps = {
+    active: true,
+    colors: ['blue', 'red', 'yellow', 'green']
+};
+
+export default Preloader;

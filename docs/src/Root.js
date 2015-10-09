@@ -23,6 +23,7 @@ var Root = React.createClass({
         '<link href="node_modules/materialize-css/bin/materialize.css" rel="stylesheet" type="text/css" media="screen"/>' +
         '<link href="assets/docs.css" rel="stylesheet" type="text/css" media="screen"/>' +
         '<link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" type="text/css" media="screen"/>' +
+        '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">' +
         '<script src="node_modules/jquery/dist/jquery.js"></script>' +
         '<script src="node_modules/materialize-css/bin/materialize.js"></script>' +
         '<script src="node_modules/prismjs/prism.js"></script>'

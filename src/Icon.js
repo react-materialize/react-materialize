@@ -1,20 +1,28 @@
-var React = require('react/addons'),
-    constants = require('./constants'),
-    cx = require('classnames');
+import React from 'react/addons';
+import constants from './constants';
+import cx from 'classnames';
 
-var Icon = React.createClass({
-  propTypes: {
-    placement: React.PropTypes.oneOf(['left', 'right']),
-    mdi: React.PropTypes.oneOf(constants.ICONS).isRequired
-  },
-  render() {
-    var classes = {};
-    if (this.props.placement) {
-      classes[this.props.placement] = true;
+class Icon extends React.Component {
+    render() {
+        var classes = {
+            "material-icons": true
+        };
+        constants.PLACEMENTS.forEach(p => {
+            classes[p] = this.props[p];
+        });
+
+        constants.ICON_SIZES.forEach(s => {
+            classes[s] = this.props[s];
+        });
+        return <i className={cx(classes)}>{this.props.children}</i>;
     }
-    classes['mdi-' + this.props.mdi] = true;
-    return <i className={cx(classes)}></i>;
-  }
-});
+}
 
-module.exports = Icon;
+Icon.propTypes = {
+    tiny: React.PropTypes.bool,
+    small: React.PropTypes.bool,
+    medium: React.PropTypes.bool,
+    large: React.PropTypes.bool
+}
+
+export default Icon;

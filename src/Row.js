@@ -1,15 +1,7 @@
-var React = require('react/addons'),
-    cx = require('classnames');
+import React from 'react';
+import cx from 'classnames';
 
-var Row = React.createClass({
-  propTypes: {
-    node: React.PropTypes.node.isRequired
-  },
-
-  getDefaultProps() {
-    return {node: 'div'};
-  },
-
+class Row extends React.Component {
   render() {
     var C = this.props.node;
     return (
@@ -19,6 +11,12 @@ var Row = React.createClass({
       </C>
     );
   }
-});
+}
 
-module.exports = Row;
+Row.propTypes = {
+    node: React.PropTypes.node.isRequired
+};
+
+Row.defaultProps = {node: 'div'};
+
+export default Row;

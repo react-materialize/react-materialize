@@ -54,7 +54,7 @@ var CollapsibleItem = React.createClass({
   },
 
   renderIcon(mdi) {
-    return <Icon mdi={mdi} />;
+    return <Icon mdi/>;
   }
 });
 

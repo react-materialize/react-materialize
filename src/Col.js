@@ -1,18 +1,8 @@
-var React = require('react/addons'),
-    constants = require('./constants'),
-    cx = require('classnames');
+import React from 'react/addons';
+import constants from './constants';
+import cx from 'classnames';
 
-var Col = React.createClass({
-  propTypes: {
-    node: React.PropTypes.node.isRequired,
-    s: React.PropTypes.number,
-    m: React.PropTypes.number,
-    l: React.PropTypes.number,
-    offset: React.PropTypes.string
-  },
-  getDefaultProps() {
-    return {node: 'div'};
-  },
+class Col extends React.Component {
   render() {
     var C = this.props.node;
     var classes = {col: true};
@@ -33,6 +23,16 @@ var Col = React.createClass({
       </C>
     );
   }
-});
+}
 
-module.exports = Col;
+Col.propTypes = {
+    node: React.PropTypes.node.isRequired,
+    s: React.PropTypes.number,
+    m: React.PropTypes.number,
+    l: React.PropTypes.number,
+    offset: React.PropTypes.string
+}
+
+Col.defaultProps = {node: 'div'};
+
+export default Col;

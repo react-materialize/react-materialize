@@ -4,12 +4,6 @@ import cx from 'classnames';
 import uuid from 'node-uuid';
 
 class Input extends React.Component {
-    getDefaultProps() {
-        return {
-            type: 'text'
-        };
-    }
-
     render() {
         var classes = {
             col: true,
@@ -56,7 +50,8 @@ Input.propTypes = {
     label: React.PropTypes.node,
     type: React.PropTypes.string,
     defaultValue: React.PropTypes.string
-}
+};
 
+Input.defaultProps = {type: 'text'};
 
 export default Input;
