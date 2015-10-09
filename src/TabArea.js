@@ -1,21 +1,11 @@
-var React = require('react/addons'),
-    cx = require('classnames');
+import React from 'react';
 
-var TabArea = React.createClass({
-  render() {
-    return (
-      <ul className='tabs'>
-        {
-          React.Children.map((child, idx) => {
-            var target = '#tab_' + idx;
-            return (
-              <li className='tab col s2'>
-                <a href={target}>{child.props.tab}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    );
-  }
-});
+// This is just a holder for the props and children for tab, thus
+// there is no logic here.
+class TabArea extends React.Component {
+    render() {
+        return null;
+    }
+}
+
+export default TabArea;

@@ -28,6 +28,7 @@ import rightAlignedNavbar from '../examples/RightAlignedNavbar';
 import simpleCard from '../examples/CardSimple';
 import submitButtons from '../examples/SubmitButton';
 import toast from '../examples/Toast';
+import tab from '../examples/Tab';
 import tag from '../examples/Tag';
 
 var path = require('path');
@@ -91,6 +92,14 @@ var ComponentsPage = React.createClass({
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/DisabledButton.js'), 'utf8')}>
                   {disabledButtons}
               </ReactPlayground>
+            </Col>
+            <h4 className='col s12'>
+                Tabs
+            </h4>
+            <Col s={12}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Tab.js'), 'utf8')}>
+                    {tab}
+                </ReactPlayground>
             </Col>
             <h2 className='header'>
               Navbar
