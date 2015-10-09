@@ -4,30 +4,31 @@ import Col from '../../src/Col';
 import ReactPlayground from './ReactPlayground';
 import raisedButtons from '../examples/RaisedButton';
 
-import floatingButtons from '../examples/FloatingButton';
-import flatButtons from '../examples/FlatButton';
-import submitButtons from '../examples/SubmitButton';
-import largeButtons from '../examples/LargeButton';
-import disabledButtons from '../examples/DisabledButton';
-import rightAlignedNavbar from '../examples/RightAlignedNavbar';
-import leftAlignedNavbar from '../examples/LeftAlignedNavbar';
-import iconLinksNavbar from '../examples/IconLinksNavbar';
-import inputFields from '../examples/InputFields';
-import simpleCard from '../examples/CardSimple';
-import imageCard from '../examples/CardImage';
-import fullCard from '../examples/CardFull';
-import contactChip from '../examples/ContactChip';
-import tag from '../examples/Tag';
-import preloaders from '../examples/Preloaders';
+import accordion from '../examples/Accordion';
 import basicCollections from '../examples/BasicCollection';
 import collectionWithHref from '../examples/CollectionWithHref';
 import collectionWithHeader from '../examples/CollectionWithHeader';
-import toast from '../examples/Toast';
+import collapsible from '../examples/Collapsible';
+import contactChip from '../examples/ContactChip';
+import disabledButtons from '../examples/DisabledButton';
+import floatingButtons from '../examples/FloatingButton';
+import flatButtons from '../examples/FlatButton';
+import fullCard from '../examples/CardFull';
+import iconLinksNavbar from '../examples/IconLinksNavbar';
+import inputFields from '../examples/InputFields';
+import imageCard from '../examples/CardImage';
+import largeButtons from '../examples/LargeButton';
+import leftAlignedNavbar from '../examples/LeftAlignedNavbar';
 import modal from '../examples/Modal';
 import modalFixedFooter from '../examples/ModalWithFixedFooter';
 import modalBottomSheet from '../examples/ModalWithBottomSheet';
-import collapsible from '../examples/Collapsible';
-import accordion from '../examples/Accordion';
+import pagination from '../examples/Pagination';
+import preloaders from '../examples/Preloaders';
+import rightAlignedNavbar from '../examples/RightAlignedNavbar';
+import simpleCard from '../examples/CardSimple';
+import submitButtons from '../examples/SubmitButton';
+import toast from '../examples/Toast';
+import tag from '../examples/Tag';
 
 var path = require('path');
 var fs = require('fs');
@@ -117,6 +118,14 @@ var ComponentsPage = React.createClass({
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/IconLinksNavbar.js'), 'utf8')}>
                   {iconLinksNavbar}
               </ReactPlayground>
+            </Col>
+            <h2 className='header col s12'>
+                Basic Pagination
+            </h2>
+            <Col s={12}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Pagination.js'), 'utf8')}>
+                    {pagination}
+                </ReactPlayground>
             </Col>
             <h2 className='header col s12'>
               Cards

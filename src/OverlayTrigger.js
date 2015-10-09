@@ -1,11 +1,7 @@
-var React = require('react'),
-    Overlay = require('./Overlay');
+import React from 'react';
+import Overlay from './Overlay';
 
-export default class OverlayTrigger extends Overlay {
-  static propTypes = {
-    overlay: React.PropTypes.node
-  }
-
+class OverlayTrigger extends Overlay {
   constructor(props) {
     super(props);
     this.state = {isOverlayShown: false};
@@ -33,3 +29,9 @@ export default class OverlayTrigger extends Overlay {
     this.setState({isOverlayShown: !this.state.isOverlayShown});
   }
 }
+
+OverlayTrigger.propTypes = {
+    overlay: React.PropTypes.node
+};
+
+export default OverlayTrigger;
