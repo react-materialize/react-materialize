@@ -1,6 +1,6 @@
-var React = require('react'),
-    constants = require('./constants'),
-    cx = require('classnames');
+import React from 'react';
+import constants from './constants';
+import cx from 'classnames';
 
 var Button = React.createClass({
   propTypes: {
@@ -8,7 +8,8 @@ var Button = React.createClass({
     waves: React.PropTypes.oneOf(['effect', 'light']),
     large: React.PropTypes.bool,
     floating: React.PropTypes.bool,
-    disabled: React.PropTypes.bool
+    disabled: React.PropTypes.bool,
+    modal: React.PropTypes.oneOf(['close', 'confirm'])
   },
   render() {
     var C = this.props.node || 'button';
@@ -25,6 +26,11 @@ var Button = React.createClass({
     constants.STYLES.forEach(style => {
       classes['btn-' + style] = this.props[style];
     });
+
+    if (this.props.modal) {
+      classes['modal-action'] = true;
+      classes['modal-' + this.props.modal] = true;
+    }
     return (
       <C {...this.props} className={cx(classes)}>
         {this.props.children}

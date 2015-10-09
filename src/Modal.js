@@ -1,14 +1,16 @@
-var React = require('react/addons'),
-    Button = require('./Button'),
-    cx = require('classnames');
+import React from 'react';
+import Button from './Button';
+import cx from 'classnames';
 
-var Modal = React.createClass({
-  propTypes: {
-    header: React.PropTypes.string
-  },
+export default class Modal extends React.Component {
+  static propTypes: {
+    header: React.PropTypes.string,
+    fixedFooter: React.PropTypes.bool,
+    bottomSheet: React.PropTypes.bool
+  }
 
   render() {
-    var {header, children, ...props} = this.props;
+    var {header, children, fixedFooter, bottomSheet, ...props} = this.props;
     var style = {
       display: 'block',
       position: 'fixed',
@@ -16,11 +18,18 @@ var Modal = React.createClass({
       opacity: 1,
       zIndex: 1050
     };
+    var classes = {modal: true};
+    classes['modal-fixed-footer'] = this.props.fixedFooter;
+    classes['bottom-sheet'] = this.props.bottomSheet;
     var modal = (
-      <div className='modal' {...props} style={style}>
-        <h4>{header}</h4>
-        <p>{children}</p>
-        <Button onClick={this.props.onRequestHide} waves='light' flat>Agree</Button>
+      <div className={cx(classes)} {...props} style={style}>
+        <div className="modal-content">
+          <h4>{header}</h4>
+          <p>{children}</p>
+        </div>
+        <div className="modal-footer">
+          <Button onClick={this.props.onRequestHide} waves='light' modal='close' flat>Close</Button>
+        </div>
       </div>
     );
     var backdropStyle = {
@@ -39,12 +48,10 @@ var Modal = React.createClass({
         {modal}
       </div>
     );
-  },
+  }
 
   handleBackdropClick(e) {
     e.preventDefault();
     this.props.onRequestHide();
   }
-});
-
-module.exports = Modal;
+}

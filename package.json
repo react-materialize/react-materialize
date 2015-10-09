@@ -44,10 +44,7 @@
   },
   "dependencies": {
     "classnames": "^2.1.3",
-    "hammerjs": "^2.0.4",
     "imports-loader": "^0.6.4",
-    "jquery": "^2.1.4",
-    "materialize-css": "^0.96.1",
     "react-dom": "^0.14.0"
   }
 }

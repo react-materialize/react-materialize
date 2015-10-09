@@ -21,6 +21,8 @@ import collectionWithHref from '../examples/CollectionWithHref';
 import collectionWithHeader from '../examples/CollectionWithHeader';
 import toast from '../examples/Toast';
 import modal from '../examples/Modal';
+import modalFixedFooter from '../examples/ModalWithFixedFooter';
+import modalBottomSheet from '../examples/ModalWithBottomSheet';
 import collapsible from '../examples/Collapsible';
 import accordion from '../examples/Accordion';
 
@@ -180,6 +182,16 @@ var ComponentsPage = React.createClass({
             <Col s={12}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Modal.js'), 'utf8')}>
                 {modal}
+              </ReactPlayground>
+            </Col>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithFixedFooter.js'), 'utf8')}>
+                {modalFixedFooter}
+              </ReactPlayground>
+            </Col>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithBottomSheet.js'), 'utf8')}>
+                {modalBottomSheet}
               </ReactPlayground>
             </Col>
             <h4 className='col s12'>
