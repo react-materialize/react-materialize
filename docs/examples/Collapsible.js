@@ -4,13 +4,13 @@ import CollapsibleItem from '../../src/CollapsibleItem';
 
 export default
 <Collapsible>
-  <CollapsibleItem header='First' mdi='image-filter-drama'>
+  <CollapsibleItem header='First' icon='filter_drama'>
     Lorem ipsum dolor sit amet.
   </CollapsibleItem>
-  <CollapsibleItem header='Second' mdi='maps-place'>
+  <CollapsibleItem header='Second' icon='place'>
     Lorem ipsum dolor sit amet.
   </CollapsibleItem>
-  <CollapsibleItem header='Third' mdi='social-whatshot'>
+  <CollapsibleItem header='Third' icon='whatshot'>
     Lorem ipsum dolor sit amet.
   </CollapsibleItem>
 </Collapsible>;

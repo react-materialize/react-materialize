@@ -1,12 +1,8 @@
-var React = require('react'),
-    Col = require('./Col'),
-    cx = require('classnames');
+import React from 'react';
+import Col from './Col';
+import cx from 'classnames';
 
-var Navbar = React.createClass({
-  propTypes: {
-    brand: React.PropTypes.node,
-    left: React.PropTypes.bool
-  },
+class Navbar extends React.Component {
   render() {
     var {brand, className, ...props} = this.props;
     var classes = {
@@ -33,6 +29,12 @@ var Navbar = React.createClass({
       </nav>
     );
   }
-});
+}
 
-module.exports = Navbar;
+Navbar.propTypes = {
+    brand: React.PropTypes.node,
+    left: React.PropTypes.bool
+}
+
+
+export default Navbar;

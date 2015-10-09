@@ -2,8 +2,6 @@ import React from 'react';
 import $ from 'jquery';
 import NavItem from './NavItem';
 
-require('imports?jQuery=jquery!materialize-css/bin/materialize.js');
-
 export default class SideNav extends React.Component {
   constructor(props) {
     super(props);

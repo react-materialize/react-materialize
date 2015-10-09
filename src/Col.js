@@ -1,6 +1,7 @@
-import React from 'react/addons';
-import constants from './constants';
+import React from 'react';
 import cx from 'classnames';
+
+import constants from './constants';
 
 class Col extends React.Component {
   render() {

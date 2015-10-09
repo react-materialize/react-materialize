@@ -1,19 +1,20 @@
-var React = require('react'),
-    cx = require('classnames');
+import React from 'react';
+import cx from 'classnames';
 
-var CardTitle = React.createClass({
-  propTypes: {
+class CardTitle extends React.Component {
+    render() {
+        var {image, children, ...props} = this.props;
+        return (
+            <div className='card-image' {...props}>
+                <img src={image} />
+                <span className='card-title'>{children}</span>
+            </div>
+        );
+    }
+}
+
+CardTitle.propTypes = {
     image: React.PropTypes.string.isRequired
-  },
-  render() {
-    var {image, children, ...props} = this.props;
-    return (
-      <div className='card-image' {...props}>
-        <img src={image} />
-        <span className='card-title'>{children}</span>
-      </div>
-    );
-  }
-});
+}
 
-module.exports = CardTitle;
+export default CardTitle;

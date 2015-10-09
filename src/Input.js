@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import constants from './constants';
 import cx from 'classnames';
 import uuid from 'node-uuid';

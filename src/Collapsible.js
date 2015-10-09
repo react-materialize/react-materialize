@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import cx from 'classnames';
 
 class Collapsible extends React.Component {
@@ -10,13 +10,14 @@ class Collapsible extends React.Component {
     }
 
     render() {
-        var {accordion, className, children, ...props} = this.props;
+        var {accordion, popout, className, children, ...props} = this.props;
         var classes = {
             collapsible: true,
-            accordion: true
+            accordion: accordion,
+            popout: popout
         };
         return (
-                <ul className={cx(className, classes)} {...props}>
+            <ul className={cx(className, classes)} {...props}>
                 {React.Children.map(children, this.renderItem)}
             </ul>
         );
@@ -47,7 +48,10 @@ class Collapsible extends React.Component {
     }
 }
 
-Collapsible.propTypes = {accordion: React.PropTypes.bool.isRequired};
+Collapsible.propTypes = {
+    accordion: React.PropTypes.bool,
+    popout: React.PropTypes.bool,
+};
 
 Collapsible.defaultProps = {accordion: false};
 

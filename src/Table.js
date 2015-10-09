@@ -1,13 +1,7 @@
-var React = require('react/addons'),
-    cx = require('classnames');
+import React from 'react';
+import cx from 'classnames';
 
-var Table = React.createClass({
-  propTypes: {
-    centered: React.PropTypes.bool,
-    hoverable: React.PropTypes.bool,
-    stripped: React.PropTypes.bool,
-    bordered: React.PropTypes.bool
-  },
+class Table extends React.Component {
   render() {
     var classes = {
       centered: this.props.centered,
@@ -21,4 +15,13 @@ var Table = React.createClass({
       </table>
     );
   }
-});
+}
+
+Table.propTypes = {
+    centered: React.PropTypes.bool,
+    hoverable: React.PropTypes.bool,
+    stripped: React.PropTypes.bool,
+    bordered: React.PropTypes.bool
+}
+
+export default Table;

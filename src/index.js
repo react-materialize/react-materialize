@@ -1,27 +1,27 @@
-module.exports = {
-  Button: require('./Button'),
-  Card: require('./Card'),
-  CardTitle: require('./CardTitle'),
-  Chip: require('./Chip'),
-  Col: require('./Col'),
-  Collapsible: require('./Collapsible'),
-  CollapsibleItem: require('./CollapsibleItem'),
-  Collection: require('./Collection'),
-  CollectionItem: require('./CollectionItem'),
-  Footer: require('./Footer'),
-  Icon: require('./Icon'),
-  Input: require('./Input'),
-  Modal: require('./Modal'),
-  Navbar: require('./Navbar'),
-  NavItem: require('./NavItem'),
-  Overlay: require('./Overlay'),
-  OverlayTrigger: require('./OverlayTrigger'),
-  Panel: require('./Panel'),
-  Preloader: require('./Preloader'),
-  Row: require('./Row'),
-  SideNav: require('./SideNav'),
-  TabArea: require('./TabArea'),
-  Table: require('./Table'),
-  Tag: require('./Tag'),
-  Toast: require('./Toast')
-};
+export Button from './Button';
+export Card from './Card';
+export CardTitle from './CardTitle';
+export Chip from './Chip';
+export Col from './Col';
+export Collapsible from './Collapsible';
+export CollapsibleItem from './CollapsibleItem';
+export Collection from './Collection';
+export CollectionItem from './CollectionItem';
+export Footer from './Footer';
+export Icon from './Icon';
+export Input from './Input';
+export Modal from './Modal';
+export Navbar from './Navbar';
+export NavItem from './NavItem';
+export Overlay from './Overlay';
+export OverlayTrigger from './OverlayTrigger';
+export Panel from './Panel';
+export Pagination from './Pagination';
+export Preloader from './Preloader';
+export Row from './Row';
+export SideNav from './SideNav';
+export Tab from './Tab';
+export TabArea from './TabArea';
+export Table from './Table';
+export Tag from './Tag';
+export Toast from './Toast';
