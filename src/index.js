@@ -2,6 +2,7 @@ module.exports = {
   Button: require('./Button'),
   Card: require('./Card'),
   CardTitle: require('./CardTitle'),
+  Chip: require('./Chip'),
   Col: require('./Col'),
   Collapsible: require('./Collapsible'),
   CollapsibleItem: require('./CollapsibleItem'),
@@ -21,5 +22,6 @@ module.exports = {
   SideNav: require('./SideNav'),
   TabArea: require('./TabArea'),
   Table: require('./Table'),
+  Tag: require('./Tag'),
   Toast: require('./Toast')
 };
