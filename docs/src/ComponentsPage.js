@@ -12,6 +12,7 @@ import disabledButtons from '../examples/DisabledButton';
 import rightAlignedNavbar from '../examples/RightAlignedNavbar';
 import leftAlignedNavbar from '../examples/LeftAlignedNavbar';
 import iconLinksNavbar from '../examples/IconLinksNavbar';
+import inputFields from '../examples/InputFields';
 import simpleCard from '../examples/CardSimple';
 import imageCard from '../examples/CardImage';
 import fullCard from '../examples/CardFull';
@@ -146,6 +147,14 @@ var ComponentsPage = React.createClass({
             <Col s={12}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Tag.js'), 'utf8')}>
                 {tag}
+              </ReactPlayground>
+            </Col>
+            <h2 className='header col s12'>
+              Forms
+            </h2>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/InputFields.js'), 'utf8')}>
+                {inputFields}
               </ReactPlayground>
             </Col>
             <h2 className='header col s12'>
