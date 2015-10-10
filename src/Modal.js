@@ -2,22 +2,25 @@ import React from 'react';
 import Button from './Button';
 import cx from 'classnames';
 
-export default class Modal extends React.Component {
-  static propTypes: {
-    header: React.PropTypes.string,
-    fixedFooter: React.PropTypes.bool,
-    bottomSheet: React.PropTypes.bool
-  }
+class Modal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleBackdropClick = this.handleBackdropClick.bind(this);
+    }
 
   render() {
     var {header, children, fixedFooter, bottomSheet, ...props} = this.props;
     var style = {
       display: 'block',
       position: 'fixed',
-      top: '10%',
       opacity: 1,
       zIndex: 1050
     };
+      if (bottomSheet) {
+          style["bottom"] = 0;
+      } else {
+          style["top"] = '10%';
+      }
     var classes = {modal: true};
     classes['modal-fixed-footer'] = this.props.fixedFooter;
     classes['bottom-sheet'] = this.props.bottomSheet;
@@ -55,3 +58,11 @@ export default class Modal extends React.Component {
     this.props.onRequestHide();
   }
 }
+
+Modal.propTypes = {
+    header: React.PropTypes.string,
+    fixedFooter: React.PropTypes.bool,
+    bottomSheet: React.PropTypes.bool
+}
+
+export default Modal;
