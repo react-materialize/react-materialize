@@ -1,10 +1,10 @@
 import {Router} from 'react-router';
 
-var React = require('react'),
-    MainNav = require('./MainNav'),
-    PageFooter = require('./PageFooter');
+import React from 'react';
+import MainNav from './MainNav';
+import PageFooter from './PageFooter';
 
-export default class Layout extends React.Component {
+class Layout extends React.Component {
   render() {
     return (
       <div>
@@ -15,3 +15,5 @@ export default class Layout extends React.Component {
     );
   }
 }
+
+export default Layout;

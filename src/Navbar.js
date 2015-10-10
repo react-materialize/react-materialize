@@ -1,40 +1,58 @@
 import React from 'react';
-import Col from './Col';
 import cx from 'classnames';
+import Col from './Col';
+import Icon from './Icon';
 
 class Navbar extends React.Component {
-  render() {
-    var {brand, className, ...props} = this.props;
-    var classes = {
-      right: this.props.right
-    };
-    var brandClasses = {
-      'brand-logo': true,
-      right: this.props.left
-    };
-    return (
-      <nav>
-        <div className='nav-wrapper'>
-          <Col s={12}>
-            <a href='/' className={cx(brandClasses)}>{brand}</a>
-            <a className='button-collapse' href='#'
-              data-activates='nav-mobile'>
-              <i className='mdi-navigation-menu'></i>
-            </a>
-            <ul className={cx(className, classes)}>
-              {this.props.children}
+    constructor(props) {
+        super(props);
+        this.renderSideNav = this.renderSideNav.bind(this);
+    }
+
+    componentDidMount() {
+        $(".button-collapse").sideNav();
+    }
+
+    render() {
+        var {brand, className, ...props} = this.props;
+        var classes = {
+            right: this.props.right,
+            "hide-on-med-and-down": true
+        };
+        var brandClasses = {
+            'brand-logo': true,
+            right: this.props.left
+        };
+        return (
+            <nav>
+                <div className='nav-wrapper'>
+                    <Col s={12}>
+                        <a href='/' className={cx(brandClasses)}>{brand}</a>
+                        <ul className={cx(className, classes)}>
+                            {this.props.children}
+                        </ul>
+                        {this.renderSideNav()}
+                        <a className='button-collapse' href='#' data-activates='nav-mobile'>
+                            <Icon>view_headline</Icon>
+                        </a>
+                    </Col>
+                </div>
+            </nav>
+        );
+    }
+
+    renderSideNav() {
+        return (
+            <ul id="nav-mobile" className="side-nav">
+                {this.props.children}
             </ul>
-          </Col>
-        </div>
-      </nav>
-    );
-  }
+        );
+    }
 }
 
 Navbar.propTypes = {
     brand: React.PropTypes.node,
     left: React.PropTypes.bool
 }
-
 
 export default Navbar;
