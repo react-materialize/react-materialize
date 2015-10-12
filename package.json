@@ -4,7 +4,7 @@
   "description": "Material design for react",
   "main": "./src/index.js",
   "scripts": {
-    "test": "node node_modules/jest-cli/bin/jest.js",
+    "test": "BABEL_JEST_STAGE=0 jest",
     "build": "webpack --progress --colors"
   },
   "repository": {
@@ -28,19 +28,22 @@
   "devDependencies": {
     "babel-core": "^5.8.12",
     "babel-loader": "^5.3.2",
+      "babel-jest": "*",
     "brfs": "^1.4.0",
     "jest": "^0.1.40",
-    "jest-cli": "^0.2.0",
+    "jest-cli": "*",
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.0",
     "transform-loader": "^0.2.2",
     "webpack": "^1.10.5"
   },
   "jest": {
-    "scriptPreprocessor": "<rootDir>/preprocessor.js",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react"
-    ]
+    ],
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": ["es6", "js"],
+    "moduleFileExtensions": ["js", "json", "es6"]
   },
   "dependencies": {
     "classnames": "^2.1.3",
