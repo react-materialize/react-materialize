@@ -4,6 +4,7 @@ jest.dontMock('classnames');
 
 describe('Card', function() {
   var React = require('react'),
+      ReactDOM = require('react-dom'),
       TestUtils = require('react-addons-test-utils'),
       Card = require('../Card'),
       CardTitle = require('../CardTitle'),
@@ -17,17 +18,17 @@ describe('Card', function() {
     );
   });
   it('should have class name card', function() {
-    expect(instance.getDOMNode().className).toContain('card');
+      expect(ReactDOM.findDOMNode(instance).className).toContain('card');
   });
 
   it('should append class names to container', function() {
-    expect(instance.getDOMNode().className).toContain('blue-grey');
-    expect(instance.getDOMNode().className).toContain('darken-1');
+    expect(ReactDOM.findDOMNode(instance).className).toContain('blue-grey');
+    expect(ReactDOM.findDOMNode(instance).className).toContain('darken-1');
   });
 
   it('should append text class names to content', function() {
     var text = TestUtils.findRenderedDOMComponentWithClass(instance, 'card-content');
-    expect(text.getDOMNode().className).toContain('white-text');
+      expect(ReactDOM.findDOMNode(text).className).toContain('white-text');
   });
 
   //it('should render title under content when image is absent', function() {
@@ -37,7 +38,7 @@ describe('Card', function() {
   //});
 
   it('should render actions', function() {
-    var cardActions = [<a href='#'>link1</a>, <a href='#'>link2</a>];
+    var cardActions = [<a key='link1' href='#'>link1</a>, <a key='link2' href='#'>link2</a>];
     instance = TestUtils.renderIntoDocument(
       <Card title='card title' className='blue-grey darken-1' textClassName='white-text'
         actions={cardActions}>
@@ -45,8 +46,8 @@ describe('Card', function() {
       </Card>
     );
     var actions = TestUtils.findRenderedDOMComponentWithClass(instance, 'card-action');
-    expect(actions.getDOMNode().firstChild.innerHTML).toBe('link1');
-    expect(actions.getDOMNode().lastChild.innerHTML).toBe('link2');
+    expect(actions.firstChild.innerHTML).toBe('link1');
+    expect(actions.lastChild.innerHTML).toBe('link2');
   });
 
   it('should render action title element', function() {
@@ -59,6 +60,6 @@ describe('Card', function() {
     );
 
     var image = TestUtils.findRenderedDOMComponentWithClass(instance, 'card-image');
-    expect(image.getDOMNode().firstChild.getAttribute('src')).toBe(src);
+    expect(image.firstChild.getAttribute('src')).toBe(src);
   });
 });
