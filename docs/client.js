@@ -1,7 +1,7 @@
 /** globals: window, document */
 'use strict';
 
-import { Router, Route } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import ReactDOM from 'react-dom';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
@@ -14,11 +14,12 @@ import ComponentsPage from './src/ComponentsPage';
 window.React = React;
 
 ReactDOM.render((
-  <Router history={createBrowserHistory()}>
-    <Route path='/' component={Layout}>
-      <Route path='index.html' component={HomePage} name='home' />
-      <Route path='get-started.html' component={GettingStartedPage} name='gs' />
-      <Route path='components.html' component={ComponentsPage} name='comp' />
-    </Route>
-  </Router>
+    <Router history={createBrowserHistory()}>
+        <Route path='/' component={Layout}>
+            <IndexRoute component={GettingStartedPage} />
+            <Route path='index.html' component={HomePage} name='home' />
+            <Route path='get-started.html' component={GettingStartedPage} name='gs' />
+            <Route path='components.html' component={ComponentsPage} name='comp' />
+        </Route>
+    </Router>
 ), document.getElementById("app"));

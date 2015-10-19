@@ -10,7 +10,9 @@ class Navbar extends React.Component {
     }
 
     componentDidMount() {
-        $(".button-collapse").sideNav();
+        if ($ !== undefined) {
+            $(".button-collapse").sideNav();
+        }
     }
 
     render() {

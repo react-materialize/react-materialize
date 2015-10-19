@@ -9,7 +9,7 @@ class Layout extends React.Component {
     return (
       <div>
         <MainNav />
-        {this.props.children || "hello world"}
+        {this.props.children}
         <PageFooter />
       </div>
     );
