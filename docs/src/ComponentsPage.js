@@ -23,7 +23,9 @@ import modal from '../examples/Modal';
 import modalFixedFooter from '../examples/ModalWithFixedFooter';
 import modalBottomSheet from '../examples/ModalWithBottomSheet';
 import pagination from '../examples/Pagination';
+import panelCard from '../examples/CardPanel';
 import preloaders from '../examples/Preloaders';
+import revealCard from '../examples/CardReveal';
 import rightAlignedNavbar from '../examples/RightAlignedNavbar';
 import simpleCard from '../examples/CardSimple';
 import submitButtons from '../examples/SubmitButton';
@@ -39,7 +41,7 @@ var ComponentsPage = React.createClass({
     return (
       <Row>
         <Col m={9}>
-          <h2 className='header'>Button</h2>
+          <h2 id='button' className='header'>Button</h2>
           <p className='caption'>
             There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
           </p>
@@ -76,7 +78,7 @@ var ComponentsPage = React.createClass({
                 {submitButtons}
               </ReactPlayground>
             </Col>
-            <h3 className='header'>Additional Style</h3>
+            <h3 className='header col s12'>Additional Style</h3>
             <h4 className='col s12'>
               Large
             </h4>
@@ -93,15 +95,15 @@ var ComponentsPage = React.createClass({
                   {disabledButtons}
               </ReactPlayground>
             </Col>
-            <h4 className='col s12'>
-                Tabs
-            </h4>
+            <h2 id='tab' className='header col s12'>
+                Tab
+            </h2>
             <Col s={12}>
                 <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Tab.js'), 'utf8')}>
                     {tab}
                 </ReactPlayground>
             </Col>
-            <h2 className='header'>
+            <h2 id='navbar' className='header col s12'>
               Navbar
             </h2>
             <h4 className='col s12'>
@@ -128,7 +130,7 @@ var ComponentsPage = React.createClass({
                   {iconLinksNavbar}
               </ReactPlayground>
             </Col>
-            <h2 className='header col s12'>
+            <h2 id='pagination' className='header col s12'>
                 Basic Pagination
             </h2>
             <Col s={12}>
@@ -136,8 +138,8 @@ var ComponentsPage = React.createClass({
                     {pagination}
                 </ReactPlayground>
             </Col>
-            <h2 className='header col s12'>
-              Cards
+            <h2 id='card' className='header col s12'>
+              Card
             </h2>
             <Col s={12}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardSimple.js'), 'utf8')}>
@@ -154,8 +156,18 @@ var ComponentsPage = React.createClass({
                   {fullCard}
               </ReactPlayground>
             </Col>
-            <h2 className='header col s12'>
-              Chips
+            <Col s={12}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardPanel.js'), 'utf8')}>
+                    {panelCard}
+                </ReactPlayground>
+            </Col>
+            <Col s={12}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardReveal.js'), 'utf8')}>
+                    {revealCard}
+                </ReactPlayground>
+            </Col>
+            <h2 id='chip' className='header col s12'>
+              Chip
             </h2>
             <Col s={12}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ContactChip.js'), 'utf8')}>
@@ -167,15 +179,15 @@ var ComponentsPage = React.createClass({
                 {tag}
               </ReactPlayground>
             </Col>
-            <h2 className='header col s12'>
-              Forms
+            <h2 id='form' className='header col s12'>
+              Form
             </h2>
             <Col s={12}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/InputFields.js'), 'utf8')}>
                 {inputFields}
               </ReactPlayground>
             </Col>
-            <h2 className='header col s12'>
+            <h2 id='preloader' className='header col s12'>
               Preloader
             </h2>
             <Col s={12}>
@@ -183,7 +195,33 @@ var ComponentsPage = React.createClass({
                 {preloaders}
               </ReactPlayground>
             </Col>
-            <h2 className='header col s12'>
+            <h2 id='toast' className='header col s12'>
+              Toast
+            </h2>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Toast.js'), 'utf8')}>
+                {toast}
+              </ReactPlayground>
+            </Col>
+            <h2 id='modal' className='header col s12'>
+              Modal
+            </h2>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Modal.js'), 'utf8')}>
+                {modal}
+              </ReactPlayground>
+            </Col>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithFixedFooter.js'), 'utf8')}>
+                {modalFixedFooter}
+              </ReactPlayground>
+            </Col>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithBottomSheet.js'), 'utf8')}>
+                {modalBottomSheet}
+              </ReactPlayground>
+            </Col>
+            <h2 id='collection' className='header col s12'>
               Collections
             </h2>
             <h4 className='col s12'>
@@ -210,35 +248,9 @@ var ComponentsPage = React.createClass({
                 {collectionWithHeader}
               </ReactPlayground>
             </Col>
-            <h4 className='col s12'>
-              Toast
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Toast.js'), 'utf8')}>
-                {toast}
-              </ReactPlayground>
-            </Col>
-            <h4 className='col s12'>
-              Modal
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Modal.js'), 'utf8')}>
-                {modal}
-              </ReactPlayground>
-            </Col>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithFixedFooter.js'), 'utf8')}>
-                {modalFixedFooter}
-              </ReactPlayground>
-            </Col>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithBottomSheet.js'), 'utf8')}>
-                {modalBottomSheet}
-              </ReactPlayground>
-            </Col>
-            <h4 className='col s12'>
+            <h2 id='collapsible' className='header col s12'>
               Collapsible
-            </h4>
+            </h2>
             <Col s={12}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Collapsible.js'), 'utf8')}>
                 {collapsible}
@@ -257,11 +269,16 @@ var ComponentsPage = React.createClass({
         <Col m={3}>
           <ul className='section table-of-contents'>
             <li><a href='#button'>Button</a></li>
+            <li><a href='#tab'>Tab</a></li>
             <li><a href='#navbar'>Navbar</a></li>
+            <li><a href='#pagination'>Pagination</a></li>
             <li><a href='#card'>Card</a></li>
+            <li><a href='#chip'>Chip</a></li>
+            <li><a href='#form'>Form</a></li>
             <li><a href='#preloader'>Preloader</a></li>
             <li><a href='#toast'>Toast</a></li>
             <li><a href='#modal'>Modal</a></li>
+            <li><a href='#collection'>Collection</a></li>
             <li><a href='#collapsible'>Collapsible</a></li>
           </ul>
         </Col>

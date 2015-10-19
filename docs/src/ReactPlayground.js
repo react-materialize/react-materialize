@@ -1,4 +1,5 @@
-var React = require('react');
+import React from 'react';
+import Row from '../../src/Row';
 
 class ReactPlayground extends React.Component {
   static propTypes = {
@@ -13,11 +14,17 @@ class ReactPlayground extends React.Component {
   render() {
     var {name, code, ...props} = this.props;
     return (
-      <div className='playground'>
-        {this.props.children}
-        <pre><code className='language-markup'>
-          {this.truncate(this.props.code)}
-        </code></pre>
+      <div className='playground s12'>
+        <Row>
+            {this.props.children}
+        </Row>
+        <Row>
+            <div className='s12'>
+                <pre><code className='language-markup'>
+                {this.truncate(this.props.code)}
+                </code></pre>
+            </div>
+        </Row>
       </div>
     );
   }

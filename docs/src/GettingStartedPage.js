@@ -1,26 +1,34 @@
-var React = require('react'),
-    Row = require('../../src/Row'),
-    Col = require('../../src/Col');
+import React from 'react';
+import Row from '../../src/Row';
+import Col from '../../src/Col';
 
-var GettingStartedPage = React.createClass({
+class GettingStartedPage extends React.Component {
   render() {
-    var shims = '<!--[if lt IE 9]>\n' +
-        '<script>\n' +
-        '  (function(){\n' +
-        '    var ef = function(){};\n' +
-        '    window.console = window.console || {log:ef,warn:ef,error:ef,dir:ef};\n' +
-        '  }());\n' +
-        '</script>\n' +
-        '<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>\n' +
-        '<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>\n' +
-        '<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>\n' +
-        '<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.js"></script>\n' +
-        '<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-sham.js"></script>\n' +
-      '<![endif]-->\n';
+      var htmlSetup = `<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+</html>`;
+      var codeSample = `import {Button, Icon} from 'react-materializecss';
+
+<Button node='a' waves='light'><Icon right>file_cloud</Icon>button</Button>`;
     return (
       <Row>
         <Col s={12}>
-          <h4>Set Up</h4>
+          <h4>Installation</h4>
           <pre>
             <code className='language-markup'>
               $ npm install react-materializecss
@@ -28,16 +36,23 @@ var GettingStartedPage = React.createClass({
           </pre>
         </Col>
         <Col s={12}>
-          <h4>Browser Support</h4>
           <pre>
             <code className='language-markup'>
-              {shims}
+                {codeSample}
+            </code>
+          </pre>
+        </Col>
+        <Col s={12}>
+          <h4>HTML Setup</h4>
+          <pre>
+            <code className='language-markup'>
+              {htmlSetup}
             </code>
           </pre>
         </Col>
       </Row>
     );
   }
-});
+}
 
-module.exports = GettingStartedPage;
+export default GettingStartedPage;
