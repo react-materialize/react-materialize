@@ -5,9 +5,10 @@ var Root = React.createClass({
   statics: {
     getPages: function() {
       return [
-        'index.html',
-        'get-started.html',
-        'components.html'
+          'index.html',
+          'get-started.html',
+          'components.html',
+          'grid.html'
       ];
     },
     renderToString: function(props) {
@@ -32,7 +33,7 @@ var Root = React.createClass({
       <html>
         <head dangerouslySetInnerHTML={header} />
         <body>
-          <div id="app"></div>
+          <div id="app" className="container"></div>
           <script src="assets/bundle.js" type="text/javascript"/>
         </body>
       </html>
