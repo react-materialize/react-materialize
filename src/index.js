@@ -10,6 +10,7 @@ export CollectionItem from './CollectionItem';
 export Footer from './Footer';
 export Icon from './Icon';
 export Input from './Input';
+export MediaBox from './MediaBox';
 export Modal from './Modal';
 export Navbar from './Navbar';
 export NavItem from './NavItem';

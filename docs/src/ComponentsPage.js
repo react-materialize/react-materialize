@@ -19,6 +19,7 @@ import inputFields from '../examples/InputFields';
 import imageCard from '../examples/CardImage';
 import largeButtons from '../examples/LargeButton';
 import leftAlignedNavbar from '../examples/LeftAlignedNavbar';
+import mediaBox from '../examples/MediaBox';
 import modal from '../examples/Modal';
 import modalFixedFooter from '../examples/ModalWithFixedFooter';
 import modalBottomSheet from '../examples/ModalWithBottomSheet';
@@ -167,6 +168,14 @@ var ComponentsPage = React.createClass({
                     {revealCard}
                 </ReactPlayground>
             </Col>
+            <h2 id='mediabox' className='header col s12'>
+                MediaBox
+            </h2>
+            <Col s={12}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/MediaBox.js'), 'utf8')}>
+                    {mediaBox}
+                </ReactPlayground>
+            </Col>
             <h2 id='slider' className='header col s12'>
                 Slider
             </h2>
@@ -282,6 +291,7 @@ var ComponentsPage = React.createClass({
             <li><a href='#navbar'>Navbar</a></li>
             <li><a href='#pagination'>Pagination</a></li>
             <li><a href='#card'>Card</a></li>
+            <li><a href='#mediabox'>MediaBox</a></li>
             <li><a href='#slider'>Slider</a></li>
             <li><a href='#chip'>Chip</a></li>
             <li><a href='#form'>Form</a></li>

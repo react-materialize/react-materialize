@@ -21,7 +21,7 @@ class CardTitle extends React.Component {
         return (
             <div className={cx(classes)} {...props}>
                 <img className={cx(imgClasses)} src={image} />
-                <span class={cx(titleClasses)}>{children}</span>
+                <span className={cx(titleClasses)}>{children}</span>
             </div>
         );
     }

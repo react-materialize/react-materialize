@@ -13,13 +13,13 @@ class Pagination extends React.Component {
         this.state.activePage = activePage;
         var buttons = [];
         buttons.push(
-            <li class="waves-effect"><a href="#!"><Icon>chevron_left</Icon></a></li>
+            <li className="waves-effect"><a href="#!"><Icon>chevron_left</Icon></a></li>
         );
         for (var i = 1; i <= items; i++) {
             buttons.push(<PaginationButton active={i == this.state.activePage}>{i}</PaginationButton>);
         }
         buttons.push(
-            <li class="waves-effect"><a href="#!"><Icon>chevron_right</Icon></a></li>
+            <li className="waves-effect"><a href="#!"><Icon>chevron_right</Icon></a></li>
         );
         return (
             <ul className="pagination"> {buttons} </ul>
