@@ -17,7 +17,7 @@ CommonJS
 --------
 
 ```
-$ npm install react-materializecss
+$ npm install react-materialize
 
 var Button = require('react-materialize').Button;
 
