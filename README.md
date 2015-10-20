@@ -19,10 +19,10 @@ CommonJS
 ```
 $ npm install react-materializecss
 
-var Button = require('react-materializecss').Button;
+var Button = require('react-materialize').Button;
 
 // with ES6 modules
-import {Button, Card, Row, Col} from 'react-materializecss';
+import {Button, Card, Row, Col} from 'react-materialize';
 
 ```
 

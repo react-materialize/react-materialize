@@ -1,6 +1,6 @@
 {
-  "name": "react-materializecss",
-  "version": "0.12.1",
+  "name": "react-materialize",
+  "version": "0.14.0-beta1",
   "description": "Material design for react",
   "main": "./src/index.js",
   "scripts": {
