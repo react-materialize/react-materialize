@@ -22,11 +22,30 @@ $ npm install react-materializecss
 var Button = require('react-materializecss').Button;
 
 // with ES6 modules
-import {Button} from 'react-materializecss';
+import {Button, Card, Row, Col} from 'react-materializecss';
 
 ```
 
-Examples
+Docs && Examples
 ---------
 
-There are several examples [on the doc site](https://react-materialize.github.io).
+See [documentation](https://react-materialize.github.io) for live examples.
+
+How does it compare to X.Y.Z?
+=============================
+
+The main goal of this project is to provide react component for
+[materializecss](https://materializecss.com), at the current stage, I am
+trying to implement all possible widgets that are supported by materializecss.
+Please create an issue on github if you find you desired component is not
+available.
+
+There are other material design components for react.js, e.g. [material-ui](http://material-ui.com/),
+which is more mature and popular than this one.
+The main advantage of this project over e.g. material-ui is that it provides a
+grid system similar to react-bootstrap.
+
+Contributions
+===========
+
+> Yes, please!
