@@ -20,6 +20,7 @@ export default {
     ],
     PLACEMENTS: [
         'left',
+        'center',
         'right',
     ],
     SCALES: [

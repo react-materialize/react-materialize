@@ -28,6 +28,7 @@ import preloaders from '../examples/Preloaders';
 import revealCard from '../examples/CardReveal';
 import rightAlignedNavbar from '../examples/RightAlignedNavbar';
 import simpleCard from '../examples/CardSimple';
+import slider from '../examples/Slider';
 import submitButtons from '../examples/SubmitButton';
 import toast from '../examples/Toast';
 import tab from '../examples/Tab';
@@ -166,6 +167,14 @@ var ComponentsPage = React.createClass({
                     {revealCard}
                 </ReactPlayground>
             </Col>
+            <h2 id='slider' className='header col s12'>
+                Slider
+            </h2>
+            <Col s={12}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Slider.js'), 'utf8')}>
+                    {slider}
+                </ReactPlayground>
+            </Col>
             <h2 id='chip' className='header col s12'>
               Chip
             </h2>
@@ -273,6 +282,7 @@ var ComponentsPage = React.createClass({
             <li><a href='#navbar'>Navbar</a></li>
             <li><a href='#pagination'>Pagination</a></li>
             <li><a href='#card'>Card</a></li>
+            <li><a href='#slider'>Slider</a></li>
             <li><a href='#chip'>Chip</a></li>
             <li><a href='#form'>Form</a></li>
             <li><a href='#preloader'>Preloader</a></li>

@@ -62,7 +62,7 @@ class Card extends React.Component {
 Card.propTypes = {
     title: React.PropTypes.string,
     textClassName: React.PropTypes.string,
-    reveal: React.PropTypes.instanceOf(CardReveal),
+    reveal: React.PropTypes.element,
     header: React.PropTypes.instanceOf(CardTitle)
 }
 
