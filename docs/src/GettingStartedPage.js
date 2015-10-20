@@ -22,7 +22,7 @@ class GettingStartedPage extends React.Component {
         <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
 </html>`;
-      var codeSample = `import {Button, Icon} from 'react-materializecss';
+      var codeSample = `import {Button, Icon} from 'react-materialize';
 
 <Button node='a' waves='light'><Icon right>file_cloud</Icon>button</Button>`;
     return (
@@ -31,7 +31,7 @@ class GettingStartedPage extends React.Component {
           <h4>Installation</h4>
           <pre>
             <code className='language-markup'>
-              $ npm install react-materializecss
+              $ npm install react-materialize
             </code>
           </pre>
         </Col>
