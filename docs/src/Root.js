@@ -33,7 +33,7 @@ var Root = React.createClass({
       <html>
         <head dangerouslySetInnerHTML={header} />
         <body>
-          <div id="app" className="container"></div>
+          <div id="app"></div>
           <script src="assets/bundle.js" type="text/javascript"/>
         </body>
       </html>

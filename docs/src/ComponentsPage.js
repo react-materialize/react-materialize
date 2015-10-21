@@ -2,38 +2,38 @@ import React from 'react';
 import Row from '../../src/Row';
 import Col from '../../src/Col';
 import ReactPlayground from './ReactPlayground';
-import raisedButtons from '../examples/RaisedButton';
+import raisedButtons from '../../examples/RaisedButton';
 
-import accordion from '../examples/Accordion';
-import basicCollections from '../examples/BasicCollection';
-import collectionWithHref from '../examples/CollectionWithHref';
-import collectionWithHeader from '../examples/CollectionWithHeader';
-import collapsible from '../examples/Collapsible';
-import contactChip from '../examples/ContactChip';
-import disabledButtons from '../examples/DisabledButton';
-import floatingButtons from '../examples/FloatingButton';
-import flatButtons from '../examples/FlatButton';
-import fullCard from '../examples/CardFull';
-import iconLinksNavbar from '../examples/IconLinksNavbar';
-import inputFields from '../examples/InputFields';
-import imageCard from '../examples/CardImage';
-import largeButtons from '../examples/LargeButton';
-import leftAlignedNavbar from '../examples/LeftAlignedNavbar';
-import mediaBox from '../examples/MediaBox';
-import modal from '../examples/Modal';
-import modalFixedFooter from '../examples/ModalWithFixedFooter';
-import modalBottomSheet from '../examples/ModalWithBottomSheet';
-import pagination from '../examples/Pagination';
-import panelCard from '../examples/CardPanel';
-import preloaders from '../examples/Preloaders';
-import revealCard from '../examples/CardReveal';
-import rightAlignedNavbar from '../examples/RightAlignedNavbar';
-import simpleCard from '../examples/CardSimple';
-import slider from '../examples/Slider';
-import submitButtons from '../examples/SubmitButton';
-import toast from '../examples/Toast';
-import tab from '../examples/Tab';
-import tag from '../examples/Tag';
+import accordion from '../../examples/Accordion';
+import basicCollections from '../../examples/BasicCollection';
+import collectionWithHref from '../../examples/CollectionWithHref';
+import collectionWithHeader from '../../examples/CollectionWithHeader';
+import collapsible from '../../examples/Collapsible';
+import contactChip from '../../examples/ContactChip';
+import disabledButtons from '../../examples/DisabledButton';
+import floatingButtons from '../../examples/FloatingButton';
+import flatButtons from '../../examples/FlatButton';
+import fullCard from '../../examples/CardFull';
+import iconLinksNavbar from '../../examples/IconLinksNavbar';
+import inputFields from '../../examples/InputFields';
+import imageCard from '../../examples/CardImage';
+import largeButtons from '../../examples/LargeButton';
+import leftAlignedNavbar from '../../examples/LeftAlignedNavbar';
+import mediaBox from '../../examples/MediaBox';
+import modal from '../../examples/Modal';
+import modalFixedFooter from '../../examples/ModalWithFixedFooter';
+import modalBottomSheet from '../../examples/ModalWithBottomSheet';
+import pagination from '../../examples/Pagination';
+import panelCard from '../../examples/CardPanel';
+import preloaders from '../../examples/Preloaders';
+import revealCard from '../../examples/CardReveal';
+import rightAlignedNavbar from '../../examples/RightAlignedNavbar';
+import simpleCard from '../../examples/CardSimple';
+import slider from '../../examples/Slider';
+import submitButtons from '../../examples/SubmitButton';
+import toast from '../../examples/Toast';
+import tab from '../../examples/Tab';
+import tag from '../../examples/Tag';
 
 var path = require('path');
 var fs = require('fs');
@@ -52,7 +52,7 @@ var ComponentsPage = React.createClass({
               Raised
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../examples/RaisedButton.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../../examples/RaisedButton.js'), 'utf8')}>
                 {raisedButtons}
               </ReactPlayground>
             </Col>
@@ -60,7 +60,7 @@ var ComponentsPage = React.createClass({
               Floating
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../examples/FloatingButton.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../../examples/FloatingButton.js'), 'utf8')}>
                 {floatingButtons}
               </ReactPlayground>
             </Col>
@@ -68,7 +68,7 @@ var ComponentsPage = React.createClass({
               Flat
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/FlatButton.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/FlatButton.js'), 'utf8')}>
                 {flatButtons}
               </ReactPlayground>
             </Col>
@@ -76,7 +76,7 @@ var ComponentsPage = React.createClass({
               Submit Button
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/SubmitButton.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/SubmitButton.js'), 'utf8')}>
                 {submitButtons}
               </ReactPlayground>
             </Col>
@@ -85,7 +85,7 @@ var ComponentsPage = React.createClass({
               Large
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/LargeButton.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/LargeButton.js'), 'utf8')}>
                   {largeButtons}
               </ReactPlayground>
             </Col>
@@ -93,7 +93,7 @@ var ComponentsPage = React.createClass({
               Disabled
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/DisabledButton.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/DisabledButton.js'), 'utf8')}>
                   {disabledButtons}
               </ReactPlayground>
             </Col>
@@ -101,7 +101,7 @@ var ComponentsPage = React.createClass({
                 Tab
             </h2>
             <Col s={12}>
-                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Tab.js'), 'utf8')}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Tab.js'), 'utf8')}>
                     {tab}
                 </ReactPlayground>
             </Col>
@@ -112,7 +112,7 @@ var ComponentsPage = React.createClass({
               Right Aligned Links
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/RightAlignedNavbar.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/RightAlignedNavbar.js'), 'utf8')}>
                   {rightAlignedNavbar}
               </ReactPlayground>
             </Col>
@@ -120,7 +120,7 @@ var ComponentsPage = React.createClass({
               Left Aligned Links
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/LeftAlignedNavbar.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/LeftAlignedNavbar.js'), 'utf8')}>
                   {leftAlignedNavbar}
               </ReactPlayground>
             </Col>
@@ -128,7 +128,7 @@ var ComponentsPage = React.createClass({
               Icon Links
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/IconLinksNavbar.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/IconLinksNavbar.js'), 'utf8')}>
                   {iconLinksNavbar}
               </ReactPlayground>
             </Col>
@@ -136,7 +136,7 @@ var ComponentsPage = React.createClass({
                 Basic Pagination
             </h2>
             <Col s={12}>
-                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Pagination.js'), 'utf8')}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Pagination.js'), 'utf8')}>
                     {pagination}
                 </ReactPlayground>
             </Col>
@@ -144,27 +144,27 @@ var ComponentsPage = React.createClass({
               Card
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardSimple.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/CardSimple.js'), 'utf8')}>
                   {simpleCard}
               </ReactPlayground>
             </Col>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardImage.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/CardImage.js'), 'utf8')}>
                   {imageCard}
               </ReactPlayground>
             </Col>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardFull.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/CardFull.js'), 'utf8')}>
                   {fullCard}
               </ReactPlayground>
             </Col>
             <Col s={12}>
-                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardPanel.js'), 'utf8')}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/CardPanel.js'), 'utf8')}>
                     {panelCard}
                 </ReactPlayground>
             </Col>
             <Col s={12}>
-                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CardReveal.js'), 'utf8')}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/CardReveal.js'), 'utf8')}>
                     {revealCard}
                 </ReactPlayground>
             </Col>
@@ -172,7 +172,7 @@ var ComponentsPage = React.createClass({
                 MediaBox
             </h2>
             <Col s={12}>
-                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/MediaBox.js'), 'utf8')}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/MediaBox.js'), 'utf8')}>
                     {mediaBox}
                 </ReactPlayground>
             </Col>
@@ -180,7 +180,7 @@ var ComponentsPage = React.createClass({
                 Slider
             </h2>
             <Col s={12}>
-                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Slider.js'), 'utf8')}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Slider.js'), 'utf8')}>
                     {slider}
                 </ReactPlayground>
             </Col>
@@ -188,12 +188,12 @@ var ComponentsPage = React.createClass({
               Chip
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ContactChip.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/ContactChip.js'), 'utf8')}>
                 {contactChip}
               </ReactPlayground>
             </Col>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Tag.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Tag.js'), 'utf8')}>
                 {tag}
               </ReactPlayground>
             </Col>
@@ -201,7 +201,7 @@ var ComponentsPage = React.createClass({
               Form
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/InputFields.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/InputFields.js'), 'utf8')}>
                 {inputFields}
               </ReactPlayground>
             </Col>
@@ -209,7 +209,7 @@ var ComponentsPage = React.createClass({
               Preloader
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Preloaders.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Preloaders.js'), 'utf8')}>
                 {preloaders}
               </ReactPlayground>
             </Col>
@@ -217,7 +217,7 @@ var ComponentsPage = React.createClass({
               Toast
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Toast.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Toast.js'), 'utf8')}>
                 {toast}
               </ReactPlayground>
             </Col>
@@ -225,17 +225,17 @@ var ComponentsPage = React.createClass({
               Modal
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Modal.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Modal.js'), 'utf8')}>
                 {modal}
               </ReactPlayground>
             </Col>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithFixedFooter.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/ModalWithFixedFooter.js'), 'utf8')}>
                 {modalFixedFooter}
               </ReactPlayground>
             </Col>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/ModalWithBottomSheet.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/ModalWithBottomSheet.js'), 'utf8')}>
                 {modalBottomSheet}
               </ReactPlayground>
             </Col>
@@ -246,7 +246,7 @@ var ComponentsPage = React.createClass({
               Basic
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/BasicCollection.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/BasicCollection.js'), 'utf8')}>
                 {basicCollections}
               </ReactPlayground>
             </Col>
@@ -254,7 +254,7 @@ var ComponentsPage = React.createClass({
               Basic with different HTML structure
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CollectionWithHref.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/CollectionWithHref.js'), 'utf8')}>
                 {collectionWithHref}
               </ReactPlayground>
             </Col>
@@ -262,7 +262,7 @@ var ComponentsPage = React.createClass({
               Collection with header
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/CollectionWithHeader.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/CollectionWithHeader.js'), 'utf8')}>
                 {collectionWithHeader}
               </ReactPlayground>
             </Col>
@@ -270,7 +270,7 @@ var ComponentsPage = React.createClass({
               Collapsible
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Collapsible.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Collapsible.js'), 'utf8')}>
                 {collapsible}
               </ReactPlayground>
             </Col>
@@ -278,7 +278,7 @@ var ComponentsPage = React.createClass({
               Accordion
             </h4>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../examples/Accordion.js'), 'utf8')}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Accordion.js'), 'utf8')}>
                 {accordion}
               </ReactPlayground>
             </Col>
