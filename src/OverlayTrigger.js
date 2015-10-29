@@ -22,7 +22,7 @@ class OverlayTrigger extends Overlay {
     if (!this.state.isOverlayShown) {
       return <span />;
     }
-    return this.props.overlay;
+      return React.cloneElement(this.props.overlay, {onRequestHide: this.toggle});
   }
 
   toggle() {

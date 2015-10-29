@@ -47,7 +47,7 @@ class Modal extends React.Component {
     };
     return (
       <div>
-        <div style={backdropStyle} ref='backdrop' onClick={this.handleBackdropClick} />
+        <div style={backdropStyle} onClick={this.handleBackdropClick} />
         {modal}
       </div>
     );
