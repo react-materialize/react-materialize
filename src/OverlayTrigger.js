@@ -1,33 +1,33 @@
 import React from 'react';
 import Overlay from './Overlay';
+import uuid from 'node-uuid';
+
 
 class OverlayTrigger extends Overlay {
-  constructor(props) {
-    super(props);
-    this.state = {isOverlayShown: false};
-    this.toggle = this.toggle.bind(this);
-    this.renderOverlay = this.renderOverlay.bind(this);
-  }
-
-  render() {
-    var {overlay, children, ...props} = this.props;
-    var child = React.Children.only(children);
-    return React.cloneElement(
-      child,
-      {onClick: this.toggle}
-    );
-  }
-
-  renderOverlay() {
-    if (!this.state.isOverlayShown) {
-      return <span />;
+    constructor(props) {
+        super(props);
+        this.state = {isOverlayShown: false};
+        this.showOverlay = this.showOverlay.bind(this);
+        this.renderOverlay = this.renderOverlay.bind(this);
+        this.overlayID = uuid.v1();
     }
-      return React.cloneElement(this.props.overlay, {onRequestHide: this.toggle});
-  }
 
-  toggle() {
-    this.setState({isOverlayShown: !this.state.isOverlayShown});
-  }
+    render() {
+        var {overlay, children, ...props} = this.props;
+        var child = React.Children.only(children);
+        return React.cloneElement(
+            child,
+            {onClick: this.showOverlay}
+        );
+    }
+
+    renderOverlay() {
+        return React.cloneElement(this.props.overlay, {onRequestHide: this.toggle, id: this.overlayID});
+    }
+
+    showOverlay() {
+        $("#" + this.overlayID).openModal();
+    }
 }
 
 OverlayTrigger.propTypes = {
