@@ -42,7 +42,7 @@ var ComponentsPage = React.createClass({
   render() {
     return (
       <Row>
-        <Col m={9}>
+        <Col m={9} s={12} l={10}>
           <h2 id='button' className='header'>Button</h2>
           <p className='caption'>
             There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
@@ -51,7 +51,7 @@ var ComponentsPage = React.createClass({
             <h4 className='col s12'>
               Raised
             </h4>
-            <Col s={12}>
+            <Col s={12} m={9}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../../examples/RaisedButton.js'), 'utf8')}>
                 {raisedButtons}
               </ReactPlayground>
@@ -284,7 +284,7 @@ var ComponentsPage = React.createClass({
             </Col>
           </div>
         </Col>
-        <Col m={3}>
+        <Col m={3} l={2} className="hide-on-small-only">
           <ul className='section table-of-contents'>
             <li><a href='#button'>Button</a></li>
             <li><a href='#tab'>Tab</a></li>

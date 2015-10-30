@@ -5,7 +5,8 @@ import constants from './constants';
 
 class Col extends React.Component {
   render() {
-    var C = this.props.node;
+    var {node, offset, className, children, ...props} = this.props;
+    var C = node;
     var classes = {col: true};
     constants.SIZES.forEach(s => {
       if (this.props[s]) {
@@ -13,14 +14,14 @@ class Col extends React.Component {
       }
     });
 
-    if (this.props.offset) {
-      this.props.offset.split(' ').forEach(offset => {
-        classes['offset-' + offset] = true;
+    if (offset) {
+      offset.split(' ').forEach(off => {
+        classes['offset-' + off] = true;
       });
     }
     return (
-      <C {...this.props} className={cx(classes)}>
-        {this.props.children}
+      <C {...props} className={cx(classes, className)}>
+        {children}
       </C>
     );
   }

@@ -7,8 +7,7 @@ var Root = React.createClass({
       return [
           'index.html',
           'get-started.html',
-          'components.html',
-          'grid.html'
+          'components.html'
       ];
     },
     renderToString: function(props) {
