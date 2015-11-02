@@ -6,6 +6,7 @@
   "scripts": {
     "start": "babel-node dev.js",
     "build": "babel-node build.js && webpack --progress --colors",
+    "assets": "webpack-dev-server --color --debug",
     "clean": "rm *.html assets/bundle.js"
   },
   "repository": "https://github.com/react-materialize/react-materialize.git",

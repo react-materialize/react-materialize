@@ -59,11 +59,6 @@ console.log('Starting docs in Development mode'.cyan);
 
 process.on(SIGINT, shutdown);
 
-runCmd('webpack-dev-server', `webpack --watch webpack.config.js --exec webpack-dev-server -- --config webpack.config.js --color --port ${webpackPort} --debug --hot --host ${ip.address()}`);
+runCmd('webpack-dev-server', `nodemon --watch webpack.config.js --exec webpack-dev-server -- --color --debug`);
 
-runCmd('docs-server', 'babel-node server.js', {
-    env: {
-        PORT: docsPort,
-        WEBPACK_DEV_PORT: webpackPort,
-    }
-});
+runCmd('docs-server', 'nodemon --watch src --exec babel-node server.js');

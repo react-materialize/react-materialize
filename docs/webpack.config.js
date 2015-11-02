@@ -1,9 +1,8 @@
-import path from 'path';
-import webpack from 'webpack';
-import yargs from 'yargs';
+var path = require('path');
+var webpack = require('webpack');
+var yargs = require('yargs');
 
-const options = yargs
-      .alias('p', 'optimize-minimize')
+var options = yargs
       .alias('d', 'debug')
       .option('port', {
           default: '8080',
@@ -11,15 +10,16 @@ const options = yargs
       })
       .argv;
 
+var webpackDevServerAddr = 'http://localhost:' + options.port;
 
 module.exports = {
     entry: [
       "./client.js"
     ],
     output: {
-        publicPath: "http://localhost:8080/assets/",
+        publicPath: options.debug ? webpackDevServerAddr + "/assets/" : "/assets/",
         filename: "bundle.js",
-        path: "/assets"
+        path: "./assets"
     },
     module: {
         loaders: [
