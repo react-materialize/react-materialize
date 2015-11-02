@@ -1,17 +1,19 @@
 /** globals: window, document */
 'use strict';
 
+import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import ReactDOM from 'react-dom';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
-import React from 'react';
+import Root from './src/Root';
 import Layout from './src/Layout';
 import HomePage from './src/HomePage';
 import GettingStartedPage from './src/GettingStartedPage';
 import ComponentsPage from './src/ComponentsPage';
 
 window.React = React;
+Root.propData = window.PROP_DATA;
 
 ReactDOM.render((
     <Router history={createBrowserHistory()}>

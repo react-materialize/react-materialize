@@ -10,8 +10,12 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loaders: ["transform?brfs", "babel?stage=0"]}
+            { test: /\.js$/, exclude: /node_modules/, loaders: ["transform?brfs", "babel?stage=0"]},
+            { test: /\.json$/, loader: 'json' },
         ]
+    },
+    node: {
+      fs: "empty"
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),

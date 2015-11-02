@@ -34,6 +34,7 @@ import submitButtons from '../../examples/SubmitButton';
 import toast from '../../examples/Toast';
 import tab from '../../examples/Tab';
 import tag from '../../examples/Tag';
+import PropTable from './PropTable';
 
 var path = require('path');
 var fs = require('fs');
@@ -55,6 +56,7 @@ var ComponentsPage = React.createClass({
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../../examples/RaisedButton.js'), 'utf8')}>
                 {raisedButtons}
               </ReactPlayground>
+            <PropTable component="Button"/>
             </Col>
             <h4 className='col s12'>
               Floating
