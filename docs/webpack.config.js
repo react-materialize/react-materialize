@@ -5,7 +5,7 @@ module.exports = {
       "./client.js"
     ],
     output: {
-        path: path.join(__dirname, 'assets'),
+        publicPath: "http://localhost:8080/assets/",
         filename: "bundle.js"
     },
     module: {

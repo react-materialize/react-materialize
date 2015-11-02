@@ -12,7 +12,7 @@ class PropTable extends React.Component {
     }
 
     componentWillMount() {
-        this.propsData = window.PROP_DATA[this.props.component];
+        this.propsData = this.context.metadata[this.props.component];
     }
 
     render() {

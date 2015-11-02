@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import MainNav from './MainNav';
+import PageFooter from './PageFooter';
 
 var Root = React.createClass({
     statics: {
@@ -46,7 +48,9 @@ var Root = React.createClass({
             <html>
                 <head dangerouslySetInnerHTML={header} />
                 <body>
-                    <div id="app"></div>
+                    <MainNav />
+                    {this.props.children}
+                    <PageFooter />
                     <script type='text/javascript' dangerouslySetInnerHTML={browserInitScriptObj} />
                     <script src="assets/bundle.js" type="text/javascript"/>
                 </body>
