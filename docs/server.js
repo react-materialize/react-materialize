@@ -14,8 +14,7 @@ import routes from './src/Routes';
 
 import metadata from './generate-metadata';
 
-const development = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 4000;
+const port = 4000;
 
 const app = express();
 

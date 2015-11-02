@@ -2,5 +2,5 @@ This is the source code that generates the [document site](https://react-materia
 
 ### get started
 
-      $ npm run build
+      $ npm run assets
       $ npm run start
