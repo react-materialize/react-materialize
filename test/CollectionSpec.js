@@ -1,13 +1,9 @@
-jest.dontMock('../Collection');
-jest.dontMock('../CollectionItem');
-jest.dontMock('classnames');
-
 describe('Collection', function() {
   var React = require('react'),
       ReactDOM = require('react-dom'),
       TestUtils = require('react-addons-test-utils'),
-      Collection = require('../Collection'),
-      CollectionItem = require('../CollectionItem'),
+      Collection = require('../src/Collection'),
+      CollectionItem = require('../src/CollectionItem'),
       instance = null;
 
   it('should render a ul element', function() {
@@ -16,8 +12,8 @@ describe('Collection', function() {
         <CollectionItem>Alvin</CollectionItem>
       </Collection>
     );
-    expect(ReactDOM.findDOMNode(instance).nodeName).toBe('UL');
-    expect(ReactDOM.findDOMNode(instance).className).toContain('collection');
+    assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'UL');
+    assert.include(ReactDOM.findDOMNode(instance).className, 'collection');
   });
 
   it('should support "header" prop as a string', function() {
@@ -28,10 +24,10 @@ describe('Collection', function() {
       </Collection>
     );
 
-    expect(ReactDOM.findDOMNode(instance).className).toContain('with-header');
-    expect(ReactDOM.findDOMNode(instance).firstChild.className).toContain('collection-header');
-    expect(ReactDOM.findDOMNode(instance).firstChild.firstChild.nodeName).toBe('H4');
-    expect(ReactDOM.findDOMNode(instance).firstChild.firstChild.innerHTML).toBe(header);
+    assert.include(ReactDOM.findDOMNode(instance).className, 'with-header');
+    assert.include(ReactDOM.findDOMNode(instance).firstChild.className, 'collection-header');
+    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.nodeName, 'H4');
+    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.innerHTML, header);
   });
 
   it('should support "header" prop as a component', function() {
@@ -42,10 +38,10 @@ describe('Collection', function() {
       </Collection>
     );
 
-    expect(ReactDOM.findDOMNode(instance).className).toContain('with-header');
-    expect(ReactDOM.findDOMNode(instance).firstChild.className).toContain('collection-header');
-    expect(ReactDOM.findDOMNode(instance).firstChild.firstChild.nodeName).toBe('H2');
-    expect(ReactDOM.findDOMNode(instance).firstChild.firstChild.innerHTML).toBe('First Names');
+    assert.include(ReactDOM.findDOMNode(instance).className, 'with-header');
+    assert.include(ReactDOM.findDOMNode(instance).firstChild.className, 'collection-header');
+    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.nodeName, 'H2');
+    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.innerHTML, 'First Names');
   });
 
   it('should render anchor if href is present', function() {
@@ -57,8 +53,8 @@ describe('Collection', function() {
         <CollectionItem href='#'>Alvin</CollectionItem>
       </Collection>
     );
-    expect(ReactDOM.findDOMNode(instance).nodeName).toBe('DIV');
-    expect(ReactDOM.findDOMNode(instance).firstChild.nodeName).toBe('A');
+    assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'DIV');
+    assert.equal(ReactDOM.findDOMNode(instance).firstChild.nodeName, 'A');
   });
 
 });

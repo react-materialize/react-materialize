@@ -12,7 +12,7 @@ class PageFooter extends React.Component {
           <li>
             <iframe className='github-btn'
               src="http://ghbtns.com/github-btn.html?user=react-materialize&repo=react-materialize&type=fork&count=true"
-              allowTransparency="true" frameBorder="0" scrolling="0" width="95" height="20"></iframe>
+              allowTransparency="true" frameBorder="1" scrolling="0" width="95" height="20"></iframe>
           </li>
           <li>
             <a className="grey-text text-lighten-3" href='https://github.com/react-materialize/react-materialize'>GitHub</a>
