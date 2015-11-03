@@ -4,7 +4,7 @@
   "description": "Material design for react",
   "main": "./src/index.js",
   "scripts": {
-    "test": "karma start",
+    "test": "karma start --single-run",
     "build": "webpack --progress --colors",
     "lint": "eslint ./"
   },
