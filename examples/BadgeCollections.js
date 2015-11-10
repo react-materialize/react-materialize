@@ -5,10 +5,16 @@ import CollectionItem from '../src/CollectionItem';
 
 export default
 <Collection>
-  <CollectionItem>
+  <CollectionItem href="#!">
     Alan <Badge>1</Badge>
   </CollectionItem>
-  <CollectionItem>
-    Alan <Badge new={true}>2</Badge>
+  <CollectionItem href="#!">
+    Alan <Badge new={true}>4</Badge>
+  </CollectionItem>
+  <CollectionItem href="#!">
+    Alan
+  </CollectionItem>
+  <CollectionItem href="#!">
+    Alan <Badge>14</Badge>
   </CollectionItem>
 </Collection>;
