@@ -27,3 +27,9 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+#IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
