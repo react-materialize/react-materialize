@@ -1,5 +1,6 @@
 import React from 'react';
 import Badge from '../src/Badge';
+import Button from '../src/Button';
 import Icon from '../src/Icon';
 
 export default
@@ -23,7 +24,7 @@ export default
       </a>
     </li>
   </ul>
-  <a class="btn dropdown-button" href="#!" data-activates="dropdown2">
-    Dropdown<Icon right>mdi-navigation-arrow-drop-down</Icon>
+  <a className="btn dropdown-button" href="#!" data-activates="dropdown2">
+    Dropdown<Icon right>arrow_drop_down</Icon>
   </a>
 </div>;

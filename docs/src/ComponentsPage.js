@@ -6,6 +6,8 @@ import raisedButtons from '../../examples/RaisedButton';
 
 import accordion from '../../examples/Accordion';
 import badgeCollections from '../../examples/BadgeCollections';
+import badgeDropdowns from '../../examples/BadgeDropdowns';
+import badgeNavbar from '../../examples/BadgeNavbar';
 import basicCollections from '../../examples/BasicCollection';
 import collectionWithHref from '../../examples/CollectionWithHref';
 import collectionWithHeader from '../../examples/CollectionWithHeader';
@@ -104,14 +106,29 @@ var ComponentsPage = React.createClass({
             <h2 id='badge' className='header col s12'>
               Badge
             </h2>
-            <p className='caption'>
-              Badges can notify you that there are new or unread messages or notifications. Set the `new` property to the badge to give it the background.
-            </p>
             <div id="badgeCollections">
-              <h4>Collections</h4>
-              <Col s={12}>
-                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Badge.js'), 'utf8')}>
+              <h4 className='col s12'>Collections</h4>
+              <Col s={12} m={9}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/BadgeCollections.js'), 'utf8')}>
                   {badgeCollections}
+                </ReactPlayground>
+              </Col>
+            </div>
+
+            <div id="badgeDropdowns">
+              <h4 className='col s12'>Dropdowns</h4>
+              <Col s={12} m={9}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/BadgeDropdowns.js'), 'utf8')}>
+                  {badgeDropdowns}
+                </ReactPlayground>
+              </Col>
+            </div>
+
+            <div id="badgeNavbar">
+              <h4 className='col s12'>Navbar</h4>
+              <Col s={12} m={9}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/BadgeNavbar.js'), 'utf8')}>
+                  {badgeNavbar}
                 </ReactPlayground>
               </Col>
             </div>
