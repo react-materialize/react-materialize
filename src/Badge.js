@@ -9,7 +9,7 @@ class Badge extends React.Component {
     };
 
     return (
-      <span className={cx(classes)}>
+      <span className={cx(classes)} {...this.props}>
         {this.props.children}
       </span>
     );
