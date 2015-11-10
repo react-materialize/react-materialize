@@ -36,14 +36,14 @@ class Preloader extends React.Component {
 }
 
 Preloader.propTypes = {
-    size: React.PropTypes.oneOf(constants.SCALES),
-    active: React.PropTypes.bool,
-    colors: React.PropTypes.array
+  size: React.PropTypes.oneOf(constants.SCALES),
+  active: React.PropTypes.bool,
+  colors: React.PropTypes.array
 };
 
 Preloader.defaultProps = {
-    active: true,
-    colors: ['blue', 'red', 'yellow', 'green']
+  active: true,
+  colors: ['blue', 'red', 'yellow', 'green']
 };
 
 export default Preloader;

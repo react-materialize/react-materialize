@@ -32,7 +32,7 @@ class Input extends React.Component {
             break;
         default:
             C = 'input';
-            inputType = type || "text";
+            inputType = type || 'text';
         }
         return (
             <div className={cx(classes)}>

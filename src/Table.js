@@ -6,7 +6,7 @@ class Table extends React.Component {
         var classes = {
             centered: this.props.centered,
             highlight: this.props.hoverable,
-            "responsive-table": this.props.responsive,
+            'responsive-table': this.props.responsive,
             stripped: this.props.stripped,
             bordered: this.props.bordered
         };

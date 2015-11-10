@@ -26,7 +26,7 @@ class OverlayTrigger extends Overlay {
     }
 
     showOverlay() {
-        $("#" + this.overlayID).openModal();
+        $('#' + this.overlayID).openModal();
     }
 }
 

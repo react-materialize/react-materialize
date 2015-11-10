@@ -4,7 +4,7 @@ import React from 'react';
 // there is no logic here.
 class TabArea extends React.Component {
     render() {
-        return null;
+      return null;
     }
 }
 

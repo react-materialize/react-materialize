@@ -30,7 +30,7 @@ class ReactPlayground extends React.Component {
     if (m) {
       return m[1];
     }
-    return "code no match";
+    return 'code no match';
   }
 }
 

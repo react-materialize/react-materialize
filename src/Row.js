@@ -14,7 +14,7 @@ class Row extends React.Component {
 }
 
 Row.propTypes = {
-    node: React.PropTypes.node.isRequired
+  node: React.PropTypes.node.isRequired
 };
 
 Row.defaultProps = {node: 'div'};

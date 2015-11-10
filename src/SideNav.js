@@ -3,15 +3,15 @@ import NavItem from './NavItem';
 
 class SideNav extends React.Component {
     constructor(props) {
-        super(props);
+      super(props);
     }
 
     componentDidMount() {
-        $('.button-collapse').sideNav();
+      $('.button-collapse').sideNav();
     }
 
     render() {
-        return (
+      return (
             <nav>
                 <ul className="right hide-on-med-and-down">
                     <li><a href="#!">First Sidebar Link</a></li>

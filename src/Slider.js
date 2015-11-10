@@ -8,7 +8,7 @@ class Slider extends React.Component {
     }
 
     componentDidMount() {
-        $(".slider").slider({indicators: this.props.indicators, interval: this.props.interval});
+        $('.slider').slider({indicators: this.props.indicators, interval: this.props.interval});
     }
 
     render() {

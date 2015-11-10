@@ -28,7 +28,7 @@ describe('Card', function() {
   });
 
   it('should render action title element', function() {
-    var src = "assets/image1.jpg";
+    var src = 'assets/image1.jpg';
     var header = <CardTitle image={src}>Card title</CardTitle>;
     instance = TestUtils.renderIntoDocument(
       <Card header={header}>

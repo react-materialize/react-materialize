@@ -11,7 +11,7 @@ class Navbar extends React.Component {
 
     componentDidMount() {
         if ($ !== undefined) {
-            $(".button-collapse").sideNav();
+            $('.button-collapse').sideNav();
         }
     }
 
@@ -19,7 +19,7 @@ class Navbar extends React.Component {
         var {brand, className, ...props} = this.props;
         var classes = {
             right: this.props.right,
-            "hide-on-med-and-down": true
+            'hide-on-med-and-down': true
         };
         var brandClasses = {
             'brand-logo': true,

@@ -1,18 +1,24 @@
-var React = require('react'),
-    cx = require('classnames');
+import React from 'react';
+import cx from 'classnames';
 
-var NavItem = React.createClass({
-  propTypes: {
-    href: React.PropTypes.string
-  },
-  render() {
-    var {href, children, ...props} = this.props;
-    return (
-      <li {...props}>
-        <a href={href}>{children}</a>
-      </li>
-    );
-  }
-});
+class NavItem extends React.Component {
+    render() {
+        var {divider, href, children, ...props} = this.props;
+        if (divider) {
+            return <li className="divider"></li>
+        } else {
+            return (
+                <li {...props}>
+                    <a href={href}>{children}</a>
+                </li>
+            );
+        }
+    }
+}
 
-module.exports = NavItem;
+NavItem.propTypes = {
+    href: React.PropTypes.string,
+    divider: React.PropTypes.bool,
+}
+
+export default NavItem;

@@ -32,12 +32,12 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-    node: React.PropTypes.node,
-    waves: React.PropTypes.oneOf(constants.WAVES),
-    large: React.PropTypes.bool,
-    floating: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    modal: React.PropTypes.oneOf(['close', 'confirm'])
+  node: React.PropTypes.node,
+  waves: React.PropTypes.oneOf(constants.WAVES),
+  large: React.PropTypes.bool,
+  floating: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
+  modal: React.PropTypes.oneOf(['close', 'confirm'])
 };
 
 

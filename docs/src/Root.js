@@ -13,7 +13,7 @@ var Root = React.createClass({
             ];
         },
         renderToString: function(props) {
-            return "<!doctype html>" +
+            return '<!doctype html>' +
                 ReactDOMServer.renderToString(<Root {...props} />);
         }
     },

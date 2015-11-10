@@ -2,7 +2,7 @@ import React from 'react';
 
 class Tooltip extends React.Component {
     render() {
-        return null;
+      return null;
     }
 }
 

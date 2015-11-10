@@ -12,6 +12,6 @@ export default class Chip extends React.Component {
         {this.props.children}
         {close}
       </div>
-    )
-  };
+    );
+  }
 }

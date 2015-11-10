@@ -3,29 +3,29 @@ import cx from 'classnames';
 
 class CollectionItem extends React.Component {
     constructor(props) {
-        super(props)
-        this.isAnchor = this.isAnchor.bind(this);
+      super(props);
+      this.isAnchor = this.isAnchor.bind(this);
     }
     render() {
-        var classes = {
-            'collection-item': true,
-            active: this.props.active
-        };
-        var C = this.isAnchor() ? 'a' : 'li';
-        return (
+      var classes = {
+        'collection-item': true,
+        active: this.props.active
+      };
+      var C = this.isAnchor() ? 'a' : 'li';
+      return (
             <C className={cx(classes)}>
                 {this.props.children}
             </C>
         );
     }
     isAnchor() {
-        return this.props.href !== null;
+      return this.props.href !== null;
     }
 }
 
 CollectionItem.propTypes = {
-    active: React.PropTypes.bool,
-    href: React.PropTypes.string
-}
+  active: React.PropTypes.bool,
+  href: React.PropTypes.string
+};
 
 export default CollectionItem;
