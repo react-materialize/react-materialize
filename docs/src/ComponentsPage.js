@@ -5,6 +5,7 @@ import ReactPlayground from './ReactPlayground';
 import raisedButtons from '../../examples/RaisedButton';
 
 import accordion from '../../examples/Accordion';
+import badge from '../../examples/Badge';
 import basicCollections from '../../examples/BasicCollection';
 import collectionWithHref from '../../examples/CollectionWithHref';
 import collectionWithHeader from '../../examples/CollectionWithHeader';
@@ -97,6 +98,14 @@ var ComponentsPage = React.createClass({
             <Col s={12}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/DisabledButton.js'), 'utf8')}>
                   {disabledButtons}
+              </ReactPlayground>
+            </Col>
+            <h2 id='badge' className='header col s12'>
+              Badge
+            </h2>
+            <Col s={12}>
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Badge.js'), 'utf8')}>
+                {badge}
               </ReactPlayground>
             </Col>
             <h2 id='tab' className='header col s12'>
@@ -289,6 +298,7 @@ var ComponentsPage = React.createClass({
         <Col m={3} l={2} className="hide-on-small-only">
           <ul className='section table-of-contents'>
             <li><a href='#button'>Button</a></li>
+            <li><a href='#badge'>Badge</a></li>
             <li><a href='#tab'>Tab</a></li>
             <li><a href='#navbar'>Navbar</a></li>
             <li><a href='#pagination'>Pagination</a></li>

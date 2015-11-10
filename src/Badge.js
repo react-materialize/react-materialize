@@ -1,15 +1,15 @@
 import React from 'react';
+import cx from 'classnames';
 
 class Badge extends React.Component {
   render() {
-    let classes = ['badge'];
-    if (this.props.text) {
-      classes.push(this.props.text);
-      classes = classes.reverse();
-    }
+    let classes = {
+      badge: true,
+      new: this.props.new || false
+    };
 
     return (
-      <span className={classes.join(' ')}>
+      <span className={cx(classes)}>
         {this.props.children}
       </span>
     );
@@ -17,7 +17,7 @@ class Badge extends React.Component {
 }
 
 Badge.propTypes = {
-  text: React.PropTypes.string
+  new: React.PropTypes.bool
 };
 
 export default Badge;
