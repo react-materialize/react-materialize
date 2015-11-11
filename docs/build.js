@@ -6,6 +6,6 @@ metadata().then(propData => {
     Root.propData = propData;
     Root.getPages().forEach(function(fileName) {
         var rootHtml = Root.renderToString({initialPath: fileName});
-        fs.writeFileSync(path.join(__dirname, fileName), rootHtml);
+        fs.writeFileSync(path.join(__dirname, "dist", fileName), rootHtml);
     });
 });

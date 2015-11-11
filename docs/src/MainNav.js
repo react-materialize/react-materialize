@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../src/Navbar';
 import NavItem from '../../src/NavItem';
 
-var MainNav = React.createClass({
+const MainNav = React.createClass({
   render() {
     return (
       <header>

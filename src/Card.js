@@ -65,7 +65,7 @@ Card.propTypes = {
   reveal: React.PropTypes.element,
   header: React.PropTypes.instanceOf(CardTitle),
   // The buttons to be displayed at the action area
-  actions: React.PropTypes.ArrayOf(React.PropTypes.element),
+  actions: React.PropTypes.arrayOf(React.PropTypes.element),
 }
 
 export default Card;

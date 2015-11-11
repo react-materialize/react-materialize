@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-var HomePage = React.createClass({
+const HomePage = React.createClass({
   render() {
     return <h3 className='header'>Material design Components for React</h3>;
   }
