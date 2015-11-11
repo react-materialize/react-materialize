@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 class Preloader extends React.Component {
   render() {
-    var classes = {
+    let classes = {
       'preloader-wrapper': true,
       active: this.props.active
     };
@@ -14,7 +14,7 @@ class Preloader extends React.Component {
     return (
       <div className={cx(this.props.className, classes)}>
         {this.props.colors.map(color => {
-          var spinnerClasses = {
+          let spinnerClasses = {
             'spinner-layer': true
           };
           spinnerClasses['spinner-' + color] = true;

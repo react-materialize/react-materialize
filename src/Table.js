@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 class Table extends React.Component {
     render() {
-        var classes = {
+        let classes = {
             centered: this.props.centered,
             highlight: this.props.hoverable,
             'responsive-table': this.props.responsive,
@@ -11,7 +11,7 @@ class Table extends React.Component {
             bordered: this.props.bordered
         };
 
-        var {className, children, ...props} = this.props;
+        let {className, children, ...props} = this.props;
 
         return (
             <table className={cx(classes, className)} {...this.props}>

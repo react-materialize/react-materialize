@@ -22,8 +22,7 @@ class Badge extends React.Component {
 
 Badge.propTypes = {
   // add the "new" class name
-  newIcon: React.PropTypes.bool
+  newIcon: React.PropTypes.bool,
 };
 
 export default Badge;
-

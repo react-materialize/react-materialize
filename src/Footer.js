@@ -27,5 +27,10 @@ class Footer extends React.Component {
     );
   }
 }
+Footer.propTypes = {
+  links: React.PropTypes.arrayOf(React.PropTypes.element),
+  moreLinks: React.PropTypes.arrayOf(React.PropTypes.element),
+  copyrights: React.PropTypes.string,
+};
 
 export default Footer;

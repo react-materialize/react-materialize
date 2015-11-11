@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 class Row extends React.Component {
   render() {
-    var C = this.props.node;
+    let C = this.props.node;
     return (
       <C className={cx('row', this.props.className)}
         {...this.props}>

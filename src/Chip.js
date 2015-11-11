@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Chip extends React.Component {
   render() {
-    var close = '';
+    let close = '';
     if (this.props.close) {
       close = <i className='material-icons'>close</i>;
     }
@@ -14,4 +14,12 @@ export default class Chip extends React.Component {
       </div>
     );
   }
+}
+
+Chip.propTypes = {
+  /**
+   * If show a close icon
+   * @default false
+   */
+  close: React.PropTypes.bool,
 }

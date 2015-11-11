@@ -4,8 +4,8 @@ import cx from 'classnames';
 
 class Button extends React.Component {
   render() {
-    var C = this.props.node || 'button';
-    var classes = {
+    let C = this.props.node || 'button';
+    let classes = {
       btn: true,
       disabled: this.props.disabled,
       'waves-effect': !!this.props.waves
@@ -37,6 +37,10 @@ Button.propTypes = {
   large: React.PropTypes.bool,
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  /**
+   * Tooltip to show when mouse hovered
+   */
+  tooltip: React.PropTypes.string,
   modal: React.PropTypes.oneOf(['close', 'confirm'])
 };
 

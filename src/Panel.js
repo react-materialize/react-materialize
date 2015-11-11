@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 class Panel extends React.Component {
     render() {
-      var classes = {
+      let classes = {
         'card-panel': true
       };
       return (

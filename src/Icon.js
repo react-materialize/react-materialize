@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 class Icon extends React.Component {
     render() {
-      var classes = {
+      let classes = {
         'material-icons': true
       };
       constants.PLACEMENTS.forEach(p => {
