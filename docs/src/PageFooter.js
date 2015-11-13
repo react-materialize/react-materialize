@@ -3,26 +3,26 @@ import Footer from '../../src/Footer';
 
 class PageFooter extends React.Component {
   render() {
-    var links = (
-        <ul>
-          <li><iframe className='github-btn'
-            src="http://ghbtns.com/github-btn.html?user=react-materialize&repo=react-materialize&type=watch&count=true"
-            allowTransparency="true" frameBorder="0" scrolling="0" width="110" height="20"></iframe>
-</li>
-          <li>
-            <iframe className='github-btn'
-              src="http://ghbtns.com/github-btn.html?user=react-materialize&repo=react-materialize&type=fork&count=true"
-              allowTransparency="true" frameBorder="1" scrolling="0" width="95" height="20"></iframe>
-          </li>
-          <li>
-            <a className="grey-text text-lighten-3" href='https://github.com/react-materialize/react-materialize'>GitHub</a>
-          </li>
-        </ul>
-      );
-    var moreLinks = <a href='https://github.com/react-materialize/react-materialize/blob/master/LICENSE'>Code licensed under MIT</a>;
+    let links = (
+      <ul>
+        <li><iframe className='github-btn'
+              src="http://ghbtns.com/github-btn.html?user=react-materialize&repo=react-materialize&type=watch&count=true"
+              allowTransparency="true" frameBorder="0" scrolling="0" width="110" height="20"></iframe>
+        </li>
+        <li>
+          <iframe className='github-btn'
+            src="http://ghbtns.com/github-btn.html?user=react-materialize&repo=react-materialize&type=fork&count=true"
+            allowTransparency="true" frameBorder="1" scrolling="0" width="95" height="20"></iframe>
+        </li>
+        <li>
+          <a className="grey-text text-lighten-3" href='https://github.com/react-materialize/react-materialize'>GitHub</a>
+        </li>
+      </ul>
+    );
+    let moreLinks = <a href='https://github.com/react-materialize/react-materialize/blob/master/LICENSE'>Code licensed under MIT</a>;
 
     return (
-      <Footer links={links} copyrights="© 2015 React Materialize, All rights reserved" moreLinks={moreLinks}>
+      <Footer links={links} copyrights="© 2015 React Materialize, All rights reserved" moreLinks={[moreLinks]}>
         <h5 className="white-text">Join the Discussion</h5>
         <p className="grey-text text-lighten-4">
           We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.

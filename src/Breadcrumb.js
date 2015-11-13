@@ -23,7 +23,7 @@ class Breadcrumb extends React.Component {
   renderLinks() {
     return React.Children.map(this.props.children, item => {
       return React.cloneElement(item, {breadcrumbItem: true});
-    })
+    });
   }
 }
 

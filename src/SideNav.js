@@ -1,29 +1,35 @@
 import React from 'react';
+import uuid from 'node-uuid';
+
+import Icon from './Icon';
 
 class SideNav extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    $('.button-collapse').sideNav();
-  }
-
   render() {
+    let id = uuid.v1();
     return (
       <nav>
         <ul className="right hide-on-med-and-down">
-          <li><a href="#!">First Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
+          {this.props.children}
         </ul>
-        <ul id="slide-out" className="side-nav">
-          <li><a href="#!">First Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
+        <ul id={id} className="side-nav">
+          {this.props.children}
         </ul>
-        <a href="#" data-activates="slide-out" className="button-collapse"><i className="mdi-navigation-menu">navigation_menu</i></a>
+        <a href="#" data-activates={id} className="button-collapse"><Icon>navigation_menu</Icon></a>
       </nav>
     );
   }
 }
+
+SideNav.propTypes = {
+  /**
+   * side navigation bar placement
+   */
+  right: React.PropTypes.bool,
+  left: React.PropTypes.bool,
+};
 
 export default SideNav;

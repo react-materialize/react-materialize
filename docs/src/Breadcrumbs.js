@@ -18,7 +18,7 @@ const Breadcrumbs = React.createClass({
             Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content.
           </p>
             <h4 className='col s12'>
-              Breadcrumbs
+              Basic
             </h4>
             <Col s={12} m={9}>
               <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../../examples/Breadcrumbs.js'), 'utf8')}>
