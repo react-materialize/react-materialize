@@ -1,9 +1,24 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import constants from './constants';
 import cx from 'classnames';
 import uuid from 'node-uuid';
 
 class Input extends React.Component {
+  componentDidMount() {
+    if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
+      $(ReactDOM.findDOMNode(this.refs.inputEl)).material_select();
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
+      var $el = $(ReactDOM.findDOMNode(this.refs.inputEl));
+      $el.material_select('destroy');
+      $el.material_select();
+    }
+  }
+
   render() {
     let classes = {
       col: true,
@@ -22,22 +37,30 @@ class Input extends React.Component {
         id = this.props.name;
       }
     }
+    let inputClasses = {
+      validate: this.props.validate !== false
+    };
     let C, inputType;
-    switch(type) {
+    switch (type) {
       case 'textarea':
         C = 'textarea';
+        inputClasses['materialize-textarea'] = true;
         break;
       case 'select':
         C = 'select';
+        inputClasses['browser-default'] = !!this.props.browserDefault;
         break;
       default:
         C = 'input';
         inputType = type || 'text';
     }
+    let htmlLabel = <label htmlFor={id}>{label}</label>;
     return (
       <div className={cx(classes)}>
-        <C {...props} type={inputType} placeholder={placeholder} id={id} className="validate"/>
-        <label htmlFor={id}>{label}</label>
+        {this.props.type === 'select' && this.props.browserDefault ? htmlLabel : null}
+        <C ref="inputEl" {...props} type={inputType} placeholder={placeholder} id={id}
+           className={cx(inputClasses)}/>
+        {this.props.type !== 'select' ? htmlLabel : null}
       </div>
     );
   }
@@ -53,6 +76,8 @@ Input.propTypes = {
   placeholder: React.PropTypes.string,
   id: React.PropTypes.string,
   name: React.PropTypes.string,
+  validate: React.PropTypes.bool,
+  browserDefault: React.PropTypes.bool
 };
 
 Input.defaultProps = {type: 'text'};
