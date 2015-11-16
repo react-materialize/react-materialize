@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Chip extends React.Component {
+class Chip extends React.Component {
   render() {
     let close = '';
     if (this.props.close) {
@@ -22,4 +22,6 @@ Chip.propTypes = {
    * @default false
    */
   close: React.PropTypes.bool,
-}
+};
+
+export default Chip;

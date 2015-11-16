@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class Overlay extends React.Component {
+class Overlay extends React.Component {
   static propTypes = {
     container: React.PropTypes.any.isRequired
   }
@@ -73,3 +73,5 @@ export default class Overlay extends React.Component {
       this.props.container.getDOMNode() : this.props.container;
   }
 }
+
+export default Overlay;
