@@ -1,3 +1,4 @@
+// This is here only for the karma tests
 var path = require('path');
 var webpack = require('webpack');
 module.exports = {

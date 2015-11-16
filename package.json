@@ -2,7 +2,7 @@
   "name": "react-materialize",
   "version": "0.14.0-beta3",
   "description": "Material design components for react",
-  "main": "./dist/index.js",
+  "main": "./lib/index.js",
   "files": [
     "LICENSE",
     "README.md",
