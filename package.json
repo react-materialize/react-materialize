@@ -1,8 +1,13 @@
 {
   "name": "react-materialize",
-  "version": "0.14.0-beta1",
-  "description": "Material design for react",
-  "main": "./src/index.js",
+  "version": "0.14.0-beta2",
+  "description": "Material design components for react",
+  "main": "./dist/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist"
+  ],
   "scripts": {
     "test": "karma start --single-run",
     "build": "webpack --progress --colors",
@@ -14,19 +19,17 @@
     "url": "https://github.com/react-materialize/react-materialize.git"
   },
   "keywords": [
-    "material",
-    "design",
-    "react"
+      "material",
+      "react",
+      "materializecss",
+      "react-component"
   ],
-  "author": "Isaiah Peng",
+  "author": "Isaiah Peng <issaria@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/react-materialize/react-materialize/issues"
   },
   "homepage": "https://github.com/react-materialize/react-materialize",
-  "peerDependencies": {
-    "react": ">=0.14"
-  },
   "devDependencies": {
     "babel": "^6.0.15",
     "babel-core": "^5.8.12",
@@ -47,14 +50,16 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
     "phantomjs": "^1.9.18",
-    "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.0",
     "transform-loader": "^0.2.2",
     "webpack": "^1.10.5"
   },
+  "peerDependencies": {
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0"
+  },
   "dependencies": {
     "classnames": "^2.1.3",
-    "node-uuid": "^1.4.3",
-    "react-dom": "^0.14.0"
+    "node-uuid": "^1.4.3"
   }
 }
