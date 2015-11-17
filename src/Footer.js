@@ -28,8 +28,8 @@ class Footer extends React.Component {
   }
 }
 Footer.propTypes = {
-  links: React.PropTypes.arrayOf(React.PropTypes.element),
-  moreLinks: React.PropTypes.arrayOf(React.PropTypes.element),
+  links: React.PropTypes.node,
+  moreLinks: React.PropTypes.node,
   copyrights: React.PropTypes.string,
 };
 

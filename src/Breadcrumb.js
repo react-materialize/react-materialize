@@ -1,6 +1,5 @@
 import React from 'react';
 import Col from './Col';
-import MenuItem from './MenuItem';
 
 class Breadcrumb extends React.Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class Breadcrumb extends React.Component {
 }
 
 Breadcrumb.propTypes = {
-  children: React.PropTypes.arrayOf(React.PropTypes.instanceOf(MenuItem)),
+  children: React.PropTypes.arrayOf(React.PropTypes.element),
 };
 
 export default Breadcrumb;
