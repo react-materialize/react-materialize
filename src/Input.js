@@ -35,7 +35,7 @@ class Input extends React.Component {
   render() {
     let classes = {
       col: true,
-      'input-field': true
+      'input-field': this.props.type !== 'checkbox' && this.props.type !== 'radio'
     };
     let {placeholder, id, type, label, ...props} = this.props;
     constants.SIZES.forEach(size => {
