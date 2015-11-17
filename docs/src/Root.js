@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import MainNav from './MainNav';
 import PageFooter from './PageFooter';
 
@@ -9,13 +8,8 @@ const Root = React.createClass({
       return [
         'index.html',
         'get-started.html',
-        'components.html',
         'breadcrumbs.html',
       ];
-    },
-    renderToString(props) {
-      return '<!doctype html>' +
-             ReactDOMServer.renderToString(<Root {...props} />);
     }
   },
 

@@ -32,7 +32,6 @@
     "node-jsx": "^0.12.4",
     "nodemon": "^1.8.1",
     "react-component-metadata": "^1.4.0",
-    "react-docgen": "^2.4.0",
     "transform-loader": "^0.2.3",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",
