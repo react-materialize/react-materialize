@@ -3,13 +3,17 @@ import Row from '../../src/Row';
 import Col from '../../src/Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-
-var path = require('path');
-var fs = require('fs');
-
+import store from './store';
+import Samples from './Samples';
 import breadcrumbs from '../../examples/Breadcrumbs';
 
+const component = 'Breadcrumb';
+
 const Breadcrumbs = React.createClass({
+  componentDidMount() {
+    store.emit('component', component);
+  },
+
   render() {
     return (
       <Row>
@@ -21,10 +25,10 @@ const Breadcrumbs = React.createClass({
               Basic
             </h4>
             <Col s={12} m={9}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '../../examples/Breadcrumbs.js'), 'utf8')}>
+              <ReactPlayground code={ Samples.breadcrumb }>
                 {breadcrumbs}
               </ReactPlayground>
-              <PropTable component="Breadcrumb"/>
+              <PropTable component={component}/>
             </Col>
         </Col>
       </Row>

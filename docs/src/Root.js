@@ -46,13 +46,11 @@ const Root = React.createClass({
       __html: `window.PROP_DATA = ${JSON.stringify(Root.propData)};`
     }
 
-    let child = React.Children.only(this.props.children);
-    let {component} = child.props.params;
     return (
       <html>
         <head dangerouslySetInnerHTML={header} />
         <body>
-          <MainNav component={component} />
+          <MainNav />
           <main>
             <div className="container" >
               {this.props.children}

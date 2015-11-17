@@ -1,23 +1,30 @@
 import React from 'react';
 import SideNav from '../../src/SideNav';
 import MenuItem from '../../src/MenuItem';
-
-let capitalize = s => {
-  let s1 = s.split('.')[0];
-  return s1.charAt(0).toUpperCase() + s1.substr(1);
-};
+import store from './store';
 
 const MainNav = React.createClass({
-  propTypes: {
-    component: React.PropTypes.string
+  getInitialState() {
+    return {title: 'Breadcrumb'};
+  },
+
+  componentDidMount() {
+    store.on('component', this.onChange);
+  },
+
+  componentWillUnmount() {
+    store.removeListener('component', this.onChange);
+  },
+
+  onChange(component) {
+    this.state.title = component;
   },
 
   render() {
-    let { component } = this.props;
     return (
       <header>
         <nav className="top-nav">
-          { capitalize(component) }
+          { this.state.title }
         </nav>
         <SideNav>
           <MenuItem href='/get-started.html'>Get started</MenuItem>
