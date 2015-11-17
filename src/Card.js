@@ -63,7 +63,7 @@ Card.propTypes = {
   title: React.PropTypes.string,
   textClassName: React.PropTypes.string,
   reveal: React.PropTypes.element,
-  header: React.PropTypes.instanceOf(CardTitle),
+  header: React.PropTypes.element,
   // The buttons to be displayed at the action area
   actions: React.PropTypes.arrayOf(React.PropTypes.element),
 }

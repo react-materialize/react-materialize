@@ -2,8 +2,6 @@
 // Generated on Tue Nov 03 2015 15:53:18 GMT+0100 (CET)
 
 //require('babel/register');
-var webpackConfig = require('./webpack.config');
-webpackConfig.devtool = 'inline-source-map';
 module.exports = function(config) {
   config.set({
 
@@ -18,7 +16,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/index.js'
+      'test/*Spec.js'
     ],
 
 
@@ -30,9 +28,16 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/index.js': ['webpack', 'sourcemap']
+      'src/*.js': ['babel', 'webpack'],
+      'test/*Spec.js': ['babel', 'webpack']
     },
 
+    babelPreprocessor: {
+      options: {
+        presets: ['es2015', 'react', 'stage-0'],
+        sourceMap: 'inline'
+      }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -70,9 +75,28 @@ module.exports = function(config) {
     // how many browser should be started simultanous
     concurrency: Infinity,
 
-    webpack: webpackConfig,
+    webpack: {
+      module: {
+        loaders: [
+          { test: /\.js$/, exclude: /node_modules/, loader: 'babel', presets: ['es2015', 'react', 'stage-0'] }
+        ]
+      },
+      output: {
+        pathinfo: true
+      },
+
+      devtool: 'inline-source-map'
+    },
     webpackServer: {
       noInfo: true //please don't spam the console when running in karma!
-    }
-  })
-}
+    },
+    plugins: [
+      'karma-mocha',
+      'karma-webpack',
+      'karma-sinon-chai',
+      'karma-sourcemap-loader',
+      'karma-phantomjs-launcher',
+      'karma-babel-preprocessor'
+    ]
+  });
+};

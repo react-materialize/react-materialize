@@ -1,11 +1,11 @@
-var React = require('react'),
-    ReactDOM = require('react-dom'),
-    TestUtils = require('react-addons-test-utils'),
-    Card = require('../src/Card'),
-    CardTitle = require('../src/CardTitle'),
-    instance = null;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
+import Card from '../src/Card';
+import CardTitle from '../src/CardTitle';
 
 describe('Card', function() {
+  let instance = null;
   beforeEach(function() {
     instance = TestUtils.renderIntoDocument(
       <Card title='card title' className='blue-grey darken-1' textClassName='white-text'>

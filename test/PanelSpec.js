@@ -1,12 +1,11 @@
-describe('Panel', function() {
-  var React = require('react'),
-      ReactDOM = require('react-dom'),
-      TestUtils = require('react-addons-test-utils'),
-      Panel = require('../src/Panel'),
-      instance = null;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
+import Panel from '../src/Panel';
 
+describe('Panel', function() {
   it('has card-panel class', function() {
-      instance = TestUtils.renderIntoDocument(<Panel />);
+      let instance = TestUtils.renderIntoDocument(<Panel />);
       assert.include(ReactDOM.findDOMNode(instance).className, 'card-panel');
   });
 });

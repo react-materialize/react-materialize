@@ -1,3 +1,4 @@
+import 'es5-shim';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';

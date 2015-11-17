@@ -1,11 +1,12 @@
-describe('Collection', function() {
-  var React = require('react'),
-      ReactDOM = require('react-dom'),
-      TestUtils = require('react-addons-test-utils'),
-      Collection = require('../src/Collection'),
-      CollectionItem = require('../src/CollectionItem'),
-      instance = null;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TestUtils from 'react-addons-test-utils';
+import Collection from '../src/Collection';
+import CollectionItem from '../src/CollectionItem';
 
+
+describe('Collection', function() {
+  let instance = null;
   it('should render a ul element', function() {
     instance = TestUtils.renderIntoDocument(
       <Collection>
