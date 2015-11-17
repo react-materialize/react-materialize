@@ -6,13 +6,14 @@
   "files": [
     "LICENSE",
     "README.md",
-    "dist"
+    "lib"
   ],
   "scripts": {
     "test": "karma start --single-run",
     "build": "babel -d lib src",
     "lint": "eslint src",
-    "fix": "eslint src --fix"
+    "fix": "eslint src --fix",
+    "pack": "webpack --colors --progress"
   },
   "repository": {
     "type": "git",
