@@ -6,16 +6,29 @@ import uuid from 'node-uuid';
 
 class Input extends React.Component {
   componentDidMount() {
-    if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
-      $(ReactDOM.findDOMNode(this.refs.inputEl)).material_select();
-    }
+    this._setupEl();
+  }
+  componentDidUpdate() {
+    this._setupEl();
   }
 
-  componentDidUpdate() {
-    if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
-      var $el = $(ReactDOM.findDOMNode(this.refs.inputEl));
-      $el.material_select('destroy');
-      $el.material_select();
+  _setupEl() {
+    if (typeof $ !== 'undefined') {
+      var $inputEl = $(ReactDOM.findDOMNode(this.refs.inputEl));
+
+      if (this.props.type === 'select' && !this.props.browserDefault) {
+        $inputEl.material_select('destroy');
+        $inputEl.material_select();
+      }
+      else {
+        var $labelEl = $(ReactDOM.findDOMNode(this.refs.labelEl));
+        if ($inputEl.val()) {
+          $labelEl.addClass('active');
+        }
+        else {
+          $labelEl.removeClass('active');
+        }
+      }
     }
   }
 
@@ -54,7 +67,7 @@ class Input extends React.Component {
         C = 'input';
         inputType = type || 'text';
     }
-    let htmlLabel = <label htmlFor={id}>{label}</label>;
+    let htmlLabel = <label ref="labelEl" htmlFor={id}>{label}</label>;
     return (
       <div className={cx(classes)}>
         {this.props.type === 'select' && this.props.browserDefault ? htmlLabel : null}
