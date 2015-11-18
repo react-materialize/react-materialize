@@ -9,7 +9,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "karma start --single-run",
+    "test": "npm run lint && karma start --single-run",
     "build": "babel -d lib src",
     "lint": "eslint src",
     "fix": "eslint src --fix"

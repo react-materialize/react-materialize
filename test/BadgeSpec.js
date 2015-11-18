@@ -16,7 +16,8 @@ describe('Badge', () => {
   });
 
   it('should output a badge with the className of `badge new` and', () => {
-    let badge = TestUtils.renderIntoDocument(<Badge new={true}>4</Badge>);
-    assert.equal(ReactDOM.findDOMNode(badge).className, 'badge new');
+    let badge = TestUtils.renderIntoDocument(<Badge newIcon={true}>4</Badge>);
+    assert.include(ReactDOM.findDOMNode(badge).className, 'badge');
+    assert.include(ReactDOM.findDOMNode(badge).className, 'new');
   });
 });
