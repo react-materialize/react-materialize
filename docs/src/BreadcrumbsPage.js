@@ -24,7 +24,7 @@ const BreadcrumbsPage = React.createClass({
             <h4 className='col s12'>
               Basic
             </h4>
-            <Col s={12} m={9}>
+            <Col s={12}>
               <ReactPlayground code={ Samples.breadcrumb }>
                 {breadcrumbs}
               </ReactPlayground>

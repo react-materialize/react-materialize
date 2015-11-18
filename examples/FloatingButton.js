@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../src/Button';
-import Icon from '../src/Icon';
 
 export default
-<Button floating><Icon>add</Icon></Button>;
+<Button floating large className='red' waves='light' icon='add' />;

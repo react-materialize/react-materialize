@@ -26,7 +26,7 @@ class BadgesPage extends React.Component {
           <h4 className='col s12'>
             Collection
           </h4>
-          <Col s={12} m={9}>
+          <Col s={12}>
             <ReactPlayground code={ Samples.badgeCollections }>
               {badgeCollections}
             </ReactPlayground>
@@ -34,7 +34,7 @@ class BadgesPage extends React.Component {
           <h4 className='col s12'>
             Badges in Dropdown
           </h4>
-          <Col s={12} m={9}>
+          <Col s={12}>
             <ReactPlayground code={ Samples.badgeDropdowns }>
               {badgeDropdowns}
             </ReactPlayground>
@@ -42,12 +42,12 @@ class BadgesPage extends React.Component {
           <h4 className='col s12'>
             Badges in Navbar
           </h4>
-          <Col s={12} m={9}>
+          <Col s={12}>
             <ReactPlayground code={ Samples.badgeNavbar }>
               {badgeNavbar}
             </ReactPlayground>
           </Col>
-          <Col s={12} m={9}>
+          <Col s={12}>
             <PropTable component={component}/>
           </Col>
         </Col>
