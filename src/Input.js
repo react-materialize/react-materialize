@@ -4,6 +4,10 @@ import cx from 'classnames';
 import uuid from 'node-uuid';
 
 class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {hasValue: false};
+  }
   componentDidMount() {
     this._setupEl();
   }
@@ -20,12 +24,13 @@ class Input extends React.Component {
         $inputEl.material_select();
       }
       else {
-        var $labelEl = $(this.refs.labelEl);
-        if ($inputEl.val()) {
-          $labelEl.addClass('active');
-        }
-        else {
-          $labelEl.removeClass('active');
+        var previousHasValue = this.state.hasValue;
+        var actualHasValue = !!$inputEl.val();
+
+        if (previousHasValue !== actualHasValue) {
+          this.setState({
+            hasValue: actualHasValue
+          });
         }
       }
     }
@@ -66,7 +71,10 @@ class Input extends React.Component {
         C = 'input';
         inputType = type || 'text';
     }
-    let htmlLabel = <label ref="labelEl" htmlFor={id}>{label}</label>;
+    let labelClasses = {
+      active: this.state.hasValue
+    };
+    let htmlLabel = <label className={cx(labelClasses)} htmlFor={id}>{label}</label>;
     return (
       <div className={cx(classes)}>
         {this.props.type === 'select' && this.props.browserDefault ? htmlLabel : null}
