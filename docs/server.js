@@ -11,6 +11,7 @@ import {match, RoutingContext} from 'react-router';
 
 import Root from './src/Root';
 import routes from './src/Routes';
+import { resetID } from '../src/idgen';
 
 import metadata from './generate-metadata';
 
@@ -25,6 +26,7 @@ const target = `http://localhost:8080`;
 Root.assetBaseUrl = target;
 
 app.get('/assets/*', (req, res) => {
+  resetID();
   proxy.web(req, res, { target });
 });
 
