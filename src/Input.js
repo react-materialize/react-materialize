@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import constants from './constants';
 import cx from 'classnames';
 import uuid from 'node-uuid';
@@ -14,14 +13,14 @@ class Input extends React.Component {
 
   _setupEl() {
     if (typeof $ !== 'undefined') {
-      var $inputEl = $(ReactDOM.findDOMNode(this.refs.inputEl));
+      var $inputEl = $(this.refs.inputEl);
 
       if (this.props.type === 'select' && !this.props.browserDefault) {
         $inputEl.material_select('destroy');
         $inputEl.material_select();
       }
       else {
-        var $labelEl = $(ReactDOM.findDOMNode(this.refs.labelEl));
+        var $labelEl = $(this.refs.labelEl);
         if ($inputEl.val()) {
           $labelEl.addClass('active');
         }
