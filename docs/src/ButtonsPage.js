@@ -6,7 +6,9 @@ import PropTable from './PropTable';
 import store from './store';
 import Samples from './Samples';
 import raisedButton from '../../examples/RaisedButton';
+import fixedActionButton from '../../examples/FixedActionButton';
 import floatingButton from '../../examples/FloatingButton';
+import horizontalFab from '../../examples/HorizontalFAB';
 
 const component = 'Button';
 
@@ -38,6 +40,23 @@ class ButtonsPage extends React.Component {
               {floatingButton}
             </ReactPlayground>
           </Col>
+          <h4 className='col s12'>
+            Fixed Action Button
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.fixedActionButton }>
+              {fixedActionButton}
+            </ReactPlayground>
+          </Col>
+          <h4 className='col s12'>
+            Horizontal FAB
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.horizontalFab }>
+              {horizontalFab}
+            </ReactPlayground>
+          </Col>
+ 
           <Col s={12}>
             <PropTable component={component}/>
           </Col>

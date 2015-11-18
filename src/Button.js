@@ -2,38 +2,64 @@ import React from 'react';
 import constants from './constants';
 import cx from 'classnames';
 import Icon from './Icon';
+import idgen from './idgen';
 
 class Button extends React.Component {
   constructor(props) {
     super(props);
     this.renderIcon = this.renderIcon.bind(this);
+    this.renderFab = this.renderFab.bind(this);
   }
 
   render() {
-    let C = this.props.node || 'button';
+    let {
+      className, node, fab, modal, disabled, waves, ...props
+    } = this.props;
+    let C = node || 'button';
     let classes = {
       btn: true,
-      disabled: this.props.disabled,
-      'waves-effect': !!this.props.waves
+      disabled,
+      'waves-effect': waves
     };
 
-    if (constants.WAVES.indexOf(this.props.waves) > -1) {
-      classes['waves-' + this.props.waves] = true;
+    if (constants.WAVES.indexOf(waves) > -1) {
+      classes['waves-' + waves] = true;
     }
 
     constants.STYLES.forEach(style => {
       classes['btn-' + style] = this.props[style];
     });
 
-    if (this.props.modal) {
+    if (modal) {
       classes['modal-action'] = true;
-      classes['modal-' + this.props.modal] = true;
+      classes['modal-' + modal] = true;
     }
+    if (fab) {
+      return this.renderFab(cx(classes, className));
+    } else {
+      return (
+        <C {...props} className={cx(classes, className)}>
+          { this.renderIcon() }
+          { this.props.children }
+        </C>
+      );
+    }
+  }
+
+  renderFab(className) {
     return (
-      <C {...this.props} className={cx(classes, this.props.className)}>
-        { this.renderIcon() }
-        { this.props.children }
-      </C>
+      <div className='fixed-action-btn'>
+        <a className={className}>
+          { this.renderIcon() }
+        </a>
+        <ul>
+          {
+            React.Children.map(this.props.children, child => {
+              return <li key={idgen()}>{child}</li>;
+            })
+          }
+        </ul>
+      </div>
     );
   }
 
@@ -54,7 +80,7 @@ Button.propTypes = {
   floating: React.PropTypes.bool,
   /**
    * Fixed action button
-   * If enabled, any children button will be rendered as actions
+   * If enabled, any children button will be rendered as actions, remember to provide an icon.
    * @default vertical
    */
   fab: React.PropTypes.oneOf(['vertical', 'horizontal']),
