@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../src/Card';
-import CardTitle from '../src/CardTitle';
 import Col from '../src/Col';
 
 export default

@@ -57,21 +57,10 @@ const MainNav = React.createClass({
             <Collapsible accordion>
               <CollapsibleItem header="Components" className="bold">
                 <ul>
-                  <li>
-                    <a href="badges.html">
-                      Badges
-                    </a>
-                  </li>
-                  <li>
-                    <a href="buttons.html" >
-                      Buttons
-                    </a>
-                  </li>
-                  <li>
-                    <a href="breadcrumbs.html">
-                      Breadcrumbs
-                    </a>
-                  </li>
+                  <li> <a href="badges.html"> Badges </a> </li>
+                  <li> <a href="buttons.html" > Buttons </a> </li>
+                  <li> <a href="breadcrumbs.html"> Breadcrumbs </a> </li>
+                  <li> <a href="cards.html"> Cards </a> </li>
                 </ul>
               </CollapsibleItem>
             </Collapsible>

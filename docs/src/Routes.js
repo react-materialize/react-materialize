@@ -6,6 +6,7 @@ import GettingStartedPage from './GettingStartedPage';
 import BadgesPage from './BadgesPage';
 import ButtonsPage from './ButtonsPage';
 import BreadcrumbsPage from './BreadcrumbsPage';
+import CardsPage from './CardsPage';
 
 export default
 <Route path='/' component={Root}>
@@ -15,4 +16,5 @@ export default
   <Route path='badges.html' component={BadgesPage} />
   <Route path='buttons.html' component={ButtonsPage} />
   <Route path='breadcrumbs.html' component={BreadcrumbsPage} />
+  <Route path='cards.html' component={CardsPage} />
 </Route>;
