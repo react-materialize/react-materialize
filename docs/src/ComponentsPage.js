@@ -6,6 +6,9 @@ import ReactPlayground from './ReactPlayground';
 import raisedButtons from '../../examples/RaisedButton';
 
 import accordion from '../../examples/Accordion';
+import badgeCollections from '../../examples/BadgeCollections';
+import badgeDropdowns from '../../examples/BadgeDropdowns';
+import badgeNavbar from '../../examples/BadgeNavbar';
 import basicCollections from '../../examples/BasicCollection';
 import collectionWithHref from '../../examples/CollectionWithHref';
 import collectionWithHeader from '../../examples/CollectionWithHeader';
@@ -100,6 +103,37 @@ var ComponentsPage = React.createClass({
                   {disabledButtons}
               </ReactPlayground>
             </Col>
+
+            <h2 id='badge' className='header col s12'>
+              Badge
+            </h2>
+            <div id="badgeCollections">
+              <h4 className='col s12'>Collections</h4>
+              <Col s={12} m={9}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/BadgeCollections.js'), 'utf8')}>
+                  {badgeCollections}
+                </ReactPlayground>
+              </Col>
+            </div>
+
+            <div id="badgeDropdowns">
+              <h4 className='col s12'>Dropdowns</h4>
+              <Col s={12} m={9}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/BadgeDropdowns.js'), 'utf8')}>
+                  {badgeDropdowns}
+                </ReactPlayground>
+              </Col>
+            </div>
+
+            <div id="badgeNavbar">
+              <h4 className='col s12'>Navbar</h4>
+              <Col s={12} m={9}>
+                <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/BadgeNavbar.js'), 'utf8')}>
+                  {badgeNavbar}
+                </ReactPlayground>
+              </Col>
+            </div>
+
             <h2 id='tab' className='header col s12'>
                 Tab
             </h2>
@@ -290,6 +324,7 @@ var ComponentsPage = React.createClass({
         <Col m={3} l={2} className="hide-on-small-only">
           <ul className='section table-of-contents'>
             <li><a href='#button'>Button</a></li>
+            <li><a href='#badge'>Badge</a></li>
             <li><a href='#tab'>Tab</a></li>
             <li><a href='#navbar'>Navbar</a></li>
             <li><a href='#pagination'>Pagination</a></li>
