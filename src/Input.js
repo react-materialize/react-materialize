@@ -1,19 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import constants from './constants';
 import cx from 'classnames';
-import uuid from 'node-uuid';
+import idgen from './idgen';
+import constants from './constants';
 
 class Input extends React.Component {
   componentDidMount() {
     if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
-      $(ReactDOM.findDOMNode(this.refs.inputEl)).material_select();
+      $(this.refs.inputEl).material_select();
     }
   }
 
   componentDidUpdate() {
     if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
-      var $el = $(ReactDOM.findDOMNode(this.refs.inputEl));
+      let $el = $(this.refs.inputEl);
       $el.material_select('destroy');
       $el.material_select();
     }
@@ -32,7 +31,7 @@ class Input extends React.Component {
     });
     if (id == null) {
       if (this.props.name == null) {
-        id = uuid.v1();
+        id = `input_${idgen()}`;
       } else {
         id = this.props.name;
       }

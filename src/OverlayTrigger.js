@@ -1,7 +1,6 @@
 import React from 'react';
 import Overlay from './Overlay';
-import uuid from 'node-uuid';
-
+import idgen from './idgen';
 
 class OverlayTrigger extends Overlay {
   constructor(props) {
@@ -9,7 +8,7 @@ class OverlayTrigger extends Overlay {
     this.state = {isOverlayShown: false};
     this.showOverlay = this.showOverlay.bind(this);
     this.renderOverlay = this.renderOverlay.bind(this);
-    this.overlayID = uuid.v1();
+    this.overlayID = `overlay_${idgen()}`;
   }
 
   render() {

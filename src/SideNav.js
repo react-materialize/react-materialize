@@ -1,7 +1,7 @@
 import React from 'react';
-import uuid from 'node-uuid';
 
 import Icon from './Icon';
+import idgen from './idgen';
 
 class SideNav extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class SideNav extends React.Component {
   }
 
   render() {
-    let id = uuid.v1();
+    let id = `sidenav_${idgen()}`;
     return (
       <nav>
         <ul className="right hide-on-med-and-down">
