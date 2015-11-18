@@ -21,7 +21,9 @@ class Badge extends React.Component {
 }
 
 Badge.propTypes = {
-  // add the "new" class name
+  /**
+   * Add the <b>new</b> class name
+   */
   newIcon: React.PropTypes.bool,
 };
 

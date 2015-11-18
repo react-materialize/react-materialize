@@ -8,6 +8,7 @@ const Root = React.createClass({
       return [
         'index.html',
         'get-started.html',
+        'badges.html',
         'breadcrumbs.html',
       ];
     }

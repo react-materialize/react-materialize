@@ -7,7 +7,7 @@ export default
 <Navbar brand='logo' right>
   <NavItem href='#!'>sass</NavItem>
   <NavItem href='#!'>
-    sass <Badge new={true}>4</Badge>
+    sass <Badge newIcon>4</Badge>
   </NavItem>
   <NavItem href='#!'>sass</NavItem>
 </Navbar>;

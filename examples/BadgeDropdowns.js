@@ -1,6 +1,5 @@
 import React from 'react';
 import Badge from '../src/Badge';
-import Button from '../src/Button';
 import Icon from '../src/Icon';
 
 export default
@@ -14,7 +13,7 @@ export default
 
     <li>
       <a href="#!">
-        two<Badge new={true}>1</Badge>
+        two<Badge newIcon>1</Badge>
       </a>
     </li>
 

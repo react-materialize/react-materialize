@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import CardTitle from './CardTitle';
 import Icon from './Icon';
 
 class Card extends React.Component {

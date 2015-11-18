@@ -9,7 +9,7 @@ export default
     Alan <Badge>1</Badge>
   </CollectionItem>
   <CollectionItem href="#!">
-    Alan <Badge new={true}>4</Badge>
+    Alan <Badge newIcon>4</Badge>
   </CollectionItem>
   <CollectionItem href="#!">
     Alan

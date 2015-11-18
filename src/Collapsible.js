@@ -6,11 +6,15 @@ class Collapsible extends React.Component {
     super(props);
     this.renderItem = this.renderItem.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
-    this.state = { activeKey: this.props.defaultActiveKey };
+    this.state = {
+      activeKey: this.props.defaultActiveKey
+    };
   }
 
   render() {
-    let {accordion, popout, className, children, ...props} = this.props;
+    let {
+      accordion, popout, className, children, ...props
+    } = this.props;
     let classes = {
       collapsible: true,
       popout,
@@ -44,7 +48,9 @@ class Collapsible extends React.Component {
     if (this.state.activeKey === key) {
       key = null;
     }
-    this.setState({activeKey: key});
+    this.setState({
+      activeKey: key
+    });
   }
 }
 
@@ -60,6 +66,9 @@ Collapsible.propTypes = {
   onSelect: React.PropTypes.func,
 };
 
-Collapsible.defaultProps = {accordion: false};
+Collapsible.defaultProps = {
+  accordion: false
+};
 
 export default Collapsible;
+

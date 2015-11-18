@@ -9,7 +9,7 @@ import breadcrumbs from '../../examples/Breadcrumbs';
 
 const component = 'Breadcrumb';
 
-const Breadcrumbs = React.createClass({
+const BreadcrumbsPage = React.createClass({
   componentDidMount() {
     store.emit('component', component);
   },
@@ -36,4 +36,4 @@ const Breadcrumbs = React.createClass({
   }
 });
 
-export default Breadcrumbs;
+export default BreadcrumbsPage;

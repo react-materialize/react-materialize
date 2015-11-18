@@ -6,7 +6,7 @@ import CollapsibleItem from '../../src/CollapsibleItem';
 
 const MainNav = React.createClass({
   getInitialState() {
-    return {title: 'Breadcrumb'};
+    return {title: 'Components'};
   },
 
   componentDidMount() {
@@ -18,6 +18,7 @@ const MainNav = React.createClass({
   },
 
   onChange(component) {
+    console.info(component);
     this.state.title = component;
   },
 
@@ -47,6 +48,16 @@ const MainNav = React.createClass({
             <Collapsible accordion>
               <CollapsibleItem header="Components" className="bold">
                 <ul>
+                  <li>
+                    <a href="badges.html">
+                      Badges
+                    </a>
+                  </li>
+                  <li>
+                    <a href="buttons.html" >
+                      Buttons
+                    </a>
+                  </li>
                   <li>
                     <a href="breadcrumbs.html">
                       Breadcrumbs
