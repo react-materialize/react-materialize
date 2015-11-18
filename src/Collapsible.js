@@ -13,11 +13,11 @@ class Collapsible extends React.Component {
     let {accordion, popout, className, children, ...props} = this.props;
     let classes = {
       collapsible: true,
-      accordion,
       popout,
     };
+    let collapsible = accordion ? 'accordion' : 'expandable';
     return (
-      <ul className={cx(className, classes)} {...props}>
+      <ul className={cx(className, classes)} {...props} data-collapsible={collapsible}>
         {React.Children.map(children, this.renderItem)}
       </ul>
     );
@@ -49,6 +49,11 @@ class Collapsible extends React.Component {
 }
 
 Collapsible.propTypes = {
+  /**
+   * There are two ways a collapsible can behave. It can either allow multiple sections to stay open,
+   * or it can only allow one section to stay open at a time, which is called an accordion.
+   * @default false
+   */
   accordion: React.PropTypes.bool,
   popout: React.PropTypes.bool,
   defaultActiveKey: React.PropTypes.number,

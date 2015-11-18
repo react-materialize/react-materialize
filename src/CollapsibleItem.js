@@ -10,21 +10,16 @@ class CollapsibleItem extends React.Component {
     this.renderIcon = this.renderIcon.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.props.expanded !== newProps.expanded) {
-      this.setState({expanded: newProps.expanded});
-    }
-  }
-
   render() {
-    let {header, icon, children, ...props} = this.props;
+    let {node, header, icon, children, ...props} = this.props;
+    let C = node || 'a';
 
     return (
       <li {...props}>
-        <div className='collapsible-header' onClick={this.handleClick}>
+        <C className='collapsible-header' onClick={this.handleClick}>
           {icon ? this.renderIcon(icon) : null}
           {header}
-        </div>
+        </C>
         {this.state.expanded ? this.renderBody() : null}
       </li>
     );
@@ -42,7 +37,7 @@ class CollapsibleItem extends React.Component {
     let style = {display: 'block'};
     return (
       <div className='collapsible-body' style={style}>
-        <p>{this.props.children}</p>
+        {this.props.children}
       </div>
     );
   }
@@ -63,6 +58,16 @@ CollapsibleItem.propTypes = {
    * @default false
    */
   expanded: React.PropTypes.bool,
+  /**
+   * The node type of the header
+   * @default a
+   */
+  node: React.PropTypes.node,
 }
+
+CollapsibleItem.defaultProps = {
+  expanded: false,
+  popout: false,
+};
 
 export default CollapsibleItem;
