@@ -1,7 +1,8 @@
 import React from 'react';
-import SideNav from '../../src/SideNav';
-import MenuItem from '../../src/MenuItem';
 import store from './store';
+import Icon from '../../src/Icon';
+import Collapsible from '../../src/Collapsible';
+import CollapsibleItem from '../../src/CollapsibleItem';
 
 const MainNav = React.createClass({
   getInitialState() {
@@ -26,10 +27,36 @@ const MainNav = React.createClass({
         <nav className="top-nav">
           { this.state.title }
         </nav>
-        <SideNav>
-          <MenuItem href='/get-started.html'>Get started</MenuItem>
-          <MenuItem href='/components.html'>Components</MenuItem>
-        </SideNav>
+        <ul id='nav-mobile' className='side-nav fixed' style={{ left: '0px' }}>
+          <li className='logo'>
+            <a className='brand-logo' id='logo-container' href="https://react-materialize.github.io" >RM</a>
+          </li>
+          <li className='search'>
+            <div className="search-wrapper card">
+              <input id="search" ></input>
+              <Icon>search</Icon>
+            </div>
+            <div className="search-results"></div>
+          </li>
+          <li className="bold">
+            <a className="waves-effect waves-teal" href="getting-started.html">
+              Getting started
+            </a>
+          </li>
+          <li className="no-padding" >
+            <Collapsible accordion>
+              <CollapsibleItem header="Components" className="bold">
+                <ul>
+                  <li>
+                    <a href="breadcrumbs.html">
+                      Breadcrumbs
+                    </a>
+                  </li>
+                </ul>
+              </CollapsibleItem>
+            </Collapsible>
+          </li>
+        </ul>
       </header>
     );
   }
