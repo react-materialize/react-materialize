@@ -6,7 +6,9 @@ import CollapsibleItem from '../../src/CollapsibleItem';
 
 const MainNav = React.createClass({
   getInitialState() {
-    return {title: 'Components'};
+    return {
+      title: 'Components'
+    };
   },
 
   componentDidMount() {
@@ -18,15 +20,22 @@ const MainNav = React.createClass({
   },
 
   onChange(component) {
-    console.info(component);
-    this.state.title = component;
+    this.setState({
+      title: component
+    });
   },
 
   render() {
     return (
       <header>
         <nav className="top-nav">
-          { this.state.title }
+          <div className="container" >
+            <div className="nav-wrapper">
+              <a className="page-title">
+                { this.state.title }
+              </a>
+            </div>
+          </div>
         </nav>
         <ul id='nav-mobile' className='side-nav fixed' style={{ left: '0px' }}>
           <li className='logo'>
