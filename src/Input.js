@@ -4,24 +4,30 @@ import idgen from './idgen';
 import constants from './constants';
 
 class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {hasValue: !!this.props.defaultValue};
+    this._onChange = this._onChange.bind(this);
+  }
+
   componentDidMount() {
-    if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
+    if (this.props.type === 'select' && !this.props.browserDefault) {
       $(this.refs.inputEl).material_select();
     }
   }
 
-  componentDidUpdate() {
-    if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
-      let $el = $(this.refs.inputEl);
-      $el.material_select('destroy');
-      $el.material_select();
+  _onChange() {
+    if (this.props.type !== 'select' || !this.props.browserDefault) {
+      this.setState({
+        hasValue: !!this.refs.inputEl.value
+      });
     }
   }
 
   render() {
     let classes = {
       col: true,
-      'input-field': true
+      'input-field': this.props.type !== 'checkbox' && this.props.type !== 'radio'
     };
     let {placeholder, id, type, label, ...props} = this.props;
     constants.SIZES.forEach(size => {
@@ -29,8 +35,8 @@ class Input extends React.Component {
         classes[size + this.props[size]] = true;
       }
     });
-    if (id == null) {
-      if (this.props.name == null) {
+    if (id === null) {
+      if (this.props.name === null) {
         id = `input_${idgen()}`;
       } else {
         id = this.props.name;
@@ -53,12 +59,24 @@ class Input extends React.Component {
         C = 'input';
         inputType = type || 'text';
     }
-    let htmlLabel = <label htmlFor={id}>{label}</label>;
+
+    let labelClasses = {
+      active: this.state.hasValue
+    };
+
+    let htmlLabel = <label className={cx(labelClasses)} htmlFor={id}>{label}</label>;
     return (
       <div className={cx(classes)}>
         {this.props.type === 'select' && this.props.browserDefault ? htmlLabel : null}
-        <C ref="inputEl" {...props} type={inputType} placeholder={placeholder} id={id}
-           className={cx(inputClasses)}/>
+        <C
+          id={id}
+          className={cx(inputClasses)}
+          onChange={this._onChange}
+          placeholder={placeholder}
+          ref="inputEl"
+          type={inputType}
+          {...props} 
+        />
         {this.props.type !== 'select' ? htmlLabel : null}
       </div>
     );
