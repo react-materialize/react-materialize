@@ -11,7 +11,7 @@ class Input extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.type === 'select' && !this.props.browserDefault) {
+    if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
       $(this.refs.inputEl).material_select();
     }
   }
