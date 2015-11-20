@@ -32,6 +32,7 @@ module.exports = {
   modalWithBottomSheet: fs.readFileSync(path.join(__dirname, '../../examples', 'ModalWithBottomSheet.js'), 'utf8'),
   modalWithFixedFooter: fs.readFileSync(path.join(__dirname, '../../examples', 'ModalWithFixedFooter.js'), 'utf8'),
   pagination: fs.readFileSync(path.join(__dirname, '../../examples', 'Pagination.js'), 'utf8'),
+  prefillingTextInput: fs.readFileSync(path.join(__dirname, '../../examples', 'PrefillingTextInput.js'), 'utf8'),
   preloaders: fs.readFileSync(path.join(__dirname, '../../examples', 'Preloaders.js'), 'utf8'),
   raisedButton: fs.readFileSync(path.join(__dirname, '../../examples', 'RaisedButton.js'), 'utf8'),
   rightAlighedNavbar: fs.readFileSync(path.join(__dirname, '../../examples', 'RightAlignedNavbar.js'), 'utf8'),

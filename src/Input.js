@@ -6,7 +6,7 @@ import constants from './constants';
 class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {hasValue: !!this.props.defaultValue};
+    this.state = {value: this.props.defaultValue};
     this._onChange = this._onChange.bind(this);
   }
 
@@ -16,10 +16,10 @@ class Input extends React.Component {
     }
   }
 
-  _onChange() {
+  _onChange(e) {
     if (this.props.type !== 'select' || !this.props.browserDefault) {
       this.setState({
-        hasValue: !!this.refs.inputEl.value
+        value: e.target.value
       });
     }
   }
@@ -29,7 +29,7 @@ class Input extends React.Component {
       col: true,
       'input-field': this.props.type !== 'checkbox' && this.props.type !== 'radio'
     };
-    let {placeholder, id, type, label, ...props} = this.props;
+    let {defaultValue, placeholder, id, type, label, ...props} = this.props;
     constants.SIZES.forEach(size => {
       if (this.props[size]) {
         classes[size + this.props[size]] = true;
@@ -61,7 +61,7 @@ class Input extends React.Component {
     }
 
     let labelClasses = {
-      active: this.state.hasValue
+      active: this.state.value
     };
 
     let htmlLabel = <label className={cx(labelClasses)} htmlFor={id}>{label}</label>;
@@ -75,6 +75,7 @@ class Input extends React.Component {
           placeholder={placeholder}
           ref="inputEl"
           type={inputType}
+          value={this.state.value}
           {...props} 
         />
         {this.props.type !== 'select' ? htmlLabel : null}
