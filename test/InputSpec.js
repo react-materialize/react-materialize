@@ -50,7 +50,6 @@ describe('Input', function() {
     assert.ok(options);
     assert.equal(options.length, 4);
     assert.equal(options[0].getAttribute('disabled'), '');
-    assert.equal(options[0].getAttribute('selected'), '');
     assert.equal(options[0].value, defaultOption);
   });
 });

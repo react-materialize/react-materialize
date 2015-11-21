@@ -24,7 +24,7 @@ class Input extends React.Component {
   }
 
   render() {
-    let { defaultValue, placeholder, id, name, type, label, children, validate, ...props} = this.props;
+    let { defaultValue, placeholder, id, type, label, children, validate, ...props} = this.props;
     let classes = {
       col: true,
       'input-field': type !== 'checkbox' && type !== 'radio'
@@ -34,12 +34,8 @@ class Input extends React.Component {
         classes[size + this.props[size]] = true;
       }
     });
-    if (id === null) {
-      if (name === null) {
-        id = `input_${idgen()}`;
-      } else {
-        id = name;
-      }
+    if (!id) {
+      id = `input_${idgen()}`;
     }
     let inputClasses = {
       validate
@@ -61,9 +57,9 @@ class Input extends React.Component {
     let htmlLabel = label ? <label className={cx(labelClasses)} htmlFor={id}>{label}</label> : null;
 
     if (this.isSelect()) {
-      let options = placeholder && !defaultValue ? [<option disabled selected>{placeholder}</option>] : [];
+      let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
       options = options.concat(React.Children.map(children, (child) => {
-        return React.cloneElement(child, {'selected': child.props.value === defaultValue});
+        return React.cloneElement(child, {'key': child.props.value});
       }));
       return (
         <div className={cx(classes)}>
@@ -73,6 +69,7 @@ class Input extends React.Component {
             className={cx(inputClasses)}
             onChange={this._onChange}
             ref='inputEl'
+            value={this.state.value}
             {...props} 
           >
             { options }

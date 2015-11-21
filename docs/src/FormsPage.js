@@ -8,6 +8,7 @@ import Samples from './Samples';
 import inputFields from '../../examples/InputFields';
 import iconPrefixesInput from '../../examples/IconPrefixesInput';
 import prefillingTextInput from '../../examples/PrefillingTextInput';
+import radioInput from '../../examples/radioInput';
 import selectSimple from '../../examples/selectSimple';
 
 class FormsPage extends React.Component {
@@ -53,6 +54,14 @@ class FormsPage extends React.Component {
           <Col s={12}>
             <ReactPlayground code={ Samples.selectSimple }>
               {selectSimple}
+            </ReactPlayground>
+          </Col>
+          <h4 className='col s12'>
+            Radio
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.radioInput }>
+              {radioInput}
             </ReactPlayground>
           </Col>
 
