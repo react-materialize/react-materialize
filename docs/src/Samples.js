@@ -24,6 +24,7 @@ module.exports = {
   grid: fs.readFileSync(path.join(__dirname, '../../examples', 'Grid.js'), 'utf8'),
   horizontalFab: fs.readFileSync(path.join(__dirname, '../../examples', 'HorizontalFAB.js'), 'utf8'),
   iconLinksNavbar: fs.readFileSync(path.join(__dirname, '../../examples', 'IconLinksNavbar.js'), 'utf8'),
+  iconPrefixesInput: fs.readFileSync(path.join(__dirname, '../../examples', 'IconPrefixesInput.js'), 'utf8'),
   inputFields: fs.readFileSync(path.join(__dirname, '../../examples', 'InputFields.js'), 'utf8'),
   largeButton: fs.readFileSync(path.join(__dirname, '../../examples', 'LargeButton.js'), 'utf8'),
   leftAlignedNavbar: fs.readFileSync(path.join(__dirname, '../../examples', 'LeftAlignedNavbar.js'), 'utf8'),

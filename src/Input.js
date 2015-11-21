@@ -17,11 +17,9 @@ class Input extends React.Component {
   }
 
   _onChange(e) {
-    if (this.props.type !== 'select' || !this.props.browserDefault) {
-      this.setState({
-        value: e.target.value
-      });
-    }
+    this.setState({
+      value: e.target.value
+    });
   }
 
   render() {
@@ -29,7 +27,7 @@ class Input extends React.Component {
       col: true,
       'input-field': this.props.type !== 'checkbox' && this.props.type !== 'radio'
     };
-    let {defaultValue, placeholder, id, type, label, ...props} = this.props;
+    let { defaultValue, placeholder, id, type, label, children, ...props} = this.props;
     constants.SIZES.forEach(size => {
       if (this.props[size]) {
         classes[size + this.props[size]] = true;
@@ -51,36 +49,54 @@ class Input extends React.Component {
         C = 'textarea';
         inputClasses['materialize-textarea'] = true;
         break;
-      case 'select':
-        C = 'select';
-        inputClasses['browser-default'] = !!this.props.browserDefault;
-        break;
       default:
         C = 'input';
         inputType = type || 'text';
     }
-
     let labelClasses = {
       active: this.state.value
     };
 
-    let htmlLabel = <label className={cx(labelClasses)} htmlFor={id}>{label}</label>;
-    return (
-      <div className={cx(classes)}>
-        {this.props.type === 'select' && this.props.browserDefault ? htmlLabel : null}
-        <C
-          id={id}
-          className={cx(inputClasses)}
-          onChange={this._onChange}
-          placeholder={placeholder}
-          ref="inputEl"
-          type={inputType}
-          value={this.state.value}
-          {...props} 
-        />
-        {this.props.type !== 'select' ? htmlLabel : null}
-      </div>
-    );
+    let htmlLabel = <label className={cx(labelClasses)} htmlFor={id}>{this.props.label}</label>;
+
+    if (this.props.type === 'select') {
+      return (
+        <div className={cx(classes)}>
+          {htmlLabel}
+          <select
+            id={id}
+            className={cx(inputClasses)}
+            onChange={this._onChange}
+            ref="inputEl"
+            value={this.state.value}
+            {...props} 
+          >
+            {children}
+          </select>
+        </div>
+      );
+    } else {
+      let icon = null;
+      if (React.Children.count(children) == 1) {
+        icon = React.Children.only(children);
+      }
+      return (
+        <div className={cx(classes)}>
+            {icon === null ? null : React.cloneElement(icon, {className: 'prefix'})}
+            <C
+                id={id}
+                className={cx(inputClasses)}
+                onChange={this._onChange}
+                placeholder={placeholder}
+                ref="inputEl"
+                type={inputType}
+                value={this.state.value}
+                {...props} 
+            />
+            {htmlLabel}
+        </div>
+      );
+    }
   }
 }
 

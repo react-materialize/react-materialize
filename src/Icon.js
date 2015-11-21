@@ -14,7 +14,7 @@ class Icon extends React.Component {
       constants.ICON_SIZES.forEach(s => {
         classes[s] = this.props[s];
       });
-      return <i className={cx(classes)}>{this.props.children}</i>;
+      return <i className={cx(classes, this.props.className)}>{this.props.children}</i>;
     }
 }
 
