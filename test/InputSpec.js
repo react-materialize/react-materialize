@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 import TestUtils from 'react-addons-test-utils';
 import Input from '../src/Input';
 import Icon from '../src/Icon';
@@ -35,5 +36,21 @@ describe('Input', function() {
     );
     let input = TestUtils.findRenderedDOMComponentWithTag(instance, 'i');
     assert.include(ReactDOM.findDOMNode(input).className, 'prefix');
+  });
+
+  it('renders placeholder as the default disabled option for select', () => {
+    let defaultOption = 'Choose your option';
+    let instance = TestUtils.renderIntoDocument(
+        <Input type='select' placeholder={defaultOption}>
+            <option value='1'>Option 1</option>
+            <option value='2'>Option 2</option>
+            <option value='3'>Option 3</option>
+        </Input>);
+    let options = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'option');
+    assert.ok(options);
+    assert.equal(options.length, 4);
+    assert.equal(options[0].getAttribute('disabled'), '');
+    assert.equal(options[0].getAttribute('selected'), '');
+    assert.equal(options[0].value, defaultOption);
   });
 });

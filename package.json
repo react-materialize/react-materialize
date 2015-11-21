@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "test": "npm run lint && karma start --single-run",
+    "watch": "karma start",
     "build": "babel -d lib src",
     "lint": "eslint src",
     "fix": "eslint src --fix"

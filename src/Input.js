@@ -24,25 +24,25 @@ class Input extends React.Component {
   }
 
   render() {
+    let { defaultValue, placeholder, id, name, type, label, children, validate, ...props} = this.props;
     let classes = {
       col: true,
-      'input-field': this.props.type !== 'checkbox' && this.props.type !== 'radio'
+      'input-field': type !== 'checkbox' && type !== 'radio'
     };
-    let { defaultValue, placeholder, id, type, label, children, ...props} = this.props;
     constants.SIZES.forEach(size => {
       if (this.props[size]) {
         classes[size + this.props[size]] = true;
       }
     });
     if (id === null) {
-      if (this.props.name === null) {
+      if (name === null) {
         id = `input_${idgen()}`;
       } else {
-        id = this.props.name;
+        id = name;
       }
     }
     let inputClasses = {
-      validate: this.props.validate !== false
+      validate
     };
     let C, inputType;
     switch (type) {
@@ -58,9 +58,13 @@ class Input extends React.Component {
       active: this.state.value || this.isSelect()
     };
 
-    let htmlLabel = <label className={cx(labelClasses)} htmlFor={id}>{this.props.label}</label>;
+    let htmlLabel = label ? <label className={cx(labelClasses)} htmlFor={id}>{label}</label> : null;
 
     if (this.isSelect()) {
+      let options = placeholder && !defaultValue ? [<option disabled selected>{placeholder}</option>] : [];
+      options = options.concat(React.Children.map(children, (child) => {
+        return React.cloneElement(child, {'selected': child.props.value === defaultValue});
+      }));
       return (
         <div className={cx(classes)}>
           {htmlLabel}
@@ -68,11 +72,10 @@ class Input extends React.Component {
             id={id}
             className={cx(inputClasses)}
             onChange={this._onChange}
-            ref="inputEl"
-            value={this.state.value}
+            ref='inputEl'
             {...props} 
           >
-            {children}
+            { options }
           </select>
         </div>
       );
@@ -89,7 +92,7 @@ class Input extends React.Component {
                 className={cx(inputClasses)}
                 onChange={this._onChange}
                 placeholder={placeholder}
-                ref="inputEl"
+                ref='inputEl'
                 type={inputType}
                 value={this.state.value}
                 {...props} 
