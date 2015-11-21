@@ -8,6 +8,7 @@ class Input extends React.Component {
     super(props);
     this.state = {value: this.props.defaultValue};
     this._onChange = this._onChange.bind(this);
+    this.isSelect = this.isSelect.bind(this);
   }
 
   componentDidMount() {
@@ -54,12 +55,12 @@ class Input extends React.Component {
         inputType = type || 'text';
     }
     let labelClasses = {
-      active: this.state.value
+      active: this.state.value || this.isSelect()
     };
 
     let htmlLabel = <label className={cx(labelClasses)} htmlFor={id}>{this.props.label}</label>;
 
-    if (this.props.type === 'select') {
+    if (this.isSelect()) {
       return (
         <div className={cx(classes)}>
           {htmlLabel}
@@ -97,6 +98,10 @@ class Input extends React.Component {
         </div>
       );
     }
+  }
+
+  isSelect() {
+    return this.props.type === 'select';
   }
 }
 

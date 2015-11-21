@@ -8,6 +8,7 @@ import Samples from './Samples';
 import inputFields from '../../examples/InputFields';
 import iconPrefixesInput from '../../examples/IconPrefixesInput';
 import prefillingTextInput from '../../examples/PrefillingTextInput';
+import selectSimple from '../../examples/selectSimple';
 
 class FormsPage extends React.Component {
   componentDidMount() {
@@ -40,9 +41,18 @@ class FormsPage extends React.Component {
           <h4 className='col s12'>
             Icon Prefixes
           </h4>
+          <p className='col s12'>You can add an Icon tag to the children of Input tag, it will be shown as icon prefix</p>
           <Col s={12}>
             <ReactPlayground code={ Samples.iconPrefixesInput }>
               {iconPrefixesInput}
+            </ReactPlayground>
+          </Col>
+          <h4 className='col s12'>
+            Select
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.selectSimple }>
+              {selectSimple}
             </ReactPlayground>
           </Col>
 
