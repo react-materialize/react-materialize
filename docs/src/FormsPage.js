@@ -5,10 +5,11 @@ import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import store from './store';
 import Samples from './Samples';
-import inputFields from '../../examples/InputFields';
 import iconPrefixesInput from '../../examples/IconPrefixesInput';
+import inputRadio from '../../examples/InputRadio';
+import inputFields from '../../examples/InputFields';
+import inputCheckbox from '../../examples/InputCheckbox';
 import prefillingTextInput from '../../examples/PrefillingTextInput';
-import radioInput from '../../examples/radioInput';
 import selectSimple from '../../examples/selectSimple';
 
 class FormsPage extends React.Component {
@@ -60,8 +61,17 @@ class FormsPage extends React.Component {
             Radio
           </h4>
           <Col s={12}>
-            <ReactPlayground code={ Samples.radioInput }>
-              {radioInput}
+            <ReactPlayground code={ Samples.inputRadio }>
+              {inputRadio}
+            </ReactPlayground>
+          </Col>
+
+          <h4 className='col s12'>
+            Checkbox
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.inputCheckbox }>
+              {inputCheckbox}
             </ReactPlayground>
           </Col>
 
