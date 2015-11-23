@@ -65,6 +65,7 @@ const MainNav = React.createClass({
                   <li> <a href="collections.html"> Collections </a> </li>
                   <li> <a href="footer.html"> Footer </a> </li>
                   <li> <a href="forms.html"> Forms </a> </li>
+                  <li> <a href="navbar.html"> Navbar </a> </li>
                 </ul>
               </CollapsibleItem>
             </Collapsible>
