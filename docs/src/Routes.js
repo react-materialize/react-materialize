@@ -8,6 +8,7 @@ import ButtonsPage from './ButtonsPage';
 import BreadcrumbsPage from './BreadcrumbsPage';
 import CardsPage from './CardsPage';
 import ChipsPage from './ChipsPage';
+import CollectionsPage from './CollectionsPage';
 import FormsPage from './FormsPage';
 
 export default
@@ -20,5 +21,6 @@ export default
   <Route path='breadcrumbs.html' component={BreadcrumbsPage} />
   <Route path='cards.html' component={CardsPage} />
   <Route path='chips.html' component={ChipsPage} />
+  <Route path='collections.html' component={CollectionsPage} />
   <Route path='forms.html' component={FormsPage} />
 </Route>;

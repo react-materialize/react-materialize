@@ -62,6 +62,7 @@ const MainNav = React.createClass({
                   <li> <a href="breadcrumbs.html"> Breadcrumbs </a> </li>
                   <li> <a href="cards.html"> Cards </a> </li>
                   <li> <a href="chips.html"> Chips </a> </li>
+                  <li> <a href="collections.html"> Collections </a> </li>
                   <li> <a href="forms.html"> Forms </a> </li>
                 </ul>
               </CollapsibleItem>

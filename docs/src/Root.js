@@ -13,6 +13,7 @@ const Root = React.createClass({
         'breadcrumbs.html',
         'cards.html',
         'chips.html',
+        'collections.html',
         'forms.html',
       ];
     }
