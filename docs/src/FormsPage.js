@@ -9,6 +9,7 @@ import iconPrefixesInput from '../../examples/IconPrefixesInput';
 import inputRadio from '../../examples/InputRadio';
 import inputFields from '../../examples/InputFields';
 import inputCheckbox from '../../examples/InputCheckbox';
+import inputSwitch from '../../examples/InputSwitch';
 import prefillingTextInput from '../../examples/PrefillingTextInput';
 import selectSimple from '../../examples/selectSimple';
 
@@ -74,6 +75,14 @@ class FormsPage extends React.Component {
               {inputCheckbox}
             </ReactPlayground>
           </Col>
+        <h4 className='col s12'>
+        Switch
+      </h4>
+        <Col s={12}>
+        <ReactPlayground code={ Samples.inputSwitch }>
+        {inputSwitch}
+      </ReactPlayground>
+        </Col>
 
           <Col s={12}>
             <PropTable component='Input'/>

@@ -46,6 +46,9 @@ class Input extends React.Component {
         C = 'textarea';
         inputClasses['materialize-textarea'] = true;
         break;
+      case 'switch':
+        C = 'input';
+        inputType = 'checkbox';
       default:
         C = 'input';
         inputType = type || 'text';
@@ -70,13 +73,25 @@ class Input extends React.Component {
             onChange={this._onChange}
             ref='inputEl'
             value={this.state.value}
-            {...props} 
+            {...props}
           >
             { options }
           </select>
         </div>
       );
-    } else {
+    } else if (type === 'switch') {
+      return (
+        <div className="switch">
+          <label>
+            Off
+            <input type="checkbox" name={this.props.name} {...props} />
+            <span className="lever"></span>
+            On
+          </label>
+        </div>
+      );
+    }
+    else {
       let icon = null;
       if (React.Children.count(children) == 1) {
         icon = React.Children.only(children);
@@ -92,7 +107,7 @@ class Input extends React.Component {
                 ref='inputEl'
                 type={inputType}
                 value={this.state.value}
-                {...props} 
+                {...props}
             />
             {htmlLabel}
         </div>
@@ -110,6 +125,10 @@ Input.propTypes = {
   m: React.PropTypes.number,
   l: React.PropTypes.number,
   label: React.PropTypes.node,
+  /**
+   * Input field type, e.g. select, checkbox, radio, text, tel, email
+   * @default 'text'
+   */
   type: React.PropTypes.string,
   defaultValue: React.PropTypes.string,
   placeholder: React.PropTypes.string,

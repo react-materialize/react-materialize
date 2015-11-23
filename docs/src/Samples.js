@@ -28,6 +28,7 @@ module.exports = {
   inputCheckbox: fs.readFileSync(path.join(__dirname, '../../examples', 'InputCheckbox.js'), 'utf8'),
   inputFields: fs.readFileSync(path.join(__dirname, '../../examples', 'InputFields.js'), 'utf8'),
   inputRadio: fs.readFileSync(path.join(__dirname, '../../examples', 'InputRadio.js'), 'utf8'),
+  inputSwitch: fs.readFileSync(path.join(__dirname, '../../examples', 'InputSwitch.js'), 'utf8'),
   largeButton: fs.readFileSync(path.join(__dirname, '../../examples', 'LargeButton.js'), 'utf8'),
   leftAlignedNavbar: fs.readFileSync(path.join(__dirname, '../../examples', 'LeftAlignedNavbar.js'), 'utf8'),
   mediaBox: fs.readFileSync(path.join(__dirname, '../../examples', 'MediaBox.js'), 'utf8'),
