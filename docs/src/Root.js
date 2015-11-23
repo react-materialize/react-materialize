@@ -9,7 +9,11 @@ const Root = React.createClass({
         'index.html',
         'get-started.html',
         'badges.html',
+        'buttons.html',
         'breadcrumbs.html',
+        'cards.html',
+        'chips.html',
+        'forms.html',
       ];
     }
   },

@@ -7,6 +7,7 @@ import BadgesPage from './BadgesPage';
 import ButtonsPage from './ButtonsPage';
 import BreadcrumbsPage from './BreadcrumbsPage';
 import CardsPage from './CardsPage';
+import ChipsPage from './ChipsPage';
 import FormsPage from './FormsPage';
 
 export default
@@ -18,5 +19,6 @@ export default
   <Route path='buttons.html' component={ButtonsPage} />
   <Route path='breadcrumbs.html' component={BreadcrumbsPage} />
   <Route path='cards.html' component={CardsPage} />
+  <Route path='chips.html' component={ChipsPage} />
   <Route path='forms.html' component={FormsPage} />
 </Route>;

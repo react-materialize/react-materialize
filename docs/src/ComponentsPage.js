@@ -13,7 +13,7 @@ import basicCollections from '../../examples/BasicCollection';
 import collectionWithHref from '../../examples/CollectionWithHref';
 import collectionWithHeader from '../../examples/CollectionWithHeader';
 import collapsible from '../../examples/Collapsible';
-import contactChip from '../../examples/ContactChip';
+import chips from '../../examples/Chips';
 import disabledButtons from '../../examples/DisabledButton';
 import floatingButtons from '../../examples/FloatingButton';
 import flatButtons from '../../examples/FlatButton';
@@ -32,7 +32,6 @@ import slider from '../../examples/Slider';
 import submitButtons from '../../examples/SubmitButton';
 import toast from '../../examples/Toast';
 import tab from '../../examples/Tab';
-import tag from '../../examples/Tag';
 import PropTable from './PropTable';
 
 var path = require('path');
@@ -220,13 +219,8 @@ var ComponentsPage = React.createClass({
               Chip
             </h2>
             <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/ContactChip.js'), 'utf8')}>
-                {contactChip}
-              </ReactPlayground>
-            </Col>
-            <Col s={12}>
-              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Tag.js'), 'utf8')}>
-                {tag}
+              <ReactPlayground code={fs.readFileSync(path.join(__dirname, '/../../examples/Chips.js'), 'utf8')}>
+                {chips}
               </ReactPlayground>
             </Col>
             <h2 id='form' className='header col s12'>

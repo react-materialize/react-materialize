@@ -13,10 +13,10 @@ module.exports = {
   cardPanel: fs.readFileSync(path.join(__dirname, '../../examples', 'CardPanel.js'), 'utf8'),
   cardReveal: fs.readFileSync(path.join(__dirname, '../../examples', 'CardReveal.js'), 'utf8'),
   cardSimple: fs.readFileSync(path.join(__dirname, '../../examples', 'CardSimple.js'), 'utf8'),
+  chips: fs.readFileSync(path.join(__dirname, '../../examples', 'Chips.js'), 'utf8'),
   collapsible: fs.readFileSync(path.join(__dirname, '../../examples', 'Collapsible.js'), 'utf8'),
   collectionWithHeader: fs.readFileSync(path.join(__dirname, '../../examples', 'CollectionWithHeader.js'), 'utf8'),
   collectionWithHref: fs.readFileSync(path.join(__dirname, '../../examples', 'CollectionWithHref.js'), 'utf8'),
-  contactChip: fs.readFileSync(path.join(__dirname, '../../examples', 'ContactChip.js'), 'utf8'),
   disabledButton: fs.readFileSync(path.join(__dirname, '../../examples', 'DisabledButton.js'), 'utf8'),
   fixedActionButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FixedActionButton.js'), 'utf8'),
   flatButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FlatButton.js'), 'utf8'),
@@ -44,6 +44,5 @@ module.exports = {
   slider: fs.readFileSync(path.join(__dirname, '../../examples', 'Slider.js'), 'utf8'),
   submitButton: fs.readFileSync(path.join(__dirname, '../../examples', 'SubmitButton.js'), 'utf8'),
   tab: fs.readFileSync(path.join(__dirname, '../../examples', 'Tab.js'), 'utf8'),
-  tag: fs.readFileSync(path.join(__dirname, '../../examples', 'Tag.js'), 'utf8'),
   toast: fs.readFileSync(path.join(__dirname, '../../examples', 'Toast.js'), 'utf8'),
 };
