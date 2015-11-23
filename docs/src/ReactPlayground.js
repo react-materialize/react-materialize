@@ -16,14 +16,10 @@ class ReactPlayground extends React.Component {
     var {name, code, ...props} = this.props;
     return (
       <div className='playground'>
-        <Row>
-          {this.props.children}
-        </Row>
-        <Row>
-          <pre><code className='language-markup'>
-            {this.truncate(this.props.code)}
-          </code></pre>
-        </Row>
+        {this.props.children}
+        <pre><code className='language-markup'>
+        {this.truncate(this.props.code)}
+        </code></pre>
       </div>
     );
   }

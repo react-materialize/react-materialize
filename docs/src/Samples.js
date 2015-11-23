@@ -21,6 +21,7 @@ module.exports = {
   fixedActionButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FixedActionButton.js'), 'utf8'),
   flatButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FlatButton.js'), 'utf8'),
   floatingButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FloatingButton.js'), 'utf8'),
+  footer: fs.readFileSync(path.join(__dirname, '../../examples', 'Footer.js'), 'utf8'),
   grid: fs.readFileSync(path.join(__dirname, '../../examples', 'Grid.js'), 'utf8'),
   horizontalFab: fs.readFileSync(path.join(__dirname, '../../examples', 'HorizontalFAB.js'), 'utf8'),
   iconLinksNavbar: fs.readFileSync(path.join(__dirname, '../../examples', 'IconLinksNavbar.js'), 'utf8'),

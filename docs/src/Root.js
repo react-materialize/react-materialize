@@ -14,6 +14,7 @@ const Root = React.createClass({
         'cards.html',
         'chips.html',
         'collections.html',
+        'footer.html',
         'forms.html',
       ];
     }
@@ -34,7 +35,6 @@ const Root = React.createClass({
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
               <link href="node_modules/materialize-css/bin/materialize.css" rel="stylesheet" type="text/css" media="screen"/>
               <link href="node_modules/materialize-css/css/ghpages-materialize.css" rel="stylesheet" type="text/css" media="screen"/>
-              <link href="assets/docs.css" rel="stylesheet" type="text/css" media="screen"/>
               <link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" type="text/css" media="screen"/>
               <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
     };
