@@ -1,5 +1,6 @@
 export Button from './Button';
 export Card from './Card';
+export CardPanel from './CardPanel';
 export CardTitle from './CardTitle';
 export Chip from './Chip';
 export Col from './Col';
