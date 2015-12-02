@@ -16,7 +16,7 @@ class Modal extends React.Component {
       <div className={cx(classes)} {...props}>
         <div className="modal-content">
           <h4>{header}</h4>
-          <p>{children}</p>
+          {children}
         </div>
         <div className="modal-footer">
           <Button waves='light' modal='close' flat>Close</Button>
