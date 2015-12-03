@@ -22,10 +22,30 @@ class Table extends React.Component {
 }
 
 Table.propTypes = {
+    /**
+     * Center align all the text in the table
+     * @default false
+     */
     centered: React.PropTypes.bool,
+    /**
+     * Highlight the row that's hovered
+     * @default false
+     */
     hoverable: React.PropTypes.bool,
+    /**
+     * Enable response to make the table horizontally scrollable on smaller screens
+     * @default false
+     */
     responsive: React.PropTypes.bool,
+    /**
+     * Stripped style
+     * @default false
+     */
     stripped: React.PropTypes.bool,
+    /**
+     * Add border to each row
+     * @default false
+     */
     bordered: React.PropTypes.bool
 };
 

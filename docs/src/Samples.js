@@ -45,5 +45,6 @@ module.exports = {
   slider: fs.readFileSync(path.join(__dirname, '../../examples', 'Slider.js'), 'utf8'),
   submitButton: fs.readFileSync(path.join(__dirname, '../../examples', 'SubmitButton.js'), 'utf8'),
   tab: fs.readFileSync(path.join(__dirname, '../../examples', 'Tab.js'), 'utf8'),
+  tableBorderless: fs.readFileSync(path.join(__dirname, '../../examples', 'BorderlessTable.js'), 'utf8'),
   toast: fs.readFileSync(path.join(__dirname, '../../examples', 'Toast.js'), 'utf8'),
 };

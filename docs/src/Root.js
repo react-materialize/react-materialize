@@ -16,7 +16,9 @@ const Root = React.createClass({
         'collections.html',
         'footer.html',
         'forms.html',
+        'grid.html',
         'navbar.html',
+        'table.html',
       ];
     }
   },
