@@ -57,6 +57,16 @@ const MainNav = React.createClass({
             <Collapsible accordion>
               <CollapsibleItem header="Components" className="bold">
                 <ul>
+                  <li> <a href='grid.html'> Grid </a></li>
+                </ul>
+              </CollapsibleItem>
+            </Collapsible>
+          </li>
+
+          <li className="no-padding" >
+            <Collapsible accordion>
+              <CollapsibleItem header="Components" className="bold">
+                <ul>
                   <li> <a href="badges.html"> Badges </a> </li>
                   <li> <a href="buttons.html" > Buttons </a> </li>
                   <li> <a href="breadcrumbs.html"> Breadcrumbs </a> </li>

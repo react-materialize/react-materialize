@@ -11,6 +11,7 @@ import ChipsPage from './ChipsPage';
 import CollectionsPage from './CollectionsPage';
 import FooterPage from './FooterPage';
 import FormsPage from './FormsPage';
+import GridPage from './GridPage';
 import NavbarPage from './NavbarPage';
 
 export default
@@ -26,5 +27,6 @@ export default
   <Route path='collections.html' component={CollectionsPage} />
   <Route path='footer.html' component={FooterPage} />
   <Route path='forms.html' component={FormsPage} />
+  <Route path='grid.html' component={GridPage} />
   <Route path='navbar.html' component={NavbarPage} />
 </Route>;

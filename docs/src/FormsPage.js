@@ -75,14 +75,14 @@ class FormsPage extends React.Component {
               {inputCheckbox}
             </ReactPlayground>
           </Col>
-        <h4 className='col s12'>
-        Switch
-      </h4>
-        <Col s={12}>
-        <ReactPlayground code={ Samples.inputSwitch }>
-        {inputSwitch}
-      </ReactPlayground>
-        </Col>
+          <h4 className='col s12'>
+            Switch
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.inputSwitch }>
+              {inputSwitch}
+            </ReactPlayground>
+          </Col>
 
           <Col s={12}>
             <PropTable component='Input'/>
@@ -95,4 +95,3 @@ class FormsPage extends React.Component {
 }
 
 export default FormsPage;
-

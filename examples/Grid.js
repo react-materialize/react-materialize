@@ -5,16 +5,16 @@ import Col from '../src/Col';
 
 export default
 <Row>
-    <Col s={1}>1</Col>
-    <Col s={1}>2</Col>
-    <Col s={1}>3</Col>
-    <Col s={1}>4</Col>
-    <Col s={1}>5</Col>
-    <Col s={1}>6</Col>
-    <Col s={1}>7</Col>
-    <Col s={1}>8</Col>
-    <Col s={1}>9</Col>
-    <Col s={1}>10</Col>
-    <Col s={1}>11</Col>
-    <Col s={1}>12</Col>
+    <Col s={1} className='grid-example'>1</Col>
+    <Col s={1} className='grid-example'>2</Col>
+    <Col s={1} className='grid-example'>3</Col>
+    <Col s={1} className='grid-example'>4</Col>
+    <Col s={1} className='grid-example'>5</Col>
+    <Col s={1} className='grid-example'>6</Col>
+    <Col s={1} className='grid-example'>7</Col>
+    <Col s={1} className='grid-example'>8</Col>
+    <Col s={1} className='grid-example'>9</Col>
+    <Col s={1} className='grid-example'>10</Col>
+    <Col s={1} className='grid-example'>11</Col>
+    <Col s={1} className='grid-example'>12</Col>
 </Row>;

@@ -28,10 +28,28 @@ class Col extends React.Component {
 }
 
 Col.propTypes = {
+  /**
+   * The node to be used for the column
+   * @default div
+   */
   node: React.PropTypes.node.isRequired,
+  /**
+   * Columns for small size screens
+   */
   s: React.PropTypes.number,
+  /**
+   * Columns for middle size screens
+   */
   m: React.PropTypes.number,
+  /**
+   * Columns for large size screens
+   */
   l: React.PropTypes.number,
+  /**
+   * To offset, simply add s2 to the class where s signifies the screen
+   * class-prefix (s = small, m = medium, l = large) and the number after
+   * is the number of columns you want to offset by.
+   */
   offset: React.PropTypes.string
 }
 
