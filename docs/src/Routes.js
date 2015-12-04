@@ -13,6 +13,7 @@ import CollectionsPage from './CollectionsPage';
 import FooterPage from './FooterPage';
 import FormsPage from './FormsPage';
 import GridPage from './GridPage';
+import MediaPage from './MediaPage';
 import ModalsPage from './ModalsPage'
 import NavbarPage from './NavbarPage';
 import PaginationPage from './PaginationPage';
@@ -35,6 +36,7 @@ export default
   <Route path='footer.html' component={FooterPage} />
   <Route path='forms.html' component={FormsPage} />
   <Route path='grid.html' component={GridPage} />
+  <Route path='media.html' component={MediaPage} />
   <Route path='modals.html' component={ModalsPage} />
   <Route path='navbar.html' component={NavbarPage} />
   <Route path='pagination.html' component={PaginationPage} />
