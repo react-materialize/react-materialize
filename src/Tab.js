@@ -29,4 +29,9 @@ Tab.propTypes = {
   disabled: React.PropTypes.bool,
 }
 
+Tab.defaultProps = {
+  active: false,
+  disabled: false,
+}
+
 export default Tab;

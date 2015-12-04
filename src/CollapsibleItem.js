@@ -49,7 +49,6 @@ class CollapsibleItem extends React.Component {
 
 CollapsibleItem.propTypes = {
   header: React.PropTypes.string.isRequired,
-  eventKey: React.PropTypes.any,
   icon: React.PropTypes.string,
   popout: React.PropTypes.bool,
   onSelect: React.PropTypes.func,

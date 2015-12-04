@@ -61,6 +61,9 @@ Collapsible.propTypes = {
    * @default false
    */
   accordion: React.PropTypes.bool,
+  /**
+   * Enable popout style
+   */
   popout: React.PropTypes.bool,
   defaultActiveKey: React.PropTypes.number,
   onSelect: React.PropTypes.func,
@@ -71,4 +74,3 @@ Collapsible.defaultProps = {
 };
 
 export default Collapsible;
-
