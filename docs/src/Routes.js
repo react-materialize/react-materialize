@@ -15,6 +15,8 @@ import FormsPage from './FormsPage';
 import GridPage from './GridPage';
 import ModalsPage from './ModalsPage'
 import NavbarPage from './NavbarPage';
+import PaginationPage from './PaginationPage';
+import PreloaderPage from './PreloaderPage';
 import TablesPage from './TablesPage';
 import TabsPage from './TabsPage';
 
@@ -35,6 +37,8 @@ export default
   <Route path='grid.html' component={GridPage} />
   <Route path='modals.html' component={ModalsPage} />
   <Route path='navbar.html' component={NavbarPage} />
+  <Route path='pagination.html' component={PaginationPage} />
+  <Route path='preloader.html' component={PreloaderPage} />
   <Route path='table.html' component={TablesPage} />
   <Route path='tabs.html' component={TabsPage} />
 </Route>;

@@ -1,36 +1,71 @@
 import React from 'react';
+import cx from 'classnames';
 import Icon from './Icon';
 import PaginationButton from './PaginationButton';
 
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {activePage: 1};
+    this.state = {activePage: this.props.activePage};
+    this.renderButtons = this.renderButtons.bind(this);
+    this._onClick = this._onClick.bind(this);
   }
 
   render() {
-    let {items, activePage, onSelect, ...props} = this.props;
-    this.state.activePage = activePage;
-    let buttons = [];
-    buttons.push(
-      <li className="waves-effect"><a href="#!"><Icon>chevron_left</Icon></a></li>
+    return (
+      <ul className={cx("pagination", this.props.className)}> {this.renderButtons()} </ul>
     );
-    for (let i = 1; i <= items; i++) {
-      buttons.push(<PaginationButton active={i == this.state.activePage}>{i}</PaginationButton>);
+  }
+
+  _onClick(i) {
+    return () => {
+      this.setState({activePage: i});
+      if (typeof this.props.onSelect === 'function')
+        this.props.onSelect(i);
+    }
+  }
+
+  renderButtons() {
+    let {items, maxButtons, onSelect, children, ...props} = this.props;
+    let activePage = this.state.activePage;
+    if (typeof chidlren !== 'undefined') return children;
+    if (typeof maxButtons === 'undefined') maxButtons = items;
+    maxButtons = Math.min(maxButtons, items);
+    let buttons = [];
+    let hiddenPagesBefore = activePage - parseInt(maxButtons / 2, 10);
+    let startPage = Math.max(hiddenPagesBefore, 1);
+    let endPage = Math.min(items, startPage + maxButtons - 1);
+    buttons.push(
+      <PaginationButton key={0} disabled={startPage == 1} onSelect={this._onClick(activePage - 1)}>
+        <Icon>chevron_left</Icon>
+      </PaginationButton>
+    );
+    for (let i = startPage; i <= endPage; i++) {
+      buttons.push(
+        <PaginationButton key={i} onSelect={this._onClick(i)} active={i == this.state.activePage}>
+          {i}
+        </PaginationButton>
+      );
     }
     buttons.push(
-      <li className="waves-effect"><a href="#!"><Icon>chevron_right</Icon></a></li>
+      <PaginationButton key={items + 1} disabled={endPage == items} onSelect={this._onClick(activePage + 1)}>
+        <Icon>chevron_right</Icon>
+      </PaginationButton>
     );
-    return (
-      <ul className="pagination"> {buttons} </ul>
-    );
+    return buttons;
   }
 }
 
 Pagination.propTypes = {
-  items: React.PropTypes.number.isRequired,
   activePage: React.PropTypes.number,
+  items: React.PropTypes.number.isRequired,
+  maxButtons: React.PropTypes.number,
   onSelect: React.PropTypes.func,
 };
+
+Pagination.defaultProps = {
+  activePage: 1,
+  items: 10,
+}
 
 export default Pagination;

@@ -20,7 +20,7 @@ class Tabs extends React.Component {
                 //}
                 let classes = {
                   tab: true,
-                  disabled: disabled,
+                  disabled,
                   col: true
                 };
                 if (tabWidth) classes['s' + tabWidth] = true;
