@@ -9,7 +9,7 @@ export default
     <Preloader size='big'/>
   </Col>
   <Col s={4}>
-    <Preloader />
+    <Preloader flashing/>
   </Col>
   <Col s={4}>
     <Preloader size='small'/>
