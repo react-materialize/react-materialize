@@ -30,6 +30,9 @@ class OverlayTrigger extends Overlay {
 }
 
 OverlayTrigger.propTypes = {
+  /**
+   *
+   */
   overlay: React.PropTypes.node
 };
 

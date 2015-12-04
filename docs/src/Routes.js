@@ -12,6 +12,7 @@ import CollectionsPage from './CollectionsPage';
 import FooterPage from './FooterPage';
 import FormsPage from './FormsPage';
 import GridPage from './GridPage';
+import ModalsPage from './ModalsPage'
 import NavbarPage from './NavbarPage';
 import TablesPage from './TablesPage';
 import TabsPage from './TabsPage';
@@ -30,6 +31,7 @@ export default
   <Route path='footer.html' component={FooterPage} />
   <Route path='forms.html' component={FormsPage} />
   <Route path='grid.html' component={GridPage} />
+  <Route path='modals.html' component={ModalsPage} />
   <Route path='navbar.html' component={NavbarPage} />
   <Route path='table.html' component={TablesPage} />
   <Route path='tabs.html' component={TabsPage} />
