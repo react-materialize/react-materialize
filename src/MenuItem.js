@@ -4,12 +4,12 @@ import cx from 'classnames';
 // This should be used within any component that has a menu like interface
 class MenuItem extends React.Component {
   render() {
-    let {href, className, ...props} = this.props;
+    let {href, breadcrumbItem, children, className, ...props} = this.props;
     let classes = {
-      breadcrumb: true,
+      breadcrumb: breadcrumbItem,
     };
     return (
-      <a href={href} {...props} className={cx(classes, className)}>{this.props.children}</a>
+      <a href={href} {...props} className={cx(classes, className)}>{children}</a>
     );
   }
 }

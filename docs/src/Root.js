@@ -7,18 +7,24 @@ const Root = React.createClass({
     getPages() {
       return [
         'index.html',
-        'get-started.html',
+        'getting-started.html',
         'badges.html',
         'buttons.html',
         'breadcrumbs.html',
         'cards.html',
         'chips.html',
+        'collapsible.html',
         'collections.html',
         'footer.html',
         'forms.html',
         'grid.html',
+        'media.html',
+        'modals.html',
         'navbar.html',
+        'pagination.html',
+        'preloader.html',
         'table.html',
+        'tabs.html',
       ];
     }
   },
@@ -50,7 +56,7 @@ const Root = React.createClass({
       <html>
         <head dangerouslySetInnerHTML={header} />
         <body>
-          <MainNav />
+          <MainNav location={this.props.location.pathname}/>
           <main>
             <div className="container" >
               {this.props.children}

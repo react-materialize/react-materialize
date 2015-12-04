@@ -1,8 +1,13 @@
 import React from 'react';
 import Row from '../../src/Row';
 import Col from '../../src/Col';
+import store from './store';
 
 class GettingStartedPage extends React.Component {
+  componentDidMount() {
+    store.emit('component', 'Getting Started');
+  }
+
   render() {
       var htmlSetup = `<!DOCTYPE html>
 <html>

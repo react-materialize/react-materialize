@@ -18,7 +18,7 @@ class SideNav extends React.Component {
         <ul id={id} className="side-nav">
           {this.props.children}
         </ul>
-        <a href="#" data-activates={id} className="button-collapse"><Icon>navigation_menu</Icon></a>
+        <a href="#" data-activates={id} className="button-collapse"><Icon>view_headline</Icon></a>
       </nav>
     );
   }

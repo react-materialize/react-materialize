@@ -7,7 +7,6 @@ import Col from './Col';
 class Tabs extends React.Component {
   render() {
     let {children, className, ...props} = this.props;
-    let count = React.Children.count(children);
     return (
       <Row>
         <Col s={12}>

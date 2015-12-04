@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import Icon from './Icon';
 
 class CollapsibleItem extends React.Component {
@@ -11,12 +12,15 @@ class CollapsibleItem extends React.Component {
   }
 
   render() {
-    let {node, header, icon, children, ...props} = this.props;
+    let {node, header, expanded, icon, children, ...props} = this.props;
     let C = node || 'a';
+    let classes = {
+      'collapsible-header': true,
+    };
 
     return (
       <li {...props}>
-        <C className='collapsible-header' onClick={this.handleClick}>
+        <C className={cx(classes)} onClick={this.handleClick}>
           {icon ? this.renderIcon(icon) : null}
           {header}
         </C>
@@ -50,7 +54,6 @@ class CollapsibleItem extends React.Component {
 CollapsibleItem.propTypes = {
   header: React.PropTypes.string.isRequired,
   icon: React.PropTypes.string,
-  popout: React.PropTypes.bool,
   onSelect: React.PropTypes.func,
   /**
    * If the item is expanded by default
@@ -66,7 +69,6 @@ CollapsibleItem.propTypes = {
 
 CollapsibleItem.defaultProps = {
   expanded: false,
-  popout: false,
 };
 
 export default CollapsibleItem;

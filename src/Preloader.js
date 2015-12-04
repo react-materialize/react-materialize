@@ -1,5 +1,4 @@
 import React from 'react';
-import constants from './constants';
 import cx from 'classnames';
 
 class Spinner extends React.Component {

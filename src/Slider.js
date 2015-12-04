@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import Slide from './Slide';
 
 class Slider extends React.Component {
   constructor() {
