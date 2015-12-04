@@ -1,12 +1,12 @@
 import React from 'react';
 
+import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
-import TabArea from '../src/TabArea';
 
 export default
-<Tab>
-    <TabArea tab="Test 1">Test 1</TabArea>
-    <TabArea tab="Test 2">Test 2</TabArea>
-    <TabArea tab="Test 3">Test 3</TabArea>
-    <TabArea tab="Test 4">Test 4</TabArea>
-</Tab>;
+<Tabs className='tab-demo z-depth-1'>
+    <Tab title="Test 1">Test 1</Tab>
+    <Tab title="Test 2" active>Test 2</Tab>
+    <Tab title="Test 3">Test 3</Tab>
+    <Tab title="Test 4">Test 4</Tab>
+</Tabs>;

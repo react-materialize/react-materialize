@@ -81,6 +81,22 @@ const MainNav = React.createClass({
               </CollapsibleItem>
             </Collapsible>
           </li>
+
+          <li className="no-padding" >
+            <Collapsible accordion>
+              <CollapsibleItem header="JavaScript" className="bold">
+                <ul>
+                  <li> <a href='collapsible.html'> Collapsible </a></li>
+                  <li> <a href='dialogs.html'> Dialogs </a></li>
+                  <li> <a href='dropdown.html'> Dropdown </a></li>
+                  <li> <a href='media.html'> Media </a></li>
+                  <li> <a href='modals.html'> Modals </a></li>
+                  <li> <a href='tabs.html'> Tabs </a></li>
+                </ul>
+              </CollapsibleItem>
+            </Collapsible>
+          </li>
+
         </ul>
       </header>
     );

@@ -14,6 +14,7 @@ import FormsPage from './FormsPage';
 import GridPage from './GridPage';
 import NavbarPage from './NavbarPage';
 import TablesPage from './TablesPage';
+import TabsPage from './TabsPage';
 
 export default
 <Route path='/' component={Root}>
@@ -31,4 +32,5 @@ export default
   <Route path='grid.html' component={GridPage} />
   <Route path='navbar.html' component={NavbarPage} />
   <Route path='table.html' component={TablesPage} />
+  <Route path='tabs.html' component={TabsPage} />
 </Route>;
