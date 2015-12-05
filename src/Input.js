@@ -14,6 +14,10 @@ class Input extends React.Component {
   componentDidMount() {
     if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
       $(this.refs.inputEl).material_select();
+      $(this.refs.inputEl).on('change', this._onChange);
+      if (!!this.props.onChange) {
+        $(this.refs.inputEl).on('change', this.props.onChange);
+      }
     }
   }
 
@@ -70,7 +74,6 @@ class Input extends React.Component {
           <select
             id={id}
             className={cx(inputClasses)}
-            onChange={this._onChange}
             ref='inputEl'
             value={this.state.value}
             {...props}
@@ -135,7 +138,8 @@ Input.propTypes = {
   id: React.PropTypes.string,
   name: React.PropTypes.string,
   validate: React.PropTypes.bool,
-  browserDefault: React.PropTypes.bool
+  browserDefault: React.PropTypes.bool,
+  onChange: React.PropTypes.func
 };
 
 Input.defaultProps = {type: 'text'};
