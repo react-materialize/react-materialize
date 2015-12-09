@@ -14,6 +14,7 @@ class Input extends React.Component {
   componentDidMount() {
     if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
       $(this.refs.inputEl).material_select();
+      $(this.refs.inputEl).on('change', this._onChange);
     }
   }
 
@@ -21,10 +22,13 @@ class Input extends React.Component {
     this.setState({
       value: e.target.value
     });
+    if (!!this.props.onChange) {
+      this.props.onChange(e);
+    }
   }
 
   render() {
-    let { defaultValue, placeholder, id, type, label, children, validate, ...props} = this.props;
+    let { defaultValue, placeholder, id, type, label, children, validate, onChange, ...props} = this.props;
     let classes = {
       col: true,
       'input-field': type !== 'checkbox' && type !== 'radio'
@@ -70,7 +74,6 @@ class Input extends React.Component {
           <select
             id={id}
             className={cx(inputClasses)}
-            onChange={this._onChange}
             ref='inputEl'
             value={this.state.value}
             {...props}
@@ -135,7 +138,8 @@ Input.propTypes = {
   id: React.PropTypes.string,
   name: React.PropTypes.string,
   validate: React.PropTypes.bool,
-  browserDefault: React.PropTypes.bool
+  browserDefault: React.PropTypes.bool,
+  onChange: React.PropTypes.func
 };
 
 Input.defaultProps = {type: 'text'};
