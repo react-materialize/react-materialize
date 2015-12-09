@@ -15,9 +15,6 @@ class Input extends React.Component {
     if (this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined') {
       $(this.refs.inputEl).material_select();
       $(this.refs.inputEl).on('change', this._onChange);
-      if (!!this.props.onChange) {
-        $(this.refs.inputEl).on('change', this.props.onChange);
-      }
     }
   }
 
@@ -25,10 +22,13 @@ class Input extends React.Component {
     this.setState({
       value: e.target.value
     });
+    if (!!this.props.onChange) {
+      this.props.onChange(e);
+    }
   }
 
   render() {
-    let { defaultValue, placeholder, id, type, label, children, validate, ...props} = this.props;
+    let { defaultValue, placeholder, id, type, label, children, validate, onChange, ...props} = this.props;
     let classes = {
       col: true,
       'input-field': type !== 'checkbox' && type !== 'radio'
