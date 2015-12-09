@@ -61,6 +61,10 @@ CollapsibleItem.propTypes = {
    */
   expanded: React.PropTypes.bool,
   /**
+   * The value to pass to the onSelect callback
+   */
+  eventKey: React.PropTypes.any,
+  /**
    * The node type of the header
    * @default a
    */

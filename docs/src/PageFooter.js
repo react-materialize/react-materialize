@@ -5,15 +5,6 @@ class PageFooter extends React.Component {
   render() {
     let links = (
       <ul>
-        <li><iframe className='github-btn'
-              src="http://ghbtns.com/github-btn.html?user=react-materialize&repo=react-materialize&type=watch&count=true"
-              allowTransparency="true" frameBorder="0" scrolling="0" width="110" height="20"></iframe>
-        </li>
-        <li>
-          <iframe className='github-btn'
-            src="http://ghbtns.com/github-btn.html?user=react-materialize&repo=react-materialize&type=fork&count=true"
-            allowTransparency="true" frameBorder="1" scrolling="0" width="95" height="20"></iframe>
-        </li>
         <li>
           <a className="grey-text text-lighten-3" href='https://github.com/react-materialize/react-materialize'>GitHub</a>
         </li>

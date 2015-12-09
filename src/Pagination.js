@@ -13,7 +13,7 @@ class Pagination extends React.Component {
 
   render() {
     return (
-      <ul className={cx("pagination", this.props.className)}> {this.renderButtons()} </ul>
+      <ul className={cx('pagination', this.props.className)}> {this.renderButtons()} </ul>
     );
   }
 
