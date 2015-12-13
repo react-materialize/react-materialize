@@ -8,7 +8,6 @@ import Samples from './Samples';
 
 import imageCard from '../../examples/CardImage';
 import revealCard from '../../examples/CardReveal';
-import fullCard from '../../examples/CardFull';
 import panelCard from '../../examples/CardPanel';
 import simpleCard from '../../examples/CardSimple';
 
@@ -34,7 +33,33 @@ class CardsPage extends React.Component {
               {simpleCard}
             </ReactPlayground>
           </Col>
-          
+
+          <h4 className='col s12'>
+            Image Card
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.cardImage }>
+              {imageCard}
+            </ReactPlayground>
+          </Col>
+
+          <h4 className='col s12'>
+            Card Reveal
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.cardReveal }>
+              {revealCard}
+            </ReactPlayground>
+          </Col>
+
+          <h4 className='col s12'>
+            Card Panel
+          </h4>
+          <Col s={12}>
+            <ReactPlayground code={ Samples.cardPanel }>
+              {panelCard}
+            </ReactPlayground>
+          </Col>
           <Col s={12}>
             <PropTable component={component}/>
           </Col>
@@ -45,4 +70,3 @@ class CardsPage extends React.Component {
 }
 
 export default CardsPage;
-

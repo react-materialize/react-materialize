@@ -7,7 +7,6 @@ module.exports = {
   badgeDropdowns: fs.readFileSync(path.join(__dirname, '../../examples', 'BadgeDropdowns.js'), 'utf8'),
   badgeNavbar: fs.readFileSync(path.join(__dirname, '../../examples', 'BadgeNavbar.js'), 'utf8'),
   breadcrumb: fs.readFileSync(path.join(__dirname, '../../examples', 'Breadcrumbs.js'), 'utf8'),
-  cardFull: fs.readFileSync(path.join(__dirname, '../../examples', 'CardFull.js'), 'utf8'),
   cardImage: fs.readFileSync(path.join(__dirname, '../../examples', 'CardImage.js'), 'utf8'),
   cardPanel: fs.readFileSync(path.join(__dirname, '../../examples', 'CardPanel.js'), 'utf8'),
   cardReveal: fs.readFileSync(path.join(__dirname, '../../examples', 'CardReveal.js'), 'utf8'),
