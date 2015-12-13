@@ -15,6 +15,7 @@ const Root = React.createClass({
         'chips.html',
         'collapsible.html',
         'collections.html',
+        'dropdown.html',
         'footer.html',
         'forms.html',
         'grid.html',

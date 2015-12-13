@@ -10,6 +10,7 @@ import CardsPage from './CardsPage';
 import ChipsPage from './ChipsPage';
 import CollapsiblesPage from './CollapsiblesPage';
 import CollectionsPage from './CollectionsPage';
+import DropdownPage from './DropdownPage';
 import FooterPage from './FooterPage';
 import FormsPage from './FormsPage';
 import GridPage from './GridPage';
@@ -33,6 +34,7 @@ export default
   <Route path='chips.html' component={ChipsPage} />
   <Route path='collapsible.html' component={CollapsiblesPage} />
   <Route path='collections.html' component={CollectionsPage} />
+  <Route path='dropdown.html' component={DropdownPage} />
   <Route path='footer.html' component={FooterPage} />
   <Route path='forms.html' component={FormsPage} />
   <Route path='grid.html' component={GridPage} />

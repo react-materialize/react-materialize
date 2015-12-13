@@ -12,6 +12,7 @@ let cssComponents = {
 
 let jsComponents = {
   collapsible: 'Collapsible',
+  dropdown: 'Dropdown',
   media: 'Media',
   modals: 'Modals',
   tabs: 'Tabs',

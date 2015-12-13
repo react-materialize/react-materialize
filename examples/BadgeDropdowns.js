@@ -1,29 +1,26 @@
 import React from 'react';
 import Badge from '../src/Badge';
+import Button from '../src/Button';
+import Dropdown from '../src/Dropdown';
 import Icon from '../src/Icon';
+import NavItem from '../src/NavItem';
 
 export default
-<div>
-  <ul id="dropdown2" className="dropdown-content">
-    <li>
-      <a href="#!">
-        one<Badge>1</Badge>
-      </a>
-    </li>
+<Dropdown
+  trigger={
+    <Button>Dropdown<Icon right>arrow_drop_down</Icon></Button>
+  }>
+  <NavItem>
+    one
+    <Badge>1</Badge>
+  </NavItem>
 
-    <li>
-      <a href="#!">
-        two<Badge newIcon>1</Badge>
-      </a>
-    </li>
+  <NavItem>
+    two
+    <Badge newIcon>1</Badge>
+  </NavItem>
 
-    <li>
-      <a href="#!">
-        three
-      </a>
-    </li>
-  </ul>
-  <a className="btn dropdown-button" href="#!" data-activates="dropdown2">
-    Dropdown<Icon right>arrow_drop_down</Icon>
-  </a>
-</div>;
+  <NavItem>
+    three
+  </NavItem>
+</Dropdown>;

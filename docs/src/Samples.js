@@ -17,6 +17,7 @@ module.exports = {
   collectionWithHeader: fs.readFileSync(path.join(__dirname, '../../examples', 'CollectionWithHeader.js'), 'utf8'),
   collectionWithHref: fs.readFileSync(path.join(__dirname, '../../examples', 'CollectionWithHref.js'), 'utf8'),
   disabledButton: fs.readFileSync(path.join(__dirname, '../../examples', 'DisabledButton.js'), 'utf8'),
+  dropdown: fs.readFileSync(path.join(__dirname, '../../examples', 'DropdownBasic.js'), 'utf8'),
   fixedActionButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FixedActionButton.js'), 'utf8'),
   flatButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FlatButton.js'), 'utf8'),
   floatingButton: fs.readFileSync(path.join(__dirname, '../../examples', 'FloatingButton.js'), 'utf8'),
