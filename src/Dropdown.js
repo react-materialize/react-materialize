@@ -1,5 +1,4 @@
 import React from 'react';
-import OverlayTrigger from './OverlayTrigger';
 import idgen from './idgen';
 
 class Dropdown extends React.Component {
