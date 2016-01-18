@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "0.14.0-beta4",
+  "version": "0.14.0-rc1",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
@@ -13,7 +13,8 @@
     "watch": "karma start",
     "build": "babel -d lib src",
     "lint": "eslint src",
-    "fix": "eslint src --fix"
+    "fix": "eslint src --fix",
+    "release": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
