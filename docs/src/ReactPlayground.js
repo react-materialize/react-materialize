@@ -3,10 +3,6 @@ import Row from '../../src/Row';
 import Col from '../../src/Col';
 
 class ReactPlayground extends React.Component {
-  static propTypes = {
-    code: React.PropTypes.string.isRequired
-  }
-
   constructor(props) {
     super(props);
     this.trancate = this.truncate.bind(this);
@@ -33,5 +29,9 @@ class ReactPlayground extends React.Component {
     return 'code no match';
   }
 }
+
+ReactPlayground.propTypes = {
+  code: React.PropTypes.string.isRequired
+};
 
 export default ReactPlayground;

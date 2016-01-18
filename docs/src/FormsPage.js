@@ -11,7 +11,7 @@ import inputFields from '../../examples/InputFields';
 import inputCheckbox from '../../examples/InputCheckbox';
 import inputSwitch from '../../examples/InputSwitch';
 import prefillingTextInput from '../../examples/PrefillingTextInput';
-import selectSimple from '../../examples/selectSimple';
+import selectSimple from '../../examples/SelectSimple';
 
 class FormsPage extends React.Component {
   componentDidMount() {
