@@ -37,3 +37,4 @@ node_modules
 
 # misc
 .tern-port
+.DS_Store
