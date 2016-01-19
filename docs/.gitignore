@@ -2,3 +2,4 @@ node_modules/
 *.html
 assets/bundle.js
 .DS_Store
+materialize-src
