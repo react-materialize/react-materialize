@@ -2,8 +2,6 @@ import React from 'react';
 import MainNav from './MainNav';
 import PageFooter from './PageFooter';
 
-import '../stylesheets/style.scss'
-
 const Root = React.createClass({
   statics: {
     getPages() {

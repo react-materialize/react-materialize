@@ -28,7 +28,7 @@ const config = {
     // filename: 'bundle.js', //filename: '[name].js',
     filename: '[name].js',
     // path: './assets' //path: path.join(__dirname, './build'),
-    path: path.join(__dirname, './build'),
+    path: path.join(__dirname, './assets'),
   },
   plugins: [
     new ExtractTextPlugin('[name].css')
@@ -50,7 +50,7 @@ const config = {
       },
       { test: /Samples.js/, loader: `transform/cacheable?brfs!babel` },
       { test: /\.json$/, loader: 'json' },
-      { test: /\.css$|\.jpe?g$|\.gif$|\.png|\.ico$/, loader: 'file?name=[path][name].[ext]' },
+      { test: /\.css$|\.jpe?g$|\.gif$|\.png|\.ico$|\.woff2?$|\.ttf|\.eot|\.svg/, loader: 'file?name=[path][name].[ext]' },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))}
     ]
   },
