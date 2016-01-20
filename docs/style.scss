@@ -1,6 +1,4 @@
-/***************
-  HTML Styles
-***************/
+// HTML Styles
 $red: #dd675b;
 $yellow: #f4b647;
 $green: #44bda5;
@@ -8,13 +6,10 @@ $purple: #a675b4;
 $gray: #38435a;
 $white: #fcfcfc;
 
-body {
-  background-color: #fcfcfc;
-}
+body { background-color: #fcfcfc; }
 
-p.box {
-  padding: 20px;
-}
+p.box { padding: 20px; }
+
 p {
   color: rgba(0, 0, 0, 0.71);
   padding: 0;

@@ -2,6 +2,8 @@ import React from 'react';
 import MainNav from './MainNav';
 import PageFooter from './PageFooter';
 
+import '../stylesheets/style.scss'
+
 const Root = React.createClass({
   statics: {
     getPages() {
@@ -68,7 +70,7 @@ const Root = React.createClass({
           <script src="node_modules/materialize-css/bin/materialize.js"></script>
           <script src="node_modules/prismjs/prism.js"></script>
           <script type='text/javascript' dangerouslySetInnerHTML={browserInitScriptObj} />
-          <script src="assets/bundle.js" type="text/javascript"/>
+          <script src="assets/client.js" type="text/javascript"/>
         </body>
       </html>
     );
