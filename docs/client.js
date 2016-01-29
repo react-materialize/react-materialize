@@ -1,3 +1,5 @@
+import 'materialize-sass-origin/sass/materialize.scss';
+
 import React from 'react';
 import { Router } from 'react-router';
 import ReactDOM from 'react-dom';

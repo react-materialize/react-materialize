@@ -138,7 +138,9 @@ class MainNav extends React.Component {
         </div>
         <ul id='nav-mobile' className='side-nav fixed'>
           <li className='logo'>
-            <a className='brand-logo' id='logo-container' href="https://react-materialize.github.io" >React Materialize</a>
+            <a className='brand-logo' id='logo-container' href="https://react-materialize.github.io" >
+              <object id="front-page-logo" type="image/svg+xml" data="assets/react-materialize-logo.svg">Your browser does not support SVG</object>
+            </a>
           </li>
           <Search />
           <li className="bold">
