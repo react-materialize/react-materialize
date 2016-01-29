@@ -1,0 +1,20 @@
+nav,
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active,
+footer.page-footer {
+  background: #38435a; }
+
+#nav-mobile li.search {
+  position: static; }
+
+#logo-container {
+  height: 120px; }
+
+ul.side-nav.fixed li.logo {
+  height: 140px;
+  margin-top: 20px;
+  margin-bottom: 0; }
+  ul.side-nav.fixed li.logo img {
+    max-height: 100%; }
+
+/*# sourceMappingURL=main.css.map */
