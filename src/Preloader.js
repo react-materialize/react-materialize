@@ -1,8 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 
-const Spinner = () => {
-  let {color, only} = this.props;
+const Spinner = (props) => {
+  let {color, only} = props;
   let spinnerClasses = {
     'spinner-layer': true
   };
