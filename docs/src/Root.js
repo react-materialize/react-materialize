@@ -46,6 +46,7 @@ const Root = React.createClass({
               <link href="node_modules/materialize-css/bin/materialize.css" rel="stylesheet" type="text/css" media="screen"/>
               <link href="node_modules/materialize-css/css/ghpages-materialize.css" rel="stylesheet" type="text/css" media="screen"/>
               <link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" type="text/css" media="screen"/>
+              <link href="assets/main.css" rel="stylesheet" type="text/css" media="screen"/>
               <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
     };
 
