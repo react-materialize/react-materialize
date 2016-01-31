@@ -4,7 +4,7 @@ import Icon from '../src/Icon';
 
 export default
 <div>
-    <Button node='a' waves='light'>button</Button>
-    <Button node='a' waves='light'>button<Icon left>cloud</Icon></Button>
-    <Button node='a' waves='light'>button<Icon right>cloud</Icon></Button>
+    <Button waves='light'>button</Button>
+    <Button waves='light'>button<Icon left>cloud</Icon></Button>
+    <Button waves='light'>button<Icon right>cloud</Icon></Button>
 </div>;
