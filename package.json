@@ -54,7 +54,7 @@
     "mocha": "^2.3.3",
     "phantomjs": "^1.9.18",
     "react": ">=0.14.0",
-    "react-addons-test-utils": "^0.14.0",
+    "react-addons-test-utils": ">=0.14.0",
     "react-dom": ">=0.14.0",
     "webpack": "^1.12.6"
   },
