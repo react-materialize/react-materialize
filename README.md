@@ -3,6 +3,8 @@
 [![Join the chat at https://gitter.im/react-materialize/react-materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-materialize/react-materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build
 Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=master)](https://travis-ci.org/react-materialize/react-materialize)
+[![npm version](http://img.shields.io/npm/v/react-materialize.svg?style=flat)](https://npmjs.org/package/react-materialize "View this project on npm")
+
 
 ## Introduction
 
@@ -10,14 +12,20 @@ Material design components for react, powered by [materializecss](http://materia
 
 ## Get started
 
-You'll have to load `materialize.css` and `materialize.js` globally in the page. (CDN [materialize.min.css](https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css)
-[materialize.min.js](https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js))
-
-## Install
-
 ```
 $ npm install react-materialize
 ```
+Add [materialize.css] and [materialize.js] to your project (cdn).
+
+```html
+<script src='materialize.js'></script>
+<link rel='stylesheet' href='materialize.css'/>
+```
+
+[materialize.css]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css
+[materialize.js]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.js
+
+
 
 ## Usage
 
@@ -32,7 +40,7 @@ import {Button, Card, Row, Col} from 'react-materialize';
 
 See [documentation](https://react-materialize.github.io) for live examples. Try out the [boilplate](https://github.com/react-materialize/webpack-boilplate).
 
-## How does it compare to X.Y.Z?
+#### How does it compare to X.Y.Z?
 
 The main goal of this project is to provide react component for
 [materializecss](https://materializecss.com), at the current stage, I am
