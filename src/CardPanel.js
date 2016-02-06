@@ -4,7 +4,7 @@ import cx from 'classnames';
 class CardPanel extends React.Component {
   render() {
     let classes = {
-      'card-panel': true,
+      'card-panel': true
     };
     let {className, children, ...props} = this.props;
     return (
