@@ -11,6 +11,7 @@ const Button = ({
   modal,
   disabled,
   waves,
+  icon,
   ...props
 }) => {
   let C = node;
@@ -34,8 +35,8 @@ const Button = ({
   }
 
   let renderIcons = function() {
-    if (props.icon) {
-      return <Icon>{props.icon}</Icon>;
+    if (icon) {
+      return <Icon>{icon}</Icon>;
     }
   }.bind(this);
 
