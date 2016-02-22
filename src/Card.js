@@ -17,7 +17,7 @@ class Card extends React.Component {
         {header}
         <div className={cx('card-content', textClassName)}>
           {title ? this.renderTitle(title, reveal) : null}
-          <p>{children}</p>
+          <div>{children}</div>
         </div>
         {this.renderReveal(title, reveal)}
         {actions ? this.renderAction(actions) : null}
