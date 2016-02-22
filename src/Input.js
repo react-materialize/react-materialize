@@ -135,7 +135,7 @@ class Input extends React.Component {
   }
 
   isMaterialSelect() {
-    this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined';
+    return this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined';
   }
 }
 
