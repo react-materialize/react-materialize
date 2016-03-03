@@ -56,7 +56,7 @@ class Select extends Component {
       {
         'input-field': true,
         'col': true,
-        browserDefault
+        'browser-default': browserDefault
       },
       constants.SIZES.reduce((result, size) => {
         return this.props[size]
