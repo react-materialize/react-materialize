@@ -12,7 +12,7 @@ const CardPanel = ({
 
   return (
       <div className={cx(classes, className)} {...props}>
-        <span>{children}</span>
+        {children}
       </div>
   );
 }
