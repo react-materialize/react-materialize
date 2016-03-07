@@ -4,21 +4,6 @@ import constants from './constants';
 
 class Select extends Component {
 
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-    children: PropTypes.node.isRequired,
-    s: PropTypes.number,
-    m: PropTypes.number,
-    l: PropTypes.number,
-    label: PropTypes.node,
-    defaultValue: PropTypes.string,
-    browserDefault: PropTypes.bool
-  }
-
-  static defaultProps = {
-    browserDefault: false
-  }
-
   constructor(props) {
     super(props);
     this.state = { value: props.defaultValue };
@@ -77,5 +62,22 @@ class Select extends Component {
     );
   }
 }
+
+
+Select.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  s: PropTypes.number,
+  m: PropTypes.number,
+  l: PropTypes.number,
+  label: PropTypes.node,
+  defaultValue: PropTypes.string,
+  browserDefault: PropTypes.bool
+};
+
+
+Select.defaultProps = {
+  browserDefault: false
+};
 
 export default Select;
