@@ -11,8 +11,8 @@ const CardPanel = ({
   };
 
   return (
-      <div className={cx(classes, className)}>
-        <span>{children}</span>
+      <div className={cx(classes, className)} {...props}>
+        {children}
       </div>
   );
 }
