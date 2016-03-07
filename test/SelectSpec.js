@@ -18,15 +18,19 @@ describe('Select', () => {
       </Select>
     );
 
+    let selectContainer = TestUtils.findRenderedDOMComponentWithTag(instance, 'div');
+    let selectContainerNode = ReactDOM.findDOMNode(selectContainer);
     let select = TestUtils.findRenderedDOMComponentWithTag(instance, 'select');
     let selectNode = ReactDOM.findDOMNode(select);
     let options = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'option');
 
+    assert.include(selectContainerNode.className, 's12');
+    assert.include(selectContainerNode.className, 'm8');
+    assert.include(selectContainerNode.className, 'l6');
+
     assert.equal(selectNode.nodeName, 'SELECT');
     assert.equal(selectNode.value, '2');
-    assert.include(selectNode.className, 's12');
-    assert.include(selectNode.className, 'm8');
-    assert.include(selectNode.className, 'l6');
+
     assert.ok(options);
     assert.equal(options.length, 3);
 
