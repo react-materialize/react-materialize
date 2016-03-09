@@ -4,72 +4,69 @@ import cx from 'classnames';
 import Icon from './Icon';
 import idgen from './idgen';
 
-class Button extends React.Component {
-  constructor(props) {
-    super(props);
-    this.renderIcon = this.renderIcon.bind(this);
-    this.renderFab = this.renderFab.bind(this);
+const Button = ({
+  className,
+  node,
+  fab,
+  modal,
+  disabled,
+  waves,
+  icon,
+  ...props
+}) => {
+  let C = node;
+  let classes = {
+    disabled,
+    'btn': true
+  };
+
+  constants.STYLES.forEach(style => {
+    classes['btn-' + style] = props[style];
+  });
+
+  if (waves) {
+    classes['waves-effect'] = true;
+    classes['waves-' + waves] = (constants.WAVES.indexOf(waves) > -1);
   }
 
-  render() {
-    let {
-      className, node, fab, modal, disabled, waves, ...props
-    } = this.props;
-    let C = node || 'button';
-    let classes = {
-      btn: true,
-      disabled,
-      'waves-effect': waves
-    };
-
-    if (constants.WAVES.indexOf(waves) > -1) {
-      classes['waves-' + waves] = true;
-    }
-
-    constants.STYLES.forEach(style => {
-      classes['btn-' + style] = this.props[style];
-    });
-
-    if (modal) {
-      classes['modal-action'] = true;
-      classes['modal-' + modal] = true;
-    }
-    if (fab) {
-      return this.renderFab(cx(classes, className));
-    } else {
-      return (
-        <C {...props} className={cx(classes, className)}>
-          { this.renderIcon() }
-          { this.props.children }
-        </C>
-      );
-    }
+  if (modal) {
+    classes['modal-action'] = true;
+    classes['modal-' + modal] = true;
   }
 
-  renderFab(className) {
+  let renderIcons = function() {
+    if (icon) {
+      return <Icon>{icon}</Icon>;
+    }
+  }.bind(this);
+
+  let renderFab = function() {
     return (
       <div className='fixed-action-btn'>
-        <a className={className}>
-          { this.renderIcon() }
+        <a className={cx(classes, className)}>
+          { renderIcons() }
         </a>
         <ul>
           {
-            React.Children.map(this.props.children, child => {
+            React.Children.map(props.children, child => {
               return <li key={idgen()}>{child}</li>;
             })
           }
         </ul>
       </div>
-    );
-  }
+    )
+  }.bind(this);
 
-  renderIcon() {
-    if (this.props.icon) {
-      return <Icon>{this.props.icon}</Icon>;
-    } else {
-      return null;
-    }
-  }
+  if (fab) {
+    return renderFab();
+  } else {
+    return (
+      <C {...props} className={cx(classes, className)}>
+        { renderIcons() }
+        { props.children }
+      </C>
+    );
+  };
 }
 
 Button.propTypes = {
@@ -98,5 +95,6 @@ Button.propTypes = {
   waves: React.PropTypes.oneOf(constants.WAVES),
 };
 
+Button.defaultProps = { node: 'button' };
 
 export default Button;

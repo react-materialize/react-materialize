@@ -23,7 +23,7 @@
     "react/jsx-uses-react": 2,
     "react/no-did-mount-set-state": 2,
     "react/no-did-update-set-state": 2,
-    "react/no-multi-comp": 2,
+    "react/no-multi-comp": [2, {"ignoreStateless": true}],
     "react/prop-types": [1, { ignore: [children, className] }],
     "react/react-in-jsx-scope": 2,
     "react/self-closing-comp": 1,
