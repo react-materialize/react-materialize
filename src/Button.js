@@ -95,7 +95,7 @@ Button.propTypes = {
    * Tooltip to show when mouse hovered
    */
   tooltip: React.PropTypes.string,
-  waves: React.PropTypes.oneOf(constants.WAVES),
+  waves: React.PropTypes.oneOf(constants.WAVES)
 };
 
 

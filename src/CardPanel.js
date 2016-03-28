@@ -11,10 +11,10 @@ const CardPanel = ({
   };
 
   return (
-      <div className={cx(classes, className)} {...props}>
-        {children}
-      </div>
+    <div className={cx(classes, className)} {...props}>
+      {children}
+    </div>
   );
-}
+};
 
 export default CardPanel;

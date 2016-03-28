@@ -24,7 +24,7 @@ Badge.propTypes = {
   /**
    * Add the <b>new</b> class name
    */
-  newIcon: React.PropTypes.bool,
+  newIcon: React.PropTypes.bool
 };
 
 export default Badge;
