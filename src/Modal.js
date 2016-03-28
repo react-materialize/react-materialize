@@ -24,7 +24,7 @@ class Modal extends React.Component {
     });
 
     return (
-      <div className={cx(classes)} {...props}>
+      <div className={classes} {...props}>
         <div className="modal-content">
           <h4>{header}</h4>
           {children}

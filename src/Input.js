@@ -42,7 +42,7 @@ class Input extends React.Component {
     this.setState({
       value: e.target.value
     });
-    if (!!this.props.onChange) {
+    if (this.props.onChange) {
       this.props.onChange(e);
     }
   }
@@ -73,6 +73,7 @@ class Input extends React.Component {
       case 'switch':
         C = 'input';
         inputType = 'checkbox';
+        break;
       default:
         C = 'input';
         inputType = type || 'text';

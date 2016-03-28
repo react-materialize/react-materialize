@@ -27,7 +27,7 @@ class Breadcrumb extends React.Component {
 }
 
 Breadcrumb.propTypes = {
-  children: React.PropTypes.arrayOf(React.PropTypes.element),
+  children: React.PropTypes.arrayOf(React.PropTypes.element)
 };
 
 export default Breadcrumb;

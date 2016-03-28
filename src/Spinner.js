@@ -23,10 +23,10 @@ const Spinner = ({color, only}) => {
       </div>
     </div>
   );
-}
+};
 
 Spinner.defaultProps = {
-  only: true,
+  only: true
 };
 
 export default Spinner;
