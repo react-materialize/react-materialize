@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import Row from './Row';
 import Col from './Col';
 
-class Footer extends React.Component {
+class Footer extends Component {
   render() {
     let { className, ...props } = this.props;
     let classes = {
       'page-footer': true
     };
     return (
-      <footer className={cx(classes, className)}>
+      <footer className={cx(classes, className)} {...props}>
         <div className='container'>
           <Row>
             <Col l={6} s={12}>
               {this.props.children}
             </Col>
             <Col l={4} s={12} offset="l2">
-              <h5 className='white-text'>Connect</h5>
               {this.props.links}
             </Col>
           </Row>
@@ -33,9 +32,11 @@ class Footer extends React.Component {
   }
 }
 Footer.propTypes = {
-  links: React.PropTypes.node,
-  moreLinks: React.PropTypes.node,
-  copyrights: React.PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  copyrights: PropTypes.string,
+  links: PropTypes.node,
+  moreLinks: PropTypes.node
 };
 
 export default Footer;
