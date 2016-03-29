@@ -36,19 +36,19 @@ class Select extends Component {
 
   render() {
     const { children, label, browserDefault } = this.props;
-    const classes = Object.assign(
-      {},
-      {
-        'input-field': true,
-        'col': true,
-        'browser-default': browserDefault
-      },
-      constants.SIZES.reduce((result, size) => {
-        return this.props[size]
-                 ? Object.assign({}, result, { [size + this.props[size]]: true })
-                 : result;
-      }, {})
-    );
+    let classes = {
+      'input-field': true,
+      'col': true,
+      'browser-default': browserDefault
+    };
+
+    classes = constants.SIZES.reduce((result, size) => {
+      if (this.props[size]) {
+        result[size + this.props[size]] = true;
+      }
+      return result;
+    }, classes);
+
     return (
       <div className={cx(classes)}>
         <select
