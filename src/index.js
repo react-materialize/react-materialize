@@ -15,6 +15,7 @@ export Footer from './Footer';
 export Icon from './Icon';
 export Input from './Input';
 export MediaBox from './MediaBox';
+export MenuItem from './MenuItem';
 export Modal from './Modal';
 export Navbar from './Navbar';
 export NavItem from './NavItem';
