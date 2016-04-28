@@ -66,7 +66,9 @@ class Button extends React.Component {
   renderIcon() {
     if (this.props.icon) {
       return <Icon>{this.props.icon}</Icon>;
-    } else {
+    } else if (this.props.faicon) {
+      return <i className={this.props.faicon}></i>
+    }else {
       return null;
     }
   }
