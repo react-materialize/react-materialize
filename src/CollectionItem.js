@@ -11,15 +11,24 @@ class CollectionItem extends React.Component {
       'collection-item': true,
       active: this.props.active
     };
-    let C = this.isAnchor() ? 'a' : 'li';
+
+    if (this.isAnchor()) {
+      return (
+        <a className={cx(classes)} href={this.props.href}>
+         {this.props.children}
+        </a>
+      );
+    }
+
     return (
-      <C className={cx(classes)}>
+      <li className={cx(classes)}>
         {this.props.children}
-      </C>
+      </li>
     );
+
   }
   isAnchor() {
-    return this.props.href !== null;
+    return typeof this.props.href !== 'undefined';
   }
 }
 
