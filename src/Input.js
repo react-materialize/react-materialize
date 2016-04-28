@@ -108,7 +108,12 @@ class Input extends React.Component {
         <div className="switch">
           <label>
             Off
-            <input type="checkbox" name={this.props.name} {...props} />
+            <input
+              name={this.props.name}
+              onChange={this._onChange}
+              type="checkbox"
+              {...props}
+            />
             <span className="lever"></span>
             On
           </label>
