@@ -97,7 +97,7 @@ class Input extends React.Component {
             id={id}
             className={cx(inputClasses)}
             ref={(ref) => this.selectInput = ref}
-            value={this.state.value}
+            defaultValue={defaultValue}
             {...props}
           >
             { options }
@@ -127,10 +127,10 @@ class Input extends React.Component {
         icon = React.Children.only(children);
       }
 
-      if (inputType !== 'checkbox') {
-        props.value = this.state.value
-      } else {
+      if (inputType === 'checkbox') {
         props.checked = !!this.state.value
+      } else {
+        props.defaultValue = this.state.value
       }
 
       return (
