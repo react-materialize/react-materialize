@@ -13,14 +13,14 @@ class Input extends React.Component {
 
   componentDidMount() {
     if (this.isMaterialSelect()) {
-      $(this.refs.inputEl).material_select();
-      $(this.refs.inputEl).on('change', this._onChange);
+      $(this.selectInput).material_select();
+      $(this.selectInput).on('change', this._onChange);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.isMaterialSelect()) {
-      $(this.refs.inputEl).material_select();
+      $(this.selectInput).material_select();
     }
   }
 
@@ -28,13 +28,13 @@ class Input extends React.Component {
     if (this.isMaterialSelect()) {
       this.setState({
         value: nextProps.defaultValue
-      }, () => $(this.refs.inputEl).material_select());
+      }, () => $(this.selectInput).material_select());
     }
   }
 
   componentWillUnmount() {
     if (this.isMaterialSelect()) {
-      $(this.refs.inputEl).off('change', this._onChange);
+      $(this.selectInput).off('change', this._onChange);
     }
   }
 
@@ -62,7 +62,8 @@ class Input extends React.Component {
       id = `input_${idgen()}`;
     }
     let inputClasses = {
-      validate
+      validate,
+      'browser-default' : !!this.props.browserDefault && this.isSelect()
     };
     let C, inputType;
     switch (type) {
@@ -95,7 +96,7 @@ class Input extends React.Component {
           <select
             id={id}
             className={cx(inputClasses)}
-            ref='inputEl'
+            ref={(ref) => this.selectInput = ref}
             value={this.state.value}
             {...props}
           >
