@@ -39,8 +39,8 @@ class Input extends React.Component {
   }
 
   _onChange(e) {
-    this.setState({
-      value: e.target.value
+   this.setState({
+      value: e.target.type === 'checkbox' ? e.target.checked : e.target.value
     });
     if (this.props.onChange) {
       this.props.onChange(e);
@@ -126,6 +126,13 @@ class Input extends React.Component {
       if (React.Children.count(children) == 1) {
         icon = React.Children.only(children);
       }
+
+      if (inputType !== 'checkbox') {
+        props.value = this.state.value
+      } else {
+        props.checked = !!this.state.value
+      }
+
       return (
         <div className={cx(classes)}>
             {icon === null ? null : React.cloneElement(icon, {className: 'prefix'})}
@@ -134,9 +141,7 @@ class Input extends React.Component {
                 className={cx(inputClasses)}
                 onChange={this._onChange}
                 placeholder={placeholder}
-                ref='inputEl'
                 type={inputType}
-                value={this.state.value}
                 {...props}
             />
             {htmlLabel}
