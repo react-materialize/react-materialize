@@ -5,12 +5,19 @@ import Row from './Row';
 import Col from './Col';
 
 class Tabs extends React.Component {
+
+  componentDidMount() {
+    if (typeof $ !== 'undefined') {
+      $(this.tabsEl).tabs()
+    }
+  }
+
   render() {
     let {children, className, ...props} = this.props;
     return (
       <Row>
         <Col s={12}>
-          <ul className={cx('tabs', className)}>
+          <ul className={cx('tabs', className)} ref={(ref) => this.tabsEl = ref}>
             {
               React.Children.map(children, (child, idx) => {
                 let {title, tabWidth, className, active, disabled} = child.props;
