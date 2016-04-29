@@ -14,6 +14,7 @@ export Dropdown from './Dropdown';
 export Footer from './Footer';
 export Icon from './Icon';
 export Input from './Input';
+export Select from './Select';
 export MediaBox from './MediaBox';
 export MenuItem from './MenuItem';
 export Modal from './Modal';

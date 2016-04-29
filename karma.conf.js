@@ -16,6 +16,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/materialize-css/dist/js/materialize.js',
       'test/*Spec.js'
     ],
 
