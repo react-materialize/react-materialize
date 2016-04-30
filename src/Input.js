@@ -83,7 +83,7 @@ class Input extends React.Component {
       active: this.state.value || this.isSelect()
     };
 
-    let htmlLabel = label ? <label className={cx(labelClasses)} htmlFor={id}>{label}</label> : null;
+    let htmlLabel = label || inputType === 'radio' ? <label className={cx(labelClasses)} htmlFor={id}>{label}</label> : null;
 
     if (this.isSelect()) {
       let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
