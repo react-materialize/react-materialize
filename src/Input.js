@@ -127,10 +127,14 @@ class Input extends React.Component {
         icon = React.Children.only(children);
       }
 
-      if (inputType === 'checkbox') {
-        props.checked = !!this.state.value
-      } else {
-        props.defaultValue = this.state.value
+      switch(inputType) {
+        case 'checkbox':
+          props.checked = !!this.state.value
+          break
+        case 'radio':
+          break
+        default:
+          props.defaultValue = this.state.value
       }
 
       return (
