@@ -12,8 +12,14 @@ class Tabs extends React.Component {
     }
   }
 
+  _onSelect(idx, e) {
+    if (this.props.hasOwnProperty('onChange')) {
+      this.props.onChange(idx, e)
+    }
+  }
+
   render() {
-    let {children, className, ...props} = this.props;
+    let {children, className, defaultValue, ...props} = this.props;
     return (
       <Row>
         <Col s={12}>
@@ -33,7 +39,7 @@ class Tabs extends React.Component {
                 let target = '#tab_' + idx;
                 return (
                   <li className={cx(classes, className)} key={idx}>
-                    <a href={target} className={active ? 'active' : ''}>{title}</a>
+                    <a href={target} className={active || defaultValue === idx ? 'active' : ''} onClick={this._onSelect.bind(this, idx)}>{title}</a>
                   </li>
                 );
               })
