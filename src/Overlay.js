@@ -7,7 +7,9 @@ class Overlay extends React.Component {
   }
 
   componentWillUnmount() {
-    this._unrenderOverlay();
+    try {
+      this._unrenderOverlay();
+    } catch(e) {}
     if (this._overlayTarget) {
       this.getContainerDOMNode()
         .removeChild(this._overlayTarget);
