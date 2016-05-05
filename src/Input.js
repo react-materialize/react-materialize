@@ -129,7 +129,7 @@ class Input extends React.Component {
 
       switch(inputType) {
         case 'checkbox':
-          props.checked = !!this.state.value
+          //props.checked = !!this.state.value
           break
         case 'radio':
           break
