@@ -12,14 +12,13 @@ class Collapsible extends React.Component {
   }
 
   render() {
-    let {
-      accordion, popout, className, children, ...props
-    } = this.props;
-    let classes = {
+    const { accordion, popout, className, children, ...props } = this.props;
+    const classes = {
       collapsible: true,
-      popout,
+      popout
     };
-    let collapsible = accordion ? 'accordion' : 'expandable';
+    const collapsible = accordion ? 'accordion' : 'expandable';
+
     return (
       <ul className={cx(className, classes)} {...props} data-collapsible={collapsible}>
         {React.Children.map(children, this.renderItem)}
@@ -28,7 +27,7 @@ class Collapsible extends React.Component {
   }
 
   renderItem(child, index) {
-    let props = {
+    const props = {
       key: child.key ? child.key : index,
       ref: child.ref
     };
@@ -41,16 +40,16 @@ class Collapsible extends React.Component {
   }
 
   handleSelect(key) {
-    if (this.props.onSelect) {
-      this.props.onSelect(key);
-    }
+    const { onSelect } = this.props;
 
+    if (onSelect) {
+      onSelect(key);
+    }
     if (this.state.activeKey === key) {
       key = null;
     }
-    this.setState({
-      activeKey: key
-    });
+
+    this.setState({ activeKey: key });
   }
 }
 
@@ -61,12 +60,14 @@ Collapsible.propTypes = {
    * @default false
    */
   accordion: React.PropTypes.bool,
+  className: React.PropTypes.string,
+  children: React.PropTypes.node,
   /**
    * Enable popout style
    */
   popout: React.PropTypes.bool,
   defaultActiveKey: React.PropTypes.number,
-  onSelect: React.PropTypes.func,
+  onSelect: React.PropTypes.func
 };
 
 Collapsible.defaultProps = {
