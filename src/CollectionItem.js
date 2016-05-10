@@ -14,17 +14,17 @@ class CollectionItem extends React.Component {
 
     if (this.isAnchor()) {
       return (
-          <a className={cx(classes)} href={this.props.href}>
-           {this.props.children}
-          </a>
-      )
+        <a className={cx(classes)} href={this.props.href}>
+         {this.props.children}
+        </a>
+      );
     }
 
     return (
-          <li className={cx(classes)}>
-            {this.props.children}
-          </li>
-    )
+      <li className={cx(classes)}>
+        {this.props.children}
+      </li>
+    );
 
   }
   isAnchor() {
