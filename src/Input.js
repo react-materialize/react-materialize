@@ -13,14 +13,14 @@ class Input extends React.Component {
 
   componentDidMount() {
     if (this.isMaterialSelect()) {
-      $(this.refs.inputEl).material_select();
-      $(this.refs.inputEl).on('change', this._onChange);
+      $(this.selectInput).material_select();
+      $(this.selectInput).on('change', this._onChange);
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate() {
     if (this.isMaterialSelect()) {
-      $(this.refs.inputEl).material_select();
+      $(this.selectInput).material_select();
     }
   }
 
@@ -28,27 +28,28 @@ class Input extends React.Component {
     if (this.isMaterialSelect()) {
       this.setState({
         value: nextProps.defaultValue
-      }, () => $(this.refs.inputEl).material_select());
+      }, () => $(this.selectInput).material_select());
     }
   }
 
   componentWillUnmount() {
     if (this.isMaterialSelect()) {
-      $(this.refs.inputEl).off('change', this._onChange);
+      $(this.selectInput).off('change', this._onChange);
     }
   }
 
   _onChange(e) {
     this.setState({
-      value: e.target.value
+      value: e.target.type === 'checkbox' ? e.target.checked : e.target.value
     });
+
     if (this.props.onChange) {
       this.props.onChange(e);
     }
   }
 
   render() {
-    let { defaultValue, placeholder, id, type, label, children, validate, onChange, ...props} = this.props;
+    let { defaultValue, placeholder, id, type, label, children, validate, ...props} = this.props;
     let classes = {
       col: true,
       'input-field': type !== 'checkbox' && type !== 'radio'
@@ -62,27 +63,28 @@ class Input extends React.Component {
       id = `input_${idgen()}`;
     }
     let inputClasses = {
-      validate
+      validate,
+      'browser-default' : !!this.props.browserDefault && this.isSelect()
     };
     let C, inputType;
     switch (type) {
-      case 'textarea':
-        C = 'textarea';
-        inputClasses['materialize-textarea'] = true;
-        break;
-      case 'switch':
-        C = 'input';
-        inputType = 'checkbox';
-        break;
-      default:
-        C = 'input';
-        inputType = type || 'text';
+    case 'textarea':
+      C = 'textarea';
+      inputClasses['materialize-textarea'] = true;
+      break;
+    case 'switch':
+      C = 'input';
+      inputType = 'checkbox';
+      break;
+    default:
+      C = 'input';
+      inputType = type || 'text';
     }
     let labelClasses = {
       active: this.state.value || this.isSelect()
     };
 
-    let htmlLabel = label ? <label className={cx(labelClasses)} htmlFor={id}>{label}</label> : null;
+    let htmlLabel = label || inputType === 'radio' ? <label className={cx(labelClasses)} htmlFor={id}>{label}</label> : null;
 
     if (this.isSelect()) {
       let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
@@ -95,8 +97,8 @@ class Input extends React.Component {
           <select
             id={id}
             className={cx(inputClasses)}
-            ref='inputEl'
-            value={this.state.value}
+            ref={(ref) => this.selectInput = ref}
+            defaultValue={defaultValue}
             {...props}
           >
             { options }
@@ -125,6 +127,16 @@ class Input extends React.Component {
       if (React.Children.count(children) == 1) {
         icon = React.Children.only(children);
       }
+
+      switch(inputType) {
+      case 'checkbox':
+        break;
+      case 'radio':
+        break;
+      default:
+        props.defaultValue = this.state.value;
+      }
+
       return (
         <div className={cx(classes)}>
             {icon === null ? null : React.cloneElement(icon, {className: 'prefix'})}
@@ -133,9 +145,7 @@ class Input extends React.Component {
                 className={cx(inputClasses)}
                 onChange={this._onChange}
                 placeholder={placeholder}
-                ref='inputEl'
                 type={inputType}
-                value={this.state.value}
                 {...props}
             />
             {htmlLabel}

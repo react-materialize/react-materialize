@@ -5,12 +5,25 @@ import Row from './Row';
 import Col from './Col';
 
 class Tabs extends React.Component {
+
+  componentDidMount() {
+    if (typeof $ !== 'undefined') {
+      $(this.tabsEl).tabs()
+    }
+  }
+
+  _onSelect(idx, e) {
+    if (this.props.hasOwnProperty('onChange')) {
+      this.props.onChange(idx, e)
+    }
+  }
+
   render() {
-    let {children, className, ...props} = this.props;
+    let {children, className, defaultValue, ...props} = this.props;
     return (
       <Row>
         <Col s={12}>
-          <ul className={cx('tabs', className)}>
+          <ul className={cx('tabs', className)} ref={(ref) => this.tabsEl = ref}>
             {
               React.Children.map(children, (child, idx) => {
                 let {title, tabWidth, className, active, disabled} = child.props;
@@ -26,7 +39,8 @@ class Tabs extends React.Component {
                 let target = '#tab_' + idx;
                 return (
                   <li className={cx(classes, className)} key={idx}>
-                    <a href={target} className={active ? 'active' : ''}>{title}</a>
+                    <a href={target} className={active || defaultValue === idx ? 'active' : ''}
+                     {...disabled ? {} : {onClick : this._onSelect.bind(this, idx)}}>{title}</a>
                   </li>
                 );
               })
