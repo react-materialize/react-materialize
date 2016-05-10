@@ -18,7 +18,7 @@ class Input extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate() {
     if (this.isMaterialSelect()) {
       $(this.selectInput).material_select();
     }
@@ -39,16 +39,17 @@ class Input extends React.Component {
   }
 
   _onChange(e) {
-   this.setState({
+    this.setState({
       value: e.target.type === 'checkbox' ? e.target.checked : e.target.value
     });
+
     if (this.props.onChange) {
       this.props.onChange(e);
     }
   }
 
   render() {
-    let { defaultValue, placeholder, id, type, label, children, validate, onChange, ...props} = this.props;
+    let { defaultValue, placeholder, id, type, label, children, validate, ...props} = this.props;
     let classes = {
       col: true,
       'input-field': type !== 'checkbox' && type !== 'radio'
@@ -67,17 +68,17 @@ class Input extends React.Component {
     };
     let C, inputType;
     switch (type) {
-      case 'textarea':
-        C = 'textarea';
-        inputClasses['materialize-textarea'] = true;
-        break;
-      case 'switch':
-        C = 'input';
-        inputType = 'checkbox';
-        break;
-      default:
-        C = 'input';
-        inputType = type || 'text';
+    case 'textarea':
+      C = 'textarea';
+      inputClasses['materialize-textarea'] = true;
+      break;
+    case 'switch':
+      C = 'input';
+      inputType = 'checkbox';
+      break;
+    default:
+      C = 'input';
+      inputType = type || 'text';
     }
     let labelClasses = {
       active: this.state.value || this.isSelect()
@@ -128,13 +129,12 @@ class Input extends React.Component {
       }
 
       switch(inputType) {
-        case 'checkbox':
-          //props.checked = !!this.state.value
-          break
-        case 'radio':
-          break
-        default:
-          props.defaultValue = this.state.value
+      case 'checkbox':
+        break;
+      case 'radio':
+        break;
+      default:
+        props.defaultValue = this.state.value;
       }
 
       return (
