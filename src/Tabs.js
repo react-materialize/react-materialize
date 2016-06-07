@@ -7,9 +7,7 @@ import Col from './Col';
 
 class Tabs extends React.Component {
   componentDidMount() {
-    if (typeof $ !== 'undefined') {
-      $(this.refs[this.tabsIdx]).tabs();
-    }
+    $(this._tabs).tabs();
   }
 
   renderChildren() {
@@ -59,12 +57,10 @@ class Tabs extends React.Component {
       ...props
     } = this.props;
 
-    this.tabsIdx = `tabs_${idgen()}`;
-
     return (
       <Row>
         <Col s={12}>
-          <ul ref={this.tabsIdx} className={cx('tabs', className)}>
+          <ul ref={(u) => this._tabs = u} className={cx('tabs', className)}>
             { this.renderChildren() }
           </ul>
         </Col>
