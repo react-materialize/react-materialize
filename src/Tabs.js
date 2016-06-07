@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import idgen from './idgen';
 
 import Row from './Row';
 import Col from './Col';
 
-class Tabs extends React.Component {
+class Tabs extends Component {
   componentDidMount() {
     $(this._tabs).tabs();
   }
 
-  renderChildren() {
+  renderChildren(idx) {
     return (
-      React.Children.map(this.props.children, (child, idx) => {
+      React.Children.map(this.props.children, (child, id) => {
         const {
           title,
           tabWidth,
@@ -27,7 +27,7 @@ class Tabs extends React.Component {
           col: true
         };
         if (tabWidth) { classes['s' + tabWidth] = true; }
-        const target = '#tab_' + idx;
+        const target = '#tab_' + id + idx;
 
         return (
           <li className={cx(classes, className)} key={idx}>
@@ -38,11 +38,11 @@ class Tabs extends React.Component {
     );
   }
 
-  renderGrandChildren() {
+  renderTabContent(idx) {
     return (
-      React.Children.map(this.props.children, (child, idx) => {
+      React.Children.map(this.props.children, (child, id) => {
         return (
-          <Col id={'tab_' + idx} s={12} key={'tab' + idx}>
+          <Col id={'tab_' + id + idx} s={12} key={'tab' + id + idx}>
             { child.props.children }
           </Col>
         );
@@ -51,23 +51,25 @@ class Tabs extends React.Component {
   }
 
   render() {
-    const {
-      children,
-      className,
-      ...props
-    } = this.props;
+    const { className, ...props } = this.props;
+    const idx = idgen();
 
     return (
       <Row>
         <Col s={12}>
-          <ul ref={(u) => this._tabs = u} className={cx('tabs', className)}>
-            { this.renderChildren() }
+          <ul ref={(u) => this._tabs = u} {...props} className={cx('tabs', className)}>
+            { this.renderChildren(idx) }
           </ul>
         </Col>
-        { this.renderGrandChildren() }
+        { this.renderTabContent(idx) }
       </Row>
     );
   }
 }
+
+Tabs.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string
+};
 
 export default Tabs;
