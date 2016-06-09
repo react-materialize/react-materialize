@@ -32,12 +32,11 @@ class Dropdown extends Component {
   }
 
   renderTrigger() {
-    const { trigger, beloworigin } = this.props;
+    const { trigger } = this.props;
 
     return React.cloneElement( trigger, {
       ref: (t) => this._trigger = t,
       className: 'dropdown-button',
-      'data-beloworigin': beloworigin,
       'data-activates': this.idx
     });
   }
@@ -48,19 +47,20 @@ Dropdown.propTypes = {
    * The button to trigger the dropdown
    */
   trigger: PropTypes.node.isRequired,
-  /**
-   * 	If true, the dropdown will show below the activator. Default: true
-   */
-  beloworigin: PropTypes.bool,
   children: PropTypes.node,
   /**
    * Options hash for the dropdown
+   * more info: http://materializecss.com/dropdown.html#options
    */
-  options: PropTypes.object
-};
-
-Dropdown.defaultProps = {
-  beloworigin: true
+  options: PropTypes.shape({
+    induration: PropTypes.number,
+    outduration: PropTypes.number,
+    constrainwidth: PropTypes.bool,
+    hover: PropTypes.bool,
+    gutter: PropTypes.number,
+    beloworigin: PropTypes.bool,
+    alignment: PropTypes.oneOf(['left', 'right'])
+  })
 };
 
 export default Dropdown;
