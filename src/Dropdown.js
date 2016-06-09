@@ -12,7 +12,7 @@ class Dropdown extends Component {
 
     $(this._trigger).dropdown(options);
   }
- 
+
   componentWillUnmount() {
     $(this._trigger).off();
   }
@@ -53,12 +53,12 @@ Dropdown.propTypes = {
    * more info: http://materializecss.com/dropdown.html#options
    */
   options: PropTypes.shape({
-    induration: PropTypes.number,
-    outduration: PropTypes.number,
-    constrainwidth: PropTypes.bool,
+    inDuration: PropTypes.number,
+    outDuration: PropTypes.number,
+    constrain_width: PropTypes.bool,
     hover: PropTypes.bool,
     gutter: PropTypes.number,
-    beloworigin: PropTypes.bool,
+    belowOrigin: PropTypes.bool,
     alignment: PropTypes.oneOf(['left', 'right'])
   })
 };
