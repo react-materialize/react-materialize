@@ -5,17 +5,20 @@ import Icon from './Icon';
 class CollapsibleItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {expanded: this.props.expanded};
+    this.state = {
+      expanded: props.expanded
+    };
+
     this.handleClick = this.handleClick.bind(this);
     this.renderBody = this.renderBody.bind(this);
     this.renderIcon = this.renderIcon.bind(this);
   }
 
   render() {
-    let {node, header, expanded, icon, children, ...props} = this.props;
-    let C = node || 'a';
-    let classes = {
-      'collapsible-header': true,
+    const {node, header, icon, ...props} = this.props;
+    const C = node;
+    const classes = {
+      'collapsible-header': true
     };
 
     return (
@@ -24,21 +27,25 @@ class CollapsibleItem extends React.Component {
           {icon ? this.renderIcon(icon) : null}
           {header}
         </C>
-        {this.state.expanded ? this.renderBody() : null}
+        { this.renderBody() }
       </li>
     );
   }
 
   handleClick() {
-    if (this.props.onSelect) {
-      this.props.onSelect(this.props.eventKey);
+    const { onSelect, eventKey } = this.props;
+
+    if (onSelect) {
+      onSelect(eventKey);
     } else {
-      this.setState({expanded: !this.state.expanded});
+      this.setState({ expanded: !this.state.expanded });
     }
   }
 
   renderBody() {
-    let style = {display: 'block'};
+    if (!this.state.expanded) return;
+
+    const style = {display: 'block'};
     return (
       <div className='collapsible-body' style={style}>
         {this.props.children}
@@ -52,6 +59,7 @@ class CollapsibleItem extends React.Component {
 }
 
 CollapsibleItem.propTypes = {
+  children: React.PropTypes.node,
   header: React.PropTypes.string.isRequired,
   icon: React.PropTypes.string,
   onSelect: React.PropTypes.func,
@@ -68,11 +76,12 @@ CollapsibleItem.propTypes = {
    * The node type of the header
    * @default a
    */
-  node: React.PropTypes.node,
-}
+  node: React.PropTypes.node
+};
 
 CollapsibleItem.defaultProps = {
   expanded: false,
+  node: 'a'
 };
 
 export default CollapsibleItem;
