@@ -1,16 +1,17 @@
 // Shameless copied from react-bootstrap
 
 import 'colors';
-import {
-  exec
-}
-from 'child-process-promise';
+import { exec } from 'child-process-promise';
+import { StringDecoder } from 'string_decoder';
 
 const SIGINT = 'SIGINT';
+const decoder = new StringDecoder('utf8');
+
 let processMap = {};
 
 function output(prefix, message) {
-  let formattedMessage = message.trim()
+  let formattedMessage = decoder.write(message)
+    .trim()
     .split('\n')
     .reduce((acc, line) => `${acc}${ acc !== '' ? '\n' : '' }${prefix} ${line}`,
       '');
