@@ -14,6 +14,7 @@ class Modal extends React.Component {
       children,
       fixedFooter,
       bottomSheet,
+      actions,
       ...props
     } = this.props;
 
@@ -30,7 +31,7 @@ class Modal extends React.Component {
           {children}
         </div>
         <div className="modal-footer">
-          <Button waves='light' modal='close' flat>Close</Button>
+          {React.Children.toArray(actions)}
         </div>
       </div>
     );
@@ -71,12 +72,19 @@ Modal.propTypes = {
   /**
    * The button to trigger the display of the modal
    */
-  trigger: React.PropTypes.node.isRequired
+  trigger: React.PropTypes.node.isRequired,
+
+  /**
+   * The buttons to show in the footer of the modal
+   */
+  actions: React.PropTypes.node
+
 };
 
 Modal.defaultProps = {
   fixedFooter: false,
-  bottomSheet: false
+  bottomSheet: false,
+  actions: [<Button waves='light' modal='close' flat>Close</Button>]
 };
 
 export default Modal;
