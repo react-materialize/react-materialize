@@ -43,7 +43,7 @@ class CollapsibleItem extends React.Component {
   }
 
   renderBody() {
-    if (!this.state.expanded) return;
+    if (!this.state.expanded && !this.props.expanded) return;
 
     const style = {display: 'block'};
     return (
