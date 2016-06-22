@@ -7,21 +7,23 @@ class CollectionItem extends React.Component {
     this.isAnchor = this.isAnchor.bind(this);
   }
   render() {
+    let {active, className} = this.props;
+    
     let classes = {
       'collection-item': true,
-      active: this.props.active
+      active: active
     };
 
     if (this.isAnchor()) {
       return (
-        <a className={cx(classes)} href={this.props.href}>
+        <a className={cx(className, classes)} href={this.props.href}>
          {this.props.children}
         </a>
       );
     }
 
     return (
-      <li className={cx(classes)}>
+      <li className={cx(className, classes)}>
         {this.props.children}
       </li>
     );
