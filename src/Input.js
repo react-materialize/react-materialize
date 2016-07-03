@@ -9,6 +9,7 @@ class Input extends React.Component {
     this.state = {value: this.props.defaultValue};
     this._onChange = this._onChange.bind(this);
     this.isSelect = this.isSelect.bind(this);
+    this.focus = this.focus.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +47,10 @@ class Input extends React.Component {
     if (this.props.onChange) {
       this.props.onChange(e);
     }
+  }
+
+  focus() {
+    this.input.focus();
   }
 
   render() {
@@ -146,6 +151,7 @@ class Input extends React.Component {
                 onChange={this._onChange}
                 placeholder={placeholder}
                 type={inputType}
+                ref={ (ref) => {this.input = ref; } }
                 {...props}
             />
             {htmlLabel}
