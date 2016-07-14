@@ -15,16 +15,18 @@ Material design components for react, powered by [materializecss](http://materia
 ```
 $ npm install react-materialize
 ```
-Add [materialize.css] and [materialize.js] to your project (cdn).
+Requires [materialize.css] and [materialize.js]. (Links to CDN).
 
 ```html
 <script src='materialize.js'></script>
 <link rel='stylesheet' href='materialize.css'/>
 ```
 
-[materialize.css]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css
-[materialize.js]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.js
+Materialize.js requires [jQuery] so you'll need to add that too.
 
+[materialize.css]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css
+[materialize.js]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js
+[jQuery]: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js
 
 
 ## Usage
