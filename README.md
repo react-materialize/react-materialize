@@ -6,39 +6,42 @@ Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=mas
 [![npm version](http://img.shields.io/npm/v/react-materialize.svg?style=flat)](https://npmjs.org/package/react-materialize "View this project on npm")
 
 
-## Introduction
+# [react-materialize](react-materialize.github.io)
 
 Material design components for react, powered by [materializecss](http://materializecss.com/).
 
-## Get started
-
+## Install
 ```
-$ npm install react-materialize
+npm install react-materialize
 ```
-Add [materialize.css] and [materialize.js] to your project (cdn).
-
+## Use
+#### HTML Setup (from [materializecss](http://materializecss.com/))
 ```html
-<script src='materialize.js'></script>
-<link rel='stylesheet' href='materialize.css'/>
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	</head>
+	<body>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+	</body>
+</html>
 ```
 
-[materialize.css]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css
-[materialize.js]: https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.js
-
-
-
-## Usage
-
+#### JS (ES5)
 ``` javascript
 var Button = require('react-materialize').Button;
-
-// with ES6 modules
+```
+#### JS (ES6)
+``` javascript
 import {Button, Card, Row, Col} from 'react-materialize';
 ```
 
 ## Docs && Examples
 
-See [documentation](https://react-materialize.github.io) for live examples. Try out the [boilplate](https://github.com/react-materialize/webpack-boilplate).
+See [documentation](https://react-materialize.github.io) for live examples. Try out the [boilerplate](https://github.com/react-materialize/webpack-boilplate).
 
 #### How does it compare to X.Y.Z?
 
