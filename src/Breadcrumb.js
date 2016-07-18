@@ -1,33 +1,25 @@
 import React from 'react';
 import Col from './Col';
 
-class Breadcrumb extends React.Component {
-  constructor(props) {
-    super(props);
-    this.renderLinks = this.renderLinks.bind(this);
-  }
+const Breadcrumb = ({ children }) => (
+  <nav className='row'>
+    <div className='nav-wrapper'>
+      <Col s={12}>
+        { renderChildren(children) }
+      </Col>
+    </div>
+  </nav>
+);
 
-  render() {
-    return (
-      <nav>
-        <div className="nav-wrapper">
-          <Col s={12}>
-            {this.renderLinks()}
-          </Col>
-        </div>
-      </nav>
-    );
-  }
-
-  renderLinks() {
-    return React.Children.map(this.props.children, item => {
-      return React.cloneElement(item, {breadcrumbItem: true});
-    });
-  }
-}
+const renderChildren = (children) => {
+  return React.Children.map(children, (item) => {
+    return React.cloneElement(item, { className: 'breadcrumb' });
+  });
+};
 
 Breadcrumb.propTypes = {
-  children: React.PropTypes.arrayOf(React.PropTypes.element)
+  children: React.PropTypes.node,
+  cols: React.PropTypes.number
 };
 
 export default Breadcrumb;
