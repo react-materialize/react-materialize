@@ -1,33 +1,34 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
-class PaginationButton extends React.Component {
-  render() {
-    let {active, disabled, children, href, className, onSelect, ...props} = this.props;
-    let classes = {
-      'waves-effect': true,
-      disabled,
-      active,
-    };
-    return (
-      <li className={cx(classes, className)} {...props} onClick={onSelect}>
-        <a href={href}>{children}</a>
-      </li>
-    );
-  }
-}
+const PaginationButton = ({
+  active = false,
+  children,
+  className,
+  disabled = false,
+  href = '#',
+  onSelect
+}) => {
+  const classes = {
+    'waves-effect': true,
+    disabled,
+    active
+  };
 
-PaginationButton.propTypes = {
-  active: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  href: React.PropTypes.string,
-  onSelect: React.PropTypes.func,
+  return (
+    <li className={cx(classes, className)} onClick={onSelect}>
+      <a href={href}>{children}</a>
+    </li>
+  );
 };
 
-PaginationButton.defaultProps = {
-  active: false,
-  disabled: false,
-  href: '#!',
+PaginationButton.propTypes = {
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  href: PropTypes.string,
+  onSelect: PropTypes.func
 };
 
 export default PaginationButton;
