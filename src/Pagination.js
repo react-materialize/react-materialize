@@ -14,12 +14,6 @@ class Pagination extends Component {
     this._onClick = this._onClick.bind(this);
   }
 
-  render() {
-    return (
-      <ul className={cx('pagination', this.props.className)}> {this.renderButtons()} </ul>
-    );
-  }
-
   _onClick(i) {
     const { items, onSelect } = this.props;
 
@@ -34,7 +28,7 @@ class Pagination extends Component {
   }
 
   renderButtons() {
-    const { items, children, maxButtons } = this.props;
+    const { items, children, maxButtons = items } = this.props;
     const { activePage } = this.state;
 
     if (children) return children;
@@ -76,8 +70,8 @@ class Pagination extends Component {
 
     buttons.push(
       <PaginationButton
-        disabled={activePage === items}
         key={`pagination-${items + 1}`}
+        disabled={activePage === items}
         onSelect={this._onClick(activePage + 1)}
       >
         <Icon>chevron_right</Icon>
@@ -86,10 +80,16 @@ class Pagination extends Component {
 
     return buttons;
   }
+
+  render() {
+    return (
+      <ul className={cx('pagination', this.props.className)}> {this.renderButtons()} </ul>
+    );
+  }
 }
 
 Pagination.propTypes = {
-  items: PropTypes.number.isRequired,
+  items: PropTypes.any.isRequired,
   activePage: PropTypes.number,
   children: PropTypes.node,
   className: PropTypes.string,
