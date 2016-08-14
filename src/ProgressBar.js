@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-class ProgressBar extends React.Component {
-  render() {
-    let classes, style;
-    if(typeof this.props.progress === 'undefined') {
-      classes = {indeterminate: true};
-    } else {
-      classes = {determinate: true};
+class ProgressBar extends Component {
+  render () {
+    const { progress, className } = this.props;
+
+    let style;
+    const classes = {
+      indeterminate: !progress,
+      determinate: !!progress
+    };
+    if (progress) {
       style = {
-        width: this.props.progress + '%',
+        width: progress + '%'
       };
     }
 
     return (
-      <div className={cx('progress', this.props.className)}>
-        <div className={cx(classes)} style={style}></div>
+      <div className={cx('progress lighten-5', className)}>
+        <div className={cx(classes, className)} style={style} />
       </div>
-    )
+    );
   }
 }
 
 ProgressBar.propTypes = {
+  className: PropTypes.string,
   /**
    * A number between 0..100 that indicates the current progress,
    * when provided, a determinate bar with the progress is displayed,
    * otherwise a indeterminate bar is shown
    */
-  progress: React.PropTypes.number,
+  progress: PropTypes.number
 };
 
 export default ProgressBar;
