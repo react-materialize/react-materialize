@@ -1,28 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-class ProgressBar extends Component {
-  render () {
-    const { progress, className } = this.props;
-
-    let style;
-    const classes = {
-      indeterminate: !progress,
-      determinate: !!progress
+const ProgressBar = ({ progress, className }) => {
+  let style;
+  const classes = {
+    indeterminate: !progress,
+    determinate: !!progress
+  };
+  if (progress) {
+    style = {
+      width: progress + '%'
     };
-    if (progress) {
-      style = {
-        width: progress + '%'
-      };
-    }
-
-    return (
-      <div className={cx('progress lighten-5', className)}>
-        <div className={cx(classes, className)} style={style} />
-      </div>
-    );
   }
-}
+
+  return (
+    <div className={cx('progress lighten-5', className)}>
+      <div className={cx(classes, className)} style={style} />
+    </div>
+  );
+};
 
 ProgressBar.propTypes = {
   className: PropTypes.string,
