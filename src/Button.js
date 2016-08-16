@@ -1,5 +1,6 @@
 import React from 'react';
 import constants from './constants';
+import cleanProps from './clean-props';
 import cx from 'classnames';
 import Icon from './Icon';
 import idgen from './idgen';
@@ -37,6 +38,7 @@ class Button extends React.Component {
     if (fab) {
       return this.renderFab(cx(classes, className));
     } else {
+      props = cleanProps(props);
       return (
         <C {...props} className={cx(classes, className)}>
           { this.renderIcon() }
