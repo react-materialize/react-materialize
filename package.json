@@ -12,7 +12,7 @@
     "test": "npm run lint && karma start --single-run",
     "watch": "karma start",
     "build": "babel -d lib src",
-    "lint": "eslint src",
+    "lint": "eslint src || true",
     "fix": "eslint src --fix",
     "release": "npm run build && npm publish"
   },
@@ -35,7 +35,6 @@
   "devDependencies": {
     "babel-cli": "^6.1.18",
     "babel-core": "^6.1.21",
-    "babel-eslint": "^4.1.8",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.1.19",
     "babel-preset-es2015": "^6.1.18",

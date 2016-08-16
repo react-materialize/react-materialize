@@ -5,7 +5,6 @@ module.exports = {
     'es6': true,
     'jquery': true
   },
-  'parser': 'babel-eslint',
   'plugins': ['react'],
   'extends': ['eslint:recommended'],
   'parserOptions': {
