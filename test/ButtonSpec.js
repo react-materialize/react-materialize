@@ -5,7 +5,6 @@ import Button from'../src/Button';
 
 var instance = null;
 
-
 describe('Button', () => {
   beforeEach(() => {
     instance = TestUtils.renderIntoDocument(<Button waves='light'>Stuff</Button>);
