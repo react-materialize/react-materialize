@@ -1,22 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 
-class Row extends React.Component {
-  render() {
-    let C = this.props.node;
-    return (
-      <C className={cx('row', this.props.className)}
-        {...this.props}>
-        {this.props.children}
-      </C>
-    );
-  }
-}
+const Row = ({ children, className, node: Node = 'div' }) =>
+  <Node className={cx('row', className)}>{ children }</Node>;
 
 Row.propTypes = {
-  node: React.PropTypes.node.isRequired
+  node: React.PropTypes.node
 };
-
-Row.defaultProps = {node: 'div'};
 
 export default Row;
