@@ -1,30 +1,34 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
-class Input extends React.Component {
-  constructor(props) {
+class Input extends Component {
+  constructor (props) {
     super(props);
-    this.state = {value: this.props.defaultValue};
+
+    this.state = {
+      value: props.defaultValue
+    };
+
     this._onChange = this._onChange.bind(this);
     this.isSelect = this.isSelect.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.isMaterialSelect()) {
       $(this.selectInput).material_select();
       $(this.selectInput).on('change', this._onChange);
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     if (this.isMaterialSelect()) {
       $(this.selectInput).material_select();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.isMaterialSelect()) {
       this.setState({
         value: nextProps.defaultValue
@@ -32,13 +36,13 @@ class Input extends React.Component {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     if (this.isMaterialSelect()) {
       $(this.selectInput).off('change', this._onChange);
     }
   }
 
-  _onChange(e) {
+  _onChange (e) {
     this.setState({
       value: e.target.type === 'checkbox' ? e.target.checked : e.target.value
     });
@@ -48,8 +52,16 @@ class Input extends React.Component {
     }
   }
 
-  render() {
-    let { defaultValue, placeholder, id, type, label, children, validate, ...props} = this.props;
+  render () {
+    const {
+      children,
+      defaultValue,
+      label,
+      placeholder,
+      type,
+      validate
+    } = this.props;
+    let id = this.props.id;
     let classes = {
       col: true,
       'input-field': type !== 'checkbox' && type !== 'radio'
@@ -64,21 +76,21 @@ class Input extends React.Component {
     }
     let inputClasses = {
       validate,
-      'browser-default' : !!this.props.browserDefault && this.isSelect()
+      'browser-default': !!this.props.browserDefault && this.isSelect()
     };
     let C, inputType;
     switch (type) {
-    case 'textarea':
-      C = 'textarea';
-      inputClasses['materialize-textarea'] = true;
-      break;
-    case 'switch':
-      C = 'input';
-      inputType = 'checkbox';
-      break;
-    default:
-      C = 'input';
-      inputType = type || 'text';
+      case 'textarea':
+        C = 'textarea';
+        inputClasses['materialize-textarea'] = true;
+        break;
+      case 'switch':
+        C = 'input';
+        inputType = 'checkbox';
+        break;
+      default:
+        C = 'input';
+        inputType = type || 'text';
     }
     let labelClasses = {
       active: this.state.value || this.isSelect()
@@ -97,9 +109,8 @@ class Input extends React.Component {
           <select
             id={id}
             className={cx(inputClasses)}
-            ref={(ref) => this.selectInput = ref}
+            ref={(ref) => (this.selectInput = ref)}
             defaultValue={defaultValue}
-            {...props}
           >
             { options }
           </select>
@@ -107,79 +118,72 @@ class Input extends React.Component {
       );
     } else if (type === 'switch') {
       return (
-        <div className="switch">
+        <div className='switch'>
           <label>
             Off
             <input
               name={this.props.name}
               onChange={this._onChange}
-              type="checkbox"
-              {...props}
+              type='checkbox'
             />
-            <span className="lever"></span>
+            <span className='lever' />
             On
           </label>
         </div>
       );
-    }
-    else {
+    } else {
       let icon = null;
-      if (React.Children.count(children) == 1) {
+      if (React.Children.count(children) === 1) {
         icon = React.Children.only(children);
       }
 
-      switch(inputType) {
-      case 'checkbox':
-        break;
-      case 'radio':
-        break;
-      default:
-        props.defaultValue = this.state.value;
-      }
+      let defaultValue = inputType !== 'checkbox' && inputType !== 'radio'
+        ? this.state.value
+        : this.props.defaultValue;
 
       return (
         <div className={cx(classes)}>
-            {icon === null ? null : React.cloneElement(icon, {className: 'prefix'})}
-            <C
-                id={id}
-                className={cx(inputClasses)}
-                onChange={this._onChange}
-                placeholder={placeholder}
-                type={inputType}
-                {...props}
-            />
-            {htmlLabel}
+          {icon === null ? null : React.cloneElement(icon, {className: 'prefix'})}
+          <C
+            id={id}
+            defaultValue={defaultValue}
+            className={cx(inputClasses)}
+            onChange={this._onChange}
+            placeholder={placeholder}
+            type={inputType}
+          />
+          {htmlLabel}
         </div>
       );
     }
   }
 
-  isSelect() {
+  isSelect () {
     return this.props.type === 'select';
   }
 
-  isMaterialSelect() {
+  isMaterialSelect () {
     return this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined';
   }
 }
 
 Input.propTypes = {
-  s: React.PropTypes.number,
-  m: React.PropTypes.number,
-  l: React.PropTypes.number,
-  label: React.PropTypes.node,
+  s: PropTypes.number,
+  m: PropTypes.number,
+  l: PropTypes.number,
+  label: PropTypes.node,
   /**
    * Input field type, e.g. select, checkbox, radio, text, tel, email
    * @default 'text'
    */
-  type: React.PropTypes.string,
-  defaultValue: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  id: React.PropTypes.string,
-  name: React.PropTypes.string,
-  validate: React.PropTypes.bool,
-  browserDefault: React.PropTypes.bool,
-  onChange: React.PropTypes.func
+  type: PropTypes.string,
+  defaultValue: PropTypes.string,
+  placeholder: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  validate: PropTypes.bool,
+  browserDefault: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 Input.defaultProps = {type: 'text'};
