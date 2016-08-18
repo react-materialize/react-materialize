@@ -36,7 +36,7 @@ class Button extends Component {
       return this.renderFab(cx(classes, className));
     } else {
       return (
-        <C className={cx(classes, className)}>
+        <C onClick={this.props.onClick} className={cx(classes, className)}>
           { this.renderIcon() }
           { this.props.children }
         </C>
@@ -89,6 +89,7 @@ Button.propTypes = {
   /**
    * Tooltip to show when mouse hovered
    */
+  onClick: PropTypes.func,
   tooltip: PropTypes.string,
   waves: PropTypes.oneOf(constants.WAVES)
 };

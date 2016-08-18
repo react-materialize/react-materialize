@@ -54,29 +54,30 @@ class Input extends Component {
 
   render () {
     const {
+      browserDefault,
       children,
       defaultValue,
       label,
       placeholder,
+      s,
+      m,
+      l,
       type,
-      validate
+      validate,
+      ...other
     } = this.props;
-    let id = this.props.id;
+    let sizes = { s, m, l };
+    this._id = this._id || this.props.id || `input_${idgen()}`;
     let classes = {
       col: true,
       'input-field': type !== 'checkbox' && type !== 'radio'
     };
     constants.SIZES.forEach(size => {
-      if (this.props[size]) {
-        classes[size + this.props[size]] = true;
-      }
+      classes[size + sizes[size]] = sizes[size];
     });
-    if (!id) {
-      id = `input_${idgen()}`;
-    }
     let inputClasses = {
       validate,
-      'browser-default': !!this.props.browserDefault && this.isSelect()
+      'browser-default': browserDefault && this.isSelect()
     };
     let C, inputType;
     switch (type) {
@@ -96,7 +97,8 @@ class Input extends Component {
       active: this.state.value || this.isSelect()
     };
 
-    let htmlLabel = label || inputType === 'radio' ? <label className={cx(labelClasses)} htmlFor={id}>{label}</label> : null;
+    let htmlLabel = label || inputType === 'radio'
+      ? <label className={cx(labelClasses)} htmlFor={this._id}>{label}</label> : null;
 
     if (this.isSelect()) {
       let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
@@ -107,7 +109,7 @@ class Input extends Component {
         <div className={cx(classes)}>
           {htmlLabel}
           <select
-            id={id}
+            id={this._id}
             className={cx(inputClasses)}
             ref={(ref) => (this.selectInput = ref)}
             defaultValue={defaultValue}
@@ -122,7 +124,7 @@ class Input extends Component {
           <label>
             Off
             <input
-              name={this.props.name}
+              {...other}
               onChange={this._onChange}
               type='checkbox'
             />
@@ -139,15 +141,16 @@ class Input extends Component {
 
       let defaultValue = inputType !== 'checkbox' && inputType !== 'radio'
         ? this.state.value
-        : this.props.defaultValue;
+        : defaultValue;
 
       return (
         <div className={cx(classes)}>
           {icon === null ? null : React.cloneElement(icon, {className: 'prefix'})}
           <C
-            id={id}
-            defaultValue={defaultValue}
+            {...other}
             className={cx(inputClasses)}
+            defaultValue={defaultValue}
+            id={this._id}
             onChange={this._onChange}
             placeholder={placeholder}
             type={inputType}
@@ -177,7 +180,7 @@ Input.propTypes = {
    * @default 'text'
    */
   type: PropTypes.string,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.any,
   placeholder: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
@@ -186,6 +189,6 @@ Input.propTypes = {
   onChange: PropTypes.func
 };
 
-Input.defaultProps = {type: 'text'};
+Input.defaultProps = { type: 'text' };
 
 export default Input;
