@@ -6,16 +6,17 @@ import constants from './constants';
 const Col = ({
   children,
   className,
-  node = 'div',
+  node: C = 'div',
+  s,
+  m,
+  l,
   offset,
-  ...props
+  ...other
 }) => {
-  let Child = node;
+  let sizes = { s, m, l };
   let classes = { col: true };
-  constants.SIZES.forEach(s => {
-    if (props[s]) {
-      classes[s + props[s]] = true;
-    }
+  constants.SIZES.forEach(size => {
+    classes[size + sizes[size]] = sizes[size];
   });
 
   if (offset) {
@@ -25,9 +26,9 @@ const Col = ({
   }
 
   return (
-    <Child className={cx(classes, className)}>
+    <C {...other} className={cx(classes, className)}>
       {children}
-    </Child>
+    </C>
   );
 };
 
