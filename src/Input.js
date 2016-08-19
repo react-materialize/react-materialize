@@ -79,6 +79,8 @@ class Input extends Component {
     });
     let inputClasses = {
       validate,
+      invalid: error,
+      valid: success,
       'browser-default': browserDefault && this.isSelect()
     };
     let C, inputType;
