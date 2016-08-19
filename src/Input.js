@@ -56,6 +56,8 @@ class Input extends Component {
     const {
       browserDefault,
       children,
+      error,
+      success,
       defaultValue,
       label,
       placeholder,
@@ -98,7 +100,7 @@ class Input extends Component {
     };
 
     let htmlLabel = label || inputType === 'radio'
-      ? <label className={cx(labelClasses)} htmlFor={this._id}>{label}</label> : null;
+      ? <label className={cx(labelClasses)} data-success={success} data-error={error} htmlFor={this._id}>{label}</label> : null;
 
     if (this.isSelect()) {
       let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
@@ -175,6 +177,8 @@ Input.propTypes = {
   m: PropTypes.number,
   l: PropTypes.number,
   label: PropTypes.node,
+  error: PropTypes.string,
+  success: PropTypes.string,
   /**
    * Input field type, e.g. select, checkbox, radio, text, tel, email
    * @default 'text'
