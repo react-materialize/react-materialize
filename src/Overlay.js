@@ -39,7 +39,7 @@ class Overlay extends React.Component {
     }
 
     // Save reference to help testing
-    this._overlayInstance = ReactDOM.render(this.renderOverlay(), this._overlayTarget);
+    this._overlayInstance = ReactDOM.unstable_renderSubtreeIntoContainer(this, this.renderOverlay(), this._overlayTarget);
   }
 
   _unrenderOverlay() {
