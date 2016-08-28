@@ -52,4 +52,13 @@ describe('Input', function() {
     assert.equal(options[0].getAttribute('disabled'), '');
     assert.equal(options[0].value, defaultOption);
   });
+
+  it('renders a switch with custom labels',  function() {
+    let instance = TestUtils.renderIntoDocument(
+        <Input type='switch'/>
+      );
+
+    let input = TestUtils.findRenderedDOMComponentWithTag(instance, 'div');
+    assert.include(input.className, 'checkbox');
+  });
 });
