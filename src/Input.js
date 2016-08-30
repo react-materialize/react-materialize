@@ -124,14 +124,14 @@ class Input extends Component {
       return (
         <div className='switch'>
           <label>
-            {offLabel || "Off"}
+            {offLabel || 'Off'}
             <input
               {...other}
               onChange={this._onChange}
               type='checkbox'
             />
             <span className='lever' />
-            {onLabel || "On"}
+            {onLabel || 'On'}
           </label>
         </div>
       );
@@ -188,6 +188,8 @@ Input.propTypes = {
   name: PropTypes.string,
   validate: PropTypes.bool,
   browserDefault: PropTypes.bool,
+  onLabel: PropTypes.string,
+  offLabel: PropTypes.string,
   onChange: PropTypes.func
 };
 

@@ -58,7 +58,7 @@ describe('Input', function() {
         <Input type='switch'/>
       );
 
-    let input = TestUtils.findRenderedDOMComponentWithTag(instance, 'div');
-    assert.include(input.className, 'checkbox');
+    let input = TestUtils.findRenderedDOMComponentWithTag(instance, 'input');
+    assert.include(ReactDOM.findDOMNode(input).type, 'checkbox');
   });
 });
