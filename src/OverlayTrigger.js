@@ -21,7 +21,7 @@ class OverlayTrigger extends Overlay {
   }
 
   renderOverlay() {
-    return React.cloneElement(this.props.overlay, {onRequestHide: this.toggle, id: this.overlayID});
+    return React.cloneElement(this.props.overlay, {id: this.overlayID});
   }
 
   showOverlay() {
