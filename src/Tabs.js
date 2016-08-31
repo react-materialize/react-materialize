@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import Row from './Row';
@@ -69,5 +69,12 @@ class Tabs extends Component {
     );
   }
 }
+
+Tabs.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func
+};
 
 export default Tabs;
