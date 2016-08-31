@@ -71,7 +71,7 @@ class Tabs extends Component {
 }
 
 Tabs.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func
