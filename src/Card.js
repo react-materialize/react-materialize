@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 
-class Card extends React.Component {
-  constructor(props) {
+class Card extends Component {
+  constructor (props) {
     super(props);
     this.renderTitle = this.renderTitle.bind(this);
   }
 
-  render() {
+  render () {
     let {title, header, className, textClassName, actions, reveal, children, ...props} = this.props;
     let classes = { card: true };
     return (
@@ -25,7 +25,7 @@ class Card extends React.Component {
     );
   }
 
-  renderTitle(title, reveal) {
+  renderTitle (title, reveal) {
     let revealIcon = null;
     if (reveal) {
       revealIcon = <Icon right>more_vert</Icon>;
@@ -44,27 +44,29 @@ class Card extends React.Component {
     );
   }
 
-  renderReveal(title, reveal) {
+  renderReveal (title, reveal) {
     return (
-      <div className="card-reveal">
-        <span className="card-title grey-text text-darken-4">{title}<Icon right>close</Icon></span>
+      <div className='card-reveal'>
+        <span className='card-title grey-text text-darken-4'>{title}<Icon right>close</Icon></span>
         {reveal}
       </div>
     );
   }
 
-  renderAction(actions) {
-    return <div className='card-action'> {actions} </div>;
+  renderAction (actions) {
+    return <div className='card-action'>{actions}</div>;
   }
 }
 
 Card.propTypes = {
-  title: React.PropTypes.string,
-  textClassName: React.PropTypes.string,
-  reveal: React.PropTypes.element,
-  header: React.PropTypes.element,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  title: PropTypes.string,
+  textClassName: PropTypes.string,
+  reveal: PropTypes.element,
+  header: PropTypes.element,
   // The buttons to be displayed at the action area
-  actions: React.PropTypes.arrayOf(React.PropTypes.element)
+  actions: PropTypes.arrayOf(React.PropTypes.element)
 };
 
 export default Card;

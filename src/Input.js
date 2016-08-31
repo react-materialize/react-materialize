@@ -178,6 +178,7 @@ Input.propTypes = {
   s: PropTypes.number,
   m: PropTypes.number,
   l: PropTypes.number,
+  children: PropTypes.node,
   label: PropTypes.node,
   error: PropTypes.string,
   success: PropTypes.string,

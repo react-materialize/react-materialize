@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import constants from './constants';
 
-class Slide extends React.Component {
-  constructor(props) {
+class Slide extends Component {
+  constructor (props) {
     super(props);
     this.renderCaption = this.renderCaption.bind(this);
   }
 
-  render() {
+  render () {
     return (
       <li>
-        <img src={this.props.src}/>
+        <img src={this.props.src} />
         {this.renderCaption()}
       </li>
     );
   }
 
-  renderCaption() {
-    let {title, className, alignment, children, ...props} = this.props;
-    let classes = {
+  renderCaption () {
+    const { title, className, alignment, children, ...props } = this.props;
+    const classes = {
       caption: true,
+      [alignment + '-align']: true
     };
-    classes[alignment + '-align'] = true;
 
     if (typeof title !== 'undefined' || typeof children !== 'undefined') {
       return (
@@ -40,15 +40,17 @@ Slide.propTypes = {
   * Aliment of the caption
   * @default 'center'
   */
-  alignment: React.PropTypes.oneOf(constants.PLACEMENTS),
+  alignment: PropTypes.oneOf(constants.PLACEMENTS),
+  className: PropTypes.string,
+  children: PropTypes.node,
   /**
   * The tagline of the caption
   */
-  title: React.PropTypes.string,
+  title: PropTypes.string,
   /**
    * The path of the background image
    */
-  src: React.PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired
 };
 
 Slide.defaultProps = {

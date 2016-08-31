@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
-class Overlay extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillUnmount() {
+class Overlay extends Component {
+  componentWillUnmount () {
     try {
       this._unrenderOverlay();
-    } catch(e) {
+    } catch (e) {
       this._overlayInstance = null;
     }
     if (this._overlayTarget) {
@@ -19,21 +15,21 @@ class Overlay extends React.Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     this._renderOverlay();
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this._renderOverlay();
   }
 
-  _mountOverlayTarget() {
+  _mountOverlayTarget () {
     this._overlayTarget = document.createElement('div');
     this.getContainerDOMNode()
       .appendChild(this._overlayTarget);
   }
 
-  _renderOverlay() {
+  _renderOverlay () {
     if (!this._overlayTarget) {
       this._mountOverlayTarget();
     }
@@ -42,12 +38,12 @@ class Overlay extends React.Component {
     this._overlayInstance = ReactDOM.unstable_renderSubtreeIntoContainer(this, this.renderOverlay(), this._overlayTarget);
   }
 
-  _unrenderOverlay() {
+  _unrenderOverlay () {
     React.unmountComponentAtNode(this._overlayTarget);
     this._overlayInstance = null;
   }
 
-  getOverlayDOMNode() {
+  getOverlayDOMNode () {
     if (!this.isMounted()) {
       throw new Error('getOverlayDOMNode(): A component must be mounted to have a DOM node.');
     }
@@ -55,14 +51,15 @@ class Overlay extends React.Component {
     return this._overlayInstance.getDOMNode();
   }
 
-  getContainerDOMNode() {
-    return this.props.container.getDOMNode ?
-      this.props.container.getDOMNode() : this.props.container;
+  getContainerDOMNode () {
+    return this.props.container.getDOMNode
+      ? this.props.container.getDOMNode()
+      : this.props.container;
   }
 }
 
 Overlay.propTypes = {
-  container: React.PropTypes.any.isRequired
+  container: PropTypes.any.isRequired
 };
 
 Overlay.defaultProps = {
@@ -72,7 +69,7 @@ Overlay.defaultProps = {
     // in environments where it would not be defined, e.g. nodejs. Equally this is needed
     // before the body is defined where `document.body === null`, this ensures
     // `document.body` is only accessed after componentDidMount.
-    getDOMNode: function getDOMNode() {
+    getDOMNode: function getDOMNode () {
       return document.body;
     }
   }

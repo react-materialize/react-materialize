@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-class CollectionItem extends React.Component {
-  constructor(props) {
+class CollectionItem extends Component {
+  constructor (props) {
     super(props);
     this.isAnchor = this.isAnchor.bind(this);
   }
-  render() {
+  render () {
     let {active, className} = this.props;
-    
+
     let classes = {
       'collection-item': true,
       active: active
@@ -27,16 +27,17 @@ class CollectionItem extends React.Component {
         {this.props.children}
       </li>
     );
-
   }
-  isAnchor() {
+  isAnchor () {
     return typeof this.props.href !== 'undefined';
   }
 }
 
 CollectionItem.propTypes = {
-  active: React.PropTypes.bool,
-  href: React.PropTypes.string
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  href: PropTypes.string
 };
 
 export default CollectionItem;

@@ -2,40 +2,40 @@ import React, { Component, PropTypes } from 'react';
 import idgen from './idgen';
 
 class Dropdown extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.renderTrigger = this.renderTrigger.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const options = this.props.options || {};
 
     $(this._trigger).dropdown(options);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     $(this._trigger).off();
   }
 
-  render() {
+  render () {
     const { children, ...props } = this.props;
     this.idx = 'dropdown_' + idgen();
 
     return (
       <span>
         { this.renderTrigger() }
-        <ul {...props} className='dropdown-content' id={ this.idx }>
+        <ul {...props} className='dropdown-content' id={this.idx}>
           { children }
         </ul>
       </span>
     );
   }
 
-  renderTrigger() {
+  renderTrigger () {
     const { trigger } = this.props;
 
-    return React.cloneElement( trigger, {
-      ref: (t) => this._trigger = t,
+    return React.cloneElement(trigger, {
+      ref: (t) => (this._trigger = t),
       className: 'dropdown-button',
       'data-activates': this.idx
     });

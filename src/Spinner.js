@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
-const Spinner = ({color, only}) => {
+const Spinner = ({ color, only }) => {
   let spinnerClasses = {
     'spinner-layer': true
   };
@@ -12,14 +12,14 @@ const Spinner = ({color, only}) => {
   }
   return (
     <div className={cx(spinnerClasses)}>
-      <div className="circle-clipper left">
-        <div className="circle"></div>
+      <div className='circle-clipper left'>
+        <div className='circle' />
       </div>
-      <div className="gap-patch">
-        <div className="circle"></div>
+      <div className='gap-patch'>
+        <div className='circle' />
       </div>
-      <div className="circle-clipper right">
-        <div className="circle"></div>
+      <div className='circle-clipper right'>
+        <div className='circle' />
       </div>
     </div>
   );
@@ -27,6 +27,11 @@ const Spinner = ({color, only}) => {
 
 Spinner.defaultProps = {
   only: true
+};
+
+Spinner.propTypes = {
+  color: PropTypes.string,
+  only: PropTypes.bool
 };
 
 export default Spinner;

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-class Badge extends React.Component {
-  render() {
+class Badge extends Component {
+  render () {
     let {
       className, newIcon, children, ...props
     } = this.props;
@@ -21,10 +21,12 @@ class Badge extends React.Component {
 }
 
 Badge.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
   /**
    * Add the <b>new</b> class name
    */
-  newIcon: React.PropTypes.bool
+  newIcon: PropTypes.bool
 };
 
 export default Badge;

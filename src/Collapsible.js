@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 class Collapsible extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.renderItem = this.renderItem.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -11,7 +11,7 @@ class Collapsible extends React.Component {
     };
   }
 
-  render() {
+  render () {
     const { accordion, popout, className, children, ...props } = this.props;
     const classes = {
       collapsible: true,
@@ -26,7 +26,7 @@ class Collapsible extends React.Component {
     );
   }
 
-  renderItem(child, index) {
+  renderItem (child, index) {
     const props = {
       key: child.key ? child.key : index,
       ref: child.ref
@@ -39,7 +39,7 @@ class Collapsible extends React.Component {
     return React.cloneElement(child, props);
   }
 
-  handleSelect(key) {
+  handleSelect (key) {
     const { onSelect } = this.props;
 
     if (onSelect) {

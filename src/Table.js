@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-class Table extends React.Component {
-  render() {
-    let classes = {
-      centered: this.props.centered,
-      highlight: this.props.hoverable,
-      'responsive-table': this.props.responsive,
-      stripped: this.props.stripped,
-      bordered: this.props.bordered
+class Table extends Component {
+  render () {
+    const {
+      bordered,
+      centered,
+      hoverable,
+      responsive,
+      stripped
+    } = this.props;
+
+    const classes = {
+      centered: centered,
+      highlight: hoverable,
+      'responsive-table': responsive,
+      stripped: stripped,
+      bordered: bordered
     };
 
-    let {className, children, ...props} = this.props;
+    const {
+      className,
+      children,
+      ...props
+    } = this.props;
 
     return (
-      <table className={cx(classes, className)} {...this.props}>
+      <table className={cx(classes, className)} {...props}>
       {children}
       </table>
     );
@@ -22,31 +34,33 @@ class Table extends React.Component {
 }
 
 Table.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
   /**
   * Center align all the text in the table
   * @default false
   */
-  centered: React.PropTypes.bool,
+  centered: PropTypes.bool,
   /**
   * Highlight the row that's hovered
   * @default false
   */
-  hoverable: React.PropTypes.bool,
+  hoverable: PropTypes.bool,
   /**
   * Enable response to make the table horizontally scrollable on smaller screens
   * @default false
   */
-  responsive: React.PropTypes.bool,
+  responsive: PropTypes.bool,
   /**
   * Stripped style
   * @default false
   */
-  stripped: React.PropTypes.bool,
+  stripped: PropTypes.bool,
   /**
   * Add border to each row
   * @default false
   */
-  bordered: React.PropTypes.bool
+  bordered: PropTypes.bool
 };
 
 export default Table;
