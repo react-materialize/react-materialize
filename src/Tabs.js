@@ -1,46 +1,57 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import Row from './Row';
 import Col from './Col';
 
-class Tabs extends React.Component {
-
-  componentDidMount() {
+class Tabs extends Component {
+  componentDidMount () {
     if (typeof $ !== 'undefined') {
-      $(this.tabsEl).tabs()
+      $(this.tabsEl).tabs();
     }
   }
 
-  _onSelect(idx, e) {
-    if (this.props.hasOwnProperty('onChange')) {
-      this.props.onChange(idx, e)
-    }
+  _onSelect (idx, e) {
+    const { onChange } = this.props;
+
+    if (onChange) onChange(idx, e);
   }
 
-  render() {
-    let {children, className, defaultValue, ...props} = this.props;
+  render () {
+    const {
+      children,
+      className,
+      defaultValue
+    } = this.props;
+
     return (
       <Row>
         <Col s={12}>
-          <ul className={cx('tabs', className)} ref={(ref) => this.tabsEl = ref}>
+          <ul className={cx('tabs', className)} ref={(el) => (this._tabsEl = el)}>
             {
               React.Children.map(children, (child, idx) => {
-                let {title, tabWidth, className, active, disabled} = child.props;
-                //if (!tabWidth) {
-                //  tabWidth = Math.floor(12 / count);
-                //}
-                let classes = {
+                const {
+                  active,
+                  className,
+                  disabled,
+                  tabWidth,
+                  title
+                } = child.props;
+
+                const classes = {
+                  [`s${tabWidth}`]: tabWidth,
                   tab: true,
                   disabled,
                   col: true
                 };
-                if (tabWidth) classes['s' + tabWidth] = true;
-                let target = '#tab_' + idx;
+
                 return (
                   <li className={cx(classes, className)} key={idx}>
-                    <a href={target} className={active || defaultValue === idx ? 'active' : ''}
-                     {...disabled ? {} : {onClick : this._onSelect.bind(this, idx)}}>{title}</a>
+                    <a href={`#tab_${idx}`} className={active || defaultValue === idx ? 'active' : ''}
+                      {...disabled ? {} : { onClick: this._onSelect.bind(this, idx) }}
+                    >
+                      { title }
+                    </a>
                   </li>
                 );
               })
@@ -48,13 +59,22 @@ class Tabs extends React.Component {
           </ul>
         </Col>
         {
-          React.Children.map(children, (child, idx) => {
-            return <Col id={'tab_' + idx} s={12} key={'tab' + idx}>{child.props.children}</Col>;
-          })
+          children.map((child, idx) =>
+            <Col id={`tab_${idx}`} s={12} key={`tab_${idx}`}>
+              { child.props.children }
+            </Col>
+          )
         }
       </Row>
     );
   }
 }
+
+Tabs.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func
+};
 
 export default Tabs;

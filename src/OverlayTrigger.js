@@ -3,7 +3,7 @@ import Overlay from './Overlay';
 import idgen from './idgen';
 
 class OverlayTrigger extends Overlay {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {isOverlayShown: false};
     this.showOverlay = this.showOverlay.bind(this);
@@ -11,28 +11,25 @@ class OverlayTrigger extends Overlay {
     this.overlayID = `overlay_${idgen()}`;
   }
 
-  render() {
-    let {overlay, children, ...props} = this.props;
-    let child = React.Children.only(children);
+  render () {
+    const child = React.Children.only(this.props.children);
+
     return React.cloneElement(
       child,
       {onClick: this.showOverlay}
     );
   }
 
-  renderOverlay() {
+  renderOverlay () {
     return React.cloneElement(this.props.overlay, {onRequestHide: this.toggle, id: this.overlayID});
   }
 
-  showOverlay() {
+  showOverlay () {
     $('#' + this.overlayID).openModal();
   }
 }
 
 OverlayTrigger.propTypes = {
-  /**
-   *
-   */
   overlay: React.PropTypes.node
 };
 

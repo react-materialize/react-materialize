@@ -3,7 +3,7 @@ import cx from 'classnames';
 import Icon from './Icon';
 
 class CollapsibleItem extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       expanded: props.expanded
@@ -14,7 +14,7 @@ class CollapsibleItem extends React.Component {
     this.renderIcon = this.renderIcon.bind(this);
   }
 
-  render() {
+  render () {
     const {node, header, icon, ...props} = this.props;
     const C = node;
     const classes = {
@@ -32,7 +32,7 @@ class CollapsibleItem extends React.Component {
     );
   }
 
-  handleClick() {
+  handleClick () {
     const { onSelect, eventKey } = this.props;
 
     if (onSelect) {
@@ -42,7 +42,7 @@ class CollapsibleItem extends React.Component {
     }
   }
 
-  renderBody() {
+  renderBody () {
     if (!this.state.expanded) return;
 
     const style = {display: 'block'};
@@ -53,7 +53,7 @@ class CollapsibleItem extends React.Component {
     );
   }
 
-  renderIcon(icon) {
+  renderIcon (icon) {
     return <Icon>{icon}</Icon>;
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
 const CardPanel = ({
@@ -15,6 +15,11 @@ const CardPanel = ({
       {children}
     </div>
   );
+};
+
+CardPanel.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
 };
 
 export default CardPanel;

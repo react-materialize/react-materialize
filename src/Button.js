@@ -68,6 +68,8 @@ class Button extends Component {
 }
 
 Button.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   /**
    * Enable the floating style

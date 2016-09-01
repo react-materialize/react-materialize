@@ -21,7 +21,7 @@ export default {
   PLACEMENTS: [
     'left',
     'center',
-    'right',
+    'right'
   ],
   SCALES: [
     'big',

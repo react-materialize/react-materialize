@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 // This should be used within any component that has a menu like interface
-class MenuItem extends React.Component {
-  render() {
-    let {href, breadcrumbItem, children, className, ...props} = this.props;
+class MenuItem extends Component {
+  render () {
+    const { href, breadcrumbItem, children, className, ...props } = this.props;
     let classes = {
-      breadcrumb: breadcrumbItem,
+      breadcrumb: breadcrumbItem
     };
     return (
       <a href={href} {...props} className={cx(classes, className)}>{children}</a>
@@ -15,12 +15,14 @@ class MenuItem extends React.Component {
 }
 
 MenuItem.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
   // internal
-  breadcrumbItem: React.PropTypes.bool,
+  breadcrumbItem: PropTypes.bool,
   /**
    * The link for the anchor
    */
-  href: React.PropTypes.string,
+  href: PropTypes.string
 };
 
 export default MenuItem;

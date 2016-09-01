@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import constants from './constants';
 
-class CardTitle extends React.Component {
-  render() {
+class CardTitle extends Component {
+  render () {
     let {image, reveal, waves, children, ...props} = this.props;
     let classes = {
       'card-image': true
     };
     if (waves) {
-      classes['waves-effect'] = true,
-      classes['waves-' + waves] = true,
+      classes['waves-effect'] = true;
+      classes['waves-' + waves] = true;
       classes['waves-block'] = true;
     }
     let imgClasses = {'activator': reveal};
@@ -28,12 +28,13 @@ class CardTitle extends React.Component {
 }
 
 CardTitle.propTypes = {
+  children: PropTypes.node,
   // Whether the image serves as activator for the reveal
-  reveal: React.PropTypes.bool,
+  reveal: PropTypes.bool,
   // the waves effect
-  waves: React.PropTypes.oneOf(constants.WAVES),
+  waves: PropTypes.oneOf(constants.WAVES),
   // The path to the image
-  image: React.PropTypes.string.isRequired
+  image: PropTypes.string.isRequired
 };
 
 export default CardTitle;

@@ -1,20 +1,18 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 import Button from './Button';
 
-class Toast extends React.Component{
-  constructor(props) {
+class Toast extends Component {
+  constructor (props) {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
 
-  render() {
-    let classes = {
-      toast: true,
-      rounded: this.props.rounded
-    };
-    let {className, children, ...props} = this.props;
+  render () {
+    const { children, rounded } = this.props;
+    const classes = { toast: true, rounded: rounded };
+
     return (
       <Button onClick={this.onClick} className={cx(classes)}>
         {children}
@@ -22,14 +20,15 @@ class Toast extends React.Component{
     );
   }
 
-  onClick() {
+  onClick () {
     Materialize.toast(this.props.toast, 1000);
   }
 }
 
 Toast.propTypes = {
-  toast: React.PropTypes.string.isRequired,
-  rounded: React.PropTypes.bool
+  toast: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  rounded: PropTypes.bool
 };
 
 export default Toast;

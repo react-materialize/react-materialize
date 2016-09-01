@@ -3,7 +3,7 @@ import React from 'react';
 // This is just a holder for the props and children for tab, thus
 // there is no logic here.
 class Tab extends React.Component {
-  render() {
+  render () {
     return null;
   }
 }

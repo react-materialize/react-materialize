@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class Chip extends React.Component {
-  render() {
+class Chip extends Component {
+  render () {
     let close = '';
     if (this.props.close) {
       close = <i className='material-icons'>close</i>;
@@ -17,11 +17,12 @@ class Chip extends React.Component {
 }
 
 Chip.propTypes = {
+  children: PropTypes.node,
   /**
    * If show a close icon
    * @default false
    */
-  close: React.PropTypes.bool,
+  close: PropTypes.bool
 };
 
 export default Chip;

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class NavItem extends React.Component {
-  render() {
-    let {divider, href, children, ...props} = this.props;
+class NavItem extends Component {
+  render () {
+    const { divider, href, children, ...props } = this.props;
     if (divider) {
-      return <li className="divider"></li>
+      return <li className='divider' />
     } else {
       return (
         <li {...props}>
@@ -16,8 +16,9 @@ class NavItem extends React.Component {
 }
 
 NavItem.propTypes = {
-  href: React.PropTypes.string,
-  divider: React.PropTypes.bool,
+  children: PropTypes.node,
+  divider: PropTypes.bool,
+  href: PropTypes.string
 }
 
 export default NavItem;
