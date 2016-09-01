@@ -1,23 +1,22 @@
-import 'es5-shim';
+/* global describe, it, expect */
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 import Badge from '../src/Badge';
 
-describe('Badge', () => {
+const wrapper = shallow(<Badge>4</Badge>);
+
+describe('<Badge />', () => {
   it('should output a badge with the className of `badge`', () => {
-    let badge = TestUtils.renderIntoDocument(<Badge>4</Badge>);
-    assert.equal(ReactDOM.findDOMNode(badge).className, 'badge');
+    expect(wrapper.find('.badge')).to.have.length(1);
   });
 
   it('should output a badge with just the number 4 in it', () => {
-    let badge = TestUtils.renderIntoDocument(<Badge>4</Badge>);
-    assert.equal(ReactDOM.findDOMNode(badge).innerHTML, '4');
+    expect(wrapper.contains(<span className='badge'>4</span>)).to.equal(true);
   });
 
   it('should output a badge with the className of `badge new` and', () => {
-    let badge = TestUtils.renderIntoDocument(<Badge newIcon={true}>4</Badge>);
-    assert.include(ReactDOM.findDOMNode(badge).className, 'badge');
-    assert.include(ReactDOM.findDOMNode(badge).className, 'new');
+    const newBadge = shallow(<Badge newIcon>3</Badge>)
+    expect(newBadge.find('.badge.new')).to.have.length(1);
   });
 });
