@@ -4,6 +4,7 @@
 [![Build
 Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=master)](https://travis-ci.org/react-materialize/react-materialize)
 [![npm version](http://img.shields.io/npm/v/react-materialize.svg?style=flat)](https://npmjs.org/package/react-materialize "View this project on npm")
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 
 # [react-materialize](react-materialize.github.io)
@@ -13,6 +14,10 @@ Material design components for react, powered by [materializecss](http://materia
 ## Install
 ```
 npm install react-materialize
+```
+## Test+Lint (Karma & Enzyme)
+```
+npm test
 ```
 ## Use
 #### HTML Setup (from [materializecss](http://materializecss.com/))
@@ -30,13 +35,9 @@ npm install react-materialize
 </html>
 ```
 
-#### JS (ES5)
-``` javascript
-var Button = require('react-materialize').Button;
-```
 #### JS (ES6)
 ``` javascript
-import {Button, Card, Row, Col} from 'react-materialize';
+import { Button, Card, Row, Col } from 'react-materialize';
 ```
 
 ## Docs && Examples
