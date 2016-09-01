@@ -15,10 +15,6 @@ Material design components for react, powered by [materializecss](http://materia
 ```
 npm install react-materialize
 ```
-## Test+Lint (Karma & Enzyme)
-```
-npm test
-```
 ## Use
 #### HTML Setup (from [materializecss](http://materializecss.com/))
 ```html
