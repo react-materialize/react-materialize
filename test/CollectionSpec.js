@@ -1,61 +1,57 @@
+/* global describe, it, expect */
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow, mount } from 'enzyme';
 import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';
 
+let wrapper = shallow(
+  <Collection>
+    <CollectionItem>Alvin</CollectionItem>
+  </Collection>
+);
 
-describe('Collection', function() {
-  let instance = null;
-  it('should render a ul element', function() {
-    instance = TestUtils.renderIntoDocument(
-      <Collection>
-        <CollectionItem>Alvin</CollectionItem>
-      </Collection>
-    );
-    assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'UL');
-    assert.include(ReactDOM.findDOMNode(instance).className, 'collection');
+describe('<Collection />', () => {
+  it('renders a list', () => {
+    expect(wrapper.find('ul.collection')).to.have.length(1);
   });
 
-  it('should support "header" prop as a string', function() {
-    var header = 'First Names';
-    instance = TestUtils.renderIntoDocument(
+  describe('with header prop', () => {
+    let header = 'names'
+    wrapper = shallow(
       <Collection header={header}>
         <CollectionItem>Alvin</CollectionItem>
       </Collection>
     );
 
-    assert.include(ReactDOM.findDOMNode(instance).className, 'with-header');
-    assert.include(ReactDOM.findDOMNode(instance).firstChild.className, 'collection-header');
-    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.nodeName, 'H4');
-    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.innerHTML, header);
+    it('should support "header" prop', () => {
+      expect(wrapper.find('.with-header')).to.have.length(1);
+    });
+
+    it('should render a header text', () => {
+      expect(wrapper.find('h4').text()).to.equal(header);
+    });
+
+    it('should render a header component', () => {
+      header = <h2>ages</h2>;
+      wrapper = shallow(
+        <Collection header={header}>
+          <CollectionItem>Alvin</CollectionItem>
+        </Collection>
+      );
+      expect(wrapper.find('h2').text()).to.equal('ages');
+    });
+
+    it('should render anchors if present', () => {
+      wrapper = mount(
+        <Collection>
+          <CollectionItem href='#'>Alvin</CollectionItem>
+          <CollectionItem href='#' className='active'>Alvin</CollectionItem>
+          <CollectionItem href='#'>Alvin</CollectionItem>
+          <CollectionItem href='#'>Alvin</CollectionItem>
+        </Collection>
+      );
+      expect(wrapper.find('.collection-item').first().type()).to.equal('a');
+    });
   });
-
-  it('should support "header" prop as a component', function() {
-    var header = <h2>First Names</h2>;
-    instance = TestUtils.renderIntoDocument(
-      <Collection header={header}>
-        <CollectionItem>Alvin</CollectionItem>
-      </Collection>
-    );
-
-    assert.include(ReactDOM.findDOMNode(instance).className, 'with-header');
-    assert.include(ReactDOM.findDOMNode(instance).firstChild.className, 'collection-header');
-    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.nodeName, 'H2');
-    assert.equal(ReactDOM.findDOMNode(instance).firstChild.firstChild.innerHTML, 'First Names');
-  });
-
-  it('should render anchor if href is present', function() {
-    instance = TestUtils.renderIntoDocument(
-      <Collection>
-        <CollectionItem href='#'>Alvin</CollectionItem>
-        <CollectionItem href='#' className='active'>Alvin</CollectionItem>
-        <CollectionItem href='#'>Alvin</CollectionItem>
-        <CollectionItem href='#'>Alvin</CollectionItem>
-      </Collection>
-    );
-    assert.equal(ReactDOM.findDOMNode(instance).nodeName, 'DIV');
-    assert.equal(ReactDOM.findDOMNode(instance).firstChild.nodeName, 'A');
-  });
-
 });
