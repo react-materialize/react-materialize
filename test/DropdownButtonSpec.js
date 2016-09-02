@@ -9,7 +9,7 @@ let wrapper = shallow(
   <Dropdown trigger={<Button>Drop me!</Button>} />
 );
 
-describe('<Collection />', () => {
+describe('<Dropdown />', () => {
   it('renders a dropdown', () => {
     expect(wrapper.find('.dropdown-content')).to.have.length(1);
   });
