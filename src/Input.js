@@ -113,6 +113,7 @@ class Input extends Component {
         <div className={cx(classes)}>
           {htmlLabel}
           <select
+            {...other}
             id={this._id}
             className={cx(inputClasses)}
             ref={(ref) => (this.selectInput = ref)}
