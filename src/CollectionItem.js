@@ -7,27 +7,20 @@ class CollectionItem extends Component {
       active,
       children,
       className,
-      href,
       ...other
     } = this.props;
 
-    let classes = {
+    const classes = {
       'collection-item': true,
       active: active
     };
 
-    if (href) {
-      return (
-        <a {...other} className={cx(className, classes)} href={href}>
-          {children}
-        </a>
-      );
-    }
+    let C = this.props.href ? 'a' : 'li';
 
     return (
-      <li {...other} className={cx(className, classes)}>
+      <C {...other} className={cx(className, classes)}>
         {children}
-      </li>
+      </C>
     );
   }
 }
