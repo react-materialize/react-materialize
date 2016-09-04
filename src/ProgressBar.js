@@ -4,7 +4,7 @@ import cx from 'classnames';
 const ProgressBar = ({ progress, className }) => {
   let style;
   const classes = {
-    indeterminate: !progress,
+    indeterminate: progress === undefined,
     determinate: !!progress
   };
   if (progress) {
