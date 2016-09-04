@@ -12,6 +12,7 @@ class Input extends Component {
     };
 
     this._onChange = this._onChange.bind(this);
+    this.getMultipleValues = this.getMultipleValues.bind(this);
     this.isSelect = this.isSelect.bind(this);
   }
 
@@ -23,7 +24,7 @@ class Input extends Component {
   }
 
   componentDidUpdate () {
-    if (this.isMaterialSelect()) {
+    if (this.isMaterialSelect() && !this.props.multiple) {
       $(this.selectInput).material_select();
     }
   }
@@ -42,25 +43,33 @@ class Input extends Component {
     }
   }
 
-  _onChange (e) {
-    this.setState({
-      value: e.target.type === 'checkbox' ? e.target.checked : e.target.value
-    });
+  getMultipleValues ({ options }) {
+    return Array.from(options).filter(opt => opt.selected).map(opt => opt.value);
+  }
 
-    if (this.props.onChange) {
-      this.props.onChange(e);
-    }
+  _onChange (e) {
+    const { onChange } = this.props;
+    var types = {
+      'checkbox': e.target.checked,
+      'select-multiple': this.getMultipleValues(e.target),
+      'default': e.target.value
+    };
+    const value = types[e.target.type] || types['default'];
+    if (onChange) { onChange(e); }
+
+    this.setState({ value });
   }
 
   render () {
     const {
       browserDefault,
       children,
-      error,
-      success,
       defaultValue,
+      error,
       label,
+      multiple,
       placeholder,
+      success,
       s,
       m,
       l,
@@ -102,18 +111,28 @@ class Input extends Component {
     };
 
     let htmlLabel = label || inputType === 'radio'
-      ? <label className={cx(labelClasses)} data-success={success} data-error={error} htmlFor={this._id}>{label}</label> : null;
+      ? <label
+        className={cx(labelClasses)}
+        data-success={success}
+        data-error={error}
+        htmlFor={this._id}
+        >
+        {label}
+      </label>
+      : null;
 
     if (this.isSelect()) {
       let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
-      options = options.concat(React.Children.map(children, (child) => {
-        return React.cloneElement(child, {'key': child.props.value});
-      }));
+      options = options.concat(React.Children.map(children, (child) =>
+        React.cloneElement(child, { 'key': child.props.value })
+      ));
+
       return (
         <div className={cx(classes)}>
           {htmlLabel}
           <select
             {...other}
+            multiple={multiple}
             id={this._id}
             className={cx(inputClasses)}
             ref={(ref) => (this.selectInput = ref)}
@@ -193,6 +212,7 @@ Input.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   validate: PropTypes.bool,
+  multiple: PropTypes.bool,
   browserDefault: PropTypes.bool,
   onChange: PropTypes.func
 };
