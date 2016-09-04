@@ -9,8 +9,7 @@ class Overlay extends Component {
       this._overlayInstance = null;
     }
     if (this._overlayTarget) {
-      this.getContainerDOMNode()
-        .removeChild(this._overlayTarget);
+      this.getContainerDOMNode().removeChild(this._overlayTarget);
       this._overlayTarget = null;
     }
   }
@@ -35,7 +34,10 @@ class Overlay extends Component {
     }
 
     // Save reference to help testing
-    this._overlayInstance = ReactDOM.unstable_renderSubtreeIntoContainer(this, this.renderOverlay(), this._overlayTarget);
+    this._overlayInstance =
+      ReactDOM.unstable_renderSubtreeIntoContainer(this,
+        this.renderOverlay(), this._overlayTarget
+      );
   }
 
   _unrenderOverlay () {
