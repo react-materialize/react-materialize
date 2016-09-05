@@ -16,7 +16,7 @@ describe('<Badge />', () => {
   });
 
   it('should output a badge with the className of `badge new` and', () => {
-    const newBadge = shallow(<Badge newIcon>3</Badge>)
+    const newBadge = shallow(<Badge newIcon>3</Badge>);
     expect(newBadge.find('.badge.new')).to.have.length(1);
   });
 });
