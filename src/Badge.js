@@ -11,7 +11,7 @@ const Badge = ({ className, newIcon, children, ...props }) => {
       {children}
     </span>
   );
-}
+};
 
 Badge.propTypes = {
   children: PropTypes.node,
