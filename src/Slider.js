@@ -2,20 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 class Slider extends Component {
-  constructor () {
-    super()
-    this.state = {};
-  }
-
   componentDidMount () {
     const {
+      fullscreen,
       indicators,
       interval,
       transition
     } = this.props;
 
     $('.slider').slider({
-      full_width: this.props.fullscreen,
+      full_width: fullscreen,
       indicators,
       interval,
       transition

@@ -2,18 +2,15 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import Tabs from '../src/Tabs';
-import Tab from '../src/Tab';
+import Tag from '../src/Tag';
 
+const child = 'hey';
 const wrapper = shallow(
-  <Tabs>
-    <Tab title='one'>One</Tab>
-    <Tab title='Two'>Two</Tab>
-  </Tabs>
+  <Tag>{child}</Tag>
 );
 
 describe('Tabs', () => {
   it('should create list of Tab itemt', () => {
-    expect(wrapper.find('ul.tabs')).to.have.length(1);
+    expect(wrapper.contains(child)).to.equal(true);
   });
 });

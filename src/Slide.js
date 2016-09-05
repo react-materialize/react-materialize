@@ -18,10 +18,19 @@ class Slide extends Component {
   }
 
   renderCaption () {
-    const { title, className, alignment, children, ...props } = this.props;
+    const {
+      title,
+      className,
+      alignment,
+      children,
+      ...props
+    } = this.props;
+
+    delete props.placement;
+
     const classes = {
       caption: true,
-      [alignment + '-align']: true
+      [alignment + '-align']: alignment
     };
 
     if (typeof title !== 'undefined' || typeof children !== 'undefined') {

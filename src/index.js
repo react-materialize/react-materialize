@@ -74,4 +74,4 @@ export {
   Table,
   Tag,
   Toast
-}
+};

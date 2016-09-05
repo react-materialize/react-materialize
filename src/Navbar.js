@@ -24,17 +24,26 @@ class Navbar extends Component {
   }
 
   render () {
-    let {brand, className, ...props} = this.props;
+    const {
+      brand,
+      className,
+      left,
+      right,
+      ...other
+    } = this.props;
+
     let classes = {
-      right: this.props.right,
+      right: right,
       'hide-on-med-and-down': true
     };
+
     let brandClasses = {
       'brand-logo': true,
-      right: this.props.left
+      right: left
     };
+
     return (
-      <nav {...props} className={className}>
+      <nav {...other} className={className}>
         <div className='nav-wrapper'>
           <Col s={12}>
             <a href='/' className={cx(brandClasses)}>{brand}</a>
