@@ -6,12 +6,14 @@ import OverlayTrigger from './OverlayTrigger';
 class Modal extends Component {
   renderOverlay () {
     const {
-      header,
+      actions,
+      bottomSheet,
       children,
       fixedFooter,
-      bottomSheet,
-      actions,
-      ...props
+      header,
+      modalOptions,
+      trigger,
+      ...other
     } = this.props;
 
     const classes = cx({
@@ -21,7 +23,7 @@ class Modal extends Component {
     });
 
     return (
-      <div className={classes} {...props}>
+      <div {...other} className={classes}>
         <div className='modal-content'>
           <h4>{header}</h4>
           {children}
@@ -34,15 +36,21 @@ class Modal extends Component {
   }
 
   render () {
+    const { modalOptions, trigger } = this.props;
+
     return (
-      <OverlayTrigger overlay={this.renderOverlay()}>
-        {this.props.trigger}
+      <OverlayTrigger
+        modalOptions={modalOptions}
+        overlay={this.renderOverlay()}
+      >
+        { trigger }
       </OverlayTrigger>
     );
   }
 }
 
 Modal.propTypes = {
+  modalOptions: PropTypes.object,
   /**
   * BottomSheet styled modal
   * @default false
