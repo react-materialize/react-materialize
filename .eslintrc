@@ -14,4 +14,4 @@ env:
 
 rules:
   react/jsx-no-bind: [0]
-  semi: [0]
+  semi: [2, 'always']
