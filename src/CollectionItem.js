@@ -2,34 +2,26 @@ import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
 class CollectionItem extends Component {
-  constructor (props) {
-    super(props);
-    this.isAnchor = this.isAnchor.bind(this);
-  }
   render () {
-    let {active, className} = this.props;
+    const {
+      active,
+      children,
+      className,
+      ...other
+    } = this.props;
 
-    let classes = {
+    const classes = {
       'collection-item': true,
       active: active
     };
 
-    if (this.isAnchor()) {
-      return (
-        <a className={cx(className, classes)} href={this.props.href}>
-         {this.props.children}
-        </a>
-      );
-    }
+    let C = this.props.href ? 'a' : 'li';
 
     return (
-      <li className={cx(className, classes)}>
-        {this.props.children}
-      </li>
+      <C {...other} className={cx(className, classes)}>
+        {children}
+      </C>
     );
-  }
-  isAnchor () {
-    return typeof this.props.href !== 'undefined';
   }
 }
 
