@@ -11,10 +11,11 @@ class Modal extends Component {
       children,
       fixedFooter,
       header,
-      modalOptions,
-      trigger,
       ...other
     } = this.props;
+
+    delete other.modalOptions;
+    delete other.trigger;
 
     const classes = cx({
       'modal': true,
