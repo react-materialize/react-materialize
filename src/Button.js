@@ -12,7 +12,19 @@ class Button extends Component {
   }
 
   render () {
-    const { className, node, fab, modal, disabled, waves } = this.props;
+    const {
+      className,
+      node,
+      fab,
+      modal,
+      flat,
+      floating,
+      large,
+      disabled,
+      waves,
+      ...other
+    } = this.props;
+
     let C = node;
     let classes = {
       btn: true,
@@ -24,8 +36,9 @@ class Button extends Component {
       classes['waves-' + waves] = true;
     }
 
+    let styles = { flat, floating, large };
     constants.STYLES.forEach(style => {
-      classes['btn-' + style] = this.props[style];
+      classes['btn-' + style] = styles[style];
     });
 
     if (modal) {
@@ -36,7 +49,7 @@ class Button extends Component {
       return this.renderFab(cx(classes, className));
     } else {
       return (
-        <C onClick={this.props.onClick} className={cx(classes, className)}>
+        <C {...other} onClick={this.props.onClick} className={cx(classes, className)}>
           { this.renderIcon() }
           { this.props.children }
         </C>
@@ -63,7 +76,7 @@ class Button extends Component {
     const { icon } = this.props;
     if (!icon) return;
 
-    return <Icon>{this.props.icon}</Icon>;
+    return <Icon>{icon}</Icon>;
   }
 }
 
@@ -72,8 +85,10 @@ Button.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   /**
-   * Enable the floating style
+   * Enable other styles
    */
+  flat: PropTypes.bool,
+  large: PropTypes.bool,
   floating: PropTypes.bool,
   /**
    * Fixed action button
@@ -85,7 +100,6 @@ Button.propTypes = {
    * The icon to display, if specified it will create a button with the material icon
    */
   icon: PropTypes.string,
-  large: PropTypes.bool,
   modal: PropTypes.oneOf(['close', 'confirm']),
   node: PropTypes.node,
   /**
