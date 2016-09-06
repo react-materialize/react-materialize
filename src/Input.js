@@ -44,6 +44,10 @@ class Input extends Component {
   }
 
   getMultipleValues ({ options }) {
+    if (!options) {
+      return;
+    }
+
     return Array.from(options).filter(opt => opt.selected).map(opt => opt.value);
   }
 
