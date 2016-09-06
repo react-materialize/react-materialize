@@ -7,7 +7,8 @@ class Pagination extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      activePage: this.props.activePage
+      activePage: props.items < props.activePage
+        ? props.items : props.activePage
     };
 
     this.renderButtons = this.renderButtons.bind(this);
@@ -83,7 +84,7 @@ class Pagination extends Component {
 
   render () {
     return (
-      <ul className={cx('pagination', this.props.className)}> {this.renderButtons()} </ul>
+      <ul className={cx('pagination', this.props.className)}>{this.renderButtons()}</ul>
     );
   }
 }
