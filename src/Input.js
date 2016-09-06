@@ -75,6 +75,8 @@ class Input extends Component {
       l,
       type,
       validate,
+      onLabel,
+      offLabel,
       ...other
     } = this.props;
     let sizes = { s, m, l };
@@ -146,14 +148,14 @@ class Input extends Component {
       return (
         <div className='switch'>
           <label>
-            Off
+            {offLabel || 'Off'}
             <input
               {...other}
               onChange={this._onChange}
               type='checkbox'
             />
             <span className='lever' />
-            On
+            {onLabel || 'On'}
           </label>
         </div>
       );
@@ -214,6 +216,8 @@ Input.propTypes = {
   validate: PropTypes.bool,
   multiple: PropTypes.bool,
   browserDefault: PropTypes.bool,
+  onLabel: PropTypes.string,
+  offLabel: PropTypes.string,
   onChange: PropTypes.func
 };
 

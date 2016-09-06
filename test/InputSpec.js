@@ -55,4 +55,13 @@ describe('<Input />', () => {
       </Input>);
     expect(wrapper.find('select[multiple]')).to.have.length(1);
   });
+
+  it('renders a switch with custom labels',  function() {
+    let instance = TestUtils.renderIntoDocument(
+        <Input type='switch'/>
+      );
+
+    let input = TestUtils.findRenderedDOMComponentWithTag(instance, 'input');
+    assert.include(ReactDOM.findDOMNode(input).type, 'checkbox');
+  });
 });
