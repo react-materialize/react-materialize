@@ -7,7 +7,7 @@ class OverlayTrigger extends Overlay {
     super(props);
     this.showOverlay = this.showOverlay.bind(this);
     this.renderOverlay = this.renderOverlay.bind(this);
-    this.overlayID = `overlay_${idgen()}`;
+    this.overlayID = this.props.overlay.props.id || `overlay_${idgen()}`;
   }
 
   render () {
