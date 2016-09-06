@@ -56,12 +56,11 @@ describe('<Input />', () => {
     expect(wrapper.find('select[multiple]')).to.have.length(1);
   });
 
-  it('renders a switch with custom labels',  function() {
-    let instance = TestUtils.renderIntoDocument(
-        <Input type='switch'/>
-      );
-
-    let input = TestUtils.findRenderedDOMComponentWithTag(instance, 'input');
-    assert.include(ReactDOM.findDOMNode(input).type, 'checkbox');
+  it('renders a switch with custom label', () => {
+    const offLabel = 'No';
+    wrapper = shallow(
+      <Input type='switch' onLabel='Yes' offLabel={offLabel} />
+    );
+    expect(wrapper.childAt(0).childAt(0).contains(offLabel)).to.equal(true);
   });
 });
