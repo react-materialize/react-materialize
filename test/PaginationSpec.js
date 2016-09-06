@@ -24,7 +24,15 @@ describe('<Pagination />', () => {
     wrapper = shallow(<Pagination items={items} activePage={activePage} />);
     const elements = wrapper.find('.pagination').children();
     assert.strictEqual(elements.at(activePage).props().active, true,
-      'index 1 should be selected'
+      'active page should have prop active'
+    );
+  });
+
+  it('should handle wrong values', () => {
+    wrapper = shallow(<Pagination items={activePage} activePage={10} />);
+    const elements = wrapper.find('.pagination').children();
+    assert.strictEqual(elements.at(activePage).props().active, true,
+      'active page should never be more than the items'
     );
   });
 });
