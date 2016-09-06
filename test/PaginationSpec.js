@@ -29,10 +29,26 @@ describe('<Pagination />', () => {
   });
 
   it('should handle wrong values', () => {
-    wrapper = shallow(<Pagination items={activePage} activePage={10} />);
+    wrapper = shallow(<Pagination items={4} activePage={10} />);
     const elements = wrapper.find('.pagination').children();
-    assert.strictEqual(elements.at(activePage).props().active, true,
+    assert.strictEqual(elements.at(1).props().active, true,
       'active page should never be more than the items'
+    );
+  });
+
+  it('should not require activePage', () => {
+    wrapper = shallow(<Pagination items={3} />);
+    const elements = wrapper.find('.pagination').children();
+    assert.strictEqual(elements.at(1).props().active, true,
+      'active page should be the first page by default'
+    );
+  });
+
+  it('should not require items', () => {
+    wrapper = shallow(<Pagination activePage={3} />);
+    const elements = wrapper.find('.pagination').children();
+    assert.strictEqual(elements.at(3).props().active, true,
+      'active page should be applied to 10 default items'
     );
   });
 });
