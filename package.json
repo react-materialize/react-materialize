@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "0.16.3",
+  "version": "0.16.4",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
