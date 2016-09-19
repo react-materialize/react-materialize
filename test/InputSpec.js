@@ -34,6 +34,13 @@ describe('<Input />', () => {
     expect(wrapper.find('i.prefix')).to.have.length(1);
   });
 
+  it('renders an icon if icon prop is defined', () => {
+    wrapper = shallow(
+      <Input icon='cloud' />
+    );
+    expect(wrapper.find(Icon)).to.have.length(1);
+  });
+
   it('renders placeholder as the default disabled option for select', () => {
     let defaultOption = 'Choose your option';
     wrapper = mount(
