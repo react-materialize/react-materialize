@@ -9,6 +9,6 @@ const wrapper = shallow(<Slider />);
 
 describe('<Slider />', () => {
   it('should render a Slider', () => {
-    assert.ok(wrapper.find('.slider').length, 'should render a slider');
+    assert(wrapper.find('.slider').length, 'should render a slider');
   });
 });

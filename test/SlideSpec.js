@@ -11,7 +11,7 @@ const wrapper = shallow(
 
 describe('<Slide />', () => {
   it('should render a Slide', () => {
-    assert.ok(wrapper.childAt(0).is('img'), 'should be an image tag');
-    assert.ok(wrapper.childAt(0).is({src: '#'}), 'should have a src prop');
+    assert(wrapper.childAt(0).is('img'), 'should be an image tag');
+    assert(wrapper.childAt(0).is({src: '#'}), 'should have a src prop');
   });
 });

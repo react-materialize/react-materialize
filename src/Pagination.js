@@ -6,6 +6,7 @@ import PaginationButton from './PaginationButton';
 class Pagination extends Component {
   constructor (props) {
     super(props);
+
     this.state = {
       activePage: this.props.activePage
     };
@@ -83,7 +84,7 @@ class Pagination extends Component {
 
   render () {
     return (
-      <ul className={cx('pagination', this.props.className)}> {this.renderButtons()} </ul>
+      <ul className={cx('pagination', this.props.className)}>{ this.renderButtons() }</ul>
     );
   }
 }

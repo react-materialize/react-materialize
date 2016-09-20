@@ -1,4 +1,4 @@
-/* global describe, it, expect */
+/* global describe, it */
 
 import React from 'react';
 import { mount, shallow } from 'enzyme';
@@ -20,6 +20,6 @@ describe('<Modal />', () => {
     wrapper = shallow(
       <Modal trigger={trigger} />
     );
-    assert.ok(wrapper.contains(trigger), 'should contain a trigger');
+    assert(wrapper.contains(trigger), 'should contain a trigger');
   });
 });

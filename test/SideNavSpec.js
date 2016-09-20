@@ -3,12 +3,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
-import SearchForm from '../src/SearchForm';
+import SideNav from '../src/SideNav';
 
-let wrapper = shallow(<SearchForm />);
+let wrapper = shallow(<SideNav />);
 
-describe('<SearchForm />', () => {
+describe('<SideNav />', () => {
   it('should render', () => {
-    assert(wrapper.find('form').length);
+    assert(wrapper.find('nav').length);
   });
 });

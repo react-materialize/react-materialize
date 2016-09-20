@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import { assert } from 'chai';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
 
@@ -14,6 +15,6 @@ const wrapper = shallow(
 
 describe('Tabs', () => {
   it('should create list of Tab itemt', () => {
-    expect(wrapper.find('ul.tabs')).to.have.length(1);
+    assert(wrapper.find('ul.tabs'));
   });
 });

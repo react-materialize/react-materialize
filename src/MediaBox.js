@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
+import cx from 'classnames';
 
-const MediaBox = ({ src, caption, ...props }) =>
-  <img className='materialboxed' data-caption={caption} {...props} src={src} />;
+const MediaBox = ({ src, className, caption, ...props }) =>
+  <img className={cx('materialboxed', className)} data-caption={caption} src={src} {...props} />;
 
 MediaBox.propTypes = {
+  className: PropTypes.string,
   /**
    * The caption shown below the image when opened
    */
