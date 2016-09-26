@@ -6,12 +6,21 @@ import PaginationButton from './PaginationButton';
 class Pagination extends Component {
   constructor (props) {
     super(props);
+    const { activePage, items } = props;
     this.state = {
-      activePage: this.props.activePage
+      activePage: activePage > 0 && activePage <= items
+        ? activePage : 1
     };
 
     this.renderButtons = this.renderButtons.bind(this);
     this._onClick = this._onClick.bind(this);
+  }
+
+  componentWillReceiveProps ({ activePage }) {
+    const { items } = this.props;
+    if (activePage > 0 && activePage <= items) {
+      this.setState({ activePage });
+    }
   }
 
   _onClick (i) {
@@ -19,10 +28,8 @@ class Pagination extends Component {
 
     return () => {
       if (i > 0 && i <= items) {
+        if (onSelect) { onSelect(i); }
         this.setState({ activePage: i });
-        if (typeof onSelect === 'function') {
-          this.props.onSelect(i);
-        }
       }
     };
   }
@@ -83,13 +90,13 @@ class Pagination extends Component {
 
   render () {
     return (
-      <ul className={cx('pagination', this.props.className)}> {this.renderButtons()} </ul>
+      <ul className={cx('pagination', this.props.className)}>{this.renderButtons()}</ul>
     );
   }
 }
 
 Pagination.propTypes = {
-  items: PropTypes.any.isRequired,
+  items: PropTypes.number,
   activePage: PropTypes.number,
   children: PropTypes.node,
   className: PropTypes.string,
