@@ -24,7 +24,7 @@ class Table extends Component {
 
     return (
       <table className={cx(classes, className)} {...props}>
-      {children}
+        {children}
       </table>
     );
   }
