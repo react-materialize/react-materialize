@@ -3,12 +3,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
-import SearchForm from '../src/SearchForm';
+import Row from '../src/Row';
 
-let wrapper = shallow(<SearchForm />);
+let wrapper = shallow(
+  <Row />
+);
 
-describe('<SearchForm />', () => {
+describe('<Row />', () => {
   it('should render', () => {
-    assert(wrapper.find('form').length);
+    assert(wrapper.find('.row').length, 'a row');
   });
 });

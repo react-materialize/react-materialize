@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import Icon from './Icon';
 
-class CollapsibleItem extends React.Component {
+class CollapsibleItem extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -15,7 +15,15 @@ class CollapsibleItem extends React.Component {
   }
 
   render () {
-    const {node, header, icon, ...props} = this.props;
+    const {
+      node,
+      header,
+      icon,
+      ...props
+    } = this.props;
+
+    delete props.expanded;
+
     const C = node;
     const classes = {
       'collapsible-header': true
@@ -59,24 +67,24 @@ class CollapsibleItem extends React.Component {
 }
 
 CollapsibleItem.propTypes = {
-  children: React.PropTypes.node,
-  header: React.PropTypes.string.isRequired,
-  icon: React.PropTypes.string,
-  onSelect: React.PropTypes.func,
+  children: PropTypes.node,
+  header: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  onSelect: PropTypes.func,
   /**
    * If the item is expanded by default
    * @default false
    */
-  expanded: React.PropTypes.bool,
+  expanded: PropTypes.bool,
   /**
    * The value to pass to the onSelect callback
    */
-  eventKey: React.PropTypes.any,
+  eventKey: PropTypes.any,
   /**
    * The node type of the header
    * @default a
    */
-  node: React.PropTypes.node
+  node: PropTypes.node
 };
 
 CollapsibleItem.defaultProps = {

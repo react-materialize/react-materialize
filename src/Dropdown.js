@@ -20,6 +20,7 @@ class Dropdown extends Component {
   render () {
     const { children, trigger, ...props } = this.props;
     this.idx = 'dropdown_' + idgen();
+    delete props.trigger;
 
     return (
       <span>

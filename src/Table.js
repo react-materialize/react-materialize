@@ -6,9 +6,12 @@ class Table extends Component {
     const {
       bordered,
       centered,
+      children,
+      className,
       hoverable,
       responsive,
-      stripped
+      stripped,
+      ...props
     } = this.props;
 
     const classes = {
@@ -19,15 +22,9 @@ class Table extends Component {
       bordered: bordered
     };
 
-    const {
-      className,
-      children,
-      ...props
-    } = this.props;
-
     return (
       <table className={cx(classes, className)} {...props}>
-      {children}
+        {children}
       </table>
     );
   }
