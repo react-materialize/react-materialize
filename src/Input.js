@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
+import Icon from './Icon';
 
 class Input extends Component {
   constructor (props) {
@@ -69,6 +70,7 @@ class Input extends Component {
       browserDefault,
       children,
       defaultValue,
+      icon,
       error,
       label,
       multiple,
@@ -164,18 +166,13 @@ class Input extends Component {
         </div>
       );
     } else {
-      let icon = null;
-      if (React.Children.count(children) === 1) {
-        icon = React.Children.only(children);
-      }
-
       let defaultValue = inputType !== 'checkbox' && inputType !== 'radio'
         ? this.state.value
         : defaultValue;
 
       return (
         <div className={cx(classes)}>
-          {icon === null ? null : React.cloneElement(icon, {className: 'prefix'})}
+          { this.renderIcon() }
           <C
             {...other}
             className={cx(inputClasses)}
@@ -188,6 +185,19 @@ class Input extends Component {
           {htmlLabel}
         </div>
       );
+    }
+  }
+
+  renderIcon () {
+    const { icon, children } = this.props;
+    if (icon) {
+      return <Icon className='prefix'>{icon}</Icon>;
+    } else {
+      let icon = null;
+      if (React.Children.count(children) === 1) {
+        icon = React.Children.only(children);
+      }
+      return icon === null ? null : React.cloneElement(icon, {className: 'prefix'});
     }
   }
 
@@ -216,6 +226,7 @@ Input.propTypes = {
   defaultValue: PropTypes.any,
   placeholder: PropTypes.string,
   id: PropTypes.string,
+  icon: PropTypes.string,
   name: PropTypes.string,
   validate: PropTypes.bool,
   multiple: PropTypes.bool,
