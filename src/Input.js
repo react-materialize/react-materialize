@@ -69,6 +69,7 @@ class Input extends Component {
     const {
       browserDefault,
       children,
+      className,
       defaultValue,
       icon,
       error,
@@ -142,7 +143,7 @@ class Input extends Component {
             {...other}
             multiple={multiple}
             id={this._id}
-            className={cx(inputClasses)}
+            className={cx(className, inputClasses)}
             ref={(ref) => (this.selectInput = ref)}
             defaultValue={defaultValue}
           >
@@ -175,7 +176,7 @@ class Input extends Component {
           { this.renderIcon() }
           <C
             {...other}
-            className={cx(inputClasses)}
+            className={cx(className, inputClasses)}
             defaultValue={defaultValue}
             id={this._id}
             onChange={this._onChange}
