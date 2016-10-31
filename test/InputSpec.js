@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { assert } from 'chai';
 
 import Input from '../src/Input';
 import Icon from '../src/Icon';
@@ -69,5 +70,13 @@ describe('<Input />', () => {
       <Input type='switch' onLabel='Yes' offLabel={offLabel} />
     );
     expect(wrapper.childAt(0).childAt(0).contains(offLabel)).to.equal(true);
+  });
+
+  it('renders an input with a custom className', () => {
+    const className = 'my-custom-class';
+    wrapper = shallow(
+      <Input className={className} />
+    );
+    assert.ok(wrapper.find('input').hasClass(className), `Didn't find ${className}`);
   });
 });
