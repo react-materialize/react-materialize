@@ -43,7 +43,7 @@ See [documentation](https://react-materialize.github.io) for live examples. Try 
 #### How does it compare to X.Y.Z?
 
 The main goal of this project is to provide react component for
-[materializecss](https://materializecss.com), at the current stage, I am
+[materializecss](http://materializecss.com), at the current stage, I am
 trying to implement all possible widgets that are supported by materializecss.
 Please create an issue on github if you find you desired component is not
 available.
