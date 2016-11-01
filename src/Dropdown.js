@@ -1,5 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import idgen from './idgen';
+import cx from 'classnames';
+
+const classes = {
+  'dropdown-content': true
+};
 
 class Dropdown extends Component {
   constructor (props) {
@@ -18,14 +23,14 @@ class Dropdown extends Component {
   }
 
   render () {
-    const { children, trigger, ...props } = this.props;
+    const { children, trigger, className, ...props } = this.props;
     this.idx = 'dropdown_' + idgen();
     delete props.trigger;
 
     return (
       <span>
         { this.renderTrigger() }
-        <ul {...props} className='dropdown-content' id={this.idx}>
+        <ul {...props} className={cx(classes, className)} id={this.idx}>
           { children }
         </ul>
       </span>
@@ -49,6 +54,7 @@ Dropdown.propTypes = {
    */
   trigger: PropTypes.node.isRequired,
   children: PropTypes.node,
+  className: PropTypes.string,
   /**
    * Options hash for the dropdown
    * more info: http://materializecss.com/dropdown.html#options
