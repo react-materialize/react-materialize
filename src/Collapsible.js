@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 
-class Collapsible extends React.Component {
+class Collapsible extends Component {
   constructor (props) {
     super(props);
     this.renderItem = this.renderItem.bind(this);
@@ -12,7 +12,16 @@ class Collapsible extends React.Component {
   }
 
   render () {
-    const { accordion, popout, className, children, ...props } = this.props;
+    const {
+      accordion,
+      popout,
+      className,
+      children,
+      ...props
+    } = this.props;
+
+    delete props.defaultActiveKey;
+
     const classes = {
       collapsible: true,
       popout
@@ -59,15 +68,19 @@ Collapsible.propTypes = {
    * or it can only allow one section to stay open at a time, which is called an accordion.
    * @default false
    */
-  accordion: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  children: React.PropTypes.node,
+  accordion: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node,
   /**
    * Enable popout style
    */
-  popout: React.PropTypes.bool,
-  defaultActiveKey: React.PropTypes.number,
-  onSelect: React.PropTypes.func
+  popout: PropTypes.bool,
+  /**
+   * The default CollapsibleItem that should be expanded. This value should match the specified
+   * item's eventKey value. Ignored if accordion is false.
+   */
+  defaultActiveKey: PropTypes.any,
+  onSelect: PropTypes.func
 };
 
 Collapsible.defaultProps = {

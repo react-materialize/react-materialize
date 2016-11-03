@@ -19,19 +19,25 @@ class CollapsibleItem extends Component {
       node,
       header,
       icon,
+      classes,
       ...props
     } = this.props;
 
     delete props.expanded;
+    delete props.eventKey;
 
     const C = node;
-    const classes = {
-      'collapsible-header': true
+    const liClasses = {
+      active: this.state.expanded
+    };
+    const headerClasses = {
+      'collapsible-header': true,
+      active: this.state.expanded
     };
 
     return (
-      <li {...props}>
-        <C className={cx(classes)} onClick={this.handleClick}>
+      <li className={cx(liClasses, classes)} {...props}>
+        <C className={cx(headerClasses)} onClick={this.handleClick}>
           {icon ? this.renderIcon(icon) : null}
           {header}
         </C>
@@ -51,9 +57,8 @@ class CollapsibleItem extends Component {
   }
 
   renderBody () {
-    if (!this.state.expanded) return;
+    const style = this.state.expanded ? { display: 'block' } : {};
 
-    const style = {display: 'block'};
     return (
       <div className='collapsible-body' style={style}>
         {this.props.children}
@@ -67,17 +72,16 @@ class CollapsibleItem extends Component {
 }
 
 CollapsibleItem.propTypes = {
-  children: PropTypes.node,
   header: PropTypes.string.isRequired,
   icon: PropTypes.string,
   onSelect: PropTypes.func,
   /**
-   * If the item is expanded by default
+   * If the item is expanded by default. Overridden if the parent Collapsible is an accordion.
    * @default false
    */
   expanded: PropTypes.bool,
   /**
-   * The value to pass to the onSelect callback
+   * The value to pass to the onSelect callback.
    */
   eventKey: PropTypes.any,
   /**
