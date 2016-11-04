@@ -19,7 +19,7 @@ class CollapsibleItem extends Component {
       node,
       header,
       icon,
-      classes,
+      className,
       ...props
     } = this.props;
 
@@ -36,7 +36,7 @@ class CollapsibleItem extends Component {
     };
 
     return (
-      <li className={cx(liClasses, classes)} {...props}>
+      <li className={cx(liClasses, className)} {...props}>
         <C className={cx(headerClasses)} onClick={this.handleClick}>
           {icon ? this.renderIcon(icon) : null}
           {header}
@@ -84,6 +84,7 @@ CollapsibleItem.propTypes = {
    * The value to pass to the onSelect callback.
    */
   eventKey: PropTypes.any,
+  className: PropTypes.string,
   /**
    * The node type of the header
    * @default a
