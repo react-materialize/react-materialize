@@ -26,6 +26,7 @@ class Dropdown extends Component {
     const { children, trigger, className, ...props } = this.props;
     this.idx = 'dropdown_' + idgen();
     delete props.trigger;
+    delete props.options;
 
     return (
       <span>
