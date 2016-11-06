@@ -23,7 +23,7 @@ class Dropdown extends Component {
   }
 
   render () {
-    const { children, trigger, className, ...props } = this.props;
+    const { children, className, ...props } = this.props;
     this.idx = 'dropdown_' + idgen();
     delete props.trigger;
     delete props.options;
