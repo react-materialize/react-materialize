@@ -1,6 +1,6 @@
 // Shameless copied from react-bootstrap
 
-import metadata from 'react-component-metadata';
+import metadata from 'react-component-metadata-fix';
 import glob from 'glob';
 import promisify from 'es6-promisify';
 import fsp from 'fs-promise';
@@ -74,7 +74,7 @@ export default function() {
     return globp(__dirname + '/../src/**/*.js')
         .then( files => {
             let results = files.map(
-                filename => fsp.readFile(filename)
+                filename => fsp.readFile(filename, {encoding: 'utf-8'})
                     .then(content => metadata(content)));
             return Promise.all(results)
                 .then( data => {
