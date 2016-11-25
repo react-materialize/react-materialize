@@ -30,16 +30,14 @@ class Collapsible extends Component {
 
     return (
       <ul className={cx(className, classes)} {...props} data-collapsible={collapsible}>
-        {React.Children.map(children, this.renderItem)}
+        {React.Children.map(children.filter(x => !!x), this.renderItem)}
       </ul>
     );
   }
 
-  renderItem (child, index) {
-    const props = {
-      key: child.key ? child.key : index,
-      ref: child.ref
-    };
+  renderItem (child) {
+    const props = {};
+
     if (this.props.accordion) {
       props.expanded = child.props.eventKey === this.state.activeKey;
       props.onSelect = this.handleSelect;
