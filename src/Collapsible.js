@@ -30,12 +30,14 @@ class Collapsible extends Component {
 
     return (
       <ul className={cx(className, classes)} {...props} data-collapsible={collapsible}>
-        {React.Children.map(children.filter(x => !!x), this.renderItem)}
+        {React.Children.map(children, this.renderItem)}
       </ul>
     );
   }
 
   renderItem (child) {
+    if (!child) return null;
+
     const props = {};
 
     if (this.props.accordion) {
