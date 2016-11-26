@@ -53,7 +53,7 @@ describe('<Collapsible />', () => {
     it('accepts icon props', () => {
       let wrapper = mount(
         <Collapsible accordion>
-          <CollapsibleItem header='First' icon='filter_drama' iconClassName="right">
+          <CollapsibleItem header='First' icon='filter_drama' iconClassName='right'>
             Lorem ipsum dolor sit amet.
           </CollapsibleItem>
         </Collapsible>
