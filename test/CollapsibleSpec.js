@@ -53,13 +53,12 @@ describe('<Collapsible />', () => {
     it('accepts icon props', () => {
       let wrapper = mount(
         <Collapsible accordion>
-          <CollapsibleItem header='First' icon='filter_drama'>
+          <CollapsibleItem header='First' icon='filter_drama' iconClassName="right">
             Lorem ipsum dolor sit amet.
           </CollapsibleItem>
         </Collapsible>
       );
-
-      assert(wrapper.contains(<i className='material-icons'>filter_drama</i>), 'with rendered icon');
+      assert(wrapper.contains(<i className='material-icons right'>filter_drama</i>), 'with rendered icon');
     });
   });
 });
