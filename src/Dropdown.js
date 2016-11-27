@@ -51,7 +51,7 @@ class Dropdown extends Component {
 
 Dropdown.propTypes = {
   /**
-   * The button to trigger the dropdown
+   * The node to trigger the dropdown
    */
   trigger: PropTypes.node.isRequired,
   children: PropTypes.node,
