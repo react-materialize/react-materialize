@@ -13,7 +13,12 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/*Spec.js',
+      {
+        pattern: 'test/*Spec.js',
+        watched: false,
+        included: true,
+        served: true
+      },
       'node_modules/materialize-css/bin/materialize.js'
     ],
 
@@ -39,9 +44,9 @@ module.exports = function (config) {
     reporters: ['mocha'],
 
     // reporter options
-    mochaReporter: {
-      showDiff: true
-    },
+    // mochaReporter: {
+      // showDiff: true
+    // },
 
     // web server port
     port: 9876,
