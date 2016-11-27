@@ -5,11 +5,11 @@ import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import Pagination from '../src/Pagination';
 
-let wrapper = shallow(
-  <Pagination items={10} activePage={2} maxButtons={6} />
-);
-
 describe('<Pagination />', () => {
+  let wrapper = shallow(
+    <Pagination items={10} activePage={2} maxButtons={6} />
+  );
+
   it('should render', () => {
     assert(wrapper.find('.pagination').length);
   });
@@ -18,12 +18,18 @@ describe('<Pagination />', () => {
     assert.strictEqual(wrapper.children().length, 8);
   });
 
-  it('accets active prop', () => {
+  it('accepts activePage prop', () => {
     assert(wrapper.childAt(2).props().active);
   });
 
-  it('accets active prop', () => {
+  it('accepts active prop', () => {
     wrapper.setState({ activePage: 4 });
     assert(wrapper.childAt(4).props().active);
+  });
+
+  it('wont update state with wrong activePage prop', () => {
+    wrapper = shallow(<Pagination items={1} activePage={2} />);
+
+    assert.equal(wrapper.instance().state.activePage, 1);
   });
 });
