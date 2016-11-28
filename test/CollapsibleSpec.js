@@ -45,19 +45,17 @@ describe('<Collapsible />', () => {
   });
 
   it('should pass the key props to its children', () => {
-    let wrapper = mount(
+    let collapsibleChildren = mount(
       <Collapsible accordion>
-        <CollapsibleItem header='First' key="testKey">
+        <li key='testKey'>
           Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
-        <CollapsibleItem header='First' key="testKey">
-          Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
+        </li>
       </Collapsible>
-    );
+    ).find('li');
 
-    // Should only render one of the two children
-    assert.strictEqual(wrapper.find('li').length, 1);
+    // .key() returns `.$testKey`. Don't make future assumptions about
+    // how React implements keys -> test that the substring testKey is in there
+    assert(collapsibleChildren.at(0).key().indexOf('testKey') >= 0);
   });
 
   describe('<CollapsibleItem />', () => {
