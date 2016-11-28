@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node dev.js",
-    "build": "babel-node build.js && webpack --progress --colors",
+    "build": "babel-node build.js && webpack --progress --colors -p",
     "assets": "webpack-dev-server --color --debug",
     "clean": "rm *.html assets/bundle.js"
   },
