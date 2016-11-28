@@ -31,6 +31,35 @@ describe('<Collapsible />', () => {
     assert(wrapper.find('[data-collapsible="accordion"]').length, 'with a data attribute');
   });
 
+  it('should work with null dynamic children', () => {
+    let wrapper = mount(
+      <Collapsible accordion>
+        {null}
+        <CollapsibleItem header='First'>
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
+      </Collapsible>
+    );
+
+    assert(wrapper.find('[data-collapsible="accordion"]').length);
+  });
+
+  it('should pass the key props to its children', () => {
+    let wrapper = mount(
+      <Collapsible accordion>
+        <CollapsibleItem header='First' key="testKey">
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
+        <CollapsibleItem header='First' key="testKey">
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
+      </Collapsible>
+    );
+
+    // Should only render one of the two children
+    assert.strictEqual(wrapper.find('li').length, 1);
+  });
+
   describe('<CollapsibleItem />', () => {
     it('renders', () => {
       let wrapper = mount(
