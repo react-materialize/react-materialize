@@ -41,7 +41,7 @@ describe('<Collapsible />', () => {
       </Collapsible>
     );
 
-    assert(wrapper.find('[data-collapsible="accordion"]').length);
+    assert.strictEqual(wrapper.find('li').length, 1);
   });
 
   it('should pass the key props to its children', () => {
