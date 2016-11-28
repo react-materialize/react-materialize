@@ -41,9 +41,11 @@ class Dropdown extends Component {
   renderTrigger () {
     const { trigger } = this.props;
 
+    const className = typeof trigger.className === 'string' ? `${trigger.className} dropdown-button` : 'dropdown-button';
+
     return React.cloneElement(trigger, {
       ref: (t) => (this._trigger = `[data-activates=${this.idx}]`),
-      className: 'dropdown-button',
+      className,
       'data-activates': this.idx
     });
   }
