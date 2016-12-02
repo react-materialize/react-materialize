@@ -5,9 +5,6 @@ import Icon from './Icon';
 class CollapsibleItem extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      expanded: props.expanded
-    };
 
     this.handleClick = this.handleClick.bind(this);
     this.renderBody = this.renderBody.bind(this);
@@ -23,16 +20,15 @@ class CollapsibleItem extends Component {
       ...props
     } = this.props;
 
-    delete props.expanded;
     delete props.eventKey;
 
     const C = node;
     const liClasses = {
-      active: this.state.expanded
+      active: this.props.expanded
     };
     const headerClasses = {
       'collapsible-header': true,
-      active: this.state.expanded
+      active: this.props.expanded
     };
 
     return (
@@ -51,13 +47,11 @@ class CollapsibleItem extends Component {
 
     if (onSelect) {
       onSelect(eventKey);
-    } else {
-      this.setState({ expanded: !this.state.expanded });
     }
   }
 
   renderBody () {
-    const style = this.state.expanded ? { display: 'block' } : {};
+    const style = this.props.expanded ? { display: 'block' } : {};
 
     return (
       <div className='collapsible-body' style={style}>
