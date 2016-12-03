@@ -17,7 +17,7 @@ describe('<Collection />', () => {
   });
 
   describe('with header prop', () => {
-    let header = 'names'
+    let header = 'names';
     wrapper = shallow(
       <Collection header={header}>
         <CollectionItem>Alvin</CollectionItem>

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node dev.js",
-    "build": "babel-node build.js && webpack --progress --colors",
+    "build": "babel-node build.js && webpack --progress --colors -p",
     "assets": "webpack-dev-server --color --debug",
     "clean": "rm *.html assets/bundle.js"
   },
@@ -13,6 +13,7 @@
   "author": "Isaiah Peng <issaria@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "brfs": "^1.4.1",
     "child-process-promise": "^1.1.0",
     "colors": "^1.1.2",
@@ -21,7 +22,7 @@
     "express": "^4.10.4",
     "file-loader": "^0.8.4",
     "fs-extra": "^0.26.0",
-    "fs-promise": "^0.3.1",
+    "fs-promise": "^1.0.0",
     "glob": "^5.0.15",
     "graceful-fs": "^4.1.2",
     "http-proxy": "^1.12.0",
@@ -30,7 +31,7 @@
     "marked": "^0.3.5",
     "node-jsx": "^0.12.4",
     "nodemon": "^1.8.1",
-    "react-component-metadata": "^1.4.0",
+    "react-component-metadata-fix": "^3.1.2",
     "transform-loader": "^0.2.3",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",

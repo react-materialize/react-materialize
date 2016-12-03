@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import Icon from './Icon';
 
@@ -14,34 +15,45 @@ class CollapsibleItem extends Component {
     this.renderIcon = this.renderIcon.bind(this);
   }
 
+  componentDidUpdate () {
+    const { scroll, expanded } = this.props;
+
+    if (expanded) {
+      ReactDOM.findDOMNode(this).scrollIntoView({ behavior: scroll });
+    }
+  }
+
   render () {
     const {
       node,
       header,
       icon,
-      classes,
+      iconClassName,
+      className,
       ...props
     } = this.props;
+
+    const { expanded } = this.state;
 
     delete props.expanded;
     delete props.eventKey;
 
     const C = node;
     const liClasses = {
-      active: this.state.expanded
+      active: expanded
     };
     const headerClasses = {
       'collapsible-header': true,
-      active: this.state.expanded
+      active: expanded
     };
 
     return (
-      <li className={cx(liClasses, classes)} {...props}>
+      <li className={cx(liClasses, className)} {...props}>
         <C className={cx(headerClasses)} onClick={this.handleClick}>
-          {icon ? this.renderIcon(icon) : null}
+          {icon && this.renderIcon(icon, iconClassName)}
           {header}
         </C>
-        { this.renderBody() }
+        {expanded && this.renderBody()}
       </li>
     );
   }
@@ -57,23 +69,23 @@ class CollapsibleItem extends Component {
   }
 
   renderBody () {
-    const style = this.state.expanded ? { display: 'block' } : {};
-
     return (
-      <div className='collapsible-body' style={style}>
+      <div className='collapsible-body' style={{ display: 'block' }}>
         {this.props.children}
       </div>
     );
   }
 
-  renderIcon (icon) {
-    return <Icon>{icon}</Icon>;
+  renderIcon (icon, iconClassName) {
+    return <Icon className={iconClassName}>{icon}</Icon>;
   }
 }
 
 CollapsibleItem.propTypes = {
   header: PropTypes.string.isRequired,
   icon: PropTypes.string,
+  iconClassName: PropTypes.string,
+  children: PropTypes.node,
   onSelect: PropTypes.func,
   /**
    * If the item is expanded by default. Overridden if the parent Collapsible is an accordion.
@@ -84,11 +96,16 @@ CollapsibleItem.propTypes = {
    * The value to pass to the onSelect callback.
    */
   eventKey: PropTypes.any,
+  className: PropTypes.string,
   /**
    * The node type of the header
    * @default a
    */
-  node: PropTypes.node
+  node: PropTypes.node,
+  /**
+   * The scroll behavior for scrollIntoView
+   */
+  scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
 };
 
 CollapsibleItem.defaultProps = {

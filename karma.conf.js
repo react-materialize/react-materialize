@@ -9,11 +9,17 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'sinon-chai'],
+    frameworks: ['mocha', 'sinon-chai', 'jquery-2.1.0'],
 
     // list of files / patterns to load in the browser
     files: [
-      'test/*Spec.js'
+      {
+        pattern: 'test/*Spec.js',
+        watched: false,
+        included: true,
+        served: true
+      },
+      'node_modules/materialize-css/bin/materialize.js'
     ],
 
     // list of files to exclude
@@ -34,10 +40,13 @@ module.exports = function (config) {
       }
     },
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    // reporters configuration
+    reporters: ['mocha'],
+
+    // reporter options
+    // mochaReporter: {
+      // showDiff: true
+    // },
 
     // web server port
     port: 9876,
@@ -98,7 +107,9 @@ module.exports = function (config) {
       'karma-sinon-chai',
       'karma-sourcemap-loader',
       'karma-phantomjs-launcher',
-      'karma-babel-preprocessor'
+      'karma-babel-preprocessor',
+      'karma-jquery',
+      'karma-mocha-reporter'
     ]
   });
 };
