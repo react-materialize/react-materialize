@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Slide from '../src/Slide';
-import Slider from '../src/Slider';
+import Parallax from '../src/Parallax';
 
 export default
 <div>
