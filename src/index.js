@@ -11,6 +11,7 @@ import CollapsibleItem from './CollapsibleItem';
 import Collection from './Collection';
 import CollectionItem from './CollectionItem';
 import Dropdown from './Dropdown';
+import Parallax from './Parallax';
 import Footer from './Footer';
 import Icon from './Icon';
 import Input from './Input';
@@ -60,6 +61,7 @@ export {
   NavItem,
   Overlay,
   OverlayTrigger,
+  Parallax,
   Pagination,
   PaginationButton,
   Preloader,

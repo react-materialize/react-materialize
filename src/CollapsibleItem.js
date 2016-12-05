@@ -17,9 +17,8 @@ class CollapsibleItem extends Component {
 
   componentDidUpdate () {
     const scroll = this.props.scroll;
-    const options = ['auto', 'instant', 'smooth'];
 
-    if (options.indexOf(scroll) >= 0 && this.props.expanded) {
+    if (this.props.expanded) {
       ReactDOM.findDOMNode(this).scrollIntoView({ behavior: scroll });
     }
   }
@@ -32,6 +31,8 @@ class CollapsibleItem extends Component {
       classes,
       ...props
     } = this.props;
+
+    const { expanded } = this.state;
 
     delete props.expanded;
     delete props.eventKey;
@@ -51,7 +52,7 @@ class CollapsibleItem extends Component {
           {icon ? this.renderIcon(icon) : null}
           {header}
         </C>
-        { this.renderBody() }
+        {expanded && this.renderBody()}
       </li>
     );
   }
@@ -70,20 +71,22 @@ class CollapsibleItem extends Component {
     const style = this.state.expanded ? { display: 'block' } : {};
 
     return (
-      <div className='collapsible-body' style={style}>
+      <div className='collapsible-body' style={{ display: 'block' }}>
         {this.props.children}
       </div>
     );
   }
 
-  renderIcon (icon) {
-    return <Icon>{icon}</Icon>;
+  renderIcon (icon, iconClassName) {
+    return <Icon className={iconClassName}>{icon}</Icon>;
   }
 }
 
 CollapsibleItem.propTypes = {
   header: PropTypes.string.isRequired,
   icon: PropTypes.string,
+  iconClassName: PropTypes.string,
+  children: PropTypes.node,
   onSelect: PropTypes.func,
   /**
    * If the item is expanded by default. Overridden if the parent Collapsible is an accordion.
@@ -94,6 +97,7 @@ CollapsibleItem.propTypes = {
    * The value to pass to the onSelect callback.
    */
   eventKey: PropTypes.any,
+  className: PropTypes.string,
   /**
    * The node type of the header
    * @default a
@@ -102,7 +106,7 @@ CollapsibleItem.propTypes = {
   /**
    * The scroll behavior for scrollIntoView
    */
-  scroll: PropTypes.string
+  scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
 };
 
 CollapsibleItem.defaultProps = {

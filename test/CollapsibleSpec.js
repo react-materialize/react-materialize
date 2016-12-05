@@ -47,19 +47,26 @@ describe('<Collapsible />', () => {
         </Collapsible>
       );
 
-      assert.strictEqual(wrapper.find('a.collapsible-header').length, 3, 'with a data attribute');
+      assert.strictEqual(wrapper.find('a.collapsible-header').length, 3);
     });
 
-    it('accepts icon props', () => {
-      let wrapper = mount(
-        <Collapsible accordion>
-          <CollapsibleItem header='First' icon='filter_drama'>
-            Lorem ipsum dolor sit amet.
-          </CollapsibleItem>
-        </Collapsible>
+    describe('each collapsible item', () => {
+      const wrapper = mount(
+        <CollapsibleItem header='First' icon='filter_drama' iconClassName='right'>
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
       );
+      it('accepts icon props', () => {
+        assert(wrapper.contains(<i className='material-icons right'>filter_drama</i>), 'with rendered icon');
+      });
 
-      assert(wrapper.contains(<i className='material-icons'>filter_drama</i>), 'with rendered icon');
+      it('expands on click', () => {
+        const header = wrapper.find('.collapsible-header');
+        header.simulate('click');
+
+        assert.equal(wrapper.state('expanded'), true);
+        assert(wrapper.find('.collapsible-body').length);
+      });
     });
   });
 });

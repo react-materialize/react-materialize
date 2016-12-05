@@ -26,8 +26,9 @@ class OverlayTrigger extends Overlay {
     });
   }
 
-  showOverlay () {
-    $(`#${this.overlayID}`).openModal(this.props.modalOptions);
+  showOverlay (e) {
+    e.preventDefault();
+    $(`#${this.overlayID}`).modal(this.props.modalOptions).modal('open');
   }
 }
 

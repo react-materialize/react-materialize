@@ -23,9 +23,10 @@ class Dropdown extends Component {
   }
 
   render () {
-    const { children, trigger, className, ...props } = this.props;
+    const { children, className, ...props } = this.props;
     this.idx = 'dropdown_' + idgen();
     delete props.trigger;
+    delete props.options;
 
     return (
       <span>
@@ -41,7 +42,7 @@ class Dropdown extends Component {
     const { trigger } = this.props;
 
     return React.cloneElement(trigger, {
-      ref: (t) => (this._trigger = t),
+      ref: (t) => (this._trigger = `[data-activates=${this.idx}]`),
       className: 'dropdown-button',
       'data-activates': this.idx
     });
@@ -50,7 +51,7 @@ class Dropdown extends Component {
 
 Dropdown.propTypes = {
   /**
-   * The button to trigger the dropdown
+   * The node to trigger the dropdown
    */
   trigger: PropTypes.node.isRequired,
   children: PropTypes.node,
