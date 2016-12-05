@@ -3,16 +3,13 @@ import cx from 'classnames';
 
 class Parallax extends Component {
   componentDidMount () {
-    const {
-      className,
-    } = this.props;
     $('.parallax').parallax();
   }
 
   render () {
     const { className, imageSrc } = this.props;
     return (
-      <div className={cx('parallax-container', className)} >
+      <div className={cx('parallax-container', className)}>
         <div className='parallax'>
           <img src={imageSrc}/>
         </div>
@@ -23,6 +20,9 @@ class Parallax extends Component {
 
 Parallax.propTypes = {
   className: PropTypes.string,
-  imageSrc: PropTypes.string,
+  /**
+  * The image path which will be used for the background of the parallax
+  */
+  imageSrc: PropTypes.string
 };
 export default Parallax;
