@@ -22,7 +22,6 @@ class CollapsibleItem extends Component {
       ...props
     } = this.props;
 
-    delete props.expanded;
     delete props.eventKey;
 
     const C = node;
