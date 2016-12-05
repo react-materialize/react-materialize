@@ -28,7 +28,8 @@ class CollapsibleItem extends Component {
       node,
       header,
       icon,
-      classes,
+      iconClassName,
+      className,
       ...props
     } = this.props;
 
@@ -39,17 +40,17 @@ class CollapsibleItem extends Component {
 
     const C = node;
     const liClasses = {
-      active: this.state.expanded
+      active: expanded
     };
     const headerClasses = {
       'collapsible-header': true,
-      active: this.state.expanded
+      active: expanded
     };
 
     return (
-      <li className={cx(liClasses, classes)} {...props}>
+      <li className={cx(liClasses, className)} {...props}>
         <C className={cx(headerClasses)} onClick={this.handleClick}>
-          {icon ? this.renderIcon(icon) : null}
+          {icon && this.renderIcon(icon, iconClassName)}
           {header}
         </C>
         {expanded && this.renderBody()}
