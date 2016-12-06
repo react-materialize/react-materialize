@@ -69,8 +69,6 @@ class CollapsibleItem extends Component {
   }
 
   renderBody () {
-    const style = this.state.expanded ? { display: 'block' } : {};
-
     return (
       <div className='collapsible-body' style={{ display: 'block' }}>
         {this.props.children}
