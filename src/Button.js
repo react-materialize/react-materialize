@@ -49,7 +49,12 @@ class Button extends Component {
       return this.renderFab(cx(classes, className));
     } else {
       return (
-        <C {...other} onClick={this.props.onClick} className={cx(classes, className)}>
+        <C
+          {...other}
+          disabled={!!disabled}
+          onClick={this.props.onClick}
+          className={cx(classes, className)}
+        >
           { this.renderIcon() }
           { this.props.children }
         </C>
