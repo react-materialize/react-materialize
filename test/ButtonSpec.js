@@ -1,12 +1,11 @@
-/* global describe, it, expect */
-
+/* global describe, it, expect, context */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Button from '../src/Button';
 
 let wrapper = shallow(<Button waves='light'>Stuff</Button>);
 
-describe('Button', () => {
+describe.only('Button', () => {
   it('should output a button', () => {
     expect(wrapper.find('button')).to.have.length(1);
   });
@@ -34,8 +33,14 @@ describe('Button', () => {
     expect(wrapper.find('.btn-flat')).to.have.length(1);
   });
 
-  it('should apply disable styles', () => {
-    wrapper = shallow(<Button disabled>Stuff</Button>);
-    expect(wrapper.find('.disabled')).to.have.length(1);
+  context('with a disabled prop', () => {
+    let wrapper = mount(<Button disabled>Stuff</Button>);
+    it('should have a disabled class', () => {
+      expect(wrapper.find('.disabled')).to.have.length(1);
+    });
+
+    it('should have a disabled attribute', () => {
+      expect(wrapper.prop('disabled')).to.equal(true);
+    });
   });
 });
