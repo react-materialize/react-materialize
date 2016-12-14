@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import Icon from './Icon';
 
@@ -12,6 +13,14 @@ class CollapsibleItem extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.renderBody = this.renderBody.bind(this);
     this.renderIcon = this.renderIcon.bind(this);
+  }
+
+  componentDidUpdate () {
+    const { scroll, expanded } = this.props;
+
+    if (expanded) {
+      ReactDOM.findDOMNode(this).scrollIntoView({ behavior: scroll });
+    }
   }
 
   render () {
@@ -92,7 +101,11 @@ CollapsibleItem.propTypes = {
    * The node type of the header
    * @default a
    */
-  node: PropTypes.node
+  node: PropTypes.node,
+  /**
+   * The scroll behavior for scrollIntoView
+   */
+  scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
 };
 
 CollapsibleItem.defaultProps = {
