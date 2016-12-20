@@ -29,6 +29,7 @@ class Navbar extends Component {
       className,
       left,
       right,
+      href,
       ...other
     } = this.props;
 
@@ -46,7 +47,7 @@ class Navbar extends Component {
       <nav {...other} className={className}>
         <div className='nav-wrapper'>
           <Col s={12}>
-            <a href='/' className={cx(brandClasses)}>{brand}</a>
+            <a href={href} className={cx(brandClasses)}>{brand}</a>
             <ul className={cx(className, classes)}>
               {this.props.children}
             </ul>
@@ -66,7 +67,12 @@ Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   left: PropTypes.bool,
-  right: PropTypes.bool
+  right: PropTypes.bool,
+  href: PropTypes.string
+};
+
+Navbar.defaultProps = {
+  href: '/'
 };
 
 export default Navbar;
