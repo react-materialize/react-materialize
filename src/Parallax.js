@@ -11,7 +11,7 @@ class Parallax extends Component {
     return (
       <div className={cx('parallax-container', className)}>
         <div className='parallax'>
-          <img src={imageSrc}/>
+          <img src={imageSrc} />
         </div>
       </div>
     );
