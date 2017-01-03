@@ -15,6 +15,7 @@ let jsComponents = {
   dropdown: 'Dropdown',
   media: 'Media',
   modals: 'Modals',
+  sidenav: 'SideNav',
   tabs: 'Tabs',
 };
 

@@ -4,6 +4,9 @@ extends:
   - standard
   - standard-react
 
+parser:
+  babel-eslint
+
 globals:
   Materialize: true
   React: true
