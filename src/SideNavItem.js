@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import cx from 'classnames';
 
 class SideNavItem extends Component {
 
@@ -32,15 +33,22 @@ class SideNavItem extends Component {
 
   render () {
     const { divider, subheader, userView, icon, href = '#!', waves, user, children, ...props } = this.props;
+    const linkClasses = {
+      'subheader': subheader,
+      'waves-effect': waves
+    };
+    const itemClasses = {
+      'divider': divider
+    };
     const content = userView
       ? this.renderUserView(user)
-      : <a className={`${subheader && 'subheader'} ${waves && 'waves-effect'}`} href={href}>
+      : <a className={cx(linkClasses)} href={href}>
         { icon && <i className='material-icons'>{icon}</i> }
         { children }
       </a>;
 
     return (
-      <li className={divider && 'divider'} {...props}>
+      <li className={cx(itemClasses)} {...props}>
         { content }
       </li>
     );
