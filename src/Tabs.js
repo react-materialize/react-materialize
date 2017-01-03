@@ -7,7 +7,7 @@ import Col from './Col';
 class Tabs extends Component {
   componentDidMount () {
     if (typeof $ !== 'undefined') {
-      $(this.tabsEl).tabs();
+      $(this._tabsEl).tabs();
     }
   }
 
@@ -59,9 +59,9 @@ class Tabs extends Component {
           </ul>
         </Col>
         {
-          children.map((child, idx) =>
-            <Col id={`tab_${idx}`} s={12} key={`tab_${idx}`}
-                 style={{'display': (child.props.active || defaultValue === idx) ? 'block' : 'none'}}>
+          React.Children.map(children, (child, idx) =>
+            <Col id={`tab_${idx}`} s={12} key={`tab${idx}`}
+              style={{'display': (child.props.active || defaultValue === idx) ? 'block' : 'none'}}>
               { child.props.children }
             </Col>
           )
