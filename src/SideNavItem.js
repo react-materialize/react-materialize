@@ -40,16 +40,16 @@ class SideNavItem extends Component {
     const itemClasses = {
       'divider': divider
     };
-    const content = userView
-      ? this.renderUserView(user)
-      : <a className={cx(linkClasses)} href={href}>
-        { icon && <i className='material-icons'>{icon}</i> }
-        { children }
-      </a>;
 
     return (
       <li className={cx(itemClasses)} {...props}>
-        { content }
+        { userView && user && this.renderUserView(user) }
+        { !userView &&
+          <a className={cx(linkClasses)} href={href}>
+            { icon && <i className='material-icons'>{icon}</i> }
+            { children }
+          </a>
+        }
       </li>
     );
   }
