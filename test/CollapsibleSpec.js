@@ -32,21 +32,20 @@ describe('<Collapsible />', () => {
   });
 
   describe('<CollapsibleItem />', () => {
+    let wrapper = mount(
+      <Collapsible accordion>
+        <CollapsibleItem header='First' icon='filter_drama'>
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
+        <CollapsibleItem header='Second' icon='place'>
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
+        <CollapsibleItem header='Third' icon='whatshot'>
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
+      </Collapsible>
+    );
     it('renders', () => {
-      let wrapper = mount(
-        <Collapsible accordion>
-          <CollapsibleItem header='First' icon='filter_drama'>
-            Lorem ipsum dolor sit amet.
-          </CollapsibleItem>
-          <CollapsibleItem header='Second' icon='place'>
-            Lorem ipsum dolor sit amet.
-          </CollapsibleItem>
-          <CollapsibleItem header='Third' icon='whatshot'>
-            Lorem ipsum dolor sit amet.
-          </CollapsibleItem>
-        </Collapsible>
-      );
-
       assert.strictEqual(wrapper.find('a.collapsible-header').length, 3);
     });
 
@@ -59,12 +58,24 @@ describe('<Collapsible />', () => {
       it('accepts icon props', () => {
         assert(wrapper.contains(<i className='material-icons right'>filter_drama</i>), 'with rendered icon');
       });
+    });
 
+    describe('collapsible item expand', () => {
+      const wrapper = mount(
+        <Collapsible accordion>
+          <CollapsibleItem header='First' id='clicked' eventKey={1}>
+            Lorem ipsum dolor sit amet.
+          </CollapsibleItem>
+          <CollapsibleItem header='Second' id='notClicked' eventKey={2}>
+            Lorem ipsum dolor sit amet.
+          </CollapsibleItem>
+        </Collapsible>
+      );
       it('expands on click', () => {
-        const header = wrapper.find('.collapsible-header');
+        const header = wrapper.find('#clicked a.collapsible-header');
         header.simulate('click');
 
-        assert.equal(wrapper.state('expanded'), true);
+        assert.equal(wrapper.state('activeKey'), 1);
         assert(wrapper.find('.collapsible-body').length);
       });
     });
