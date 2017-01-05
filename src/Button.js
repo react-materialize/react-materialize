@@ -16,6 +16,7 @@ class Button extends Component {
       className,
       node,
       fab,
+      clickOnly,
       modal,
       flat,
       floating,
@@ -25,6 +26,7 @@ class Button extends Component {
       ...other
     } = this.props;
 
+    const toggle = clickOnly ? 'click-to-toggle' : '';
     let C = node;
     let classes = {
       btn: true,
@@ -46,14 +48,14 @@ class Button extends Component {
       classes['modal-' + modal] = true;
     }
     if (fab) {
-      return this.renderFab(cx(classes, className));
+      return this.renderFab(cx(classes, className), fab, toggle);
     } else {
       return (
         <C
           {...other}
           disabled={!!disabled}
           onClick={this.props.onClick}
-          className={cx(classes, className)}
+          className={cx(cx(classes, className), toggle)}
         >
           { this.renderIcon() }
           { this.props.children }
@@ -62,9 +64,10 @@ class Button extends Component {
     }
   }
 
-  renderFab (className) {
+  renderFab (className, orientation, clickOnly) {
+    const classes = cx(orientation, clickOnly);
     return (
-      <div className='fixed-action-btn'>
+      <div className={cx('fixed-action-btn', classes)}>
         <a className={className}>{ this.renderIcon() }</a>
         <ul>
           {
@@ -112,11 +115,16 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   tooltip: PropTypes.string,
-  waves: PropTypes.oneOf(constants.WAVES)
+  waves: PropTypes.oneOf(constants.WAVES),
+  /**
+   * Click-Only
+   */
+  clickOnly: PropTypes.bool
 };
 
 Button.defaultProps = {
-  node: 'button'
+  node: 'button',
+  clickOnly: false
 };
 
 export default Button;
