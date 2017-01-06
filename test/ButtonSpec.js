@@ -5,7 +5,7 @@ import Button from '../src/Button';
 
 let wrapper = shallow(<Button waves='light'>Stuff</Button>);
 
-describe.only('Button', () => {
+describe('Button', () => {
   it('should output a button', () => {
     expect(wrapper.find('button')).to.have.length(1);
   });
