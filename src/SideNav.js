@@ -9,15 +9,12 @@ class SideNav extends Component {
 
   componentDidMount () {
     const { options = {} } = this.props;
-    $(this._trigger).sideNav({ options });
-  }
-
-  componentWillUnmount () {
-    $(this._trigger).sideNav('hide');
+    $(this._trigger).sideNav(options);
   }
 
   render () {
     const { children, ...props } = this.props;
+    delete props.id;
     delete props.trigger;
     delete props.options;
     return (
