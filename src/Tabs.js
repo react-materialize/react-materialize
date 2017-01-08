@@ -60,7 +60,8 @@ class Tabs extends Component {
         </Col>
         {
           React.Children.map(children, (child, idx) =>
-            <Col id={`tab_${idx}`} s={12} key={`tab${idx}`}>
+            <Col id={`tab_${idx}`} s={12} key={`tab${idx}`}
+              style={{'display': (child.props.active || defaultValue === idx) ? 'block' : 'none'}}>
               { child.props.children }
             </Col>
           )
