@@ -2,13 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import idgen from './idgen';
 
 class SideNav extends Component {
+  constructor (props) {
+    super(props);
+    this.id = props.id || `sidenav_${idgen()}`;
+  }
+
   componentDidMount () {
-    const { options = {}, right, closeOnClick } = this.props;
-    $(this._trigger).sideNav({
-      ...options,
-      edge: right || options.edge,
-      closeOnClick: closeOnClick || options.closeOnClick
-    });
+    const { options = {} } = this.props;
+    $(this._trigger).sideNav({ options });
   }
 
   componentWillUnmount () {
@@ -16,16 +17,13 @@ class SideNav extends Component {
   }
 
   render () {
-    const { children, id = [`sidenav_${idgen()}`], ...props } = this.props;
-    this.id = id;
-    delete props.right;
-    delete props.closeOnClick;
+    const { children, ...props } = this.props;
     delete props.trigger;
     delete props.options;
     return (
       <span>
         { this.renderTrigger() }
-        <ul id={id} className='side-nav' {...props}>
+        <ul id={this.id} className='side-nav' {...props}>
           {children}
         </ul>
       </span>
@@ -51,16 +49,6 @@ SideNav.propTypes = {
    */
   trigger: PropTypes.node.isRequired,
   /**
-   * Position the sidenav on the right edge of the screen
-   * @default false
-   */
-  right: PropTypes.bool,
-  /**
-   * Closes side-nav on anchor clicks
-   * @default false
-   */
-  closeOnClick: PropTypes.bool,
-  /**
    * Options hash for the sidenav.
    * More info: http://materializecss.com/side-nav.html#options
    */
@@ -71,11 +59,6 @@ SideNav.propTypes = {
     draggable: PropTypes.bool
   }),
   children: PropTypes.node
-};
-
-SideNav.defaultProps = {
-  right: false,
-  closeOnClick: false
 };
 
 export default SideNav;

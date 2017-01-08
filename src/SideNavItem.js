@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 class SideNavItem extends Component {
 
-  renderUserView = (user) => {
+  renderUserView (user) {
     const { background, image, name, email } = user;
     return (
       <div className='userView'>
