@@ -5,9 +5,9 @@ import SideNav from '../src/SideNav';
 
 export default
 <SideNav
-  trigger={
-    <Button>SIDE NAV DEMO</Button>
-  }>
+  trigger={<Button>SIDE NAV DEMO</Button>}
+  options={{ closeOnClick: true }}
+  >
   <SideNavItem userView
     user={{
       background: 'assets/office.jpg',
