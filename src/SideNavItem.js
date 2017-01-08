@@ -32,13 +32,13 @@ class SideNavItem extends Component {
   }
 
   render () {
-    const { divider, subheader, userView, icon, href = '#!', waves, user, children, ...props } = this.props;
+    const { divider, subheader, userView, icon, href = '#!', waves, user = {}, children, ...props } = this.props;
+    const itemClasses = {
+      'divider': divider
+    };
     const linkClasses = {
       'subheader': subheader,
       'waves-effect': waves
-    };
-    const itemClasses = {
-      'divider': divider
     };
 
     return (

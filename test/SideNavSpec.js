@@ -31,7 +31,7 @@ function setupMounted (props, children) {
   return setup(props, children, true);
 }
 
-describe.only('<SideNav />', () => {
+describe('<SideNav />', () => {
   it('should render', () => {
     const { sideNav, trigger, sideNavProps, triggerProps } = setup();
     assert(sideNav.length === 1, 'should render a sidenav');
