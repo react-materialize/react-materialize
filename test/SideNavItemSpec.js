@@ -21,7 +21,7 @@ function setup (props = {}, children) {
   };
 }
 
-describe.only('<SideNavItem />', () => {
+describe('<SideNavItem />', () => {
   it('should render', () => {
     const { wrapper, firstChild } = setup();
     assert(wrapper.length === 1, 'should render the wrapper');
