@@ -4,6 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import SideNavItem from '../src/SideNavItem';
+import UserView from '../src/UserView';
 
 function setup (props = {}, children) {
   const propsIn = {
@@ -88,32 +89,11 @@ describe('<SideNavItem />', () => {
   });
 
   it('should render a userview', () => {
-    const { propsIn, firstChild } = setup({
+    const user = { name: 'test' };
+    const { firstChild } = setup({
       userView: true,
-      user: {
-        name: 'user fullname',
-        email: 'user email',
-        background: 'cool-background.jpg',
-        image: 'cool-image.png'
-      }
+      user
     });
-    assert.equal(firstChild.type(), 'div', 'should render a div');
-    assert.isTrue(firstChild.hasClass('userView'), 'should have userView class');
-
-    const background = firstChild.find('.background > img').first();
-    assert.isDefined(background, 'should have a background');
-    assert.equal(background.props().src, propsIn.user.background, 'should set background source');
-
-    const image = firstChild.find('.circle').first();
-    assert.isDefined(image, 'should have a user image');
-    assert.equal(image.props().src, propsIn.user.image, 'should set userImage source');
-
-    const name = firstChild.find('.name').first();
-    assert.isDefined(name, 'should have a name span');
-    assert.equal(name.text(), propsIn.user.name, 'should render the username');
-
-    const email = firstChild.find('.email').first();
-    assert.isDefined(email, 'should have an email span');
-    assert.equal(email.text(), propsIn.user.email, 'should render the email address');
+    assert(firstChild.equals(<UserView user={user} />));
   });
 });

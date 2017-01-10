@@ -1,36 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
+import { UserView, UserShape } from './UserView';
 
 class SideNavItem extends Component {
-
-  renderUserView (user) {
-    const { background, image, name, email } = user;
-    return (
-      <div className='userView'>
-        { background &&
-          <div className='background'>
-            <img src={background} />
-          </div>
-        }
-        { image &&
-          <a href='#!user'>
-            <img className='circle' src={image} />
-          </a>
-        }
-        { name &&
-          <a href='#!name'>
-            <span className='white-text name'>{name}</span>
-          </a>
-        }
-        { email &&
-          <a href='#!email'>
-            <span className='white-text email'>{email}</span>
-          </a>
-        }
-      </div>
-    );
-  }
-
   render () {
     const { divider, subheader, userView, icon, href = '#!', waves, user = {}, children, ...props } = this.props;
     const itemClasses = {
@@ -43,7 +15,9 @@ class SideNavItem extends Component {
 
     return (
       <li className={cx(itemClasses)} {...props}>
-        { userView && user && this.renderUserView(user) }
+        { userView && user &&
+          <UserView user={user} />
+        }
         { !userView &&
           <a className={cx(linkClasses)} href={href}>
             { icon && <i className='material-icons'>{icon}</i> }
@@ -63,12 +37,7 @@ SideNavItem.propTypes = {
   waves: PropTypes.bool,
   href: PropTypes.string,
   icon: PropTypes.string,
-  user: PropTypes.shape({
-    background: PropTypes.string,
-    image: PropTypes.string,
-    name: PropTypes.string,
-    email: PropTypes.string
-  })
+  user: PropTypes.shape(UserShape)
 };
 
 export default SideNavItem;
