@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
+import constants from './constants';
 import Icon from './Icon';
 import Row from './Row';
 import Col from './Col';
@@ -23,37 +24,35 @@ class Autocomplete extends Component {
 
   renderDropdown (data) {
     const { value } = this.state;
+    const { minLength } = this.props;
 
-    let li = null;
-    if (value.length) {
-      li = Object.keys(data).map((key, idx) => {
-        const index = key.toUpperCase().indexOf(value.toUpperCase());
-        if (index !== -1 && value.length < key.length) {
-          return (
-            <li key={key + '_' + idx}>
-              {data[key] ? <img src={data[key]} className="right circle"/> : null}
-              <span>
-                {index !== 0 ? key.substring(0, index) : ''}
-                <span className='highlight'>{value}</span>
-                {key.length !== index + value.length ? key.substring(index + value.length) : ''}
-              </span>
-            </li>
-          );
-        }
-      })
+    if (minLength && minLength > value.length) {
+      return null
     }
 
-    return li;
+    return value && Object.keys(data).map((key, idx) => {
+      const index = key.toUpperCase().indexOf(value.toUpperCase());
+      if (index !== -1 && value.length < key.length) {
+        return (
+          <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
+            {data[key] ? <img src={data[key]} className="right circle"/> : null}
+            <span>
+              {index !== 0 ? key.substring(0, index) : ''}
+              <span className='highlight'>{value}</span>
+              {key.length !== index + value.length ? key.substring(index + value.length) : ''}
+            </span>
+          </li>
+        );
+      }
+    })
   }
 
   _onChange (evt) {
     this.setState({ value: evt.target.value });
   }
 
-
   render () {
     const {
-      children,
       className,
       title,
       data,
@@ -63,21 +62,25 @@ class Autocomplete extends Component {
       m,
       l,
       offset,
+      minLength,
       ...props
     } = this.props;
 
     const _id = 'autocomplete-input';
-    const _autocomplete = 'autocomplete';
     const _ul = 'autocomplete-content dropdown-content';
+    const sizes = { s, m, l };
+    let classes = {};
+    constants.SIZES.forEach(size => {
+      classes[size + sizes[size]] = sizes[size];
+    });
 
     return (
       <Row>
-        <Col s={s} m={m} l={l} offset={offset} className={cx('input-field', className)} {...props}>
+        <Col offset={offset} className={cx(cx('input-field', className), classes)} {...props}>
           {icon && this.renderIcon(icon, iconClassName)}
-          <input type="text" id={_id} className={_autocomplete} onChange={this._onChange}/>
+          <input type="text" id={_id} className='autocomplete' onChange={this._onChange} />
           <label htmlFor={_id}>{title}</label>
           <ul className={_ul}>{this.renderDropdown(data)}</ul>
-          {children}
         </Col>
       </Row>
     );
@@ -85,7 +88,6 @@ class Autocomplete extends Component {
 }
 
 Autocomplete.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   /*
    * The title of the autocomplete component.
@@ -95,7 +97,7 @@ Autocomplete.propTypes = {
    * An object with the keys of the items to match in autocomplete
    * The values are either null or a location to an image
    */
-  data: PropTypes.object.required,
+  data: PropTypes.object.isRequired,
   /*
    * Optional materialize icon to add to the autocomplete bar
    */
@@ -104,13 +106,11 @@ Autocomplete.propTypes = {
   s: PropTypes.number,
   m: PropTypes.number,
   l: PropTypes.number,
-  offset: PropTypes.string
-};
-
-Autocomplete.defaultProps = {
-  s: 12,
-  m: 12,
-  l: 12
+  offset: PropTypes.string,
+  /*
+   * Determine input length before dropdown
+   */
+  minLength: PropTypes.number
 };
 
 export default Autocomplete;
