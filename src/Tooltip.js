@@ -2,6 +2,7 @@
  * Created by madmax on 10.01.17.
  */
 import React from 'react';
+import cx from 'classnames';
 
 class Tooltip extends React.Component {
   componentDidMount () {
@@ -19,17 +20,19 @@ class Tooltip extends React.Component {
           ...newProps
         } = this.props;
 
-    const tooltipProps = {
-      'data-tooltip': tooltip,
-      'data-delay': delay,
-      'data-position': position
-    };
+    const childClassName = children.props.className;
 
-    return React.createElement(
-          children.type,
-          {...newProps, ...tooltipProps, 'ref': (obj) => { this._tooltipped = obj; }},
-          children
-        );
+    return React.cloneElement(
+      children,
+      {
+        'className': cx(childClassName, {'tooltipped': true}),
+        'data-position': position,
+        'data-delay': delay,
+        'data-tooltip': tooltip,
+        'ref': (obj) => { this._tooltipped = obj; },
+        ...newProps
+      }
+    );
   }
 }
 
@@ -38,7 +41,7 @@ Tooltip.propTypes = {
 
   'tooltip': React.PropTypes.string,
   'delay': React.PropTypes.number,
-  'position': React.PropTypes.string
+  'position': React.PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
 };
 
 Tooltip.defaultProps = {

@@ -12,6 +12,11 @@ describe('<Tooltip />', () => {
     shallow(<Tooltip tooltip='123'><div /></Tooltip>);
   });
 
+  it('Renders child node with class tooltipped', () => {
+    const wrapper = shallow(<Tooltip tooltip='123'><div /></Tooltip>);
+    expect(wrapper.find('.tooltipped')).to.have.length(1);
+  });
+
   it('Render itself as a modified child node', () => {
     const wrapper = shallow(<Tooltip tooltip='123'><div /></Tooltip>);
 
