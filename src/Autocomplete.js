@@ -10,11 +10,15 @@ class Autocomplete extends Component {
     super(props);
 
     this.state = {
-      value: ''
+      value: '',
+      minLength: this.props.minLength
     };
+
+    delete this.props.minLength;
 
     this.renderIcon = this.renderIcon.bind(this);
     this.renderDropdown = this.renderDropdown.bind(this);
+    this.renderUl = this.renderUl.bind(this);
     this._onChange = this._onChange.bind(this);
   }
 
@@ -23,11 +27,10 @@ class Autocomplete extends Component {
   }
 
   renderDropdown (data) {
-    const { value } = this.state;
-    const { minLength } = this.props;
+    const { value, minLength } = this.state;
 
     if (minLength && minLength > value.length) {
-      return null
+      return null;
     }
 
     return value && Object.keys(data).map((key, idx) => {
@@ -35,7 +38,7 @@ class Autocomplete extends Component {
       if (index !== -1 && value.length < key.length) {
         return (
           <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
-            {data[key] ? <img src={data[key]} className="right circle"/> : null}
+            {data[key] ? <img src={data[key]} className='right circle' /> : null}
             <span>
               {index !== 0 ? key.substring(0, index) : ''}
               <span className='highlight'>{value}</span>
@@ -44,7 +47,14 @@ class Autocomplete extends Component {
           </li>
         );
       }
-    })
+    });
+  }
+
+  renderUl (data) {
+    const drop = this.renderDropdown(data);
+    return drop
+      ? <ul className='autocomplete-content dropdown-content'>{drop}</ul>
+      : null;
   }
 
   _onChange (evt) {
@@ -62,12 +72,10 @@ class Autocomplete extends Component {
       m,
       l,
       offset,
-      minLength,
       ...props
     } = this.props;
 
     const _id = 'autocomplete-input';
-    const _ul = 'autocomplete-content dropdown-content';
     const sizes = { s, m, l };
     let classes = {};
     constants.SIZES.forEach(size => {
@@ -76,11 +84,11 @@ class Autocomplete extends Component {
 
     return (
       <Row>
-        <Col offset={offset} className={cx(cx('input-field', className), classes)} {...props}>
+        <Col offset={offset} className={cx('input-field', className, classes)} {...props}>
           {icon && this.renderIcon(icon, iconClassName)}
-          <input type="text" id={_id} className='autocomplete' onChange={this._onChange} />
+          <input type='text' id={_id} className='autocomplete' onChange={this._onChange} />
           <label htmlFor={_id}>{title}</label>
-          <ul className={_ul}>{this.renderDropdown(data)}</ul>
+          {this.renderUl(data)}
         </Col>
       </Row>
     );
