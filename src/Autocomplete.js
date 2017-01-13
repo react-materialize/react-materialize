@@ -10,15 +10,11 @@ class Autocomplete extends Component {
     super(props);
 
     this.state = {
-      value: '',
-      minLength: this.props.minLength
+      value: ''
     };
-
-    delete this.props.minLength;
 
     this.renderIcon = this.renderIcon.bind(this);
     this.renderDropdown = this.renderDropdown.bind(this);
-    this.renderUl = this.renderUl.bind(this);
     this._onChange = this._onChange.bind(this);
   }
 
@@ -26,35 +22,32 @@ class Autocomplete extends Component {
     return <Icon className={iconClassName}>{icon}</Icon>;
   }
 
-  renderDropdown (data) {
-    const { value, minLength } = this.state;
+  renderDropdown (data, minLength) {
+    const { value } = this.state;
 
-    if (minLength && minLength > value.length) {
+    if (minLength && minLength > value.length || !value) {
       return null;
     }
 
-    return value && Object.keys(data).map((key, idx) => {
-      const index = key.toUpperCase().indexOf(value.toUpperCase());
-      if (index !== -1 && value.length < key.length) {
-        return (
-          <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
-            {data[key] ? <img src={data[key]} className='right circle' /> : null}
-            <span>
-              {index !== 0 ? key.substring(0, index) : ''}
-              <span className='highlight'>{value}</span>
-              {key.length !== index + value.length ? key.substring(index + value.length) : ''}
-            </span>
-          </li>
-        );
-      }
-    });
-  }
-
-  renderUl (data) {
-    const drop = this.renderDropdown(data);
-    return drop
-      ? <ul className='autocomplete-content dropdown-content'>{drop}</ul>
-      : null;
+    return (
+      <ul className='autocomplete-content dropdown-content'>
+        {Object.keys(data).map((key, idx) => {
+          const index = key.toUpperCase().indexOf(value.toUpperCase());
+          if (index !== -1 && value.length < key.length) {
+            return (
+              <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
+                {data[key] ? <img src={data[key]} className='right circle' /> : null}
+                <span>
+                  {index !== 0 ? key.substring(0, index) : ''}
+                  <span className='highlight'>{value}</span>
+                  {key.length !== index + value.length ? key.substring(index + value.length) : ''}
+                </span>
+              </li>
+            );
+          }
+        })}
+      </ul>
+    );
   }
 
   _onChange (evt) {
@@ -72,6 +65,7 @@ class Autocomplete extends Component {
       m,
       l,
       offset,
+      minLength,
       ...props
     } = this.props;
 
@@ -88,7 +82,7 @@ class Autocomplete extends Component {
           {icon && this.renderIcon(icon, iconClassName)}
           <input type='text' id={_id} className='autocomplete' onChange={this._onChange} />
           <label htmlFor={_id}>{title}</label>
-          {this.renderUl(data)}
+          {this.renderDropdown(data, minLength)}
         </Col>
       </Row>
     );
