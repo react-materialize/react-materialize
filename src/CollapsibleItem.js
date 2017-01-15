@@ -6,6 +6,9 @@ import Icon from './Icon';
 class CollapsibleItem extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      expanded: props.expanded
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.renderBody = this.renderBody.bind(this);
@@ -27,10 +30,12 @@ class CollapsibleItem extends Component {
       icon,
       iconClassName,
       className,
-      expanded,
       ...props
     } = this.props;
 
+    const { expanded } = this.state;
+
+    delete props.expanded;
     delete props.eventKey;
 
     const C = node;
@@ -58,6 +63,8 @@ class CollapsibleItem extends Component {
 
     if (onSelect) {
       onSelect(eventKey);
+    } else {
+      this.setState({ expanded: !this.state.expanded });
     }
   }
 
