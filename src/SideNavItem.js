@@ -16,7 +16,7 @@ class SideNavItem extends Component {
     return (
       <li className={cx(itemClasses)} {...props}>
         { userView && user &&
-          <UserView user={user} />
+          <UserView {...user} />
         }
         { !userView &&
           <a className={cx(linkClasses)} href={href}>

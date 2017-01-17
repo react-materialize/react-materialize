@@ -10,6 +10,7 @@ export const UserShape = {
 export class UserView extends Component {
   render () {
     const { background, image, name, email } = this.props;
+    console.log(image, name, email);
     return (
       <div className='userView'>
         { background &&
