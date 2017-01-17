@@ -94,6 +94,6 @@ describe('<SideNavItem />', () => {
       userView: true,
       user
     });
-    assert(firstChild.equals(<UserView user={user} />));
+    assert(firstChild.equals(<UserView {...user} />));
   });
 });
