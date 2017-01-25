@@ -43,6 +43,7 @@ module.exports = {
   raisedButton: fs.readFileSync(path.join(__dirname, '../../examples', 'RaisedButton.js'), 'utf8'),
   rightAlignedNavbar: fs.readFileSync(path.join(__dirname, '../../examples', 'RightAlignedNavbar.js'), 'utf8'),
   selectSimple: fs.readFileSync(path.join(__dirname, '../../examples', 'SelectSimple.js'), 'utf8'),
+  sideNav: fs.readFileSync(path.join(__dirname, '../../examples', 'SideNavBasic.js'), 'utf8'),
   sliders: fs.readFileSync(path.join(__dirname, '../../examples', 'Sliders.js'), 'utf8'),
   submitButton: fs.readFileSync(path.join(__dirname, '../../examples', 'SubmitButton.js'), 'utf8'),
   tab: fs.readFileSync(path.join(__dirname, '../../examples', 'Tab.js'), 'utf8'),

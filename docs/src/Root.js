@@ -24,6 +24,7 @@ const Root = React.createClass({
         'navbar.html',
         'pagination.html',
         'preloader.html',
+        'sidenav.html',
         'table.html',
         'tabs.html',
       ];

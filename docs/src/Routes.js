@@ -19,6 +19,7 @@ import ModalsPage from './ModalsPage'
 import NavbarPage from './NavbarPage';
 import PaginationPage from './PaginationPage';
 import PreloaderPage from './PreloaderPage';
+import SideNavPage from './SideNavPage';
 import TablesPage from './TablesPage';
 import TabsPage from './TabsPage';
 
@@ -43,6 +44,7 @@ export default
   <Route path='navbar.html' component={NavbarPage} />
   <Route path='pagination.html' component={PaginationPage} />
   <Route path='preloader.html' component={PreloaderPage} />
+  <Route path='sidenav.html' component={SideNavPage} />
   <Route path='table.html' component={TablesPage} />
   <Route path='tabs.html' component={TabsPage} />
 </Route>;

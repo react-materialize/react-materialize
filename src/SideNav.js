@@ -1,21 +1,61 @@
-import React, { PropTypes } from 'react';
-import Icon from './Icon';
+import React, { Component, PropTypes } from 'react';
 import idgen from './idgen';
 
-const SideNav = ({ children, id = [`sidenav_${idgen()}`] }) =>
-  <nav>
-    <ul className='right hide-on-med-and-down'>{children}</ul>
-    <ul id={id} className='side-nav'>{children}</ul>
-    <a href='#' data-activates={id} className='button-collapse'>
-      <Icon>view_headline</Icon>
-    </a>
-  </nav>;
+class SideNav extends Component {
+  constructor (props) {
+    super(props);
+    this.id = props.id || `sidenav_${idgen()}`;
+  }
+
+  componentDidMount () {
+    const { options = {} } = this.props;
+    $(this._trigger).sideNav(options);
+  }
+
+  render () {
+    const { children, ...props } = this.props;
+    delete props.id;
+    delete props.trigger;
+    delete props.options;
+    return (
+      <span>
+        { this.renderTrigger() }
+        <ul id={this.id} className='side-nav' {...props}>
+          {children}
+        </ul>
+      </span>
+    );
+  }
+
+  renderTrigger () {
+    const { trigger } = this.props;
+    return React.cloneElement(trigger, {
+      ref: (t) => (this._trigger = `[data-activates=${this.id}]`),
+      'data-activates': this.id
+    });
+  }
+}
 
 SideNav.propTypes = {
-  children: PropTypes.node,
+  /**
+   * sidenav id. If none is passed, an id will be generated.
+   */
   id: PropTypes.string,
-  right: PropTypes.bool,
-  left: PropTypes.bool
+  /**
+   * Component that is rendered to trigger the sidenav
+   */
+  trigger: PropTypes.node.isRequired,
+  /**
+   * Options hash for the sidenav.
+   * More info: http://materializecss.com/side-nav.html#options
+   */
+  options: PropTypes.shape({
+    menuWidth: PropTypes.number,
+    edge: PropTypes.oneOf(['left', 'right']),
+    closeOnClick: PropTypes.bool,
+    draggable: PropTypes.bool
+  }),
+  children: PropTypes.node
 };
 
 export default SideNav;

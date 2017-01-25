@@ -29,6 +29,7 @@ import ProgressBar from './ProgressBar';
 import Row from './Row';
 import SearchForm from './SearchForm';
 import SideNav from './SideNav';
+import SideNavItem from './SideNavItem';
 import Slide from './Slide';
 import Slider from './Slider';
 import Tab from './Tab';
@@ -69,6 +70,7 @@ export {
   Row,
   SearchForm,
   SideNav,
+  SideNavItem,
   Slide,
   Slider,
   Tab,
