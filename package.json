@@ -9,7 +9,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "karma start --single-run",
+    "test": "mocha",
     "pretest": "npm run lint",
     "watch": "karma start",
     "build": "babel -d lib src",
@@ -43,6 +43,8 @@
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.5.0-1",
     "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.1",
     "es5-shim": "^4.2.0",
     "eslint": "^3.4.0",
     "eslint-config-standard": "^6.0.0",
@@ -50,7 +52,10 @@
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
+    "jsdom": "^9.9.1",
     "materialize-css": "^0.97.8",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
     "webpack": "^1.13.1"
   },
   "dependencies": {
