@@ -16,3 +16,4 @@ global.navigator = {
 
 global.expect = require('chai').expect;
 global.sinon = require('sinon');
+global.$ = require('jQuery');

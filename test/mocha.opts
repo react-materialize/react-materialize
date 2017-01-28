@@ -1,3 +1,4 @@
+--inline-diffs
 --compilers js:babel-register
---require test/helpers/helper.js
 --reporter nyan
+--require test/helpers/helper.js
