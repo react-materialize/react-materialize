@@ -11,7 +11,7 @@
   "scripts": {
     "test": "mocha",
     "pretest": "npm run lint",
-    "watch": "karma start",
+    "watch": "mocha --watch",
     "build": "babel -d lib src",
     "lint": "eslint src test; exit 0",
     "fix": "eslint src test --fix",
@@ -53,14 +53,15 @@
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
     "jsdom": "^9.9.1",
-    "materialize-css": "^0.97.8",
+    "materialize-css": "^0.98.0",
     "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.17.7",
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
