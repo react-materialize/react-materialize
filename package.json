@@ -10,8 +10,8 @@
   ],
   "scripts": {
     "test": "mocha",
+    "test:watch": "mocha --watch",
     "pretest": "npm run lint",
-    "watch": "mocha --watch",
     "build": "babel -d lib src",
     "lint": "eslint src test; exit 0",
     "fix": "eslint src test --fix",

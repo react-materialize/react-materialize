@@ -1,21 +1,30 @@
-var baseDOM = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body></body></html>';
-var jsdom = require('jsdom').jsdom;
+const exposedProperties = ['window', 'navigator', 'document'];
 
-if (global.self != null) {
-  console.log(' global.self >>>>> ' + global.self);
-} else {
-  global.self = global.this;
-}
+const expect = require('chai').expect;
+const jsdom = require('jsdom').jsdom;
+global.sinon = require('sinon');
+global.jsdom = jsdom.jsdom;
+global.React = require('react');
+global.ReactDOM = require('react-dom');
+global.TestUtils = require('react-addons-test-utils');
+global.expect = expect;
 
-global.document = jsdom(baseDOM);
+global.document = jsdom('');
 global.window = document.defaultView;
 
-global.navigator = {
-  userAgent: 'node.js'
-};
+global.$ = require('jquery');
+global.$.fn.material_select = () => this;
+global.$.fn.sideNav = () => this;
 
-global.expect = require('chai').expect;
-global.sinon = require('sinon');
-global.$ = require('jQuery');
-// require('materialize-css');
-// require('../../node_modules/materialize-css/bin/materialize.js');
+Object.keys(document.defaultView).forEach(
+  (property) => {
+    if (typeof global[property] === 'undefined') {
+      exposedProperties.push(property);
+      global[property] = document.defaultView[property];
+    }
+  }
+);
+
+global.navigator = {
+  userAgent: 'Node.js'
+};
