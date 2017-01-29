@@ -13,6 +13,8 @@ global.document = jsdom('');
 global.window = document.defaultView;
 
 global.$ = require('jquery');
+
+// TODO not sure about this
 global.$.fn.material_select = () => this;
 global.$.fn.sideNav = () => this;
 
