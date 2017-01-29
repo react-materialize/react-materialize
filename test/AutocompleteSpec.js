@@ -1,4 +1,4 @@
-/* global describe, it, expect */
+/* global describe, it, expect, context, before */
 
 import React from 'react';
 import { shallow } from 'enzyme';
@@ -13,18 +13,40 @@ const data = {
 const wrapper = shallow(<Autocomplete title='Test Title' data={data} />);
 
 describe('<Autocomplete />', () => {
-  it('should render', () => {
+  const typedKey = 'A';
+
+  it('renders', () => {
     expect(wrapper.find('.autocomplete')).to.have.length(1);
   });
 
-  it('should render dropdown', () => {
-    wrapper.find('.autocomplete').simulate('change', { target: { value: 'A' } });
-    expect(wrapper.find('.highlight').text()).to.equal('A');
+  context('on input change', () => {
+    before(() => {
+      wrapper.find('.autocomplete').simulate('change', { target: { value: typedKey } });
+    });
+
+    it('renders a dropdown', () => {
+      expect(wrapper.find('.autocomplete-content')).to.have.length(1);
+    });
+
+    it('highlight\'s results', () => {
+      expect(wrapper.find('.highlight').text()).to.equal(typedKey);
+    });
   });
 
-  it('should fulfill autocomplete when dropdown clicked', () => {
-    wrapper.find('.autocomplete').simulate('change', { target: { value: 'A' } });
-    wrapper.find('ul li').simulate('click');
-    expect(wrapper.state('value')).to.equal('Apple');
+  context('on dropdown select', () => {
+    const expectedValue = 'Apple';
+
+    before(() => {
+      wrapper.find('.autocomplete').simulate('change', { target: { value: typedKey } });
+      wrapper.find('ul li').simulate('click');
+    });
+
+    it('updates the state with the new value', () => {
+      expect(wrapper.state('value')).to.equal(expectedValue);
+    });
+
+    it('adds clicked value to input', () => {
+      expect(wrapper.find('.autocomplete').prop('value')).to.equal(expectedValue);
+    });
   });
 });

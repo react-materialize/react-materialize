@@ -80,7 +80,13 @@ class Autocomplete extends Component {
       <Row>
         <Col offset={offset} className={cx('input-field', className, classes)} {...props}>
           {icon && this.renderIcon(icon, iconClassName)}
-          <input type='text' id={_id} className='autocomplete' onChange={this._onChange} />
+          <input
+            className='autocomplete'
+            id={_id}
+            onChange={this._onChange}
+            type='text'
+            value={this.state.value}
+          />
           <label htmlFor={_id}>{title}</label>
           {this.renderDropdown(data, minLength)}
         </Col>
