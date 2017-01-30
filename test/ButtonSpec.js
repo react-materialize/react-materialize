@@ -33,6 +33,18 @@ describe('Button', () => {
     expect(wrapper.find('.btn-flat')).to.have.length(1);
   });
 
+  it('should apply FAB hover', () => {
+    wrapper = shallow(<Button fab='vertical'>Stuff</Button>);
+    wrapper.simulate('hover');
+    expect(wrapper.find('.fixed-action-btn active'));
+  });
+
+  it('should apply FAB click-only', () => {
+    wrapper = shallow(<Button fab='horizontal' fabClickOnly>Stuff</Button>);
+    wrapper.simulate('click');
+    expect(wrapper.find('.fixed-action-btn active'));
+  });
+
   context('with a disabled prop', () => {
     let wrapper = mount(<Button disabled>Stuff</Button>);
     it('should have a disabled class', () => {

@@ -16,6 +16,7 @@ class Button extends Component {
       className,
       node,
       fab,
+      fabClickOnly,
       modal,
       flat,
       floating,
@@ -25,6 +26,7 @@ class Button extends Component {
       ...other
     } = this.props;
 
+    const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
     let classes = {
       btn: true,
@@ -46,7 +48,7 @@ class Button extends Component {
       classes['modal-' + modal] = true;
     }
     if (fab) {
-      return this.renderFab(cx(classes, className));
+      return this.renderFab(cx(classes, className), fab, toggle);
     } else {
       return (
         <C
@@ -62,9 +64,10 @@ class Button extends Component {
     }
   }
 
-  renderFab (className) {
+  renderFab (className, orientation, clickOnly) {
+    const classes = cx(orientation, clickOnly);
     return (
-      <div className='fixed-action-btn'>
+      <div className={cx('fixed-action-btn', classes)}>
         <a className={className}>{ this.renderIcon() }</a>
         <ul>
           {
@@ -112,7 +115,12 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   tooltip: PropTypes.string,
-  waves: PropTypes.oneOf(constants.WAVES)
+  waves: PropTypes.oneOf(constants.WAVES),
+  /**
+   * FAB Click-Only
+   * Turns a FAB from a hover-toggle to a click-toggle
+   */
+  fabClickOnly: PropTypes.bool
 };
 
 Button.defaultProps = {
