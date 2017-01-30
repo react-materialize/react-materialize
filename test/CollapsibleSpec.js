@@ -31,6 +31,33 @@ describe('<Collapsible />', () => {
     assert(wrapper.find('[data-collapsible="accordion"]').length, 'with a data attribute');
   });
 
+  it('should work with null dynamic children', () => {
+    let wrapper = mount(
+      <Collapsible accordion>
+        {null}
+        <CollapsibleItem header='First'>
+          Lorem ipsum dolor sit amet.
+        </CollapsibleItem>
+      </Collapsible>
+    );
+
+    assert.strictEqual(wrapper.find('li').length, 1);
+  });
+
+  it('should pass the key props to its children', () => {
+    let collapsibleChildren = mount(
+      <Collapsible accordion>
+        <li key='testKey'>
+          Lorem ipsum dolor sit amet.
+        </li>
+      </Collapsible>
+    ).find('li');
+
+    // .key() returns `.$testKey`. Don't make future assumptions about
+    // how React implements keys -> test that the substring testKey is in there
+    assert(collapsibleChildren.at(0).key().indexOf('testKey') >= 0);
+  });
+
   describe('<CollapsibleItem />', () => {
     it('renders', () => {
       let wrapper = mount(

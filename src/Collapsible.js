@@ -35,11 +35,11 @@ class Collapsible extends Component {
     );
   }
 
-  renderItem (child, index) {
-    const props = {
-      key: child.key ? child.key : index,
-      ref: child.ref
-    };
+  renderItem (child) {
+    if (!child) return null;
+
+    const props = {};
+
     if (this.props.accordion) {
       props.expanded = child.props.eventKey === this.state.activeKey;
       props.onSelect = this.handleSelect;
