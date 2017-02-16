@@ -78,6 +78,7 @@ class Input extends Component {
       success,
       s,
       m,
+      maxLength,
       l,
       type,
       validate,
@@ -181,6 +182,7 @@ class Input extends Component {
             onChange={this._onChange}
             placeholder={placeholder}
             type={inputType}
+            data-length={maxLength}
           />
           {htmlLabel}
         </div>
@@ -234,7 +236,8 @@ Input.propTypes = {
   browserDefault: PropTypes.bool,
   onLabel: PropTypes.string,
   offLabel: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  maxLength: PropTypes.number
 };
 
 Input.defaultProps = { type: 'text' };
