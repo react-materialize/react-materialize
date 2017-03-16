@@ -7,7 +7,7 @@ Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=mas
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 
-# [react-materialize](react-materialize.github.io)
+# [react-materialize](https://react-materialize.github.io/)
 
 Material design components for react, powered by [materializecss](http://materializecss.com/).
 
