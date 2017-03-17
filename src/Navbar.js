@@ -10,7 +10,7 @@ class Navbar extends Component {
   }
 
   componentDidMount () {
-    if (typeof $ !== "undefined") {
+    if (typeof $ !== 'undefined') {
       $('.button-collapse').sideNav();
     }
   }
