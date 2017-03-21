@@ -35,7 +35,8 @@ class Tabs extends Component {
                   className,
                   disabled,
                   tabWidth,
-                  title
+                  title,
+                  to
                 } = child.props;
 
                 const classes = {
@@ -47,7 +48,7 @@ class Tabs extends Component {
 
                 return (
                   <li className={cx(classes, className)} key={idx}>
-                    <a href={`#tab_${idx}`} className={active || defaultValue === idx ? 'active' : ''}
+                    <a href={to || `#tab_${idx}`} className={active || defaultValue === idx ? 'active' : ''}
                       {...disabled ? {} : { onClick: this._onSelect.bind(this, idx) }}
                     >
                       { title }
