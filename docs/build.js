@@ -1,8 +1,8 @@
 import fsp from 'fs-promise';
 import path from 'path';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import {match, RoutingContext} from 'react-router';
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
 
 import Root from './src/Root';
 import routes from './src/Routes';
@@ -11,21 +11,22 @@ import metadata from './generate-metadata';
 
 const docsBuilt = path.join(__dirname, 'dist');
 
-function generateHTML(fileName) {
-  return new Promise( resolve => {
+const generateHTML = (fileName) => {
+  return new Promise(resolve => {
     const location = fileName === 'index.html' ? '/' : `/${fileName}`;
     match({routes, location}, (error, redirectLocation, renderProps) => {
-      let html = ReactDOMServer.renderToString(
-        <RoutingContext {...renderProps} />
+      if (error) { console.error(error); }
+      let html = renderToString(
+        <RouterContext {...renderProps} />
       );
       html = '<!doctype html>' + html;
       let write = fsp.writeFile(path.join(docsBuilt, fileName), html);
       resolve(write);
     });
   });
-}
+};
 
-function BuildDocs() {
+const BuildDocs = () => {
   return metadata()
     .then(propData => {
       Root.assetBaseUrl = '';
@@ -36,7 +37,7 @@ function BuildDocs() {
       return Promise.all(pagesGenerators);
     })
     .then(() => console.log('Built: '.cyan + 'docs'.green));
-}
+};
 
 BuildDocs()
   .catch(err => {
