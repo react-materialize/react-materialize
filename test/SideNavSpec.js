@@ -1,7 +1,8 @@
-/* global describe, it, sinon */
+/* global describe, it */
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
 import { assert } from 'chai';
 import SideNav from '../src/SideNav';
 import Button from '../src/Button';

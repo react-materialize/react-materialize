@@ -51,7 +51,44 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  modalOptions: PropTypes.object,
+  /**
+  * ModalOptions
+  * Object with options for modal
+  */
+  modalOptions: PropTypes.shape({
+    /*
+     * Modal can be dismissed by clicking outside of the modal
+     */
+    dismissible: PropTypes.bool,
+    /*
+     * Opacity of modal background ( from 0 to 1 )
+     */
+    opacity: PropTypes.number,
+    /*
+     * Transition in duration
+     */
+    inDuration: PropTypes.number,
+    /*
+     * Transition out duration
+     */
+    outDuration: PropTypes.number,
+    /*
+     * Starting top style attribute
+     */
+    startingTop: PropTypes.string,
+    /*
+     * Ending top style attribute
+     */
+    endingTop: PropTypes.string,
+    /*
+     * Callback for Modal open. Modal and trigger parameters available.
+     */
+    ready: PropTypes.func,
+    /*
+     *  Callback for Modal close
+     */
+    complete: PropTypes.func
+  }),
   /**
   * BottomSheet styled modal
   * @default false

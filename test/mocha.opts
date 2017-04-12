@@ -1,3 +1,6 @@
 --inline-diffs
+--reporter min
+--require test/helper/noop.compiler.js
 --compilers js:babel-register
---require test/helpers/helper.js
+test/helper.js
+test/**/*Spec.js
