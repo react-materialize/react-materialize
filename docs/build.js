@@ -12,10 +12,10 @@ import metadata from './generate-metadata';
 const docsBuilt = path.join(__dirname, 'dist');
 
 const generateHTML = (fileName) => {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     const location = fileName === 'index.html' ? '/' : `/${fileName}`;
     match({routes, location}, (error, redirectLocation, renderProps) => {
-      if (error) { console.error(error); }
+      if (error) { reject(error); }
       let html = renderToString(
         <RouterContext {...renderProps} />
       );
