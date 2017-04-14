@@ -19,6 +19,9 @@
     "colors": "^1.1.2",
     "envify": "^3.2.0",
     "es6-promisify": "^3.0.0",
+    "eslint-config-standard": "^10.2.0",
+    "eslint-config-standard-react": "^4.3.0",
+    "eslint-plugin-standard": "^3.0.1",
     "express": "^4.10.4",
     "file-loader": "^0.8.4",
     "fs-extra": "^0.26.0",
@@ -42,7 +45,8 @@
     "materialize-css": "^0.97.1",
     "node-jsx-babel": "^0.14.0",
     "prismjs": "0.0.1",
-    "prop-types": "^15.5.6",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
     "react-router": "^3.0.0"
   }
 }

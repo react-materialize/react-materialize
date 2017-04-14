@@ -7,7 +7,7 @@ import CollapsibleItem from '../../src/CollapsibleItem';
 
 let cssComponents = {
   grid: 'Grid',
-  table: 'Table',
+  table: 'Table'
 };
 
 let jsComponents = {
@@ -16,7 +16,7 @@ let jsComponents = {
   media: 'Media',
   modals: 'Modals',
   sidenav: 'SideNav',
-  tabs: 'Tabs',
+  tabs: 'Tabs'
 };
 
 let components = {
@@ -30,7 +30,7 @@ let components = {
   forms: 'Forms',
   navbar: 'Navbar',
   pagination: 'Pagination',
-  preloader: 'Preloader',
+  preloader: 'Preloader'
 };
 
 let keys = Object.keys(jsComponents)
@@ -38,7 +38,7 @@ let keys = Object.keys(jsComponents)
   .concat(Object.keys(components));
 
 class Search extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {results: [], focused: false};
     this.search = this.search.bind(this);
@@ -46,15 +46,15 @@ class Search extends React.Component {
     this.handleBlur = this.handleBlur.bind(this);
   }
 
-  handleFocus() {
+  handleFocus () {
     this.setState({focused: true});
   }
 
-  handleBlur() {
+  handleBlur () {
     this.setState({focused: false});
   }
 
-  search() {
+  search () {
     let input = new RegExp(this.refs.search.value, 'i');
     let results = [];
     if (input !== '') {
@@ -65,27 +65,33 @@ class Search extends React.Component {
     }
   }
 
-  capitalize(path) {
+  capitalize (path) {
     return path[0].toUpperCase() + path.substr(1);
   }
 
-  render() {
-    let classes = {
+  render () {
+    const { focused, results } = this.state;
+
+    const classes = {
       'search-wrapper': true,
       card: true,
+      focused
     };
+
     classes.focused = this.state.focused;
+
     return (
       <li className='search'>
         <div className={cx(classes)}>
           <input id='search'
-           ref='search'
-           onChange={this.search}
-           onFocus={this.handleFocus}
-           onBlur={this.handleBlur}></input>
+            ref='search'
+            onChange={this.search}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+          />
           <Icon>search</Icon>
-          <div className="search-results">
-            {this.state.results.map(key => {
+          <div className='search-results'>
+            {results.map(key => {
               let path = `/${key}.html`;
               return <a href={path} key={path}>{this.capitalize(key)}</a>;
             })}
@@ -97,36 +103,36 @@ class Search extends React.Component {
 }
 
 class MainNav extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {title: ''};
     this.onChange = this.onChange.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     store.on('component', this.onChange);
-    $(".button-collapse").sideNav({edge: 'left'});
+    $('.button-collapse').sideNav({edge: 'left'});
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     store.removeListener('component', this.onChange);
   }
 
-  onChange(component) {
+  onChange (component) {
     this.setState({
       title: component
     });
   }
 
-  render() {
+  render () {
     let {location} = this.props;
     location = location.substr(1).replace(/\.html/, '');
     return (
       <header>
-        <nav className="top-nav">
-          <div className="container" >
-            <div className="nav-wrapper">
-              <a className="page-title">
+        <nav className='top-nav'>
+          <div className='container' >
+            <div className='nav-wrapper'>
+              <a className='page-title'>
                 { this.state.title }
               </a>
             </div>
@@ -134,29 +140,29 @@ class MainNav extends React.Component {
         </nav>
         <div className='container'>
           <a href='#' data-activates='nav-mobile' className='button-collapse top-nav full hide-on-large-only'>
-            <i className='mdi-navigation-menu'/>
+            <i className='mdi-navigation-menu' />
           </a>
         </div>
         <ul id='nav-mobile' className='side-nav fixed'>
           <li className='logo'>
-            <a className='brand-logo' title='React Materialize' id='logo-container' href="https://react-materialize.github.io" >
-            <img src="assets/react-materialize-logo.svg" alt="React Materialize"/>
+            <a className='brand-logo' title='React Materialize' id='logo-container' href='https://react-materialize.github.io' >
+              <img src='assets/react-materialize-logo.svg' alt='React Materialize' />
             </a>
           </li>
           <Search />
-          <li className="bold">
-            <a className="waves-effect waves-teal" href="getting-started.html">
+          <li className='bold'>
+            <a className='waves-effect waves-teal' href='getting-started.html'>
               Getting started
             </a>
           </li>
-          <li className="no-padding" >
+          <li className='no-padding' >
             <Collapsible>
-              <CollapsibleItem header="CSS" expanded={!!~Object.keys(cssComponents).indexOf(location)} className="bold">
+              <CollapsibleItem header='CSS' expanded={!!~Object.keys(cssComponents).indexOf(location)} className='bold'>
                 <ul>
                   {Object.keys(cssComponents).map(path => {
                     let href = path + '.html';
                     let hrefClasses = {
-                      active: location === path,
+                      active: location === path
                     };
                     return (
                       <li key={path} className={cx(hrefClasses)}>
@@ -166,12 +172,16 @@ class MainNav extends React.Component {
                   })}
                 </ul>
               </CollapsibleItem>
-              <CollapsibleItem header="Components" expanded={!!~Object.keys(components).indexOf(location)} className="bold">
+              <CollapsibleItem
+                header='Components'
+                expanded={!!~Object.keys(components).indexOf(location)}
+                className='bold'
+              >
                 <ul>
-                  {Object.keys(components).map( path => {
+                  {Object.keys(components).map(path => {
                     let href = path + '.html';
                     let hrefClasses = {
-                      active: location === path,
+                      active: location === path
                     };
                     return (
                       <li key={path} className={cx(hrefClasses)}>
@@ -183,12 +193,16 @@ class MainNav extends React.Component {
                   })}
                 </ul>
               </CollapsibleItem>
-              <CollapsibleItem header="JavaScript" expanded={!!~Object.keys(jsComponents).indexOf(location)} className="bold">
+              <CollapsibleItem
+                header='JavaScript'
+                expanded={!!~Object.keys(jsComponents).indexOf(location)}
+                className='bold'
+              >
                 <ul>
-                  {Object.keys(jsComponents).map( path => {
+                  {Object.keys(jsComponents).map(path => {
                     let href = path + '.html';
                     let hrefClasses = {
-                      active: location === path,
+                      active: location === path
                     };
                     return (
                       <li key={path} className={cx(hrefClasses)}>

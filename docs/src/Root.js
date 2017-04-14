@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MainNav from './MainNav';
 import PageFooter from './PageFooter';
 
@@ -32,7 +33,7 @@ const Root = React.createClass({
   },
 
   childContextTypes: {
-    metadata: React.PropTypes.object
+    metadata: PropTypes.object
   },
 
   getChildContext() {

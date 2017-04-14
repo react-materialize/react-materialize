@@ -15,6 +15,9 @@ module.exports = {
   entry: [
     './client.js'
   ],
+  resolve: {
+    alias: { 'react': path.resolve(__dirname, 'node_modules', 'react') }
+  },
   output: {
     publicPath: options.debug ? webpackDevServerAddr + '/assets/' : '/assets/',
     filename: 'bundle.js',

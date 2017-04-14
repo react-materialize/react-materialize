@@ -1,37 +1,39 @@
 import React from 'react';
-import Row from '../../src/Row';
-import Col from '../../src/Col';
+import PropTypes from 'prop-types';
 
 class ReactPlayground extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.trancate = this.truncate.bind(this);
   }
 
-  render() {
-    var {name, code, ...props} = this.props;
+  render () {
+    const { code, children } = this.props;
+
     return (
       <div className='playground'>
-        {this.props.children}
+        { children }
         <pre><code className='language-markup'>
-        {this.truncate(this.props.code)}
+          { this.truncate(code) }
         </code></pre>
       </div>
     );
   }
 
-  truncate(code) {
+  truncate (code) {
     var regex = /(<(.|\n)*>);/;
     var m = code.match(regex);
     if (m) {
       return m[1];
     }
+
     return 'code no match';
   }
 }
 
 ReactPlayground.propTypes = {
-  code: React.PropTypes.string.isRequired
+  code: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired
 };
 
 export default ReactPlayground;
