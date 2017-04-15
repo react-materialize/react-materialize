@@ -9,31 +9,27 @@ import breadcrumbs from '../../examples/Breadcrumbs';
 
 const component = 'Breadcrumb';
 
-const BreadcrumbsPage = React.createClass({
-  componentDidMount() {
+class BreadcrumbsPage extends React.Component {
+  componentDidMount () {
     store.emit('component', component);
-  },
+  }
 
-  render() {
+  render () {
     return (
       <Row>
         <Col m={9} s={12} l={10}>
           <p className='caption'>
             Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content.
           </p>
-            <h4 className='col s12'>
-              Basic
-            </h4>
-            <Col s={12}>
-              <ReactPlayground code={ Samples.breadcrumb }>
-                {breadcrumbs}
-              </ReactPlayground>
-              <PropTable component={component}/>
-            </Col>
+          <h4 className='col s12'>Basic</h4>
+          <Col s={12}>
+            <ReactPlayground code={Samples.breadcrumb}>{breadcrumbs}</ReactPlayground>
+            <PropTable component={component} />
+          </Col>
         </Col>
       </Row>
     );
   }
-});
+};
 
 export default BreadcrumbsPage;

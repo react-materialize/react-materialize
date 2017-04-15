@@ -13,7 +13,7 @@ class PageFooter extends React.Component {
     let moreLinks = <a href='https://github.com/react-materialize/react-materialize/blob/master/LICENSE'>Code licensed under MIT</a>;
 
     return (
-      <Footer links={links} copyrights="© 2015 React Materialize, All rights reserved" moreLinks={moreLinks}>
+      <Footer links={links} copyrights="© 2017 React Materialize, All rights reserved " moreLinks={moreLinks}>
         <h5 className="white-text">Join the Discussion</h5>
         <p className="grey-text text-lighten-4">
           We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.

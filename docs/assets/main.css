@@ -1,2 +1,25 @@
-nav,.side-nav .collapsible-body li.active,.side-nav.fixed .collapsible-body li.active,footer.page-footer{background:#38435a}#nav-mobile li.search{position:static}#logo-container{height:160px}ul.side-nav.fixed li.logo{height:160px;margin-top:0;margin-bottom:0}ul.side-nav.fixed li.logo img{max-height:100%}
-/*# sourceMappingURL=main.css.map */
+nav, footer.page-footer,
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active,
+.side-nav .collapsible-body>ul:not(.collapsible)>li.active,
+.side-nav.fixed .collapsible-body>ul:not(.collapsible)>li.active {
+  background-color: #38435a
+}
+
+#nav-mobile li.search {
+  position: static
+}
+
+#logo-container {
+  height: 160px
+}
+
+ul.side-nav.fixed li.logo {
+  height: 160px;
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+ul.side-nav.fixed li.logo img {
+  max-height: 100%
+}
