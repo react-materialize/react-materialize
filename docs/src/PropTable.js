@@ -7,18 +7,18 @@ let cleanDocletValue = str => str.trim().replace(/^\{/, '').replace(/\}$/, '');
 let capitalize = str => str[0].toUpperCase() + str.substr(1);
 
 class PropTable extends React.Component {
-  constructor() {
+  constructor () {
     super();
     this._renderRows = this._renderRows.bind(this);
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.propsData = this.context.metadata[this.props.component];
   }
 
-  render() {
+  render () {
     return (
-      <Table bordered striped className="prop-table">
+      <Table bordered striped className='prop-table'>
         <thead>
           <tr>
             <th>Name</th>
@@ -34,15 +34,15 @@ class PropTable extends React.Component {
     );
   }
 
-  _renderRows(propsData) {
+  _renderRows (propsData) {
     return Object.keys(propsData)
       .sort()
-      .filter(propName => propsData[propName].type )
+      .filter(propName => propsData[propName].type)
       .map(propName => {
         let propData = propsData[propName];
 
         return (
-          <tr key={propName} className="prop-table-row">
+          <tr key={propName} className='prop-table-row'>
             <td>
               {propName}
             </td>
@@ -51,14 +51,14 @@ class PropTable extends React.Component {
             </td>
             <td>{propData.defaultValue}</td>
             <td>
-              <div className="prop-desc" dangerouslySetInnerHTML={{__html: propData.descHtml }} />
+              <div className='prop-desc' dangerouslySetInnerHTML={{__html: propData.descHtml }} />
             </td>
           </tr>
         );
       });
   }
 
-  getType(prop) {
+  getType (prop) {
     let type = prop.type || {};
     let name = this.getDisplayTypeName(type.name);
     let doclets = prop.doclets || {};
@@ -89,7 +89,7 @@ class PropTable extends React.Component {
     }
   }
 
-  getDisplayTypeName(typeName) {
+  getDisplayTypeName (typeName) {
     if (typeName === 'func') {
       return 'function';
     } else if (typeName === 'bool') {
@@ -99,11 +99,11 @@ class PropTable extends React.Component {
     return typeName;
   }
 
-  renderEnum(enumType) {
+  renderEnum (enumType) {
     const enumValues = enumType.value || [];
 
     const renderedEnumValues = [];
-    enumValues.forEach(function renderEnumValue(enumValue, i) {
+    enumValues.forEach(function renderEnumValue (enumValue, i) {
       if (i > 0) {
         renderedEnumValues.push(
           <span key={`${i}c`}>, </span>
@@ -121,7 +121,7 @@ class PropTable extends React.Component {
   }
 }
 
-ropTable.contextTypes = {
+PropTable.contextTypes = {
   metadata: PropTypes.object
 };
 
