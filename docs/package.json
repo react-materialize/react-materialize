@@ -43,6 +43,7 @@
     "materialize-css": "^0.97.1",
     "node-jsx-babel": "^0.14.0",
     "prismjs": "0.0.1",
+    "prop-types": "^15.5.8",
     "react-router": "^1.0.0-rc3"
   }
 }
