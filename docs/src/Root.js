@@ -78,7 +78,7 @@ Root.propTypes = {
 };
 
 Root.childContextTypes = {
-  metadata: React.PropTypes.object
+  metadata: PropTypes.object
 };
 
 export default Root;
