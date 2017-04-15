@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import constants from './constants';
@@ -33,31 +34,31 @@ const Col = ({
 };
 
 Col.propTypes = {
-  children: React.PropTypes.node,
-  className: React.PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
   /**
    * Columns for large size screens
    */
-  l: React.PropTypes.number,
+  l: PropTypes.number,
   /**
    * Columns for middle size screens
    */
-  m: React.PropTypes.number,
+  m: PropTypes.number,
   /**
    * The node to be used for the column
    * @default div
    */
-  node: React.PropTypes.node,
+  node: PropTypes.node,
   /**
    * To offset, simply add s2 to the class where s signifies the screen
    * class-prefix (s = small, m = medium, l = large) and the number after
    * is the number of columns you want to offset by.
    */
-  offset: React.PropTypes.string,
+  offset: PropTypes.string,
   /**
    * Columns for small size screens
    */
-  s: React.PropTypes.number
+  s: PropTypes.number
 };
 
 export default Col;

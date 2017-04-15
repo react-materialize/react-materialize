@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 // This should be used within any component that has a menu like interface

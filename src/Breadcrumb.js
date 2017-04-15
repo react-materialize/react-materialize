@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Col from './Col';
 
 const Breadcrumb = ({ children }) => (
@@ -18,8 +19,8 @@ const renderChildren = (children) => {
 };
 
 Breadcrumb.propTypes = {
-  children: React.PropTypes.node,
-  cols: React.PropTypes.number
+  children: PropTypes.node,
+  cols: PropTypes.number
 };
 
 export default Breadcrumb;

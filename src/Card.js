@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 
@@ -66,7 +67,7 @@ Card.propTypes = {
   reveal: PropTypes.element,
   header: PropTypes.element,
   // The buttons to be displayed at the action area
-  actions: PropTypes.arrayOf(React.PropTypes.element)
+  actions: PropTypes.arrayOf(PropTypes.element)
 };
 
 export default Card;

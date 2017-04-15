@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Badge = ({ className, newIcon, children, ...props }) => {
@@ -6,6 +7,7 @@ const Badge = ({ className, newIcon, children, ...props }) => {
     badge: true,
     'new': newIcon
   };
+
   return (
     <span {...props} className={cx(classes, className)}>
       {children}
