@@ -1,45 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MainNav from './MainNav';
 import PageFooter from './PageFooter';
 
-const Root = React.createClass({
-  statics: {
-    getPages() {
-      return [
-        'index.html',
-        'getting-started.html',
-        'badges.html',
-        'buttons.html',
-        'breadcrumbs.html',
-        'cards.html',
-        'chips.html',
-        'collapsible.html',
-        'collections.html',
-        'dropdown.html',
-        'footer.html',
-        'forms.html',
-        'grid.html',
-        'media.html',
-        'modals.html',
-        'navbar.html',
-        'pagination.html',
-        'preloader.html',
-        'sidenav.html',
-        'table.html',
-        'tabs.html',
-      ];
-    }
-  },
+class Root extends React.Component {
+  static getPages () {
+    return [
+      'index.html',
+      'getting-started.html',
+      'badges.html',
+      'buttons.html',
+      'breadcrumbs.html',
+      'cards.html',
+      'chips.html',
+      'collapsible.html',
+      'collections.html',
+      'dropdown.html',
+      'footer.html',
+      'forms.html',
+      'grid.html',
+      'media.html',
+      'modals.html',
+      'navbar.html',
+      'pagination.html',
+      'preloader.html',
+      'sidenav.html',
+      'table.html',
+      'tabs.html'
+    ];
+  }
 
-  childContextTypes: {
-    metadata: React.PropTypes.object
-  },
-
-  getChildContext() {
+  getChildContext () {
     return {metadata: Root.propData};
-  },
+  }
 
-  render() {
+  render () {
     let header = {
       __html: `<title>React Materialize</title>
               <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -59,22 +54,31 @@ const Root = React.createClass({
       <html>
         <head dangerouslySetInnerHTML={header} />
         <body>
-          <MainNav location={this.props.location.pathname}/>
+          <MainNav location={this.props.location.pathname} />
           <main>
-            <div className="container" >
+            <div className='container' >
               {this.props.children}
             </div>
           </main>
           <PageFooter />
-          <script src="node_modules/jquery/dist/jquery.js"></script>
-          <script src="node_modules/materialize-css/bin/materialize.js"></script>
-          <script src="node_modules/prismjs/prism.js"></script>
+          <script src='node_modules/jquery/dist/jquery.js' />
+          <script src='node_modules/materialize-css/bin/materialize.js' />
+          <script src='node_modules/prismjs/prism.js' />
           <script type='text/javascript' dangerouslySetInnerHTML={browserInitScriptObj} />
-          <script src="assets/bundle.js" type="text/javascript"/>
+          <script src='assets/bundle.js' type='text/javascript' />
         </body>
       </html>
     );
   }
-});
+};
+
+Root.propTypes = {
+  location: PropTypes.object,
+  children: PropTypes.element
+};
+
+Root.childContextTypes = {
+  metadata: React.PropTypes.object
+};
 
 export default Root;
