@@ -1,12 +1,20 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import navRoutes from '../routes';
+import MainNav from './MainNav';
+import PageFooter from './PageFooter';
+import Container from './Container';
 
 const App = () => (
-  <div>
-    <h1>Sup</h1>
-  </div>
+  <Router>
+    <div>
+      <MainNav location={'some-location'} />
+      <main>
+        <Container />
+      </main>
+      <PageFooter />
+    </div>
+  </Router>
 );
 
 export default App;

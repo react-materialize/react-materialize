@@ -1,15 +1,17 @@
-const path = require('path');
 const webpack = require('webpack');
 const baseConfig = require('./webpack.config.base');
+const path = require('path');
 
-const BASE_PATH = path.join(__dirname, '..');
 const baseModuleRules = baseConfig.module.rules;
 const baseEntries = baseConfig.entry;
+const basePlugins = baseConfig.plugins;
+const BASE_PATH = path.join(__dirname, '..');
+
 baseEntries.unshift(
   'react-hot-loader/patch',
   // activate HMR for React
 
-  'webpack-dev-server/client?http://localhost:8080',
+  'webpack-dev-server/client?http://localhost:3000',
   // bundle the client for webpack-dev-server
   // and connect to the provided endpoint
 
@@ -18,33 +20,29 @@ baseEntries.unshift(
   // only- means to only hot reload for successful updates
 );
 
+basePlugins.push(
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NamedModulesPlugin(),
+  new webpack.NoEmitOnErrorsPlugin()
+);
+
 module.exports = Object.assign({}, baseConfig, {
   entry: baseEntries,
   module: {
     rules: baseModuleRules.concat([{
-      test: /\.scss$/,
-      loader: 'style-loader!css-loader?sourceMap?convertToAbsoluteUrls!sass-loader?sourceMap'
+      test: /\.css$/,
+      loader: 'style-loader!css-loader?sourceMap?convertToAbsoluteUrls'
     }])
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.IgnorePlugin(/webpack-stats\.json$/),
-    new webpack.NamedModulesPlugin()
-  ],
-  resolve: Object.assign({}, baseConfig.resolve, {
-    alias: {
-      config: path.join(BASE_PATH, 'config.standalone.js')
-    }
-  }),
+  plugins: basePlugins,
+  resolve: baseConfig.resolve,
   devServer: {
-    hot: true,
-    inline: true,
     historyApiFallback: true,
+    contentBase: path.resolve(BASE_PATH, 'assets'),
+    hot: true,
     noInfo: false,
-    stats: { colors: true },
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
+    port: 3000,
+    stats: { colors: true }
   },
-  devtool: 'inline-source-map'
+  devtool: 'eval'
 });
