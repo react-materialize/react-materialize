@@ -4,46 +4,22 @@
   "description": "React Materialize docs site",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node dev.js",
+    "start": "webpack-dev-server --color --debug --config webpack/webpack.config.standalone.js",
     "build": "babel-node build.js && webpack --progress --colors -p",
-    "assets": "webpack-dev-server --color --debug",
     "clean": "rm *.html assets/bundle.js"
   },
   "repository": "https://github.com/react-materialize/react-materialize.git",
-  "author": "Isaiah Peng <issaria@gmail.com>",
+  "author": "Alexander Odell <alextrastero@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "brfs": "^1.4.1",
-    "child-process-promise": "^1.1.0",
-    "colors": "^1.1.2",
-    "envify": "^3.2.0",
-    "es6-promisify": "^3.0.0",
-    "express": "^4.10.4",
-    "file-loader": "^0.8.4",
-    "fs-extra": "^0.26.0",
-    "fs-promise": "^1.0.0",
-    "glob": "^5.0.15",
-    "graceful-fs": "^4.1.2",
-    "http-proxy": "^1.12.0",
-    "ip": "^1.0.2",
-    "json-loader": "^0.5.3",
-    "marked": "^0.3.5",
-    "node-jsx": "^0.12.4",
-    "nodemon": "^1.8.1",
-    "react-component-metadata-fix": "^3.1.2",
-    "transform-loader": "^0.2.3",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.1",
-    "yargs": "^3.29.0"
-  },
-  "dependencies": {
-    "history": "^1.12.3",
-    "jquery": "^2.1.4",
-    "materialize-css": "^0.97.1",
-    "node-jsx-babel": "^0.14.0",
-    "prismjs": "0.0.1",
+    "dotenv": "^4.0.0",
+    "html-webpack-plugin": "^2.28.0",
     "prop-types": "^15.5.8",
-    "react-router": "^1.0.0-rc3"
-  }
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {}
 }

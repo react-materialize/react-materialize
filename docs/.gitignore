@@ -1,6 +1,0 @@
-node_modules/
-*.html
-assets/bundle.js
-assets/.sass-cache/
-assets/*.map
-assets/*.scss
