@@ -1,37 +1,57 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+// css components
 import GridPage from './pages/GridPage';
+import TablesPage from './pages/TablesPage';
 
-const Table = () => <h2>Table</h2>;
+// js components
+import CollapsiblePage from './pages/CollapsiblePage';
+import DropdownPage from './pages/DropdownPage';
+import MediaPage from './pages/MediaPage';
+import ModalsPage from './pages/ModalsPage';
+import SideNavPage from './pages/SideNavPage';
+import TabsPage from './pages/TabsPage';
+
+// components
+import BadgesPage from './pages/BadgesPage';
+import ButtonsPage from './pages/ButtonsPage';
+import BreadcrumbsPage from './pages/BreadcrumbsPage';
+import CardsPage from './pages/CardsPage';
+import ChipsPage from './pages/ChipsPage';
+import CollectionsPage from './pages/CollectionsPage';
+import FooterPage from './pages/FooterPage';
+import FormsPage from './pages/FormsPage';
+import NavbarPage from './pages/NavbarPage';
+import PaginationPage from './pages/PaginationPage';
+import PreloaderPage from './pages/PreloaderPage';
+
 const cssComponents = {
-  // grid: 'Grid',
-  table: GridPage
+  grid: GridPage,
+  table: TablesPage
 };
 
-const Tabs = () => <h2>Tabs</h2>;
 const jsComponents = {
-  // collapsible: 'Collapsible',
-  // dropdown: 'Dropdown',
-  // media: 'Media',
-  // modals: 'Modals',
-  // sidenav: 'SideNav',
-  tabs: Tabs
+  collapsible: CollapsiblePage,
+  dropdown: DropdownPage,
+  media: MediaPage,
+  modals: ModalsPage,
+  sidenav: SideNavPage,
+  tabs: TabsPage
 };
 
-const Preloader = () => <h2>Preloader</h2>;
 const components = {
-  // badges: 'Badges',
-  // buttons: 'Buttons',
-  // breadcrumbs: 'Breadcrumbs',
-  // cards: 'Cards',
-  // chips: 'Chips',
-  // collections: 'Collections',
-  // footer: 'Footer',
-  // forms: 'Forms',
-  // navbar: 'Navbar',
-  // pagination: 'Pagination',
-  preloader: Preloader
+  badges: BadgesPage,
+  buttons: ButtonsPage,
+  breadcrumbs: BreadcrumbsPage,
+  cards: CardsPage,
+  chips: ChipsPage,
+  collections: CollectionsPage,
+  footer: FooterPage,
+  forms: FormsPage,
+  navbar: NavbarPage,
+  pagination: PaginationPage,
+  preloader: PreloaderPage
 };
 
 const parseRoutes = (compObj) => {

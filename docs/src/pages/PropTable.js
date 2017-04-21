@@ -1,38 +1,55 @@
 // Shameless copied from react-bootstrap
 import React from 'react';
 import PropTypes from 'prop-types';
-import Table from '../../src/Table';
+import Table from '../../../src/Table';
+var metadata = require('react-component-metadata')
+
+// import Row from '../../../src/Row';
 
 let cleanDocletValue = str => str.trim().replace(/^\{/, '').replace(/\}$/, '');
 let capitalize = str => str[0].toUpperCase() + str.substr(1);
 
 class PropTable extends React.Component {
-  constructor () {
-    super();
-    this._renderRows = this._renderRows.bind(this);
+  constructor (props) {
+    super(props);
+    // var reactDocs = require('react-docgen');
+    // var componentInfo = reactDocs.parse(props.component);
+    // console.log(metadata(Row))
+    // console.log(componentInfo)
+
+
+    // this._renderRows = this._renderRows.bind(this);
   }
 
+  // importLoad (subModule) {
+    // return import('./deps/modules/' + subModule + '/index.js');
+  // }
+
   componentWillMount () {
-    this.propsData = this.context.metadata[this.props.component];
+    // this.propsData = this.context.metadata[this.props.component];
   }
 
   render () {
-    return (
-      <Table bordered striped className='prop-table'>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          { this._renderRows(this.propsData.props) }
-        </tbody>
-      </Table>
-    );
+    return <p>pepe</p>
   }
+
+  // render () {
+    // return (
+      // <Table bordered striped className='prop-table'>
+        // <thead>
+          // <tr>
+            // <th>Name</th>
+            // <th>Type</th>
+            // <th>Default</th>
+            // <th>Description</th>
+          // </tr>
+        // </thead>
+        // <tbody>
+          // { [>this._renderRows(this.propsData.props)<] }
+        // </tbody>
+      // </Table>
+    // );
+  // }
 
   _renderRows (propsData) {
     return Object.keys(propsData)

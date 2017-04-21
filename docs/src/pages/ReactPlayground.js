@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ReactPlayground extends React.Component {
   constructor (props) {
     super(props);
-    this.trancate = this.truncate.bind(this);
+    this.truncate = this.truncate.bind(this);
   }
 
   render () {
@@ -14,7 +14,8 @@ class ReactPlayground extends React.Component {
       <div className='playground'>{children}
         <pre>
           <code className='language-markup'>
-            {this.truncate(code)}
+            {/*this.truncate(code)*/}
+            Code samples go here
           </code>
         </pre>
       </div>
