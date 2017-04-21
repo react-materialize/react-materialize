@@ -5,6 +5,8 @@ import Icon from '../../../src/Icon';
 import Collapsible from '../../../src/Collapsible'; // TODO fix paths
 import CollapsibleItem from '../../../src/CollapsibleItem';
 
+import { routesConfig as routes } from '../routes';
+
 let cssComponents = {
   grid: 'Grid',
   table: 'Table'
@@ -85,9 +87,8 @@ class Search extends React.Component {
             onBlur={this.handleBlur} />
           <Icon>search</Icon>
           <div className='search-results'>
-            {this.state.results.map(key => {
-              let path = `/${key}`;
-              return <a href={path} key={path}>{this.capitalize(key)}</a>;
+            {this.state.results.map(path => {
+              return <a href={`/${path}`} key={path}>{this.capitalize(path)}</a>;
             })}
           </div>
         </div>
@@ -147,48 +148,19 @@ class MainNav extends React.Component {
           </li>
           <li className='no-padding' >
             <Collapsible>
-              <CollapsibleItem header='CSS' expanded={!!~Object.keys(cssComponents).indexOf(location)} className='bold'>
-                <ul>
-                  {Object.keys(cssComponents).map(path => {
-                    let hrefClasses = {
-                      active: location === path
-                    };
-                    return (
-                      <li key={path} className={cx(hrefClasses)}>
-                        <NavLink to={path}>{cssComponents[path]}</NavLink>
+              {routes.map((routesSection) => (
+                <CollapsibleItem header={routesSection.path}>
+                  <ul>
+                    {routesSection.routes.map((r) => (
+                      <li>
+                        <NavLink to={r.path} className='waves-effect waves-teal'>
+                          {r.path}
+                        </NavLink>
                       </li>
-                    );
-                  })}
-                </ul>
-              </CollapsibleItem>
-              <CollapsibleItem header='Components' expanded={!!~Object.keys(components).indexOf(location)} className='bold'>
-                <ul>
-                  {Object.keys(components).map(path => {
-                    let hrefClasses = {
-                      active: location === path
-                    };
-                    return (
-                      <li key={path} className={cx(hrefClasses)}>
-                        <NavLink to={path}>{components[path]}</NavLink>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </CollapsibleItem>
-              <CollapsibleItem header='JavaScript' expanded={!!~Object.keys(jsComponents).indexOf(location)} className='bold'>
-                <ul>
-                  {Object.keys(jsComponents).map(path => {
-                    let hrefClasses = {
-                      active: location === path
-                    };
-                    return (
-                      <li key={path} className={cx(hrefClasses)}>
-                        <NavLink to={path}>{jsComponents[path]}</NavLink>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </CollapsibleItem>
+                    ))}
+                  </ul>
+                </CollapsibleItem>
+              ))}
             </Collapsible>
           </li>
         </ul>

@@ -1,16 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import MainNav from './MainNav';
 import PageFooter from './PageFooter';
-import Container from './Container';
+import Routes from '../routes';
 
 const App = () => (
   <Router>
     <div>
       <MainNav location={'some-location'} />
       <main>
-        <Container />
+        <Routes />
       </main>
       <PageFooter />
     </div>

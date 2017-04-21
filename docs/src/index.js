@@ -22,7 +22,6 @@ render(App);
 
 // Hot Module Replacement API
 if (module.hot) {
-  console.log('@@@@@@@@@@@@@@@@@@@@@');
   module.hot.accept('./components/App', () => {
     render(App);
   });
