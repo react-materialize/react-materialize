@@ -8,16 +8,17 @@ nav, footer.page-footer,
 
 /* .side-nav .collapsible-body, .side-nav.fixed .collapsible-body */
 .collapsible-body {
-  padding: 0;
+  /* padding: 0; */
 }
 
 
 #nav-mobile li.search {
-  position: static
+  /* position: static */
 }
 
 #logo-container {
-  height: 160px
+  height: 100px;
+  margin-top: 10px;
 }
 
 ul.side-nav.fixed li.logo {

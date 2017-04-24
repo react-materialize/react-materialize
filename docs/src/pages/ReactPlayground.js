@@ -14,8 +14,8 @@ class ReactPlayground extends React.Component {
       <div className='playground'>{children}
         <pre>
           <code className='language-markup'>
+            { code }
             {/*this.truncate(code)*/}
-            Code samples go here
           </code>
         </pre>
       </div>

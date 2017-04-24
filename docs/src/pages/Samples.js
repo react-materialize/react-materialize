@@ -1,11 +1,12 @@
 // import path from 'path';
 // import Accordion from '../../../examples/Accordion';
-// import Grid from 'raw-loader!../../../examples/Grid';
+import Grid from 'raw-loader!../../../examples/Grid';
 // var Grid = require('raw-loader!../../../examples/Grid');
 
+console.log(Grid);
 export default {
   accordion: 'grid',
-  grid: 'grid'
+  grid: Grid
   // badgeCollections:      require('fs').readFileSync(path.join(__dirname, '../../examples', 'BadgeCollections.js'), 'utf8'),
   // badgeDropdowns:        require('fs').readFileSync(path.join(__dirname, '../../examples', 'BadgeDropdowns.js'), 'utf8'),
   // badgeNavbar:           require('fs').readFileSync(path.join(__dirname, '../../examples', 'BadgeNavbar.js'), 'utf8'),
