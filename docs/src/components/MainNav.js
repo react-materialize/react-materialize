@@ -39,6 +39,8 @@ let keys = Object.keys(jsComponents)
   .concat(Object.keys(cssComponents))
   .concat(Object.keys(components));
 
+const capitalize = path => path[0].toUpperCase() + path.substr(1);
+
 class Search extends React.Component {
   constructor (props) {
     super(props);
@@ -67,10 +69,6 @@ class Search extends React.Component {
     }
   }
 
-  capitalize (path) {
-    return path[0].toUpperCase() + path.substr(1);
-  }
-
   render () {
     let classes = {
       'search-wrapper': true,
@@ -88,7 +86,7 @@ class Search extends React.Component {
           <Icon>search</Icon>
           <div className='search-results'>
             {this.state.results.map(path => {
-              return <a href={`/${path}`} key={path}>{this.capitalize(path)}</a>;
+              return <a href={`/${path}`} key={path}>{capitalize(path)}</a>;
             })}
           </div>
         </div>
@@ -124,7 +122,7 @@ class MainNav extends React.Component {
           <div className='container' >
             <div className='nav-wrapper'>
               <a className='page-title'>
-                { this.state.title }
+                { capitalize(window.location.pathname.substring(1)) }
               </a>
             </div>
           </div>
