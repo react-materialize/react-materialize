@@ -1,6 +1,8 @@
 import React from 'react';
 import Row from '../../../src/Row';
+import RowCode from '!raw-loader!../../../src/Row';
 import Col from '../../../src/Col';
+import ColCode from '!raw-loader!../../../src/Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
@@ -21,8 +23,8 @@ class GridPage extends React.Component {
             </ReactPlayground>
           </Col>
           <Col s={12}>
-            <PropTable component='Row' />
-            <PropTable component='Col' />
+            <PropTable component={RowCode} />
+            <PropTable component={ColCode} />
           </Col>
         </Col>
       </Row>
