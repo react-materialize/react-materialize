@@ -3,7 +3,16 @@ nav, footer.page-footer,
 .side-nav.fixed .collapsible-body li.active,
 .side-nav .collapsible-body>ul:not(.collapsible)>li.active,
 .side-nav.fixed .collapsible-body>ul:not(.collapsible)>li.active {
-  background-color: #38435a
+  background-color: #38435a;
+}
+
+pre {
+  padding: 1rem;
+}
+code, pre {
+  background-color: #38435a;
+  color: white;
+  font-size: 1rem;
 }
 
 /* .side-nav .collapsible-body, .side-nav.fixed .collapsible-body */

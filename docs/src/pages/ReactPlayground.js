@@ -1,36 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/hybrid.css';
 
-class ReactPlayground extends React.Component {
-  constructor (props) {
-    super(props);
-    this.truncate = this.truncate.bind(this);
-  }
+const parseSample = (code) => {
+  return code.substring(code.indexOf('<') - 1).replace(/;/, '').trim();
+};
 
-  render () {
-    const { code, children } = this.props;
+const ReactPlayground = ({ code, children }) => {
+  const parsed = parseSample(code);
+  const highlight = hljs.highlightAuto(parsed).value;
+  const markup = {__html: highlight};
 
-    return (
-      <div className='playground'>{children}
-        <pre>
-          <code className='language-markup'>
-            { code }
-            {/*this.truncate(code)*/}
-          </code>
-        </pre>
-      </div>
-    );
-  }
-
-  truncate (code) {
-    var regex = /(<(.|\n)*>);/;
-    var m = code.match(regex);
-    if (m) {
-      return m[1];
-    }
-    return 'code no match';
-  }
-}
+  return (
+    <div className='playground'>
+      {children}
+      <pre>
+        <code dangerouslySetInnerHTML={markup} />
+      </pre>
+    </div>
+  );
+};
 
 ReactPlayground.propTypes = {
   code: PropTypes.string.isRequired,

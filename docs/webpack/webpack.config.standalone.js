@@ -44,5 +44,5 @@ module.exports = Object.assign({}, baseConfig, {
     port: 3000,
     stats: { colors: true }
   },
-  devtool: 'eval'
+  devtool: 'cheap-module-eval-source-map'
 });
