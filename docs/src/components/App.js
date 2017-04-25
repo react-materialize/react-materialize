@@ -9,9 +9,7 @@ const App = () => (
   <Router>
     <div>
       <MainNav location={'some-location'} />
-      <main>
-        <Routes />
-      </main>
+      <Routes />
       <PageFooter />
     </div>
   </Router>

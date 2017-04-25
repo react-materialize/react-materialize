@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import GettingStartedPage from './pages/GettingStartedPage';
 // css components
-import GridPage from './pages/GridPage';
 // import TablesPage from './pages/TablesPage';
 
 // js components
@@ -25,9 +25,10 @@ import GridPage from './pages/GridPage';
 // import NavbarPage from './pages/NavbarPage';
 // import PaginationPage from './pages/PaginationPage';
 // import PreloaderPage from './pages/PreloaderPage';
+import Grid from './pages/GridPage';
 
 const cssComponents = {
-  grid: GridPage,
+  grid: Grid,
   // table: TablesPage
 };
 
@@ -79,13 +80,16 @@ const routesConfig = [
 ];
 
 const Routes = () => (
-  <div>
-    {routesConfig.map((routesSection) => (
-      routesSection.routes.map((r) => (
-        <Route key={r.path} path={`/${r.path}`} component={r.component} />
-      ))
-    ))}
-  </div>
+  <main>
+    <div className='container'>
+      <Route exact path='/' component={GettingStartedPage} />
+      {routesConfig.map((routesSection) => (
+        routesSection.routes.map((r) => (
+          <Route key={r.path} path={`/${r.path}`} component={r.component} />
+        ))
+      ))}
+    </div>
+  </main>
 );
 
 export { routesConfig };

@@ -1,99 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import cx from 'classnames';
-import Icon from '../../../src/Icon';
 import Collapsible from '../../../src/Collapsible'; // TODO fix paths
 import CollapsibleItem from '../../../src/CollapsibleItem';
+import Search from './Search';
 
 import { routesConfig as routes } from '../routes';
 
-let cssComponents = {
-  grid: 'Grid',
-  table: 'Table'
+const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
+const renderPageTitle = () => {
+  const title = window.location.pathname.substring(1);
+  return title.length ? capitalize(title) : 'Getting Started'; // fix
 };
-
-let jsComponents = {
-  collapsible: 'Collapsible',
-  dropdown: 'Dropdown',
-  media: 'Media',
-  modals: 'Modals',
-  sidenav: 'SideNav',
-  tabs: 'Tabs'
-};
-
-let components = {
-  badges: 'Badges',
-  buttons: 'Buttons',
-  breadcrumbs: 'Breadcrumbs',
-  cards: 'Cards',
-  chips: 'Chips',
-  collections: 'Collections',
-  footer: 'Footer',
-  forms: 'Forms',
-  navbar: 'Navbar',
-  pagination: 'Pagination',
-  preloader: 'Preloader'
-};
-
-let keys = Object.keys(jsComponents)
-  .concat(Object.keys(cssComponents))
-  .concat(Object.keys(components));
-
-const capitalize = path => path[0].toUpperCase() + path.substr(1);
-
-class Search extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {results: [], focused: false};
-    this.search = this.search.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
-  }
-
-  handleFocus () {
-    this.setState({focused: true});
-  }
-
-  handleBlur () {
-    this.setState({focused: false});
-  }
-
-  search () {
-    let input = new RegExp(this.refs.search.value, 'i');
-    let results = [];
-    if (input !== '') {
-      keys.forEach(key => {
-        if (input.test(key)) results.push(key);
-      });
-      this.setState({results: results});
-    }
-  }
-
-  render () {
-    let classes = {
-      'search-wrapper': true,
-      card: true
-    };
-    classes.focused = this.state.focused;
-    return (
-      <li className='search'>
-        <div className={cx(classes)}>
-          <input id='search'
-            ref='search'
-            onChange={this.search}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur} />
-          <Icon>search</Icon>
-          <div className='search-results'>
-            {this.state.results.map(path => {
-              return <a href={`/${path}`} key={path}>{capitalize(path)}</a>;
-            })}
-          </div>
-        </div>
-      </li>
-    );
-  }
-}
 
 class MainNav extends React.Component {
   constructor (props) {
@@ -122,7 +39,7 @@ class MainNav extends React.Component {
           <div className='container' >
             <div className='nav-wrapper'>
               <a className='page-title'>
-                { capitalize(window.location.pathname.substring(1)) }
+                { renderPageTitle() }
               </a>
             </div>
           </div>
@@ -140,17 +57,15 @@ class MainNav extends React.Component {
           </li>
           <Search />
           <li className='bold'>
-            <NavLink className='waves-effect waves-teal' to='getting-started'>
-              Getting started
-            </NavLink>
+            <NavLink className='waves-effect waves-teal' to='/'>Getting started</NavLink>
           </li>
           <li className='no-padding' >
             <Collapsible>
-              {routes.map((routesSection) => (
-                <CollapsibleItem header={routesSection.path}>
+              {routes.map((routesSection, idx) => (
+                <CollapsibleItem key={`route${idx}`} header={routesSection.path}>
                   <ul>
                     {routesSection.routes.map((r) => (
-                      <li>
+                      <li key={r.path}>
                         <NavLink to={r.path} className='waves-effect waves-teal'>
                           {r.path}
                         </NavLink>
