@@ -1,20 +1,10 @@
 import React from 'react';
-import Row from '../../../src/Row';
-import Col from '../../../src/Col';
-import store from './store';
-
+import Row from 'Row';
+import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 
-class GettingStartedPage extends React.Component {
-  componentDidMount () {
-    store.emit('component', 'Getting Started');
-    // hljs.initHighlighting.called = false;
-    // hljs.initHighlightingOnLoad();
-    // hljs.highlightBlock(this.refs.code)
-  }
-
-  render () {
-    var htmlSetup = `<!DOCTYPE html>
+const GettingStartedPage = () => {
+  const htmlSetup = `<!DOCTYPE html>
 <html>
   <head>
     <!--Import Google Icon Font-->
@@ -33,25 +23,24 @@ class GettingStartedPage extends React.Component {
   </body>
 </html>`;
 
-    var codeSample = `import {Button, Icon} from 'react-materialize';
+  const codeSample = `import {Button, Icon} from 'react-materialize';
 <Button node='a' waves='light'><Icon right>file_cloud</Icon>button</Button>`;
 
-    return (
-      <Row>
-        <Col s={12}>
-          <h4>Installation</h4>
-          <ReactPlayground code='npm install react-materialize' trim={false} />
-        </Col>
-        <Col s={12}>
-          <ReactPlayground code={codeSample} trim={false} />
-        </Col>
-        <Col s={12}>
-          <h4>HTML Setup</h4>
-          <ReactPlayground code={htmlSetup} trim={false} />
-        </Col>
-      </Row>
-    );
-  }
-}
+  return (
+    <Row>
+      <Col s={12}>
+        <h4>Installation</h4>
+        <ReactPlayground code='npm install react-materialize' trim={false} />
+      </Col>
+      <Col s={12}>
+        <ReactPlayground code={codeSample} trim={false} />
+      </Col>
+      <Col s={12}>
+        <h4>HTML Setup</h4>
+        <ReactPlayground code={htmlSetup} trim={false} />
+      </Col>
+    </Row>
+  );
+};
 
 export default GettingStartedPage;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Footer from '../../src/Footer';
+import Footer from 'Footer';
 
-class PageFooter extends React.Component {
+const PageFooter = () => {
   render() {
     let links = (
       <ul>

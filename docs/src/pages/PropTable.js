@@ -18,7 +18,7 @@ const generatePropType = (type) => {
 
       if (deprecatedInfo !== false) {
         return generatePropType({
-          name: deprecatedInfo.propTypes,
+          name: deprecatedInfo.propTypes
         });
       }
 
@@ -32,9 +32,9 @@ const generatePropType = (type) => {
     default:
       return type.name;
   }
-}
+};
 
-function generateDescription(required, description, type) {
+function generateDescription (required, description, type) {
   let deprecated = '';
 
   if (type.name === 'custom') {
@@ -134,9 +134,9 @@ class PropTable extends React.Component {
 
     text += 'Other properties (not documented) are applied to the root element.';
 
-    const requiredPropFootnote = (requiredProps === 1) ? '* required property' :
-      (requiredProps > 1) ? '* required properties' :
-        '';
+    const requiredPropFootnote = (requiredProps === 1) ? '* required property'
+      : (requiredProps > 1) ? '* required properties'
+        : '';
 
     return (
       <div className='propTypeDescription'>
@@ -167,7 +167,7 @@ class PropTable extends React.Component {
             <td>
               <div>{this.getType(propData)}</div>
             </td>
-            <td>{/*propData.defaultValue*/}</td>
+            <td>{/* propData.defaultValue */}</td>
             <td>
               <div className='prop-desc' dangerouslySetInnerHTML={{__html: propData.descHtml }} />
             </td>
