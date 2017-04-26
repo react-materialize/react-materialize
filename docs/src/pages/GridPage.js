@@ -23,8 +23,8 @@ class GridPage extends React.Component {
             </ReactPlayground>
           </Col>
           <Col s={12}>
-            <PropTable component={RowCode} />
-            <PropTable component={ColCode} />
+            <PropTable header='Row' component={RowCode} />
+            <PropTable header='Col' component={ColCode} />
           </Col>
         </Col>
       </Row>
