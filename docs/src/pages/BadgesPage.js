@@ -3,11 +3,11 @@ import Row from 'Row';
 import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import store from './store';
 import Samples from './Samples';
 import badgeCollections from '../../../examples/BadgeCollections';
 import badgeDropdowns from '../../../examples/BadgeDropdowns';
 import badgeNavbar from '../../../examples/BadgeNavbar';
+import BadgesCode from '!raw-loader!Badge';
 
 const BadgesPage = () => (
   <Row>
@@ -40,7 +40,7 @@ const BadgesPage = () => (
         </ReactPlayground>
       </Col>
       <Col s={12}>
-        <PropTable component={component} />
+        <PropTable header='Badges' component={BadgesCode} />
       </Col>
     </Col>
   </Row>
