@@ -43,7 +43,9 @@ module.exports = {
     Materialize: 'Materialize'
   },
   resolve: {
+    extensions: ['.js', '.json'],
     modules: [
+      path.resolve(BASE_PATH, '../src/'),
       path.resolve(BASE_PATH),
       'node_modules/'
     ]

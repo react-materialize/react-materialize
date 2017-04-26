@@ -3,7 +3,8 @@ import { Route } from 'react-router-dom';
 
 import GettingStartedPage from './pages/GettingStartedPage';
 // css components
-// import TablesPage from './pages/TablesPage';
+import TablesPage from './pages/TablesPage';
+import Grid from './pages/GridPage';
 
 // js components
 // import CollapsiblePage from './pages/CollapsiblePage';
@@ -25,11 +26,10 @@ import GettingStartedPage from './pages/GettingStartedPage';
 // import NavbarPage from './pages/NavbarPage';
 // import PaginationPage from './pages/PaginationPage';
 // import PreloaderPage from './pages/PreloaderPage';
-import Grid from './pages/GridPage';
 
 const cssComponents = {
   grid: Grid,
-  // table: TablesPage
+  table: TablesPage
 };
 
 const jsComponents = {
