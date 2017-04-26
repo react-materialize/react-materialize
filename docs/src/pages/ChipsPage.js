@@ -5,6 +5,7 @@ import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
 import chips from '../../../examples/Chips';
+import Code from '!raw-loader!Chip';
 
 const ChipsPage = () => (
   <Row>
@@ -19,7 +20,7 @@ const ChipsPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component={component} />
+        <PropTable header='Chip' component={Code} />
       </Col>
     </Col>
   </Row>

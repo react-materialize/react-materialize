@@ -6,6 +6,8 @@ import PropTable from './PropTable';
 import Samples from './Samples';
 import preloaderCircular from '../../../examples/PreloaderCircular';
 import progressBars from '../../../examples/ProgressBars';
+import PreloaderCode from '!raw-loader!Preloader';
+import ProgressBarCode from '!raw-loader!ProgressBar';
 
 const PreloaderPage = () => (
   <Row>
@@ -35,8 +37,8 @@ const PreloaderPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component='ProgressBar' />
-        <PropTable component='Preloader' />
+        <PropTable component={ProgressBarCode} header='ProgressBar' />
+        {/* <PropTable component={PreloaderCode} header='Preloader' /> */}
       </Col>
     </Col>
   </Row>

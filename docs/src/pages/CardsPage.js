@@ -4,6 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
+import CardCode from '!raw-loader!Card';
 
 import imageCard from '../../../examples/CardImage';
 import revealCard from '../../../examples/CardReveal';
@@ -52,7 +53,7 @@ const CardsPage = () => (
         </ReactPlayground>
       </Col>
       <Col s={12}>
-        <PropTable component={component} />
+        <PropTable header='Cards' component={CardCode} />
       </Col>
     </Col>
   </Row>

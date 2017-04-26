@@ -43,7 +43,7 @@ const jsComponents = {
 
 const components = {
   badges: BadgesPage,
-  buttons: ButtonsPage,
+  // buttons: ButtonsPage,
   breadcrumbs: BreadcrumbsPage,
   cards: CardsPage,
   chips: ChipsPage,

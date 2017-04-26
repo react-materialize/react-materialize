@@ -7,6 +7,7 @@ import Samples from './Samples';
 import iconLinksNavbar from '../../../examples/IconLinksNavbar';
 import leftAlignedNavbar from '../../../examples/LeftAlignedNavbar';
 import rightAlignedNavbar from '../../../examples/RightAlignedNavbar';
+import Code from '!raw-loader!Navbar';
 
 const NavbarPage = () => (
   <Row>
@@ -41,7 +42,7 @@ const NavbarPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component={component} />
+        <PropTable header='Navbar' component={Code} />
       </Col>
     </Col>
   </Row>

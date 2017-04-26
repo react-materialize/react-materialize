@@ -3,8 +3,9 @@ import Row from 'Row';
 import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import store from './store';
 import Samples from './Samples';
+import ButtonCode from '!raw-loader!Button';
+
 import raisedButton from '../../../examples/RaisedButton';
 import fixedActionButton from '../../../examples/FixedActionButton';
 import floatingButton from '../../../examples/FloatingButton';
@@ -50,7 +51,7 @@ const ButtonsPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component={component} />
+        <PropTable header='Buttons' component={ButtonCode} />
       </Col>
     </Col>
   </Row>

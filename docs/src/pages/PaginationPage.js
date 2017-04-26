@@ -5,6 +5,8 @@ import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
 import pagination from '../../../examples/Pagination';
+import PaginationCode from '!raw-loader!Pagination';
+import PaginationButtonCode from '!raw-loader!PaginationButton';
 
 const PaginationPage = () => (
   <Row>
@@ -22,8 +24,8 @@ const PaginationPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component='Pagination' />
-        <PropTable component='PaginationButton' />
+        <PropTable component={PaginationCode} header='Pagination' />
+        <PropTable component={PaginationButtonCode} header='PaginationButton' />
       </Col>
     </Col>
   </Row>

@@ -7,8 +7,9 @@ import Samples from './Samples';
 import modal from '../../../examples/Modal';
 import modalWithBottomSheet from '../../../examples/ModalWithBottomSheet';
 import modalWithFixedFooter from '../../../examples/ModalWithFixedFooter';
+import Code from '!raw-loader!Modal';
 
-const TabsPage = () => (
+const ModalsPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
       <p className='caption'>
@@ -33,10 +34,10 @@ const TabsPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component='Modal' />
+        <PropTable component={Code} header='Modal' />
       </Col>
     </Col>
   </Row>
 );
 
-export default TabsPage;
+export default ModalsPage;

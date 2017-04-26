@@ -4,6 +4,8 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
+import CollectionCode from '!raw-loader!Collection';
+import CollectionItemCode from '!raw-loader!CollectionItem';
 
 import collectionBasic from '../../../examples/CollectionBasic';
 import collectionWithHeader from '../../../examples/CollectionWithHeader';
@@ -47,7 +49,7 @@ const CollectionsPage = () => (
       </h4>
 
       <Col s={12}>
-        <PropTable component={component} />
+        <PropTable header='Collection' component={CollectionCode} />
       </Col>
 
       <h4 className='col s12'>
@@ -55,7 +57,7 @@ const CollectionsPage = () => (
       </h4>
 
       <Col s={12}>
-        <PropTable component='CollectionItem' />
+        <PropTable header='CollectionItem' component={CollectionItemCode} />
       </Col>
     </Col>
   </Row>

@@ -8,6 +8,10 @@ import Samples from './Samples';
 import mediaBox from '../../../examples/MediaBox';
 import sliders from '../../../examples/Sliders';
 
+import MediaBoxCode from '!raw-loader!MediaBox';
+import SliderCode from '!raw-loader!Slider';
+// import SlideCode from '!raw-loader!Slide';
+
 const TablesPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
@@ -33,9 +37,9 @@ const TablesPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component='MediaBox' />
-        <PropTable component='Slider' />
-        <PropTable component='Slide' />
+        <PropTable component={MediaBoxCode} header='MediaBox' />
+        <PropTable component={SliderCode} header='Slider' />
+        {/* <PropTable component={SlideCode} header='Slide' /> */}
       </Col>
     </Col>
   </Row>

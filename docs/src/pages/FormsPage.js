@@ -11,6 +11,7 @@ import inputCheckbox from '../../../examples/InputCheckbox';
 import inputSwitch from '../../../examples/InputSwitch';
 import prefillingTextInput from '../../../examples/PrefillingTextInput';
 import selectSimple from '../../../examples/SelectSimple';
+import Code from '!raw-loader!Input';
 
 const FormsPage = () => (
   <Row>
@@ -78,7 +79,7 @@ const FormsPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component='Input' />
+        <PropTable header='Input' component={Code} />
       </Col>
     </Col>
   </Row>

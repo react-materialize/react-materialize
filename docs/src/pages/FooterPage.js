@@ -5,6 +5,7 @@ import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
 import footer from '../../../examples/Footer';
+import Code from '!raw-loader!Footer';
 
 const FooterPage = () => (
   <Row>
@@ -19,7 +20,7 @@ const FooterPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component={component} />
+        <PropTable header='Footer' component={Code} />
       </Col>
     </Col>
   </Row>
