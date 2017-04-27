@@ -44,6 +44,7 @@ class MainNav extends React.Component {
         </nav>
         <div className='container'>
           <a href='#' data-activates='nav-mobile' className='button-collapse top-nav full hide-on-large-only'>
+            yo
             <i className='mdi-navigation-menu' />
           </a>
         </div>
