@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import MainNav from './MainNav';
+import Navigation from './Navigation';
 import PageFooter from './PageFooter';
 import Routes from '../routes';
 
 const App = () => (
   <Router>
     <div>
-      <MainNav />
+      <Navigation />
       <Routes />
       <PageFooter />
     </div>
