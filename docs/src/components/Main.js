@@ -4,8 +4,8 @@ import { Route } from 'react-router-dom';
 import routesConfig from '../routes';
 
 const renderRoute = (route) => {
-  const { path, component } = route;
-  return <Route key={path} path={`/${path}`} component={component} />;
+  const { path, component, exact = false } = route;
+  return <Route key={path} exact={exact} path={path} component={component} />;
 };
 
 const Main = () => (

@@ -83,7 +83,7 @@ const renderNavItems = (navItem, idx) => (
 const renderSubNavItems = ({ path }) => (
   <li key={path}>
     <NavLink to={path} className='waves-effect waves-teal'>
-      {capitalize(path)}
+      {capitalize(path.substr(1))}
     </NavLink>
   </li>
 );
