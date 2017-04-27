@@ -17,6 +17,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
+    "cache-loader": "^1.0.3",
     "css-loader": "^0.28.0",
     "doctrine": "^2.0.0",
     "extract-text-webpack-plugin": "^2.1.0",

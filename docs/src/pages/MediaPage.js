@@ -3,7 +3,6 @@ import Row from 'Row';
 import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import store from './store';
 import Samples from './Samples';
 import mediaBox from '../../../examples/MediaBox';
 import sliders from '../../../examples/Sliders';
@@ -39,7 +38,7 @@ const TablesPage = () => (
       <Col s={12}>
         <PropTable component={MediaBoxCode} header='MediaBox' />
         <PropTable component={SliderCode} header='Slider' />
-        {/* <PropTable component={SlideCode} header='Slide' /> */}
+        {/*<PropTable component={SlideCode} header='Slide' />*/}
       </Col>
     </Col>
   </Row>

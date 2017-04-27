@@ -50,7 +50,7 @@ Slide.propTypes = {
   * Aliment of the caption
   * @default 'center'
   */
-  alignment: PropTypes.oneOf(constants.PLACEMENTS),
+  alignment: PropTypes.oneOf(['one', 'two']),
   className: PropTypes.string,
   children: PropTypes.node,
   /**

@@ -21,7 +21,7 @@ const common = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader?cacheDirectory=true',
+        loader: 'cache-loader!babel-loader?cacheDirectory=true',
         exclude: /node_modules/
       },
       {
