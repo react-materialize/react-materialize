@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navigation from './Navigation';
-import PageFooter from './PageFooter';
+import Footer from './Footer';
 import Routes from '../routes';
 
 const App = () => (
