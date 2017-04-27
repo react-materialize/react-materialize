@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Collapsible from '../../../src/Collapsible'; // TODO fix paths
-import CollapsibleItem from '../../../src/CollapsibleItem';
+
+import Collapsible from 'Collapsible';
+import CollapsibleItem from 'CollapsibleItem';
 import Search from './Search';
 
 import { routesConfig as routes } from '../routes';
@@ -9,7 +10,7 @@ import { routesConfig as routes } from '../routes';
 const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
 const renderPageTitle = () => {
   const title = window.location.pathname.substring(1);
-  return title.length ? capitalize(title) : 'Getting Started'; // fix
+  return title.length ? capitalize(title) : 'Getting Started'; // TODO fix
 };
 
 class MainNav extends React.Component {
@@ -30,9 +31,6 @@ class MainNav extends React.Component {
   }
 
   render () {
-    let { location } = this.props;
-    location = location.substr(1).replace(/\.html/, '');
-
     return (
       <header>
         <nav className='top-nav'>
@@ -62,12 +60,12 @@ class MainNav extends React.Component {
           <li className='no-padding' >
             <Collapsible>
               {routes.map((routesSection, idx) => (
-                <CollapsibleItem key={`route${idx}`} header={routesSection.path}>
+                <CollapsibleItem expanded={true} key={`route${idx}`} header={routesSection.path}>
                   <ul>
                     {routesSection.routes.map((r) => (
                       <li key={r.path}>
                         <NavLink to={r.path} className='waves-effect waves-teal'>
-                          {r.path}
+                          {capitalize(r.path)}
                         </NavLink>
                       </li>
                     ))}

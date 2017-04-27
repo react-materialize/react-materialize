@@ -80,7 +80,7 @@ if (TARGET === 'start') {
       contentBase: path.resolve(BASE_PATH, 'assets'),
       historyApiFallback: true,
       hot: true,
-      noInfo: false,
+      inline: true,
       port: PORT,
       stats: { colors: true }
     }

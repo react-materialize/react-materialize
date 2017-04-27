@@ -8,7 +8,7 @@ import Routes from '../routes';
 const App = () => (
   <Router>
     <div>
-      <MainNav location={'some-location'} />
+      <MainNav />
       <Routes />
       <PageFooter />
     </div>
