@@ -1,6 +1,3 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-
 import GettingStartedPage from './pages/GettingStartedPage';
 // css components
 import TablesPage from './pages/TablesPage';
@@ -43,7 +40,7 @@ const jsComponents = {
 
 const components = {
   badges: BadgesPage,
-  // buttons: ButtonsPage,
+  buttons: ButtonsPage,
   breadcrumbs: BreadcrumbsPage,
   cards: CardsPage,
   chips: ChipsPage,
@@ -67,7 +64,11 @@ const parseRoutes = (compObj) => {
   return ret;
 };
 
-const routesConfig = [
+export default [
+  { path: '/',
+    exact: true,
+    component: GettingStartedPage
+  },
   { path: 'CSS',
     routes: parseRoutes(cssComponents)
   },
@@ -78,19 +79,3 @@ const routesConfig = [
     routes: parseRoutes(jsComponents)
   }
 ];
-
-const Routes = () => (
-  <main>
-    <div className='container'>
-      <Route exact path='/' component={GettingStartedPage} />
-      {routesConfig.map((routesSection) => (
-        routesSection.routes.map((r) => (
-          <Route key={r.path} path={`/${r.path}`} component={r.component} />
-        ))
-      ))}
-    </div>
-  </main>
-);
-
-export { routesConfig };
-export default Routes;

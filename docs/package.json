@@ -6,7 +6,6 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "clean": "rm -rf assets/",
     "build:stats": "webpack -p --json > stats.json"
   },
   "repository": "https://github.com/react-materialize/react-materialize.git",
