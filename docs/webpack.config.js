@@ -48,27 +48,22 @@ const common = {
     Materialize: 'Materialize'
   },
   resolve: {
+    extensions: ['.js', '.css'],
     modules: [
-      path.resolve(BASE_PATH, '../src/'),
-      path.resolve(BASE_PATH),
-      'node_modules/'
+      path.join(__dirname, 'src'),
+      path.join(__dirname, '../src'),
+      'node_modules'
     ]
-  }
+  },
+  devtool: 'cheap-module-source-map'
 };
 
 if (TARGET === 'start') {
   module.exports = merge({
     entry: [
       'react-hot-loader/patch',
-      // activate HMR for React
-
       `webpack-dev-server/client?http://localhost:${PORT}`,
-      // bundle the client for webpack-dev-server
-      // and connect to the provided endpoint
-
       'webpack/hot/only-dev-server'
-      // bundle the client for hot reloading
-      // only- means to only hot reload for successful updates
     ],
     module: {
       rules: [{
@@ -82,14 +77,13 @@ if (TARGET === 'start') {
       new webpack.NoEmitOnErrorsPlugin()
     ],
     devServer: {
-      historyApiFallback: true,
       contentBase: path.resolve(BASE_PATH, 'assets'),
+      historyApiFallback: true,
       hot: true,
       noInfo: false,
       port: PORT,
       stats: { colors: true }
-    },
-    devtool: 'cheap-module-eval-source-map'
+    }
   }, common);
 } else {
   module.exports = merge({
