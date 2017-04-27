@@ -69,13 +69,15 @@ const renderNav = () => (
   </nav>
 );
 
-const renderNavItems = (navItem, idx) => {
-  return navItem.component
-    ? <li key={`route${idx}`}><NavLink className='waves-effect waves-teal' to='/'>Getting started</NavLink></li>
+const renderNavItems = (navItem, idx) => (
+  navItem.component
+    ? <li key={`route${idx}`}>
+      <NavLink className='waves-effect waves-teal' to='/'>Getting started</NavLink>
+    </li>
     : <CollapsibleItem key={`route${idx}`} header={navItem.path}>
       <ul>{navItem.routes.map(renderSubNavItems)}</ul>
-    </CollapsibleItem>;
-};
+    </CollapsibleItem>
+);
 
 /* eslint-disable react/prop-types */
 const renderSubNavItems = ({ path }) => (
