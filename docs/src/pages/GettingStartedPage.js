@@ -23,8 +23,13 @@ const GettingStartedPage = () => {
   </body>
 </html>`;
 
-  const codeSample = `import {Button, Icon} from 'react-materialize';
-<Button node='a' waves='light'><Icon right>file_cloud</Icon>button</Button>`;
+  const codeSample = `import {Button, Icon} from 'react-materialize'
+
+export default () => (
+  <Button waves='light'>
+    <Icon>thumb_up</Icon>
+  </Button>
+)`;
 
   return (
     <Row>

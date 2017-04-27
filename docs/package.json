@@ -4,9 +4,9 @@
   "description": "React Materialize docs site",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack/webpack.config.standalone.js",
-    "build": "babel-node build.js && webpack --progress --colors -p",
-    "clean": "rm *.html assets/bundle.js"
+    "start": "webpack-dev-server",
+    "build": "webpack -p",
+    "build:stats": "webpack -p --json > stats.json"
   },
   "repository": "https://github.com/react-materialize/react-materialize.git",
   "author": "Alexander Odell <alextrastero@gmail.com>",
@@ -33,10 +33,7 @@
     "react-router-dom": "^4.1.1",
     "style-loader": "^0.16.1",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.2"
-  },
-  "dependencies": {
-    "materialize-css": "^0.98.2",
-    "react-component-metadata": "^3.1.0"
+    "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0"
   }
 }
