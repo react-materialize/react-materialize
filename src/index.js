@@ -1,3 +1,4 @@
+import Autocomplete from './Autocomplete';
 import Badge from './Badge';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
@@ -39,6 +40,7 @@ import Tag from './Tag';
 import Toast from './Toast';
 
 export {
+  Autocomplete,
   Badge,
   Breadcrumb,
   Button,
