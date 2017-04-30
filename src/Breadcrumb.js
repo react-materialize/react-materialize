@@ -2,25 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Col from './Col';
 
-const Breadcrumb = ({ children }) => (
+const Breadcrumb = ({ cols, children }) => (
   <nav className='row'>
     <div className='nav-wrapper'>
-      <Col s={12}>
-        { renderChildren(children) }
+      <Col s={cols}>
+        { React.Children.map(children, item => React.cloneElement(item, { className: 'breadcrumb' })) }
       </Col>
     </div>
   </nav>
 );
 
-const renderChildren = (children) => {
-  return React.Children.map(children, (item) => {
-    return React.cloneElement(item, { className: 'breadcrumb' });
-  });
-};
-
 Breadcrumb.propTypes = {
   children: PropTypes.node,
   cols: PropTypes.number
+};
+
+Breadcrumb.defaultProps = {
+  cols: 12
 };
 
 export default Breadcrumb;
