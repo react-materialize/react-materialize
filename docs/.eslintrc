@@ -1,0 +1,17 @@
+# JavaScript Standard Style Guide: http://standardjs.com
+# https://github.com/feross/eslint-config-standard-react
+extends:
+  - standard
+  - standard-react
+
+globals:
+  Materialize: true
+  React: true
+  ReactDOM: true
+
+env:
+  jquery: true
+
+rules:
+  react/jsx-no-bind: [0]
+  semi: [2, 'always']

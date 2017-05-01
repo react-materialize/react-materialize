@@ -7,6 +7,8 @@ import Samples from './Samples';
 import breadcrumbs from '../../../examples/Breadcrumbs';
 import BreadcrumbsCode from '!raw-loader!Breadcrumb';
 
+const header = 'Breadcrumbs';
+
 const BreadcrumbsPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
@@ -18,7 +20,7 @@ const BreadcrumbsPage = () => (
         <ReactPlayground code={Samples.breadcrumb}>
           {breadcrumbs}
         </ReactPlayground>
-        <PropTable header='Breadcrumbs' component={BreadcrumbsCode} />
+        <PropTable header={header} component={BreadcrumbsCode} />
       </Col>
     </Col>
   </Row>

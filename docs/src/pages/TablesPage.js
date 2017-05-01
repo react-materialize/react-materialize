@@ -22,7 +22,7 @@ const TablesPage = () => (
         </ReactPlayground>
       </Col>
       <Col s={12}>
-        <PropTable header='Tables' component={TableCode} />
+        <PropTable header='Table' component={TableCode} />
       </Col>
     </Col>
   </Row>
