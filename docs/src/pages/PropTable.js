@@ -33,7 +33,9 @@ class PropTable extends Component {
                 <td>{prop.name}</td>
                 <td>{prop.type}</td>
                 <td>{prop.default}</td>
-                <td className='prop-desc' style={{width: '50%'}}>{prop.comments}</td>
+                <td className='prop-desc' style={{width: '50%'}}>
+                  <div dangerouslySetInnerHTML={{__html: prop.comments}} />
+                </td>
               </tr>
             ))}
           </tbody>

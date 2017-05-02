@@ -89,6 +89,10 @@ class Button extends Component {
   }
 }
 
+// Button.defaultProps = {
+  // node: 'button'
+// };
+
 Button.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -124,8 +128,4 @@ Button.propTypes = {
   fabClickOnly: PropTypes.bool
 };
 
-Button.defaultProps = {
-  node: 'button'
-};
-
-export default Button;
+export default () => <p>pepe</p>;

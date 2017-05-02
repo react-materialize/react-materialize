@@ -12,6 +12,7 @@
   "author": "Alexander Odell <alextrastero@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "ast-types": "^0.9.11",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-polyfill": "^6.23.0",
