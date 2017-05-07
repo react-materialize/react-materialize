@@ -4,9 +4,9 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import iconLinksNavbar from '../../../examples/IconLinksNavbar';
-import leftAlignedNavbar from '../../../examples/LeftAlignedNavbar';
-import rightAlignedNavbar from '../../../examples/RightAlignedNavbar';
+import iconLinksNavbar from './examples/IconLinksNavbar';
+import leftAlignedNavbar from './examples/LeftAlignedNavbar';
+import rightAlignedNavbar from './examples/RightAlignedNavbar';
 import Code from '!raw-loader!Navbar';
 
 const NavbarPage = () => (

@@ -6,10 +6,10 @@ import PropTable from './PropTable';
 import Samples from './Samples';
 import CardCode from '!raw-loader!Card';
 
-import imageCard from '../../../examples/CardImage';
-import revealCard from '../../../examples/CardReveal';
-import panelCard from '../../../examples/CardPanel';
-import simpleCard from '../../../examples/CardSimple';
+import imageCard from './examples/CardImage';
+import revealCard from './examples/CardReveal';
+import panelCard from './examples/CardPanel';
+import simpleCard from './examples/CardSimple';
 
 const CardsPage = () => (
   <Row>

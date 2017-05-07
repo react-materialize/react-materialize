@@ -4,13 +4,13 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import iconPrefixesInput from '../../../examples/IconPrefixesInput';
-import inputRadio from '../../../examples/InputRadio';
-import inputFields from '../../../examples/InputFields';
-import inputCheckbox from '../../../examples/InputCheckbox';
-import inputSwitch from '../../../examples/InputSwitch';
-import prefillingTextInput from '../../../examples/PrefillingTextInput';
-import selectSimple from '../../../examples/SelectSimple';
+import iconPrefixesInput from './examples/IconPrefixesInput';
+import inputRadio from './examples/InputRadio';
+import inputFields from './examples/InputFields';
+import inputCheckbox from './examples/InputCheckbox';
+import inputSwitch from './examples/InputSwitch';
+import prefillingTextInput from './examples/PrefillingTextInput';
+import selectSimple from './examples/SelectSimple';
 import Code from '!raw-loader!Input';
 
 const FormsPage = () => (

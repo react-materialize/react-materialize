@@ -89,10 +89,6 @@ class Button extends Component {
   }
 }
 
-// Button.defaultProps = {
-  // node: 'button'
-// };
-
 Button.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -120,7 +116,7 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   tooltip: PropTypes.string,
-  waves: PropTypes.oneOf(constants.WAVES),
+  waves: PropTypes.oneOf(['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal']),
   /**
    * FAB Click-Only
    * Turns a FAB from a hover-toggle to a click-toggle
@@ -128,4 +124,8 @@ Button.propTypes = {
   fabClickOnly: PropTypes.bool
 };
 
-export default () => <p>pepe</p>;
+Button.defaultProps = {
+  node: 'button'
+};
+
+export default Button;

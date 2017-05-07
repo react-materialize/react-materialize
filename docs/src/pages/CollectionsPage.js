@@ -7,9 +7,9 @@ import Samples from './Samples';
 import CollectionCode from '!raw-loader!Collection';
 import CollectionItemCode from '!raw-loader!CollectionItem';
 
-import collectionBasic from '../../../examples/CollectionBasic';
-import collectionWithHeader from '../../../examples/CollectionWithHeader';
-import collectionWithHref from '../../../examples/CollectionWithHref';
+import collectionBasic from './examples/CollectionBasic';
+import collectionWithHeader from './examples/CollectionWithHeader';
+import collectionWithHref from './examples/CollectionWithHref';
 
 const CollectionsPage = () => (
   <Row>
@@ -44,17 +44,9 @@ const CollectionsPage = () => (
         </ReactPlayground>
       </Col>
 
-      <h4 className='col s12'>
-        Collection Props
-      </h4>
-
       <Col s={12}>
         <PropTable header='Collection' component={CollectionCode} />
       </Col>
-
-      <h4 className='col s12'>
-        CollectionItem Props
-      </h4>
 
       <Col s={12}>
         <PropTable header='CollectionItem' component={CollectionItemCode} />

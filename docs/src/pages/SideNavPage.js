@@ -5,8 +5,10 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import sideNav from '../../../examples/SideNavBasic';
+import sideNav from './examples/SideNavBasic';
 import Code from '!raw-loader!SideNav';
+
+const header = 'SideNav';
 
 const SideNavPage = () => (
   <Row>
@@ -21,7 +23,7 @@ const SideNavPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component='SideNav' component={Code} />
+        <PropTable header={header} component={Code} />
       </Col>
     </Col>
   </Row>

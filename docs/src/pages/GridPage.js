@@ -6,7 +6,7 @@ import ColCode from '!raw-loader!Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import grid from '../../../examples/Grid';
+import grid from './examples/Grid';
 
 const GridPage = () => (
   <Row>

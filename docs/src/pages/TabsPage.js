@@ -4,10 +4,9 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import tab from '../../../examples/Tab';
-import code from '!raw-loader!Tab';
-
-const title = 'Tab';
+import tab from './examples/Tab';
+import tabCode from '!raw-loader!Tab';
+import tabsCode from '!raw-loader!Tabs';
 
 const TabsPage = () => (
   <Row>
@@ -25,7 +24,8 @@ const TabsPage = () => (
       </Col>
 
       <Col s={12}>
-        <PropTable component={code} header={title} />
+        <PropTable component={tabCode} header='Tab' />
+        <PropTable component={tabsCode} header='Tabs' />
       </Col>
     </Col>
   </Row>
