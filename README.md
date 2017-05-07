@@ -57,3 +57,5 @@ grid system similar to react-bootstrap.
 ## Contributions
 
 > Yes, please!
+
+We have a `help-wanted` label in the issues page for convenience
