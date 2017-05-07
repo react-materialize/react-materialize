@@ -55,7 +55,7 @@ const common = {
       'node_modules'
     ]
   },
-  devtool: 'cheap-module-source-map'
+  devtool: 'eval'
 };
 
 if (TARGET === 'start') {

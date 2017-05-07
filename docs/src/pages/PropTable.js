@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Table from '../../../src/Table';
 
-import parse from '../lib/doc-gen';
-
+import parse from '../helper/doc-gen';
 
 class PropTable extends Component {
   render () {

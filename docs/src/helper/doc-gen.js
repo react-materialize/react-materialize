@@ -1,7 +1,5 @@
 import recast from 'recast';
 import { parse } from 'babylon';
-var n = require("ast-types").namedTypes;
-var b = require("ast-types").builders;
 
 const ERROR_MISSING_DEFINITION = 'No suitable component definition found.';
 const EXPR = 'ExpressionStatement';
@@ -85,7 +83,6 @@ const combineProps = (props) => {
 
 export default (src) => {
   const ast = recast.parse(src, { parser: babylon });
-  console.log(recast.visit(ast))
   const parsed = ast.program.body;
   if (!parsed.length) {
     throw new Error(ERROR_MISSING_DEFINITION);
