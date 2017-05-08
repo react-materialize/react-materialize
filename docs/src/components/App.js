@@ -4,14 +4,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import Main from './Main';
+import AppWrapper from './AppWrapper';
 
 const App = () => (
   <Router>
-    <div>
+    <AppWrapper>
       <Navigation />
       <Main />
       <Footer />
-    </div>
+    </AppWrapper>
   </Router>
 );
 

@@ -14,8 +14,7 @@ const common = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(BASE_PATH, 'assets'),
-    chunkFilename: '[name]-[chunkhash].js',
-    publicPath: '/'
+    chunkFilename: '[name]-[chunkhash].js'
   },
   module: {
     rules: [
@@ -30,7 +29,7 @@ const common = {
       },
       {
         test: /\.(woff|woff2|eot|ttf)$/,
-        loader: 'file-loader?name=[path][hash].[ext]'
+        loader: 'file-loader'
       },
       {
         test: /\.svg$/,
@@ -97,7 +96,27 @@ if (TARGET === 'start') {
       }]
     },
     plugins: [
-      new ExtractTextPlugin('application.css')
+      new ExtractTextPlugin('application.css'),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      }),
+      new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        beautify: false,
+        mangle: {
+          screw_ie8: true,
+          keep_fnames: true
+        },
+        compress: {
+          screw_ie8: true
+        },
+        comments: false
+      })
     ]
   }, common);
 }

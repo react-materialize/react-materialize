@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import routesConfig from '../routes';
 
@@ -16,6 +16,7 @@ const Main = () => (
           ? renderRoute(routesSection)
           : routesSection.routes.map(renderRoute);
       })}
+      <Redirect to='/' />
     </div>
   </main>
 );
