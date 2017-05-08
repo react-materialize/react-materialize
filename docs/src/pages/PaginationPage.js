@@ -4,7 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import pagination from './examples/Pagination';
+import pagination from '../../examples/Pagination';
 import PaginationCode from '!raw-loader!Pagination';
 import PaginationButtonCode from '!raw-loader!PaginationButton';
 

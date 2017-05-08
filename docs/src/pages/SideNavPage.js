@@ -5,7 +5,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import sideNav from './examples/SideNavBasic';
+import sideNav from '../../examples/SideNavBasic';
 import Code from '!raw-loader!SideNav';
 
 const header = 'SideNav';

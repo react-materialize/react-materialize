@@ -4,7 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import breadcrumbs from './examples/Breadcrumbs';
+import breadcrumbs from '../../examples/Breadcrumbs';
 import BreadcrumbsCode from '!raw-loader!Breadcrumb';
 
 const header = 'Breadcrumbs';

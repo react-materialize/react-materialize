@@ -4,9 +4,9 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import modal from './examples/Modal';
-import modalWithBottomSheet from './examples/ModalWithBottomSheet';
-import modalWithFixedFooter from './examples/ModalWithFixedFooter';
+import modal from '../../examples/Modal';
+import modalWithBottomSheet from '../../examples/ModalWithBottomSheet';
+import modalWithFixedFooter from '../../examples/ModalWithFixedFooter';
 import Code from '!raw-loader!Modal';
 
 const ModalsPage = () => (

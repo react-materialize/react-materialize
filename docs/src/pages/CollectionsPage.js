@@ -7,9 +7,9 @@ import Samples from './Samples';
 import CollectionCode from '!raw-loader!Collection';
 import CollectionItemCode from '!raw-loader!CollectionItem';
 
-import collectionBasic from './examples/CollectionBasic';
-import collectionWithHeader from './examples/CollectionWithHeader';
-import collectionWithHref from './examples/CollectionWithHref';
+import collectionBasic from '../../examples/CollectionBasic';
+import collectionWithHeader from '../../examples/CollectionWithHeader';
+import collectionWithHref from '../../examples/CollectionWithHref';
 
 const CollectionsPage = () => (
   <Row>
