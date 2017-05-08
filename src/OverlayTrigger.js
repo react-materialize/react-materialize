@@ -12,8 +12,10 @@ class OverlayTrigger extends Overlay {
   }
 
   render () {
-    const child = React.Children.only(this.props.children);
+    const { children } = this.props;
+    if (!children) return null;
 
+    const child = React.Children.only(children);
     return React.cloneElement(
       child, {
         onClick: this.showOverlay
