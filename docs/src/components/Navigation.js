@@ -45,7 +45,7 @@ class Navigation extends React.Component {
               <img src='img/react-materialize-logo.svg' alt='React Materialize' />
             </NavLink>
           </li>
-          <Search />
+          <Search routes={routes} />
           <li className='no-padding' >
             <Collapsible>
               {routes.map(renderNavItems)}
