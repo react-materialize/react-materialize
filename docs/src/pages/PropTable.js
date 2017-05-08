@@ -16,7 +16,7 @@ class PropTable extends Component {
 
     return docs.length && (
       <div className='propTypeDescription section'>
-        <h4>{`${header} PropTypes`}</h4>
+        <h5>{`${header} PropTypes`}</h5>
         <Table bordered className='prop-table'>
           <thead>
             <tr>
