@@ -12,7 +12,7 @@ class Navbar extends Component {
 
   componentDidMount () {
     if (typeof $ !== 'undefined') {
-      $('.button-collapse').sideNav();
+      $('.button-collapse').sideNav(this.props.options);
     }
   }
 
@@ -69,11 +69,22 @@ Navbar.propTypes = {
   className: PropTypes.string,
   left: PropTypes.bool,
   right: PropTypes.bool,
-  href: PropTypes.string
+  href: PropTypes.string,
+  /**
+   * Options hash for the sidenav.
+   * More info: http://materializecss.com/side-nav.html#options
+   */
+  options: PropTypes.shape({
+    menuWidth: PropTypes.number,
+    edge: PropTypes.oneOf(['left', 'right']),
+    closeOnClick: PropTypes.bool,
+    draggable: PropTypes.bool
+  })
 };
 
 Navbar.defaultProps = {
-  href: '/'
+  href: '/',
+  options: {}
 };
 
 export default Navbar;
