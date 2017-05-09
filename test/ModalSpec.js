@@ -44,6 +44,20 @@ describe('<Modal />', () => {
     });
   });
 
+  context('without a trigger', () => {
+    beforeEach(() => {
+      wrapper = mount(
+        <Modal modalOptions={modalOptions}>
+          {children}
+        </Modal>
+      );
+    });
+
+    it('renders', () => {
+      expect(wrapper.find(Modal).length).to.equal(1);
+    });
+  });
+
   context('renders a trigger', () => {
     beforeEach(() => {
       wrapper = shallow(

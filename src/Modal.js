@@ -3,8 +3,22 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import cx from 'classnames';
 import OverlayTrigger from './OverlayTrigger';
+import idgen from './idgen';
 
 class Modal extends Component {
+  constructor (props) {
+    super(props);
+    this.modalID = props.id || `modal_${idgen()}`;
+  }
+
+  componentDidMount () {
+    const { trigger, modalOptions } = this.props;
+
+    if (!trigger) {
+      $(`#${this.modalID}`).modal(modalOptions);
+    }
+  }
+
   renderOverlay () {
     const {
       actions,
@@ -25,7 +39,7 @@ class Modal extends Component {
     });
 
     return (
-      <div {...other} className={classes}>
+      <div {...other} className={classes} id={this.modalID}>
         <div className='modal-content'>
           <h4>{header}</h4>
           {children}
@@ -111,14 +125,20 @@ Modal.propTypes = {
   /**
    * The button to trigger the display of the modal
    */
-  trigger: PropTypes.node.isRequired,
+  trigger: PropTypes.node,
   /**
    * The buttons to show in the footer of the modal
+   * @default <Button>Close</Button>
    */
-  actions: PropTypes.node
+  actions: PropTypes.node,
+  /**
+   * The ID to trigger the modal opening/closing
+   */
+  id: PropTypes.string
 };
 
 Modal.defaultProps = {
+  modalOptions: {},
   fixedFooter: false,
   bottomSheet: false,
   actions: [<Button waves='light' modal='close' flat>Close</Button>]
