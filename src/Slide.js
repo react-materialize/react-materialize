@@ -22,7 +22,7 @@ class Slide extends Component {
     const {
       title,
       className,
-      alignment,
+      placement: alignment,
       children,
       ...props
     } = this.props;
