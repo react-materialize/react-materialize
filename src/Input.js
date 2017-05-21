@@ -116,7 +116,7 @@ class Input extends Component {
         inputType = type || 'text';
     }
     let labelClasses = {
-      active: this.state.value || this.isSelect()
+      active: this.state.value || this.isSelect() || this.props.value
     };
 
     let htmlLabel = label || inputType === 'radio'
