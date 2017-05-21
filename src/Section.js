@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Divider = (props) => (
+const Section = (props) => (
   <div className='section'>
     {props.children}
   </div>
 );
 
-Divider.propTypes = {
+Section.propTypes = {
   children: PropTypes.node
 };
 
-export default Divider;
+export default Section;
