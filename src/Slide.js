@@ -22,7 +22,7 @@ class Slide extends Component {
     const {
       title,
       className,
-      alignment,
+      placement,
       children,
       ...props
     } = this.props;
@@ -31,7 +31,7 @@ class Slide extends Component {
 
     const classes = {
       caption: true,
-      [alignment + '-align']: alignment
+      [placement + '-align']: placement
     };
 
     if (typeof title !== 'undefined' || typeof children !== 'undefined') {
@@ -50,7 +50,7 @@ Slide.propTypes = {
   * Aliment of the caption
   * @default 'center'
   */
-  alignment: PropTypes.oneOf(constants.PLACEMENTS),
+  placement: PropTypes.oneOf(constants.PLACEMENTS),
   className: PropTypes.string,
   children: PropTypes.node,
   /**
