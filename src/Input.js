@@ -10,7 +10,7 @@ class Input extends Component {
     super(props);
 
     this.state = {
-      value: props.defaultValue
+      value: props.value || props.defaultValue
     };
 
     this._onChange = this._onChange.bind(this);
