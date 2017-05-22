@@ -10,7 +10,7 @@ class Input extends Component {
     super(props);
 
     this.state = {
-      value: props.defaultValue
+      value: props.value || props.defaultValue
     };
 
     this._onChange = this._onChange.bind(this);
@@ -116,7 +116,7 @@ class Input extends Component {
         inputType = type || 'text';
     }
     let labelClasses = {
-      active: this.state.value || this.isSelect() || this.props.value
+      active: this.state.value || this.isSelect()
     };
 
     let htmlLabel = label || inputType === 'radio'
