@@ -11,31 +11,34 @@ import Collapsible from './Collapsible';
 import CollapsibleItem from './CollapsibleItem';
 import Collection from './Collection';
 import CollectionItem from './CollectionItem';
+import Container from './Container';
+import Divider from './Divider';
 import Dropdown from './Dropdown';
-import Parallax from './Parallax';
 import Footer from './Footer';
 import Icon from './Icon';
 import Input from './Input';
 import MediaBox from './MediaBox';
 import MenuItem from './MenuItem';
 import Modal from './Modal';
-import Navbar from './Navbar';
 import NavItem from './NavItem';
+import Navbar from './Navbar';
 import Overlay from './Overlay';
 import OverlayTrigger from './OverlayTrigger';
 import Pagination from './Pagination';
 import PaginationButton from './PaginationButton';
+import Parallax from './Parallax';
 import Preloader from './Preloader';
 import ProgressBar from './ProgressBar';
 import Row from './Row';
 import SearchForm from './SearchForm';
+import Section from './Section';
 import SideNav from './SideNav';
 import SideNavItem from './SideNavItem';
 import Slide from './Slide';
 import Slider from './Slider';
 import Tab from './Tab';
-import Tabs from './Tabs';
 import Table from './Table';
+import Tabs from './Tabs';
 import Tag from './Tag';
 import Toast from './Toast';
 
@@ -53,6 +56,8 @@ export {
   CollapsibleItem,
   Collection,
   CollectionItem,
+  Container,
+  Divider,
   Dropdown,
   Footer,
   Icon,
@@ -60,24 +65,25 @@ export {
   MediaBox,
   MenuItem,
   Modal,
-  Navbar,
   NavItem,
+  Navbar,
   Overlay,
   OverlayTrigger,
-  Parallax,
   Pagination,
   PaginationButton,
+  Parallax,
   Preloader,
   ProgressBar,
   Row,
   SearchForm,
+  Section,
   SideNav,
   SideNavItem,
   Slide,
   Slider,
   Tab,
-  Tabs,
   Table,
+  Tabs,
   Tag,
   Toast
 };
