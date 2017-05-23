@@ -3,10 +3,9 @@ import { Route, Redirect } from 'react-router-dom';
 
 import routesConfig from '../routes';
 
-const renderRoute = (route) => {
-  const { path, component, exact = false } = route;
-  return <Route key={path} exact={exact} path={path} component={component} />;
-};
+const renderRoute = (route) => (
+  <Route key={route.path} {...route} />
+);
 
 const Main = () => (
   <main>
