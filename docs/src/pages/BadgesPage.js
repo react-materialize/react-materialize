@@ -4,9 +4,9 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import badgeCollections from '../../examples/BadgeCollections';
-import badgeDropdowns from '../../examples/BadgeDropdowns';
-import badgeNavbar from '../../examples/BadgeNavbar';
+import badgeCollections from '../../../examples/BadgeCollections';
+import badgeDropdowns from '../../../examples/BadgeDropdowns';
+import badgeNavbar from '../../../examples/BadgeNavbar';
 import BadgesCode from '!raw-loader!Badge';
 
 const BadgesPage = () => (

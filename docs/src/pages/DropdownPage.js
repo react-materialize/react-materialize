@@ -4,7 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import dropdown from '../../examples/DropdownBasic';
+import dropdown from '../../../examples/DropdownBasic';
 import DropdownCode from '!raw-loader!Dropdown';
 
 const DropdownPage = () => (

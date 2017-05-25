@@ -4,7 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import collapsible from '../../examples/Collapsible';
+import collapsible from '../../../examples/Collapsible';
 import CollapsibleCode from '!raw-loader!Collapsible';
 import CollapsibleItemCode from '!raw-loader!Collapsible'; // TODO this should be CollapsibleItem
 

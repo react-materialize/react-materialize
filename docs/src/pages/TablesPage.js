@@ -4,7 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import tableBorderless from '../../examples/BorderlessTable';
+import tableBorderless from '../../../examples/BorderlessTable';
 import TableCode from '!raw-loader!Table';
 
 const TablesPage = () => (

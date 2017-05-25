@@ -4,8 +4,8 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import preloaderCircular from '../../examples/PreloaderCircular';
-import progressBars from '../../examples/ProgressBars';
+import preloaderCircular from '../../../examples/PreloaderCircular';
+import progressBars from '../../../examples/ProgressBars';
 import PreloaderCode from '!raw-loader!Preloader';
 import ProgressBarCode from '!raw-loader!ProgressBar';
 

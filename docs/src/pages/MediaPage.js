@@ -4,8 +4,8 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import mediaBox from '../../examples/MediaBox';
-import sliders from '../../examples/Sliders';
+import mediaBox from '../../../examples/MediaBox';
+import sliders from '../../../examples/Sliders';
 
 import MediaBoxCode from '!raw-loader!MediaBox';
 import SliderCode from '!raw-loader!Slider';

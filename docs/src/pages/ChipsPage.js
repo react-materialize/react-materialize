@@ -4,7 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import chips from '../../examples/Chips';
+import chips from '../../../examples/Chips';
 import Code from '!raw-loader!Chip';
 
 const ChipsPage = () => (

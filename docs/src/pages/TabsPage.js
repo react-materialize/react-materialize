@@ -4,7 +4,7 @@ import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
-import tab from '../../examples/Tab';
+import tab from '../../../examples/Tab';
 import tabCode from '!raw-loader!Tab';
 import tabsCode from '!raw-loader!Tabs';
 
