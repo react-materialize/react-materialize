@@ -1,11 +1,9 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import routesConfig from '../routes';
 
-const renderRoute = (route) => (
-  <Route key={route.path} {...route} />
-);
+const renderRoute = (route) => <Route key={route.path} {...route} />;
 
 const Main = () => (
   <main>
@@ -15,7 +13,6 @@ const Main = () => (
           ? renderRoute(routesSection)
           : routesSection.routes.map(renderRoute);
       })}
-      <Redirect to='/' />
     </div>
   </main>
 );
