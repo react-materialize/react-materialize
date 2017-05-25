@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from 'Row';
 import Col from 'Col';
+import Container from 'Container';
 import ReactPlayground from './ReactPlayground';
 
 const GettingStartedPage = () => {
@@ -32,19 +33,41 @@ export default () => (
 )`;
 
   return (
-    <Row>
-      <Col s={12}>
-        <h4>Installation</h4>
-        <ReactPlayground code='npm install react-materialize' trim={false} />
+    <Container>
+      <Row>
+        <Col s={12}>
+          <h2 className="header">Welcome!</h2>
+          <p>
+            Welcome to the <strong>React Materialize</strong> docs, these docs are a <strong>editable showcase</strong>
+            {' '}
+            of what you can achieve with react-materialize. Go ahead and play around with the components and see what you
+            can do.
+          </p>
+          <Col s={6}>
+            <ReactPlayground code='<Button>EDIT ME</Button>' trim={false} />
+          </Col>
+          <Col s={6}>
+            <ReactPlayground code={
+              `<Button waves='light'>
+              OR ME!
+              <Icon left>cloud</Icon>
+            </Button>`
+          } trim={false} />
+        </Col>
       </Col>
       <Col s={12}>
-        <ReactPlayground code={codeSample} trim={false} />
+        <h4>Installation</h4>
+        <ReactPlayground code='npm install react-materialize' trim={false} editable={false} />
+      </Col>
+      <Col s={12}>
+        <ReactPlayground code={codeSample} trim={false} editable={false} />
       </Col>
       <Col s={12}>
         <h4>HTML Setup</h4>
-        <ReactPlayground code={htmlSetup} trim={false} />
+        <ReactPlayground code={htmlSetup} trim={false} editable={false} />
       </Col>
     </Row>
+    </Container>
   );
 };
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
 nav, footer.page-footer,
 .side-nav .collapsible-body li.active,
 .side-nav.fixed .collapsible-body li.active,
@@ -11,30 +13,21 @@ nav, footer.page-footer,
   background-color: #38435a;
 }
 
+.playground {
+  margin-bottom: 10px;
+}
+.playground .react-live-preview {
+  margin-bottom: 10px;
+}
 
-pre {
+.playground .prism-code {
+  background-color: #38435a;
+}
+
+.playground pre {
   padding: 1em;
-  border: solid 1px rgba(51,51,51,0.12);
-  background-color: #f5f2f0;
-}
-code, pre {
-  /* color: white; */
-  /* font-size: 1rem; */
-}
-
-.active {
-  /* background-color: red !important; */
-  /* color: red !important; */
-}
-
-/* .side-nav .collapsible-body, .side-nav.fixed .collapsible-body */
-.collapsible-body {
-  /* padding: 0; */
-}
-
-
-#nav-mobile li.search {
-  /* position: static */
+  font-family: 'Source Code Pro', monospace;
+  font-size: 15px;
 }
 
 #logo-container {
