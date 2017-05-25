@@ -10,7 +10,11 @@ const MIN_INPUT_LENGTH = 2;
 class Search extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {results: [], focused: false};
+    this.state = {
+      results: [],
+      focused: false
+    };
+
     this.search = this.search.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);

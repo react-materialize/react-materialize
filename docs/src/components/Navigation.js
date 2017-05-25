@@ -15,7 +15,7 @@ const renderPageTitle = () => {
 class Navigation extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {title: ''};
+    this.state = { title: '' };
     this.onChange = this.onChange.bind(this);
   }
 
@@ -23,10 +23,8 @@ class Navigation extends React.Component {
     $('.button-collapse').sideNav({edge: 'left'});
   }
 
-  onChange (component) {
-    this.setState({
-      title: component
-    });
+  onChange (title) {
+    this.setState({ title });
   }
 
   render () {
@@ -69,15 +67,24 @@ const renderNav = () => (
   </nav>
 );
 
-const renderNavItems = (navItem, idx) => (
-  navItem.component
-    ? <li key={`route${idx}`}>
-      <NavLink className='waves-effect waves-teal' to='/'>Getting started</NavLink>
-    </li>
-    : <CollapsibleItem key={`route${idx}`} header={navItem.path}>
-      <ul>{navItem.routes.map(renderSubNavItems)}</ul>
-    </CollapsibleItem>
-);
+const getActiveRoute = ({routes = []}) => {
+  return routes.length &&
+    routes.filter(r => r.path === window.location.pathname)
+};
+
+const renderNavItems = (navItem, idx) => {
+  const expanded = !!getActiveRoute(navItem).length;
+
+  return (
+    navItem.component
+      ? <li key={`route${idx}`}>
+        <NavLink className='waves-effect waves-teal' to='/'>Getting started</NavLink>
+      </li>
+      : <CollapsibleItem expanded={expanded} key={`route${idx}`} header={navItem.path}>
+        <ul>{navItem.routes.map(renderSubNavItems)}</ul>
+      </CollapsibleItem>
+  )
+};
 
 /* eslint-disable react/prop-types */
 const renderSubNavItems = ({ path }) => (

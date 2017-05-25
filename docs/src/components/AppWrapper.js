@@ -10,7 +10,14 @@ class AppWrapper extends React.Component {
   }
 
   render () {
-    return <div>{ this.props.children }</div>;
+    const { children, ...otherProps } = this.props;
+    return (
+      <div>
+        { React.Children.map(children, child =>
+          React.cloneElement(child, { ...otherProps }))
+        }
+      </div>
+    )
   }
 }
 
