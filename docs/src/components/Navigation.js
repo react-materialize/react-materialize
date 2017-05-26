@@ -9,7 +9,7 @@ import routes from '../routes';
 const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
 const renderPageTitle = () => {
   const title = window.location.pathname.substring(1);
-  return title.length ? capitalize(title) : 'Getting Started'; // TODO fix
+  return title.length ? capitalize(title) : 'React Materialize'; // TODO fix
 };
 
 class Navigation extends React.Component {

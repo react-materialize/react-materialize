@@ -34,11 +34,10 @@ export default () => (
   return (
     <Row>
       <Col s={12}>
-        <p>
-          Welcome to the <strong>React Materialize</strong> docs, these docs are a <strong>editable showcase</strong>
+        <p className='caption'>
+          Welcome to the <strong>React Materialize</strong> docs, all the code in the docs is <strong>editable</strong>.
           {' '}
-          of what you can achieve with react-materialize. Go ahead and play around with the components and see what you
-          can do.
+          Go ahead and play around with the components and see what you can do.
         </p>
         <h4>Try it out</h4>
         <Col s={6}>
