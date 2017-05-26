@@ -1,6 +1,7 @@
 node_modules/
-*.html
+assets/*.html
+assets/*.woff2
+assets/*.woff
 assets/bundle.js
-assets/.sass-cache/
-assets/*.map
-assets/*.scss
+assets/application.css
+.cache-loader/

@@ -116,7 +116,7 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   tooltip: PropTypes.string,
-  waves: PropTypes.oneOf(constants.WAVES),
+  waves: PropTypes.oneOf(['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal']),
   /**
    * FAB Click-Only
    * Turns a FAB from a hover-toggle to a click-toggle

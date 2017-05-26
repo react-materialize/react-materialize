@@ -10,8 +10,8 @@ export default
   >
   <SideNavItem userView
     user={{
-      background: 'assets/office.jpg',
-      image: 'assets/yuna.jpg',
+      background: 'img/office.jpg',
+      image: 'img/yuna.jpg',
       name: 'John Doe',
       email: 'jdandturk@gmail.com'
     }}

@@ -1,0 +1,53 @@
+nav, footer.page-footer,
+.side-nav .collapsible-body li.active,
+.side-nav.fixed .collapsible-body li.active,
+.side-nav .collapsible-body>ul:not(.collapsible)>li.active,
+.side-nav.fixed .collapsible-body>ul:not(.collapsible)>li.active {
+  background-color: #38435a;
+}
+
+.side-nav.fixed .collapsible-body>ul:not(.collapsible)>li a.active {
+  color: white;
+  background-color: #38435a;
+}
+
+
+pre {
+  padding: 1em;
+  border: solid 1px rgba(51,51,51,0.12);
+  background-color: #f5f2f0;
+}
+code, pre {
+  /* color: white; */
+  /* font-size: 1rem; */
+}
+
+.active {
+  /* background-color: red !important; */
+  /* color: red !important; */
+}
+
+/* .side-nav .collapsible-body, .side-nav.fixed .collapsible-body */
+.collapsible-body {
+  /* padding: 0; */
+}
+
+
+#nav-mobile li.search {
+  /* position: static */
+}
+
+#logo-container {
+  height: 100px;
+  margin-top: 10px;
+}
+
+ul.side-nav.fixed li.logo {
+  height: 160px;
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+ul.side-nav.fixed li.logo img {
+  max-height: 100%
+}

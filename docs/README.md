@@ -1,6 +1,11 @@
-This is the source code that generates the [document site](https://react-materialize.github.io)
+# React-Materialize Docs
 
-### get started
+## Get started
 
-      $ npm run assets
-      $ npm run start
+```bash
+npm i && npm start
+```
+
+### Contributing
+
+> Yes please!

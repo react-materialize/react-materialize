@@ -1,0 +1,29 @@
+{
+  "presets": [
+    ["es2015", { "modules": false }],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [],
+  "env": {
+    "testing": {
+      "plugins": [
+        // Enables React code to work with HMR
+        "react-hot-loader/babel",
+        "rewire",
+        ["transform-es2015-modules-commonjs", {
+          "loose": true
+        }],
+        ["module-resolver", {
+          "root": ["./src/"],
+          "alias": {
+            "src": "./src"
+          }
+        }],
+        ["webpack-alias", {
+          "config": "./webpack/webpack.config.standalone.js"
+        }]
+      ]
+    }
+  }
+}
