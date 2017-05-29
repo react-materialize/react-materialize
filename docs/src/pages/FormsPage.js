@@ -8,6 +8,7 @@ import iconPrefixesInput from '../../../examples/IconPrefixesInput';
 import inputRadio from '../../../examples/InputRadio';
 import inputFields from '../../../examples/InputFields';
 import inputCheckbox from '../../../examples/InputCheckbox';
+import inputDatepicker from '../../../examples/InputDatePicker';
 import inputSwitch from '../../../examples/InputSwitch';
 import prefillingTextInput from '../../../examples/PrefillingTextInput';
 import selectSimple from '../../../examples/SelectSimple';
@@ -69,6 +70,16 @@ const FormsPage = () => (
           {inputCheckbox}
         </ReactPlayground>
       </Col>
+      <h4 className='col s12'>
+        Date Picker
+      </h4>
+      <Col s={12}>
+        <ReactPlayground code={Samples.inputDatepicker}>
+          {inputDatepicker}
+        </ReactPlayground>
+      </Col>
+
+
       <h4 className='col s12'>
         Switch
       </h4>
