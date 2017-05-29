@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import constants from './constants';
+import cleanProps from './clean-props';
 import cx from 'classnames';
 import Icon from './Icon';
 import idgen from './idgen';
@@ -51,6 +52,7 @@ class Button extends Component {
     if (fab) {
       return this.renderFab(cx(classes, className), fab, toggle);
     } else {
+      props = cleanProps(props);
       return (
         <C
           {...other}
