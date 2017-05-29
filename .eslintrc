@@ -15,3 +15,4 @@ env:
 rules:
   react/jsx-no-bind: [0]
   semi: [2, 'always']
+  react/no-unused-prop-types: [0]
