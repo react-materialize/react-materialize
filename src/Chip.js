@@ -5,7 +5,7 @@ const Chip = ({ children, close }) => {
   return (
     <div className='chip'>
       {children}
-      {close ? <i className='material-icons'>close</i> : null}
+      {close ? <i className='close material-icons'>close</i> : null}
     </div>
   );
 };
