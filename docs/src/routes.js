@@ -20,6 +20,7 @@ import ChipsPage from './pages/ChipsPage';
 import CollectionsPage from './pages/CollectionsPage';
 import FooterPage from './pages/FooterPage';
 import FormsPage from './pages/FormsPage';
+import IconsPage from './pages/IconsPage';
 import NavbarPage from './pages/NavbarPage';
 import PaginationPage from './pages/PaginationPage';
 import PreloaderPage from './pages/PreloaderPage';
@@ -47,6 +48,7 @@ const components = {
   collections: CollectionsPage,
   footer: FooterPage,
   forms: FormsPage,
+  icon: IconsPage,
   navbar: NavbarPage,
   pagination: PaginationPage,
   preloader: PreloaderPage
