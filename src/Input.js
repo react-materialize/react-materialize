@@ -25,6 +25,7 @@ class Input extends Component {
     }
     if (this.isDatePicker) {
       $(this.dateInput).pickadate(this.props.options);
+      $(this.dateInput).on('change', this._onChange);
     }
   }
 
@@ -64,7 +65,7 @@ class Input extends Component {
       'default': e.target.value
     };
     const value = types[e.target.type] || types['default'];
-    if (onChange) { onChange(e); }
+    if (onChange) { onChange(e, value); }
 
     this.setState({ value });
   }
