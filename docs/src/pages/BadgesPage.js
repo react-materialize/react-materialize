@@ -13,7 +13,7 @@ const BadgesPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
       <p className='caption'>
-        Badges can notify you that there are new or unread messages or notifications. Add the new const to the badge to give it the background.
+        Badges can notify you that there are new or unread messages or notifications. Add the `newIcon` prop to the badge to give it the background.
       </p>
       <h4 className='col s12'>
         Collection
