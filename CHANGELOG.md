@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0
+
+ - Fixes react warnings
+ - Adds datepicker input
+ - Fixes Icon component
+
 ## 0.18.4
 
  - Update in README about help-wanted tag in issues
