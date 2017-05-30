@@ -258,7 +258,11 @@ Input.propTypes = {
   onLabel: PropTypes.string,
   offLabel: PropTypes.string,
   onChange: PropTypes.func,
-  options: PropTypes.any
+  options: PropTypes.any,
+  /**
+   * Value used to set a initial value
+   */
+  value: PropTypes.string
 };
 
 Input.defaultProps = { type: 'text' };

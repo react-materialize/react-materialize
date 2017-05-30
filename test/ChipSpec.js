@@ -18,7 +18,7 @@ describe('<Chip />', () => {
     wrapper = shallow(
       <Chip close />
     );
-    assert(wrapper.find('i.material-icons').length, 'with a close icon');
+    assert(wrapper.find('i.material-icons.close').length, 'with a close icon');
   });
 
   it('accepts children', () => {
