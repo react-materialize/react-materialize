@@ -45,6 +45,7 @@ class Collapsible extends Component {
       props.expanded = child.props.eventKey === this.state.activeKey;
       props.onSelect = this.handleSelect;
     }
+    delete props.expanded;
 
     return React.cloneElement(child, props);
   }

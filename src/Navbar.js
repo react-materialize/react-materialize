@@ -34,6 +34,8 @@ class Navbar extends Component {
       ...other
     } = this.props;
 
+    delete other.options;
+
     let classes = {
       right: right,
       'hide-on-med-and-down': true
