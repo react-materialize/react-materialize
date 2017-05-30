@@ -21,6 +21,8 @@ export default {
   footer: require('!raw-loader!../../../examples/Footer.js'),
   grid: require('!raw-loader!../../../examples/Grid.js'),
   horizontalFab: require('!raw-loader!../../../examples/HorizontalFAB.js'),
+  iconSimple: require('!raw-loader!../../../examples/IconSimple.js'),
+  iconSizes: require('!raw-loader!../../../examples/IconSizes.js'),
   iconLinksNavbar: require('!raw-loader!../../../examples/IconLinksNavbar.js'),
   iconPrefixesInput: require('!raw-loader!../../../examples/IconPrefixesInput.js'),
   inputCheckbox: require('!raw-loader!../../../examples/InputCheckbox.js'),

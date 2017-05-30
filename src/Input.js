@@ -235,7 +235,11 @@ Input.propTypes = {
   browserDefault: PropTypes.bool,
   onLabel: PropTypes.string,
   offLabel: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  /**
+   * Value used to set a initial value
+   */
+  value: PropTypes.string
 };
 
 Input.defaultProps = { type: 'text' };
