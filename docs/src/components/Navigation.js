@@ -6,9 +6,10 @@ import CollapsibleItem from 'CollapsibleItem';
 import Search from './Search';
 import routes from '../routes';
 
+const getPageTitle = () => window.location.hash.substring(2);
 const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
 const renderPageTitle = () => {
-  const title = window.location.hash.substring(2);
+  const title = getPageTitle();
   return title.length ? capitalize(title) : 'React Materialize'; // TODO fix
 };
 
@@ -68,8 +69,9 @@ const renderNav = () => (
 );
 
 const getActiveRoute = ({routes = []}) => {
+  const pageTitle = getPageTitle();
   return routes.length &&
-    routes.filter(r => r.path === window.location.pathname)
+    routes.filter(r => r.path.substr(1) === pageTitle);
 };
 
 const renderNavItems = (navItem, idx) => {
@@ -83,7 +85,7 @@ const renderNavItems = (navItem, idx) => {
       : <CollapsibleItem expanded={expanded} key={`route${idx}`} header={navItem.path}>
         <ul>{navItem.routes.map(renderSubNavItems)}</ul>
       </CollapsibleItem>
-  )
+  );
 };
 
 /* eslint-disable react/prop-types */
