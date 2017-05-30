@@ -31,6 +31,7 @@ class Navbar extends Component {
       left,
       right,
       href,
+      options,
       ...other
     } = this.props;
 
