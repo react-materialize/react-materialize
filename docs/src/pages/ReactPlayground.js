@@ -1,22 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/tomorrow.css';
+import {
+  LiveProvider,
+  LiveEditor,
+  LiveError,
+  LivePreview
+} from 'react-live';
+
+import * as RM from '../../../src/';
 
 const trimmer = (code) =>
   code.substring(code.indexOf('<') - 1).replace(/;/, '').trim();
 
-const ReactPlayground = ({ code, children, trim = true }) => {
+const ReactPlayground = ({ code, children, trim = true, editable = true }) => {
   const sample = trim ? trimmer(code) : code;
-  const highlight = hljs.highlightAuto(sample).value;
-  const markup = {__html: highlight};
 
   return (
     <div className='playground'>
-      {children}
-      <pre>
-        <code dangerouslySetInnerHTML={markup} />
-      </pre>
+      <LiveProvider code={sample} scope={RM}>
+        {editable && <LivePreview />}
+        <LiveEditor />
+        {editable && <LiveError />}
+      </LiveProvider>
     </div>
   );
 };
@@ -24,7 +29,8 @@ const ReactPlayground = ({ code, children, trim = true }) => {
 ReactPlayground.propTypes = {
   code: PropTypes.string.isRequired,
   trim: PropTypes.bool,
-  children: PropTypes.element
+  children: PropTypes.element,
+  editable: PropTypes.bool
 };
 
 export default ReactPlayground;
