@@ -29,6 +29,7 @@ export default {
   inputFields: require('!raw-loader!../../../examples/InputFields.js'),
   inputRadio: require('!raw-loader!../../../examples/InputRadio.js'),
   inputSwitch: require('!raw-loader!../../../examples/InputSwitch.js'),
+  inputDatepicker: require('!raw-loader!../../../examples/InputDatePicker.js'),
   largeButton: require('!raw-loader!../../../examples/LargeButton.js'),
   leftAlignedNavbar: require('!raw-loader!../../../examples/LeftAlignedNavbar.js'),
   mediaBox: require('!raw-loader!../../../examples/MediaBox.js'),
