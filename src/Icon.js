@@ -32,16 +32,16 @@ Icon.propTypes = {
   /*
    * Placement for icon if used beside a text ↓
    */
-  left: PropTypes.node,
-  center: PropTypes.node,
-  right: PropTypes.node,
+  left: PropTypes.bool,
+  center: PropTypes.bool,
+  right: PropTypes.bool,
   /*
    * Sizes for icons ↓
    */
-  tiny: PropTypes.node,
-  small: PropTypes.node,
-  medium: PropTypes.node,
-  large: PropTypes.node
+  tiny: PropTypes.bool,
+  small: PropTypes.bool,
+  medium: PropTypes.bool,
+  large: PropTypes.bool
 };
 
 export default Icon;
