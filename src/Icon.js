@@ -21,16 +21,27 @@ const Icon = (props) => {
 };
 
 Icon.propTypes = {
+  /*
+   * Classname passed to i tag
+   */
   className: PropTypes.string,
-  children: PropTypes.node
+  /*
+   * Icon type: <a href='https://material.io/icons/'>https://material.io/icons/</a>
+   */
+  children: PropTypes.string,
+  /*
+   * Placement for icon if used beside a text ↓
+   */
+  left: PropTypes.node,
+  center: PropTypes.node,
+  right: PropTypes.node,
+  /*
+   * Sizes for icons ↓
+   */
+  tiny: PropTypes.node,
+  small: PropTypes.node,
+  medium: PropTypes.node,
+  large: PropTypes.node
 };
-
-constants.PLACEMENTS.forEach(p => {
-  Icon.propTypes[p] = PropTypes.bool;
-});
-
-constants.ICON_SIZES.forEach(s => {
-  Icon.propTypes[s] = PropTypes.bool;
-});
 
 export default Icon;

@@ -23,6 +23,10 @@ class Input extends Component {
       $(this.selectInput).material_select();
       $(this.selectInput).on('change', this._onChange);
     }
+    if (this.isDatePicker) {
+      $(this.dateInput).pickadate(this.props.options);
+      $(this.dateInput).on('change', this._onChange);
+    }
   }
 
   componentDidUpdate () {
@@ -61,7 +65,7 @@ class Input extends Component {
       'default': e.target.value
     };
     const value = types[e.target.type] || types['default'];
-    if (onChange) { onChange(e); }
+    if (onChange) { onChange(e, value); }
 
     this.setState({ value });
   }
@@ -151,6 +155,24 @@ class Input extends Component {
           </select>
         </div>
       );
+    } else if (type === 'date') {
+      this.isDatePicker = true;
+      delete other.options;
+
+      return (
+        <div className={cx(classes)}>
+          <C
+            {...other}
+            className={cx(className, inputClasses)}
+            defaultValue={defaultValue}
+            id={this._id}
+            ref={(ref) => (this.dateInput = ref)}
+            placeholder={placeholder}
+            type='date'
+          />
+          {htmlLabel}
+        </div>
+      );
     } else if (type === 'switch') {
       return (
         <div className='switch'>
@@ -235,7 +257,12 @@ Input.propTypes = {
   browserDefault: PropTypes.bool,
   onLabel: PropTypes.string,
   offLabel: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  options: PropTypes.any,
+  /**
+   * Value used to set a initial value
+   */
+  value: PropTypes.string
 };
 
 Input.defaultProps = { type: 'text' };

@@ -2,7 +2,11 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { assert } from 'chai';
+import chai, { assert } from 'chai';
+import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
+
+chai.use(sinonChai);
 
 import Input from '../src/Input';
 import Icon from '../src/Icon';
@@ -78,5 +82,15 @@ describe('<Input />', () => {
       <Input className={className} />
     );
     assert.ok(wrapper.find('input').hasClass(className), `Didn't find ${className}`);
+  });
+
+  it('renders a datepicker', () => {
+    const spy = sinon.spy($.fn, 'pickadate');
+    const options = { one: 'two' };
+    wrapper = mount(
+      <Input type='date' options={options} />
+    );
+    expect(spy).to.have.been.calledWith(options);
+    spy.restore();
   });
 });

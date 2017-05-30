@@ -8,7 +8,7 @@ export default
 <Row>
   <Col s={12}>
     <Chip>
-      <image src='img/yuna.jpg' alt='Contact Person' />
+      <img src='img/yuna.jpg' alt='Contact Person' />
       Jane Doe
     </Chip>
     <Tag>tag</Tag>

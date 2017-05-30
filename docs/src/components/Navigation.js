@@ -8,7 +8,7 @@ import routes from '../routes';
 
 const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
 const renderPageTitle = () => {
-  const title = window.location.pathname.substring(1);
+  const title = window.location.hash.substring(2);
   return title.length ? capitalize(title) : 'React Materialize'; // TODO fix
 };
 
