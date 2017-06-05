@@ -93,4 +93,22 @@ describe('<Input />', () => {
     expect(spy).to.have.been.calledWith(options);
     spy.restore();
   });
+
+  it('renders a number picker without an active label', () => {
+    const label = 'I have a label';
+    wrapper = shallow(
+      <Input type='number' label={label} />
+    );
+    expect(wrapper.find('label').hasClass('active')).to.equal(false);
+  });
+
+  it('renders a number picker with an active label', () => {
+    const label = 'I have a label';
+    const value = 0;
+    wrapper = mount(
+      <Input type='number' label={label} value={value} />
+    );
+    expect(wrapper.props().value).to.equal(value);
+    expect(wrapper.find('label').hasClass('active')).to.equal(true);
+  });
 });
