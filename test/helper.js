@@ -1,5 +1,9 @@
 require('jsdom-global')();
 
+var chai = require('chai');
+var sinonChai = require('sinon-chai');
+chai.use(sinonChai);
+
 global.expect = require('chai').expect;
 
 global.$ = require('jquery');
