@@ -18,6 +18,12 @@ class Pagination extends Component {
     this._onClick = this._onClick.bind(this);
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.activePage !== this.props.activePage) {
+      this.setState({activePage: nextProps.activePage});
+    }
+  }
+
   _onClick (i) {
     const { items, onSelect } = this.props;
 
