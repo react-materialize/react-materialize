@@ -7,7 +7,7 @@ import sinon from 'sinon';
 import Input from '../src/Input';
 import Icon from '../src/Icon';
 
-describe.only('<Input />', () => {
+describe('<Input />', () => {
   it('renders a text input by default', () => {
     let wrapper = shallow(<Input />);
     expect(wrapper.find('input').prop('type')).to.equal('text');
