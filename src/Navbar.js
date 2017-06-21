@@ -28,6 +28,7 @@ class Navbar extends Component {
     const {
       brand,
       className,
+      fixed,
       left,
       right,
       href,
@@ -46,7 +47,7 @@ class Navbar extends Component {
       right: left
     };
 
-    return (
+    let content = (
       <nav {...other} className={className}>
         <div className='nav-wrapper'>
           <Col s={12}>
@@ -62,6 +63,12 @@ class Navbar extends Component {
         </div>
       </nav>
     );
+
+    if (fixed) {
+      content = <div className='navbar-fixed'>{content}</div>;
+    }
+
+    return content;
   }
 }
 
@@ -72,6 +79,10 @@ Navbar.propTypes = {
   left: PropTypes.bool,
   right: PropTypes.bool,
   href: PropTypes.string,
+  /**
+   * Makes the navbar fixed
+   */
+  fixed: PropTypes.bool,
   /**
    * Options hash for the sidenav.
    * More info: http://materializecss.com/side-nav.html#options
