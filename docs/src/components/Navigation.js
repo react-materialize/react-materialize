@@ -10,7 +10,7 @@ const getPageTitle = () => window.location.hash.substring(2);
 const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
 const renderPageTitle = () => {
   const title = getPageTitle();
-  return title.length ? capitalize(title) : 'React Materialize'; // TODO fix
+  return title.length ? capitalize(title) : 'Materialize'; // TODO fix
 };
 
 class Navigation extends React.Component {
@@ -34,8 +34,7 @@ class Navigation extends React.Component {
         {renderNav()}
         <div className='container'>
           <a href='#' data-activates='nav-mobile' className='button-collapse top-nav full hide-on-large-only'>
-            yo
-            <i className='mdi-navigation-menu' />
+            <i className='material-icons'>menu</i>
           </a>
         </div>
         <ul id='nav-mobile' className='side-nav fixed'>
