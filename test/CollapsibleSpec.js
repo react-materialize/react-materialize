@@ -1,4 +1,4 @@
-/* global describe, it */
+/* global describe, it, beforeEach, expect */
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
@@ -59,10 +59,12 @@ describe('<Collapsible />', () => {
   });
 
   describe('<CollapsibleItem />', () => {
-    it('renders', () => {
-      let wrapper = mount(
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = mount(
         <Collapsible accordion>
-          <CollapsibleItem header='First' icon='filter_drama'>
+          <CollapsibleItem header='First' icon='filter_drama' iconClassName='right'>
             Lorem ipsum dolor sit amet.
           </CollapsibleItem>
           <CollapsibleItem header='Second' icon='place'>
@@ -73,27 +75,23 @@ describe('<Collapsible />', () => {
           </CollapsibleItem>
         </Collapsible>
       );
+    });
 
+    it('renders', () => {
       assert.strictEqual(wrapper.find('div.collapsible-header').length, 3);
     });
 
-    describe('each collapsible item', () => {
-      const wrapper = mount(
-        <CollapsibleItem header='First' icon='filter_drama' iconClassName='right'>
-          Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
-      );
-      it('accepts icon props', () => {
-        assert(wrapper.contains(<i className='material-icons right'>filter_drama</i>), 'with rendered icon');
-      });
+    it('accepts icon props', () => {
+      assert(wrapper.contains(<i className='material-icons right'>filter_drama</i>), 'with rendered icon');
+    });
 
-      it('expands on click', () => {
-        const header = wrapper.find('.collapsible-header');
-        header.simulate('click');
+    it('expands if expanded prop is true', () => {
+      const firstChild = wrapper.find('.collapsible-header').first();
 
-        assert.equal(wrapper.state('expanded'), true);
-        assert(wrapper.find('.collapsible-body').length);
-      });
+      expect(wrapper.state()['activeKey']).to.eq('');
+      firstChild.simulate('click');
+      expect(wrapper.state()['activeKey']).to.eq('key0');
+      expect(firstChild.hasClass('active')).to.eq(true);
     });
   });
 });
