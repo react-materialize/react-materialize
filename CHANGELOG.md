@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+ - Fixes #143 - Pagination bug + specs
+
 ## 1.0.1
 
  - Changes Icon props to bool instead of node
