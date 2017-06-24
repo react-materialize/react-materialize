@@ -6,12 +6,9 @@ import CollapsibleItem from 'CollapsibleItem';
 import Search from './Search';
 import routes from '../routes';
 
-const getPageTitle = () => window.location.hash.substring(2);
+const isMobile = () => ($(window).width() < 993);
+const getPageTitle = () => window.location.hash.substring(2) || 'react materialize';
 const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
-const renderPageTitle = () => {
-  const title = getPageTitle();
-  return title.length ? capitalize(title) : 'React Materialize'; // TODO fix
-};
 
 class Navigation extends React.Component {
   constructor (props) {
@@ -22,7 +19,7 @@ class Navigation extends React.Component {
 
   componentDidMount () {
     $('.button-collapse').sideNav({
-      closeOnClick: true,
+      closeOnClick: isMobile,
       edge: 'left'
     });
   }
@@ -56,18 +53,6 @@ class Navigation extends React.Component {
     );
   }
 }
-
-const renderNav = () => (
-  <nav className='top-nav'>
-    <div className='container' >
-      <div className='nav-wrapper'>
-        <a className='page-title'>
-          { renderPageTitle() }
-        </a>
-      </div>
-    </div>
-  </nav>
-);
 
 const getActiveRoute = ({routes = []}) => {
   const pageTitle = getPageTitle();
