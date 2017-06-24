@@ -21,7 +21,10 @@ class Navigation extends React.Component {
   }
 
   componentDidMount () {
-    $('.button-collapse').sideNav({edge: 'left'});
+    $('.button-collapse').sideNav({
+      closeOnClick: true,
+      edge: 'left'
+    });
   }
 
   onChange (title) {
