@@ -23,6 +23,10 @@ a.button-collapse.top-nav.full {
   line-height: 80px;
 }
 
+.side-nav.fixed .collapsible {
+  padding-bottom: 50px;
+}
+
 .side-nav.fixed .collapsible-body>ul:not(.collapsible)>li a.active {
   color: white;
   background-color: #38435a;
