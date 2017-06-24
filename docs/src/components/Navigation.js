@@ -31,11 +31,9 @@ class Navigation extends React.Component {
   render () {
     return (
       <header>
-        {renderNav()}
         <div className='container'>
           <a href='#' data-activates='nav-mobile' className='button-collapse top-nav full hide-on-large-only'>
-            yo
-            <i className='mdi-navigation-menu' />
+            <i className='material-icons'>menu</i>
           </a>
         </div>
         <ul id='nav-mobile' className='side-nav fixed'>
