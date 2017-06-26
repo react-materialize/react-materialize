@@ -7,7 +7,7 @@ const PaginationButton = ({
   children,
   className,
   disabled = false,
-  href = '#',
+  href,
   onSelect
 }) => {
   const classes = {
@@ -16,9 +16,11 @@ const PaginationButton = ({
     active
   };
 
+  const linkProps = href ? { href } : null;
+
   return (
     <li className={cx(classes, className)} onClick={onSelect}>
-      <a href={href}>{children}</a>
+      <a {...linkProps}>{children}</a>
     </li>
   );
 };

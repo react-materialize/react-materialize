@@ -8,6 +8,25 @@ nav, footer.page-footer,
   background-color: #38435a;
 }
 
+#index-banner {
+  background-color: #38435a;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 992px) {
+  #index-banner h1 {
+    margin-top: 30px;
+  }
+}
+
+a.button-collapse.top-nav.full {
+  line-height: 80px;
+}
+
+.side-nav.fixed .collapsible {
+  padding-bottom: 50px;
+}
+
 .side-nav.fixed .collapsible-body>ul:not(.collapsible)>li a.active {
   color: white;
   background-color: #38435a;
