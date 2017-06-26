@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.3
+
+ - Fixes PaginationButton issue with ReactRouter
+ - Row can receive custom props
+ - Navbar new prop fixed
+ - Minor fixes
+
 ## 1.0.2
 
  - Fixes #143 - Pagination bug + specs
