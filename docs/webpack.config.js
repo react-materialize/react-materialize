@@ -41,7 +41,8 @@ const common = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.ejs'
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
   externals: {
     jquery: 'jQuery',
@@ -122,9 +123,7 @@ const prodConfig = {
 
 const statsConfig = {
   plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static'
-    })
+    new BundleAnalyzerPlugin({ analyzerMode: 'static' })
   ]
 };
 
@@ -132,14 +131,6 @@ const configs = {
   start: merge(devConfig, common),
   stats: merge(prodConfig, statsConfig, common),
   build: merge(prodConfig, common)
-}
+};
 
 module.exports = configs[TARGET];
-
-// if (TARGET === 'start') {
-//   module.exports = merge(devConfig, common);
-// } else if (TARGET === 'stats') {
-//   module.exports = merge(prodConfig, statsConfig, common);
-// } else {
-//   module.exports = merge(prodConfig, common);
-// }
