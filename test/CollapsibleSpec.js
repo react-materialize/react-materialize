@@ -1,4 +1,4 @@
-/* global describe, it, beforeEach, expect */
+/* global describe, it, beforeEach, expect, context */
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
@@ -92,6 +92,13 @@ describe('<Collapsible />', () => {
       firstChild.simulate('click');
       expect(wrapper.state()['activeKey']).to.eq('key0');
       expect(firstChild.hasClass('active')).to.eq(true);
+    });
+
+    context('with node prop', () => {
+      it('changes the child node to the supplied', () => {
+        const wrapper = shallow(<CollapsibleItem node='div' header='Hi' />);
+        expect(wrapper.childAt(1).type()).to.eq('div');
+      });
     });
   });
 });
