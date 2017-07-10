@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+ - Fix issue with `striped` prop in Table Component (bodunadebiyi)
+
 ## 1.0.3
 
  - Fixes PaginationButton issue with ReactRouter
