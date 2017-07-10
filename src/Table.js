@@ -11,7 +11,7 @@ class Table extends Component {
       className,
       hoverable,
       responsive,
-      stripped,
+      striped,
       ...props
     } = this.props;
 
@@ -19,7 +19,7 @@ class Table extends Component {
       centered: centered,
       highlight: hoverable,
       'responsive-table': responsive,
-      stripped: stripped,
+      striped: striped,
       bordered: bordered
     };
 
@@ -50,10 +50,10 @@ Table.propTypes = {
   */
   responsive: PropTypes.bool,
   /**
-  * Stripped style
+  * striped style
   * @default false
   */
-  stripped: PropTypes.bool,
+  striped: PropTypes.bool,
   /**
   * Add border to each row
   * @default false
