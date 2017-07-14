@@ -2,6 +2,7 @@ import Autocomplete from './Autocomplete';
 import Badge from './Badge';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
+import Carousel from './Carousel';
 import Card from './Card';
 import CardPanel from './CardPanel';
 import CardTitle from './CardTitle';
@@ -47,6 +48,7 @@ export {
   Badge,
   Breadcrumb,
   Button,
+  Carousel,
   Card,
   CardPanel,
   CardTitle,
