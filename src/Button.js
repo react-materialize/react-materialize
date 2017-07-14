@@ -111,10 +111,10 @@ Button.propTypes = {
   icon: PropTypes.string,
   modal: PropTypes.oneOf(['close', 'confirm']),
   node: PropTypes.node,
+  onClick: PropTypes.func,
   /**
    * Tooltip to show when mouse hovered
    */
-  onClick: PropTypes.func,
   tooltip: PropTypes.string,
   waves: PropTypes.oneOf(['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal']),
   /**
