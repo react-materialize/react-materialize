@@ -29,6 +29,10 @@ class Button extends Component {
 
     const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
+    if (node === undefined && this.props.href !== undefined) {
+      C = 'a';
+    }
+
     let classes = {
       btn: true,
       disabled,
@@ -115,6 +119,10 @@ Button.propTypes = {
   /**
    * Tooltip to show when mouse hovered
    */
+  /**
+   * If present the button is rendered as link with the given href
+   */
+  href: PropTypes.string,
   tooltip: PropTypes.string,
   waves: PropTypes.oneOf(['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal']),
   /**

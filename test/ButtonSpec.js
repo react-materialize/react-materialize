@@ -45,6 +45,16 @@ describe('Button', () => {
     expect(wrapper.find('.fixed-action-btn active'));
   });
 
+  it('should turn to link if href is present', () => {
+    wrapper = shallow(<Button href='foo'>Stuff</Button>);
+    expect(wrapper.find('a'));
+  });
+
+  it('should respect node if href is present', () => {
+    wrapper = shallow(<Button href='foo' node='button' >Stuff</Button>);
+    expect(wrapper.find('button'));
+  });
+
   context('with a disabled prop', () => {
     let wrapper = mount(<Button disabled>Stuff</Button>);
     it('should have a disabled class', () => {

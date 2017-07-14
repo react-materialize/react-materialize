@@ -15,7 +15,7 @@ const ButtonsPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
       <p className='caption'>
-        There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals.
+        There are 3 main button types described in material design. The raised button is a standard button that signify actions and seek to give depth to a mostly flat page. The floating circular action button is meant for very important functions. Flat buttons are usually used within elements that already have depth like cards or modals. All buttons can be turned into links by adding the href property.
       </p>
       <h4 className='col s12'>
         Raised
