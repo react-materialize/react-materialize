@@ -1,9 +1,9 @@
 import React from 'react';
 import Row from 'Row';
 import Col from 'Col';
+import Section from 'Section';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import Samples from './Samples';
 import CarouselCode from '!raw-loader!Carousel';
 
 const header = 'Carousel';
@@ -13,26 +13,26 @@ const desc = `Our Carousel is a robust and versatile component that can be an im
 
 const CarouselPage = () => (
   <Row>
-    <Col m={9} s={12} l={10}>
-      <p className='caption'>{desc}</p>
+    <Col s={12} l={10}>
+      <Section>
+        <p className='caption'>{desc}</p>
+        <h4 className='col s12'>Image Carousel</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/CarouselBasic.js')} />
+      </Section>
 
-      <h4 className='col s12'>Image Carousel</h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.carouselBasic} />
-      </Col>
+      <Section>
+        <h4 className='col s12'>Full Width Slider</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/CarouselFullWidth.js')} />
+      </Section>
 
-      <h4 className='col s12'>Full Width Slider</h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.carouselFullWidth} />
-      </Col>
-
-      <h4 className='col s12'>Content Carousel</h4>
-      <Col s={12}>
+      <Section>
+        <h4 className='col s12'>Content Carousel</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/CarouselContent.js')} />
-      </Col>
-      <Col s={12}>
+      </Section>
+
+      <Section>
         <PropTable header={header} component={CarouselCode} />
-      </Col>
+      </Section>
     </Col>
   </Row>
 );
