@@ -26,6 +26,11 @@ const CarouselPage = () => (
       </Section>
 
       <Section>
+        <h4 className='col s12'>Full Width Slider with Fixed Item</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/CarouselFullWidthFixedItem.js')} />
+      </Section>
+
+      <Section>
         <h4 className='col s12'>Content Carousel</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/CarouselContent.js')} />
       </Section>
