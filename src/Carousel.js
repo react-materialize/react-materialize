@@ -6,7 +6,6 @@ class Carousel extends React.Component {
   constructor (props) {
     super(props);
 
-    this.listenToNavigation = this.listenToNavigation.bind(this);
     this.renderFixedItem = this.renderFixedItem.bind(this);
   }
 
@@ -15,21 +14,18 @@ class Carousel extends React.Component {
 
     if (typeof $ !== 'undefined') {
       $(this._carousel).carousel(options);
-      this.listenToNavigation();
     }
-  }
-
-  listenToNavigation () {
-    // const { next, prev, set } = this.props;
   }
 
   renderItems (child, idx) {
     if (typeof child === 'string') {
       return (
-        <a className='carousel-item' href={`#${idx}!`} ><img src={child} /></a>
+        <a className='carousel-item'><img src={child} /></a>
       );
     }
-    return React.cloneElement(child, { className: 'carousel-item' });
+    return React.cloneElement(child, {
+      className: cx(child.props.className, 'carousel-item')
+    });
   }
 
   renderFixedItem () {
@@ -76,7 +72,8 @@ Carousel.propTypes = {
   */
   carouselId: PropTypes.string,
   /*
-  * Carousel initialization options
+   * Carousel initialization options
+   * <a href="http://materializecss.com/carousel.html">http://materializecss.com/carousel.html</a>
   */
   options: PropTypes.shape({
     /*
