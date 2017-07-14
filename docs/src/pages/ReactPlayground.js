@@ -12,7 +12,7 @@ import * as RM from '../../../src/';
 const trimmer = (code) =>
   code.substring(code.indexOf('<') - 1).replace(/;/, '').trim();
 
-const ReactPlayground = ({ code, children, trim = true, editable = true }) => {
+const ReactPlayground = ({ code, trim = true, editable = true }) => {
   const sample = trim ? trimmer(code) : code;
 
   return (
@@ -29,7 +29,6 @@ const ReactPlayground = ({ code, children, trim = true, editable = true }) => {
 ReactPlayground.propTypes = {
   code: PropTypes.string.isRequired,
   trim: PropTypes.bool,
-  children: PropTypes.element,
   editable: PropTypes.bool
 };
 
