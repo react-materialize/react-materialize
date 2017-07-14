@@ -10,7 +10,7 @@ const renderer = (props, action = 'shallow') => {
   return actions[action](<Carousel {...props} />);
 };
 
-describe.only('<Carousel />', () => {
+describe('<Carousel />', () => {
   let wrapper;
   const carouselStub = sinon.stub($.fn, 'carousel');
   const images = [
@@ -25,7 +25,6 @@ describe.only('<Carousel />', () => {
     expect(wrapper.find('.carousel').length).to.eq(1);
     expect(wrapper.find('a.carousel-item').length).to.eq(4);
     expect(wrapper.find('a.carousel-item').last().find('img').props().src).to.eq(images[images.length - 1]);
-    expect(wrapper.find('a.carousel-item').first().props().href).to.eq(`#0!`);
   });
 
   it('handles full width sliders', () => {
@@ -42,10 +41,9 @@ describe.only('<Carousel />', () => {
   });
 
   it('handles content slides', () => {
-    const child = <div><h2>First Panel</h2><p>This is your first panel</p></div>;
+    const child = <div className='red'><h2>First Panel</h2><p>This is your first panel</p></div>;
     wrapper = renderer({ children: child });
-    expect(wrapper.find('.carousel-item').length).to.eq(1);
-    expect(wrapper.containsMatchingElement(child)).to.eq(true);
+    expect(wrapper.find('.carousel-item.red').length).to.eq(1);
   });
 
   it('accepts className props', () => {
