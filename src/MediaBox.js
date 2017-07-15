@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const MediaBox = ({ src, className, caption, ...props }) =>
-  <img className={cx('materialboxed', className)} data-caption={caption} src={src} {...props} />;
+class MediaBox extends Component {
+  componentDidMount () {
+    $('.materialboxed').materialbox();
+  }
+
+  render () {
+    const { src, className, caption, ...props } = this.props;
+
+    return (
+      <img className={cx('materialboxed', className)} data-caption={caption} src={src} {...props} />
+    );
+  }
+}
 
 MediaBox.propTypes = {
   className: PropTypes.string,
