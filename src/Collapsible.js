@@ -40,14 +40,13 @@ class Collapsible extends Component {
 
   renderItem (child, key) {
     if (!child) return null;
-    const eventKey = `key${key}`;
-
-    const props = {};
+    const props = {
+      expanded: this.state.activeKey === `key${key}`,
+      onSelect: this.handleSelect
+    };
 
     if (this.props.accordion) {
-      props.expanded = this.state.activeKey === eventKey;
-      props.onSelect = this.handleSelect;
-      props.eventKey = eventKey;
+      props.eventKey = null;
     }
 
     return React.cloneElement(child, props);
