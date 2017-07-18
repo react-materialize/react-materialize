@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5
+
+ - Add <Carousel />
+ - Fix <MediaBox /> not initialized bug (pokeguys)
+ - Fix <Button /> documentation (ruediste)
+
 ## 1.0.4
 
  - Fix issue with `striped` prop in Table Component (bodunadebiyi)
