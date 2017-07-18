@@ -4,6 +4,7 @@ import TablesPage from './pages/TablesPage';
 import Grid from './pages/GridPage';
 
 // js components
+import CarouselPage from './pages/CarouselPage';
 import CollapsiblePage from './pages/CollapsiblesPage';
 import DropdownPage from './pages/DropdownPage';
 import MediaPage from './pages/MediaPage';
@@ -31,6 +32,7 @@ const cssComponents = {
 };
 
 const jsComponents = {
+  carousel: CarouselPage,
   collapsible: CollapsiblePage,
   dropdown: DropdownPage,
   media: MediaPage,
