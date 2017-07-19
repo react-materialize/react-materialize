@@ -65,4 +65,11 @@ describe('Button', () => {
       expect(wrapper.prop('disabled')).to.equal(true);
     });
   });
+  context('with a propertyCustomizer', () => {
+    Button.propertyCustomizer = props => Object.assign({}, props, {waves: 'light'});
+    let wrapper = mount(<Button >Stuff</Button>);
+    it('should apply waves', () => {
+      expect(wrapper.find('.waves-effect')).to.have.length(1);
+    });
+  });
 });

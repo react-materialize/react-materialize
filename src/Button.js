@@ -10,6 +10,11 @@ class Button extends Component {
     super(props);
     this.renderIcon = this.renderIcon.bind(this);
     this.renderFab = this.renderFab.bind(this);
+    this.customizedProps = Button.propertyCustomizer(props);
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.customizedProps = Button.propertyCustomizer(newProps);
   }
 
   render () {
@@ -25,11 +30,11 @@ class Button extends Component {
       disabled,
       waves,
       ...other
-    } = this.props;
+    } = this.customizedProps;
 
     const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
-    if (node === undefined && this.props.href !== undefined) {
+    if (node === undefined && this.customizedProps.href !== undefined) {
       C = 'a';
     }
 
@@ -59,11 +64,11 @@ class Button extends Component {
         <C
           {...other}
           disabled={!!disabled}
-          onClick={this.props.onClick}
+          onClick={this.customizedProps.onClick}
           className={cx(classes, className)}
         >
           { this.renderIcon() }
-          { this.props.children }
+          { this.customizedProps.children }
         </C>
       );
     }
@@ -76,7 +81,7 @@ class Button extends Component {
         <a className={className}>{ this.renderIcon() }</a>
         <ul>
           {
-            React.Children.map(this.props.children, child => {
+            React.Children.map(this.customizedProps.children, child => {
               return <li key={idgen()}>{child}</li>;
             })
           }
@@ -86,7 +91,7 @@ class Button extends Component {
   }
 
   renderIcon () {
-    const { icon } = this.props;
+    const { icon } = this.customizedProps;
     if (!icon) return;
 
     return <Icon>{icon}</Icon>;
@@ -135,5 +140,11 @@ Button.propTypes = {
 Button.defaultProps = {
   node: 'button'
 };
+
+/*
+* Callback to customize the properties of the button. Takes the new properties as
+* argument and returns the properties
+*/
+Button.propertyCustomizer = props => props;
 
 export default Button;

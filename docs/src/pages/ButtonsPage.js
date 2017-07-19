@@ -49,6 +49,14 @@ const ButtonsPage = () => (
           {horizontalFab}
         </ReactPlayground>
       </Col>
+      <h4 className='col s12'>
+        Property Customizer
+      </h4>
+      <Col s={12}>
+      The properites of all buttons can be customized application wide using a callback. To achieve this,
+      set <code>Button.propertyCustomizer</code> to your callback somewhere in <code> App.js </code> or
+      <code> index.js </code>
+      </Col>
 
       <Col s={12}>
         <PropTable header='Buttons' component={ButtonCode} />
