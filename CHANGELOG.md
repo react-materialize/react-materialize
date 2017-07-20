@@ -2,6 +2,7 @@
 
 ## 1.0.6
 
+ - Add sample of button used as link to docs (ruediste)
  - Pass className to dropdown trigger
 
 ## 1.0.5
