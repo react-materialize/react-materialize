@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6
+
+ - Pass className to dropdown trigger
+
 ## 1.0.5
 
  - Add <Carousel />
