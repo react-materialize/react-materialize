@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "stats": "webpack-dev-server"
+    "stats": "webpack-dev-server",
+    "prerelease": "cp -R assets/* ../../react-materialize.github.io"
   },
   "repository": "https://github.com/react-materialize/react-materialize.git",
   "author": "Alexander Odell <alextrastero@gmail.com>",
