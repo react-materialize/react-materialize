@@ -10,6 +10,7 @@ import raisedButton from '../../../examples/RaisedButton';
 import fixedActionButton from '../../../examples/FixedActionButton';
 import floatingButton from '../../../examples/FloatingButton';
 import horizontalFab from '../../../examples/HorizontalFAB';
+import buttonAsLink from '../../../examples/ButtonAsLink';
 
 const ButtonsPage = () => (
   <Row>
@@ -49,7 +50,14 @@ const ButtonsPage = () => (
           {horizontalFab}
         </ReactPlayground>
       </Col>
-
+      <h4 className='col s12'>
+        Button as Link
+      </h4>
+      <Col s={12}>
+        <ReactPlayground code={Samples.buttonAsLink}>
+          {buttonAsLink}
+        </ReactPlayground>
+      </Col>
       <Col s={12}>
         <PropTable header='Buttons' component={ButtonCode} />
       </Col>
