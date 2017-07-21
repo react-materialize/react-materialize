@@ -18,18 +18,22 @@ const ModalsPage = () => (
         <h4>Basic</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/Modal.js')} />
       </Section>
+
       <Section>
         <h4>bottomSheet</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/ModalWithBottomSheet.js')} />
       </Section>
+
       <Section>
         <h4>fixedFooter</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/ModalWithFixedFooter.js')} />
       </Section>
+
       <Section>
         <h4>No trigger</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/ModalNoTrigger.js')} />
       </Section>
+
       <Section>
         <PropTable component={Code} header={header} />
       </Section>
