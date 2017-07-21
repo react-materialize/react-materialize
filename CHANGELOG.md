@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.7
+
+ - Change CollapsibleItem header prop type to 'any'
+
 ## 1.0.6
 
  - Add sample of button used as link to docs (ruediste)
