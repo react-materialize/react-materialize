@@ -4,11 +4,11 @@ import cx from 'classnames';
 
 class Tooltip extends Component {
   componentDidMount () {
-    $(this._tooltipped).tooltip();
+    $('.tooltipped').tooltip();
   }
 
   componentWillUnmount () {
-    $(this._tooltipped).tooltip('remove');
+    $('.tooltipped').tooltip('remove');
   }
 
   render () {
@@ -25,7 +25,6 @@ class Tooltip extends Component {
       'data-delay': delay,
       'data-position': position,
       'data-html': html,
-      'ref': (obj) => { this._tooltipped = obj; },
       className: cx(children.props.className, 'tooltipped')
     });
   }
