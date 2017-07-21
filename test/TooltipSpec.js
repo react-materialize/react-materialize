@@ -30,7 +30,7 @@ describe('Tooltip', () => {
     assert.ok(wrapper.find('button').length);
   });
 
-  it('should convert into child classes', () => {
+  it('should contain child classes', () => {
     const { wrapper } = setup({ tooltip: '123' });
     assert.ok(wrapper.find('button').hasClass('btn'));
   });
