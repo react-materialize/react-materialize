@@ -188,6 +188,18 @@ class Input extends Component {
           </label>
         </div>
       );
+    } else if (type === 'file') {
+      return (
+        <div className="file-field input-field">
+          <div className="btn">
+            <span>{label}</span>
+            <input type="file"   multiple={multiple} onChange={this._onChange} {...other}/>
+          </div>
+          <div className="file-path-wrapper">
+            <input className="file-path validate" type="text"/>
+          </div>
+        </div>
+      );
     } else {
       let defaultValue = inputType !== 'checkbox' && inputType !== 'radio'
         ? this.state.value
