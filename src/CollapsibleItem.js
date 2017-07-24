@@ -83,7 +83,7 @@ class CollapsibleItem extends Component {
 }
 
 CollapsibleItem.propTypes = {
-  header: PropTypes.string.isRequired,
+  header: PropTypes.any.isRequired,
   icon: PropTypes.string,
   iconClassName: PropTypes.string,
   children: PropTypes.node,
