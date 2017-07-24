@@ -1,41 +1,42 @@
 import React from 'react';
 import Row from 'Row';
+import Section from 'Section';
 import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import Samples from './Samples';
-import modal from '../../../examples/Modal';
-import modalWithBottomSheet from '../../../examples/ModalWithBottomSheet';
-import modalWithFixedFooter from '../../../examples/ModalWithFixedFooter';
 import Code from '!raw-loader!Modal';
+
+const header = 'Modal';
+const desc = `Use a modal for dialog boxes, confirmation messages,
+  or other content that can be called up.`;
 
 const ModalsPage = () => (
   <Row>
-    <Col m={9} s={12} l={10}>
-      <p className='caption'>
-        Use a modal for dialog boxes, confirmation messages, or other content that can be called up.
-      </p>
-      <Col s={12}>
-        <ReactPlayground code={Samples.modal}>
-          {modal}
-        </ReactPlayground>
-      </Col>
+    <Col s={12}>
+      <Section>
+        <p className='caption'>{desc}</p>
+        <h4>Basic</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/Modal.js')} />
+      </Section>
 
-      <Col s={12}>
-        <ReactPlayground code={Samples.modalWithBottomSheet}>
-          {modalWithBottomSheet}
-        </ReactPlayground>
-      </Col>
+      <Section>
+        <h4>bottomSheet</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/ModalWithBottomSheet.js')} />
+      </Section>
 
-      <Col s={12}>
-        <ReactPlayground code={Samples.modalWithFixedFooter}>
-          {modalWithFixedFooter}
-        </ReactPlayground>
-      </Col>
+      <Section>
+        <h4>fixedFooter</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/ModalWithFixedFooter.js')} />
+      </Section>
 
-      <Col s={12}>
-        <PropTable component={Code} header='Modal' />
-      </Col>
+      <Section>
+        <h4>No trigger</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/ModalNoTrigger.js')} />
+      </Section>
+
+      <Section>
+        <PropTable component={Code} header={header} />
+      </Section>
     </Col>
   </Row>
 );
