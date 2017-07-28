@@ -11,6 +11,7 @@ import MediaPage from './pages/MediaPage';
 import ModalsPage from './pages/ModalsPage';
 import SideNavPage from './pages/SideNavPage';
 import TabsPage from './pages/TabsPage';
+import ToastPage from './pages/ToastPage';
 
 // components
 import BadgesPage from './pages/BadgesPage';
@@ -26,6 +27,7 @@ import NavbarPage from './pages/NavbarPage';
 import PaginationPage from './pages/PaginationPage';
 import PreloaderPage from './pages/PreloaderPage';
 
+
 const cssComponents = {
   grid: Grid,
   table: TablesPage
@@ -38,7 +40,8 @@ const jsComponents = {
   media: MediaPage,
   modals: ModalsPage,
   sidenav: SideNavPage,
-  tabs: TabsPage
+  tabs: TabsPage,
+  toast:ToastPage
 };
 
 const components = {
