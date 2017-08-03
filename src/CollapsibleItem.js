@@ -31,7 +31,6 @@ class CollapsibleItem extends Component {
   }
 
   render () {
-    console.log("expanded=", this.state.expanded);
     const {
       node,
       header,
