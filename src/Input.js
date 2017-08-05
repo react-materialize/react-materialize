@@ -75,6 +75,7 @@ class Input extends Component {
       browserDefault,
       children,
       className,
+	  labelClassName,
       defaultValue,
       error,
       label,
@@ -125,7 +126,7 @@ class Input extends Component {
 
     let htmlLabel = label || inputType === 'radio'
       ? <label
-        className={cx(labelClasses)}
+        className={cx(labelClasses, labelClassName)}
         data-success={success}
         data-error={error}
         htmlFor={this._id}
@@ -239,6 +240,7 @@ Input.propTypes = {
   l: PropTypes.number,
   children: PropTypes.node,
   className: PropTypes.string,
+  labelClassName: PropTypes.string,
   label: PropTypes.node,
   error: PropTypes.string,
   success: PropTypes.string,
