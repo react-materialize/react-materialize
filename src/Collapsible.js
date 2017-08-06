@@ -7,7 +7,7 @@ class Collapsible extends Component {
     super(props);
 
     this.state = {
-      activeKey: props.defaultActiveKey || ''
+      activeKey: props.defaultActiveKey
     };
 
     this.renderItem = this.renderItem.bind(this);
@@ -41,13 +41,10 @@ class Collapsible extends Component {
   renderItem (child, key) {
     if (!child) return null;
     const props = {
-      expanded: this.state.activeKey === `key${key}`,
+      expanded: this.state.activeKey === key,
+      eventKey: key,
       onSelect: this.handleSelect
     };
-
-    if (this.props.accordion) {
-      props.eventKey = null;
-    }
 
     return React.cloneElement(child, props);
   }
@@ -55,14 +52,13 @@ class Collapsible extends Component {
   handleSelect (key) {
     const { onSelect } = this.props;
 
-    if (onSelect) {
-      onSelect(key);
-    }
-    if (this.state.activeKey === key) {
-      key = null;
-    }
+    if (onSelect) { onSelect(key); }
 
-    this.setState({ activeKey: key });
+    if (this.state.activeKey === key) { key = null; }
+
+    if (this.props.accordion) {
+      this.setState({ activeKey: key });
+    }
   }
 }
 
