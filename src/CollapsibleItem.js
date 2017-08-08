@@ -8,7 +8,8 @@ class CollapsibleItem extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      expanded: props.expanded
+      expanded: props.expanded,
+      headerStyle: props.headerStyle
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -19,6 +20,10 @@ class CollapsibleItem extends Component {
   componentWillReceiveProps (nextProps) {
     if (this.state.expanded !== nextProps.expanded) {
       this.setState({ expanded: nextProps.expanded });
+    }
+    
+    if (this.state.headerStyle !== nextProps.headerStyle) {
+      this.setState({ headerStyle: nextProps.headerStyle });
     }
   }
 
@@ -41,8 +46,10 @@ class CollapsibleItem extends Component {
     } = this.props;
 
     const { expanded } = this.state;
+    const { headerStyle } = this.state;
 
     delete props.expanded;
+    delete props.headerStyle;
     delete props.eventKey;
 
     const C = node;
@@ -56,7 +63,7 @@ class CollapsibleItem extends Component {
 
     return (
       <li className={cx(liClasses, className)} {...props}>
-        <C className={cx(headerClasses)} onClick={this.handleClick}>
+        <C className={cx(headerClasses)} onClick={this.handleClick} style={headerStyle}>
           {icon && this.renderIcon(icon, iconClassName)}
           {header}
         </C>
@@ -117,7 +124,8 @@ CollapsibleItem.propTypes = {
 
 CollapsibleItem.defaultProps = {
   expanded: false,
-  node: 'a'
+  node: 'a',
+  style: {}
 };
 
 export default CollapsibleItem;
