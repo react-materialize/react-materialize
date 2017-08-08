@@ -3,7 +3,7 @@ import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 
 export default
-<Collapsible popout>
+<Collapsible popout defaultActiveKey={1}>
   <CollapsibleItem header='First' icon='filter_drama'>
     Lorem ipsum dolor sit amet.
   </CollapsibleItem>
