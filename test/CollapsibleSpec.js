@@ -74,7 +74,7 @@ describe('<Collapsible />', () => {
         </Collapsible>
       );
 
-      assert.strictEqual(wrapper.find('a.collapsible-header').length, 3);
+      assert.strictEqual(wrapper.find('div.collapsible-header').length, 3);
     });
 
     describe('each collapsible item', () => {
