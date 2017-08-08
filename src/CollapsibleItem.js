@@ -16,6 +16,12 @@ class CollapsibleItem extends Component {
     this.renderIcon = this.renderIcon.bind(this);
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (this.state.expanded !== nextProps.expanded) {
+      this.setState({ expanded: nextProps.expanded });
+    }
+  }
+
   componentDidUpdate () {
     const { scroll, expanded } = this.props;
 
