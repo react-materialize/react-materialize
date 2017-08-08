@@ -14,6 +14,10 @@ class Collapsible extends Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
+  componentDidMount () {
+    $(this._collapsible).collapsible();
+  }
+
   render () {
     const {
       accordion,
@@ -32,7 +36,7 @@ class Collapsible extends Component {
     const collapsible = accordion ? 'accordion' : 'expandable';
 
     return (
-      <ul className={cx(className, classes)} {...props} data-collapsible={collapsible}>
+      <ul ref={(node) => { this._collapsible = node; }} className={cx(className, classes)} {...props} data-collapsible={collapsible}>
         {React.Children.map(children, this.renderItem)}
       </ul>
     );
