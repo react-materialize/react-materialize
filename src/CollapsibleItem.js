@@ -54,7 +54,7 @@ class CollapsibleItem extends Component {
           {icon && this.renderIcon(icon, iconClassName)}
           {header}
         </C>
-        {expanded && this.renderBody()}
+        {this.renderBody()}
       </li>
     );
   }
@@ -71,7 +71,7 @@ class CollapsibleItem extends Component {
 
   renderBody () {
     return (
-      <div className='collapsible-body' style={{ display: 'block' }}>
+      <div className='collapsible-body' style={{ display: 'none' }}>
         {this.props.children}
       </div>
     );
@@ -111,7 +111,7 @@ CollapsibleItem.propTypes = {
 
 CollapsibleItem.defaultProps = {
   expanded: false,
-  node: 'a'
+  node: 'div'
 };
 
 export default CollapsibleItem;
