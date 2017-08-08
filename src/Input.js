@@ -1,6 +1,4 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
@@ -8,8 +6,9 @@ import constants from './constants';
 import Icon from './Icon';
 
 class Input extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
+
     this.state = {
       value: props.value || props.defaultValue
     };
@@ -19,7 +18,7 @@ class Input extends Component {
     this.isSelect = this.isSelect.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.isMaterialSelect()) {
       $(this.selectInput).material_select();
       $(this.selectInput).on('change', this._onChange);
@@ -30,13 +29,13 @@ class Input extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     if (this.isMaterialSelect() && !this.props.multiple) {
       $(this.selectInput).material_select();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.isMaterialSelect()) {
       this.setState({
         value: nextProps.defaultValue
@@ -44,15 +43,13 @@ class Input extends Component {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     if (this.isMaterialSelect()) {
       $(this.selectInput).off('change', this._onChange);
     }
   }
 
-  getMultipleValues({
-    options
-  }) {
+  getMultipleValues ({ options }) {
     if (!options) {
       return;
     }
@@ -60,31 +57,25 @@ class Input extends Component {
     return Array.from(options).filter(opt => opt.selected).map(opt => opt.value);
   }
 
-  _onChange(e) {
-    const {
-      onChange
-    } = this.props;
+  _onChange (e) {
+    const { onChange } = this.props;
     var types = {
       'checkbox': e.target.checked,
       'select-multiple': this.getMultipleValues(e.target),
       'default': e.target.value
     };
     const value = types[e.target.type] || types['default'];
-    if (onChange) {
-      onChange(e, value);
-    }
+    if (onChange) { onChange(e, value); }
 
-    this.setState({
-      value
-    });
+    this.setState({ value });
   }
 
-  render() {
+  render () {
     const {
       browserDefault,
       children,
       className,
-      labelClassName,
+	  labelClassName,
       defaultValue,
       error,
       label,
@@ -100,11 +91,7 @@ class Input extends Component {
       offLabel,
       ...other
     } = this.props;
-    let sizes = {
-      s,
-      m,
-      l
-    };
+    let sizes = { s, m, l };
     this._id = this._id || this.props.id || `input_${idgen()}`;
     let classes = {
       col: true,
@@ -137,21 +124,21 @@ class Input extends Component {
       active: this.state.value || this.isSelect()
     };
 
-    let htmlLabel = label || inputType === 'radio' ? <label
+    let htmlLabel = label || inputType === 'radio'
+      ? <label
         className={cx(labelClasses, labelClassName)}
         data-success={success}
         data-error={error}
         htmlFor={this._id}
         >
         {label}
-      </label> : null;
+      </label>
+      : null;
 
     if (this.isSelect()) {
       let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
       options = options.concat(React.Children.map(children, (child) =>
-        React.cloneElement(child, {
-          'key': child.props.value
-        })
+        React.cloneElement(child, { 'key': child.props.value })
       ));
 
       return (
@@ -203,7 +190,9 @@ class Input extends Component {
         </div>
       );
     } else {
-      let defaultValue = inputType !== 'checkbox' && inputType !== 'radio' ? this.state.value : defaultValue;
+      let defaultValue = inputType !== 'checkbox' && inputType !== 'radio'
+        ? this.state.value
+        : defaultValue;
 
       return (
         <div className={cx(classes)}>
@@ -223,11 +212,8 @@ class Input extends Component {
     }
   }
 
-  renderIcon() {
-    const {
-      icon,
-      children
-    } = this.props;
+  renderIcon () {
+    const { icon, children } = this.props;
     if (icon) {
       return <Icon className='prefix'>{icon}</Icon>;
     } else {
@@ -235,17 +221,15 @@ class Input extends Component {
       if (React.Children.count(children) === 1) {
         icon = React.Children.only(children);
       }
-      return icon === null ? null : React.cloneElement(icon, {
-        className: 'prefix'
-      });
+      return icon === null ? null : React.cloneElement(icon, {className: 'prefix'});
     }
   }
 
-  isSelect() {
+  isSelect () {
     return this.props.type === 'select';
   }
 
-  isMaterialSelect() {
+  isMaterialSelect () {
     return this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined';
   }
 }
@@ -283,8 +267,6 @@ Input.propTypes = {
   value: PropTypes.string
 };
 
-Input.defaultProps = {
-  type: 'text'
-};
+Input.defaultProps = { type: 'text' };
 
 export default Input;
