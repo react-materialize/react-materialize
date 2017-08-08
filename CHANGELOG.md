@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.8
+
+ - Improve Collapsible Behaviour (mattBlackDesign)
+ - Added labelClassName in Input component for type radio button... (piyushdhamecha)
+
 ## 1.0.7
 
  - Change CollapsibleItem header prop type to 'any'
