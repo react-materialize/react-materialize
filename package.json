@@ -3,12 +3,6 @@
   "version": "1.0.7",
   "description": "Material design components for react",
   "main": "./lib/index.js",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "lib",
-    "src"
-  ],
   "scripts": {
     "test": "mocha",
     "test:watch": "mocha --watch",
