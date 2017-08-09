@@ -1,99 +1,77 @@
-/* global describe, it */
+/* global describe, it, expect, context */
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { assert } from 'chai';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 
-let wrapper = shallow(
-  <Collapsible />
-);
-
 describe('<Collapsible />', () => {
-  it('should render', () => {
-    assert(wrapper.find('.collapsible').length, 'with a collapsible classname');
+  context('default', () => {
+    let wrapper = shallow(<Collapsible />);
+
+    it('renders', () => {
+      expect(wrapper.hasClass('collapsible'), 'with a collapsible class').to.be.true;
+      expect(wrapper.find('[data-collapsible="expandable"]').length, 'with a expandable data attribute').to.eq(1);
+    });
   });
 
-  it('accepts a popout prop', () => {
+  context('accordion', () => {
+    let wrapper = shallow(<Collapsible accordion />);
+
+    it('renders', () => {
+      expect(wrapper.find('[data-collapsible="accordion"]').length).to.eq(1);
+    });
+  });
+
+  context('with invalid elements', () => {
     let wrapper = shallow(
-      <Collapsible popout />
+      <Collapsible>
+        {null}
+        <CollapsibleItem header='First'>A</CollapsibleItem>
+        {null}
+        <CollapsibleItem header='Second'>B</CollapsibleItem>
+      </Collapsible>
     );
 
-    assert(wrapper.find('[data-collapsible="expandable"]').length, 'with a data attribute');
+    it('purges elements', () => {
+      expect(wrapper.children().length).to.eq(2);
+    });
   });
 
-  it('accepts a accordion prop', () => {
-    let wrapper = shallow(
-      <Collapsible accordion />
-    );
-
-    assert(wrapper.find('[data-collapsible="accordion"]').length, 'with a data attribute');
-  });
-
-  it('should work with null dynamic children', () => {
+  context('mounting', () => {
     let wrapper = mount(
       <Collapsible accordion>
-        {null}
-        <CollapsibleItem header='First'>
-          Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
+        <CollapsibleItem header='First'>A</CollapsibleItem>
+        <CollapsibleItem header='Second'>B</CollapsibleItem>
       </Collapsible>
     );
 
-    assert.strictEqual(wrapper.find('li').length, 1);
+    it('handles state on click', () => {
+      expect(wrapper.state().activeKey).to.be.undefined;
+      wrapper.find('.collapsible-header').first().simulate('click');
+      expect(wrapper.state().activeKey).to.eq(0);
+    });
   });
 
-  it('should pass the key props to its children', () => {
-    let collapsibleChildren = mount(
-      <Collapsible accordion>
-        <li key='testKey'>
-          Lorem ipsum dolor sit amet.
-        </li>
+  context('defaultActiveKey', () => {
+    const activeKey = 0;
+    let wrapper = mount(
+      <Collapsible accordion defaultActiveKey={activeKey}>
+        <CollapsibleItem header='First'>A</CollapsibleItem>
+        <CollapsibleItem header='Second'>B</CollapsibleItem>
       </Collapsible>
-    ).find('li');
+    );
 
-    // .key() returns `.$testKey`. Don't make future assumptions about
-    // how React implements keys -> test that the substring testKey is in there
-    assert(collapsibleChildren.at(0).key().indexOf('testKey') >= 0);
-  });
-
-  describe('<CollapsibleItem />', () => {
-    it('renders', () => {
-      let wrapper = mount(
-        <Collapsible accordion>
-          <CollapsibleItem header='First' icon='filter_drama'>
-            Lorem ipsum dolor sit amet.
-          </CollapsibleItem>
-          <CollapsibleItem header='Second' icon='place'>
-            Lorem ipsum dolor sit amet.
-          </CollapsibleItem>
-          <CollapsibleItem header='Third' icon='whatshot'>
-            Lorem ipsum dolor sit amet.
-          </CollapsibleItem>
-        </Collapsible>
-      );
-
-      assert.strictEqual(wrapper.find('div.collapsible-header').length, 3);
+    it('sets initial expanded element', () => {
+      expect(wrapper.state().activeKey).to.eq(activeKey);
+      expect(wrapper.children().first().props().expanded).to.eq(true);
     });
 
-    describe('each collapsible item', () => {
-      const wrapper = mount(
-        <CollapsibleItem header='First' icon='filter_drama' iconClassName='right'>
-          Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
-      );
-      it('accepts icon props', () => {
-        assert(wrapper.contains(<i className='material-icons right'>filter_drama</i>), 'with rendered icon');
-      });
-
-      it('expands on click', () => {
-        const header = wrapper.find('.collapsible-header');
-        header.simulate('click');
-
-        assert.equal(wrapper.state('expanded'), true);
-        assert(wrapper.find('.collapsible-body').length);
-      });
+    it('handles state on click', () => {
+      wrapper.find('.collapsible-header').at(0).simulate('click');
+      expect(wrapper.state().activeKey, 'resets').to.be.null;
+      wrapper.find('.collapsible-header', 'activates again').at(1).simulate('click');
+      expect(wrapper.state().activeKey).to.eq(1);
     });
   });
 });

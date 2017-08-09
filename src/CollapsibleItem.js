@@ -1,86 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import Icon from './Icon';
 
-class CollapsibleItem extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      expanded: props.expanded
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.renderBody = this.renderBody.bind(this);
-    this.renderIcon = this.renderIcon.bind(this);
-  }
-
-  componentDidUpdate () {
-    const { scroll, expanded } = this.props;
-
-    if (expanded) {
-      ReactDOM.findDOMNode(this).scrollIntoView({ behavior: scroll });
-    }
-  }
-
-  render () {
-    const {
-      node,
-      header,
-      icon,
-      iconClassName,
-      className,
-      ...props
-    } = this.props;
-
-    const { expanded } = this.state;
-
-    delete props.expanded;
-    delete props.eventKey;
-
-    const C = node;
-    const liClasses = {
-      active: expanded
-    };
-    const headerClasses = {
-      'collapsible-header': true,
-      active: expanded
-    };
-
-    return (
-      <li className={cx(liClasses, className)} {...props}>
-        <C className={cx(headerClasses)} onClick={this.handleClick}>
-          {icon && this.renderIcon(icon, iconClassName)}
-          {header}
-        </C>
-        {this.renderBody()}
-      </li>
-    );
-  }
-
-  handleClick () {
-    const { onSelect, eventKey } = this.props;
-
-    if (onSelect) {
-      onSelect(eventKey);
-    } else {
-      this.setState({ expanded: !this.state.expanded });
-    }
-  }
-
-  renderBody () {
-    return (
-      <div className='collapsible-body' style={{ display: 'none' }}>
-        {this.props.children}
-      </div>
-    );
-  }
-
-  renderIcon (icon, iconClassName) {
-    return <Icon className={iconClassName}>{icon}</Icon>;
-  }
-}
+const CollapsibleItem = ({
+  className,
+  eventKey,
+  expanded,
+  header,
+  children,
+  icon,
+  iconClassName,
+  node: Node,
+  onSelect,
+  ...props
+}) => (
+  <li className={cx(className, { active: expanded })} {...props}>
+    <Node
+      className={cx('collapsible-header', { active: expanded })}
+      onClick={() => onSelect(eventKey)}
+    >
+      {icon && <Icon className={iconClassName}>{icon}</Icon>}
+      {header}
+    </Node>
+    <div className='collapsible-body'>{children}</div>
+  </li>
+);
 
 CollapsibleItem.propTypes = {
   header: PropTypes.any.isRequired,

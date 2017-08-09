@@ -5,11 +5,17 @@ import cx from 'classnames';
 class Collapsible extends Component {
   constructor (props) {
     super(props);
+
+    this.state = {
+      activeKey: props.defaultActiveKey
+    };
+
     this.renderItem = this.renderItem.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
-    this.state = {
-      activeKey: this.props.defaultActiveKey
-    };
+  }
+
+  componentDidMount () {
+    $(this._collapsible).collapsible();
   }
 
   render () {
@@ -30,22 +36,19 @@ class Collapsible extends Component {
     const collapsible = accordion ? 'accordion' : 'expandable';
 
     return (
-      <ul className={cx(className, classes)} {...props} data-collapsible={collapsible}>
+      <ul ref={(node) => { this._collapsible = node; }} className={cx(className, classes)} {...props} data-collapsible={collapsible}>
         {React.Children.map(children, this.renderItem)}
       </ul>
     );
   }
 
-  renderItem (child) {
+  renderItem (child, key) {
     if (!child) return null;
-
-    const props = {};
-
-    if (this.props.accordion) {
-      props.expanded = child.props.eventKey === this.state.activeKey;
-      props.onSelect = this.handleSelect;
-    }
-    delete props.expanded;
+    const props = {
+      expanded: this.state.activeKey === key,
+      eventKey: key,
+      onSelect: this.handleSelect
+    };
 
     return React.cloneElement(child, props);
   }
@@ -53,14 +56,13 @@ class Collapsible extends Component {
   handleSelect (key) {
     const { onSelect } = this.props;
 
-    if (onSelect) {
-      onSelect(key);
-    }
-    if (this.state.activeKey === key) {
-      key = null;
-    }
+    if (onSelect) { onSelect(key); }
 
-    this.setState({ activeKey: key });
+    if (this.state.activeKey === key) { key = null; }
+
+    if (this.props.accordion) {
+      this.setState({ activeKey: key });
+    }
   }
 }
 
