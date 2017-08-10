@@ -12,7 +12,6 @@ export default {
   cardReveal: require('!raw-loader!../../../examples/CardReveal.js'),
   cardSimple: require('!raw-loader!../../../examples/CardSimple.js'),
   chips: require('!raw-loader!../../../examples/Chips.js'),
-  collapsible: require('!raw-loader!../../../examples/Collapsible.js'),
   collectionBasic: require('!raw-loader!../../../examples/CollectionBasic.js'),
   collectionWithHeader: require('!raw-loader!../../../examples/CollectionWithHeader.js'),
   collectionWithHref: require('!raw-loader!../../../examples/CollectionWithHref.js'),
