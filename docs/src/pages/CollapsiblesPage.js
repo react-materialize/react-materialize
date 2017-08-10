@@ -1,29 +1,38 @@
 import React from 'react';
 import Row from 'Row';
+import Section from 'Section';
 import Col from 'Col';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import Samples from './Samples';
-import collapsible from '../../../examples/Collapsible';
 import CollapsibleCode from '!raw-loader!Collapsible';
-import CollapsibleItemCode from '!raw-loader!Collapsible'; // TODO this should be CollapsibleItem
+
+const header = 'Collapsible';
+const desc = `Collapsibles are accordion elements that expand when clicked
+  on. They allow you to hide content that is not immediately relevant to
+  the user.`;
 
 const CollapsiblesPage = () => (
   <Row>
-    <Col m={9} s={12} l={10}>
-      <p className='caption'>
-        Collapsibles are accordion elements that expand when clicked on.
-        They allow you to hide content that is not immediately relevant to the user.
-      </p>
-      <Col s={12}>
-        <ReactPlayground code={Samples.collapsible}>
-          {collapsible}
-        </ReactPlayground>
-      </Col>
-      <Col s={12}>
-        <PropTable header='Collapsible' component={CollapsibleCode} />
-        <PropTable header='CollapsibleItem' component={CollapsibleItemCode} />
-      </Col>
+    <Col s={12} l={10}>
+      <Section>
+        <p className='caption'>{desc}</p>
+        <h4>Basic</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/CollapsibleBasic.js')} />
+      </Section>
+
+      <Section>
+        <h4>Popout</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/CollapsiblePopout.js')} />
+      </Section>
+
+      <Section>
+        <h4>Accordion</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/CollapsibleAccordion.js')} />
+      </Section>
+
+      <Section>
+        <PropTable header={header} component={CollapsibleCode} />
+      </Section>
     </Col>
   </Row>
 );
