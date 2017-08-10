@@ -27,7 +27,6 @@ import NavbarPage from './pages/NavbarPage';
 import PaginationPage from './pages/PaginationPage';
 import PreloaderPage from './pages/PreloaderPage';
 
-
 const cssComponents = {
   grid: Grid,
   table: TablesPage
@@ -41,7 +40,7 @@ const jsComponents = {
   modals: ModalsPage,
   sidenav: SideNavPage,
   tabs: TabsPage,
-  toast:ToastPage
+  toast: ToastPage
 };
 
 const components = {
