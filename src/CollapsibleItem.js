@@ -19,19 +19,22 @@ class CollapsibleItem extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (this.state.expanded !== nextProps.expanded) {
-      this.setState({ expanded: nextProps.expanded });
+      const { onSelect, eventKey, id } = this.props;
+      if (!this.state.expanded) {
+        this.setState({ expanded: !this.state.expanded });
+        setTimeout(() => {window.$("#" + id + " .collapsible-body").animate({height: "toggle"});}, 0);
+      } else {
+        setTimeout(() => {window.$("#" + id + " .collapsible-body").animate({height: "toggle"});}, 0);
+        setTimeout(() => {this.setState({ expanded: !this.state.expanded })}, 500);
+      }
+
+      if (onSelect) {
+        onSelect(eventKey);
+      }
     }
     
     if (this.state.headerStyle !== nextProps.headerStyle) {
       this.setState({ headerStyle: nextProps.headerStyle });
-    }
-  }
-
-  componentDidUpdate () {
-    const { scroll, expanded } = this.props;
-
-    if (expanded) {
-      ReactDOM.findDOMNode(this).scrollIntoView({ behavior: scroll });
     }
   }
 
@@ -73,18 +76,23 @@ class CollapsibleItem extends Component {
   }
 
   handleClick () {
-    const { onSelect, eventKey } = this.props;
+    const { onSelect, eventKey, id } = this.props;
 
+    if (!this.state.expanded) {
+      this.setState({ expanded: !this.state.expanded });
+      setTimeout(() => {window.$("#" + id + " .collapsible-body").animate({height: "toggle"});}, 0);
+    } else {
+      setTimeout(() => {window.$("#" + id + " .collapsible-body").animate({height: "toggle"});}, 0);
+      setTimeout(() => {this.setState({ expanded: !this.state.expanded })}, 500);
+    }
     if (onSelect) {
       onSelect(eventKey);
-    } else {
-      this.setState({ expanded: !this.state.expanded });
     }
   }
 
   renderBody () {
     return (
-      <div className='collapsible-body' style={{ display: 'block' }}>
+      <div className='collapsible-body' style={{ display: 'none' }}>
         {this.props.children}
       </div>
     );
@@ -115,17 +123,13 @@ CollapsibleItem.propTypes = {
    * The node type of the header
    * @default a
    */
-  node: PropTypes.node,
-  /**
-   * The scroll behavior for scrollIntoView
-   */
-  scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
+  node: PropTypes.node
 };
 
 CollapsibleItem.defaultProps = {
   expanded: false,
   node: 'a',
-  style: {}
+  headerStyle: {}
 };
 
 export default CollapsibleItem;
