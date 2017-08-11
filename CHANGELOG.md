@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.9
+
+ - NavItem accepts children to be a string or a node
+
 ## 1.0.8
 
  - Improve Collapsible Behaviour (mattBlackDesign)
