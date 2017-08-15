@@ -40,6 +40,7 @@ export default {
   modalWithBottomSheet: require('!raw-loader!../../../examples/ModalWithBottomSheet.js'),
   modalWithFixedFooter: require('!raw-loader!../../../examples/ModalWithFixedFooter.js'),
   pagination: require('!raw-loader!../../../examples/Pagination.js'),
+  parallax: require('!raw-loader!../../../examples/Parallax.js'),
   prefillingTextInput: require('!raw-loader!../../../examples/PrefillingTextInput.js'),
   preloaderCircular: require('!raw-loader!../../../examples/PreloaderCircular.js'),
   progressBars: require('!raw-loader!../../../examples/ProgressBars.js'),

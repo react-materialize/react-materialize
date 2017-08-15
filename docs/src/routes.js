@@ -9,6 +9,7 @@ import CollapsiblePage from './pages/CollapsiblesPage';
 import DropdownPage from './pages/DropdownPage';
 import MediaPage from './pages/MediaPage';
 import ModalsPage from './pages/ModalsPage';
+import ParallaxPage from './pages/ParallaxPage';
 import SideNavPage from './pages/SideNavPage';
 import TabsPage from './pages/TabsPage';
 import ToastPage from './pages/ToastPage';
@@ -38,6 +39,7 @@ const jsComponents = {
   dropdown: DropdownPage,
   media: MediaPage,
   modals: ModalsPage,
+  parallax: ParallaxPage,
   sidenav: SideNavPage,
   tabs: TabsPage,
   toast: ToastPage
