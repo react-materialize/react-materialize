@@ -40,4 +40,16 @@ describe('<NavItem />', () => {
 
     expect(wrapper.find('li.divider').length).to.eq(1);
   });
+
+  it('handles multiple childs', () => {
+    wrapper = shallow(
+      <NavItem href='get-started.html'>
+        <span>hello</span>
+        <h2>World</h2>
+      </NavItem>
+    );
+
+    expect(wrapper.find('span').length).to.eq(1);
+    expect(wrapper.find('h2').length).to.eq(1);
+  });
 });
