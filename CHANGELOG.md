@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.10
+
+ - Fixes NavItem bug allowing multiple children
+
 ## 1.0.9
 
  - NavItem accepts children to be a string or a node
