@@ -10,18 +10,27 @@ class Card extends Component {
   }
 
   render () {
-    let {title, header, className, textClassName, actions, reveal, children, ...props} = this.props;
+    let {title, header, className, textClassName, horizontal, actions, reveal, children, ...props} = this.props;
     let classes = { card: true };
-    return (
-      <div {...props}
-        className={cx(className, classes)} >
-        {header}
+
+    let content = (
+      <div>
         <div className={cx('card-content', textClassName)}>
           {title ? this.renderTitle(title, reveal) : null}
           <div>{children}</div>
         </div>
         {this.renderReveal(title, reveal)}
         {actions ? this.renderAction(actions) : null}
+      </div>);
+    if (horizontal) {
+      content = <div className='card-stacked'>{content}</div>;
+    }
+
+    return (
+      <div {...props}
+        className={cx(className, classes, {horizontal})} >
+        {header}
+        {content}
       </div>
     );
   }
@@ -63,6 +72,7 @@ Card.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   title: PropTypes.string,
+  horizontal: PropTypes.bool,
   textClassName: PropTypes.string,
   reveal: PropTypes.element,
   header: PropTypes.element,

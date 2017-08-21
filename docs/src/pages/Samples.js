@@ -11,6 +11,7 @@ export default {
   cardPanel: require('!raw-loader!../../../examples/CardPanel.js'),
   cardReveal: require('!raw-loader!../../../examples/CardReveal.js'),
   cardSimple: require('!raw-loader!../../../examples/CardSimple.js'),
+  cardHorizontal: require('!raw-loader!../../../examples/CardHorizontal.js'),
   chips: require('!raw-loader!../../../examples/Chips.js'),
   collectionBasic: require('!raw-loader!../../../examples/CollectionBasic.js'),
   collectionWithHeader: require('!raw-loader!../../../examples/CollectionWithHeader.js'),

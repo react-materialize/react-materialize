@@ -10,6 +10,7 @@ import imageCard from '../../../examples/CardImage';
 import revealCard from '../../../examples/CardReveal';
 import panelCard from '../../../examples/CardPanel';
 import simpleCard from '../../../examples/CardSimple';
+import horizontalCard from '../../../examples/CardHorizontal';
 
 const CardsPage = () => (
   <Row>
@@ -52,6 +53,16 @@ const CardsPage = () => (
           {panelCard}
         </ReactPlayground>
       </Col>
+
+      <h4 className='col s12'>
+        Card Horizontal
+      </h4>
+      <Col s={12}>
+        <ReactPlayground code={Samples.cardHorizontal}>
+          {horizontalCard}
+        </ReactPlayground>
+      </Col>
+
       <Col s={12}>
         <PropTable header='Cards' component={CardCode} />
       </Col>
