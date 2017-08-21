@@ -22,11 +22,6 @@ class Autocomplete extends Component {
   }
 
   renderDropdown (data, minLength, limit) {
-    /* don't render dropdown if not focused */
-    if (document.activeElement !== this.inputElem) {
-      return null;
-    }
-
     const { value } = this.state;
 
     if (minLength && minLength > value.length || !value) {
