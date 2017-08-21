@@ -25,7 +25,7 @@ describe('<NavItem />', () => {
   });
 
   it('passes a custom node as a child', () => {
-    const CustomNav = ({children}) => <a title='red'>{children}</a>
+    const CustomNav = ({children}) => <a title='red'>{children}</a>;
     const child = <CustomNav className='red' href='/path'>Go Home</CustomNav>;
     wrapper = shallow(
       <NavItem href='get-started.html'>{child}</NavItem>

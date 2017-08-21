@@ -75,7 +75,7 @@ class Input extends Component {
       browserDefault,
       children,
       className,
-	  labelClassName,
+      labelClassName,
       defaultValue,
       error,
       label,
