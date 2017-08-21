@@ -73,7 +73,7 @@ class Tabs extends Component {
                 style={{'display': (child.props.active || defaultValue === idx) ? 'block' : 'none'}}>
                 { child.props.children }
               </Col>
-            )
+            );
           })
         }
       </Row>
