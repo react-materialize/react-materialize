@@ -22,7 +22,9 @@ class Card extends Component {
         {this.renderReveal(title, reveal)}
         {actions ? this.renderAction(actions) : null}
       </div>);
-    if(horizontal) content = <div className="card-stacked">{content}</div>;
+    if (horizontal) {
+      content = <div className='card-stacked'>{content}</div>;
+    }
 
     return (
       <div {...props}
@@ -70,6 +72,7 @@ Card.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   title: PropTypes.string,
+  horizontal: PropTypes.bool,
   textClassName: PropTypes.string,
   reveal: PropTypes.element,
   header: PropTypes.element,
