@@ -50,6 +50,14 @@ class Collapsible extends Component {
       onSelect: this.handleSelect
     };
 
+    const propsForNonCollapsible = {
+      onSelect: this.handleSelect
+    }
+    
+    if ( typeof child.type != "function" ) {
+      return React.cloneElement(child, propsForNonCollapsible);
+    }
+
     return React.cloneElement(child, props);
   }
 
