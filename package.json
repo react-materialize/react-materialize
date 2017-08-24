@@ -59,8 +59,7 @@
     "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.10.0",
-    "webpack": "^1.13.1",
-    "react-live": "^1.5.2"
+    "webpack": "^1.13.1"
   },
   "dependencies": {
     "classnames": "^2.2.5",
