@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import NavItem from '../src/NavItem';
 
-describe('<NavItem />', () => {
+describe.only('<NavItem />', () => {
   let wrapper;
 
   it('renders', () => {
@@ -24,15 +24,14 @@ describe('<NavItem />', () => {
     expect(wrapper.find('li.red').length).to.eq(1);
   });
 
-  it('passes a custom node as a child', () => {
-    const CustomNav = ({children}) => <a title='red'>{children}</a>;
-    const child = <CustomNav className='red' href='/path'>Go Home</CustomNav>;
+  it('passes node as a child', () => {
+    const child = <p>Go Home</p>;
     wrapper = shallow(
       <NavItem href='get-started.html'>{child}</NavItem>
     );
 
-    expect(wrapper.children().first().type()).to.eq(CustomNav);
-    expect(wrapper.children().first().hasClass('red')).to.eq(true);
+    expect(wrapper.children().at(0).type()).to.eq('a');
+    expect(wrapper.children().at(0).children().at(0).type()).to.eq('p');
   });
 
   it('can be a divider', () => {
