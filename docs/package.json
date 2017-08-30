@@ -42,9 +42,9 @@
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.4.2",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "react-live": "^1.5.2"
   },
   "dependencies": {
-    "react-live": "^1.5.2"
   }
 }
