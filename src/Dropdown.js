@@ -64,7 +64,7 @@ Dropdown.propTypes = {
   options: PropTypes.shape({
     inDuration: PropTypes.number,
     outDuration: PropTypes.number,
-    constrain_width: PropTypes.bool,
+    constrainWidth: PropTypes.bool,
     hover: PropTypes.bool,
     gutter: PropTypes.number,
     belowOrigin: PropTypes.bool,
