@@ -15,11 +15,11 @@ class Dropdown extends Component {
 
   componentDidMount () {
     const options = this.props.options || {};
-    (this.props.$ || $)(this._trigger).dropdown(options);
+    $(this._trigger).dropdown(options);
   }
 
   componentWillUnmount () {
-    (this.props.$ || $)(this._trigger).off();
+    $(this._trigger).off();
   }
 
   render () {
@@ -56,7 +56,6 @@ Dropdown.propTypes = {
   trigger: PropTypes.node.isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
-  $: PropTypes.func,
 
   /**
    * Options hash for the dropdown
