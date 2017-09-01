@@ -31,4 +31,13 @@ describe('<Dropdown />', () => {
     let output = `<ul class="dropdown-content more" id="dropdown_0"></ul>`;
     assert.equal(wrapper.find('ul').html(), output);
   });
+
+  it('does not update ID reference with each render', () => {
+    const wrapper = new Dropdown({ trigger: (<option>hi</option>) });
+    wrapper.render();
+    const firstId = wrapper.idx;
+    wrapper.render();
+    const secondId = wrapper.idx;
+    assert.equal(firstId, secondId);
+  });
 });
