@@ -5,6 +5,7 @@ import { assert } from 'chai';
 import { shallow } from 'enzyme';
 import Dropdown from '../src/Dropdown';
 import Button from '../src/Button';
+import { spy } from 'sinon';
 
 let wrapper = shallow(
   <Dropdown trigger={<Button>Drop me!</Button>} className='more' />
@@ -19,7 +20,18 @@ describe('<Dropdown />', () => {
     assert.ok(wrapper.find('.dropdown-content').hasClass('more'));
   });
 
-  it('doesn\'t pass down unwatned props', () => {
+  it('passed `constrainWidth` correctly', () => {
+    const options = { constrainWidth: true };
+    const dropdown = spy();
+    const jQuery = () => { return { dropdown }; };
+    shallow(
+      (<Dropdown $={jQuery} trigger={<span />} options={options} />),
+      { lifecycleExperimental: true }
+    );
+    assert.equal(dropdown.withArgs(options).calledOnce, true);
+  });
+
+  it('doesn\'t pass down unwanted props', () => {
     let options = { hover: true };
     let wrapper = shallow(
       <Dropdown trigger={<span>hi</span>} options={options} />

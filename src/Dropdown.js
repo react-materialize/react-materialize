@@ -15,12 +15,11 @@ class Dropdown extends Component {
 
   componentDidMount () {
     const options = this.props.options || {};
-
-    $(this._trigger).dropdown(options);
+    (this.props.$ || $)(this._trigger).dropdown(options);
   }
 
   componentWillUnmount () {
-    $(this._trigger).off();
+    (this.props.$ || $)(this._trigger).off();
   }
 
   render () {
@@ -57,6 +56,8 @@ Dropdown.propTypes = {
   trigger: PropTypes.node.isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
+  $: PropTypes.func,
+
   /**
    * Options hash for the dropdown
    * more info: http://materializecss.com/dropdown.html#options
