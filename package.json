@@ -55,7 +55,6 @@
     "eslint-plugin-standard": "^2.0.0",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
-    "materialize-css": "^0.98.0",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.17.7",
@@ -66,5 +65,8 @@
     "classnames": "^2.2.5",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
+  },
+  "peerDependency": {
+    "materialize-css": "^0.100.2"
   }
 }
