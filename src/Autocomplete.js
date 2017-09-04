@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import constants from './constants';
 import Icon from './Icon';
-import Row from './Row';
-import Col from './Col';
 
 class Autocomplete extends Component {
   constructor (props) {
@@ -23,18 +21,26 @@ class Autocomplete extends Component {
     return <Icon className={iconClassName}>{icon}</Icon>;
   }
 
-  renderDropdown (data, minLength) {
+  renderDropdown (data, minLength, limit) {
     const { value } = this.state;
 
     if (minLength && minLength > value.length || !value) {
       return null;
     }
 
+    let matches = Object.keys(data).filter(key => {
+      const index = key.toUpperCase().indexOf(value.toUpperCase());
+      return index !== -1 && value.length < key.length;
+    });
+    if (limit) matches = matches.slice(0, limit);
+    if (matches.length === 0) {
+      return null;
+    }
+
     return (
       <ul className='autocomplete-content dropdown-content'>
-        {Object.keys(data).map((key, idx) => {
+        {matches.map((key, idx) => {
           const index = key.toUpperCase().indexOf(value.toUpperCase());
-          if (index !== -1 && value.length < key.length) {
             return (
               <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
                 {data[key] ? <img src={data[key]} className='right circle' /> : null}
@@ -45,7 +51,6 @@ class Autocomplete extends Component {
                 </span>
               </li>
             );
-          }
         })}
       </ul>
     );
@@ -67,31 +72,35 @@ class Autocomplete extends Component {
       l,
       offset,
       minLength,
+      placeholder,
+      limit,
       ...props
     } = this.props;
 
     const _id = 'autocomplete-input';
     const sizes = { s, m, l };
-    let classes = {};
+    let classes = {
+      col: true
+    };
     constants.SIZES.forEach(size => {
       classes[size + sizes[size]] = sizes[size];
     });
 
     return (
-      <Row>
-        <Col offset={offset} className={cx('input-field', className, classes)} {...props}>
-          {icon && this.renderIcon(icon, iconClassName)}
-          <input
-            className='autocomplete'
-            id={_id}
-            onChange={this._onChange}
-            type='text'
-            value={this.state.value}
-          />
-          <label htmlFor={_id}>{title}</label>
-          {this.renderDropdown(data, minLength)}
-        </Col>
-      </Row>
+      <div 
+        offset={offset} className={cx('input-field', className, classes)} {...props}>
+        {icon && this.renderIcon(icon, iconClassName)}
+        <input
+          placeholder={ placeholder }
+          className='autocomplete'
+          id={_id}
+          onChange={this._onChange}
+          type='text'
+          value={this.state.value}
+        />
+        <label htmlFor={_id}>{title}</label>
+        {this.renderDropdown(data, minLength, limit)}
+      </div>
     );
   }
 }
@@ -119,7 +128,15 @@ Autocomplete.propTypes = {
   /*
    * Determine input length before dropdown
    */
-  minLength: PropTypes.number
+  minLength: PropTypes.number,
+  /**
+   * The max amount of results that can be shown at once. Default: Infinity
+   * */
+  limit: PropTypes.number,
+  /** 
+   * Placeholder for input element
+   * */
+  placeholder: PropTypes.string
 };
 
 export default Autocomplete;
