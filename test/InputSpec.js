@@ -9,17 +9,32 @@ import Icon from '../src/Icon';
 
 describe('<Input />', () => {
   it('renders a text input by default', () => {
-    let wrapper = shallow(<Input />);
+    const wrapper = shallow(<Input />);
     expect(wrapper.find('input').prop('type')).to.equal('text');
   });
 
   context('#text', () => {
-    let wrapper;
     const className = 'my-custom-class';
-    wrapper = shallow(<Input className={className} />);
+    const wrapper = shallow(<Input className={className} />);
 
     it('renders an input with a custom className', () => {
       expect(wrapper.find('input').hasClass(className)).to.equal(true);
+    });
+  });
+
+  context('#text with label', () => {
+    const labelClassName = 'my-custom-class';
+    const wrapper = shallow(
+      <Input label='Name' labelClassName={labelClassName} />
+    );
+    const label = wrapper.find('label');
+    const input = wrapper.find('input');
+
+    it('renders an input with a label', () => {
+      expect(label.length).to.eql(1);
+      expect(input.length).to.eql(1);
+      expect(input.prop('id')).to.eql(label.prop('htmlFor'));
+      expect(label.hasClass(labelClassName)).to.eql(true);
     });
   });
 
