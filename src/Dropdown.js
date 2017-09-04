@@ -10,6 +10,7 @@ const classes = {
 class Dropdown extends Component {
   constructor (props) {
     super(props);
+    this.idx = 'dropdown_' + idgen();
     this.renderTrigger = this.renderTrigger.bind(this);
   }
 
@@ -25,7 +26,6 @@ class Dropdown extends Component {
 
   render () {
     const { children, className, ...props } = this.props;
-    this.idx = 'dropdown_' + idgen();
     delete props.trigger;
     delete props.options;
 
