@@ -14,3 +14,4 @@ global.$.fn.collapsible = () => this;
 global.$.fn.modal = () => this;
 global.$.fn.pickadate = () => this;
 global.$.fn.carousel = () => this;
+global.$.fn.dropdown = () => this;

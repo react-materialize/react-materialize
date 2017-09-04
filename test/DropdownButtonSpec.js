@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { assert } from 'chai';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Dropdown from '../src/Dropdown';
 import Button from '../src/Button';
-import { spy, stub } from 'sinon';
+import { stub } from 'sinon';
 
 let wrapper = shallow(
   <Dropdown trigger={<Button>Drop me!</Button>} className='more' />
@@ -21,19 +21,16 @@ describe('<Dropdown />', () => {
   });
 
   it('passed `constrainWidth` correctly', () => {
+    const dropdownStub = stub($.fn, 'dropdown');
     const options = { constrainWidth: true };
-    const dropdown = spy();
-    stub(global, '$', () => { return { dropdown }; });
-    shallow(
-      (<Dropdown trigger={<span />} options={options} />),
-      { lifecycleExperimental: true }
+    mount(
+      (<Dropdown trigger={<span />} options={options} />)
     );
-    assert.equal(dropdown.withArgs(options).calledOnce, true);
-    global.$.restore();
+    assert.equal(dropdownStub.withArgs(options).calledOnce, true);
   });
 
   it('doesn\'t pass down unwanted props', () => {
-    let options = { hover: true };
+    const options = { hover: true };
     let wrapper = shallow(
       <Dropdown trigger={<span>hi</span>} options={options} />
     );
@@ -41,7 +38,7 @@ describe('<Dropdown />', () => {
   });
 
   it('renders the correct output', () => {
-    let output = `<ul class="dropdown-content more" id="dropdown_0"></ul>`;
+    const output = `<ul class="dropdown-content more" id="dropdown_0"></ul>`;
     assert.equal(wrapper.find('ul').html(), output);
   });
 });
