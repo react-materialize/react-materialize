@@ -1,49 +1,47 @@
 import React from 'react';
 import Row from 'Row';
 import Col from 'Col';
+import Section from 'Section';
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import Samples from './Samples';
-import iconLinksNavbar from '../../../examples/IconLinksNavbar';
-import leftAlignedNavbar from '../../../examples/LeftAlignedNavbar';
-import rightAlignedNavbar from '../../../examples/RightAlignedNavbar';
-import Code from '!raw-loader!Navbar';
+import NavbarCode from '!raw-loader!Navbar';
+import NavItemCode from '!raw-loader!NavItem';
+
+const header = 'Navbar';
+const desc = `The navbar is fully contained by an HTML5 Nav tag.
+  Inside a recommended container div, there are 2 main parts of the
+  navbar. A logo or brand link, and the navigations links. You can
+  align these links to the left or right.`;
 
 const NavbarPage = () => (
   <Row>
-    <Col m={9} s={12} l={10}>
-      <p className='caption'>
-        The navbar is fully contained by an HTML5 Nav tag. Inside a recommended container div, there are 2 main parts of the navbar. A logo or brand link, and the navigations links. You can align these links to the left or right.
-      </p>
-      <h4 className='col s12'>
-        Right Aligned Links
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.rightAlignedNavbar}>
-          { rightAlignedNavbar }
-        </ReactPlayground>
-      </Col>
+    <Col s={12} l={10}>
+      <Section>
+        <Row>
+          <p className='caption'>{desc}</p>
+          <h4 className='col s12'>Right Aligned Links</h4>
+        </Row>
+        <ReactPlayground code={require('!raw-loader!../../../examples/RightAlignedNavbar.js')} />
+      </Section>
 
-      <h4 className='col s12'>
-        Left Aligned Links
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.leftAlignedNavbar}>
-          { leftAlignedNavbar }
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Icon Links
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.iconLinksNavbar}>
-          { iconLinksNavbar }
-        </ReactPlayground>
-      </Col>
+      <Section>
+        <Row>
+          <h4 className='col s12'>Left Aligned Links</h4>
+        </Row>
+        <ReactPlayground code={require('!raw-loader!../../../examples/LeftAlignedNavbar.js')} />
+      </Section>
 
-      <Col s={12}>
-        <PropTable header='Navbar' component={Code} />
-      </Col>
+      <Section>
+        <Row>
+          <h4 className='col s12'>Icon Links</h4>
+        </Row>
+        <ReactPlayground code={require('!raw-loader!../../../examples/IconLinksNavbar.js')} />
+      </Section>
+
+      <Section>
+        <PropTable header={header} component={NavbarCode} />
+        <PropTable header='NavItem' component={NavItemCode} />
+      </Section>
     </Col>
   </Row>
 );
