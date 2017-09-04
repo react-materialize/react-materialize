@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.12
+
+ - Fixes Modal Overlay not triggered (nsingal)
+ - Autocomplete fixes (TaisukeYasuda)
+ - NavItem rendering children
+
 ## 1.0.11
 
  - Moves react-live to dev dependency
