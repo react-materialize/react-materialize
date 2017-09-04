@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.11
+
+ - Moves react-live to dev dependency
+ - Dropdown fixes (id and options casing) (lloydwatkin)
+
 ## 1.0.10
 
  - Fixes NavItem bug allowing multiple children
