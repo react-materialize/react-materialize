@@ -1,26 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const renderChildren = (children, href = '') => {
-  if (React.Children.count(children) === 1 && typeof children === 'string') {
-    return <a href={href}>{children}</a>;
-  } else {
-    return React.Children.map(children, (child) =>
-      React.cloneElement(child)
-    );
-  }
-};
-
 const NavItem = ({
   divider,
-  href,
   children,
+  href = '',
   ...props
 }) => {
   if (divider) return <li className='divider' />;
   return (
     <li {...props}>
-      {renderChildren(children, href)}
+      <a href={href}>
+        { children }
+      </a>
     </li>
   );
 };
