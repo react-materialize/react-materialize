@@ -12,11 +12,8 @@ class Modal extends Component {
   }
 
   componentDidMount () {
-    const { trigger, modalOptions } = this.props;
-
-    if (!trigger) {
-      $(`#${this.modalID}`).modal(modalOptions);
-    }
+    const { modalOptions } = this.props;
+    $(`#${this.modalID}`).modal(modalOptions);
   }
 
   renderOverlay () {
