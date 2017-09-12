@@ -1,6 +1,8 @@
 import React from 'react';
 import Row from 'Row';
 import Col from 'Col';
+import Section from 'Section';
+
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
 import Samples from './Samples';
@@ -14,84 +16,64 @@ import prefillingTextInput from '../../../examples/PrefillingTextInput';
 import selectSimple from '../../../examples/SelectSimple';
 import Code from '!raw-loader!Input';
 
+const header = 'Forms';
+const desc = `Forms are the standard way to receive user inputted data.
+  The transitions and smoothness of these elements are very important
+because of the inherent user interaction associated with forms.`;
+
 const FormsPage = () => (
   <Row>
-    <Col m={9} s={12} l={10}>
-      <p className='caption'>
-        Forms are the standard way to receive user inputted data. The transitions and smoothness of these elements are very important because of the inherent user interaction associated with forms.
-      </p>
-      <h4 className='col s12'>
-        Input Fields
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.inputFields}>
-          {inputFields}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Prefilling Text Inputs
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.prefillingTextInput}>
-          {prefillingTextInput}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Icon Prefixes
-      </h4>
-      <p className='col s12'>You can add an Icon tag to the children of Input tag, it will be shown as icon prefix</p>
-      <Col s={12}>
-        <ReactPlayground code={Samples.iconPrefixesInput}>
-          {iconPrefixesInput}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Select
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.selectSimple}>
-          {selectSimple}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Radio
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.inputRadio}>
-          {inputRadio}
-        </ReactPlayground>
-      </Col>
+    <Col s={12} l={10}>
+      <Section>
+        <p className='caption'>{desc}</p>
+        <h4 className='col s12'>Input Fields</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputFields.js')} />
+      </Section>
 
-      <h4 className='col s12'>
-        Checkbox
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.inputCheckbox}>
-          {inputCheckbox}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Date Picker
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.inputDatepicker}>
-          {inputDatepicker}
-        </ReactPlayground>
-      </Col>
+      <Section>
+        <h4 className='col s12'>Prefilling Text Inputs</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/PrefillingTextInput.js')} />
+      </Section>
 
+      <Section>
+        <h4 className='col s12'>Icon Prefixes</h4>
+        <p className='col s12'>You can add an Icon tag to the children of Input tag, it will be shown as icon prefix</p>
+        <ReactPlayground code={require('!raw-loader!../../../examples/IconPrefixesInput.js')} />
+      </Section>
 
-      <h4 className='col s12'>
-        Switch
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.inputSwitch}>
-          {inputSwitch}
-        </ReactPlayground>
-      </Col>
+      <Section>
+        <h4 className='col s12'>Select</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/SelectSimple.js')} />
+      </Section>
 
-      <Col s={12}>
+      <Section>
+        <h4 className='col s12'>Radio</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputRadio.js')} />
+      </Section>
+
+      <Section>
+        <h4 className='col s12'>Checkbox</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputCheckbox.js')} />
+      </Section>
+
+      <Section>
+        <h4 className='col s12'>Date Picker</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputDatePicker.js')} />
+      </Section>
+
+      <Section>
+        <h4 className='col s12'>Switch</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputSwitch.js')} />
+      </Section>
+
+      <Section>
+        <h4 className='col s12'>Autocomplete</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/Autocomplete.js')} />
+      </Section>
+
+      <Section>
         <PropTable header='Input' component={Code} />
-      </Col>
+      </Section>
     </Col>
   </Row>
 );
