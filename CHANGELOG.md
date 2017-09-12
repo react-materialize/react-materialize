@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.12
+
+ - Fixes `OverlayTrigger` not initialized bug
+
 ## 1.0.11
 
  - Moves react-live to dev dependency
