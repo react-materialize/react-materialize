@@ -2,6 +2,9 @@
 
 ## 1.0.12
 
+ - Fixes Modal Overlay not triggered (nsingal)
+ - Autocomplete fixes (TaisukeYasuda)
+ - NavItem rendering children
  - Fixes `OverlayTrigger` not initialized bug
 
 ## 1.0.11
