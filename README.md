@@ -52,7 +52,8 @@ available.
 There are other material design components for react.js, e.g. [material-ui](http://material-ui.com/),
 which is more mature and popular than this one.
 The main advantage of this project over e.g. material-ui is that it provides a
-grid system similar to react-bootstrap.
+grid system similar to react-bootstrap. Another advantage over material-ui is that react-materialize does not 
+include css in the js - which can be cumbersome to some project's architecture.
 
 ## Contributions
 
