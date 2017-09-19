@@ -1,5 +1,9 @@
 # Changelog
 
+## new version TBA
+
+ - Removes horizontal support for `<Card />` (DOM structure issues)
+
 ## 1.0.13
 
  - Restored OverlayTrigger initialized bug
