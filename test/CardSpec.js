@@ -24,18 +24,3 @@ describe('<Card />', () => {
     expect(wrapper.find('.card-content').hasClass('white-text')).to.equal(true);
   });
 });
-
-const wrapperHorizontal = shallow(
-  <Card horizontal title='card title' className='blue-grey darken-1' textClassName='white-text'>
-    I am a horizontal card
-  </Card>
-);
-
-describe('<Card horizontal />', () => {
-  it('should have classname horizontal', () => {
-    expect(wrapperHorizontal.find('.horizontal')).to.have.length(1);
-  });
-  it('should have classname card-stacked', () => {
-    expect(wrapperHorizontal.find('.card-stacked')).to.have.length(1);
-  });
-});
