@@ -12,7 +12,7 @@
     "test": "mocha",
     "test:watch": "mocha --watch",
     "pretest": "npm run lint",
-    "build": "babel -d lib src",
+    "build": "npm test && babel -d lib src",
     "lint": "eslint src test; exit 0",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish"
