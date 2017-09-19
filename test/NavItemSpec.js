@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import NavItem from '../src/NavItem';
 
-describe.only('<NavItem />', () => {
+describe('<NavItem />', () => {
   let wrapper;
 
   it('renders', () => {
