@@ -31,13 +31,10 @@ class OverlayTrigger extends Overlay {
 
   showOverlay (e) {
     e.preventDefault();
-    $(`#${this.overlayID}`).modal(this.props.modalOptions).modal('open');
+    const { modalOptions = {} } = this.props;
+    $(`#${this.overlayID}`).modal(modalOptions).modal('open');
   }
 }
-
-OverlayTrigger.defaultProps = {
-  modalOptions: {}
-};
 
 OverlayTrigger.propTypes = {
   /**
