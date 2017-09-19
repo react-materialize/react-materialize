@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.13
+
+ - Restored OverlayTrigger initialized bug
+ - Autocomplete fixes (Taisuke Yasuda)
+
 ## 1.0.12
 
  - Fixes Modal Overlay not triggered (nsingal)
