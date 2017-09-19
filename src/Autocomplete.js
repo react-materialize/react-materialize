@@ -41,16 +41,16 @@ class Autocomplete extends Component {
       <ul className='autocomplete-content dropdown-content'>
         {matches.map((key, idx) => {
           const index = key.toUpperCase().indexOf(value.toUpperCase());
-            return (
-              <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
-                {data[key] ? <img src={data[key]} className='right circle' /> : null}
-                <span>
-                  {index !== 0 ? key.substring(0, index) : ''}
-                  <span className='highlight'>{value}</span>
-                  {key.length !== index + value.length ? key.substring(index + value.length) : ''}
-                </span>
-              </li>
-            );
+          return (
+            <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
+              {data[key] ? <img src={data[key]} className='right circle' /> : null}
+              <span>
+                {index !== 0 ? key.substring(0, index) : ''}
+                <span className='highlight'>{value}</span>
+                {key.length !== index + value.length ? key.substring(index + value.length) : ''}
+              </span>
+            </li>
+          );
         })}
       </ul>
     );
@@ -87,11 +87,11 @@ class Autocomplete extends Component {
     });
 
     return (
-      <div 
+      <div
         offset={offset} className={cx('input-field', className, classes)} {...props}>
         {icon && this.renderIcon(icon, iconClassName)}
         <input
-          placeholder={ placeholder }
+          placeholder={placeholder}
           className='autocomplete'
           id={_id}
           onChange={this._onChange}
@@ -133,7 +133,7 @@ Autocomplete.propTypes = {
    * The max amount of results that can be shown at once. Default: Infinity
    * */
   limit: PropTypes.number,
-  /** 
+  /**
    * Placeholder for input element
    * */
   placeholder: PropTypes.string
