@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.14
+
+ - Removed default props from OverlayTrigger
+
 ## 1.0.13
 
  - Restored OverlayTrigger initialized bug
