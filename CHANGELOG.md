@@ -2,7 +2,8 @@
 
 ## 1.0.14
 
- - Removes horizontal support for `<Card />` (DOM structure issues)
+ - Removed horizontal support for `<Card />` (DOM structure issues)
+ - Removed default props from OverlayTrigger
 
 ## 1.0.13
 
