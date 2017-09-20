@@ -1,6 +1,6 @@
 # Changelog
 
-## new version TBA
+## 1.0.14
 
  - Removes horizontal support for `<Card />` (DOM structure issues)
 
