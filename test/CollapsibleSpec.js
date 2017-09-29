@@ -64,7 +64,7 @@ describe('<Collapsible />', () => {
 
     it('sets initial expanded element', () => {
       expect(wrapper.state().activeKey).to.eq(activeKey);
-      expect(wrapper.children().first().props().expanded).to.eq(true);
+      expect(wrapper.find('CollapsibleItem').first().props().expanded).to.eq(true);
     });
 
     it('handles state on click', () => {
