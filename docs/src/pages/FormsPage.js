@@ -14,7 +14,8 @@ import inputDatepicker from '../../../examples/InputDatePicker';
 import inputSwitch from '../../../examples/InputSwitch';
 import prefillingTextInput from '../../../examples/PrefillingTextInput';
 import selectSimple from '../../../examples/SelectSimple';
-import Code from '!raw-loader!Input';
+import InputCode from '!raw-loader!Input';
+import AutocompleteCode from '!raw-loader!Autocomplete';
 
 const header = 'Forms';
 const desc = `Forms are the standard way to receive user inputted data.
@@ -72,7 +73,11 @@ const FormsPage = () => (
       </Section>
 
       <Section>
-        <PropTable header='Input' component={Code} />
+        <PropTable header='Input' component={InputCode} />
+      </Section>
+
+      <Section>
+        <PropTable header='Autocomplete' component={AutocompleteCode} />
       </Section>
     </Col>
   </Row>
