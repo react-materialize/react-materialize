@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import sinon from 'sinon';
 import Autocomplete from '../src/Autocomplete';
 
 const data = {
@@ -47,6 +48,61 @@ describe('<Autocomplete />', () => {
 
     it('adds clicked value to input', () => {
       expect(wrapper.find('.autocomplete').prop('value')).to.equal(expectedValue);
+    });
+  });
+
+  context('on controlled input', () => {
+    const expectedValue = 'Apple';
+
+    const props = {
+      onChange: sinon.spy(),
+      onAutocomplete: sinon.spy()
+    };
+
+    const wrapper2 = shallow(<Autocomplete title='Test Title' data={data} value='' {...props} />);
+
+    before(() => {
+      wrapper2.find('.autocomplete').simulate('change', { target: { value: typedKey } });
+    });
+
+    it('updates the state with the new value', () => {
+      expect(wrapper2.state('value')).to.equal(typedKey);
+    });
+
+    it('calls only onChange callback', () => {
+      expect(props.onChange.calledWith(typedKey));
+      expect(props.onAutocomplete.notCalled);
+    });
+
+    it('works after value change', () => {
+      wrapper2.setProps({
+        ...props,
+        value: typedKey
+      });
+      expect(wrapper2.state('value')).to.equal(typedKey);
+      expect(props.onChange.notCalled);
+      expect(props.onAutocomplete.notCalled);
+    });
+
+    it('adds clicked value to input', () => {
+      wrapper2.find('ul li').simulate('click');
+
+      expect(wrapper2.find('.autocomplete').prop('value')).to.equal(expectedValue);
+    });
+
+    it('calls callbacks after autocomplete', () => {
+      expect(props.onChange.calledWith(typedKey));
+      expect(props.onAutocomplete.calledWith(typedKey));
+    });
+
+    it('clears input', () => {
+      wrapper2.setProps({
+        ...props,
+        value: ''
+      });
+      expect(wrapper2.state('value')).to.equal('');
+      expect(props.onChange.notCalled);
+      expect(props.onAutocomplete.notCalled);
     });
   });
 });

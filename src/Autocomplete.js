@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: ["error", { "ignoreRestSiblings": true }] */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -9,12 +10,19 @@ class Autocomplete extends Component {
     super(props);
 
     this.state = {
-      value: ''
+      value: props.value || ''
     };
 
     this.renderIcon = this.renderIcon.bind(this);
     this.renderDropdown = this.renderDropdown.bind(this);
     this._onChange = this._onChange.bind(this);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const { value } = nextProps;
+    if (value !== undefined) {
+      this.setState({ value });
+    }
   }
 
   renderIcon (icon, iconClassName) {
@@ -42,7 +50,7 @@ class Autocomplete extends Component {
         {matches.map((key, idx) => {
           const index = key.toUpperCase().indexOf(value.toUpperCase());
           return (
-            <li key={key + '_' + idx} onClick={(evt) => this.setState({ value: key })}>
+            <li key={key + '_' + idx} onClick={this._onAutocomplete.bind(this, key)}>
               {data[key] ? <img src={data[key]} className='right circle' /> : null}
               <span>
                 {index !== 0 ? key.substring(0, index) : ''}
@@ -57,7 +65,19 @@ class Autocomplete extends Component {
   }
 
   _onChange (evt) {
-    this.setState({ value: evt.target.value });
+    const { onChange } = this.props;
+    const value = evt.target.value;
+    if (onChange) { onChange(evt, value); }
+
+    this.setState({ value });
+  }
+
+  _onAutocomplete (value, evt) {
+    const { onChange, onAutocomplete } = this.props;
+    if (onAutocomplete) { onAutocomplete(value); }
+    if (onChange) { onChange(evt, value); }
+
+    this.setState({ value });
   }
 
   render () {
@@ -74,6 +94,10 @@ class Autocomplete extends Component {
       minLength,
       placeholder,
       limit,
+      // these are mentioned here only to prevent from getting into ...props
+      value,
+      onChange,
+      onAutocomplete,
       ...props
     } = this.props;
 
@@ -136,7 +160,10 @@ Autocomplete.propTypes = {
   /**
    * Placeholder for input element
    * */
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  onAutocomplete: PropTypes.func,
+  value: PropTypes.string
 };
 
 export default Autocomplete;
