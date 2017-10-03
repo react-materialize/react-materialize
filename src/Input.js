@@ -89,6 +89,7 @@ class Input extends Component {
       validate,
       onLabel,
       offLabel,
+      onChange,
       ...other
     } = this.props;
     let sizes = { s, m, l };
