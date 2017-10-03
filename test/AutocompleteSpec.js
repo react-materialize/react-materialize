@@ -70,8 +70,9 @@ describe('<Autocomplete />', () => {
     });
 
     it('calls only onChange callback', () => {
-      expect(props.onChange.calledWith(typedKey));
-      expect(props.onAutocomplete.notCalled);
+      expect(props.onChange.calledOnce).to.be.true;
+      expect(props.onChange.args[0][1]).to.equal(typedKey);
+      expect(props.onAutocomplete.notCalled).to.be.true;
     });
 
     it('works after value change', () => {
@@ -80,8 +81,8 @@ describe('<Autocomplete />', () => {
         value: typedKey
       });
       expect(wrapper2.state('value')).to.equal(typedKey);
-      expect(props.onChange.notCalled);
-      expect(props.onAutocomplete.notCalled);
+      expect(props.onChange.calledOnce).to.be.true;
+      expect(props.onAutocomplete.notCalled).to.be.true;
     });
 
     it('adds clicked value to input', () => {
@@ -91,8 +92,10 @@ describe('<Autocomplete />', () => {
     });
 
     it('calls callbacks after autocomplete', () => {
-      expect(props.onChange.calledWith(typedKey));
-      expect(props.onAutocomplete.calledWith(typedKey));
+      expect(props.onChange.calledTwice).to.be.true;
+      expect(props.onChange.args[1][1]).to.equal(expectedValue);
+      expect(props.onAutocomplete.calledOnce).to.be.true;
+      expect(props.onAutocomplete.calledWith(expectedValue)).to.be.true;
     });
 
     it('clears input', () => {
@@ -101,8 +104,8 @@ describe('<Autocomplete />', () => {
         value: ''
       });
       expect(wrapper2.state('value')).to.equal('');
-      expect(props.onChange.notCalled);
-      expect(props.onAutocomplete.notCalled);
+      expect(props.onChange.calledTwice).to.be.true;
+      expect(props.onAutocomplete.calledOnce).to.be.true;
     });
   });
 });
