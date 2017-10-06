@@ -18,8 +18,7 @@ class Autocomplete extends Component {
     this._onChange = this._onChange.bind(this);
   }
 
-  componentWillReceiveProps (nextProps) {
-    const { value } = nextProps;
+  componentWillReceiveProps ({ value }) {
     if (value !== undefined) {
       this.setState({ value });
     }
@@ -161,8 +160,19 @@ Autocomplete.propTypes = {
    * Placeholder for input element
    * */
   placeholder: PropTypes.string,
+  /**
+   * Called when the value of the input gets changed - by user typing or clicking on an auto-complete item.
+   * Function signature: (event, value) => ()
+   */
   onChange: PropTypes.func,
+  /**
+   * Called when auto-completed item is selected.
+   * Function signature: (value) => ()
+   */
   onAutocomplete: PropTypes.func,
+  /**
+   * The value of the input
+   */
   value: PropTypes.string
 };
 
