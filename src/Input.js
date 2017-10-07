@@ -143,6 +143,7 @@ class Input extends Component {
 
       return (
         <div className={cx(classes)}>
+          { this.renderIcon() }
           {htmlLabel}
           <select
             {...other}
@@ -162,6 +163,7 @@ class Input extends Component {
 
       return (
         <div className={cx(classes)}>
+          { this.renderIcon() }
           <C
             {...other}
             className={cx(className, inputClasses)}
