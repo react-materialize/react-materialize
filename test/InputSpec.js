@@ -60,7 +60,7 @@ describe('<Input />', () => {
 
     beforeEach(() => {
       wrapper = mount(
-        <Input type='select' defaultValue='v'>
+        <Input type='select' defaultValue='v' icon='weekend'>
           {values.map((val) => <option value={val} />)}
         </Input>
       );
@@ -76,6 +76,22 @@ describe('<Input />', () => {
 
     it('sets the isSelect to true', () => {
       expect(wrapper.instance().isSelect()).to.equal(true);
+    });
+
+    it('renders an icon child with prefix class', () => {
+      expect(wrapper.find(Icon).hasClass('prefix')).to.equal(true);
+    });
+
+    context('without icon', () => {
+      it('does not render with an icon child', () => {
+        const component = mount(
+          <Input type='select' defaultValue='v'>
+            <option value='v' />
+          </Input>
+        );
+
+        expect(component.find(Icon).exists()).to.equal(false);
+      });
     });
 
     context('with placeholder', () => {
@@ -142,6 +158,18 @@ describe('<Input />', () => {
       expect(pickadateStub).to.have.been.calledWith(options);
       pickadateStub.restore();
     });
+
+    it('renders a datepicker with icon', () => {
+      const wrapper = mount(<Input type='date'><Icon>today</Icon></Input>);
+
+      expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
+    });
+
+    it('renders a datepicker without icon', () => {
+      const wrapper = mount(<Input type='date' />);
+
+      expect(wrapper.find('i').exists()).to.equal(false);
+    });
   });
 
   context('with icon', () => {
@@ -155,6 +183,13 @@ describe('<Input />', () => {
     it('renders an icon if icon prop is defined', () => {
       wrapper = shallow(<Input icon='cloud' />);
       expect(wrapper.find(Icon).hasClass('prefix')).to.equal(true);
+    });
+  });
+
+  context('whithout icon', () => {
+    it('does not render an icon child if icon prop is not defined', () => {
+      const wrapper = shallow(<Input />);
+      expect(wrapper.find(Icon).exists()).to.equal(false);
     });
   });
 });

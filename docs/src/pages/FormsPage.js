@@ -14,6 +14,7 @@ import inputDatepicker from '../../../examples/InputDatePicker';
 import inputSwitch from '../../../examples/InputSwitch';
 import prefillingTextInput from '../../../examples/PrefillingTextInput';
 import selectSimple from '../../../examples/SelectSimple';
+import SelectWithIcon from '../../../examples/SelectWithIcon';
 import Code from '!raw-loader!Input';
 
 const header = 'Forms';
@@ -44,6 +45,10 @@ const FormsPage = () => (
       <Section>
         <h4 className='col s12'>Select</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/SelectSimple.js')} />
+
+        <p className='col s12'>You can also add a prop icon with its name to the Input tag, it will be shown as icon prefix</p>
+
+        <ReactPlayground code={require('!raw-loader!../../../examples/SelectWithIcon.js')} />
       </Section>
 
       <Section>
