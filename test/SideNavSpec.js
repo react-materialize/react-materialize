@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
 import { assert } from 'chai';
 import SideNav from '../src/SideNav';
 import Button from '../src/Button';
@@ -26,10 +25,6 @@ function setup (props = {}, children, mounted) {
     sideNavProps,
     triggerProps
   };
-}
-
-function setupMounted (props, children) {
-  return setup(props, children, true);
 }
 
 describe('<SideNav />', () => {
@@ -62,16 +57,5 @@ describe('<SideNav />', () => {
     assert.isUndefined(sideNavProps.trigger, 'should not transfer trigger');
     assert.isUndefined(sideNavProps.options, 'should not transfer options');
     assert.equal(sideNavProps.shouldTransfer, 'true');
-  });
-
-  it('should call sideNav with the given options', () => {
-    const stub = sinon.stub($.fn, 'sideNav');
-    const options = {
-      closeOnClick: true,
-      edge: 'right'
-    };
-    setupMounted({ options });
-    assert(stub.calledWithExactly(options));
-    stub.restore();
   });
 });

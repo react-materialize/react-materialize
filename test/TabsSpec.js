@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { assert } from 'chai';
+import { expect } from 'chai';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
 
@@ -15,6 +15,15 @@ const wrapper = shallow(
 
 describe('Tabs', () => {
   it('should create list of Tab itemt', () => {
-    assert(wrapper.find('ul.tabs'));
+    expect(wrapper.find('.tabs').length).to.eql(1);
+    expect(wrapper.find('.tabs .tab.col').length).to.eql(2);
+  });
+
+  it('renders a `Col` per `Tab`', () => {
+    const tabs = wrapper.find('.tab a');
+    tabs.forEach((tab) => {
+      const id = tab.prop('href');
+      expect(wrapper.find(id).length).to.eql(1);
+    });
   });
 });
