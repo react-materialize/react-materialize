@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.15
+
+ - [Input] Prefix icon for date and select inputs (norbajunior)
+ - Autocomplete - controlled input (dmitry-yudakov)
+
 ## 1.0.14
 
  - Removed horizontal support for `<Card />` (DOM structure issues)
