@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
 import { assert } from 'chai';
 import SideNav from '../src/SideNav';
 import Button from '../src/Button';
@@ -26,10 +25,6 @@ function setup (props = {}, children, mounted) {
     sideNavProps,
     triggerProps
   };
-}
-
-function setupMounted (props, children) {
-  return setup(props, children, true);
 }
 
 describe('<SideNav />', () => {
