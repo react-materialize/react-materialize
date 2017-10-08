@@ -44,6 +44,7 @@
     "babel-preset-stage-0": "^6.5.0-1",
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
+    "classnames": "^2.2.5",
     "enzyme": "^2.7.1",
     "es5-shim": "^4.2.0",
     "eslint": "^3.4.0",
@@ -61,12 +62,9 @@
     "sinon-chai": "^2.10.0",
     "webpack": "^1.13.1"
   },
-  "dependencies": {
-    "classnames": "^2.2.5",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
-  },
   "peerDependency": {
+    "react": "^16.x",
+    "react-dom": "^16.x",
     "materialize-css": "^0.100.2"
   }
 }
