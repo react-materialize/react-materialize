@@ -12,11 +12,15 @@ Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=mas
 Material design components for react, powered by [materializecss](http://materializecss.com/).
 
 ## Install
+
 ```
-npm install react-materialize
+# react-materialize requires react, react-dom and mateiralize-css
+npm install --save react react-dom materialize-css react-materialize
 ```
+
 ## Use
 #### HTML Setup (from [materializecss](http://materializecss.com/))
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -33,6 +37,7 @@ npm install react-materialize
 ```
 
 #### JS (ES6)
+
 ``` javascript
 import { Button, Card, Row, Col } from 'react-materialize';
 ```
