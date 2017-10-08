@@ -54,10 +54,14 @@
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
+    "jquery": "^3.2.1",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
+    "materialize-css": "^0.100.2",
     "mocha": "^3.2.0",
+    "react": "^15.6.2",
     "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.6.2",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.10.0",
     "webpack": "^1.13.1"
@@ -65,6 +69,7 @@
   "peerDependency": {
     "react": "^15.x",
     "react-dom": "^15.x",
-    "materialize-css": "^0.100.2"
+    "materialize-css": "^0.100.2",
+    "jquery": "^3.2.x"
   }
 }

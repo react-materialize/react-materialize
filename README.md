@@ -14,11 +14,13 @@ Material design components for react, powered by [materializecss](http://materia
 ## Install
 
 ```
-# react-materialize requires react, react-dom and mateiralize-css
-npm install --save react react-dom materialize-css react-materialize
+npm install --save react-materialize
+
+# react-materialize 
+react react-dom materialize-css 
 ```
 
-## Use
+## Usage
 #### HTML Setup (from [materializecss](http://materializecss.com/))
 
 ```html
