@@ -16,8 +16,8 @@ Material design components for react, powered by [materializecss](http://materia
 ```
 npm install --save react-materialize
 
-# react-materialize 
-react react-dom materialize-css 
+# react-materialize requires react react-dom materialize-css and jquery
+npm install --save-dev react react-dom materialize-css jquery
 ```
 
 ## Usage
