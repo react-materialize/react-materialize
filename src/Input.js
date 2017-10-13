@@ -194,7 +194,6 @@ class Input extends Component {
             id={this._id}
             ref={(ref) => (this.timeInput = ref)}
             placeholder={placeholder}
-            type='time'
           />
           {htmlLabel}
         </div>

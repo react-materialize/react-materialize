@@ -67,6 +67,11 @@ const FormsPage = () => (
       </Section>
 
       <Section>
+        <h4 className='col s12'>Time Picker</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputTimePicker.js')} />
+      </Section>
+
+      <Section>
         <h4 className='col s12'>Switch</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/InputSwitch.js')} />
       </Section>
