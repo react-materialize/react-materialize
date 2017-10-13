@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.16
+
+ - Implement Time picker (chris-gooley)
+
 ## 1.0.15
 
  - [Input] Prefix icon for date and select inputs (norbajunior)
