@@ -172,6 +172,29 @@ describe('<Input />', () => {
     });
   });
 
+  context('#timepicker', () => {
+    it('renders a timepicker', () => {
+      const pickatimeStub = sinon.stub($.fn, 'pickatime');
+      const options = { one: 'two' };
+      mount(<Input type='time' options={options} />);
+
+      expect(pickatimeStub).to.have.been.calledWith(options);
+      pickatimeStub.restore();
+    });
+
+    it('renders a timepicker with icon', () => {
+      const wrapper = mount(<Input type='time'><Icon>today</Icon></Input>);
+
+      expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
+    });
+
+    it('renders a timepicker without icon', () => {
+      const wrapper = mount(<Input type='time' />);
+
+      expect(wrapper.find('i').exists()).to.equal(false);
+    });
+  });
+
   context('with icon', () => {
     let wrapper;
 

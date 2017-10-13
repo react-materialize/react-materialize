@@ -13,5 +13,6 @@ global.$.fn.sideNav = () => this;
 global.$.fn.collapsible = () => this;
 global.$.fn.modal = () => this;
 global.$.fn.pickadate = () => this;
+global.$.fn.pickatime = () => this;
 global.$.fn.carousel = () => this;
 global.$.fn.dropdown = () => this;
