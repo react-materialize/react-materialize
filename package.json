@@ -55,7 +55,7 @@
     "eslint-plugin-standard": "^2.0.0",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
-    "materialize-css": "^0.98.0",
+    "materialize-css": "^0.100.2",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.17.7",

@@ -27,6 +27,10 @@ class Input extends Component {
       $(this.dateInput).pickadate(this.props.options);
       $(this.dateInput).on('change', this._onChange);
     }
+    if (this.isTimePicker) {
+      $(this.timeInput).pickatime(this.props.options);
+      $(this.timeInput).on('change', this._onChange);
+    }
   }
 
   componentDidUpdate () {
@@ -172,6 +176,25 @@ class Input extends Component {
             ref={(ref) => (this.dateInput = ref)}
             placeholder={placeholder}
             type='date'
+          />
+          {htmlLabel}
+        </div>
+      );
+    } else if (type === 'time') {
+      this.isTimePicker = true;
+      delete other.options;
+
+      return (
+        <div className={cx(classes)}>
+          { this.renderIcon() }
+          <C
+            {...other}
+            className={cx(className, inputClasses)}
+            defaultValue={defaultValue}
+            id={this._id}
+            ref={(ref) => (this.timeInput = ref)}
+            placeholder={placeholder}
+            type='time'
           />
           {htmlLabel}
         </div>
