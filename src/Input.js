@@ -242,7 +242,7 @@ class Input extends Component {
       return <Icon className='prefix'>{icon}</Icon>;
     } else {
       let icon = null;
-      if (React.Children.count(children) === 1) {
+      if (React.Children.count(children) === 1 && !Array.isArray(children)) {
         icon = React.Children.only(children);
       }
       return icon === null ? null : React.cloneElement(icon, {className: 'prefix'});
