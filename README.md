@@ -44,7 +44,7 @@ See [documentation](https://react-materialize.github.io) for live examples. Try 
 ### Known issues
 
 #### Create React App
-If you are using [create-react-app](https://github.com/facebookincubator/create-react-app), please downgrade to react15 by
+If you are getting errors like `$ is not defined` or `$(...).modal is not a function` when using with [create-react-app](https://github.com/facebookincubator/create-react-app), you'll need to downgrade to react15 (as we don't support react16 yet):
 ```ssh
 yarn add react@15.x react-dom@15.x
 ```
