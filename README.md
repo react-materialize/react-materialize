@@ -41,6 +41,24 @@ import { Button, Card, Row, Col } from 'react-materialize';
 
 See [documentation](https://react-materialize.github.io) for live examples. Try out the [boilerplate](https://github.com/react-materialize/webpack-boilplate).
 
+### Known issues
+
+#### Create React App
+If you are using [create-react-app](https://github.com/facebookincubator/create-react-app), please downgrade to react15 by
+```ssh
+yarn add react@15.x react-dom@15.x
+```
+Now add `jquery` and `materialize-css` to `public/index.html` via CDN:
+```html
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+</body>
+```
 #### How does it compare to X.Y.Z?
 
 The main goal of this project is to provide react component for
