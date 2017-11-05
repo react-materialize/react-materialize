@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.17
+
+ - Adds ref to text `<Input />`
+
 ## 1.0.16
 
  - Implement Time picker (chris-gooley)

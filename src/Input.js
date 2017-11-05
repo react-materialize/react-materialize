@@ -224,6 +224,7 @@ class Input extends Component {
           <C
             {...other}
             className={cx(className, inputClasses)}
+            ref={(ref) => (this.input = ref)}
             defaultValue={defaultValue}
             id={this._id}
             onChange={this._onChange}
