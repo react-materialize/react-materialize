@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.18
+
+ - Fixes `<Input />` renderIcon issue (chris-gooley)
+
 ## 1.0.17
 
  - Adds ref to text `<Input />`
