@@ -125,6 +125,20 @@ describe('<Input />', () => {
         expect(wrapper.find('select').prop('multiple')).to.equal(true);
       });
     });
+
+    context('with only one option', () => {
+      it('renders a select with only one option', () => {
+        let options = [<option value='1' key='1' >Option 1</option>];
+        wrapper = mount(
+          <Input type='select' defaultValue='v'>
+            { options }
+          </Input>
+        );
+
+        expect(wrapper.find('select')).to.have.length(1);
+        expect(wrapper.find('option').length).to.equal(options.length);
+      });
+    });
   });
 
   context('#switch', () => {
