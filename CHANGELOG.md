@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+ - Upgrades to react16/reactDOM16
+
 ## 1.0.18
 
  - Fixes `<Input />` renderIcon issue (chris-gooley)
