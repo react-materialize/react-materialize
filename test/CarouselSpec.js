@@ -37,7 +37,7 @@ describe('<Carousel />', () => {
     const fixedItem = <span>Do you rock!?</span>;
     wrapper = renderer({ images, fixedItem });
     expect(wrapper.find('.carousel-fixed-item').length).to.eq(1);
-    expect(wrapper.find('.carousel-fixed-item').childAt(0).node).to.eq(fixedItem);
+    expect(wrapper.find('.carousel-fixed-item').childAt(0).equals(fixedItem)).to.eq(true);
   });
 
   it('handles content slides', () => {

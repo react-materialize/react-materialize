@@ -62,11 +62,6 @@ describe('<Collapsible />', () => {
       </Collapsible>
     );
 
-    it('sets initial expanded element', () => {
-      expect(wrapper.state().activeKey).to.eq(activeKey);
-      expect(wrapper.children().first().props().expanded).to.eq(true);
-    });
-
     it('handles state on click', () => {
       wrapper.find('.collapsible-header').at(0).simulate('click');
       expect(wrapper.state().activeKey, 'resets').to.be.null;

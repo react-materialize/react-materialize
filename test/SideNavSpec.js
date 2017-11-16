@@ -28,10 +28,6 @@ function setup (props = {}, children, mounted) {
   };
 }
 
-function setupMounted (props, children) {
-  return setup(props, children, true);
-}
-
 describe('<SideNav />', () => {
   it('should render', () => {
     const { sideNav, trigger, sideNavProps, triggerProps } = setup();
@@ -70,7 +66,7 @@ describe('<SideNav />', () => {
       closeOnClick: true,
       edge: 'right'
     };
-    setupMounted({ options });
+    mount(<SideNav trigger={<span>trigger</span>} options={options} />);
     assert(stub.calledWithExactly(options));
     stub.restore();
   });
