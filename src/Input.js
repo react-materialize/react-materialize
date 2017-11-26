@@ -66,6 +66,7 @@ class Input extends Component {
     var types = {
       'checkbox': e.target.checked,
       'select-multiple': this.getMultipleValues(e.target),
+      'number': parseFloat(e.target.value),
       'default': e.target.value
     };
     const value = types[e.target.type] || types['default'];
@@ -125,7 +126,8 @@ class Input extends Component {
         inputType = type || 'text';
     }
     let labelClasses = {
-      active: this.state.value || this.isSelect()
+      active: this.state.value || this.isSelect() || this.props.value ||
+        this.state.value === 0 || this.props.value === 0
     };
 
     let htmlLabel = label || inputType === 'radio'
@@ -289,7 +291,10 @@ Input.propTypes = {
   /**
    * Value used to set a initial value
    */
-  value: PropTypes.string
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 };
 
 Input.defaultProps = { type: 'text' };
