@@ -22,6 +22,14 @@ describe('<Input />', () => {
     });
   });
 
+  context('#text with value', () => {
+    it('renders an input with value', () => {
+      const value = 'Some value';
+      const wrapper = shallow(<Input value={value} />);
+      expect(wrapper.find('input').prop('value')).to.equal(value);
+    });
+  });
+
   context('#text with label', () => {
     const labelClassName = 'my-custom-class';
     const wrapper = shallow(
