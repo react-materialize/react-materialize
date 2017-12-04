@@ -81,6 +81,7 @@ class Autocomplete extends Component {
 
   render () {
     const {
+	  id,
       className,
       title,
       data,
@@ -100,7 +101,6 @@ class Autocomplete extends Component {
       ...props
     } = this.props;
 
-    const _id = 'autocomplete-input';
     const sizes = { s, m, l };
     let classes = {
       col: true
@@ -116,12 +116,12 @@ class Autocomplete extends Component {
         <input
           placeholder={placeholder}
           className='autocomplete'
-          id={_id}
+          id={id}
           onChange={this._onChange}
           type='text'
           value={this.state.value}
         />
-        <label htmlFor={_id}>{title}</label>
+        <label htmlFor={id}>{title}</label>
         {this.renderDropdown(data, minLength, limit)}
       </div>
     );
@@ -129,6 +129,7 @@ class Autocomplete extends Component {
 }
 
 Autocomplete.propTypes = {
+  id: PropTypes.string,
   className: PropTypes.string,
   /*
    * The title of the autocomplete component.
