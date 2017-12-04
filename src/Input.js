@@ -289,7 +289,7 @@ Input.propTypes = {
   /**
    * Value used to set a initial value
    */
-  value: PropTypes.string
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
 };
 
 Input.defaultProps = { type: 'text' };

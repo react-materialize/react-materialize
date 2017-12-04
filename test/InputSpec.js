@@ -22,6 +22,20 @@ describe('<Input />', () => {
     });
   });
 
+  context('#text with value', () => {
+    it('renders an input with value of string type', () => {
+      const value = 'Some value';
+      const wrapper = shallow(<Input value={value} />);
+      expect(wrapper.find('input').prop('value')).to.equal(value);
+    });
+
+    it('renders an input with value of array type', () => {
+      const values = [1, 2, 3];
+      const wrapper = shallow(<Input type='file' multiple value={values} />);
+      expect(wrapper.find('input').prop('value')).to.equal(values);
+    });
+  });
+
   context('#text with label', () => {
     const labelClassName = 'my-custom-class';
     const wrapper = shallow(
@@ -61,7 +75,7 @@ describe('<Input />', () => {
     beforeEach(() => {
       wrapper = mount(
         <Input type='select' defaultValue='v' icon='weekend'>
-          {values.map((val) => <option value={val} />)}
+          {values.map((val) => <option key={val} value={val} />)}
         </Input>
       );
     });
