@@ -11,13 +11,19 @@ const data = {
   'Google': 'http://placehold.it/250x250'
 };
 
-const wrapper = shallow(<Autocomplete title='Test Title' data={data} />);
+const componentId='testAutocompleteId';
+const wrapper = shallow(<Autocomplete title='Test Title' data={data} id={componentId} />);
 
 describe('<Autocomplete />', () => {
   const typedKey = 'A';
 
   it('renders', () => {
     expect(wrapper.find('.autocomplete')).to.have.length(1);
+  });
+
+  it('generates correct ID for input and label', () => {
+    expect(wrapper.find('.autocomplete').props()).to.have.property('id', componentId);
+    expect(wrapper.find('label').props()).to.have.property('htmlFor', componentId);
   });
 
   context('on input change', () => {
