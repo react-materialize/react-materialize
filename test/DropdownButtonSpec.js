@@ -38,7 +38,7 @@ describe('<Dropdown />', () => {
   });
 
   it('renders the correct output', () => {
-    const output = `<ul class="dropdown-content more" id="dropdown_0"></ul>`;
+    const output = `<ul class="dropdown-content more" id="dropdown_1"></ul>`;
     assert.equal(wrapper.find('ul').html(), output);
   });
 
