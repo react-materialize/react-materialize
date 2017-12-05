@@ -23,7 +23,7 @@ describe('<Autocomplete />', () => {
 
   it('generates correct ID for input and label', () => {
     expect(wrapper.find('.autocomplete').props()).to.have.property('id', componentId);
-	expect(wrapper.find('label').props()).to.have.property('htmlFor', componentId);
+    expect(wrapper.find('label').props()).to.have.property('htmlFor', componentId);
   });
 
   context('on input change', () => {
