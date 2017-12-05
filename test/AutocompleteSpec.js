@@ -12,7 +12,7 @@ const data = {
 };
 
 const componentId='testAutocompleteId';
-const wrapper = shallow(<Autocomplete title='Test Title' data={data} id='testAutocompleteId' />);
+const wrapper = shallow(<Autocomplete title='Test Title' data={data} id={componentId} />);
 
 describe('<Autocomplete />', () => {
   const typedKey = 'A';
