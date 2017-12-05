@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+ - Add ID prop to Autocomplete (mlileikis #432)
+ - Add array as `<Input />` value propType (AleF83 #430)
+
 ## 1.1.0
 
  - Upgrades to react16/reactDOM16
