@@ -11,7 +11,7 @@ const data = {
   'Google': 'http://placehold.it/250x250'
 };
 
-const componentId='testAutocompleteId';
+const componentId = 'testAutocompleteId';
 const wrapper = shallow(<Autocomplete title='Test Title' data={data} id={componentId} />);
 
 describe('<Autocomplete />', () => {

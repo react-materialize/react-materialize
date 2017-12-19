@@ -182,35 +182,35 @@ describe('<Input />', () => {
       let wrapper = shallow(
         <Input name='group1' type='radio' value='yellow' label='Yellow' />
       );
-      
-      expect(wrapper.find({ checked: false })).to.have.length(1)
+
+      expect(wrapper.find({ checked: false })).to.have.length(1);
     });
 
     it('checked=false should render checked=false', () => {
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' label='Yellow' checked={false}/>
+        <Input name='group1' type='radio' value='yellow' label='Yellow' checked={false} />
       );
-      
-      expect(wrapper.find({ checked: false })).to.have.length(1)
-    })
+
+      expect(wrapper.find({ checked: false })).to.have.length(1);
+    });
 
     it('empty checked should render checked=true', () => {
       let wrapper = shallow(
         <Input name='group1' type='radio' value='yellow' label='Yellow' checked />
       );
-      
-      expect(wrapper.find({ checked: true })).to.have.length(1)
-    })
+
+      expect(wrapper.find({ checked: true })).to.have.length(1);
+    });
 
     it('after change event checked should be toggle', () => {
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' label='Yellow'  />
+        <Input name='group1' type='radio' value='yellow' label='Yellow' />
       );
 
       wrapper.find('input').simulate('change', { target: { type: 'radio', checked: true } });
 
-      expect(wrapper.find({ checked: true })).to.have.length(1)
-    })
+      expect(wrapper.find({ checked: true })).to.have.length(1);
+    });
 
     it('after change event should call onChange with valid arg', () => {
       const onChange = sinon.spy();
@@ -219,24 +219,24 @@ describe('<Input />', () => {
         <Input name='group1' type='radio' value='yellow' label='Yellow' onChange={onChange} />
       );
 
-      const event = { target: { type: 'radio', checked: true } }
+      const event = { target: { type: 'radio', checked: true } };
       wrapper.find('input').simulate('change', event);
 
       expect(onChange).to.have.been.calledWith(event, true);
-    })
+    });
 
     it('after change event false should call onChange with valid arg', () => {
       const onChange = sinon.spy();
 
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' checked={true} label='Yellow' onChange={onChange} />
+        <Input name='group1' type='radio' value='yellow' checked label='Yellow' onChange={onChange} />
       );
 
-      const event = { target: { type: 'radio', checked: false } }
+      const event = { target: { type: 'radio', checked: false } };
       wrapper.find('input').simulate('change', event);
 
       expect(onChange).to.have.been.calledWith(event, false);
-    })
+    });
   });
 
   context('#datepicker', () => {
