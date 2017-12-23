@@ -70,7 +70,7 @@ describe('<Input />', () => {
 
   context('#select', () => {
     let wrapper;
-    const values = [1, 2, 3, 4, 5];
+    const values = [null, 1, 2, 3, 4, 5];
 
     beforeEach(() => {
       wrapper = mount(
