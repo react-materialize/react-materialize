@@ -3,11 +3,7 @@
   "version": "1.1.2",
   "description": "Material design components for react",
   "main": "./lib/index.js",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "lib"
-  ],
+  "files": ["LICENSE", "README.md", "lib"],
   "scripts": {
     "test": "mocha",
     "test:watch": "mocha --watch",
@@ -15,18 +11,15 @@
     "build": "npm test && babel -d lib src",
     "lint": "eslint src test; exit 0",
     "fix": "eslint src test --fix",
-    "release": "npm run build && npm publish"
+    "release": "npm run build && npm publish",
+    "eslint-check":
+      "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/react-materialize/react-materialize.git"
   },
-  "keywords": [
-    "material",
-    "react",
-    "materializecss",
-    "react-component"
-  ],
+  "keywords": ["material", "react", "materializecss", "react-component"],
   "author": "Isaiah Peng <issaria@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -48,9 +41,11 @@
     "enzyme-adapter-react-16": "^1.0.2",
     "es5-shim": "^4.2.0",
     "eslint": "^3.4.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-config-standard-react": "^4.0.0",
     "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
@@ -58,6 +53,7 @@
     "jsdom-global": "^2.1.1",
     "materialize-css": "^0.100.2",
     "mocha": "^3.2.0",
+    "prettier": "^1.9.2",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.0.0",
     "sinon": "^1.17.7",
