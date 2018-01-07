@@ -1,25 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Icon from './Icon';
+import React from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import Icon from './Icon'
 
 const renderTitle = (title, reveal) => (
-  <span className={cx('card-title', 'grey-text', 'text-darken-4', { 'activator': reveal })}>
+  <span
+    className={cx('card-title', 'grey-text', 'text-darken-4', {
+      activator: reveal
+    })}
+  >
     {title}
     {reveal && <Icon right>more_vert</Icon>}
   </span>
-);
+)
 
 const renderReveal = (title, reveal) => (
-  <div className='card-reveal'>
-    <span className='card-title grey-text text-darken-4'>{title}<Icon right>close</Icon></span>
+  <div className="card-reveal">
+    <span className="card-title grey-text text-darken-4">
+      {title}
+      <Icon right>close</Icon>
+    </span>
     {reveal}
   </div>
-);
+)
 
-const renderAction = (actions) => (
-  <div className='card-action'>{actions}</div>
-);
+const renderAction = actions => <div className="card-action">{actions}</div>
 
 const Card = ({
   title,
@@ -31,7 +36,7 @@ const Card = ({
   children,
   ...props
 }) => {
-  const classes = { card: true };
+  const classes = { card: true }
 
   return (
     <div {...props} className={cx(className, classes)}>
@@ -43,8 +48,8 @@ const Card = ({
       {renderReveal(title, reveal)}
       {actions && renderAction(actions)}
     </div>
-  );
-};
+  )
+}
 
 Card.propTypes = {
   children: PropTypes.node,
@@ -55,6 +60,6 @@ Card.propTypes = {
   header: PropTypes.element,
   // The buttons to be displayed at the action area
   actions: PropTypes.arrayOf(PropTypes.element)
-};
+}
 
-export default Card;
+export default Card

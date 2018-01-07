@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Button from './Button';
-import cx from 'classnames';
-import OverlayTrigger from './OverlayTrigger';
-import idgen from './idgen';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Button from './Button'
+import cx from 'classnames'
+import OverlayTrigger from './OverlayTrigger'
+import idgen from './idgen'
 
 class Modal extends Component {
-  constructor (props) {
-    super(props);
-    this.modalID = props.id || `modal_${idgen()}`;
+  constructor(props) {
+    super(props)
+    this.modalID = props.id || `modal_${idgen()}`
   }
 
-  componentDidMount () {
-    const { trigger, modalOptions } = this.props;
+  componentDidMount() {
+    const { trigger, modalOptions } = this.props
 
     if (!trigger) {
-      $(`#${this.modalID}`).modal(modalOptions);
+      $(`#${this.modalID}`).modal(modalOptions)
     }
   }
 
-  renderOverlay () {
+  renderOverlay() {
     const {
       actions,
       bottomSheet,
@@ -27,49 +27,47 @@ class Modal extends Component {
       fixedFooter,
       header,
       ...other
-    } = this.props;
+    } = this.props
 
-    delete other.modalOptions;
-    delete other.trigger;
+    delete other.modalOptions
+    delete other.trigger
 
     const classes = cx({
-      'modal': true,
+      modal: true,
       'modal-fixed-footer': fixedFooter,
       'bottom-sheet': bottomSheet
-    });
+    })
 
     return (
       <div {...other} className={classes} id={this.modalID}>
-        <div className='modal-content'>
+        <div className="modal-content">
           <h4>{header}</h4>
           {children}
         </div>
-        <div className='modal-footer'>
-          {React.Children.toArray(actions)}
-        </div>
+        <div className="modal-footer">{React.Children.toArray(actions)}</div>
       </div>
-    );
+    )
   }
 
-  render () {
-    const { modalOptions, trigger } = this.props;
+  render() {
+    const { modalOptions, trigger } = this.props
 
     return (
       <OverlayTrigger
         modalOptions={modalOptions}
         overlay={this.renderOverlay()}
       >
-        { trigger }
+        {trigger}
       </OverlayTrigger>
-    );
+    )
   }
 }
 
 Modal.propTypes = {
   /**
-  * ModalOptions
-  * Object with options for modal
-  */
+   * ModalOptions
+   * Object with options for modal
+   */
   modalOptions: PropTypes.shape({
     /*
      * Modal can be dismissed by clicking outside of the modal
@@ -105,18 +103,18 @@ Modal.propTypes = {
     complete: PropTypes.func
   }),
   /**
-  * BottomSheet styled modal
-  * @default false
-  */
+   * BottomSheet styled modal
+   * @default false
+   */
   bottomSheet: PropTypes.bool,
   /**
    * Component children
    */
   children: PropTypes.node,
   /**
-  * FixedFooter styled modal
-  * @default false
-  */
+   * FixedFooter styled modal
+   * @default false
+   */
   fixedFooter: PropTypes.bool,
   /**
    * Text to shown in the header of the modal
@@ -135,13 +133,17 @@ Modal.propTypes = {
    * The ID to trigger the modal opening/closing
    */
   id: PropTypes.string
-};
+}
 
 Modal.defaultProps = {
   modalOptions: {},
   fixedFooter: false,
   bottomSheet: false,
-  actions: [<Button waves='light' modal='close' flat>Close</Button>]
-};
+  actions: [
+    <Button waves="light" modal="close" flat>
+      Close
+    </Button>
+  ]
+}
 
-export default Modal;
+export default Modal

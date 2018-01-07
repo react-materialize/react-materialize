@@ -1,86 +1,99 @@
 /* eslint no-unused-vars: ["error", { "ignoreRestSiblings": true }] */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import constants from './constants';
-import Icon from './Icon';
-import idgen from './idgen';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import constants from './constants'
+import Icon from './Icon'
+import idgen from './idgen'
 
 class Autocomplete extends Component {
-  constructor (props) {
-    super(props);
+  constructor(props) {
+    super(props)
 
     this.state = {
       value: props.value || ''
-    };
+    }
 
-    this.renderIcon = this.renderIcon.bind(this);
-    this.renderDropdown = this.renderDropdown.bind(this);
-    this._onChange = this._onChange.bind(this);
+    this.renderIcon = this.renderIcon.bind(this)
+    this.renderDropdown = this.renderDropdown.bind(this)
+    this._onChange = this._onChange.bind(this)
   }
 
-  componentWillReceiveProps ({ value }) {
+  componentWillReceiveProps({ value }) {
     if (value !== undefined) {
-      this.setState({ value });
+      this.setState({ value })
     }
   }
 
-  renderIcon (icon, iconClassName) {
-    return <Icon className={iconClassName}>{icon}</Icon>;
+  renderIcon(icon, iconClassName) {
+    return <Icon className={iconClassName}>{icon}</Icon>
   }
 
-  renderDropdown (data, minLength, limit) {
-    const { value } = this.state;
+  renderDropdown(data, minLength, limit) {
+    const { value } = this.state
 
-    if (minLength && minLength > value.length || !value) {
-      return null;
+    if ((minLength && minLength > value.length) || !value) {
+      return null
     }
 
     let matches = Object.keys(data).filter(key => {
-      const index = key.toUpperCase().indexOf(value.toUpperCase());
-      return index !== -1 && value.length < key.length;
-    });
-    if (limit) matches = matches.slice(0, limit);
+      const index = key.toUpperCase().indexOf(value.toUpperCase())
+      return index !== -1 && value.length < key.length
+    })
+    if (limit) matches = matches.slice(0, limit)
     if (matches.length === 0) {
-      return null;
+      return null
     }
 
     return (
-      <ul className='autocomplete-content dropdown-content'>
+      <ul className="autocomplete-content dropdown-content">
         {matches.map((key, idx) => {
-          const index = key.toUpperCase().indexOf(value.toUpperCase());
+          const index = key.toUpperCase().indexOf(value.toUpperCase())
           return (
-            <li key={key + '_' + idx} onClick={this._onAutocomplete.bind(this, key)}>
-              {data[key] ? <img src={data[key]} className='right circle' /> : null}
+            <li
+              key={key + '_' + idx}
+              onClick={this._onAutocomplete.bind(this, key)}
+            >
+              {data[key] ? (
+                <img src={data[key]} className="right circle" />
+              ) : null}
               <span>
                 {index !== 0 ? key.substring(0, index) : ''}
-                <span className='highlight'>{value}</span>
-                {key.length !== index + value.length ? key.substring(index + value.length) : ''}
+                <span className="highlight">{value}</span>
+                {key.length !== index + value.length
+                  ? key.substring(index + value.length)
+                  : ''}
               </span>
             </li>
-          );
+          )
         })}
       </ul>
-    );
+    )
   }
 
-  _onChange (evt) {
-    const { onChange } = this.props;
-    const value = evt.target.value;
-    if (onChange) { onChange(evt, value); }
+  _onChange(evt) {
+    const { onChange } = this.props
+    const value = evt.target.value
+    if (onChange) {
+      onChange(evt, value)
+    }
 
-    this.setState({ value });
+    this.setState({ value })
   }
 
-  _onAutocomplete (value, evt) {
-    const { onChange, onAutocomplete } = this.props;
-    if (onAutocomplete) { onAutocomplete(value); }
-    if (onChange) { onChange(evt, value); }
+  _onAutocomplete(value, evt) {
+    const { onChange, onAutocomplete } = this.props
+    if (onAutocomplete) {
+      onAutocomplete(value)
+    }
+    if (onChange) {
+      onChange(evt, value)
+    }
 
-    this.setState({ value });
+    this.setState({ value })
   }
 
-  render () {
+  render() {
     const {
       id,
       className,
@@ -100,33 +113,36 @@ class Autocomplete extends Component {
       onChange,
       onAutocomplete,
       ...props
-    } = this.props;
+    } = this.props
 
-    const _id = id || `autocomplete-${idgen()}`;
-    const sizes = { s, m, l };
+    const _id = id || `autocomplete-${idgen()}`
+    const sizes = { s, m, l }
     let classes = {
       col: true
-    };
+    }
     constants.SIZES.forEach(size => {
-      classes[size + sizes[size]] = sizes[size];
-    });
+      classes[size + sizes[size]] = sizes[size]
+    })
 
     return (
       <div
-        offset={offset} className={cx('input-field', className, classes)} {...props}>
+        offset={offset}
+        className={cx('input-field', className, classes)}
+        {...props}
+      >
         {icon && this.renderIcon(icon, iconClassName)}
         <input
           placeholder={placeholder}
-          className='autocomplete'
+          className="autocomplete"
           id={_id}
           onChange={this._onChange}
-          type='text'
+          type="text"
           value={this.state.value}
         />
         <label htmlFor={_id}>{title}</label>
         {this.renderDropdown(data, minLength, limit)}
       </div>
-    );
+    )
   }
 }
 
@@ -181,6 +197,6 @@ Autocomplete.propTypes = {
    * The value of the input
    */
   value: PropTypes.string
-};
+}
 
-export default Autocomplete;
+export default Autocomplete

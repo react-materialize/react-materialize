@@ -1,74 +1,66 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Col from './Col';
-import Icon from './Icon';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import Col from './Col'
+import Icon from './Icon'
 
 class Navbar extends Component {
-  constructor (props) {
-    super(props);
-    this.renderSideNav = this.renderSideNav.bind(this);
+  constructor(props) {
+    super(props)
+    this.renderSideNav = this.renderSideNav.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (typeof $ !== 'undefined') {
-      $('.button-collapse').sideNav(this.props.options);
+      $('.button-collapse').sideNav(this.props.options)
     }
   }
 
-  renderSideNav () {
+  renderSideNav() {
     return (
-      <ul id='nav-mobile' className='side-nav'>
+      <ul id="nav-mobile" className="side-nav">
         {this.props.children}
       </ul>
-    );
+    )
   }
 
-  render () {
-    const {
-      brand,
-      className,
-      fixed,
-      left,
-      right,
-      href,
-      ...other
-    } = this.props;
+  render() {
+    const { brand, className, fixed, left, right, href, ...other } = this.props
 
-    delete other.options;
+    delete other.options
 
     let classes = {
       right: right,
       'hide-on-med-and-down': true
-    };
+    }
 
     let brandClasses = {
       'brand-logo': true,
       right: left
-    };
+    }
 
     let content = (
       <nav {...other} className={className}>
-        <div className='nav-wrapper'>
+        <div className="nav-wrapper">
           <Col s={12}>
-            <a href={href} className={cx(brandClasses)}>{brand}</a>
-            <ul className={cx(className, classes)}>
-              {this.props.children}
-            </ul>
+            <a href={href} className={cx(brandClasses)}>
+              {brand}
+            </a>
+            <ul className={cx(className, classes)}>{this.props.children}</ul>
             {this.renderSideNav()}
-            <a className='button-collapse' href='#' data-activates='nav-mobile'>
+            <a className="button-collapse" href="#" data-activates="nav-mobile">
               <Icon>view_headline</Icon>
             </a>
           </Col>
         </div>
       </nav>
-    );
+    )
 
     if (fixed) {
-      content = <div className='navbar-fixed'>{content}</div>;
+      content = <div className="navbar-fixed">{content}</div>
     }
 
-    return content;
+    return content
   }
 }
 
@@ -93,11 +85,11 @@ Navbar.propTypes = {
     closeOnClick: PropTypes.bool,
     draggable: PropTypes.bool
   })
-};
+}
 
 Navbar.defaultProps = {
   href: '/',
   options: {}
-};
+}
 
-export default Navbar;
+export default Navbar

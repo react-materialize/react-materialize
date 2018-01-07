@@ -1,46 +1,46 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Overlay from './Overlay';
-import idgen from './idgen';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Overlay from './Overlay'
+import idgen from './idgen'
 
 class OverlayTrigger extends Overlay {
-  constructor (props) {
-    super(props);
-    this.showOverlay = this.showOverlay.bind(this);
-    this.renderOverlay = this.renderOverlay.bind(this);
-    this.overlayID = this.props.overlay.props.id || `overlay_${idgen()}`;
+  constructor(props) {
+    super(props)
+    this.showOverlay = this.showOverlay.bind(this)
+    this.renderOverlay = this.renderOverlay.bind(this)
+    this.overlayID = this.props.overlay.props.id || `overlay_${idgen()}`
   }
 
-  render () {
-    const { children } = this.props;
-    if (!children) return null;
+  render() {
+    const { children } = this.props
+    if (!children) return null
 
-    const child = React.Children.only(children);
-    return React.cloneElement(
-      child, {
-        onClick: this.showOverlay
-      }
-    );
+    const child = React.Children.only(children)
+    return React.cloneElement(child, {
+      onClick: this.showOverlay
+    })
   }
 
-  renderOverlay () {
+  renderOverlay() {
     return React.cloneElement(this.props.overlay, {
       id: this.overlayID
-    });
+    })
   }
 
-  showOverlay (e) {
-    e.preventDefault();
-    const { modalOptions = {} } = this.props;
-    $(`#${this.overlayID}`).modal(modalOptions).modal('open');
+  showOverlay(e) {
+    e.preventDefault()
+    const { modalOptions = {} } = this.props
+    $(`#${this.overlayID}`)
+      .modal(modalOptions)
+      .modal('open')
   }
 }
 
 OverlayTrigger.propTypes = {
   /**
-  * ModalOptions
-  * Object with options for modal
-  */
+   * ModalOptions
+   * Object with options for modal
+   */
   modalOptions: PropTypes.shape({
     /*
      * Modal can be dismissed by clicking outside of the modal
@@ -76,6 +76,6 @@ OverlayTrigger.propTypes = {
     complete: PropTypes.func
   }),
   overlay: PropTypes.node
-};
+}
 
-export default OverlayTrigger;
+export default OverlayTrigger
