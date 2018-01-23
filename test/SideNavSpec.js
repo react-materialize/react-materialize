@@ -39,7 +39,7 @@ describe('<SideNav />', () => {
 
   it('should render fixed', () => {
     const { sideNav, trigger, sideNavProps, triggerProps } = setup({
-       id: 'test456',
+      id: 'test456',
       options: {},
       shouldTransfer: 'true',
       fixed: true
@@ -95,7 +95,7 @@ describe('<SideNav />', () => {
     assert(sideNav.length === 1, 'should render a sidenav');
     assert(trigger.length === 1, 'should render a default trigger');
     assert.equal(sideNavProps.id, 'test789', 'should have an id');
-    assert.match(triggerProps.className, /show\-on\-large/, 'should have show-on-lagre class set');
+    assert.match(triggerProps.className, /show-on-large/, 'should have show-on-lagre class set');
     assert.equal(triggerProps['data-activates'], sideNavProps.id, 'should have a matching trigger');
   });
 });
