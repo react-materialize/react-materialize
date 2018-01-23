@@ -37,6 +37,20 @@ describe('<SideNav />', () => {
     assert.equal(triggerProps['data-activates'], sideNavProps.id, 'should have a matching trigger');
   });
 
+  it('should render fixed', () => {
+    const { sideNav, trigger, sideNavProps, triggerProps } = setup({
+       id: 'test456',
+      options: {},
+      shouldTransfer: 'true',
+      fixed: true
+    });
+    assert(sideNav.length === 1, 'should render a sidenav');
+    assert(trigger.length === 1, 'should render a default trigger');
+    assert.equal(sideNavProps.id, 'test456', 'should have an id');
+    assert.match(sideNavProps.className, /fixed/, 'should have fixed class set');
+    assert.equal(triggerProps['data-activates'], sideNavProps.id, 'should have a matching trigger');
+  });
+
   it('should render a given id', () => {
     const { sideNavProps, triggerProps } = setup({ id: 'test' });
     assert.equal(sideNavProps.id, 'test');
@@ -69,5 +83,19 @@ describe('<SideNav />', () => {
     mount(<SideNav trigger={<span>trigger</span>} options={options} />);
     assert(stub.calledWithExactly(options));
     stub.restore();
+  });
+
+  it('should render fullscreen mode', () => {
+    const { sideNav, trigger, sideNavProps, triggerProps } = setup({
+      id: 'test789',
+      options: {},
+      shouldTransfer: 'true',
+      showOnLarge: true
+    });
+    assert(sideNav.length === 1, 'should render a sidenav');
+    assert(trigger.length === 1, 'should render a default trigger');
+    assert.equal(sideNavProps.id, 'test789', 'should have an id');
+    assert.match(triggerProps.className, /show\-on\-large/, 'should have show-on-lagre class set');
+    assert.equal(triggerProps['data-activates'], sideNavProps.id, 'should have a matching trigger');
   });
 });
