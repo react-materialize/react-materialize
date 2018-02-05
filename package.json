@@ -6,7 +6,8 @@
   "files": [
     "LICENSE",
     "README.md",
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
   "scripts": {
     "test": "mocha",
