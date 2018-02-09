@@ -97,12 +97,14 @@ class Input extends Component {
       validate,
       onLabel,
       offLabel,
+      inline,
       ...other
     } = this.props;
     let sizes = { s, m, l };
     this._id = this._id || this.props.id || `input_${idgen()}`;
     let classes = {
       col: true,
+      inline: type !== 'checkbox' && type !== 'radio' && inline,
       'input-field': type !== 'checkbox' && type !== 'radio'
     };
     constants.SIZES.forEach(size => {
@@ -286,6 +288,7 @@ Input.propTypes = {
   s: PropTypes.number,
   m: PropTypes.number,
   l: PropTypes.number,
+  inline: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   labelClassName: PropTypes.string,
