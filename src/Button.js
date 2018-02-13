@@ -102,15 +102,18 @@ Button.propTypes = {
   /**
    * Fixed action button
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
-   * @default vertical
+   * @default vertical. This will disable any onClick function from being called on the main button.
    */
   fab: PropTypes.oneOf(['vertical', 'horizontal']),
   /**
-   * The icon to display, if specified it will create a button with the material icon
+   * The icon to display, if specified it will create a button with the material icon. 
    */
   icon: PropTypes.string,
   modal: PropTypes.oneOf(['close', 'confirm']),
   node: PropTypes.node,
+  /**
+   * Will be disabled when fab is set.
+   */
   onClick: PropTypes.func,
   /**
    * Tooltip to show when mouse hovered
