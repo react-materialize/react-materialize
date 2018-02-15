@@ -1,67 +1,72 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
 
 class Collapsible extends Component {
-  constructor (props) {
-    super(props);
+  constructor(props) {
+    super(props)
 
     this.state = {
       activeKey: props.defaultActiveKey
-    };
+    }
 
-    this.renderItem = this.renderItem.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
+    this.renderItem = this.renderItem.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
-  componentDidMount () {
-    $(this._collapsible).collapsible();
+  componentDidMount() {
+    $(this._collapsible).collapsible()
   }
 
-  render () {
-    const {
-      accordion,
-      popout,
-      className,
-      children,
-      ...props
-    } = this.props;
+  render() {
+    const { accordion, popout, className, children, ...props } = this.props
 
-    delete props.defaultActiveKey;
+    delete props.defaultActiveKey
 
     const classes = {
       collapsible: true,
       popout
-    };
-    const collapsible = accordion ? 'accordion' : 'expandable';
+    }
+    const collapsible = accordion ? 'accordion' : 'expandable'
 
     return (
-      <ul ref={(node) => { this._collapsible = node; }} className={cx(className, classes)} {...props} data-collapsible={collapsible}>
+      <ul
+        ref={node => {
+          this._collapsible = node
+        }}
+        className={cx(className, classes)}
+        {...props}
+        data-collapsible={collapsible}
+      >
         {React.Children.map(children, this.renderItem)}
       </ul>
-    );
+    )
   }
 
-  renderItem (child, key) {
-    if (!child) return null;
+  renderItem(child, key) {
+    if (!child) return null
     const props = {
       expanded: this.state.activeKey === key,
       eventKey: key,
       onSelect: this.handleSelect
-    };
+    }
 
-    return React.cloneElement(child, props);
+    return React.cloneElement(child, props)
   }
 
-  handleSelect (key) {
-    const { onSelect } = this.props;
+  handleSelect(key) {
+    const { onSelect } = this.props
 
-    if (onSelect) { onSelect(key); }
+    if (onSelect) {
+      onSelect(key)
+    }
 
-    if (this.state.activeKey === key) { key = null; }
+    if (this.state.activeKey === key) {
+      key = null
+    }
 
     if (this.props.accordion) {
-      this.setState({ activeKey: key });
+      this.setState({ activeKey: key })
     }
   }
 }
@@ -85,10 +90,10 @@ Collapsible.propTypes = {
    */
   defaultActiveKey: PropTypes.any,
   onSelect: PropTypes.func
-};
+}
 
 Collapsible.defaultProps = {
   accordion: false
-};
+}
 
-export default Collapsible;
+export default Collapsible

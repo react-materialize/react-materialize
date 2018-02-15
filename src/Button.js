@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import constants from './constants';
-import cx from 'classnames';
-import Icon from './Icon';
-import idgen from './idgen';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import constants from './constants'
+import cx from 'classnames'
+import Icon from './Icon'
+import idgen from './idgen'
 
 class Button extends Component {
-  constructor (props) {
-    super(props);
-    this.renderIcon = this.renderIcon.bind(this);
-    this.renderFab = this.renderFab.bind(this);
+  constructor(props) {
+    super(props)
+    this.renderIcon = this.renderIcon.bind(this)
+    this.renderFab = this.renderFab.bind(this)
   }
 
-  render () {
+  render() {
     const {
       className,
       node,
@@ -25,31 +25,31 @@ class Button extends Component {
       disabled,
       waves,
       ...other
-    } = this.props;
+    } = this.props
 
-    const toggle = fabClickOnly ? 'click-to-toggle' : '';
-    let C = node;
+    const toggle = fabClickOnly ? 'click-to-toggle' : ''
+    let C = node
     let classes = {
       btn: true,
       disabled,
       'waves-effect': waves
-    };
+    }
 
     if (constants.WAVES.indexOf(waves) > -1) {
-      classes['waves-' + waves] = true;
+      classes['waves-' + waves] = true
     }
 
-    let styles = { flat, floating, large };
+    let styles = { flat, floating, large }
     constants.STYLES.forEach(style => {
-      classes['btn-' + style] = styles[style];
-    });
+      classes['btn-' + style] = styles[style]
+    })
 
     if (modal) {
-      classes['modal-action'] = true;
-      classes['modal-' + modal] = true;
+      classes['modal-action'] = true
+      classes['modal-' + modal] = true
     }
     if (fab) {
-      return this.renderFab(cx(classes, className), fab, toggle);
+      return this.renderFab(cx(classes, className), fab, toggle)
     } else {
       return (
         <C
@@ -58,34 +58,32 @@ class Button extends Component {
           onClick={this.props.onClick}
           className={cx(classes, className)}
         >
-          { this.renderIcon() }
-          { this.props.children }
+          {this.renderIcon()}
+          {this.props.children}
         </C>
-      );
+      )
     }
   }
 
-  renderFab (className, orientation, clickOnly) {
-    const classes = cx(orientation, clickOnly);
+  renderFab(className, orientation, clickOnly) {
+    const classes = cx(orientation, clickOnly)
     return (
       <div className={cx('fixed-action-btn', classes)}>
-        <a className={className}>{ this.renderIcon() }</a>
+        <a className={className}>{this.renderIcon()}</a>
         <ul>
-          {
-            React.Children.map(this.props.children, child => {
-              return <li key={idgen()}>{child}</li>;
-            })
-          }
+          {React.Children.map(this.props.children, child => {
+            return <li key={idgen()}>{child}</li>
+          })}
         </ul>
       </div>
-    );
+    )
   }
 
-  renderIcon () {
-    const { icon } = this.props;
-    if (!icon) return;
+  renderIcon() {
+    const { icon } = this.props
+    if (!icon) return
 
-    return <Icon>{icon}</Icon>;
+    return <Icon>{icon}</Icon>
   }
 }
 
@@ -119,16 +117,24 @@ Button.propTypes = {
    * Tooltip to show when mouse hovered
    */
   tooltip: PropTypes.string,
-  waves: PropTypes.oneOf(['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal']),
+  waves: PropTypes.oneOf([
+    'light',
+    'red',
+    'yellow',
+    'orange',
+    'purple',
+    'green',
+    'teal'
+  ]),
   /**
    * FAB Click-Only
    * Turns a FAB from a hover-toggle to a click-toggle
    */
   fabClickOnly: PropTypes.bool
-};
+}
 
 Button.defaultProps = {
   node: 'button'
-};
+}
 
-export default Button;
+export default Button

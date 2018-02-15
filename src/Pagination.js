@@ -1,58 +1,59 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Icon from './Icon';
-import PaginationButton from './PaginationButton';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import Icon from './Icon'
+import PaginationButton from './PaginationButton'
 
 class Pagination extends Component {
-  constructor (props) {
-    super(props);
-    const { activePage, items } = props;
+  constructor(props) {
+    super(props)
+    const { activePage, items } = props
 
     this.state = {
-      activePage: activePage > 0 && activePage <= items
-        ? activePage : 1
-    };
+      activePage: activePage > 0 && activePage <= items ? activePage : 1
+    }
 
-    this.renderButtons = this.renderButtons.bind(this);
-    this._onClick = this._onClick.bind(this);
+    this.renderButtons = this.renderButtons.bind(this)
+    this._onClick = this._onClick.bind(this)
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.activePage !== this.props.activePage) {
-      this.setState({activePage: nextProps.activePage});
+      this.setState({ activePage: nextProps.activePage })
     }
   }
 
-  _onClick (i) {
-    const { items, onSelect } = this.props;
+  _onClick(i) {
+    const { items, onSelect } = this.props
 
     return () => {
       if (i > 0 && i <= items) {
-        if (onSelect) { onSelect(i); }
-        this.setState({ activePage: i });
+        if (onSelect) {
+          onSelect(i)
+        }
+        this.setState({ activePage: i })
       }
-    };
+    }
   }
 
-  renderButtons () {
-    const { items, children, maxButtons = items } = this.props;
-    const { activePage } = this.state;
+  renderButtons() {
+    const { items, children, maxButtons = items } = this.props
+    const { activePage } = this.state
 
-    if (children) return children;
+    if (children) return children
 
-    const buttonsCount = Math.min(maxButtons, items);
+    const buttonsCount = Math.min(maxButtons, items)
 
-    const maxPos = items - buttonsCount;
-    const halfButtons = parseInt(buttonsCount / 2, 10);
+    const maxPos = items - buttonsCount
+    const halfButtons = parseInt(buttonsCount / 2, 10)
 
-    let hiddenPagesBefore = (activePage - halfButtons);
+    let hiddenPagesBefore = activePage - halfButtons
     if (hiddenPagesBefore > maxPos) {
-      hiddenPagesBefore = maxPos + 1;
+      hiddenPagesBefore = maxPos + 1
     }
 
-    let from = Math.max(hiddenPagesBefore, 1);
-    let to = Math.min(items, from + maxButtons - 1);
+    let from = Math.max(hiddenPagesBefore, 1)
+    let to = Math.min(items, from + maxButtons - 1)
 
     const buttons = [
       <PaginationButton
@@ -62,7 +63,7 @@ class Pagination extends Component {
       >
         <Icon>chevron_left</Icon>
       </PaginationButton>
-    ];
+    ]
 
     for (let i = from; i <= to; i++) {
       buttons.push(
@@ -73,7 +74,7 @@ class Pagination extends Component {
         >
           {i}
         </PaginationButton>
-      );
+      )
     }
 
     buttons.push(
@@ -84,15 +85,17 @@ class Pagination extends Component {
       >
         <Icon>chevron_right</Icon>
       </PaginationButton>
-    );
+    )
 
-    return buttons;
+    return buttons
   }
 
-  render () {
+  render() {
     return (
-      <ul className={cx('pagination', this.props.className)}>{ this.renderButtons() }</ul>
-    );
+      <ul className={cx('pagination', this.props.className)}>
+        {this.renderButtons()}
+      </ul>
+    )
   }
 }
 
@@ -109,11 +112,11 @@ Pagination.propTypes = {
   className: PropTypes.string,
   maxButtons: PropTypes.number,
   onSelect: PropTypes.func
-};
+}
 
 Pagination.defaultProps = {
   activePage: 1,
   items: 10
-};
+}
 
-export default Pagination;
+export default Pagination

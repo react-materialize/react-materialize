@@ -1,35 +1,31 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Spinner from './Spinner';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import Spinner from './Spinner'
 
-let colors = ['blue', 'red', 'yellow', 'green'];
+let colors = ['blue', 'red', 'yellow', 'green']
 
 class Preloader extends Component {
-  render () {
+  render() {
     let classes = {
       'preloader-wrapper': true,
       active: this.props.active
-    };
+    }
 
     if (this.props.size) {
-      classes[this.props.size] = true;
+      classes[this.props.size] = true
     }
 
-    let spinners;
+    let spinners
     if (this.props.flashing) {
-      spinners = [];
+      spinners = []
       colors.map(color => {
-        spinners.push(<Spinner color={color} only={false} key={color} />);
-      });
+        spinners.push(<Spinner color={color} only={false} key={color} />)
+      })
     } else {
-      spinners = <Spinner color={this.props.color} />;
+      spinners = <Spinner color={this.props.color} />
     }
-    return (
-      <div className={cx(this.props.className, classes)}>
-        {spinners}
-      </div>
-    );
+    return <div className={cx(this.props.className, classes)}>{spinners}</div>
   }
 }
 
@@ -55,12 +51,12 @@ Preloader.propTypes = {
    * @default false
    */
   flashing: PropTypes.bool
-};
+}
 
 Preloader.defaultProps = {
   active: true,
   flashing: false,
   color: 'blue'
-};
+}
 
-export default Preloader;
+export default Preloader

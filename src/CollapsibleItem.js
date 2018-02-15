@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Icon from './Icon';
+import React from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import Icon from './Icon'
 
 const CollapsibleItem = ({
   className,
@@ -23,9 +23,9 @@ const CollapsibleItem = ({
       {icon && <Icon className={iconClassName}>{icon}</Icon>}
       {header}
     </Node>
-    <div className='collapsible-body'>{children}</div>
+    <div className="collapsible-body">{children}</div>
   </li>
-);
+)
 
 CollapsibleItem.propTypes = {
   header: PropTypes.any.isRequired,
@@ -52,11 +52,11 @@ CollapsibleItem.propTypes = {
    * The scroll behavior for scrollIntoView
    */
   scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
-};
+}
 
 CollapsibleItem.defaultProps = {
   expanded: false,
   node: 'div'
-};
+}
 
-export default CollapsibleItem;
+export default CollapsibleItem

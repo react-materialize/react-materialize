@@ -1,51 +1,51 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import idgen from './idgen';
-import cx from 'classnames';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import idgen from './idgen'
+import cx from 'classnames'
 
 const classes = {
   'dropdown-content': true
-};
+}
 
 class Dropdown extends Component {
-  constructor (props) {
-    super(props);
-    this.idx = 'dropdown_' + idgen();
-    this.renderTrigger = this.renderTrigger.bind(this);
+  constructor(props) {
+    super(props)
+    this.idx = 'dropdown_' + idgen()
+    this.renderTrigger = this.renderTrigger.bind(this)
   }
 
-  componentDidMount () {
-    const options = this.props.options || {};
-    $(this._trigger).dropdown(options);
+  componentDidMount() {
+    const options = this.props.options || {}
+    $(this._trigger).dropdown(options)
   }
 
-  componentWillUnmount () {
-    $(this._trigger).off();
+  componentWillUnmount() {
+    $(this._trigger).off()
   }
 
-  render () {
-    const { children, className, ...props } = this.props;
-    delete props.trigger;
-    delete props.options;
+  render() {
+    const { children, className, ...props } = this.props
+    delete props.trigger
+    delete props.options
 
     return (
       <span>
-        { this.renderTrigger() }
+        {this.renderTrigger()}
         <ul {...props} className={cx(classes, className)} id={this.idx}>
-          { children }
+          {children}
         </ul>
       </span>
-    );
+    )
   }
 
-  renderTrigger () {
-    const { trigger } = this.props;
+  renderTrigger() {
+    const { trigger } = this.props
 
     return React.cloneElement(trigger, {
-      ref: (t) => (this._trigger = `[data-activates=${this.idx}]`),
+      ref: t => (this._trigger = `[data-activates=${this.idx}]`),
       className: cx(trigger.props.className, 'dropdown-button'),
       'data-activates': this.idx
-    });
+    })
   }
 }
 
@@ -70,6 +70,6 @@ Dropdown.propTypes = {
     belowOrigin: PropTypes.bool,
     alignment: PropTypes.oneOf(['left', 'right'])
   })
-};
+}
 
-export default Dropdown;
+export default Dropdown

@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
 
-import constants from './constants';
+import constants from './constants'
 
 const Col = ({
   children,
@@ -14,24 +14,24 @@ const Col = ({
   offset,
   ...other
 }) => {
-  let sizes = { s, m, l };
-  let classes = { col: true };
+  let sizes = { s, m, l }
+  let classes = { col: true }
   constants.SIZES.forEach(size => {
-    classes[size + sizes[size]] = sizes[size];
-  });
+    classes[size + sizes[size]] = sizes[size]
+  })
 
   if (offset) {
     offset.split(' ').forEach(off => {
-      classes['offset-' + off] = true;
-    });
+      classes['offset-' + off] = true
+    })
   }
 
   return (
     <C {...other} className={cx(classes, className)}>
       {children}
     </C>
-  );
-};
+  )
+}
 
 Col.propTypes = {
   children: PropTypes.node,
@@ -59,6 +59,6 @@ Col.propTypes = {
    * Columns for small size screens
    */
   s: PropTypes.number
-};
+}
 
-export default Col;
+export default Col
