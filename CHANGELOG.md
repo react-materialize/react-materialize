@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3
+
+- Fixes Unknown props in Collapsible
+- Update link to https (Koolstr #466)
+
 ## 1.1.2
 
 - Fixes unresolved ghpages-materialize.css in docs (Pechalka #441)
