@@ -106,7 +106,7 @@ Button.propTypes = {
    */
   fab: PropTypes.oneOf(['vertical', 'horizontal']),
   /**
-   * The icon to display, if specified it will create a button with the material icon. 
+   * The icon to display, if specified it will create a button with the material icon.
    */
   icon: PropTypes.string,
   modal: PropTypes.oneOf(['close', 'confirm']),
