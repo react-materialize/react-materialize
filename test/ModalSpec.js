@@ -1,13 +1,13 @@
-/* global describe, it, expect, context, beforeEach */
+/* global describe, it, expect, context, beforeEach, afterEach */
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { stub } from 'sinon';
 import Modal from '../src/Modal';
-import OverlayTrigger from '../src/OverlayTrigger';
 
 describe('<Modal />', () => {
   const trigger = <button>open modal</button>;
-  const children = <div><p>Hello</p></div>;
+  const children = <div><h1>Hello</h1></div>;
   const header = 'Modal header';
   const modalOptions = {
     dismissible: true,
@@ -16,6 +16,7 @@ describe('<Modal />', () => {
 
   let wrapper;
   let renderedWrapper;
+  const modalStub = stub($.fn, 'modal');
 
   context('renders a modal', () => {
     beforeEach(() => {
@@ -28,15 +29,16 @@ describe('<Modal />', () => {
           {children}
         </Modal>
       );
+
       renderedWrapper = document.body.lastElementChild.innerHTML;
     });
 
-    it('has a header', () => {
-      expect(renderedWrapper).to.contain(header);
+    afterEach(() => {
+      document.body.removeChild(document.body.lastElementChild);
     });
 
     it('has children', () => {
-      expect(renderedWrapper).to.contain(shallow(children).html());
+      expect(renderedWrapper).to.contain(header);
     });
 
     it('has a footer', () => {
@@ -70,14 +72,13 @@ describe('<Modal />', () => {
         </Modal>
       );
     });
+
     it('renders', () => {
-      expect(wrapper.contains(trigger)).to.equal(true);
+      expect(wrapper.find('button').length).to.equal(1);
     });
-    it('has an overlay', () => {
-      expect(wrapper.find(OverlayTrigger).length).to.equal(1);
-    });
-    it('passes options to overlay', () => {
-      expect(wrapper.find(OverlayTrigger).props().modalOptions).to.equal(modalOptions);
+
+    it('initializes with modalOptions', () => {
+      expect(modalStub).to.have.been.calledWith(modalOptions);
     });
   });
 });
