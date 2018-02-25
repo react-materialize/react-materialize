@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0
+
+- (BREAKING) Use `ReactDOM.createPortal` for Modal
+- (BREAKING) Remove `OverlayTrigger` and `Overlay`
+
 ## 1.1.3
 
 - Fixes Unknown props in Collapsible

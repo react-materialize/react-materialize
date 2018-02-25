@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import Button from './Button';
 import cx from 'classnames';
-import OverlayTrigger from './OverlayTrigger';
+
 import idgen from './idgen';
+import Button from './Button';
 
 class Modal extends Component {
   constructor (props) {
     super(props);
     this.modalID = props.id || `modal_${idgen()}`;
+    this.showModal = this.showModal.bind(this);
+    this.createRoot();
+  }
+
+  createRoot () {
+    this.modalRoot = document.createElement('div');
+    document.body.appendChild(this.modalRoot);
   }
 
   componentDidMount () {
@@ -19,7 +27,12 @@ class Modal extends Component {
     }
   }
 
-  renderOverlay () {
+  componentWillUnmount () {
+    document.body.removeChild(this.modalRoot);
+    this.modalRoot = null;
+  }
+
+  renderModalPortal () {
     const {
       actions,
       bottomSheet,
@@ -38,29 +51,34 @@ class Modal extends Component {
       'bottom-sheet': bottomSheet
     });
 
-    return (
-      <div {...other} className={classes} id={this.modalID}>
-        <div className='modal-content'>
-          <h4>{header}</h4>
-          {children}
-        </div>
-        <div className='modal-footer'>
-          {React.Children.toArray(actions)}
-        </div>
-      </div>
-    );
+    return this.modalRoot
+      ? ReactDOM.createPortal(
+        <div {...other} className={classes} id={this.modalID}>
+          <div className='modal-content'>
+            <h4>{header}</h4>
+            {children}
+          </div>
+          <div className='modal-footer'>
+            {React.Children.toArray(actions)}
+          </div>
+        </div>, this.modalRoot)
+      : null;
+  }
+
+  showModal (e) {
+    e.preventDefault();
+    const { modalOptions = {} } = this.props;
+    $(`#${this.modalID}`).modal(modalOptions).modal('open');
   }
 
   render () {
-    const { modalOptions, trigger } = this.props;
+    const { trigger } = this.props;
 
     return (
-      <OverlayTrigger
-        modalOptions={modalOptions}
-        overlay={this.renderOverlay()}
-      >
-        { trigger }
-      </OverlayTrigger>
+      <div>
+        {trigger && React.cloneElement(trigger, { onClick: this.showModal })}
+        {this.renderModalPortal()}
+      </div>
     );
   }
 }

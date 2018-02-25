@@ -23,8 +23,6 @@ import MenuItem from './MenuItem';
 import Modal from './Modal';
 import NavItem from './NavItem';
 import Navbar from './Navbar';
-import Overlay from './Overlay';
-import OverlayTrigger from './OverlayTrigger';
 import Pagination from './Pagination';
 import PaginationButton from './PaginationButton';
 import Parallax from './Parallax';
@@ -69,8 +67,6 @@ export {
   Modal,
   NavItem,
   Navbar,
-  Overlay,
-  OverlayTrigger,
   Pagination,
   PaginationButton,
   Parallax,
