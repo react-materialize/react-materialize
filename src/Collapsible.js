@@ -36,7 +36,12 @@ class Collapsible extends Component {
     const collapsible = accordion ? 'accordion' : 'expandable';
 
     return (
-      <ul ref={(node) => { this._collapsible = node; }} className={cx(className, classes)} {...props} data-collapsible={collapsible}>
+      <ul
+        ref={(node) => { this._collapsible = node; }}
+        className={cx(className, classes)}
+        data-collapsible={collapsible}
+        {...props}
+      >
         {React.Children.map(children, this.renderItem)}
       </ul>
     );
@@ -45,10 +50,16 @@ class Collapsible extends Component {
   renderItem (child, key) {
     if (!child) return null;
     const props = {
-      expanded: this.state.activeKey === key,
-      eventKey: key,
       onSelect: this.handleSelect
     };
+
+    // Extend with props if child is a react component
+    if (typeof child.type === 'function') {
+      Object.assign(props, {
+        expanded: this.state.activeKey === key,
+        eventKey: key
+      });
+    }
 
     return React.cloneElement(child, props);
   }
