@@ -38,6 +38,19 @@ describe('<Collapsible />', () => {
     });
   });
 
+  context('with expanded prop', () => {
+    let wrapper = mount(
+      <Collapsible>
+        <CollapsibleItem expanded header='First'>A</CollapsibleItem>
+        <CollapsibleItem header='Second'>B</CollapsibleItem>
+      </Collapsible>
+    );
+
+    it('adds active class to CollapsibleItem', () => {
+      expect(wrapper.find('.collapsible-header').first().hasClass('active')).to.be.true;
+    });
+  });
+
   context('mounting', () => {
     let wrapper = mount(
       <Collapsible accordion>
