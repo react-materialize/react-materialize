@@ -56,7 +56,7 @@ class Collapsible extends Component {
     // Extend with props if child is a react component
     if (typeof child.type === 'function') {
       Object.assign(props, {
-        expanded: this.state.activeKey === key,
+        expanded: this.state.activeKey === key || child.props.expanded,
         eventKey: key
       });
     }

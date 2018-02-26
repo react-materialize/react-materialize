@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+- (BUG) Fixes `<CollapsibleItem />` not responding to `expanded` prop
+
 ## 2.0.1
 
 - Downgrade materialize-css to 0.98.0
