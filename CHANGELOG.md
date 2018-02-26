@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Downgrade materialize-css to 0.98.0
+
 ## 2.0.0
 
 - (BREAKING) Use `ReactDOM.createPortal` for Modal
