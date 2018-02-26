@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3
+
+- (BUG) Fixes travis not publishing to npm
+
 ## 2.0.2
 
 - (BUG) Fixes `<CollapsibleItem />` not responding to `expanded` prop
