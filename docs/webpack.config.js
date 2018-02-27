@@ -68,7 +68,21 @@ const devConfig = {
   module: {
     rules: [{
       test: /\.css$/,
-      loader: 'style-loader!css-loader?sourceMap?convertToAbsoluteUrls'
+      use: [
+        {
+          loader: 'style-loader',
+          options: {
+            singleton: true
+          }
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            convertToAbsoluteUrls: true
+          }
+        }
+      ]
     }]
   },
   plugins: [
@@ -97,7 +111,7 @@ const prodConfig = {
     }]
   },
   plugins: [
-    new ExtractTextPlugin('application.css'),
+    new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')

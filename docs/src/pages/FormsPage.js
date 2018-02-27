@@ -5,19 +5,9 @@ import Section from 'Section';
 
 import ReactPlayground from './ReactPlayground';
 import PropTable from './PropTable';
-import Samples from './Samples';
-import iconPrefixesInput from '../../../examples/IconPrefixesInput';
-import inputRadio from '../../../examples/InputRadio';
-import inputFields from '../../../examples/InputFields';
-import inputCheckbox from '../../../examples/InputCheckbox';
-import inputDatepicker from '../../../examples/InputDatePicker';
-import inputSwitch from '../../../examples/InputSwitch';
-import prefillingTextInput from '../../../examples/PrefillingTextInput';
-import selectSimple from '../../../examples/SelectSimple';
 import InputCode from '!raw-loader!Input';
 import AutocompleteCode from '!raw-loader!Autocomplete';
 
-const header = 'Forms';
 const desc = `Forms are the standard way to receive user inputted data.
   The transitions and smoothness of these elements are very important
 because of the inherent user interaction associated with forms.`;
@@ -77,12 +67,17 @@ const FormsPage = () => (
       </Section>
 
       <Section>
+        <h4 className='col s12'>Textarea</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputTextarea.js')} />
+      </Section>
+
+      <Section>
         <h4 className='col s12'>Autocomplete</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/Autocomplete.js')} />
       </Section>
 
       <Section>
-        <PropTable header='Input' component={InputCode} />
+        <PropTable header='Forms' component={InputCode} />
       </Section>
 
       <Section>
