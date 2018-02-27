@@ -68,7 +68,21 @@ const devConfig = {
   module: {
     rules: [{
       test: /\.css$/,
-      loader: 'style-loader!css-loader?sourceMap?convertToAbsoluteUrls'
+      use: [
+        {
+          loader: 'style-loader',
+          options: {
+            singleton: true
+          }
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            convertToAbsoluteUrls: true
+          }
+        }
+      ]
     }]
   },
   plugins: [
