@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.6
+
+- Updates to materialize-css@0.100.2
+
 ## 2.0.3
 
 - (BUG) Fixes travis not publishing to npm
