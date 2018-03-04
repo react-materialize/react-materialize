@@ -1,5 +1,4 @@
 export default {
-  accordion: require('!raw-loader!../../../examples/Accordion'),
   badgeCollections: require('!raw-loader!../../../examples/BadgeCollections.js'),
   badgeDropdowns: require('!raw-loader!../../../examples/BadgeDropdowns.js'),
   badgeNavbar: require('!raw-loader!../../../examples/BadgeNavbar.js'),
