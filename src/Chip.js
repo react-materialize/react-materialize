@@ -12,6 +12,9 @@ const Chip = ({ children, close }) => {
 
 Chip.propTypes = {
   children: PropTypes.node,
+  /**
+   * Shows a close icon
+   */
   close: PropTypes.bool
 };
 
