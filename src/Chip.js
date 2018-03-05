@@ -13,10 +13,13 @@ const Chip = ({ children, close }) => {
 Chip.propTypes = {
   children: PropTypes.node,
   /**
-   * If show a close icon
-   * @default false
+   * Shows a close icon
    */
   close: PropTypes.bool
+};
+
+Chip.defaultProps = {
+  close: false
 };
 
 export default Chip;
