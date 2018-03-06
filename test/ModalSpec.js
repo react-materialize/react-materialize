@@ -16,7 +16,7 @@ describe('<Modal />', () => {
 
   let wrapper;
   let renderedWrapper;
-  const modalStub = stub($.fn, 'modal');
+  let modalStub;
 
   context('renders a modal', () => {
     beforeEach(() => {
@@ -66,11 +66,13 @@ describe('<Modal />', () => {
 
   context('controlled modal with `open` prop', () => {
     beforeEach(() => {
-      wrapper = mount(<Modal modalOptions={{'one': 1}} open>{children}</Modal>);
+      modalStub = stub($.fn, 'modal');
+      mount(<Modal modalOptions={{'one': 1}} open>{children}</Modal>);
     });
 
     afterEach(() => {
       document.body.removeChild(document.body.lastElementChild);
+      modalStub.restore();
     });
 
     it('mounts opened', () => {
@@ -81,6 +83,7 @@ describe('<Modal />', () => {
 
   context('renders a trigger', () => {
     beforeEach(() => {
+      modalStub = stub($.fn, 'modal');
       wrapper = shallow(
         <Modal
           trigger={trigger}
@@ -92,11 +95,17 @@ describe('<Modal />', () => {
       );
     });
 
+    afterEach(() => {
+      document.body.removeChild(document.body.lastElementChild);
+      modalStub.restore();
+    });
+
     it('renders', () => {
       expect(wrapper.find('button').length).to.equal(1);
     });
 
     it('initializes with modalOptions', () => {
+      wrapper.find('button').simulate('click');
       expect(modalStub).to.have.been.calledWith(modalOptions);
     });
   });
