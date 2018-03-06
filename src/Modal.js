@@ -37,6 +37,8 @@ class Modal extends Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.open) {
       this.showModal();
+    } else if (nextProps.open === false) {
+      this.hideModal();
     }
   }
 
@@ -78,6 +80,13 @@ class Modal extends Component {
     const { modalOptions = {} } = this.props;
     $(`#${this.modalID}`).modal(modalOptions);
     $(`#${this.modalID}`).modal('open');
+  }
+
+  hideModal (e) {
+    if (e) e.preventDefault();
+    const { modalOptions = {} } = this.props;
+    $(`#${this.modalID}`).modal(modalOptions);
+    $(`#${this.modalID}`).modal('close');
   }
 
   render () {
