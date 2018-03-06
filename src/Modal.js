@@ -35,6 +35,7 @@ class Modal extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    // if the modal is not open yet
     if (!this.props.open && nextProps.open) {
       this.showModal();
     } else if (nextProps.open === false) {

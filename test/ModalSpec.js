@@ -84,6 +84,7 @@ describe('<Modal />', () => {
     it('open on prop change', () => {
       testModal.setProps({ open: true });
       expect(modalStub).to.have.been.calledThrice;
+      // expect showModal to pass modalOptions to $.modal
       expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
       expect(modalStub.lastCall.args).to.deep.equal([ 'open' ]);
     });
@@ -91,6 +92,7 @@ describe('<Modal />', () => {
     it('closes on prop change', () => {
       testModal.setProps({ open: false });
       expect(modalStub).to.have.callCount(5);
+      // expect hideModal to pass modalOptions to $.modal
       expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
       expect(modalStub.lastCall.args).to.deep.equal([ 'close' ]);
     });
