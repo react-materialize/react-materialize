@@ -83,7 +83,7 @@ describe('<Modal />', () => {
 
     it('open on prop change', () => {
       testModal.setProps({ open: true });
-      expect(modalStub).to.have.callCount(5);
+      expect(modalStub).to.have.been.calledThrice;
       expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
       expect(modalStub.lastCall.args).to.deep.equal([ 'open' ]);
     });
