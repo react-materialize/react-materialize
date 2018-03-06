@@ -34,6 +34,12 @@ class Modal extends Component {
     this.modalRoot = null;
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.open) {
+      this.showModal();
+    }
+  }
+
   renderModalPortal () {
     const {
       actions,

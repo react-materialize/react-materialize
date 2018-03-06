@@ -65,9 +65,10 @@ describe('<Modal />', () => {
   });
 
   context('controlled modal with `open` prop', () => {
+    let testModal;
     beforeEach(() => {
       modalStub = stub($.fn, 'modal');
-      mount(<Modal modalOptions={{'one': 1}} open>{children}</Modal>);
+      testModal = mount(<Modal modalOptions={{'one': 1}} open>{children}</Modal>);
     });
 
     afterEach(() => {
@@ -78,6 +79,11 @@ describe('<Modal />', () => {
     it('mounts opened', () => {
       // once in mount and twice in #showModal
       expect(modalStub).to.have.been.calledThrice;
+    });
+
+    it('open on prop change', () => {
+      testModal.setProps({ open: true });
+      expect(modalStub).to.have.callCount(5);
     });
   });
 
