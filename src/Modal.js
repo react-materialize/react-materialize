@@ -20,11 +20,13 @@ class Modal extends Component {
   }
 
   componentDidMount () {
-    const { trigger, modalOptions } = this.props;
+    const { trigger, modalOptions, open } = this.props;
 
     if (!trigger) {
       $(`#${this.modalID}`).modal(modalOptions);
     }
+
+    if (open) this.showModal();
   }
 
   componentWillUnmount () {
@@ -66,9 +68,10 @@ class Modal extends Component {
   }
 
   showModal (e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const { modalOptions = {} } = this.props;
-    $(`#${this.modalID}`).modal(modalOptions).modal('open');
+    $(`#${this.modalID}`).modal(modalOptions);
+    $(`#${this.modalID}`).modal('open');
   }
 
   render () {
@@ -122,6 +125,10 @@ Modal.propTypes = {
      */
     complete: PropTypes.func
   }),
+  /**
+  * Modal is opened on mount
+  */
+  open: PropTypes.bool,
   /**
   * BottomSheet styled modal
   * @default false

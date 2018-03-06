@@ -55,8 +55,27 @@ describe('<Modal />', () => {
       );
     });
 
+    afterEach(() => {
+      document.body.removeChild(document.body.lastElementChild);
+    });
+
     it('renders', () => {
       expect(wrapper.find(Modal).length).to.equal(1);
+    });
+  });
+
+  context('controlled modal with `open` prop', () => {
+    beforeEach(() => {
+      wrapper = mount(<Modal modalOptions={{'one': 1}} open>{children}</Modal>);
+    });
+
+    afterEach(() => {
+      document.body.removeChild(document.body.lastElementChild);
+    });
+
+    it('mounts opened', () => {
+      // once in mount and twice in #showModal
+      expect(modalStub).to.have.been.calledThrice;
     });
   });
 
