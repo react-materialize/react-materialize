@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0
+
+- Adds `open` prop to Modal allowing it to 'opened' to mount
+
 ## 2.0.6
 
 - Updates to materialize-css@0.100.2
