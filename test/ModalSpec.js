@@ -84,6 +84,15 @@ describe('<Modal />', () => {
     it('open on prop change', () => {
       testModal.setProps({ open: true });
       expect(modalStub).to.have.callCount(5);
+      expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
+      expect(modalStub.lastCall.args).to.deep.equal([ 'open' ]);
+    });
+
+    it('closes on prop change', () => {
+      testModal.setProps({ open: false });
+      expect(modalStub).to.have.callCount(5);
+      expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
+      expect(modalStub.lastCall.args).to.deep.equal([ 'close' ]);
     });
   });
 
