@@ -25,7 +25,14 @@ class Input extends Component {
       $(this.selectInput).on('change', this._onChange);
     }
     if (this.isDatePicker) {
-      $(this.dateInput).pickadate(this.props.options);
+      let { options } = this.props;
+      $(this.dateInput).pickadate({...options,
+        onClose: function () {
+          if (options.onClose) {
+            options.onClose();
+          }
+          $(document.activeElement).blur();
+        }});
       $(this.dateInput).on('change', this._onChange);
     }
     if (this.isTimePicker) {
