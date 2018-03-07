@@ -38,6 +38,7 @@ class Modal extends Component {
     // if the modal is not open yet
     if (!this.props.open && nextProps.open) {
       this.showModal();
+    // open could be undefined
     } else if (nextProps.open === false) {
       this.hideModal();
     }
@@ -85,8 +86,6 @@ class Modal extends Component {
 
   hideModal (e) {
     if (e) e.preventDefault();
-    const { modalOptions = {} } = this.props;
-    $(`#${this.modalID}`).modal(modalOptions);
     $(`#${this.modalID}`).modal('close');
   }
 

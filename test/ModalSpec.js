@@ -84,16 +84,22 @@ describe('<Modal />', () => {
     it('open on prop change', () => {
       testModal.setProps({ open: true });
       expect(modalStub).to.have.been.calledThrice;
-      // expect showModal to pass modalOptions to $.modal
+      // no trigger is defined, modal should be configured in constructor
       expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
+      // showModal initializes the modal again
+      expect(modalStub.secondCall.args[0]).to.deep.equal({ 'one': 1 });
       expect(modalStub.lastCall.args).to.deep.equal([ 'open' ]);
     });
 
     it('closes on prop change', () => {
       testModal.setProps({ open: false });
-      expect(modalStub).to.have.callCount(5);
-      // expect hideModal to pass modalOptions to $.modal
+      expect(modalStub).to.have.callCount(4);
+      // no trigger is defined, modal should be configured in constructor
       expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
+      // open prop is set, so showModal is called
+      expect(modalStub.secondCall.args[0]).to.deep.equal({ 'one': 1 });
+      expect(modalStub.thirdCall.args).to.deep.equal([ 'open' ]);
+
       expect(modalStub.lastCall.args).to.deep.equal([ 'close' ]);
     });
   });
