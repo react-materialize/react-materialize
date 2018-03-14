@@ -34,6 +34,16 @@ class Modal extends Component {
     this.modalRoot = null;
   }
 
+  componentWillReceiveProps (nextProps) {
+    // if the modal is not open yet
+    if (!this.props.open && nextProps.open) {
+      this.showModal();
+    // open could be undefined
+    } else if (nextProps.open === false) {
+      this.hideModal();
+    }
+  }
+
   renderModalPortal () {
     const {
       actions,
@@ -72,6 +82,11 @@ class Modal extends Component {
     const { modalOptions = {} } = this.props;
     $(`#${this.modalID}`).modal(modalOptions);
     $(`#${this.modalID}`).modal('open');
+  }
+
+  hideModal (e) {
+    if (e) e.preventDefault();
+    $(`#${this.modalID}`).modal('close');
   }
 
   render () {
