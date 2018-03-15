@@ -21,6 +21,14 @@ class Tabs extends Component {
     if (onChange) onChange(idx, e);
   }
 
+  componentWillReceiveProps (nextProps) {
+    const { tabOptions = {} } = nextProps;
+
+    if (typeof $ !== 'undefined') {
+      $(this._tabsEl).tabs(tabOptions);
+    }
+  }
+
   render () {
     const {
       children,
