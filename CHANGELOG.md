@@ -3,6 +3,7 @@
 ## 2.1.2
 
 - Adds `fixed` prop to `SideNav`
+- Initialize Tabs on componentWillReceiveProps
 
 ## 2.1.1
 
