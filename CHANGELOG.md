@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.2
+
+- Adds `fixed` prop to `SideNav`
+
 ## 2.1.1
 
 - Controlled Modal (Thomas Quick #495)
