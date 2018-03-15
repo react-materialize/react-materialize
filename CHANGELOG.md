@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.1
+
+- Controlled Modal (Thomas Quick #495)
+- Update Mediabox example
+- Chip default prop close (sanketsingh24 #490)
+
 ## 2.1.0
 
 - Adds `open` prop to Modal allowing it to 'opened' to mount
