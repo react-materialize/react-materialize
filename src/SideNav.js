@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 
@@ -14,14 +15,17 @@ class SideNav extends Component {
   }
 
   render () {
-    const { children, ...props } = this.props;
+    const { className, children, fixed, ...props } = this.props;
     delete props.id;
     delete props.trigger;
     delete props.options;
+
+    const classNames = cx('side-nav', { fixed }, className);
+
     return (
       <span>
         { this.renderTrigger() }
-        <ul id={this.id} className='side-nav' {...props}>
+        <ul id={this.id} className={classNames} {...props}>
           {children}
         </ul>
       </span>
@@ -38,6 +42,10 @@ class SideNav extends Component {
 }
 
 SideNav.propTypes = {
+  /**
+   * Adds fixed class to side-nav
+   */
+  fixed: PropTypes.bool,
   /**
    * sidenav id. If none is passed, an id will be generated.
    */
@@ -56,6 +64,10 @@ SideNav.propTypes = {
     closeOnClick: PropTypes.bool,
     draggable: PropTypes.bool
   }),
+  /**
+   * Additional classes added to 'side-nav'
+   */
+  className: PropTypes.string,
   children: PropTypes.node
 };
 
