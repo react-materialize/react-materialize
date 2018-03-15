@@ -37,6 +37,11 @@ describe('<SideNav />', () => {
     assert.equal(triggerProps['data-activates'], sideNavProps.id, 'should have a matching trigger');
   });
 
+  it('can be `fixed`', () => {
+    const { sideNav } = setup({ className: 'red', fixed: true });
+    assert.isTrue(sideNav.hasClass('side-nav fixed red'));
+  });
+
   it('should render a given id', () => {
     const { sideNavProps, triggerProps } = setup({ id: 'test' });
     assert.equal(sideNavProps.id, 'test');
@@ -53,11 +58,11 @@ describe('<SideNav />', () => {
     const { sideNavProps } = setup({
       id: 'test123',
       options: {},
-      shouldTransfer: 'true'
+      shouldTransfer: true
     });
     assert.isUndefined(sideNavProps.trigger, 'should not transfer trigger');
     assert.isUndefined(sideNavProps.options, 'should not transfer options');
-    assert.equal(sideNavProps.shouldTransfer, 'true');
+    assert.equal(sideNavProps.shouldTransfer, true);
   });
 
   it('should call sideNav with the given options', () => {
