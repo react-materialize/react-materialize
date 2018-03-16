@@ -32,6 +32,7 @@ class Navbar extends Component {
       left,
       right,
       href,
+      container,
       ...other
     } = this.props;
 
@@ -47,9 +48,15 @@ class Navbar extends Component {
       right: left
     };
 
+    let wrapper = 'nav-wrapper';
+
+    if (container) {
+      wrapper = 'nav-wrapper container';
+    }
+
     let content = (
       <nav {...other} className={className}>
-        <div className='nav-wrapper'>
+        <div className={wrapper}>
           <Col s={12}>
             <a href={href} className={cx(brandClasses)}>{brand}</a>
             <ul className={cx(className, classes)}>
@@ -83,6 +90,11 @@ Navbar.propTypes = {
    * Makes the navbar fixed
    */
   fixed: PropTypes.bool,
+/**
+ * adds container to Navbar
+ */
+  container: PropTypes.bool,
+
   /**
    * Options hash for the sidenav.
    * More info: http://materializecss.com/side-nav.html#options
