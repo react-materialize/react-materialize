@@ -31,7 +31,7 @@ class Input extends Component {
           if (options.onClose) {
             options.onClose();
           }
-          $(document.activeElement).blur();
+          $(this.dateInput).blur();
         }});
       $(this.dateInput).on('change', this._onChange);
     }
