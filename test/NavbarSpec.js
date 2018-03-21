@@ -38,7 +38,7 @@ describe('<Navbar />', () => {
   });
 
   it('can have container', () => {
-    wrapper = shallow(<Navbar container />);
-    expect(wrapper.find('nav-wrapper container')).to.have.length(0);
-  });
+    wrapper = mount(<Navbar container />);
+    expect(wrapper.props().container).to.eq(true);
+ });
 });

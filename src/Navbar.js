@@ -48,15 +48,9 @@ class Navbar extends Component {
       right: left
     };
 
-    let wrapper = 'nav-wrapper';
-
-    if (container) {
-      wrapper = 'nav-wrapper container';
-    }
-
     let content = (
       <nav {...other} className={className}>
-        <div className={wrapper}>
+        <div className={cx('nav-wrapper', {container})}>
           <Col s={12}>
             <a href={href} className={cx(brandClasses)}>{brand}</a>
             <ul className={cx(className, classes)}>
@@ -91,7 +85,7 @@ Navbar.propTypes = {
    */
   fixed: PropTypes.bool,
 /**
- * adds container to Navbar
+ * adds container class to nav-wrapper
  */
   container: PropTypes.bool,
 
