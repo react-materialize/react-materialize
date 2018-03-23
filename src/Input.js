@@ -146,7 +146,7 @@ class Input extends Component {
       : null;
 
     if (this.isSelect()) {
-      let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
+      let options = placeholder && !label && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
       options = options.concat(React.Children.map(children, (child) =>
         React.cloneElement(child, { 'key': child.props.value })
       ));
