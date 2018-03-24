@@ -39,6 +39,6 @@ describe('<Navbar />', () => {
 
   it('can have container', () => {
     wrapper = mount(<Navbar container />);
-    expect(wrapper.props().container).to.eq(true);
+    expect(wrapper.find('.nav-wrapper').hasClass('container')).to.eq(true);
  });
 });
