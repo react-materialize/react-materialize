@@ -136,7 +136,7 @@ class Input extends Component {
 
     let htmlLabel = label || inputType === 'radio'
       ? <label
-        className={cx(labelClasses, labelClassName)}
+        className={cx(labelClasses, labelClassName, {'active': placeholder})}
         data-success={success}
         data-error={error}
         htmlFor={this._id}
