@@ -131,9 +131,9 @@ class Input extends Component {
         inputType = type || 'text';
     }
     let labelClasses = {
-      active: this.state.value || this.isSelect()
+      active: this.state.value || this.isSelect() || placeholder
     };
-
+    
     let htmlLabel = label || inputType === 'radio'
       ? <label
         className={cx(labelClasses, labelClassName)}
