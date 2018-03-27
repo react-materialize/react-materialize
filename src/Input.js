@@ -93,6 +93,7 @@ class Input extends Component {
       s,
       m,
       l,
+      offset,
       type,
       validate,
       onLabel,
@@ -110,6 +111,11 @@ class Input extends Component {
     constants.SIZES.forEach(size => {
       classes[size + sizes[size]] = sizes[size];
     });
+    if (offset) {
+      offset.split(' ').forEach(off => {
+        classes['offset-' + off] = true;
+      });
+    }
     let inputClasses = {
       validate,
       invalid: error,
@@ -133,7 +139,6 @@ class Input extends Component {
     let labelClasses = {
       active: this.state.value || this.isSelect() || placeholder
     };
-    
     let htmlLabel = label || inputType === 'radio'
       ? <label
         className={cx(labelClasses, labelClassName)}
@@ -288,6 +293,7 @@ Input.propTypes = {
   s: PropTypes.number,
   m: PropTypes.number,
   l: PropTypes.number,
+  offset: PropTypes.string,
   inline: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,

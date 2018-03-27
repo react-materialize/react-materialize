@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { assert } from 'chai';
 import sinon from 'sinon';
 
 import Input from '../src/Input';
@@ -49,6 +50,33 @@ describe('<Input />', () => {
       expect(input.length).to.eql(1);
       expect(input.prop('id')).to.eql(label.prop('htmlFor'));
       expect(label.hasClass(labelClassName)).to.eql(true);
+    });
+  });
+
+  context('#text with sizes', () => {
+    it('accepts sizes as props', () => {
+      const wrapper = shallow(
+        <Input s={4} m={6} l={8} />
+      );
+      assert(wrapper.find('.col').hasClass('s4 m6 l8'), 'a column');
+    });
+  });
+
+  context('#text with sizes and one offset', () => {
+    it('accepts sizes as props', () => {
+      const wrapper = shallow(
+        <Input s={4} m={6} l={8} offset={'s4'} />
+      );
+      assert(wrapper.find('.col').hasClass('s4 m6 l8 offset-s4'), 'a column');
+    });
+  });
+
+  context('#text with sizes and multiple offsets', () => {
+    it('accepts sizes as props', () => {
+      const wrapper = shallow(
+        <Input s={4} m={6} l={8} offset={'s4 m2 l2'} />
+      );
+      assert(wrapper.find('.col').hasClass('s4 m6 l8 offset-s4 offset-m2 offset-l2'), 'a column');
     });
   });
 
