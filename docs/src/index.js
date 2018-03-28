@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 require('../assets/stylesheets/ghpages-materialize.css');
+require('materialize-css/dist/css/materialize.css')
 require('../assets/stylesheets/main.css');
 
 import App from './components/App';
