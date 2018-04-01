@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import sinon from 'sinon';
 import NavItem from '../src/NavItem';
 
 describe('<NavItem />', () => {
@@ -50,5 +51,26 @@ describe('<NavItem />', () => {
 
     expect(wrapper.find('span').length).to.eq(1);
     expect(wrapper.find('h2').length).to.eq(1);
+  });
+
+  it('passes onClick as parameter', () => {
+    const onClick = sinon.spy();
+    wrapper = shallow(
+      <NavItem onClick={onClick} href='get-started.html'>Getting</NavItem>
+    );
+
+    expect(wrapper.props().onClick).to.be.ok;
+    expect(wrapper.props().onClick).to.eq(onClick);
+    wrapper.find('li').simulate('click');
+    expect(onClick.calledOnce).to.equal(true);
+    expect(wrapper.children().at(0).prop('href')).to.be.undefined;
+  });
+
+  it('passes href as parameter', () => {
+    wrapper = shallow(
+      <NavItem href='get-started.html'>Getting</NavItem>
+    );
+    expect(wrapper.children().at(0).prop('href')).to.be.ok;
+    expect(wrapper.children().at(0).prop('href')).to.eq('get-started.html');
   });
 });
