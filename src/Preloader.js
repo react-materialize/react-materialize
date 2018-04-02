@@ -6,7 +6,7 @@ import Spinner from './Spinner';
 let colors = ['blue', 'red', 'yellow', 'green'];
 
 class Preloader extends Component {
-  render () {
+  render() {
     let classes = {
       'preloader-wrapper': true,
       active: this.props.active
@@ -25,11 +25,7 @@ class Preloader extends Component {
     } else {
       spinners = <Spinner color={this.props.color} />;
     }
-    return (
-      <div className={cx(this.props.className, classes)}>
-        {spinners}
-      </div>
-    );
+    return <div className={cx(this.props.className, classes)}>{spinners}</div>;
   }
 }
 

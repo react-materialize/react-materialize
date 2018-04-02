@@ -4,12 +4,12 @@ import cx from 'classnames';
 import constants from './constants';
 
 class Slide extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.renderCaption = this.renderCaption.bind(this);
   }
 
-  render () {
+  render() {
     return (
       <li>
         <img src={this.props.src} />
@@ -18,14 +18,8 @@ class Slide extends Component {
     );
   }
 
-  renderCaption () {
-    const {
-      title,
-      className,
-      placement,
-      children,
-      ...props
-    } = this.props;
+  renderCaption() {
+    const { title, className, placement, children, ...props } = this.props;
 
     delete props.placement;
 
@@ -47,15 +41,15 @@ class Slide extends Component {
 
 Slide.propTypes = {
   /**
-  * Aliment of the caption
-  * @default 'center'
-  */
+   * Aliment of the caption
+   * @default 'center'
+   */
   placement: PropTypes.oneOf(constants.PLACEMENTS),
   className: PropTypes.string,
   children: PropTypes.node,
   /**
-  * The tagline of the caption
-  */
+   * The tagline of the caption
+   */
   title: PropTypes.string,
   /**
    * The path of the background image

@@ -5,8 +5,8 @@ import cx from 'classnames';
 import constants from './constants';
 
 class CardTitle extends Component {
-  render () {
-    let {image, reveal, waves, children, ...props} = this.props;
+  render() {
+    let { image, reveal, waves, children, ...props } = this.props;
     let classes = {
       'card-image': true
     };
@@ -15,7 +15,7 @@ class CardTitle extends Component {
       classes['waves-' + waves] = true;
       classes['waves-block'] = true;
     }
-    let imgClasses = {'activator': reveal};
+    let imgClasses = { activator: reveal };
     let titleClasses = {
       'card-title': true
     };

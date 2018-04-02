@@ -23,7 +23,7 @@ const CollapsibleItem = ({
       {icon && <Icon className={iconClassName}>{icon}</Icon>}
       {header}
     </Node>
-    <div className='collapsible-body'>{children}</div>
+    <div className="collapsible-body">{children}</div>
   </li>
 );
 

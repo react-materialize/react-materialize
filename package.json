@@ -9,6 +9,7 @@
     "lib"
   ],
   "scripts": {
+    "precommit": "lint-staged",
     "test": "mocha",
     "test:watch": "mocha --watch",
     "pretest": "npm run lint",
@@ -66,7 +67,16 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.2",
+    "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+  },
+   "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   }
 }

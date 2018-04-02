@@ -5,12 +5,12 @@ import cx from 'classnames';
 import Button from './Button';
 
 class Toast extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
 
-  render () {
+  render() {
     const { children, rounded } = this.props;
     const classes = { toast: true, rounded: rounded };
 
@@ -21,7 +21,7 @@ class Toast extends Component {
     );
   }
 
-  onClick () {
+  onClick() {
     Materialize.toast(this.props.toast, 1000);
   }
 }
