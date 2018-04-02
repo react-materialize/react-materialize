@@ -9,9 +9,9 @@ const NavItem = ({
   ...props
 }) => {
   if (divider) return <li className='divider' />;
-  const a = onClick ? <a>{children}</a> : <a href={href}>{children}</a>;
+  const a = onClick ? <a onClick={onClick}>{children}</a> : <a href={href}>{children}</a>;
   return (
-    <li {...props} onClick={onClick}>
+    <li {...props}>
       {a}
     </li>
   );

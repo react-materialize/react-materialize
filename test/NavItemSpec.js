@@ -59,9 +59,9 @@ describe('<NavItem />', () => {
       <NavItem onClick={onClick} href='get-started.html'>Getting</NavItem>
     );
 
-    expect(wrapper.props().onClick).to.be.ok;
-    expect(wrapper.props().onClick).to.eq(onClick);
-    wrapper.find('li').simulate('click');
+    expect(wrapper.children().at(0).props().onClick).to.be.ok;
+    expect(wrapper.children().at(0).props().onClick).to.eq(onClick);
+    wrapper.children().at(0).simulate('click');
     expect(onClick.calledOnce).to.equal(true);
     expect(wrapper.children().at(0).prop('href')).to.be.undefined;
   });
