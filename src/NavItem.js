@@ -5,14 +5,14 @@ const NavItem = ({
   divider,
   children,
   href = '',
+  onClick,
   ...props
 }) => {
   if (divider) return <li className='divider' />;
+  const a = onClick ? <a onClick={onClick}>{children}</a> : <a href={href}>{children}</a>;
   return (
     <li {...props}>
-      <a href={href}>
-        { children }
-      </a>
+      {a}
     </li>
   );
 };
@@ -26,7 +26,12 @@ NavItem.propTypes = {
     PropTypes.node
   ]),
   divider: PropTypes.bool,
-  href: PropTypes.string
+  href: PropTypes.string,
+  /**
+   * NavItem can have onClick. If it does have, href
+   * will not be rendered
+   */
+  onClick: PropTypes.func
 };
 
 export default NavItem;
