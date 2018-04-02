@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.3
+
+- add onClick suport for NavItem component (onluiz #517)
+
 ## 2.1.2
 
 - Adds `fixed` prop to `SideNav`
