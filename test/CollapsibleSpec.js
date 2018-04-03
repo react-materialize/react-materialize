@@ -10,8 +10,12 @@ describe('<Collapsible />', () => {
     let wrapper = shallow(<Collapsible />);
 
     it('renders', () => {
-      expect(wrapper.hasClass('collapsible'), 'with a collapsible class').to.be.true;
-      expect(wrapper.find('[data-collapsible="expandable"]').length, 'with a expandable data attribute').to.eq(1);
+      expect(wrapper.hasClass('collapsible'), 'with a collapsible class').to.be
+        .true;
+      expect(
+        wrapper.find('[data-collapsible="expandable"]').length,
+        'with a expandable data attribute'
+      ).to.eq(1);
     });
   });
 
@@ -27,9 +31,9 @@ describe('<Collapsible />', () => {
     let wrapper = shallow(
       <Collapsible>
         {null}
-        <CollapsibleItem header='First'>A</CollapsibleItem>
+        <CollapsibleItem header="First">A</CollapsibleItem>
         {null}
-        <CollapsibleItem header='Second'>B</CollapsibleItem>
+        <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
 
@@ -41,27 +45,37 @@ describe('<Collapsible />', () => {
   context('with expanded prop', () => {
     let wrapper = mount(
       <Collapsible>
-        <CollapsibleItem expanded header='First'>A</CollapsibleItem>
-        <CollapsibleItem header='Second'>B</CollapsibleItem>
+        <CollapsibleItem expanded header="First">
+          A
+        </CollapsibleItem>
+        <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
 
     it('adds active class to CollapsibleItem', () => {
-      expect(wrapper.find('.collapsible-header').first().hasClass('active')).to.be.true;
+      expect(
+        wrapper
+          .find('.collapsible-header')
+          .first()
+          .hasClass('active')
+      ).to.be.true;
     });
   });
 
   context('mounting', () => {
     let wrapper = mount(
       <Collapsible accordion>
-        <CollapsibleItem header='First'>A</CollapsibleItem>
-        <CollapsibleItem header='Second'>B</CollapsibleItem>
+        <CollapsibleItem header="First">A</CollapsibleItem>
+        <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
 
     it('handles state on click', () => {
       expect(wrapper.state().activeKey).to.be.undefined;
-      wrapper.find('.collapsible-header').first().simulate('click');
+      wrapper
+        .find('.collapsible-header')
+        .first()
+        .simulate('click');
       expect(wrapper.state().activeKey).to.eq(0);
     });
   });
@@ -70,15 +84,21 @@ describe('<Collapsible />', () => {
     const activeKey = 0;
     let wrapper = mount(
       <Collapsible accordion defaultActiveKey={activeKey}>
-        <CollapsibleItem header='First'>A</CollapsibleItem>
-        <CollapsibleItem header='Second'>B</CollapsibleItem>
+        <CollapsibleItem header="First">A</CollapsibleItem>
+        <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
 
     it('handles state on click', () => {
-      wrapper.find('.collapsible-header').at(0).simulate('click');
+      wrapper
+        .find('.collapsible-header')
+        .at(0)
+        .simulate('click');
       expect(wrapper.state().activeKey, 'resets').to.be.null;
-      wrapper.find('.collapsible-header', 'activates again').at(1).simulate('click');
+      wrapper
+        .find('.collapsible-header', 'activates again')
+        .at(1)
+        .simulate('click');
       expect(wrapper.state().activeKey).to.eq(1);
     });
   });

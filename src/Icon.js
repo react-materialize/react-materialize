@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import constants from './constants';
 import cx from 'classnames';
 
-const Icon = (props) => {
+const Icon = props => {
   let classes = {
     'material-icons': true
   };
@@ -15,9 +15,7 @@ const Icon = (props) => {
     classes[s] = props[s];
   });
 
-  return (
-    <i className={cx(classes, props.className)}>{props.children}</i>
-  );
+  return <i className={cx(classes, props.className)}>{props.children}</i>;
 };
 
 Icon.propTypes = {

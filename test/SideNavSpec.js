@@ -7,9 +7,9 @@ import { assert } from 'chai';
 import SideNav from '../src/SideNav';
 import Button from '../src/Button';
 
-function setup (props = {}, children, mounted) {
+function setup(props = {}, children, mounted) {
   const propsIn = {
-    trigger: <Button className='trigger'>Show sidenav</Button>,
+    trigger: <Button className="trigger">Show sidenav</Button>,
     ...props
   };
   const component = <SideNav {...propsIn}>{children}</SideNav>;
@@ -34,7 +34,11 @@ describe('<SideNav />', () => {
     assert(sideNav.length === 1, 'should render a sidenav');
     assert(trigger.length === 1, 'should render a default trigger');
     assert.match(sideNavProps.id, /^sidenav_/, 'should generate an id');
-    assert.equal(triggerProps['data-activates'], sideNavProps.id, 'should have a matching trigger');
+    assert.equal(
+      triggerProps['data-activates'],
+      sideNavProps.id,
+      'should have a matching trigger'
+    );
   });
 
   it('can be `fixed`', () => {
@@ -45,11 +49,15 @@ describe('<SideNav />', () => {
   it('should render a given id', () => {
     const { sideNavProps, triggerProps } = setup({ id: 'test' });
     assert.equal(sideNavProps.id, 'test');
-    assert.equal(triggerProps['data-activates'], 'test', 'should have a matching trigger');
+    assert.equal(
+      triggerProps['data-activates'],
+      'test',
+      'should have a matching trigger'
+    );
   });
 
   it('should render children', () => {
-    const { sideNav } = setup({}, <span className='test-child' />);
+    const { sideNav } = setup({}, <span className="test-child" />);
     const children = sideNav.find('.test-child');
     assert(children.length === 1, 'renders children');
   });

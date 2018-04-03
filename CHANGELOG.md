@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.4
+
+- Adding prettier to project (onluiz #519)
+
 ## 2.1.3
 
 - add onClick suport for NavItem component (onluiz #517)

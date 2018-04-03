@@ -8,9 +8,7 @@ import CardPanel from '../src/CardPanel';
 const modifier = 'blue-grey';
 
 const wrapper = shallow(
-  <CardPanel className={modifier}>
-    I am a very simple card
-  </CardPanel>
+  <CardPanel className={modifier}>I am a very simple card</CardPanel>
 );
 
 describe('<CardPanel />', () => {

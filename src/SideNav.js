@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import idgen from './idgen';
 
 class SideNav extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.id = props.id || `sidenav_${idgen()}`;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { options = {} } = this.props;
     $(this._trigger).sideNav(options);
   }
 
-  render () {
+  render() {
     const { className, children, fixed, ...props } = this.props;
     delete props.id;
     delete props.trigger;
@@ -24,7 +24,7 @@ class SideNav extends Component {
 
     return (
       <span>
-        { this.renderTrigger() }
+        {this.renderTrigger()}
         <ul id={this.id} className={classNames} {...props}>
           {children}
         </ul>
@@ -32,10 +32,10 @@ class SideNav extends Component {
     );
   }
 
-  renderTrigger () {
+  renderTrigger() {
     const { trigger } = this.props;
     return React.cloneElement(trigger, {
-      ref: (t) => (this._trigger = `[data-activates=${this.id}]`),
+      ref: t => (this._trigger = `[data-activates=${this.id}]`),
       'data-activates': this.id
     });
   }

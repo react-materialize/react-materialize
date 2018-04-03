@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 import Tag from '../src/Tag';
 
 const child = 'hey';
-const wrapper = shallow(
-  <Tag>{child}</Tag>
-);
+const wrapper = shallow(<Tag>{child}</Tag>);
 
 describe('Tabs', () => {
   it('should create list of Tab itemt', () => {

@@ -6,7 +6,7 @@ import constants from './constants';
 import Icon from './Icon';
 
 class Input extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -19,7 +19,7 @@ class Input extends Component {
     this.isSelect = this.isSelect.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (this.isMaterialSelect()) {
       $(this.selectInput).material_select();
       $(this.selectInput).on('change', this._onChange);
@@ -34,51 +34,58 @@ class Input extends Component {
     }
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.isMaterialSelect() && !this.props.multiple) {
       $(this.selectInput).material_select();
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.isMaterialSelect()) {
-      this.setState({
-        value: nextProps.defaultValue
-      }, () => $(this.selectInput).material_select());
+      this.setState(
+        {
+          value: nextProps.defaultValue
+        },
+        () => $(this.selectInput).material_select()
+      );
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (this.isMaterialSelect()) {
       $(this.selectInput).off('change', this._onChange);
     }
   }
 
-  getMultipleValues ({ options }) {
+  getMultipleValues({ options }) {
     if (!options) {
       return;
     }
 
-    return Array.from(options).filter(opt => opt.selected).map(opt => opt.value);
+    return Array.from(options)
+      .filter(opt => opt.selected)
+      .map(opt => opt.value);
   }
 
-  _onChange (e) {
+  _onChange(e) {
     const { onChange } = this.props;
     var types = {
-      'checkbox': e.target.checked,
-      'radio': e.target.checked,
+      checkbox: e.target.checked,
+      radio: e.target.checked,
       'select-multiple': this.getMultipleValues(e.target),
-      'default': e.target.value
+      default: e.target.value
     };
     const value = types.hasOwnProperty(e.target.type)
       ? types[e.target.type]
       : types['default'];
-    if (onChange) { onChange(e, value); }
+    if (onChange) {
+      onChange(e, value);
+    }
 
     this.setState({ value, checked: e.target.checked });
   }
 
-  render () {
+  render() {
     const {
       browserDefault,
       children,
@@ -133,37 +140,47 @@ class Input extends Component {
     let labelClasses = {
       active: this.state.value || this.isSelect() || placeholder
     };
-    
-    let htmlLabel = label || inputType === 'radio'
-      ? <label
-        className={cx(labelClasses, labelClassName)}
-        data-success={success}
-        data-error={error}
-        htmlFor={this._id}
+
+    let htmlLabel =
+      label || inputType === 'radio' ? (
+        <label
+          className={cx(labelClasses, labelClassName)}
+          data-success={success}
+          data-error={error}
+          htmlFor={this._id}
         >
-        {label}
-      </label>
-      : null;
+          {label}
+        </label>
+      ) : null;
 
     if (this.isSelect()) {
-      let options = placeholder && !defaultValue ? [<option disabled key={idgen()}>{placeholder}</option>] : [];
-      options = options.concat(React.Children.map(children, (child) =>
-        React.cloneElement(child, { 'key': child.props.value })
-      ));
+      let options =
+        placeholder && !defaultValue
+          ? [
+              <option disabled key={idgen()}>
+                {placeholder}
+              </option>
+            ]
+          : [];
+      options = options.concat(
+        React.Children.map(children, child =>
+          React.cloneElement(child, { key: child.props.value })
+        )
+      );
 
       return (
         <div className={cx(classes)}>
-          { this.renderIcon() }
+          {this.renderIcon()}
           {htmlLabel}
           <select
             {...other}
             multiple={multiple}
             id={this._id}
             className={cx(className, inputClasses)}
-            ref={(ref) => (this.selectInput = ref)}
+            ref={ref => (this.selectInput = ref)}
             defaultValue={defaultValue}
           >
-            { options }
+            {options}
           </select>
         </div>
       );
@@ -173,15 +190,15 @@ class Input extends Component {
 
       return (
         <div className={cx(classes)}>
-          { this.renderIcon() }
+          {this.renderIcon()}
           <C
             {...other}
             className={cx(className, inputClasses)}
             defaultValue={defaultValue}
             id={this._id}
-            ref={(ref) => (this.dateInput = ref)}
+            ref={ref => (this.dateInput = ref)}
             placeholder={placeholder}
-            type='date'
+            type="date"
           />
           {htmlLabel}
         </div>
@@ -192,13 +209,13 @@ class Input extends Component {
 
       return (
         <div className={cx(classes)}>
-          { this.renderIcon() }
+          {this.renderIcon()}
           <C
             {...other}
             className={cx(className, inputClasses)}
             defaultValue={defaultValue}
             id={this._id}
-            ref={(ref) => (this.timeInput = ref)}
+            ref={ref => (this.timeInput = ref)}
             placeholder={placeholder}
           />
           {htmlLabel}
@@ -206,32 +223,29 @@ class Input extends Component {
       );
     } else if (type === 'switch') {
       return (
-        <div className='switch'>
+        <div className="switch">
           <label>
             {offLabel || 'Off'}
-            <input
-              {...other}
-              onChange={this._onChange}
-              type='checkbox'
-            />
-            <span className='lever' />
+            <input {...other} onChange={this._onChange} type="checkbox" />
+            <span className="lever" />
             {onLabel || 'On'}
           </label>
         </div>
       );
     } else {
-      let defaultValue = inputType !== 'checkbox' && inputType !== 'radio'
-        ? this.state.value
-        : defaultValue;
+      let defaultValue =
+        inputType !== 'checkbox' && inputType !== 'radio'
+          ? this.state.value
+          : defaultValue;
 
       if (inputType === 'checkbox' || inputType === 'radio') {
         return (
           <div className={cx(classes)}>
-            { this.renderIcon() }
+            {this.renderIcon()}
             <C
               {...other}
               className={cx(className, inputClasses)}
-              ref={(ref) => (this.input = ref)}
+              ref={ref => (this.input = ref)}
               id={this._id}
               checked={this.state.checked}
               onChange={this._onChange}
@@ -245,11 +259,11 @@ class Input extends Component {
 
       return (
         <div className={cx(classes)}>
-          { this.renderIcon() }
+          {this.renderIcon()}
           <C
             {...other}
             className={cx(className, inputClasses)}
-            ref={(ref) => (this.input = ref)}
+            ref={ref => (this.input = ref)}
             defaultValue={defaultValue}
             id={this._id}
             onChange={this._onChange}
@@ -262,25 +276,31 @@ class Input extends Component {
     }
   }
 
-  renderIcon () {
+  renderIcon() {
     const { icon, children } = this.props;
     if (icon) {
-      return <Icon className='prefix'>{icon}</Icon>;
+      return <Icon className="prefix">{icon}</Icon>;
     } else {
       let icon = null;
       if (React.Children.count(children) === 1 && !Array.isArray(children)) {
         icon = React.Children.only(children);
       }
-      return icon === null ? null : React.cloneElement(icon, {className: 'prefix'});
+      return icon === null
+        ? null
+        : React.cloneElement(icon, { className: 'prefix' });
     }
   }
 
-  isSelect () {
+  isSelect() {
     return this.props.type === 'select';
   }
 
-  isMaterialSelect () {
-    return this.props.type === 'select' && !this.props.browserDefault && typeof $ !== 'undefined';
+  isMaterialSelect() {
+    return (
+      this.props.type === 'select' &&
+      !this.props.browserDefault &&
+      typeof $ !== 'undefined'
+    );
   }
 }
 

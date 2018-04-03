@@ -45,13 +45,20 @@ describe('<Collection />', () => {
     it('should render anchors if present', () => {
       wrapper = mount(
         <Collection>
-          <CollectionItem href='#'>Alvin</CollectionItem>
-          <CollectionItem href='#' className='active'>Alvin</CollectionItem>
-          <CollectionItem href='#'>Alvin</CollectionItem>
-          <CollectionItem href='#'>Alvin</CollectionItem>
+          <CollectionItem href="#">Alvin</CollectionItem>
+          <CollectionItem href="#" className="active">
+            Alvin
+          </CollectionItem>
+          <CollectionItem href="#">Alvin</CollectionItem>
+          <CollectionItem href="#">Alvin</CollectionItem>
         </Collection>
       );
-      expect(wrapper.find('.collection-item').first().type()).to.equal('a');
+      expect(
+        wrapper
+          .find('.collection-item')
+          .first()
+          .type()
+      ).to.equal('a');
     });
   });
 });

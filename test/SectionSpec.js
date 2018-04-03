@@ -14,7 +14,17 @@ describe('<Section />', () => {
   });
 
   it('renders children', () => {
-    wrapper = shallow(<Section><p>nope</p></Section>);
-    assert.equal(wrapper.find('.section').children().type(), 'p');
+    wrapper = shallow(
+      <Section>
+        <p>nope</p>
+      </Section>
+    );
+    assert.equal(
+      wrapper
+        .find('.section')
+        .children()
+        .type(),
+      'p'
+    );
   });
 });

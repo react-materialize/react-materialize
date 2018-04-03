@@ -5,7 +5,7 @@ import cx from 'classnames';
 const Badge = ({ className, newIcon, children, ...props }) => {
   let classes = {
     badge: true,
-    'new': newIcon
+    new: newIcon
   };
 
   return (

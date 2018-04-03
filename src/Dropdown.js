@@ -8,41 +8,41 @@ const classes = {
 };
 
 class Dropdown extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.idx = 'dropdown_' + idgen();
     this.renderTrigger = this.renderTrigger.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const options = this.props.options || {};
     $(this._trigger).dropdown(options);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     $(this._trigger).off();
   }
 
-  render () {
+  render() {
     const { children, className, ...props } = this.props;
     delete props.trigger;
     delete props.options;
 
     return (
       <span>
-        { this.renderTrigger() }
+        {this.renderTrigger()}
         <ul {...props} className={cx(classes, className)} id={this.idx}>
-          { children }
+          {children}
         </ul>
       </span>
     );
   }
 
-  renderTrigger () {
+  renderTrigger() {
     const { trigger } = this.props;
 
     return React.cloneElement(trigger, {
-      ref: (t) => (this._trigger = `[data-activates=${this.idx}]`),
+      ref: t => (this._trigger = `[data-activates=${this.idx}]`),
       className: cx(trigger.props.className, 'dropdown-button'),
       'data-activates': this.idx
     });

@@ -18,8 +18,8 @@ describe('Tabs', () => {
 
   wrapper = shallow(
     <Tabs>
-      <Tab title='one'>One</Tab>
-      <Tab title='Two'>Two</Tab>
+      <Tab title="one">One</Tab>
+      <Tab title="Two">Two</Tab>
     </Tabs>
   );
 
@@ -32,12 +32,14 @@ describe('Tabs', () => {
       tabsStub = sinon.stub($.fn, 'tabs');
       wrapper = mount(
         <Tabs tabOptions={options}>
-          <Tab title='one'>One</Tab>
-          <Tab title='Two'>Two</Tab>
+          <Tab title="one">One</Tab>
+          <Tab title="Two">Two</Tab>
         </Tabs>
       );
     });
-    afterEach(() => { tabsStub.restore(); });
+    afterEach(() => {
+      tabsStub.restore();
+    });
 
     it('initializes Tabs with options', () => {
       expect(tabsStub).to.have.been.calledWithExactly(options);
@@ -49,12 +51,14 @@ describe('Tabs', () => {
       tabsStub = sinon.stub($.fn, 'tabs');
       wrapper = mount(
         <Tabs tabOptions={options}>
-          <Tab title='one'>One</Tab>
-          <Tab title='Two'>Two</Tab>
+          <Tab title="one">One</Tab>
+          <Tab title="Two">Two</Tab>
         </Tabs>
       );
     });
-    afterEach(() => { tabsStub.restore(); });
+    afterEach(() => {
+      tabsStub.restore();
+    });
 
     it('should re-initialize with options', () => {
       expect(tabsStub).to.have.been.calledOnce;

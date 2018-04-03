@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const CardPanel = ({
-  className,
-  children,
-  ...props
-}) => {
+const CardPanel = ({ className, children, ...props }) => {
   const classes = {
     'card-panel': true
   };

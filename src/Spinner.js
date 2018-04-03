@@ -13,14 +13,14 @@ const Spinner = ({ color, only }) => {
   }
   return (
     <div className={cx(spinnerClasses)}>
-      <div className='circle-clipper left'>
-        <div className='circle' />
+      <div className="circle-clipper left">
+        <div className="circle" />
       </div>
-      <div className='gap-patch'>
-        <div className='circle' />
+      <div className="gap-patch">
+        <div className="circle" />
       </div>
-      <div className='circle-clipper right'>
-        <div className='circle' />
+      <div className="circle-clipper right">
+        <div className="circle" />
       </div>
     </div>
   );
