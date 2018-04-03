@@ -9,7 +9,7 @@ globals:
   React: true
   ReactDOM: true
 
-plugins: ['mocha']
+plugins: ['mocha','prettier']
 
 env:
   jquery: true
