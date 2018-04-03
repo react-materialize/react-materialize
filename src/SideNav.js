@@ -15,17 +15,17 @@ class SideNav extends Component {
   }
 
   render() {
-    const { className, children, fixed, ...props } = this.props;
+    const { className, children, ...props } = this.props;
     delete props.id;
     delete props.trigger;
     delete props.options;
-    delete props.showOnLarge;
-
+    delete props.fixed;
+    const fixed = this.props.fixed || !this.props.trigger;
     const classNames = cx('side-nav', { fixed }, className);
 
     return (
       <span>
-        {this.props.trigger && this.renderTrigger()}
+        {this.renderTrigger()}
         <ul id={this.id} className={classNames} {...props}>
           {children}
         </ul>
@@ -34,11 +34,12 @@ class SideNav extends Component {
   }
 
   renderTrigger() {
-    const { trigger } = this.props;
-    const showOnLarge = this.props.showOnLarge
-      ? 'show-on-large'
-      : 'hide-on-large-only';
-    const classNames = cx(trigger.props.className, showOnLarge);
+    const { trigger, fixed } = this.props;
+    if (!trigger) {
+      return;
+    }
+    const triggerView = fixed ? 'hide-on-large-only' : 'show-on-large';
+    const classNames = cx(trigger.props.className, triggerView);
     return React.cloneElement(trigger, {
       ref: t => (this._trigger = `[data-activates=${this.id}]`),
       'data-activates': this.id,
@@ -52,10 +53,6 @@ SideNav.propTypes = {
    * Adds fixed class to side-nav
    */
   fixed: PropTypes.bool,
-  /**
-   * Adds showOnLarge class to Trigger
-   */
-  showOnLarge: PropTypes.bool,
   /**
    * sidenav id. If none is passed, an id will be generated.
    */
