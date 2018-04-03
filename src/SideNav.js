@@ -22,6 +22,9 @@ class SideNav extends Component {
     delete props.showOnLarge;
 
     const classNames = cx('side-nav', { fixed }, className);
+    if (!this.props.trigger && !this.props.fixed) {
+      console.warn('No trigger was passed for the SideNav object. If no trigger was desired, please pass `fixed` to view your SideNav');
+    }
 
     return (
       <span>
