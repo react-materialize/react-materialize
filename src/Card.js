@@ -4,22 +4,27 @@ import cx from 'classnames';
 import Icon from './Icon';
 
 const renderTitle = (title, reveal) => (
-  <span className={cx('card-title', 'grey-text', 'text-darken-4', { 'activator': reveal })}>
+  <span
+    className={cx('card-title', 'grey-text', 'text-darken-4', {
+      activator: reveal
+    })}
+  >
     {title}
     {reveal && <Icon right>more_vert</Icon>}
   </span>
 );
 
 const renderReveal = (title, reveal) => (
-  <div className='card-reveal'>
-    <span className='card-title grey-text text-darken-4'>{title}<Icon right>close</Icon></span>
+  <div className="card-reveal">
+    <span className="card-title grey-text text-darken-4">
+      {title}
+      <Icon right>close</Icon>
+    </span>
     {reveal}
   </div>
 );
 
-const renderAction = (actions) => (
-  <div className='card-action'>{actions}</div>
-);
+const renderAction = actions => <div className="card-action">{actions}</div>;
 
 const Card = ({
   title,

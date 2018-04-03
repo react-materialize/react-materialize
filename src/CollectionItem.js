@@ -3,13 +3,8 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class CollectionItem extends Component {
-  render () {
-    const {
-      active,
-      children,
-      className,
-      ...other
-    } = this.props;
+  render() {
+    const { active, children, className, ...other } = this.props;
 
     const classes = {
       'collection-item': true,

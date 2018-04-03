@@ -10,9 +10,9 @@ describe('<Navbar />', () => {
 
   it('renders a navbar', () => {
     wrapper = shallow(
-      <Navbar brand='Logo' right>
-        <NavItem href='get-started.html'>Getting started</NavItem>
-        <NavItem href='components.html'>Components</NavItem>
+      <Navbar brand="Logo" right>
+        <NavItem href="get-started.html">Getting started</NavItem>
+        <NavItem href="components.html">Components</NavItem>
       </Navbar>
     );
 
@@ -20,16 +20,15 @@ describe('<Navbar />', () => {
   });
 
   it('places brand on right if navbar is left aligned', () => {
-    wrapper = shallow(<Navbar brand='logo' left />);
+    wrapper = shallow(<Navbar brand="logo" left />);
     expect(wrapper.find('a.brand-logo.right')).to.have.length(1);
   });
 
   it('adds a brand node', () => {
-    const brandNode = <span className='brando'>I AM BRAND</span>;
+    const brandNode = <span className="brando">I AM BRAND</span>;
 
     wrapper = mount(<Navbar brand={brandNode} />);
-    expect(wrapper.find('a.brand-logo')
-      .contains(brandNode)).to.equal(true);
+    expect(wrapper.find('a.brand-logo').contains(brandNode)).to.equal(true);
   });
 
   it('can be fixed', () => {

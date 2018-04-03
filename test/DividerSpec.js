@@ -14,7 +14,11 @@ describe('<Divider />', () => {
   });
 
   it('does not contain children', () => {
-    wrapper = shallow(<Divider><p>nope</p></Divider>);
+    wrapper = shallow(
+      <Divider>
+        <p>nope</p>
+      </Divider>
+    );
     assert.equal(wrapper.find('.divider').children().length, 0);
   });
 });

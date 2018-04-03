@@ -9,34 +9,34 @@ export const UserShape = {
 };
 
 export class UserView extends Component {
-  render () {
+  render() {
     const { background, image, name, email } = this.props;
     return (
-      <div className='userView'>
-        { background &&
-          <div className='background'>
+      <div className="userView">
+        {background && (
+          <div className="background">
             <img src={background} />
           </div>
-        }
-        { image &&
-          <a href='#!user'>
-            <img className='circle' src={image} />
+        )}
+        {image && (
+          <a href="#!user">
+            <img className="circle" src={image} />
           </a>
-        }
-        { name &&
-          <a href='#!name'>
-            <span className='white-text name'>{name}</span>
+        )}
+        {name && (
+          <a href="#!name">
+            <span className="white-text name">{name}</span>
           </a>
-        }
-        { email &&
-          <a href='#!email'>
-            <span className='white-text email'>{email}</span>
+        )}
+        {email && (
+          <a href="#!email">
+            <span className="white-text email">{email}</span>
           </a>
-        }
+        )}
       </div>
     );
   }
-};
+}
 
 UserView.propTypes = UserShape;
 

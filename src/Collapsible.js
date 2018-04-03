@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class Collapsible extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -14,18 +14,12 @@ class Collapsible extends Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     $(this._collapsible).collapsible();
   }
 
-  render () {
-    const {
-      accordion,
-      popout,
-      className,
-      children,
-      ...props
-    } = this.props;
+  render() {
+    const { accordion, popout, className, children, ...props } = this.props;
 
     delete props.defaultActiveKey;
 
@@ -37,7 +31,9 @@ class Collapsible extends Component {
 
     return (
       <ul
-        ref={(node) => { this._collapsible = node; }}
+        ref={node => {
+          this._collapsible = node;
+        }}
         className={cx(className, classes)}
         data-collapsible={collapsible}
         {...props}
@@ -47,7 +43,7 @@ class Collapsible extends Component {
     );
   }
 
-  renderItem (child, key) {
+  renderItem(child, key) {
     if (!child) return null;
     const props = {
       onSelect: this.handleSelect
@@ -64,12 +60,16 @@ class Collapsible extends Component {
     return React.cloneElement(child, props);
   }
 
-  handleSelect (key) {
+  handleSelect(key) {
     const { onSelect } = this.props;
 
-    if (onSelect) { onSelect(key); }
+    if (onSelect) {
+      onSelect(key);
+    }
 
-    if (this.state.activeKey === key) { key = null; }
+    if (this.state.activeKey === key) {
+      key = null;
+    }
 
     if (this.props.accordion) {
       this.setState({ activeKey: key });

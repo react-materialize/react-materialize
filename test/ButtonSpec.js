@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Button from '../src/Button';
 
-let wrapper = shallow(<Button waves='light'>Stuff</Button>);
+let wrapper = shallow(<Button waves="light">Stuff</Button>);
 
 describe('Button', () => {
   it('should output a button', () => {
@@ -34,13 +34,17 @@ describe('Button', () => {
   });
 
   it('should apply FAB hover', () => {
-    wrapper = shallow(<Button fab='vertical'>Stuff</Button>);
+    wrapper = shallow(<Button fab="vertical">Stuff</Button>);
     wrapper.simulate('hover');
     expect(wrapper.find('.fixed-action-btn active'));
   });
 
   it('should apply FAB click-only', () => {
-    wrapper = shallow(<Button fab='horizontal' fabClickOnly>Stuff</Button>);
+    wrapper = shallow(
+      <Button fab="horizontal" fabClickOnly>
+        Stuff
+      </Button>
+    );
     wrapper.simulate('click');
     expect(wrapper.find('.fixed-action-btn active'));
   });

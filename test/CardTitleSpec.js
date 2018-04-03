@@ -5,11 +5,7 @@ import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import CardTitle from '../src/CardTitle';
 
-let wrapper = shallow(
-  <CardTitle image=''>
-    I am a very simple card
-  </CardTitle>
-);
+let wrapper = shallow(<CardTitle image="">I am a very simple card</CardTitle>);
 
 describe('<CardTitle />', () => {
   it('should render', () => {
@@ -17,7 +13,7 @@ describe('<CardTitle />', () => {
   });
 
   wrapper = shallow(
-    <CardTitle image='' reveal>
+    <CardTitle image="" reveal>
       I am a very simple card
     </CardTitle>
   );

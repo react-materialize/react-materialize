@@ -8,7 +8,7 @@ import Button from '../src/Button';
 import { stub } from 'sinon';
 
 let wrapper = shallow(
-  <Dropdown trigger={<Button>Drop me!</Button>} className='more' />
+  <Dropdown trigger={<Button>Drop me!</Button>} className="more" />
 );
 
 describe('<Dropdown />', () => {
@@ -23,13 +23,11 @@ describe('<Dropdown />', () => {
   it('passed `constrainWidth` correctly', () => {
     const dropdownStub = stub($.fn, 'dropdown');
     const options = { constrainWidth: true };
-    mount(
-      (<Dropdown trigger={<span />} options={options} />)
-    );
+    mount(<Dropdown trigger={<span />} options={options} />);
     assert.equal(dropdownStub.withArgs(options).calledOnce, true);
   });
 
-  it('doesn\'t pass down unwanted props', () => {
+  it("doesn't pass down unwanted props", () => {
     const options = { hover: true };
     let wrapper = shallow(
       <Dropdown trigger={<span>hi</span>} options={options} />
@@ -43,7 +41,7 @@ describe('<Dropdown />', () => {
   });
 
   it('does not update ID reference with each render', () => {
-    const wrapper = new Dropdown({ trigger: (<option>hi</option>) });
+    const wrapper = new Dropdown({ trigger: <option>hi</option> });
     wrapper.render();
     const firstId = wrapper.idx;
     wrapper.render();

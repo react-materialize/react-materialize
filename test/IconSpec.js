@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import Icon from '../src/Icon';
 
-let wrapper = shallow(
-  <Icon>cloud</Icon>
-);
+let wrapper = shallow(<Icon>cloud</Icon>);
 
 describe('<Icon />', () => {
   it('renders an icon', () => {

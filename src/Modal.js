@@ -7,19 +7,19 @@ import idgen from './idgen';
 import Button from './Button';
 
 class Modal extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.modalID = props.id || `modal_${idgen()}`;
     this.showModal = this.showModal.bind(this);
     this.createRoot();
   }
 
-  createRoot () {
+  createRoot() {
     this.modalRoot = document.createElement('div');
     document.body.appendChild(this.modalRoot);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { trigger, modalOptions, open } = this.props;
 
     if (!trigger) {
@@ -29,22 +29,22 @@ class Modal extends Component {
     if (open) this.showModal();
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     document.body.removeChild(this.modalRoot);
     this.modalRoot = null;
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     // if the modal is not open yet
     if (!this.props.open && nextProps.open) {
       this.showModal();
-    // open could be undefined
+      // open could be undefined
     } else if (nextProps.open === false) {
       this.hideModal();
     }
   }
 
-  renderModalPortal () {
+  renderModalPortal() {
     const {
       actions,
       bottomSheet,
@@ -58,38 +58,40 @@ class Modal extends Component {
     delete other.trigger;
 
     const classes = cx({
-      'modal': true,
+      modal: true,
       'modal-fixed-footer': fixedFooter,
       'bottom-sheet': bottomSheet
     });
 
     return this.modalRoot
       ? ReactDOM.createPortal(
-        <div {...other} className={classes} id={this.modalID}>
-          <div className='modal-content'>
-            <h4>{header}</h4>
-            {children}
-          </div>
-          <div className='modal-footer'>
-            {React.Children.toArray(actions)}
-          </div>
-        </div>, this.modalRoot)
+          <div {...other} className={classes} id={this.modalID}>
+            <div className="modal-content">
+              <h4>{header}</h4>
+              {children}
+            </div>
+            <div className="modal-footer">
+              {React.Children.toArray(actions)}
+            </div>
+          </div>,
+          this.modalRoot
+        )
       : null;
   }
 
-  showModal (e) {
+  showModal(e) {
     if (e) e.preventDefault();
     const { modalOptions = {} } = this.props;
     $(`#${this.modalID}`).modal(modalOptions);
     $(`#${this.modalID}`).modal('open');
   }
 
-  hideModal (e) {
+  hideModal(e) {
     if (e) e.preventDefault();
     $(`#${this.modalID}`).modal('close');
   }
 
-  render () {
+  render() {
     const { trigger } = this.props;
 
     return (
@@ -103,9 +105,9 @@ class Modal extends Component {
 
 Modal.propTypes = {
   /**
-  * ModalOptions
-  * Object with options for modal
-  */
+   * ModalOptions
+   * Object with options for modal
+   */
   modalOptions: PropTypes.shape({
     /*
      * Modal can be dismissed by clicking outside of the modal
@@ -141,22 +143,22 @@ Modal.propTypes = {
     complete: PropTypes.func
   }),
   /**
-  * Modal is opened on mount
-  */
+   * Modal is opened on mount
+   */
   open: PropTypes.bool,
   /**
-  * BottomSheet styled modal
-  * @default false
-  */
+   * BottomSheet styled modal
+   * @default false
+   */
   bottomSheet: PropTypes.bool,
   /**
    * Component children
    */
   children: PropTypes.node,
   /**
-  * FixedFooter styled modal
-  * @default false
-  */
+   * FixedFooter styled modal
+   * @default false
+   */
   fixedFooter: PropTypes.bool,
   /**
    * Text to shown in the header of the modal
@@ -181,7 +183,11 @@ Modal.defaultProps = {
   modalOptions: {},
   fixedFooter: false,
   bottomSheet: false,
-  actions: [<Button waves='light' modal='close' flat>Close</Button>]
+  actions: [
+    <Button waves="light" modal="close" flat>
+      Close
+    </Button>
+  ]
 };
 
 export default Modal;

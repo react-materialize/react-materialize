@@ -13,7 +13,7 @@ describe('<Badge />', () => {
   });
 
   it('should output a badge with just the number 4 in it', () => {
-    assert(wrapper.contains(<span className='badge'>4</span>));
+    assert(wrapper.contains(<span className="badge">4</span>));
   });
 
   it('should output a badge with the className of `badge new` and', () => {
