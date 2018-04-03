@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 const PaginationButton = ({
   active = false,
@@ -11,7 +11,7 @@ const PaginationButton = ({
   onSelect
 }) => {
   const classes = {
-    "waves-effect": true,
+    'waves-effect': true,
     disabled,
     active
   };

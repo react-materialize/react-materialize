@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import Spinner from "./Spinner";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import Spinner from './Spinner';
 
-let colors = ["blue", "red", "yellow", "green"];
+let colors = ['blue', 'red', 'yellow', 'green'];
 
 class Preloader extends Component {
   render() {
     let classes = {
-      "preloader-wrapper": true,
+      'preloader-wrapper': true,
       active: this.props.active
     };
 
@@ -35,7 +35,7 @@ Preloader.propTypes = {
    * The scale of the circle
    * @default 'medium'
    */
-  size: PropTypes.oneOf(["big", "small", "medium"]),
+  size: PropTypes.oneOf(['big', 'small', 'medium']),
   /**
    * Whether to spin
    * @default true
@@ -45,7 +45,7 @@ Preloader.propTypes = {
    * The color of the circle, if not flashing
    * @default 'blue'
    */
-  color: PropTypes.oneOf(["blue", "red", "yellow", "green"]),
+  color: PropTypes.oneOf(['blue', 'red', 'yellow', 'green']),
   /**
    * Wheter to circle four different colors
    * @default false
@@ -56,7 +56,7 @@ Preloader.propTypes = {
 Preloader.defaultProps = {
   active: true,
   flashing: false,
-  color: "blue"
+  color: 'blue'
 };
 
 export default Preloader;

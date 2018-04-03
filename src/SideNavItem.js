@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import { UserView, UserShape } from "./UserView";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import { UserView, UserShape } from './UserView';
 
 class SideNavItem extends Component {
   render() {
@@ -10,7 +10,7 @@ class SideNavItem extends Component {
       subheader,
       userView,
       icon,
-      href = "#!",
+      href = '#!',
       waves,
       user = {},
       children,
@@ -21,7 +21,7 @@ class SideNavItem extends Component {
     };
     const linkClasses = {
       subheader: subheader,
-      "waves-effect": waves
+      'waves-effect': waves
     };
 
     return (

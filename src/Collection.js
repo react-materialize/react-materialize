@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 class Collection extends Component {
   constructor(props) {
@@ -13,12 +13,12 @@ class Collection extends Component {
 
     let classes = {
       collection: true,
-      "with-header": !!header
+      'with-header': !!header
     };
-    let C = "ul";
+    let C = 'ul';
     React.Children.forEach(children, child => {
       if (child.props.href) {
-        C = "div";
+        C = 'div';
       }
     });
     return (

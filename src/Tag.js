@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Chip from "./Chip";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Chip from './Chip';
 
 const Tag = ({ children }) => <Chip close>{children}</Chip>;
 

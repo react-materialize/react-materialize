@@ -1,17 +1,17 @@
 /* eslint no-unused-vars: ["error", { "ignoreRestSiblings": true }] */
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import constants from "./constants";
-import Icon from "./Icon";
-import idgen from "./idgen";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import constants from './constants';
+import Icon from './Icon';
+import idgen from './idgen';
 
 class Autocomplete extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: props.value || ""
+      value: props.value || ''
     };
 
     this.renderIcon = this.renderIcon.bind(this);
@@ -51,18 +51,18 @@ class Autocomplete extends Component {
           const index = key.toUpperCase().indexOf(value.toUpperCase());
           return (
             <li
-              key={key + "_" + idx}
+              key={key + '_' + idx}
               onClick={this._onAutocomplete.bind(this, key)}
             >
               {data[key] ? (
                 <img src={data[key]} className="right circle" />
               ) : null}
               <span>
-                {index !== 0 ? key.substring(0, index) : ""}
+                {index !== 0 ? key.substring(0, index) : ''}
                 <span className="highlight">{value}</span>
                 {key.length !== index + value.length
                   ? key.substring(index + value.length)
-                  : ""}
+                  : ''}
               </span>
             </li>
           );
@@ -127,7 +127,7 @@ class Autocomplete extends Component {
     return (
       <div
         offset={offset}
-        className={cx("input-field", className, classes)}
+        className={cx('input-field', className, classes)}
         {...props}
       >
         {icon && this.renderIcon(icon, iconClassName)}

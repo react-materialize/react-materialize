@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const NavItem = ({ divider, children, href = "", onClick, ...props }) => {
+const NavItem = ({ divider, children, href = '', onClick, ...props }) => {
   if (divider) return <li className="divider" />;
   const a = onClick ? (
     <a onClick={onClick}>{children}</a>

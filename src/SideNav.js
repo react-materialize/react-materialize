@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import cx from "classnames";
-import PropTypes from "prop-types";
-import idgen from "./idgen";
+import React, { Component } from 'react';
+import cx from 'classnames';
+import PropTypes from 'prop-types';
+import idgen from './idgen';
 
 class SideNav extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class SideNav extends Component {
     delete props.trigger;
     delete props.options;
 
-    const classNames = cx("side-nav", { fixed }, className);
+    const classNames = cx('side-nav', { fixed }, className);
 
     return (
       <span>
@@ -36,7 +36,7 @@ class SideNav extends Component {
     const { trigger } = this.props;
     return React.cloneElement(trigger, {
       ref: t => (this._trigger = `[data-activates=${this.id}]`),
-      "data-activates": this.id
+      'data-activates': this.id
     });
   }
 }
@@ -60,7 +60,7 @@ SideNav.propTypes = {
    */
   options: PropTypes.shape({
     menuWidth: PropTypes.number,
-    edge: PropTypes.oneOf(["left", "right"]),
+    edge: PropTypes.oneOf(['left', 'right']),
     closeOnClick: PropTypes.bool,
     draggable: PropTypes.bool
   }),

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import Row from "./Row";
-import Col from "./Col";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import Row from './Row';
+import Col from './Col';
 
 class Footer extends Component {
   render() {
@@ -16,7 +16,7 @@ class Footer extends Component {
     } = this.props;
 
     let classes = {
-      "page-footer": true
+      'page-footer': true
     };
 
     return (

@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import constants from "./constants";
-import cx from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import constants from './constants';
+import cx from 'classnames';
 
 const Icon = props => {
   let classes = {
-    "material-icons": true
+    'material-icons': true
   };
   constants.PLACEMENTS.forEach(p => {
     classes[p] = props[p];

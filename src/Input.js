@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import idgen from "./idgen";
-import constants from "./constants";
-import Icon from "./Icon";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import idgen from './idgen';
+import constants from './constants';
+import Icon from './Icon';
 
 class Input extends Component {
   constructor(props) {
@@ -22,15 +22,15 @@ class Input extends Component {
   componentDidMount() {
     if (this.isMaterialSelect()) {
       $(this.selectInput).material_select();
-      $(this.selectInput).on("change", this._onChange);
+      $(this.selectInput).on('change', this._onChange);
     }
     if (this.isDatePicker) {
       $(this.dateInput).pickadate(this.props.options);
-      $(this.dateInput).on("change", this._onChange);
+      $(this.dateInput).on('change', this._onChange);
     }
     if (this.isTimePicker) {
       $(this.timeInput).pickatime(this.props.options);
-      $(this.timeInput).on("change", this._onChange);
+      $(this.timeInput).on('change', this._onChange);
     }
   }
 
@@ -53,7 +53,7 @@ class Input extends Component {
 
   componentWillUnmount() {
     if (this.isMaterialSelect()) {
-      $(this.selectInput).off("change", this._onChange);
+      $(this.selectInput).off('change', this._onChange);
     }
   }
 
@@ -72,12 +72,12 @@ class Input extends Component {
     var types = {
       checkbox: e.target.checked,
       radio: e.target.checked,
-      "select-multiple": this.getMultipleValues(e.target),
+      'select-multiple': this.getMultipleValues(e.target),
       default: e.target.value
     };
     const value = types.hasOwnProperty(e.target.type)
       ? types[e.target.type]
-      : types["default"];
+      : types['default'];
     if (onChange) {
       onChange(e, value);
     }
@@ -111,8 +111,8 @@ class Input extends Component {
     this._id = this._id || this.props.id || `input_${idgen()}`;
     let classes = {
       col: true,
-      inline: type !== "checkbox" && type !== "radio" && inline,
-      "input-field": type !== "checkbox" && type !== "radio"
+      inline: type !== 'checkbox' && type !== 'radio' && inline,
+      'input-field': type !== 'checkbox' && type !== 'radio'
     };
     constants.SIZES.forEach(size => {
       classes[size + sizes[size]] = sizes[size];
@@ -121,28 +121,28 @@ class Input extends Component {
       validate,
       invalid: error,
       valid: success,
-      "browser-default": browserDefault && this.isSelect()
+      'browser-default': browserDefault && this.isSelect()
     };
     let C, inputType;
     switch (type) {
-      case "textarea":
-        C = "textarea";
-        inputClasses["materialize-textarea"] = true;
+      case 'textarea':
+        C = 'textarea';
+        inputClasses['materialize-textarea'] = true;
         break;
-      case "switch":
-        C = "input";
-        inputType = "checkbox";
+      case 'switch':
+        C = 'input';
+        inputType = 'checkbox';
         break;
       default:
-        C = "input";
-        inputType = type || "text";
+        C = 'input';
+        inputType = type || 'text';
     }
     let labelClasses = {
       active: this.state.value || this.isSelect() || placeholder
     };
 
     let htmlLabel =
-      label || inputType === "radio" ? (
+      label || inputType === 'radio' ? (
         <label
           className={cx(labelClasses, labelClassName)}
           data-success={success}
@@ -184,7 +184,7 @@ class Input extends Component {
           </select>
         </div>
       );
-    } else if (type === "date") {
+    } else if (type === 'date') {
       this.isDatePicker = true;
       delete other.options;
 
@@ -203,7 +203,7 @@ class Input extends Component {
           {htmlLabel}
         </div>
       );
-    } else if (type === "time") {
+    } else if (type === 'time') {
       this.isTimePicker = true;
       delete other.options;
 
@@ -221,24 +221,24 @@ class Input extends Component {
           {htmlLabel}
         </div>
       );
-    } else if (type === "switch") {
+    } else if (type === 'switch') {
       return (
         <div className="switch">
           <label>
-            {offLabel || "Off"}
+            {offLabel || 'Off'}
             <input {...other} onChange={this._onChange} type="checkbox" />
             <span className="lever" />
-            {onLabel || "On"}
+            {onLabel || 'On'}
           </label>
         </div>
       );
     } else {
       let defaultValue =
-        inputType !== "checkbox" && inputType !== "radio"
+        inputType !== 'checkbox' && inputType !== 'radio'
           ? this.state.value
           : defaultValue;
 
-      if (inputType === "checkbox" || inputType === "radio") {
+      if (inputType === 'checkbox' || inputType === 'radio') {
         return (
           <div className={cx(classes)}>
             {this.renderIcon()}
@@ -287,19 +287,19 @@ class Input extends Component {
       }
       return icon === null
         ? null
-        : React.cloneElement(icon, { className: "prefix" });
+        : React.cloneElement(icon, { className: 'prefix' });
     }
   }
 
   isSelect() {
-    return this.props.type === "select";
+    return this.props.type === 'select';
   }
 
   isMaterialSelect() {
     return (
-      this.props.type === "select" &&
+      this.props.type === 'select' &&
       !this.props.browserDefault &&
-      typeof $ !== "undefined"
+      typeof $ !== 'undefined'
     );
   }
 }
@@ -339,6 +339,6 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
 };
 
-Input.defaultProps = { type: "text", checked: false };
+Input.defaultProps = { type: 'text', checked: false };
 
 export default Input;

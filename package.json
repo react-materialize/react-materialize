@@ -13,10 +13,10 @@
     "test:watch": "mocha --watch",
     "pretest": "npm run lint",
     "build": "babel -d lib src",
-    "lint": "eslint src test; exit 0",
+    "lint": "eslint src test",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,json,css}\" && prettier --write \"test/**/*.{js,jsx,json,css}\" "
+    "prettier": "prettier --single-quote --write \"src/**/*.{js,jsx,json,css}\" && prettier --single-quote --write \"test/**/*.{js,jsx,json,css}\" "
   },
   "repository": {
     "type": "git",

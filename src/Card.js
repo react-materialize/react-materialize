@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import Icon from "./Icon";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import Icon from './Icon';
 
 const renderTitle = (title, reveal) => (
   <span
-    className={cx("card-title", "grey-text", "text-darken-4", {
+    className={cx('card-title', 'grey-text', 'text-darken-4', {
       activator: reveal
     })}
   >
@@ -41,7 +41,7 @@ const Card = ({
   return (
     <div {...props} className={cx(className, classes)}>
       {header}
-      <div className={cx("card-content", textClassName)}>
+      <div className={cx('card-content', textClassName)}>
         {title && renderTitle(title, reveal)}
         <div>{children}</div>
       </div>

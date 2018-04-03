@@ -1,6 +1,6 @@
-import React from "react";
-import cx from "classnames";
-import PropTypes from "prop-types";
+import React from 'react';
+import cx from 'classnames';
+import PropTypes from 'prop-types';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -12,13 +12,13 @@ class Carousel extends React.Component {
   componentDidMount() {
     const { options = {} } = this.props;
 
-    if (typeof $ !== "undefined") {
+    if (typeof $ !== 'undefined') {
       $(this._carousel).carousel(options);
     }
   }
 
   renderItems(child, idx) {
-    if (typeof child === "string") {
+    if (typeof child === 'string') {
       return (
         <a className="carousel-item">
           <img src={child} />
@@ -26,7 +26,7 @@ class Carousel extends React.Component {
       );
     }
     return React.cloneElement(child, {
-      className: cx(child.props.className, "carousel-item")
+      className: cx(child.props.className, 'carousel-item')
     });
   }
 
@@ -55,8 +55,8 @@ class Carousel extends React.Component {
             this._carousel = el;
           }}
           className={cx(
-            "carousel",
-            { "carousel-slider": options.fullWidth },
+            'carousel',
+            { 'carousel-slider': options.fullWidth },
             className
           )}
         >

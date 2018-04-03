@@ -1,9 +1,9 @@
 /* global describe, it */
 
-import React from "react";
-import { shallow } from "enzyme";
-import { assert } from "chai";
-import Table from "../src/Table";
+import React from 'react';
+import { shallow } from 'enzyme';
+import { assert } from 'chai';
+import Table from '../src/Table';
 
 const wrapper = shallow(
   <Table bordered centered hoverable responsive striped>
@@ -14,15 +14,15 @@ const wrapper = shallow(
   </Table>
 );
 
-describe("<Table />", () => {
-  it("has various mod props", () => {
-    assert(wrapper.find(".centered").length, "adds a centered className");
-    assert(wrapper.find(".striped").length, "adds a striped className");
+describe('<Table />', () => {
+  it('has various mod props', () => {
+    assert(wrapper.find('.centered').length, 'adds a centered className');
+    assert(wrapper.find('.striped').length, 'adds a striped className');
     assert(
-      wrapper.find(".responsive-table").length,
-      "adds a responsive-table className"
+      wrapper.find('.responsive-table').length,
+      'adds a responsive-table className'
     );
-    assert(wrapper.find(".bordered").length, "adds a bordered className");
-    assert(wrapper.find(".highlight").length, "adds a highlight className");
+    assert(wrapper.find('.bordered').length, 'adds a bordered className');
+    assert(wrapper.find('.highlight').length, 'adds a highlight className');
   });
 });

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 class Slider extends Component {
   componentDidMount() {
     const { fullscreen, indicators, interval, transition } = this.props;
 
-    $(".slider").slider({
+    $('.slider').slider({
       full_width: fullscreen,
       indicators,
       interval,

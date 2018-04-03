@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import constants from "./constants";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import constants from './constants';
 
 class Slide extends Component {
   constructor(props) {
@@ -25,10 +25,10 @@ class Slide extends Component {
 
     const classes = {
       caption: true,
-      [placement + "-align"]: placement
+      [placement + '-align']: placement
     };
 
-    if (typeof title !== "undefined" || typeof children !== "undefined") {
+    if (typeof title !== 'undefined' || typeof children !== 'undefined') {
       return (
         <div className={cx(classes)} {...props}>
           <h3>{title}</h3>
@@ -58,7 +58,7 @@ Slide.propTypes = {
 };
 
 Slide.defaultProps = {
-  placement: "center"
+  placement: 'center'
 };
 
 export default Slide;

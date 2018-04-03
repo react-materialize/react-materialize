@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import Icon from "./Icon";
-import PaginationButton from "./PaginationButton";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import Icon from './Icon';
+import PaginationButton from './PaginationButton';
 
 class Pagination extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class Pagination extends Component {
     const buttons = [
       <PaginationButton
         disabled={activePage === 1}
-        key={"pagination-0"}
+        key={'pagination-0'}
         onSelect={this._onClick(activePage - 1)}
       >
         <Icon>chevron_left</Icon>
@@ -92,7 +92,7 @@ class Pagination extends Component {
 
   render() {
     return (
-      <ul className={cx("pagination", this.props.className)}>
+      <ul className={cx('pagination', this.props.className)}>
         {this.renderButtons()}
       </ul>
     );

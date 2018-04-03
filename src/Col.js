@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-import constants from "./constants";
+import constants from './constants';
 
 const Col = ({
   children,
   className,
-  node: C = "div",
+  node: C = 'div',
   s,
   m,
   l,
@@ -21,8 +21,8 @@ const Col = ({
   });
 
   if (offset) {
-    offset.split(" ").forEach(off => {
-      classes["offset-" + off] = true;
+    offset.split(' ').forEach(off => {
+      classes['offset-' + off] = true;
     });
   }
 

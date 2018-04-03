@@ -1,19 +1,19 @@
 /* global describe, it */
 
-import React from "react";
-import { shallow } from "enzyme";
-import { assert } from "chai";
-import Container from "../src/Container";
+import React from 'react';
+import { shallow } from 'enzyme';
+import { assert } from 'chai';
+import Container from '../src/Container';
 
 let wrapper;
 
-describe("<Container />", () => {
-  it("renders", () => {
+describe('<Container />', () => {
+  it('renders', () => {
     wrapper = shallow(<Container />);
-    assert(wrapper.find(".container").length);
+    assert(wrapper.find('.container').length);
   });
 
-  it("renders children", () => {
+  it('renders children', () => {
     wrapper = shallow(
       <Container>
         <p>yes</p>
@@ -21,10 +21,10 @@ describe("<Container />", () => {
     );
     assert.equal(
       wrapper
-        .find(".container")
+        .find('.container')
         .children()
         .type(),
-      "p"
+      'p'
     );
   });
 });

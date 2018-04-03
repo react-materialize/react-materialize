@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-import idgen from "./idgen";
-import Button from "./Button";
+import idgen from './idgen';
+import Button from './Button';
 
 class Modal extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Modal extends Component {
   }
 
   createRoot() {
-    this.modalRoot = document.createElement("div");
+    this.modalRoot = document.createElement('div');
     document.body.appendChild(this.modalRoot);
   }
 
@@ -59,8 +59,8 @@ class Modal extends Component {
 
     const classes = cx({
       modal: true,
-      "modal-fixed-footer": fixedFooter,
-      "bottom-sheet": bottomSheet
+      'modal-fixed-footer': fixedFooter,
+      'bottom-sheet': bottomSheet
     });
 
     return this.modalRoot
@@ -83,12 +83,12 @@ class Modal extends Component {
     if (e) e.preventDefault();
     const { modalOptions = {} } = this.props;
     $(`#${this.modalID}`).modal(modalOptions);
-    $(`#${this.modalID}`).modal("open");
+    $(`#${this.modalID}`).modal('open');
   }
 
   hideModal(e) {
     if (e) e.preventDefault();
-    $(`#${this.modalID}`).modal("close");
+    $(`#${this.modalID}`).modal('close');
   }
 
   render() {

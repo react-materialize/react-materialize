@@ -1,74 +1,74 @@
 /* global describe, it, expect, context, beforeEach */
 
-import React from "react";
-import { shallow, mount } from "enzyme";
-import sinon from "sinon";
+import React from 'react';
+import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
 
-import Input from "../src/Input";
-import Icon from "../src/Icon";
+import Input from '../src/Input';
+import Icon from '../src/Icon';
 
-describe("<Input />", () => {
-  it("renders a text input by default", () => {
+describe('<Input />', () => {
+  it('renders a text input by default', () => {
     const wrapper = shallow(<Input />);
-    expect(wrapper.find("input").prop("type")).to.equal("text");
+    expect(wrapper.find('input').prop('type')).to.equal('text');
   });
 
-  context("#text", () => {
-    const className = "my-custom-class";
+  context('#text', () => {
+    const className = 'my-custom-class';
     const wrapper = shallow(<Input className={className} />);
 
-    it("renders an input with a custom className", () => {
-      expect(wrapper.find("input").hasClass(className)).to.equal(true);
+    it('renders an input with a custom className', () => {
+      expect(wrapper.find('input').hasClass(className)).to.equal(true);
     });
   });
 
-  context("#text with value", () => {
-    it("renders an input with value of string type", () => {
-      const value = "Some value";
+  context('#text with value', () => {
+    it('renders an input with value of string type', () => {
+      const value = 'Some value';
       const wrapper = shallow(<Input value={value} />);
-      expect(wrapper.find("input").prop("value")).to.equal(value);
+      expect(wrapper.find('input').prop('value')).to.equal(value);
     });
 
-    it("renders an input with value of array type", () => {
+    it('renders an input with value of array type', () => {
       const values = [1, 2, 3];
       const wrapper = shallow(<Input type="file" multiple value={values} />);
-      expect(wrapper.find("input").prop("value")).to.equal(values);
+      expect(wrapper.find('input').prop('value')).to.equal(values);
     });
   });
 
-  context("#text with label", () => {
-    const labelClassName = "my-custom-class";
+  context('#text with label', () => {
+    const labelClassName = 'my-custom-class';
     const wrapper = shallow(
       <Input label="Name" labelClassName={labelClassName} />
     );
-    const label = wrapper.find("label");
-    const input = wrapper.find("input");
+    const label = wrapper.find('label');
+    const input = wrapper.find('input');
 
-    it("renders an input with a label", () => {
+    it('renders an input with a label', () => {
       expect(label.length).to.eql(1);
       expect(input.length).to.eql(1);
-      expect(input.prop("id")).to.eql(label.prop("htmlFor"));
+      expect(input.prop('id')).to.eql(label.prop('htmlFor'));
       expect(label.hasClass(labelClassName)).to.eql(true);
     });
   });
 
-  context("#textarea", () => {
+  context('#textarea', () => {
     let wrapper;
-    const textareaClass = "materialize-textarea";
+    const textareaClass = 'materialize-textarea';
     beforeEach(() => {
       wrapper = shallow(<Input type="textarea" />);
     });
 
-    it("renders a textarea", () => {
-      expect(wrapper.find("textarea")).to.have.length(1);
+    it('renders a textarea', () => {
+      expect(wrapper.find('textarea')).to.have.length(1);
     });
 
     it(`contains a ${textareaClass} class`, () => {
-      expect(wrapper.find("textarea").hasClass(textareaClass)).to.equal(true);
+      expect(wrapper.find('textarea').hasClass(textareaClass)).to.equal(true);
     });
   });
 
-  context("#select", () => {
+  context('#select', () => {
     let wrapper;
     const values = [1, 2, 3, 4, 5];
 
@@ -80,24 +80,24 @@ describe("<Input />", () => {
       );
     });
 
-    it("renders a select element", () => {
-      expect(wrapper.find("select")).to.have.length(1);
+    it('renders a select element', () => {
+      expect(wrapper.find('select')).to.have.length(1);
     });
 
-    it("renders a options", () => {
-      expect(wrapper.find("option").length).to.equal(values.length);
+    it('renders a options', () => {
+      expect(wrapper.find('option').length).to.equal(values.length);
     });
 
-    it("sets the isSelect to true", () => {
+    it('sets the isSelect to true', () => {
       expect(wrapper.instance().isSelect()).to.equal(true);
     });
 
-    it("renders an icon child with prefix class", () => {
-      expect(wrapper.find(Icon).hasClass("prefix")).to.equal(true);
+    it('renders an icon child with prefix class', () => {
+      expect(wrapper.find(Icon).hasClass('prefix')).to.equal(true);
     });
 
-    context("without icon", () => {
-      it("does not render with an icon child", () => {
+    context('without icon', () => {
+      it('does not render with an icon child', () => {
         const component = mount(
           <Input type="select" defaultValue="v">
             <option value="v" />
@@ -108,10 +108,10 @@ describe("<Input />", () => {
       });
     });
 
-    context("with placeholder", () => {
-      const defaultOption = "Choose your option";
+    context('with placeholder', () => {
+      const defaultOption = 'Choose your option';
 
-      it("renders placeholder as the default disabled option for select", () => {
+      it('renders placeholder as the default disabled option for select', () => {
         wrapper = mount(
           <Input type="select" placeholder={defaultOption}>
             <option value="1">Option 1</option>
@@ -120,19 +120,19 @@ describe("<Input />", () => {
           </Input>
         );
 
-        expect(wrapper.find("option")).to.have.length(4);
+        expect(wrapper.find('option')).to.have.length(4);
         expect(
           wrapper
-            .find("option")
+            .find('option')
             .first()
             .text()
         ).to.equal(defaultOption);
       });
     });
 
-    context("with multiple", () => {
-      it("renders a select with multiple", () => {
-        let defaultOption = "Choose your option";
+    context('with multiple', () => {
+      it('renders a select with multiple', () => {
+        let defaultOption = 'Choose your option';
         wrapper = mount(
           <Input type="select" multiple placeholder={defaultOption}>
             <option value="1">Option 1</option>
@@ -141,12 +141,12 @@ describe("<Input />", () => {
           </Input>
         );
 
-        expect(wrapper.find("select").prop("multiple")).to.equal(true);
+        expect(wrapper.find('select').prop('multiple')).to.equal(true);
       });
     });
 
-    context("with only one option", () => {
-      it("renders a select with only one option", () => {
+    context('with only one option', () => {
+      it('renders a select with only one option', () => {
         let options = [
           <option value="1" key="1">
             Option 1
@@ -158,36 +158,36 @@ describe("<Input />", () => {
           </Input>
         );
 
-        expect(wrapper.find("select")).to.have.length(1);
-        expect(wrapper.find("option").length).to.equal(options.length);
+        expect(wrapper.find('select')).to.have.length(1);
+        expect(wrapper.find('option').length).to.equal(options.length);
       });
     });
   });
 
-  context("#switch", () => {
-    const offLabel = "No";
-    const onLabel = "Yes";
+  context('#switch', () => {
+    const offLabel = 'No';
+    const onLabel = 'Yes';
 
     let wrapper = shallow(
       <Input type="switch" onLabel={onLabel} offLabel={offLabel} />
     );
 
-    it("renders a switch", () => {
-      expect(wrapper.hasClass("switch")).to.equal(true);
+    it('renders a switch', () => {
+      expect(wrapper.hasClass('switch')).to.equal(true);
     });
 
-    it("renders a custom label", () => {
-      expect(wrapper.find("label").text()).to.contain(onLabel);
-      expect(wrapper.find("label").text()).to.contain(offLabel);
+    it('renders a custom label', () => {
+      expect(wrapper.find('label').text()).to.contain(onLabel);
+      expect(wrapper.find('label').text()).to.contain(offLabel);
     });
 
-    it("renders a lever", () => {
-      expect(wrapper.find(".lever").length).to.equal(1);
+    it('renders a lever', () => {
+      expect(wrapper.find('.lever').length).to.equal(1);
     });
   });
 
-  context("#radio", () => {
-    it("no checked should render checked=false", () => {
+  context('#radio', () => {
+    it('no checked should render checked=false', () => {
       let wrapper = shallow(
         <Input name="group1" type="radio" value="yellow" label="Yellow" />
       );
@@ -195,7 +195,7 @@ describe("<Input />", () => {
       expect(wrapper.find({ checked: false })).to.have.length(1);
     });
 
-    it("checked=false should render checked=false", () => {
+    it('checked=false should render checked=false', () => {
       let wrapper = shallow(
         <Input
           name="group1"
@@ -209,7 +209,7 @@ describe("<Input />", () => {
       expect(wrapper.find({ checked: false })).to.have.length(1);
     });
 
-    it("empty checked should render checked=true", () => {
+    it('empty checked should render checked=true', () => {
       let wrapper = shallow(
         <Input
           name="group1"
@@ -223,19 +223,19 @@ describe("<Input />", () => {
       expect(wrapper.find({ checked: true })).to.have.length(1);
     });
 
-    it("after change event checked should be toggle", () => {
+    it('after change event checked should be toggle', () => {
       let wrapper = shallow(
         <Input name="group1" type="radio" value="yellow" label="Yellow" />
       );
 
       wrapper
-        .find("input")
-        .simulate("change", { target: { type: "radio", checked: true } });
+        .find('input')
+        .simulate('change', { target: { type: 'radio', checked: true } });
 
       expect(wrapper.find({ checked: true })).to.have.length(1);
     });
 
-    it("after change event should call onChange with valid arg", () => {
+    it('after change event should call onChange with valid arg', () => {
       const onChange = sinon.spy();
 
       let wrapper = shallow(
@@ -248,13 +248,13 @@ describe("<Input />", () => {
         />
       );
 
-      const event = { target: { type: "radio", checked: true } };
-      wrapper.find("input").simulate("change", event);
+      const event = { target: { type: 'radio', checked: true } };
+      wrapper.find('input').simulate('change', event);
 
       expect(onChange).to.have.been.calledWith(event, true);
     });
 
-    it("after change event false should call onChange with valid arg", () => {
+    it('after change event false should call onChange with valid arg', () => {
       const onChange = sinon.spy();
 
       let wrapper = shallow(
@@ -268,87 +268,87 @@ describe("<Input />", () => {
         />
       );
 
-      const event = { target: { type: "radio", checked: false } };
-      wrapper.find("input").simulate("change", event);
+      const event = { target: { type: 'radio', checked: false } };
+      wrapper.find('input').simulate('change', event);
 
       expect(onChange).to.have.been.calledWith(event, false);
     });
   });
 
-  context("#datepicker", () => {
-    it("renders a datepicker", () => {
-      const pickadateStub = sinon.stub($.fn, "pickadate");
-      const options = { one: "two" };
+  context('#datepicker', () => {
+    it('renders a datepicker', () => {
+      const pickadateStub = sinon.stub($.fn, 'pickadate');
+      const options = { one: 'two' };
       mount(<Input type="date" options={options} />);
 
       expect(pickadateStub).to.have.been.calledWith(options);
       pickadateStub.restore();
     });
 
-    it("renders a datepicker with icon", () => {
+    it('renders a datepicker with icon', () => {
       const wrapper = mount(
         <Input type="date">
           <Icon>today</Icon>
         </Input>
       );
 
-      expect(wrapper.find("i").hasClass("prefix")).to.equal(true);
+      expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
     });
 
-    it("renders a datepicker without icon", () => {
+    it('renders a datepicker without icon', () => {
       const wrapper = mount(<Input type="date" />);
 
-      expect(wrapper.find("i").exists()).to.equal(false);
+      expect(wrapper.find('i').exists()).to.equal(false);
     });
   });
 
-  context("#timepicker", () => {
-    it("renders a timepicker", () => {
-      const pickatimeStub = sinon.stub($.fn, "pickatime");
-      const options = { one: "two" };
+  context('#timepicker', () => {
+    it('renders a timepicker', () => {
+      const pickatimeStub = sinon.stub($.fn, 'pickatime');
+      const options = { one: 'two' };
       mount(<Input type="time" options={options} />);
 
       expect(pickatimeStub).to.have.been.calledWith(options);
       pickatimeStub.restore();
     });
 
-    it("renders a timepicker with icon", () => {
+    it('renders a timepicker with icon', () => {
       const wrapper = mount(
         <Input type="time">
           <Icon>today</Icon>
         </Input>
       );
 
-      expect(wrapper.find("i").hasClass("prefix")).to.equal(true);
+      expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
     });
 
-    it("renders a timepicker without icon", () => {
+    it('renders a timepicker without icon', () => {
       const wrapper = mount(<Input type="time" />);
 
-      expect(wrapper.find("i").exists()).to.equal(false);
+      expect(wrapper.find('i').exists()).to.equal(false);
     });
   });
 
-  context("with icon", () => {
+  context('with icon', () => {
     let wrapper;
 
-    it("renders an icon child with prefix class", () => {
+    it('renders an icon child with prefix class', () => {
       wrapper = mount(
         <Input>
           <Icon>account_circle</Icon>
         </Input>
       );
-      expect(wrapper.find("i").hasClass("prefix")).to.equal(true);
+      expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
     });
 
-    it("renders an icon if icon prop is defined", () => {
+    it('renders an icon if icon prop is defined', () => {
       wrapper = shallow(<Input icon="cloud" />);
-      expect(wrapper.find(Icon).hasClass("prefix")).to.equal(true);
+      expect(wrapper.find(Icon).hasClass('prefix')).to.equal(true);
     });
   });
 
-  context("whithout icon", () => {
-    it("does not render an icon child if icon prop is not defined", () => {
+  context('whithout icon', () => {
+    it('does not render an icon child if icon prop is not defined', () => {
       const wrapper = shallow(<Input />);
       expect(wrapper.find(Icon).exists()).to.equal(false);
     });
