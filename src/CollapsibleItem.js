@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Icon from './Icon';
+import React from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
+import Icon from "./Icon";
 
 const CollapsibleItem = ({
   className,
@@ -17,7 +17,7 @@ const CollapsibleItem = ({
 }) => (
   <li className={cx(className, { active: expanded })} {...props}>
     <Node
-      className={cx('collapsible-header', { active: expanded })}
+      className={cx("collapsible-header", { active: expanded })}
       onClick={() => onSelect(eventKey)}
     >
       {icon && <Icon className={iconClassName}>{icon}</Icon>}
@@ -51,12 +51,12 @@ CollapsibleItem.propTypes = {
   /**
    * The scroll behavior for scrollIntoView
    */
-  scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
+  scroll: PropTypes.oneOf(["auto", "instant", "smooth"])
 };
 
 CollapsibleItem.defaultProps = {
   expanded: false,
-  node: 'div'
+  node: "div"
 };
 
 export default CollapsibleItem;

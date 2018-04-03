@@ -1,19 +1,19 @@
 /* global describe, it, before, after */
 
-import { assert } from 'chai';
+import { assert } from "chai";
 
-describe('jQuery is added to jsdom', () => {
+describe("jQuery is added to jsdom", () => {
   const $node = $('<div class="some-module"></div>');
 
   before(() => {
-    $('body').append($node);
+    $("body").append($node);
   });
 
   after(() => {
     $node.remove();
   });
 
-  it('creates and removes elements', () => {
-    assert.equal($('div.some-module').length, 1);
+  it("creates and removes elements", () => {
+    assert.equal($("div.some-module").length, 1);
   });
 });

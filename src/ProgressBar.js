@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 const ProgressBar = ({ progress, className }) => {
   let style;
@@ -10,12 +10,12 @@ const ProgressBar = ({ progress, className }) => {
   };
   if (progress) {
     style = {
-      width: progress + '%'
+      width: progress + "%"
     };
   }
 
   return (
-    <div className={cx('progress lighten-5', className)}>
+    <div className={cx("progress lighten-5", className)}>
       <div className={cx(classes, className)} style={style} />
     </div>
   );

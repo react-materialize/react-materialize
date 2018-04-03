@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 class Collapsible extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Collapsible extends Component {
       collapsible: true,
       popout
     };
-    const collapsible = accordion ? 'accordion' : 'expandable';
+    const collapsible = accordion ? "accordion" : "expandable";
 
     return (
       <ul
@@ -50,7 +50,7 @@ class Collapsible extends Component {
     };
 
     // Extend with props if child is a react component
-    if (typeof child.type === 'function') {
+    if (typeof child.type === "function") {
       Object.assign(props, {
         expanded: this.state.activeKey === key || child.props.expanded,
         eventKey: key

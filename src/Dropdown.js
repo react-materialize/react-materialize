@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import idgen from './idgen';
-import cx from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import idgen from "./idgen";
+import cx from "classnames";
 
 const classes = {
-  'dropdown-content': true
+  "dropdown-content": true
 };
 
 class Dropdown extends Component {
   constructor(props) {
     super(props);
-    this.idx = 'dropdown_' + idgen();
+    this.idx = "dropdown_" + idgen();
     this.renderTrigger = this.renderTrigger.bind(this);
   }
 
@@ -43,8 +43,8 @@ class Dropdown extends Component {
 
     return React.cloneElement(trigger, {
       ref: t => (this._trigger = `[data-activates=${this.idx}]`),
-      className: cx(trigger.props.className, 'dropdown-button'),
-      'data-activates': this.idx
+      className: cx(trigger.props.className, "dropdown-button"),
+      "data-activates": this.idx
     });
   }
 }
@@ -68,7 +68,7 @@ Dropdown.propTypes = {
     hover: PropTypes.bool,
     gutter: PropTypes.number,
     belowOrigin: PropTypes.bool,
-    alignment: PropTypes.oneOf(['left', 'right'])
+    alignment: PropTypes.oneOf(["left", "right"])
   })
 };
 

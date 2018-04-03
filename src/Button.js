@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import constants from './constants';
-import cx from 'classnames';
-import Icon from './Icon';
-import idgen from './idgen';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import constants from "./constants";
+import cx from "classnames";
+import Icon from "./Icon";
+import idgen from "./idgen";
 
 class Button extends Component {
   constructor(props) {
@@ -27,26 +27,26 @@ class Button extends Component {
       ...other
     } = this.props;
 
-    const toggle = fabClickOnly ? 'click-to-toggle' : '';
+    const toggle = fabClickOnly ? "click-to-toggle" : "";
     let C = node;
     let classes = {
       btn: true,
       disabled,
-      'waves-effect': waves
+      "waves-effect": waves
     };
 
     if (constants.WAVES.indexOf(waves) > -1) {
-      classes['waves-' + waves] = true;
+      classes["waves-" + waves] = true;
     }
 
     let styles = { flat, floating, large };
     constants.STYLES.forEach(style => {
-      classes['btn-' + style] = styles[style];
+      classes["btn-" + style] = styles[style];
     });
 
     if (modal) {
-      classes['modal-action'] = true;
-      classes['modal-' + modal] = true;
+      classes["modal-action"] = true;
+      classes["modal-" + modal] = true;
     }
     if (fab) {
       return this.renderFab(cx(classes, className), fab, toggle);
@@ -68,7 +68,7 @@ class Button extends Component {
   renderFab(className, orientation, clickOnly) {
     const classes = cx(orientation, clickOnly);
     return (
-      <div className={cx('fixed-action-btn', classes)}>
+      <div className={cx("fixed-action-btn", classes)}>
         <a className={className}>{this.renderIcon()}</a>
         <ul>
           {React.Children.map(this.props.children, child => {
@@ -102,12 +102,12 @@ Button.propTypes = {
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
    * @default vertical. This will disable any onClick function from being called on the main button.
    */
-  fab: PropTypes.oneOf(['vertical', 'horizontal']),
+  fab: PropTypes.oneOf(["vertical", "horizontal"]),
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */
   icon: PropTypes.string,
-  modal: PropTypes.oneOf(['close', 'confirm']),
+  modal: PropTypes.oneOf(["close", "confirm"]),
   node: PropTypes.node,
   /**
    * Will be disabled when fab is set.
@@ -118,13 +118,13 @@ Button.propTypes = {
    */
   tooltip: PropTypes.string,
   waves: PropTypes.oneOf([
-    'light',
-    'red',
-    'yellow',
-    'orange',
-    'purple',
-    'green',
-    'teal'
+    "light",
+    "red",
+    "yellow",
+    "orange",
+    "purple",
+    "green",
+    "teal"
   ]),
   /**
    * FAB Click-Only
@@ -134,7 +134,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  node: 'button'
+  node: "button"
 };
 
 export default Button;

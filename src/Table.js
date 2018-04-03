@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 class Table extends Component {
   render() {
@@ -18,7 +18,7 @@ class Table extends Component {
     const classes = {
       centered: centered,
       highlight: hoverable,
-      'responsive-table': responsive,
+      "responsive-table": responsive,
       striped: striped,
       bordered: bordered
     };

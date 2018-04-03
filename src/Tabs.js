@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import idgen from './idgen';
-import cx from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import idgen from "./idgen";
+import cx from "classnames";
 
-import Row from './Row';
-import Col from './Col';
+import Row from "./Row";
+import Col from "./Col";
 
 class Tabs extends Component {
   componentDidMount() {
     const { tabOptions = {} } = this.props;
 
-    if (typeof $ !== 'undefined') {
+    if (typeof $ !== "undefined") {
       $(this._tabsEl).tabs(tabOptions);
     }
   }
@@ -24,7 +24,7 @@ class Tabs extends Component {
   componentWillReceiveProps(nextProps) {
     const { tabOptions = {} } = nextProps;
 
-    if (typeof $ !== 'undefined') {
+    if (typeof $ !== "undefined") {
       $(this._tabsEl).tabs(tabOptions);
     }
   }
@@ -37,7 +37,7 @@ class Tabs extends Component {
     return (
       <Row>
         <Col s={12}>
-          <ul className={cx('tabs', className)} ref={el => (this._tabsEl = el)}>
+          <ul className={cx("tabs", className)} ref={el => (this._tabsEl = el)}>
             {React.Children.map(children, (child, id) => {
               const idx = `${scope}${id}`;
               const {
@@ -59,7 +59,7 @@ class Tabs extends Component {
                 <li className={cx(classes, className)} key={idx}>
                   <a
                     href={`#tab_${idx}`}
-                    className={active || defaultValue === idx ? 'active' : ''}
+                    className={active || defaultValue === idx ? "active" : ""}
                     {...(disabled
                       ? {}
                       : { onClick: this._onSelect.bind(this, idx) })}
@@ -80,7 +80,7 @@ class Tabs extends Component {
               key={`tab${idx}`}
               style={{
                 display:
-                  child.props.active || defaultValue === idx ? 'block' : 'none'
+                  child.props.active || defaultValue === idx ? "block" : "none"
               }}
             >
               {child.props.children}

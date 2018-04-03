@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 const Spinner = ({ color, only }) => {
   let spinnerClasses = {
-    'spinner-layer': true
+    "spinner-layer": true
   };
   if (only) {
-    spinnerClasses['spinner-' + color + '-only'] = true;
+    spinnerClasses["spinner-" + color + "-only"] = true;
   } else {
-    spinnerClasses['spinner-' + color] = true;
+    spinnerClasses["spinner-" + color] = true;
   }
   return (
     <div className={cx(spinnerClasses)}>

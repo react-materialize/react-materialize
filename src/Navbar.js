@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Col from './Col';
-import Icon from './Icon';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
+import Col from "./Col";
+import Icon from "./Icon";
 
 class Navbar extends Component {
   constructor(props) {
@@ -11,8 +11,8 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    if (typeof $ !== 'undefined') {
-      $('.button-collapse').sideNav(this.props.options);
+    if (typeof $ !== "undefined") {
+      $(".button-collapse").sideNav(this.props.options);
     }
   }
 
@@ -31,11 +31,11 @@ class Navbar extends Component {
 
     let classes = {
       right: right,
-      'hide-on-med-and-down': true
+      "hide-on-med-and-down": true
     };
 
     let brandClasses = {
-      'brand-logo': true,
+      "brand-logo": true,
       right: left
     };
 
@@ -81,14 +81,14 @@ Navbar.propTypes = {
    */
   options: PropTypes.shape({
     menuWidth: PropTypes.number,
-    edge: PropTypes.oneOf(['left', 'right']),
+    edge: PropTypes.oneOf(["left", "right"]),
     closeOnClick: PropTypes.bool,
     draggable: PropTypes.bool
   })
 };
 
 Navbar.defaultProps = {
-  href: '/',
+  href: "/",
   options: {}
 };
 

@@ -9,14 +9,14 @@
     "lib"
   ],
   "scripts": {
-    "precommit": "lint-staged",
     "test": "mocha",
     "test:watch": "mocha --watch",
     "pretest": "npm run lint",
     "build": "babel -d lib src",
     "lint": "eslint src test; exit 0",
     "fix": "eslint src test --fix",
-    "release": "npm run build && npm publish"
+    "release": "npm run build && npm publish",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,json,css}\" && prettier --write \"test/**/*.{js,jsx,json,css}\" "
   },
   "repository": {
     "type": "git",
@@ -57,10 +57,8 @@
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
-    "husky": "^0.14.3",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
-    "lint-staged": "^7.0.2",
     "materialize-css": "^0.100.2",
     "mocha": "^3.2.0",
     "prettier": "^1.11.1",
@@ -74,11 +72,5 @@
     "classnames": "^2.2.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
   }
 }
