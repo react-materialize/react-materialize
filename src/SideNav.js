@@ -19,12 +19,13 @@ class SideNav extends Component {
     delete props.id;
     delete props.trigger;
     delete props.options;
+    delete props.showOnLarge;
 
     const classNames = cx('side-nav', { fixed }, className);
 
     return (
       <span>
-        { this.renderTrigger() }
+        { this.props.trigger && this.renderTrigger() }
         <ul id={this.id} className={classNames} {...props}>
           {children}
         </ul>
@@ -34,9 +35,12 @@ class SideNav extends Component {
 
   renderTrigger () {
     const { trigger } = this.props;
+    const showOnLarge = this.props.showOnLarge ? 'show-on-large' : 'hide-on-large-only';
+    const classNames = cx(trigger.props.className, showOnLarge);
     return React.cloneElement(trigger, {
       ref: (t) => (this._trigger = `[data-activates=${this.id}]`),
-      'data-activates': this.id
+      'data-activates': this.id,
+      className: classNames
     });
   }
 }
@@ -47,13 +51,17 @@ SideNav.propTypes = {
    */
   fixed: PropTypes.bool,
   /**
+   * Adds showOnLarge class to Trigger
+   */
+  showOnLarge: PropTypes.bool,
+  /**
    * sidenav id. If none is passed, an id will be generated.
    */
   id: PropTypes.string,
   /**
    * Component that is rendered to trigger the sidenav
    */
-  trigger: PropTypes.node.isRequired,
+  trigger: PropTypes.node,
   /**
    * Options hash for the sidenav.
    * More info: http://materializecss.com/side-nav.html#options
