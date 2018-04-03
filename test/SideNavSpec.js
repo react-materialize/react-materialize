@@ -47,7 +47,7 @@ describe('<SideNav />', () => {
   });
 
   it('should render trigger on large screens if `showOnLarge`', () => {
-    const { trigger } = setup({className: 'green', showOnLarge: true});
+    const { trigger } = setup({ className: 'green', showOnLarge: true });
     assert.isTrue(trigger.hasClass('trigger show-on-large'));
   });
 

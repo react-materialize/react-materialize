@@ -22,9 +22,6 @@ class SideNav extends Component {
     delete props.showOnLarge;
 
     const classNames = cx('side-nav', { fixed }, className);
-    if (!this.props.trigger && !this.props.fixed) {
-      console.warn('No trigger was passed for the SideNav object. If no trigger was desired, please pass `fixed` to view your SideNav');
-    }
 
     return (
       <span>
@@ -38,7 +35,9 @@ class SideNav extends Component {
 
   renderTrigger() {
     const { trigger } = this.props;
-    const showOnLarge = this.props.showOnLarge ? 'show-on-large' : 'hide-on-large-only';
+    const showOnLarge = this.props.showOnLarge
+      ? 'show-on-large'
+      : 'hide-on-large-only';
     const classNames = cx(trigger.props.className, showOnLarge);
     return React.cloneElement(trigger, {
       ref: t => (this._trigger = `[data-activates=${this.id}]`),
