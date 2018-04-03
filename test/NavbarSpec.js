@@ -36,4 +36,9 @@ describe('<Navbar />', () => {
     wrapper = shallow(<Navbar fixed />);
     expect(wrapper.hasClass('navbar-fixed')).to.eq(true);
   });
+
+  it('can have container', () => {
+    wrapper = mount(<Navbar container />);
+    expect(wrapper.find('.nav-wrapper').hasClass('container')).to.eq(true);
+ });
 });
