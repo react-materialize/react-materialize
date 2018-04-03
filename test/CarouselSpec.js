@@ -6,7 +6,7 @@ import sinon from 'sinon';
 import Carousel from '../src/Carousel';
 
 const renderer = (props, action = 'shallow') => {
-  const actions = { 'shallow': shallow, 'mount': mount };
+  const actions = { shallow: shallow, mount: mount };
   return actions[action](<Carousel {...props} />);
 };
 
@@ -24,7 +24,13 @@ describe('<Carousel />', () => {
     wrapper = renderer({ images });
     expect(wrapper.find('.carousel').length).to.eq(1);
     expect(wrapper.find('a.carousel-item').length).to.eq(4);
-    expect(wrapper.find('a.carousel-item').last().find('img').props().src).to.eq(images[images.length - 1]);
+    expect(
+      wrapper
+        .find('a.carousel-item')
+        .last()
+        .find('img')
+        .props().src
+    ).to.eq(images[images.length - 1]);
   });
 
   it('handles full width sliders', () => {
@@ -37,11 +43,21 @@ describe('<Carousel />', () => {
     const fixedItem = <span>Do you rock!?</span>;
     wrapper = renderer({ images, fixedItem });
     expect(wrapper.find('.carousel-fixed-item').length).to.eq(1);
-    expect(wrapper.find('.carousel-fixed-item').childAt(0).equals(fixedItem)).to.eq(true);
+    expect(
+      wrapper
+        .find('.carousel-fixed-item')
+        .childAt(0)
+        .equals(fixedItem)
+    ).to.eq(true);
   });
 
   it('handles content slides', () => {
-    const child = <div className='red'><h2>First Panel</h2><p>This is your first panel</p></div>;
+    const child = (
+      <div className="red">
+        <h2>First Panel</h2>
+        <p>This is your first panel</p>
+      </div>
+    );
     wrapper = renderer({ children: child });
     expect(wrapper.find('.carousel-item.red').length).to.eq(1);
   });

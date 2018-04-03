@@ -5,35 +5,27 @@ import Col from './Col';
 import Icon from './Icon';
 
 class Navbar extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.renderSideNav = this.renderSideNav.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (typeof $ !== 'undefined') {
       $('.button-collapse').sideNav(this.props.options);
     }
   }
 
-  renderSideNav () {
+  renderSideNav() {
     return (
-      <ul id='nav-mobile' className='side-nav'>
+      <ul id="nav-mobile" className="side-nav">
         {this.props.children}
       </ul>
     );
   }
 
-  render () {
-    const {
-      brand,
-      className,
-      fixed,
-      left,
-      right,
-      href,
-      ...other
-    } = this.props;
+  render() {
+    const { brand, className, fixed, left, right, href, ...other } = this.props;
 
     delete other.options;
 
@@ -49,14 +41,14 @@ class Navbar extends Component {
 
     let content = (
       <nav {...other} className={className}>
-        <div className='nav-wrapper'>
+        <div className="nav-wrapper">
           <Col s={12}>
-            <a href={href} className={cx(brandClasses)}>{brand}</a>
-            <ul className={cx(className, classes)}>
-              {this.props.children}
-            </ul>
+            <a href={href} className={cx(brandClasses)}>
+              {brand}
+            </a>
+            <ul className={cx(className, classes)}>{this.props.children}</ul>
             {this.renderSideNav()}
-            <a className='button-collapse' href='#' data-activates='nav-mobile'>
+            <a className="button-collapse" href="#" data-activates="nav-mobile">
               <Icon>view_headline</Icon>
             </a>
           </Col>
@@ -65,7 +57,7 @@ class Navbar extends Component {
     );
 
     if (fixed) {
-      content = <div className='navbar-fixed'>{content}</div>;
+      content = <div className="navbar-fixed">{content}</div>;
     }
 
     return content;

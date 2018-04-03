@@ -27,7 +27,7 @@ describe('<Pagination />', () => {
     assert(wrapper.childAt(4).props().active);
   });
 
-  it('doesn\'t update state with wrong activePage prop', () => {
+  it("doesn't update state with wrong activePage prop", () => {
     wrapper = shallow(<Pagination items={1} activePage={2} />);
 
     assert.equal(wrapper.state().activePage, 1);

@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import Col from '../src/Col';
 
-let wrapper = shallow(
-  <Col />
-);
+let wrapper = shallow(<Col />);
 
 describe('<Col />', () => {
   it('should render', () => {
@@ -15,9 +13,7 @@ describe('<Col />', () => {
   });
 
   it('accepts sizes as props', () => {
-    wrapper = shallow(
-      <Col s={4} m={6} l={8} />
-    );
+    wrapper = shallow(<Col s={4} m={6} l={8} />);
     assert(wrapper.find('.col').hasClass('s4 m6 l8'), 'a column');
   });
 });

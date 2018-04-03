@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import MenuItem from '../src/MenuItem';
 
-let wrapper = shallow(
-  <MenuItem className='more' breadcrumbItem href='/' />
-);
+let wrapper = shallow(<MenuItem className="more" breadcrumbItem href="/" />);
 
 describe('<MenuItem />', () => {
   it('should render a link with the className of `breadcrumbItem more`', () => {

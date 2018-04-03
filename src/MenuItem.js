@@ -4,13 +4,15 @@ import cx from 'classnames';
 
 // This should be used within any component that has a menu like interface
 class MenuItem extends Component {
-  render () {
+  render() {
     const { href, breadcrumbItem, children, className, ...props } = this.props;
     let classes = {
       breadcrumb: breadcrumbItem
     };
     return (
-      <a href={href} {...props} className={cx(classes, className)}>{children}</a>
+      <a href={href} {...props} className={cx(classes, className)}>
+        {children}
+      </a>
     );
   }
 }

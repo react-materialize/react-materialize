@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const Chip = ({ children, close }) => {
   return (
-    <div className='chip'>
+    <div className="chip">
       {children}
-      {close ? <i className='close material-icons'>close</i> : null}
+      {close ? <i className="close material-icons">close</i> : null}
     </div>
   );
 };

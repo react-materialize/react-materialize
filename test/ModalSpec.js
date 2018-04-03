@@ -7,7 +7,11 @@ import Modal from '../src/Modal';
 
 describe('<Modal />', () => {
   const trigger = <button>open modal</button>;
-  const children = <div><h1>Hello</h1></div>;
+  const children = (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  );
   const header = 'Modal header';
   const modalOptions = {
     dismissible: true,
@@ -21,11 +25,7 @@ describe('<Modal />', () => {
   context('renders a modal', () => {
     beforeEach(() => {
       wrapper = mount(
-        <Modal
-          trigger={trigger}
-          modalOptions={modalOptions}
-          header={header}
-        >
+        <Modal trigger={trigger} modalOptions={modalOptions} header={header}>
           {children}
         </Modal>
       );
@@ -48,11 +48,7 @@ describe('<Modal />', () => {
 
   context('without a trigger', () => {
     beforeEach(() => {
-      wrapper = mount(
-        <Modal modalOptions={modalOptions}>
-          {children}
-        </Modal>
-      );
+      wrapper = mount(<Modal modalOptions={modalOptions}>{children}</Modal>);
     });
 
     afterEach(() => {
@@ -68,7 +64,11 @@ describe('<Modal />', () => {
     let testModal;
     beforeEach(() => {
       modalStub = stub($.fn, 'modal');
-      testModal = mount(<Modal modalOptions={{'one': 1}} open>{children}</Modal>);
+      testModal = mount(
+        <Modal modalOptions={{ one: 1 }} open>
+          {children}
+        </Modal>
+      );
     });
 
     afterEach(() => {
@@ -85,22 +85,22 @@ describe('<Modal />', () => {
       testModal.setProps({ open: true });
       expect(modalStub).to.have.been.calledThrice;
       // no trigger is defined, modal should be configured in constructor
-      expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
+      expect(modalStub.firstCall.args[0]).to.deep.equal({ one: 1 });
       // showModal initializes the modal again
-      expect(modalStub.secondCall.args[0]).to.deep.equal({ 'one': 1 });
-      expect(modalStub.lastCall.args).to.deep.equal([ 'open' ]);
+      expect(modalStub.secondCall.args[0]).to.deep.equal({ one: 1 });
+      expect(modalStub.lastCall.args).to.deep.equal(['open']);
     });
 
     it('closes on prop change', () => {
       testModal.setProps({ open: false });
       expect(modalStub).to.have.callCount(4);
       // no trigger is defined, modal should be configured in constructor
-      expect(modalStub.firstCall.args[0]).to.deep.equal({ 'one': 1 });
+      expect(modalStub.firstCall.args[0]).to.deep.equal({ one: 1 });
       // open prop is set, so showModal is called
-      expect(modalStub.secondCall.args[0]).to.deep.equal({ 'one': 1 });
-      expect(modalStub.thirdCall.args).to.deep.equal([ 'open' ]);
+      expect(modalStub.secondCall.args[0]).to.deep.equal({ one: 1 });
+      expect(modalStub.thirdCall.args).to.deep.equal(['open']);
 
-      expect(modalStub.lastCall.args).to.deep.equal([ 'close' ]);
+      expect(modalStub.lastCall.args).to.deep.equal(['close']);
     });
   });
 
@@ -108,11 +108,7 @@ describe('<Modal />', () => {
     beforeEach(() => {
       modalStub = stub($.fn, 'modal');
       wrapper = shallow(
-        <Modal
-          trigger={trigger}
-          modalOptions={modalOptions}
-          header={header}
-        >
+        <Modal trigger={trigger} modalOptions={modalOptions} header={header}>
           {children}
         </Modal>
       );

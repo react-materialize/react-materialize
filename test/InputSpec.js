@@ -31,7 +31,7 @@ describe('<Input />', () => {
 
     it('renders an input with value of array type', () => {
       const values = [1, 2, 3];
-      const wrapper = shallow(<Input type='file' multiple value={values} />);
+      const wrapper = shallow(<Input type="file" multiple value={values} />);
       expect(wrapper.find('input').prop('value')).to.equal(values);
     });
   });
@@ -39,7 +39,7 @@ describe('<Input />', () => {
   context('#text with label', () => {
     const labelClassName = 'my-custom-class';
     const wrapper = shallow(
-      <Input label='Name' labelClassName={labelClassName} />
+      <Input label="Name" labelClassName={labelClassName} />
     );
     const label = wrapper.find('label');
     const input = wrapper.find('input');
@@ -56,7 +56,7 @@ describe('<Input />', () => {
     let wrapper;
     const textareaClass = 'materialize-textarea';
     beforeEach(() => {
-      wrapper = shallow(<Input type='textarea' />);
+      wrapper = shallow(<Input type="textarea" />);
     });
 
     it('renders a textarea', () => {
@@ -74,8 +74,8 @@ describe('<Input />', () => {
 
     beforeEach(() => {
       wrapper = mount(
-        <Input type='select' defaultValue='v' icon='weekend'>
-          {values.map((val) => <option key={val} value={val} />)}
+        <Input type="select" defaultValue="v" icon="weekend">
+          {values.map(val => <option key={val} value={val} />)}
         </Input>
       );
     });
@@ -99,8 +99,8 @@ describe('<Input />', () => {
     context('without icon', () => {
       it('does not render with an icon child', () => {
         const component = mount(
-          <Input type='select' defaultValue='v'>
-            <option value='v' />
+          <Input type="select" defaultValue="v">
+            <option value="v" />
           </Input>
         );
 
@@ -113,15 +113,20 @@ describe('<Input />', () => {
 
       it('renders placeholder as the default disabled option for select', () => {
         wrapper = mount(
-          <Input type='select' placeholder={defaultOption}>
-            <option value='1'>Option 1</option>
-            <option value='2'>Option 2</option>
-            <option value='3'>Option 3</option>
+          <Input type="select" placeholder={defaultOption}>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
           </Input>
         );
 
         expect(wrapper.find('option')).to.have.length(4);
-        expect(wrapper.find('option').first().text()).to.equal(defaultOption);
+        expect(
+          wrapper
+            .find('option')
+            .first()
+            .text()
+        ).to.equal(defaultOption);
       });
     });
 
@@ -129,10 +134,10 @@ describe('<Input />', () => {
       it('renders a select with multiple', () => {
         let defaultOption = 'Choose your option';
         wrapper = mount(
-          <Input type='select' multiple placeholder={defaultOption}>
-            <option value='1'>Option 1</option>
-            <option value='2'>Option 2</option>
-            <option value='3'>Option 3</option>
+          <Input type="select" multiple placeholder={defaultOption}>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
           </Input>
         );
 
@@ -142,10 +147,14 @@ describe('<Input />', () => {
 
     context('with only one option', () => {
       it('renders a select with only one option', () => {
-        let options = [<option value='1' key='1' >Option 1</option>];
+        let options = [
+          <option value="1" key="1">
+            Option 1
+          </option>
+        ];
         wrapper = mount(
-          <Input type='select' defaultValue='v'>
-            { options }
+          <Input type="select" defaultValue="v">
+            {options}
           </Input>
         );
 
@@ -160,7 +169,7 @@ describe('<Input />', () => {
     const onLabel = 'Yes';
 
     let wrapper = shallow(
-      <Input type='switch' onLabel={onLabel} offLabel={offLabel} />
+      <Input type="switch" onLabel={onLabel} offLabel={offLabel} />
     );
 
     it('renders a switch', () => {
@@ -180,7 +189,7 @@ describe('<Input />', () => {
   context('#radio', () => {
     it('no checked should render checked=false', () => {
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' label='Yellow' />
+        <Input name="group1" type="radio" value="yellow" label="Yellow" />
       );
 
       expect(wrapper.find({ checked: false })).to.have.length(1);
@@ -188,7 +197,13 @@ describe('<Input />', () => {
 
     it('checked=false should render checked=false', () => {
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' label='Yellow' checked={false} />
+        <Input
+          name="group1"
+          type="radio"
+          value="yellow"
+          label="Yellow"
+          checked={false}
+        />
       );
 
       expect(wrapper.find({ checked: false })).to.have.length(1);
@@ -196,7 +211,13 @@ describe('<Input />', () => {
 
     it('empty checked should render checked=true', () => {
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' label='Yellow' checked />
+        <Input
+          name="group1"
+          type="radio"
+          value="yellow"
+          label="Yellow"
+          checked
+        />
       );
 
       expect(wrapper.find({ checked: true })).to.have.length(1);
@@ -204,10 +225,12 @@ describe('<Input />', () => {
 
     it('after change event checked should be toggle', () => {
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' label='Yellow' />
+        <Input name="group1" type="radio" value="yellow" label="Yellow" />
       );
 
-      wrapper.find('input').simulate('change', { target: { type: 'radio', checked: true } });
+      wrapper
+        .find('input')
+        .simulate('change', { target: { type: 'radio', checked: true } });
 
       expect(wrapper.find({ checked: true })).to.have.length(1);
     });
@@ -216,7 +239,13 @@ describe('<Input />', () => {
       const onChange = sinon.spy();
 
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' label='Yellow' onChange={onChange} />
+        <Input
+          name="group1"
+          type="radio"
+          value="yellow"
+          label="Yellow"
+          onChange={onChange}
+        />
       );
 
       const event = { target: { type: 'radio', checked: true } };
@@ -229,7 +258,14 @@ describe('<Input />', () => {
       const onChange = sinon.spy();
 
       let wrapper = shallow(
-        <Input name='group1' type='radio' value='yellow' checked label='Yellow' onChange={onChange} />
+        <Input
+          name="group1"
+          type="radio"
+          value="yellow"
+          checked
+          label="Yellow"
+          onChange={onChange}
+        />
       );
 
       const event = { target: { type: 'radio', checked: false } };
@@ -243,20 +279,24 @@ describe('<Input />', () => {
     it('renders a datepicker', () => {
       const pickadateStub = sinon.stub($.fn, 'pickadate');
       const options = { one: 'two' };
-      mount(<Input type='date' options={options} />);
+      mount(<Input type="date" options={options} />);
 
       expect(pickadateStub).to.have.been.calledWith(options);
       pickadateStub.restore();
     });
 
     it('renders a datepicker with icon', () => {
-      const wrapper = mount(<Input type='date'><Icon>today</Icon></Input>);
+      const wrapper = mount(
+        <Input type="date">
+          <Icon>today</Icon>
+        </Input>
+      );
 
       expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
     });
 
     it('renders a datepicker without icon', () => {
-      const wrapper = mount(<Input type='date' />);
+      const wrapper = mount(<Input type="date" />);
 
       expect(wrapper.find('i').exists()).to.equal(false);
     });
@@ -266,20 +306,24 @@ describe('<Input />', () => {
     it('renders a timepicker', () => {
       const pickatimeStub = sinon.stub($.fn, 'pickatime');
       const options = { one: 'two' };
-      mount(<Input type='time' options={options} />);
+      mount(<Input type="time" options={options} />);
 
       expect(pickatimeStub).to.have.been.calledWith(options);
       pickatimeStub.restore();
     });
 
     it('renders a timepicker with icon', () => {
-      const wrapper = mount(<Input type='time'><Icon>today</Icon></Input>);
+      const wrapper = mount(
+        <Input type="time">
+          <Icon>today</Icon>
+        </Input>
+      );
 
       expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
     });
 
     it('renders a timepicker without icon', () => {
-      const wrapper = mount(<Input type='time' />);
+      const wrapper = mount(<Input type="time" />);
 
       expect(wrapper.find('i').exists()).to.equal(false);
     });
@@ -289,12 +333,16 @@ describe('<Input />', () => {
     let wrapper;
 
     it('renders an icon child with prefix class', () => {
-      wrapper = mount(<Input><Icon>account_circle</Icon></Input>);
+      wrapper = mount(
+        <Input>
+          <Icon>account_circle</Icon>
+        </Input>
+      );
       expect(wrapper.find('i').hasClass('prefix')).to.equal(true);
     });
 
     it('renders an icon if icon prop is defined', () => {
-      wrapper = shallow(<Input icon='cloud' />);
+      wrapper = shallow(<Input icon="cloud" />);
       expect(wrapper.find(Icon).hasClass('prefix')).to.equal(true);
     });
   });

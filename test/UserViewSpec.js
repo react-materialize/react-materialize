@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import UserView from '../src/UserView';
 
-function setup (props = {}, children) {
+function setup(props = {}, children) {
   const propsIn = {
     ...props
   };
@@ -32,11 +32,19 @@ describe('<UserView />', () => {
 
     const background = wrapper.find('.background > img').first();
     assert.isDefined(background, 'should have a background');
-    assert.equal(background.props().src, propsIn.background, 'should set background source');
+    assert.equal(
+      background.props().src,
+      propsIn.background,
+      'should set background source'
+    );
 
     const image = wrapper.find('.circle').first();
     assert.isDefined(image, 'should have a user image');
-    assert.equal(image.props().src, propsIn.image, 'should set userImage source');
+    assert.equal(
+      image.props().src,
+      propsIn.image,
+      'should set userImage source'
+    );
 
     const name = wrapper.find('.name').first();
     assert.isDefined(name, 'should have a name span');
@@ -44,6 +52,10 @@ describe('<UserView />', () => {
 
     const email = wrapper.find('.email').first();
     assert.isDefined(email, 'should have an email span');
-    assert.equal(email.text(), propsIn.email, 'should render the email address');
+    assert.equal(
+      email.text(),
+      propsIn.email,
+      'should render the email address'
+    );
   });
 });

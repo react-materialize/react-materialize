@@ -7,7 +7,7 @@ import CollectionItem from '../src/CollectionItem';
 describe('<CollectionItem />', () => {
   let wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
   it('can render as a link', () => {
-    wrapper = shallow(<CollectionItem href='#'>Alvin</CollectionItem>);
+    wrapper = shallow(<CollectionItem href="#">Alvin</CollectionItem>);
     expect(wrapper.props().href).to.equal('#');
     expect(wrapper.type()).to.equal('a');
   });

@@ -5,7 +5,11 @@ import { shallow } from 'enzyme';
 import Card from '../src/Card';
 
 const wrapper = shallow(
-  <Card title='card title' className='blue-grey darken-1' textClassName='white-text'>
+  <Card
+    title="card title"
+    className="blue-grey darken-1"
+    textClassName="white-text"
+  >
     I am a very simple card
   </Card>
 );
