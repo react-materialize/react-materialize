@@ -1,8 +1,8 @@
 # JavaScript Standard Style Guide: http://standardjs.com
 # https://github.com/feross/eslint-config-standard-react
 extends:
-  - standard
   - standard-react
+  - prettier
 
 globals:
   Materialize: true
