@@ -45,6 +45,9 @@
     "babel-preset-stage-0": "^6.5.0-1",
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.2",
+    "prettier": "^1.11.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "es5-shim": "^4.2.0",
@@ -67,13 +70,10 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.2",
-    "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-   "lint-staged": {
+  "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --single-quote --write",
       "git add"

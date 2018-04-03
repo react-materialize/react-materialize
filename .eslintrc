@@ -3,14 +3,13 @@
 extends:
   - standard
   - standard-react
-  - prettier
 
 globals:
   Materialize: true
   React: true
   ReactDOM: true
 
-plugins: ['mocha','prettier']
+plugins: ['mocha']
 
 env:
   jquery: true
