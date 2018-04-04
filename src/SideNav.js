@@ -15,13 +15,10 @@ class SideNav extends Component {
   }
 
   render() {
-    const { className, children, ...props } = this.props;
+    const { className, children, trigger, fixed, ...props } = this.props;
     delete props.id;
-    delete props.trigger;
     delete props.options;
-    delete props.fixed;
-    const fixed = this.props.fixed || !this.props.trigger;
-    const classNames = cx('side-nav', { fixed }, className);
+    const classNames = cx('side-nav', { fixed: fixed || !trigger }, className);
 
     return (
       <span>
