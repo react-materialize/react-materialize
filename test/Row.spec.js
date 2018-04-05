@@ -1,21 +1,19 @@
-/* global describe, it, expect */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import Row from '../src/Row';
 
-let wrapper;
-
 describe('<Row />', () => {
+  let wrapper;
+
   test('renders', () => {
     wrapper = shallow(<Row />);
-    expect(wrapper.hasClass('row')).to.be.truthy;
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('accepts a node prop', () => {
     const node = 'a';
     wrapper = shallow(<Row node={node} />);
-    expect(wrapper.type()).to.eq(node);
+    expect(wrapper.type()).toEqual(node);
   });
 
   test('passes other props to node', () => {
