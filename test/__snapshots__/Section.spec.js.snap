@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Section /> renders 1`] = `
+<div
+  className="section"
+/>
+`;
+
+exports[`<Section /> renders children 1`] = `
+<div
+  className="section"
+>
+  <p>
+    nope
+  </p>
+</div>
+`;
