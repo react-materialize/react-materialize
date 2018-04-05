@@ -20,7 +20,7 @@ describe('<Autocomplete />', () => {
   const typedKey = 'A';
 
   test('renders', () => {
-    expect(wrapper.find('.autocomplete')).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot()
   });
 
   test('generates correct ID for input and label', () => {

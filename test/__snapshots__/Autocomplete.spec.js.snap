@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Autocomplete /> renders 1`] = `
+<div
+  className="input-field col"
+>
+  <input
+    className="autocomplete"
+    id="testAutocompleteId"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="testAutocompleteId"
+  >
+    Test Title
+  </label>
+</div>
+`;
