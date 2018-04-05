@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchForm /> should render 1`] = `
+<form>
+  <div
+    className="input-field"
+  >
+    <input
+      id="search"
+      required={true}
+      type="search"
+    />
+    <label
+      htmlFor="search"
+    >
+      <Icon>
+        search
+      </Icon>
+    </label>
+    <Icon>
+      close
+    </Icon>
+  </div>
+</form>
+`;
