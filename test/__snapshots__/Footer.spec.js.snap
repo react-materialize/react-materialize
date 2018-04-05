@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> renders 1`] = `
+<footer
+  className="page-footer"
+>
+  <div
+    className="container"
+  >
+    <Row>
+      <Col
+        l={6}
+        s={12}
+      >
+        <p>
+          Footer Content
+        </p>
+      </Col>
+      <Col
+        l={4}
+        offset="l2"
+        s={12}
+      >
+        <ul>
+          <li>
+            <a
+              className="grey-text text-lighten-3"
+              href="#!"
+            >
+              Link 1
+            </a>
+          </li>
+        </ul>
+      </Col>
+    </Row>
+  </div>
+  <div
+    className="footer-copyright"
+  >
+    <div
+      className="container"
+    >
+      © 2015 Copyright Text
+      <a
+        className="grey-text text-lighten-4 right"
+        href="#!"
+      >
+        More Links
+      </a>
+    </div>
+  </div>
+</footer>
+`;

@@ -1,8 +1,5 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow } from 'enzyme';
-import { assert } from 'chai';
 import Footer from '../src/Footer';
 
 let moreLinks = (
@@ -30,8 +27,7 @@ let wrapper = shallow(
 );
 
 describe('<Footer />', () => {
-  test('renders a Footer', () => {
-    assert(wrapper.find('.container').length, 'with a container');
-    assert(wrapper.find('.footer-copyright').length, 'with a copyright');
+  test('renders', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });
