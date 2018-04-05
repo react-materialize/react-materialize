@@ -15,11 +15,11 @@ const wrapper = shallow(
 );
 
 describe('<MediaBox />', () => {
-  it('renders', () => {
+  test('renders', () => {
     assert(wrapper.find('img.materialboxed.more').length);
   });
 
-  it('passes props', () => {
+  test('passes props', () => {
     assert.strictEqual(wrapper.props().width, '650', 'width');
     assert.strictEqual(
       wrapper.props()['data-caption'],

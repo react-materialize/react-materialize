@@ -8,11 +8,11 @@ import Icon from '../src/Icon';
 let wrapper = shallow(<Icon>cloud</Icon>);
 
 describe('<Icon />', () => {
-  it('renders an icon', () => {
+  test('renders an icon', () => {
     assert(wrapper.find('i.material-icons').length, 'renders icon');
   });
 
-  it('accepts size as a prop', () => {
+  test('accepts size as a prop', () => {
     wrapper = shallow(<Icon large>cloud</Icon>);
     assert(wrapper.find('i.material-icons.large').length, 'icon large');
   });

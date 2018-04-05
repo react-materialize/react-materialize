@@ -12,8 +12,8 @@ let wrapper = shallow(
 );
 
 describe('<Collection />', () => {
-  it('renders a list', () => {
-    expect(wrapper.find('ul.collection')).to.have.length(1);
+  test('renders a list', () => {
+    expect(wrapper.find('ul.collection')).toHaveLength(1);
   });
 
   describe('with header prop', () => {
@@ -24,25 +24,25 @@ describe('<Collection />', () => {
       </Collection>
     );
 
-    it('should support "header" prop', () => {
-      expect(wrapper.find('.with-header')).to.have.length(1);
+    test('should support "header" prop', () => {
+      expect(wrapper.find('.with-header')).toHaveLength(1);
     });
 
-    it('should render a header text', () => {
-      expect(wrapper.find('h4').text()).to.equal(header);
+    test('should render a header text', () => {
+      expect(wrapper.find('h4').text()).toBe(header);
     });
 
-    it('should render a header component', () => {
+    test('should render a header component', () => {
       header = <h2>ages</h2>;
       wrapper = shallow(
         <Collection header={header}>
           <CollectionItem>Alvin</CollectionItem>
         </Collection>
       );
-      expect(wrapper.find('h2').text()).to.equal('ages');
+      expect(wrapper.find('h2').text()).toBe('ages');
     });
 
-    it('should render anchors if present', () => {
+    test('should render anchors if present', () => {
       wrapper = mount(
         <Collection>
           <CollectionItem href="#">Alvin</CollectionItem>
@@ -58,7 +58,7 @@ describe('<Collection />', () => {
           .find('.collection-item')
           .first()
           .type()
-      ).to.equal('a');
+      ).toBe('a');
     });
   });
 });

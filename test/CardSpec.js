@@ -15,16 +15,16 @@ const wrapper = shallow(
 );
 
 describe('<Card />', () => {
-  it('should have classname card', () => {
-    expect(wrapper.find('.card')).to.have.length(1);
+  test('should have classname card', () => {
+    expect(wrapper.find('.card')).toHaveLength(1);
   });
 
-  it('should append classnames to container', () => {
-    expect(wrapper.find('.blue-grey')).to.have.length(1);
-    expect(wrapper.find('.darken-1')).to.have.length(1);
+  test('should append classnames to container', () => {
+    expect(wrapper.find('.blue-grey')).toHaveLength(1);
+    expect(wrapper.find('.darken-1')).toHaveLength(1);
   });
 
-  it('should append text classnames to content', () => {
-    expect(wrapper.find('.card-content').hasClass('white-text')).to.equal(true);
+  test('should append text classnames to content', () => {
+    expect(wrapper.find('.card-content').hasClass('white-text')).toBe(true);
   });
 });

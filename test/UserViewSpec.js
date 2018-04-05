@@ -20,7 +20,7 @@ function setup(props = {}, children) {
 }
 
 describe('<UserView />', () => {
-  it('should render', () => {
+  test('should render', () => {
     const { propsIn, wrapper } = setup({
       name: 'user fullname',
       email: 'user email',

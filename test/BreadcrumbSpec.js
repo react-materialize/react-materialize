@@ -8,7 +8,7 @@ import Breadcrumb from '../src/Breadcrumb';
 const wrapper = shallow(<Breadcrumb />);
 
 describe('<Breadcrumb />', () => {
-  it('renders', () => {
+  test('renders', () => {
     assert(wrapper.find('.breadcrumb'));
   });
 });

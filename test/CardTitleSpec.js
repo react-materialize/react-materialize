@@ -8,7 +8,7 @@ import CardTitle from '../src/CardTitle';
 let wrapper = shallow(<CardTitle image="">I am a very simple card</CardTitle>);
 
 describe('<CardTitle />', () => {
-  it('should render', () => {
+  test('should render', () => {
     assert(wrapper.find('.card-title').length, 'with a card-title className');
   });
 
@@ -18,7 +18,7 @@ describe('<CardTitle />', () => {
     </CardTitle>
   );
 
-  it('requires an image prop', () => {
+  test('requires an image prop', () => {
     assert(wrapper.find('img.activator').length, 'with a truthy value');
   });
 });

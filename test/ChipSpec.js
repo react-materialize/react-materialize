@@ -8,16 +8,16 @@ import Chip from '../src/Chip';
 let wrapper = shallow(<Chip />);
 
 describe('<Chip />', () => {
-  it('should render', () => {
+  test('should render', () => {
     assert(wrapper.find('.chip').length, 'with a chip classname');
   });
 
-  it('accepts a close prop', () => {
+  test('accepts a close prop', () => {
     wrapper = shallow(<Chip close />);
     assert(wrapper.find('i.material-icons.close').length, 'with a close icon');
   });
 
-  it('accepts children', () => {
+  test('accepts children', () => {
     let child = <p className="child">Child</p>;
     wrapper = shallow(<Chip close>{child}</Chip>);
     assert(wrapper.contains(child), 'should not be empty');

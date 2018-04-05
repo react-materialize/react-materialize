@@ -23,11 +23,11 @@ describe('Tabs', () => {
     </Tabs>
   );
 
-  it('should create list of Tab itemt', () => {
+  test('should create list of Tab itemt', () => {
     assert(wrapper.find('ul.tabs'));
   });
 
-  context('with options', () => {
+  describe('with options', () => {
     beforeEach(() => {
       tabsStub = sinon.stub($.fn, 'tabs');
       wrapper = mount(
@@ -41,12 +41,12 @@ describe('Tabs', () => {
       tabsStub.restore();
     });
 
-    it('initializes Tabs with options', () => {
+    test('initializes Tabs with options', () => {
       expect(tabsStub).to.have.been.calledWithExactly(options);
     });
   });
 
-  context('when updated', () => {
+  describe('when updated', () => {
     beforeEach(() => {
       tabsStub = sinon.stub($.fn, 'tabs');
       wrapper = mount(
@@ -60,7 +60,7 @@ describe('Tabs', () => {
       tabsStub.restore();
     });
 
-    it('should re-initialize with options', () => {
+    test('should re-initialize with options', () => {
       expect(tabsStub).to.have.been.calledOnce;
       wrapper.setProps({ className: 'test' });
       expect(tabsStub).to.have.been.called;

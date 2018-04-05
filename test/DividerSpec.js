@@ -8,12 +8,12 @@ import Divider from '../src/Divider';
 let wrapper;
 
 describe('<Divider />', () => {
-  it('renders', () => {
+  test('renders', () => {
     wrapper = shallow(<Divider />);
     assert(wrapper.find('.divider'));
   });
 
-  it('does not contain children', () => {
+  test('does not contain children', () => {
     wrapper = shallow(
       <Divider>
         <p>nope</p>

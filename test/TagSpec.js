@@ -8,7 +8,7 @@ const child = 'hey';
 const wrapper = shallow(<Tag>{child}</Tag>);
 
 describe('Tabs', () => {
-  it('should create list of Tab itemt', () => {
-    expect(wrapper.contains(child)).to.equal(true);
+  test('should create list of Tab itemt', () => {
+    expect(wrapper.contains(child)).toBe(true);
   });
 });

@@ -15,7 +15,7 @@ const wrapper = shallow(
 );
 
 describe('<Table />', () => {
-  it('has various mod props', () => {
+  test('has various mod props', () => {
     assert(wrapper.find('.centered').length, 'adds a centered className');
     assert(wrapper.find('.striped').length, 'adds a striped className');
     assert(

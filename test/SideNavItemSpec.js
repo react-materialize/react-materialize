@@ -23,7 +23,7 @@ function setup(props = {}, children) {
 }
 
 describe('<SideNavItem />', () => {
-  it('should render', () => {
+  test('should render', () => {
     const { wrapper, firstChild } = setup();
     assert(wrapper.length === 1, 'should render the wrapper');
     assert(firstChild.type() === 'a', 'should render the link');
@@ -36,13 +36,13 @@ describe('<SideNavItem />', () => {
     assert.equal(icon.length, 0, 'should not render an icon');
   });
 
-  it('should render children', () => {
+  test('should render children', () => {
     const { wrapper } = setup({}, <span className="test-child" />);
     const children = wrapper.find('.test-child');
     assert(children.length === 1, 'should render given children');
   });
 
-  it('should not render children for a userview', () => {
+  test('should not render children for a userview', () => {
     const { wrapper } = setup(
       { userView: true },
       <span className="test-child" />
@@ -51,7 +51,7 @@ describe('<SideNavItem />', () => {
     assert(children.length === 0, 'should not render given children');
   });
 
-  it('should consume props it uses', () => {
+  test('should consume props it uses', () => {
     const { propsOut } = setup({
       id: 'test123',
       divider: true,
@@ -71,14 +71,14 @@ describe('<SideNavItem />', () => {
     );
   });
 
-  it('should render a divider class when needed', () => {
+  test('should render a divider class when needed', () => {
     const { wrapper } = setup({
       divider: true
     });
     assert.isTrue(wrapper.hasClass('divider'), 'should render a divider class');
   });
 
-  it('should render a subheader or a waves-effect class when needed', () => {
+  test('should render a subheader or a waves-effect class when needed', () => {
     const { firstChild } = setup({
       waves: true,
       subheader: true
@@ -93,7 +93,7 @@ describe('<SideNavItem />', () => {
     );
   });
 
-  it('should render an icon when needed', () => {
+  test('should render an icon when needed', () => {
     const { firstChild } = setup({
       icon: 'car'
     });
@@ -101,7 +101,7 @@ describe('<SideNavItem />', () => {
     assert.isTrue(icon.equals(<i className="material-icons">car</i>));
   });
 
-  it('should render a given href', () => {
+  test('should render a given href', () => {
     const { firstChild } = setup({
       href: 'www.test.nl'
     });
@@ -112,7 +112,7 @@ describe('<SideNavItem />', () => {
     );
   });
 
-  it('should render a userview', () => {
+  test('should render a userview', () => {
     const user = { name: 'test' };
     const { firstChild } = setup({
       userView: true,

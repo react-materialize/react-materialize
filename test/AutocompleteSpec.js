@@ -19,59 +19,51 @@ const wrapper = shallow(
 describe('<Autocomplete />', () => {
   const typedKey = 'A';
 
-  it('renders', () => {
-    expect(wrapper.find('.autocomplete')).to.have.length(1);
+  test('renders', () => {
+    expect(wrapper.find('.autocomplete')).toHaveLength(1);
   });
 
-  it('generates correct ID for input and label', () => {
-    expect(wrapper.find('.autocomplete').props()).to.have.property(
-      'id',
-      componentId
-    );
-    expect(wrapper.find('label').props()).to.have.property(
-      'htmlFor',
-      componentId
-    );
+  test('generates correct ID for input and label', () => {
+    expect(wrapper.find('.autocomplete').props()).toHaveProperty('id', componentId);
+    expect(wrapper.find('label').props()).toHaveProperty('htmlFor', componentId);
   });
 
-  context('on input change', () => {
-    before(() => {
+  describe('on input change', () => {
+    beforeAll(() => {
       wrapper
         .find('.autocomplete')
         .simulate('change', { target: { value: typedKey } });
     });
 
-    it('renders a dropdown', () => {
-      expect(wrapper.find('.autocomplete-content')).to.have.length(1);
+    test('renders a dropdown', () => {
+      expect(wrapper.find('.autocomplete-content')).toHaveLength(1);
     });
 
-    it("highlight's results", () => {
-      expect(wrapper.find('.highlight').text()).to.equal(typedKey);
+    test("highlight's results", () => {
+      expect(wrapper.find('.highlight').text()).toBe(typedKey);
     });
   });
 
-  context('on dropdown select', () => {
+  describe('on dropdown select', () => {
     const expectedValue = 'Apple';
 
-    before(() => {
+    beforeAll(() => {
       wrapper
         .find('.autocomplete')
         .simulate('change', { target: { value: typedKey } });
       wrapper.find('ul li').simulate('click');
     });
 
-    it('updates the state with the new value', () => {
-      expect(wrapper.state('value')).to.equal(expectedValue);
+    test('updates the state with the new value', () => {
+      expect(wrapper.state('value')).toBe(expectedValue);
     });
 
-    it('adds clicked value to input', () => {
-      expect(wrapper.find('.autocomplete').prop('value')).to.equal(
-        expectedValue
-      );
+    test('adds clicked value to input', () => {
+      expect(wrapper.find('.autocomplete').prop('value')).toBe(expectedValue);
     });
   });
 
-  context('on controlled input', () => {
+  describe('on controlled input', () => {
     const expectedValue = 'Apple';
 
     const props = {
@@ -83,55 +75,53 @@ describe('<Autocomplete />', () => {
       <Autocomplete title="Test Title" data={data} value="" {...props} />
     );
 
-    before(() => {
+    beforeAll(() => {
       wrapper2
         .find('.autocomplete')
         .simulate('change', { target: { value: typedKey } });
     });
 
-    it('updates the state with the new value', () => {
-      expect(wrapper2.state('value')).to.equal(typedKey);
+    test('updates the state with the new value', () => {
+      expect(wrapper2.state('value')).toBe(typedKey);
     });
 
-    it('calls only onChange callback', () => {
-      expect(props.onChange.calledOnce).to.be.true;
-      expect(props.onChange.args[0][1]).to.equal(typedKey);
-      expect(props.onAutocomplete.notCalled).to.be.true;
+    test('calls only onChange callback', () => {
+      expect(props.onChange.calledOnce).toBe(true);
+      expect(props.onChange.args[0][1]).toBe(typedKey);
+      expect(props.onAutocomplete.notCalled).toBe(true);
     });
 
-    it('works after value change', () => {
+    test('works after value change', () => {
       wrapper2.setProps({
         ...props,
         value: typedKey
       });
-      expect(wrapper2.state('value')).to.equal(typedKey);
-      expect(props.onChange.calledOnce).to.be.true;
-      expect(props.onAutocomplete.notCalled).to.be.true;
+      expect(wrapper2.state('value')).toBe(typedKey);
+      expect(props.onChange.calledOnce).toBe(true);
+      expect(props.onAutocomplete.notCalled).toBe(true);
     });
 
-    it('adds clicked value to input', () => {
+    test('adds clicked value to input', () => {
       wrapper2.find('ul li').simulate('click');
 
-      expect(wrapper2.find('.autocomplete').prop('value')).to.equal(
-        expectedValue
-      );
+      expect(wrapper2.find('.autocomplete').prop('value')).toBe(expectedValue);
     });
 
-    it('calls callbacks after autocomplete', () => {
-      expect(props.onChange.calledTwice).to.be.true;
-      expect(props.onChange.args[1][1]).to.equal(expectedValue);
-      expect(props.onAutocomplete.calledOnce).to.be.true;
-      expect(props.onAutocomplete.calledWith(expectedValue)).to.be.true;
+    test('calls callbacks after autocomplete', () => {
+      expect(props.onChange.calledTwice).toBe(true);
+      expect(props.onChange.args[1][1]).toBe(expectedValue);
+      expect(props.onAutocomplete.calledOnce).toBe(true);
+      expect(props.onAutocomplete.calledWith(expectedValue)).toBe(true);
     });
 
-    it('clears input', () => {
+    test('clears input', () => {
       wrapper2.setProps({
         ...props,
         value: ''
       });
-      expect(wrapper2.state('value')).to.equal('');
-      expect(props.onChange.calledTwice).to.be.true;
-      expect(props.onAutocomplete.calledOnce).to.be.true;
+      expect(wrapper2.state('value')).toBe('');
+      expect(props.onChange.calledTwice).toBe(true);
+      expect(props.onAutocomplete.calledOnce).toBe(true);
     });
   });
 });

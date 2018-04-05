@@ -8,7 +8,7 @@ import Slider from '../src/Slider';
 const wrapper = shallow(<Slider />);
 
 describe('<Slider />', () => {
-  it('should render a Slider', () => {
+  test('should render a Slider', () => {
     assert(wrapper.find('.slider').length, 'should render a slider');
   });
 });

@@ -8,7 +8,7 @@ import SearchForm from '../src/SearchForm';
 let wrapper = shallow(<SearchForm />);
 
 describe('<SearchForm />', () => {
-  it('should render', () => {
+  test('should render', () => {
     assert(wrapper.find('form').length);
   });
 });

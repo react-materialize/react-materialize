@@ -12,11 +12,11 @@ const wrapper = shallow(
 );
 
 describe('<CardPanel />', () => {
-  it('should render', () => {
+  test('should render', () => {
     assert(wrapper.find('.card-panel').length, 'with a card-panel className');
   });
 
-  it('accepts className prop', () => {
+  test('accepts className prop', () => {
     assert(wrapper.hasClass(modifier), 'with a modifier');
   });
 });

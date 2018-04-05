@@ -29,7 +29,7 @@ function setup(props = {}, children, mounted) {
 }
 
 describe('<SideNav />', () => {
-  it('should render', () => {
+  test('should render', () => {
     const { sideNav, trigger, sideNavProps, triggerProps } = setup();
     assert(sideNav.length === 1, 'should render a sidenav');
     assert(trigger.length === 1, 'should render a default trigger');
@@ -41,30 +41,30 @@ describe('<SideNav />', () => {
     );
   });
 
-  it('can be `fixed`', () => {
+  test('can be `fixed`', () => {
     const { sideNav } = setup({ className: 'red', fixed: true });
     assert.isTrue(sideNav.hasClass('side-nav fixed red'));
   });
 
-  it('should render fixed if not passed trigger or fixed', () => {
+  test('should render fixed if not passed trigger or fixed', () => {
     const { wrapper } = setup({ className: 'red' });
     const trigger = wrapper.find('trigger');
     assert.isTrue(trigger.length === 0);
   });
 
-  it('should render trigger on large screens not fixed`', () => {
+  test('should render trigger on large screens not fixed`', () => {
     const { trigger } = setup({ className: 'green' });
     assert.isTrue(trigger.hasClass('trigger show-on-large'));
   });
 
-  it('should be fixed if no trigger is passed', () => {
+  test('should be fixed if no trigger is passed', () => {
     const component = <SideNav className="red" />;
     const wrapper = shallow(component);
     const sideNav = wrapper.find('.side-nav');
     assert.isTrue(sideNav.hasClass('side-nav fixed red'));
   });
 
-  it('should render a given id', () => {
+  test('should render a given id', () => {
     const { sideNavProps, triggerProps } = setup({ id: 'test' });
     assert.equal(sideNavProps.id, 'test');
     assert.equal(
@@ -74,13 +74,13 @@ describe('<SideNav />', () => {
     );
   });
 
-  it('should render children', () => {
+  test('should render children', () => {
     const { sideNav } = setup({}, <span className="test-child" />);
     const children = sideNav.find('.test-child');
     assert(children.length === 1, 'renders children');
   });
 
-  it('should consume props it uses', () => {
+  test('should consume props it uses', () => {
     const { sideNavProps } = setup({
       id: 'test123',
       options: {},
@@ -91,7 +91,7 @@ describe('<SideNav />', () => {
     assert.equal(sideNavProps.shouldTransfer, true);
   });
 
-  it('should call sideNav with the given options', () => {
+  test('should call sideNav with the given options', () => {
     const stub = sinon.stub($.fn, 'sideNav');
     const options = {
       closeOnClick: true,

@@ -8,7 +8,7 @@ import NavItem from '../src/NavItem';
 describe('<NavItem />', () => {
   let wrapper;
 
-  it('renders', () => {
+  test('renders', () => {
     wrapper = shallow(<NavItem href="get-started.html">Getting</NavItem>);
 
     expect(wrapper.type()).to.eq('li');
@@ -20,7 +20,7 @@ describe('<NavItem />', () => {
     ).to.eq('a');
   });
 
-  it('passes className to first node', () => {
+  test('passes className to first node', () => {
     wrapper = shallow(
       <NavItem className="red" href="get-started.html">
         Getting
@@ -30,7 +30,7 @@ describe('<NavItem />', () => {
     expect(wrapper.find('li.red').length).to.eq(1);
   });
 
-  it('passes node as a child', () => {
+  test('passes node as a child', () => {
     const child = <p>Go Home</p>;
     wrapper = shallow(<NavItem href="get-started.html">{child}</NavItem>);
 
@@ -50,13 +50,13 @@ describe('<NavItem />', () => {
     ).to.eq('p');
   });
 
-  it('can be a divider', () => {
+  test('can be a divider', () => {
     wrapper = shallow(<NavItem divider />);
 
     expect(wrapper.find('li.divider').length).to.eq(1);
   });
 
-  it('handles multiple childs', () => {
+  test('handles multiple childs', () => {
     wrapper = shallow(
       <NavItem href="get-started.html">
         <span>hello</span>
@@ -68,7 +68,7 @@ describe('<NavItem />', () => {
     expect(wrapper.find('h2').length).to.eq(1);
   });
 
-  it('passes onClick as parameter', () => {
+  test('passes onClick as parameter', () => {
     const onClick = sinon.spy();
     wrapper = shallow(
       <NavItem onClick={onClick} href="get-started.html">
@@ -81,7 +81,7 @@ describe('<NavItem />', () => {
         .children()
         .at(0)
         .props().onClick
-    ).to.be.ok;
+    ).toBeTruthy();
     expect(
       wrapper
         .children()
@@ -92,23 +92,23 @@ describe('<NavItem />', () => {
       .children()
       .at(0)
       .simulate('click');
-    expect(onClick.calledOnce).to.equal(true);
+    expect(onClick.calledOnce).toBe(true);
     expect(
       wrapper
         .children()
         .at(0)
         .prop('href')
-    ).to.be.undefined;
+    ).toBeUndefined();
   });
 
-  it('passes href as parameter', () => {
+  test('passes href as parameter', () => {
     wrapper = shallow(<NavItem href="get-started.html">Getting</NavItem>);
     expect(
       wrapper
         .children()
         .at(0)
         .prop('href')
-    ).to.be.ok;
+    ).toBeTruthy();
     expect(
       wrapper
         .children()

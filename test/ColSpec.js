@@ -8,11 +8,11 @@ import Col from '../src/Col';
 let wrapper = shallow(<Col />);
 
 describe('<Col />', () => {
-  it('should render', () => {
-    assert.ok(wrapper.find('.col'), 'a column');
+  test('should render', () => {
+    assert.toBeTruthy();
   });
 
-  it('accepts sizes as props', () => {
+  test('accepts sizes as props', () => {
     wrapper = shallow(<Col s={4} m={6} l={8} />);
     assert(wrapper.find('.col').hasClass('s4 m6 l8'), 'a column');
   });

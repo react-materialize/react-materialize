@@ -30,7 +30,7 @@ let wrapper = shallow(
 );
 
 describe('<Footer />', () => {
-  it('renders a Footer', () => {
+  test('renders a Footer', () => {
     assert(wrapper.find('.container').length, 'with a container');
     assert(wrapper.find('.footer-copyright').length, 'with a copyright');
   });

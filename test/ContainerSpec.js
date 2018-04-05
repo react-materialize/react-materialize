@@ -8,12 +8,12 @@ import Container from '../src/Container';
 let wrapper;
 
 describe('<Container />', () => {
-  it('renders', () => {
+  test('renders', () => {
     wrapper = shallow(<Container />);
     assert(wrapper.find('.container').length);
   });
 
-  it('renders children', () => {
+  test('renders children', () => {
     wrapper = shallow(
       <Container>
         <p>yes</p>

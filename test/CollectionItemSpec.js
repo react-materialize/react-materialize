@@ -6,25 +6,25 @@ import CollectionItem from '../src/CollectionItem';
 
 describe('<CollectionItem />', () => {
   let wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
-  it('can render as a link', () => {
+  test('can render as a link', () => {
     wrapper = shallow(<CollectionItem href="#">Alvin</CollectionItem>);
-    expect(wrapper.props().href).to.equal('#');
-    expect(wrapper.type()).to.equal('a');
+    expect(wrapper.props().href).toBe('#');
+    expect(wrapper.type()).toBe('a');
   });
 
-  it('can render as a list item', () => {
+  test('can render as a list item', () => {
     wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
-    expect(wrapper.type()).to.equal('li');
+    expect(wrapper.type()).toBe('li');
   });
 
-  it('should render children when passed in', () => {
+  test('should render children when passed in', () => {
     let child = <p>child</p>;
     wrapper = shallow(<CollectionItem>{child}</CollectionItem>);
-    expect(wrapper.contains(child)).to.equal(true);
+    expect(wrapper.contains(child)).toBe(true);
   });
 
-  it('can have an active state', () => {
+  test('can have an active state', () => {
     wrapper = shallow(<CollectionItem active>Alvin</CollectionItem>);
-    expect(wrapper.find('.collection-item.active')).to.have.length(1);
+    expect(wrapper.find('.collection-item.active')).toHaveLength(1);
   });
 });

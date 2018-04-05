@@ -8,12 +8,12 @@ import Section from '../src/Section';
 let wrapper;
 
 describe('<Section />', () => {
-  it('renders', () => {
+  test('renders', () => {
     wrapper = shallow(<Section />);
     assert(wrapper.find('.section').length);
   });
 
-  it('renders children', () => {
+  test('renders children', () => {
     wrapper = shallow(
       <Section>
         <p>nope</p>

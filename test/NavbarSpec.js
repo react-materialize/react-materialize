@@ -8,7 +8,7 @@ import NavItem from '../src/NavItem';
 describe('<Navbar />', () => {
   let wrapper;
 
-  it('renders a navbar', () => {
+  test('renders a navbar', () => {
     wrapper = shallow(
       <Navbar brand="Logo" right>
         <NavItem href="get-started.html">Getting started</NavItem>
@@ -16,22 +16,22 @@ describe('<Navbar />', () => {
       </Navbar>
     );
 
-    expect(wrapper.find('nav')).to.have.length(1);
+    expect(wrapper.find('nav')).toHaveLength(1);
   });
 
-  it('places brand on right if navbar is left aligned', () => {
+  test('places brand on right if navbar is left aligned', () => {
     wrapper = shallow(<Navbar brand="logo" left />);
-    expect(wrapper.find('a.brand-logo.right')).to.have.length(1);
+    expect(wrapper.find('a.brand-logo.right')).toHaveLength(1);
   });
 
-  it('adds a brand node', () => {
+  test('adds a brand node', () => {
     const brandNode = <span className="brando">I AM BRAND</span>;
 
     wrapper = mount(<Navbar brand={brandNode} />);
-    expect(wrapper.find('a.brand-logo').contains(brandNode)).to.equal(true);
+    expect(wrapper.find('a.brand-logo').contains(brandNode)).toBe(true);
   });
 
-  it('can be fixed', () => {
+  test('can be fixed', () => {
     wrapper = shallow(<Navbar fixed />);
     expect(wrapper.hasClass('navbar-fixed')).to.eq(true);
   });

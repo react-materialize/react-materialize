@@ -5,15 +5,15 @@ import { assert } from 'chai';
 describe('jQuery is added to jsdom', () => {
   const $node = $('<div class="some-module"></div>');
 
-  before(() => {
+  beforeAll(() => {
     $('body').append($node);
   });
 
-  after(() => {
+  afterAll(() => {
     $node.remove();
   });
 
-  it('creates and removes elements', () => {
+  test('creates and removes elements', () => {
     assert.equal($('div.some-module').length, 1);
   });
 });

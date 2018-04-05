@@ -8,7 +8,7 @@ import Parallax from '../src/Parallax';
 const wrapper = shallow(<Parallax />);
 
 describe('<Parallax />', () => {
-  it('should render a Parallax', () => {
+  test('should render a Parallax', () => {
     assert(wrapper.find('.parallax').length, 'should render a parallax');
   });
 });
