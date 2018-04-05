@@ -1,11 +1,17 @@
-/* global describe, it, expect, context */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Button from '../src/Button';
 
-let wrapper = shallow(<Button waves="light">Stuff</Button>);
-
 describe('Button', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<Button waves="light">Stuff</Button>);
+  });
+
+  test('renders', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('should output a button', () => {
     expect(wrapper.find('button')).toHaveLength(1);
   });
