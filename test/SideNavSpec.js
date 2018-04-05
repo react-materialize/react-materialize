@@ -46,6 +46,24 @@ describe('<SideNav />', () => {
     assert.isTrue(sideNav.hasClass('side-nav fixed red'));
   });
 
+  it('should render fixed if not passed trigger or fixed', () => {
+    const { wrapper } = setup({ className: 'red' });
+    const trigger = wrapper.find('trigger');
+    assert.isTrue(trigger.length === 0);
+  });
+
+  it('should render trigger on large screens not fixed`', () => {
+    const { trigger } = setup({ className: 'green' });
+    assert.isTrue(trigger.hasClass('trigger show-on-large'));
+  });
+
+  it('should be fixed if no trigger is passed', () => {
+    const component = <SideNav className="red" />;
+    const wrapper = shallow(component);
+    const sideNav = wrapper.find('.side-nav');
+    assert.isTrue(sideNav.hasClass('side-nav fixed red'));
+  });
+
   it('should render a given id', () => {
     const { sideNavProps, triggerProps } = setup({ id: 'test' });
     assert.equal(sideNavProps.id, 'test');
