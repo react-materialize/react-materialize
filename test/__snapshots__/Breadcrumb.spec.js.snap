@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumb /> renders 1`] = `
+<nav
+  className="row"
+>
+  <div
+    className="nav-wrapper"
+  >
+    <Col
+      s={12}
+    />
+  </div>
+</nav>
+`;
