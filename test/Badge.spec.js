@@ -1,5 +1,3 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
@@ -8,6 +6,10 @@ import Badge from '../src/Badge';
 let wrapper = shallow(<Badge>4</Badge>);
 
 describe('<Badge />', () => {
+  test('renders', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('should output a badge with the className of `badge`', () => {
     assert(wrapper.find('.badge').length);
   });
