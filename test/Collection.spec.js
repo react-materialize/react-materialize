@@ -1,5 +1,3 @@
-/* global describe, it, expect */
-
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Collection from '../src/Collection';
@@ -12,6 +10,10 @@ let wrapper = shallow(
 );
 
 describe('<Collection />', () => {
+  test('renders', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('renders a list', () => {
     expect(wrapper.find('ul.collection')).toHaveLength(1);
   });
