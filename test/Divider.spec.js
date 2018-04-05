@@ -1,8 +1,5 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow } from 'enzyme';
-import { assert } from 'chai';
 import Divider from '../src/Divider';
 
 let wrapper;
@@ -10,7 +7,7 @@ let wrapper;
 describe('<Divider />', () => {
   test('renders', () => {
     wrapper = shallow(<Divider />);
-    assert(wrapper.find('.divider'));
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('does not contain children', () => {
@@ -19,6 +16,6 @@ describe('<Divider />', () => {
         <p>nope</p>
       </Divider>
     );
-    assert.equal(wrapper.find('.divider').children().length, 0);
+    expect(wrapper.find('.divider').children().length).toEqual(0);
   });
 });
