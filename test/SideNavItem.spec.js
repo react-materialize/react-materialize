@@ -1,5 +1,3 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
@@ -23,6 +21,11 @@ function setup(props = {}, children) {
 }
 
 describe('<SideNavItem />', () => {
+  test('renders', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('should render', () => {
     const { wrapper, firstChild } = setup();
     assert(wrapper.length === 1, 'should render the wrapper');
