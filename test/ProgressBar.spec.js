@@ -1,5 +1,3 @@
-/* global describe, it, expect */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import ProgressBar from '../src/ProgressBar';
@@ -7,6 +5,10 @@ import ProgressBar from '../src/ProgressBar';
 let wrapper = shallow(<ProgressBar />);
 
 describe('<ProgressBar />', () => {
+  test('renders', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('renders by default with an indeterminate state`', () => {
     expect(
       wrapper

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressBar /> renders 1`] = `
+<div
+  className="progress lighten-5"
+>
+  <div
+    className="indeterminate"
+  />
+</div>
+`;
