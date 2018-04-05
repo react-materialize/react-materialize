@@ -13,6 +13,7 @@ plugins: ['mocha','prettier']
 
 env:
   jquery: true
+  jest: true
 
 rules:
   prettier/prettier: [2]
