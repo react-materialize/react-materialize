@@ -1,5 +1,3 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
@@ -20,6 +18,11 @@ function setup(props = {}, children) {
 }
 
 describe('<UserView />', () => {
+  test('renders', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('should render', () => {
     const { propsIn, wrapper } = setup({
       name: 'user fullname',
