@@ -1,16 +1,13 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow } from 'enzyme';
-import { assert } from 'chai';
 import Container from '../src/Container';
 
-let wrapper;
-
 describe('<Container />', () => {
+  let wrapper;
+
   test('renders', () => {
     wrapper = shallow(<Container />);
-    assert(wrapper.find('.container').length);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('renders children', () => {
@@ -19,12 +16,11 @@ describe('<Container />', () => {
         <p>yes</p>
       </Container>
     );
-    assert.equal(
+    expect(
       wrapper
         .find('.container')
         .children()
-        .type(),
-      'p'
-    );
+        .type()
+    ).toEqual('p');
   });
 });
