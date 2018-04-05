@@ -1,15 +1,14 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import Chip from '../src/Chip';
 
-let wrapper = shallow(<Chip />);
-
 describe('<Chip />', () => {
+  let wrapper;
+
   test('should render', () => {
-    assert(wrapper.find('.chip').length, 'with a chip classname');
+    wrapper = shallow(<Chip />);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('accepts a close prop', () => {
