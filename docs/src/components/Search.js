@@ -88,6 +88,7 @@ class Search extends React.Component {
         <div className={cx(classes)}>
           <input id='search'
             ref='search'
+            placeholder='Search'
             onChange={this.search}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur} />
