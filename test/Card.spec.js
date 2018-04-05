@@ -15,6 +15,10 @@ const wrapper = shallow(
 );
 
 describe('<Card />', () => {
+  test('renders', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+  
   test('should have classname card', () => {
     expect(wrapper.find('.card')).toHaveLength(1);
   });
