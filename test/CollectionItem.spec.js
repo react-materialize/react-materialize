@@ -1,11 +1,15 @@
-/* global describe, it, expect */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import CollectionItem from '../src/CollectionItem';
 
 describe('<CollectionItem />', () => {
-  let wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
+  let wrapper;
+
+  test('renders', () => {
+    wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('can render as a link', () => {
     wrapper = shallow(<CollectionItem href="#">Alvin</CollectionItem>);
     expect(wrapper.props().href).toBe('#');
