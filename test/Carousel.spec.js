@@ -1,11 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Carousel from '../src/Carousel';
+import mocker from './helper/mocker';
 
 describe('<Carousel />', () => {
   let wrapper;
   const carouselMock = jest.fn();
-  $.fn.carousel = carouselMock;
+  const restore = mocker('carousel', carouselMock);
+
+  afterAll(() => {
+    restore();
+  });
 
   const images = [
     'https://lorempixel.com/250/250/nature/1',
