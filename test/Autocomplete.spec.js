@@ -17,12 +17,18 @@ describe('<Autocomplete />', () => {
   const typedKey = 'A';
 
   test('renders', () => {
-    expect(wrapper).toMatchSnapshot()
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('generates correct ID for input and label', () => {
-    expect(wrapper.find('.autocomplete').props()).toHaveProperty('id', componentId);
-    expect(wrapper.find('label').props()).toHaveProperty('htmlFor', componentId);
+    expect(wrapper.find('.autocomplete').props()).toHaveProperty(
+      'id',
+      componentId
+    );
+    expect(wrapper.find('label').props()).toHaveProperty(
+      'htmlFor',
+      componentId
+    );
   });
 
   describe('on input change', () => {
@@ -56,7 +62,9 @@ describe('<Autocomplete />', () => {
     });
 
     test('adds clicked value to input', () => {
-      expect(wrapper.find('.autocomplete').prop('value')).toEqual(expectedValue);
+      expect(wrapper.find('.autocomplete').prop('value')).toEqual(
+        expectedValue
+      );
     });
   });
 
@@ -99,7 +107,9 @@ describe('<Autocomplete />', () => {
     test('adds clicked value to input', () => {
       wrapper2.find('ul li').simulate('click');
 
-      expect(wrapper2.find('.autocomplete').prop('value')).toEqual(expectedValue);
+      expect(wrapper2.find('.autocomplete').prop('value')).toEqual(
+        expectedValue
+      );
     });
 
     test('calls callbacks after autocomplete', () => {

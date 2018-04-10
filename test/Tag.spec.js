@@ -10,7 +10,7 @@ const wrapper = shallow(<Tag>{child}</Tag>);
 describe('Tabs', () => {
   test('renders', () => {
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 
   test('should create list of Tab itemt', () => {
     expect(wrapper.contains(child)).toEqual(true);

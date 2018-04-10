@@ -27,6 +27,8 @@ describe('<ProgressBar />', () => {
 
   test('handles different colors', () => {
     wrapper = shallow(<ProgressBar className="red" progress={0} />);
-    expect(wrapper.containsMatchingElement(<div className="red" />)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<div className="red" />)).toEqual(
+      true
+    );
   });
 });
