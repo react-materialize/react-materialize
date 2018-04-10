@@ -1,15 +1,13 @@
-/* global describe, it */
-
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
-import { assert } from 'chai';
+// import sinon from 'sinon';
+// import { assert } from 'chai';
 import SideNav from '../src/SideNav';
-import Button from '../src/Button';
+import mocker from './helper/mocker';
 
 function setup(props = {}, children, mounted) {
   const propsIn = {
-    trigger: <Button className="trigger">Show sidenav</Button>,
+    trigger: <button className="trigger">Show sidenav</button>,
     ...props
   };
   const component = <SideNav {...propsIn}>{children}</SideNav>;
@@ -18,6 +16,7 @@ function setup(props = {}, children, mounted) {
   const trigger = wrapper.find('.trigger');
   const sideNavProps = sideNav.props();
   const triggerProps = trigger.props();
+
   return {
     propsIn,
     wrapper,
@@ -29,55 +28,51 @@ function setup(props = {}, children, mounted) {
 }
 
 describe('<SideNav />', () => {
-  test('should render', () => {
-    const { sideNav, trigger, sideNavProps, triggerProps } = setup();
-    assert(sideNav.length === 1, 'should render a sidenav');
-    assert(trigger.length === 1, 'should render a default trigger');
-    assert.match(sideNavProps.id, /^sidenav_/, 'should generate an id');
-    assert.equal(
-      triggerProps['data-activates'],
-      sideNavProps.id,
-      'should have a matching trigger'
-    );
+  const sideNavMock = jest.fn();
+  const restore = mocker('sideNav', sideNavMock);
+
+  afterAll(() => {
+    restore();
+  });
+
+  test('renders', () => {
+    const { sideNav } = setup();
+    expect(sideNav).toMatchSnapshot();
   });
 
   test('can be `fixed`', () => {
     const { sideNav } = setup({ className: 'red', fixed: true });
-    assert.isTrue(sideNav.hasClass('side-nav fixed red'));
+    expect(sideNav).toMatchSnapshot();
   });
 
   test('should render fixed if not passed trigger or fixed', () => {
     const { wrapper } = setup({ className: 'red' });
-    const trigger = wrapper.find('trigger');
-    assert.isTrue(trigger.length === 0);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('should render trigger on large screens not fixed`', () => {
     const { trigger } = setup({ className: 'green' });
-    assert.isTrue(trigger.hasClass('trigger show-on-large'));
+    expect(trigger).toMatchSnapshot();
   });
 
   test('should be fixed if no trigger is passed', () => {
     const component = <SideNav className="red" />;
     const wrapper = shallow(component);
     const sideNav = wrapper.find('.side-nav');
-    assert.isTrue(sideNav.hasClass('side-nav fixed red'));
+    expect(sideNav).toMatchSnapshot();
   });
 
   test('should render a given id', () => {
     const { sideNavProps, triggerProps } = setup({ id: 'test' });
-    assert.equal(sideNavProps.id, 'test');
-    assert.equal(
-      triggerProps['data-activates'],
-      'test',
-      'should have a matching trigger'
-    );
+    expect(sideNavProps.id).toEqual('test');
+    expect(triggerProps['data-activates']).toEqual('test');
   });
 
   test('should render children', () => {
     const { sideNav } = setup({}, <span className="test-child" />);
     const children = sideNav.find('.test-child');
-    assert(children.length === 1, 'renders children');
+
+    expect(children).toHaveLength(1);
   });
 
   test('should consume props it uses', () => {
@@ -86,19 +81,18 @@ describe('<SideNav />', () => {
       options: {},
       shouldTransfer: true
     });
-    assert.isUndefined(sideNavProps.trigger, 'should not transfer trigger');
-    assert.isUndefined(sideNavProps.options, 'should not transfer options');
-    assert.equal(sideNavProps.shouldTransfer, true);
+
+    expect(sideNavProps.trigger).toBeUndefined();
+    expect(sideNavProps.options).toBeUndefined();
+    expect(sideNavProps.shouldTransfer).toBeTruthy();
   });
 
   test('should call sideNav with the given options', () => {
-    const stub = sinon.stub($.fn, 'sideNav');
     const options = {
       closeOnClick: true,
       edge: 'right'
     };
     mount(<SideNav trigger={<span>trigger</span>} options={options} />);
-    assert(stub.calledWithExactly(options));
-    stub.restore();
+    expect(sideNavMock).toHaveBeenCalledWith(options);
   });
 });
