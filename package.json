@@ -11,6 +11,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "pretest": "npm run lint",
     "build": "babel -d lib src",
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
