@@ -73,7 +73,6 @@
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.0.0",
     "sinon": "^1.17.7",
-    "sinon-chai": "^2.10.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
