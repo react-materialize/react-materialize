@@ -16,7 +16,7 @@
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
-    "prettier": "prettier --single-quote --write \"src/**/*.{js,jsx,json,css}\" && prettier --single-quote --write \"test/**/*.{js,jsx,json,css}\" "
+    "prettier": "prettier --write \"{src,test}/**/*.js\""
   },
   "repository": {
     "type": "git",
