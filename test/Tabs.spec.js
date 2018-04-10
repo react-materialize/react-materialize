@@ -1,17 +1,17 @@
-/* global describe, it, context, expect, beforeEach, afterEach */
-
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { assert } from 'chai';
-import sinon from 'sinon';
+// import { assert } from 'chai';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
+import mocker from './helper/mocker';
 
 describe('Tabs', () => {
   let wrapper;
-  let tabsStub;
+  const tabsMock = jest.fn();
+  const restore = mocker('tabs', tabsMock);
+
   const options = {
-    onShow: true,
+    onShow: jest.fn(),
     swipeable: true,
     responsiveThreshold: 2
   };
@@ -23,13 +23,16 @@ describe('Tabs', () => {
     </Tabs>
   );
 
+  afterAll(() => {
+    restore();
+  });
+
   test('should create list of Tab itemt', () => {
-    assert(wrapper.find('ul.tabs'));
+    expect(wrapper).toMatchSnapshot();
   });
 
   describe('with options', () => {
     beforeEach(() => {
-      tabsStub = sinon.stub($.fn, 'tabs');
       wrapper = mount(
         <Tabs tabOptions={options}>
           <Tab title="one">One</Tab>
@@ -37,18 +40,14 @@ describe('Tabs', () => {
         </Tabs>
       );
     });
-    afterEach(() => {
-      tabsStub.restore();
-    });
 
     test('initializes Tabs with options', () => {
-      expect(tabsStub).to.have.been.calledWithExactly(options);
+      expect(tabsMock).toHaveBeenCalledWith(options);
     });
   });
 
   describe('when updated', () => {
     beforeEach(() => {
-      tabsStub = sinon.stub($.fn, 'tabs');
       wrapper = mount(
         <Tabs tabOptions={options}>
           <Tab title="one">One</Tab>
@@ -56,14 +55,11 @@ describe('Tabs', () => {
         </Tabs>
       );
     });
-    afterEach(() => {
-      tabsStub.restore();
-    });
 
     test('should re-initialize with options', () => {
-      expect(tabsStub).to.have.been.calledOnce;
+      expect(tabsMock).toHaveBeenCalled();
       wrapper.setProps({ className: 'test' });
-      expect(tabsStub).to.have.been.called;
+      expect(tabsMock).toHaveBeenCalled();
     });
   });
 });
