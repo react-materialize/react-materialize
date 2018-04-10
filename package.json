@@ -72,7 +72,6 @@
     "prettier": "^1.11.1",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.0.0",
-    "sinon": "^1.17.7",
     "webpack": "^1.13.1"
   },
   "dependencies": {
