@@ -62,7 +62,7 @@ describe('Button', () => {
     });
 
     test('should have a disabled attribute', () => {
-      expect(wrapper.prop('disabled')).toBe(true);
+      expect(wrapper.prop('disabled')).toEqual(true);
     });
   });
 });

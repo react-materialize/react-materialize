@@ -9,7 +9,7 @@ globals:
   React: true
   ReactDOM: true
 
-plugins: ['mocha','prettier']
+plugins: ['prettier']
 
 env:
   jquery: true
@@ -20,7 +20,6 @@ rules:
   react/jsx-no-bind: [0]
   semi: [2, 'always']
   react/no-unused-prop-types: [0]
-  mocha/no-exclusive-tests: [2]
   react/jsx-curly-spacing: [0]
   react/jsx-equals-spacing: [0]
   react/jsx-indent: [0]

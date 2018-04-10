@@ -13,6 +13,6 @@ describe('Tabs', () => {
   })
 
   test('should create list of Tab itemt', () => {
-    expect(wrapper.contains(child)).toBe(true);
+    expect(wrapper.contains(child)).toEqual(true);
   });
 });

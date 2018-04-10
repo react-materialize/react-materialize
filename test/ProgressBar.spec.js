@@ -22,11 +22,11 @@ describe('<ProgressBar />', () => {
     wrapper = shallow(<ProgressBar progress={50} />);
     expect(
       wrapper.contains(<div className="determinate" style={{ width: '50%' }} />)
-    ).toBe(true);
+    ).toEqual(true);
   });
 
   test('handles different colors', () => {
     wrapper = shallow(<ProgressBar className="red" progress={0} />);
-    expect(wrapper.containsMatchingElement(<div className="red" />)).toBe(true);
+    expect(wrapper.containsMatchingElement(<div className="red" />)).toEqual(true);
   });
 });

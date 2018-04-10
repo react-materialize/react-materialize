@@ -1,8 +1,5 @@
-/* global describe, it, expect, context, before */
-
 import React from 'react';
 import { shallow } from 'enzyme';
-import sinon from 'sinon';
 import Autocomplete from '../src/Autocomplete';
 
 const data = {
@@ -40,7 +37,7 @@ describe('<Autocomplete />', () => {
     });
 
     test("highlight's results", () => {
-      expect(wrapper.find('.highlight').text()).toBe(typedKey);
+      expect(wrapper.find('.highlight').text()).toEqual(typedKey);
     });
   });
 
@@ -55,11 +52,11 @@ describe('<Autocomplete />', () => {
     });
 
     test('updates the state with the new value', () => {
-      expect(wrapper.state('value')).toBe(expectedValue);
+      expect(wrapper.state('value')).toEqual(expectedValue);
     });
 
     test('adds clicked value to input', () => {
-      expect(wrapper.find('.autocomplete').prop('value')).toBe(expectedValue);
+      expect(wrapper.find('.autocomplete').prop('value')).toEqual(expectedValue);
     });
   });
 
@@ -67,8 +64,8 @@ describe('<Autocomplete />', () => {
     const expectedValue = 'Apple';
 
     const props = {
-      onChange: sinon.spy(),
-      onAutocomplete: sinon.spy()
+      onChange: jest.fn(),
+      onAutocomplete: jest.fn()
     };
 
     const wrapper2 = shallow(
@@ -82,13 +79,12 @@ describe('<Autocomplete />', () => {
     });
 
     test('updates the state with the new value', () => {
-      expect(wrapper2.state('value')).toBe(typedKey);
+      expect(wrapper2.state('value')).toEqual(typedKey);
     });
 
     test('calls only onChange callback', () => {
-      expect(props.onChange.calledOnce).toBe(true);
-      expect(props.onChange.args[0][1]).toBe(typedKey);
-      expect(props.onAutocomplete.notCalled).toBe(true);
+      expect(props.onChange).toHaveBeenCalled();
+      expect(props.onChange.mock.calls[0][1]).toEqual(typedKey);
     });
 
     test('works after value change', () => {
@@ -96,22 +92,20 @@ describe('<Autocomplete />', () => {
         ...props,
         value: typedKey
       });
-      expect(wrapper2.state('value')).toBe(typedKey);
-      expect(props.onChange.calledOnce).toBe(true);
-      expect(props.onAutocomplete.notCalled).toBe(true);
+      expect(wrapper2.state('value')).toEqual(typedKey);
+      expect(props.onChange).toHaveBeenCalled();
     });
 
     test('adds clicked value to input', () => {
       wrapper2.find('ul li').simulate('click');
 
-      expect(wrapper2.find('.autocomplete').prop('value')).toBe(expectedValue);
+      expect(wrapper2.find('.autocomplete').prop('value')).toEqual(expectedValue);
     });
 
     test('calls callbacks after autocomplete', () => {
-      expect(props.onChange.calledTwice).toBe(true);
-      expect(props.onChange.args[1][1]).toBe(expectedValue);
-      expect(props.onAutocomplete.calledOnce).toBe(true);
-      expect(props.onAutocomplete.calledWith(expectedValue)).toBe(true);
+      expect(props.onChange).toHaveBeenCalledTimes(2);
+      expect(props.onChange.mock.calls[1][1]).toEqual(expectedValue);
+      expect(props.onAutocomplete).toHaveBeenCalledWith(expectedValue);
     });
 
     test('clears input', () => {
@@ -119,9 +113,9 @@ describe('<Autocomplete />', () => {
         ...props,
         value: ''
       });
-      expect(wrapper2.state('value')).toBe('');
-      expect(props.onChange.calledTwice).toBe(true);
-      expect(props.onAutocomplete.calledOnce).toBe(true);
+      expect(wrapper2.state('value')).toEqual('');
+      expect(props.onChange).toHaveBeenCalledTimes(2);
+      expect(props.onAutocomplete).toHaveBeenCalled();
     });
   });
 });

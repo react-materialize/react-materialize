@@ -29,6 +29,6 @@ describe('<Card />', () => {
   });
 
   test('should append text classnames to content', () => {
-    expect(wrapper.find('.card-content').hasClass('white-text')).toBe(true);
+    expect(wrapper.find('.card-content').hasClass('white-text')).toEqual(true);
   });
 });

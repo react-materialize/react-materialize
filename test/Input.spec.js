@@ -68,7 +68,7 @@ describe('<Input />', () => {
         <option value="yes" />
       </Input>
     );
-    expect(wrapper.find(Icon).hasClass('prefix')).toBe(true);
+    expect(wrapper.find(Icon).hasClass('prefix')).toEqual(true);
     expect(wrapper).toMatchSnapshot();
   });
 

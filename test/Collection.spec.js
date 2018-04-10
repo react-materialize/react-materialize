@@ -31,7 +31,7 @@ describe('<Collection />', () => {
     });
 
     test('should render a header text', () => {
-      expect(wrapper.find('h4').text()).toBe(header);
+      expect(wrapper.find('h4').text()).toEqual(header);
     });
 
     test('should render a header component', () => {
@@ -41,7 +41,7 @@ describe('<Collection />', () => {
           <CollectionItem>Alvin</CollectionItem>
         </Collection>
       );
-      expect(wrapper.find('h2').text()).toBe('ages');
+      expect(wrapper.find('h2').text()).toEqual('ages');
     });
 
     test('should render anchors if present', () => {
@@ -60,7 +60,7 @@ describe('<Collection />', () => {
           .find('.collection-item')
           .first()
           .type()
-      ).toBe('a');
+      ).toEqual('a');
     });
   });
 });

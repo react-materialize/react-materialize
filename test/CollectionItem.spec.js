@@ -12,19 +12,19 @@ describe('<CollectionItem />', () => {
 
   test('can render as a link', () => {
     wrapper = shallow(<CollectionItem href="#">Alvin</CollectionItem>);
-    expect(wrapper.props().href).toBe('#');
-    expect(wrapper.type()).toBe('a');
+    expect(wrapper.props().href).toEqual('#');
+    expect(wrapper.type()).toEqual('a');
   });
 
   test('can render as a list item', () => {
     wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
-    expect(wrapper.type()).toBe('li');
+    expect(wrapper.type()).toEqual('li');
   });
 
   test('should render children when passed in', () => {
     let child = <p>child</p>;
     wrapper = shallow(<CollectionItem>{child}</CollectionItem>);
-    expect(wrapper.contains(child)).toBe(true);
+    expect(wrapper.contains(child)).toEqual(true);
   });
 
   test('can have an active state', () => {

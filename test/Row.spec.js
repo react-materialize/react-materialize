@@ -19,6 +19,6 @@ describe('<Row />', () => {
   test('passes other props to node', () => {
     const style = { color: 'red' };
     wrapper = shallow(<Row style={style} />);
-    expect(wrapper.prop('style')).toBe(style);
+    expect(wrapper.prop('style')).toEqual(style);
   });
 });

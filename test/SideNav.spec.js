@@ -1,7 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-// import sinon from 'sinon';
-// import { assert } from 'chai';
 import SideNav from '../src/SideNav';
 import mocker from './helper/mocker';
 

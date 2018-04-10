@@ -64,7 +64,7 @@ describe('<Modal />', () => {
 
     test('renders', () => {
       expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(Modal).length).toBe(1);
+      expect(wrapper.find(Modal).length).toEqual(1);
     });
   });
 
@@ -126,7 +126,7 @@ describe('<Modal />', () => {
     });
 
     test('renders', () => {
-      expect(wrapper.find('button').length).toBe(1);
+      expect(wrapper.find('button').length).toEqual(1);
       expect(wrapper).toMatchSnapshot();
     });
 
