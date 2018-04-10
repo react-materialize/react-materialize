@@ -7,3 +7,19 @@ exports[`<Badge /> renders 1`] = `
   4
 </span>
 `;
+
+exports[`<Badge /> should output a badge with the className of \`badge new\` and 1`] = `
+<span
+  className="badge new"
+>
+  3
+</span>
+`;
+
+exports[`<Badge /> should output a badge with the className of \`badge\` 1`] = `
+<span
+  className="badge"
+>
+  4
+</span>
+`;

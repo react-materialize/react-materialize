@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-// import { assert } from 'chai';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
 import mocker from './helper/mocker';

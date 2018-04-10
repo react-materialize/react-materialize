@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { assert } from 'chai';
 import CardPanel from '../src/CardPanel';
 
 const modifier = 'blue-grey';
@@ -18,10 +17,10 @@ describe('<CardPanel />', () => {
   });
 
   test('should render', () => {
-    assert(wrapper.find('.card-panel').length, 'with a card-panel className');
+    expect(wrapper.find('.card-panel')).toHaveLength(1);
   });
 
   test('accepts className prop', () => {
-    assert(wrapper.hasClass(modifier), 'with a modifier');
+    expect(wrapper.hasClass(modifier)).toBeTruthy();
   });
 });

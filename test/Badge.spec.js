@@ -1,25 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { assert } from 'chai';
 import Badge from '../src/Badge';
 
-let wrapper = shallow(<Badge>4</Badge>);
-
 describe('<Badge />', () => {
+  let wrapper;
+
   test('renders', () => {
+    wrapper = shallow(<Badge>4</Badge>);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('should output a badge with the className of `badge`', () => {
-    assert(wrapper.find('.badge').length);
-  });
-
-  test('should output a badge with just the number 4 in it', () => {
-    assert(wrapper.contains(<span className="badge">4</span>));
+    wrapper = shallow(<Badge>4</Badge>);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('should output a badge with the className of `badge new` and', () => {
     wrapper = shallow(<Badge newIcon>3</Badge>);
-    assert(wrapper.find('.badge.new').length);
+    expect(wrapper).toMatchSnapshot();
   });
 });
