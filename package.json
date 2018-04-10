@@ -68,7 +68,6 @@
     "jsdom": "^11.7.0",
     "materialize-css": "^0.100.2",
     "prettier": "^1.11.1",
-    "react-addons-test-utils": "^15.6.2",
     "webpack": "^1.13.1"
   },
   "dependencies": {
