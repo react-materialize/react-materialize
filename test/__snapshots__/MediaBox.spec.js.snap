@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MediaBox /> renders 1`] = `
+<img
+  className="materialboxed more"
+  data-caption="A demo media box1"
+  src="image.jpg"
+  width="650"
+/>
+`;

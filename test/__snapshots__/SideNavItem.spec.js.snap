@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SideNavItem /> renders 1`] = `
+<li
+  className=""
+>
+  <a
+    className=""
+    href="#!"
+  />
+</li>
+`;
+
+exports[`<SideNavItem /> should render a subheader or a waves-effect class when needed 1`] = `
+<a
+  className="subheader waves-effect"
+  href="#!"
+/>
+`;
+
+exports[`<SideNavItem /> should render an icon when needed 1`] = `
+<a
+  className=""
+  href="#!"
+>
+  <i
+    className="material-icons"
+  >
+    car
+  </i>
+</a>
+`;

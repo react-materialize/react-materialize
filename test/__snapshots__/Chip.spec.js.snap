@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Chip /> accepts children 1`] = `
+<div
+  className="chip"
+>
+  <p
+    className="child"
+  >
+    Child
+  </p>
+  <i
+    className="close material-icons"
+  >
+    close
+  </i>
+</div>
+`;
+
+exports[`<Chip /> should render 1`] = `
+<div
+  className="chip"
+/>
+`;

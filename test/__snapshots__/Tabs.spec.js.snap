@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs should create list of Tab itemt 1`] = `
+<Row>
+  <Col
+    s={12}
+  >
+    <ul
+      className="tabs"
+    >
+      <li
+        className="tab col"
+        key="00/.0"
+      >
+        <a
+          className=""
+          href="#tab_00"
+          onClick={[Function]}
+        >
+          one
+        </a>
+      </li>
+      <li
+        className="tab col"
+        key="01/.1"
+      >
+        <a
+          className=""
+          href="#tab_01"
+          onClick={[Function]}
+        >
+          Two
+        </a>
+      </li>
+    </ul>
+  </Col>
+  <Col
+    id="tab_00"
+    key="tab00/.0"
+    s={12}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    One
+  </Col>
+  <Col
+    id="tab_01"
+    key="tab01/.1"
+    s={12}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    Two
+  </Col>
+</Row>
+`;

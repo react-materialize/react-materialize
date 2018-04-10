@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
@@ -9,8 +9,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "mocha",
-    "test:watch": "mocha --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "pretest": "npm run lint",
     "build": "babel -d lib src",
     "lint": "eslint src test",
@@ -33,6 +33,15 @@
   "bugs": {
     "url": "https://github.com/react-materialize/react-materialize/issues"
   },
+  "jest": {
+    "verbose": true,
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
   "homepage": "https://github.com/react-materialize/react-materialize",
   "devDependencies": {
     "babel-cli": "^6.1.18",
@@ -44,28 +53,22 @@
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.5.0-1",
     "babel-register": "^6.22.0",
-    "chai": "^3.5.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
     "es5-shim": "^4.2.0",
     "eslint": "^3.4.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-config-standard-react": "^4.0.0",
-    "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
-    "jsdom": "^9.9.1",
-    "jsdom-global": "^2.1.1",
+    "jest": "^22.4.3",
+    "jsdom": "^11.7.0",
     "materialize-css": "^0.100.2",
-    "mocha": "^3.2.0",
     "prettier": "^1.11.1",
-    "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.0.0",
-    "sinon": "^1.17.7",
-    "sinon-chai": "^2.10.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {

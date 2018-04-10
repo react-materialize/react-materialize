@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Parallax /> should render a Parallax 1`] = `
+<div
+  className="parallax-container"
+>
+  <div
+    className="parallax"
+  >
+    <img />
+  </div>
+</div>
+`;

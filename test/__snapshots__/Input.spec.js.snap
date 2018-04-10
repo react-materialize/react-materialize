@@ -1,0 +1,441 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> input value 1`] = `
+<div
+  className="col input-field"
+>
+  <input
+    checked={false}
+    className=""
+    defaultValue="name"
+    id="input_2"
+    onChange={[Function]}
+    type="text"
+    value="name"
+  />
+</div>
+`;
+
+exports[`<Input /> input values 1`] = `
+<div
+  className="col input-field"
+>
+  <input
+    checked={false}
+    className=""
+    defaultValue={
+      Array [
+        1,
+        2,
+        3,
+      ]
+    }
+    id="input_3"
+    onChange={[Function]}
+    type="file"
+    value={
+      Array [
+        1,
+        2,
+        3,
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`<Input /> label 1`] = `
+<div
+  className="col input-field"
+>
+  <input
+    checked={false}
+    className=""
+    id="input_4"
+    onChange={[Function]}
+    type="text"
+  />
+  <label
+    className="red"
+    htmlFor="input_4"
+  >
+    Name
+  </label>
+</div>
+`;
+
+exports[`<Input /> multiple select 1`] = `
+<div
+  className="col input-field"
+>
+  <select
+    checked={false}
+    className=""
+    id="input_10"
+    multiple={true}
+  >
+    <option
+      disabled={true}
+      key="11"
+    >
+      Choose your option
+    </option>
+    <option
+      key="1/.0"
+      value="1"
+    >
+      Option 1
+    </option>
+    <option
+      key="2/.1"
+      value="2"
+    >
+      Option 2
+    </option>
+    <option
+      key="3/.2"
+      value="3"
+    >
+      Option 3
+    </option>
+  </select>
+</div>
+`;
+
+exports[`<Input /> pickadate 1`] = `
+<div
+  className="col input-field"
+>
+  <input
+    checked={false}
+    className=""
+    id="input_17"
+    type="date"
+  />
+</div>
+`;
+
+exports[`<Input /> pickadate with icon 1`] = `
+<div
+  className="col input-field"
+>
+  <Icon
+    className="prefix"
+  >
+    today
+  </Icon>
+  <input
+    checked={false}
+    className=""
+    id="input_18"
+    type="date"
+  />
+</div>
+`;
+
+exports[`<Input /> pickatime 1`] = `
+<Input
+  checked={false}
+  options={
+    Object {
+      "one": "two",
+    }
+  }
+  type="time"
+>
+  <div
+    className="col input-field"
+  >
+    <input
+      checked={false}
+      className=""
+      id="input_19"
+    />
+  </div>
+</Input>
+`;
+
+exports[`<Input /> placeholder 1`] = `
+<div
+  className="col input-field"
+>
+  <select
+    checked={false}
+    className=""
+    id="input_8"
+  >
+    <option
+      disabled={true}
+      key="9"
+    >
+      Choose your option
+    </option>
+    <option
+      key="1/.0"
+      value="1"
+    >
+      Option 1
+    </option>
+    <option
+      key="2/.1"
+      value="2"
+    >
+      Option 2
+    </option>
+    <option
+      key="3/.2"
+      value="3"
+    >
+      Option 3
+    </option>
+  </select>
+</div>
+`;
+
+exports[`<Input /> radio 1`] = `
+<div
+  className="col"
+>
+  <input
+    checked={false}
+    className=""
+    id="input_13"
+    name="group1"
+    onChange={[Function]}
+    type="radio"
+    value="yellow"
+  />
+  <label
+    className="active"
+    htmlFor="input_13"
+  >
+    Yellow
+  </label>
+</div>
+`;
+
+exports[`<Input /> radio checked 1`] = `
+<div
+  className="col"
+>
+  <input
+    checked={false}
+    className=""
+    id="input_14"
+    name="group1"
+    onChange={[Function]}
+    type="radio"
+    value="yellow"
+  />
+  <label
+    className="active"
+    htmlFor="input_14"
+  >
+    Yellow
+  </label>
+</div>
+`;
+
+exports[`<Input /> radio event 1`] = `
+<div
+  className="col"
+>
+  <input
+    checked={false}
+    className=""
+    id="input_15"
+    name="group1"
+    onChange={[Function]}
+    type="radio"
+    value="yellow"
+  />
+  <label
+    className="active"
+    htmlFor="input_15"
+  >
+    Yellow
+  </label>
+</div>
+`;
+
+exports[`<Input /> radio event 2`] = `
+<div
+  className="col"
+>
+  <input
+    checked={true}
+    className=""
+    id="input_15"
+    name="group1"
+    onChange={[Function]}
+    type="radio"
+    value="yellow"
+  />
+  <label
+    className="active"
+    htmlFor="input_15"
+  >
+    Yellow
+  </label>
+</div>
+`;
+
+exports[`<Input /> radio onChange 1`] = `
+<div
+  className="col"
+>
+  <input
+    checked={true}
+    className=""
+    id="input_16"
+    name="group1"
+    onChange={[Function]}
+    type="radio"
+    value="yellow"
+  />
+  <label
+    className="active"
+    htmlFor="input_16"
+  >
+    Yellow
+  </label>
+</div>
+`;
+
+exports[`<Input /> radio onChange 2`] = `
+<div
+  className="col"
+>
+  <input
+    checked={false}
+    className=""
+    id="input_16"
+    name="group1"
+    onChange={[Function]}
+    type="radio"
+    value="yellow"
+  />
+  <label
+    className=""
+    htmlFor="input_16"
+  >
+    Yellow
+  </label>
+</div>
+`;
+
+exports[`<Input /> renders 1`] = `
+<div
+  className="col input-field"
+>
+  <input
+    checked={false}
+    className=""
+    id="input_0"
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;
+
+exports[`<Input /> renders an icon child with prefix class 1`] = `
+<div
+  className="col input-field"
+>
+  <Icon
+    className="prefix"
+  >
+    weekend
+  </Icon>
+  <select
+    checked={false}
+    className=""
+    icon="weekend"
+    id="input_7"
+  >
+    <option
+      key="yes/.0"
+      value="yes"
+    />
+  </select>
+</div>
+`;
+
+exports[`<Input /> select 1`] = `
+<div
+  className="col input-field"
+>
+  <select
+    checked={false}
+    className=""
+    id="input_6"
+  >
+    <option
+      key=".$1"
+      value={1}
+    />
+    <option
+      key=".$2"
+      value={2}
+    />
+    <option
+      key=".$3"
+      value={3}
+    />
+    <option
+      key=".$4"
+      value={4}
+    />
+    <option
+      key=".$5"
+      value={5}
+    />
+  </select>
+</div>
+`;
+
+exports[`<Input /> switch 1`] = `
+<div
+  className="switch"
+>
+  <label>
+    No
+    <input
+      checked={false}
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="lever"
+    />
+    Yes
+  </label>
+</div>
+`;
+
+exports[`<Input /> text input 1`] = `
+<div
+  className="col input-field"
+>
+  <input
+    checked={false}
+    className="red"
+    id="input_1"
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;
+
+exports[`<Input /> textarea 1`] = `
+<div
+  className="col input-field"
+>
+  <textarea
+    checked={false}
+    className="materialize-textarea"
+    id="input_5"
+    onChange={[Function]}
+  />
+</div>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table /> renders 1`] = `
+<table
+  className="centered highlight responsive-table striped bordered"
+>
+  <tr>
+    <td>
+      foo
+    </td>
+    <td>
+      bar
+    </td>
+  </tr>
+</table>
+`;

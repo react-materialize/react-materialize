@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders 1`] = `
+<button
+  className="btn waves-effect waves-light"
+  disabled={false}
+>
+  Stuff
+</button>
+`;

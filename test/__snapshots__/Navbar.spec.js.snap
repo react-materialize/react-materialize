@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> adds a brand node 1`] = `
+<Navbar
+  brand={
+    <span
+      className="brando"
+    >
+      I AM BRAND
+    </span>
+  }
+  href="/"
+  options={Object {}}
+>
+  <nav>
+    <div
+      className="nav-wrapper"
+    >
+      <Col
+        s={12}
+      >
+        <div
+          className="col s12"
+        >
+          <a
+            className="brand-logo"
+            href="/"
+          >
+            <span
+              className="brando"
+            >
+              I AM BRAND
+            </span>
+          </a>
+          <ul
+            className="hide-on-med-and-down"
+          />
+          <ul
+            className="side-nav"
+            id="nav-mobile"
+          />
+          <a
+            className="button-collapse"
+            data-activates="nav-mobile"
+            href="#"
+          >
+            <Icon>
+              <i
+                className="material-icons"
+              >
+                view_headline
+              </i>
+            </Icon>
+          </a>
+        </div>
+      </Col>
+    </div>
+  </nav>
+</Navbar>
+`;
+
+exports[`<Navbar /> can be fixed 1`] = `
+<div
+  className="navbar-fixed"
+>
+  <nav>
+    <div
+      className="nav-wrapper"
+    >
+      <Col
+        s={12}
+      >
+        <a
+          className="brand-logo"
+          href="/"
+        />
+        <ul
+          className="hide-on-med-and-down"
+        />
+        <ul
+          className="side-nav"
+          id="nav-mobile"
+        />
+        <a
+          className="button-collapse"
+          data-activates="nav-mobile"
+          href="#"
+        >
+          <Icon>
+            view_headline
+          </Icon>
+        </a>
+      </Col>
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
+<nav>
+  <div
+    className="nav-wrapper"
+  >
+    <Col
+      s={12}
+    >
+      <a
+        className="brand-logo right"
+        href="/"
+      >
+        logo
+      </a>
+      <ul
+        className="hide-on-med-and-down"
+      />
+      <ul
+        className="side-nav"
+        id="nav-mobile"
+      />
+      <a
+        className="button-collapse"
+        data-activates="nav-mobile"
+        href="#"
+      >
+        <Icon>
+          view_headline
+        </Icon>
+      </a>
+    </Col>
+  </div>
+</nav>
+`;
+
+exports[`<Navbar /> renders 1`] = `
+<nav>
+  <div
+    className="nav-wrapper"
+  >
+    <Col
+      s={12}
+    >
+      <a
+        className="brand-logo"
+        href="/"
+      >
+        Logo
+      </a>
+      <ul
+        className="right hide-on-med-and-down"
+      >
+        <NavItem
+          href="get-started.html"
+        >
+          Getting started
+        </NavItem>
+        <NavItem
+          href="components.html"
+        >
+          Components
+        </NavItem>
+      </ul>
+      <ul
+        className="side-nav"
+        id="nav-mobile"
+      >
+        <NavItem
+          href="get-started.html"
+        >
+          Getting started
+        </NavItem>
+        <NavItem
+          href="components.html"
+        >
+          Components
+        </NavItem>
+      </ul>
+      <a
+        className="button-collapse"
+        data-activates="nav-mobile"
+        href="#"
+      >
+        <Icon>
+          view_headline
+        </Icon>
+      </a>
+    </Col>
+  </div>
+</nav>
+`;

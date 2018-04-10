@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> controlled modal with \`open\` prop mounts opened 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        flat={true}
+        modal="close"
+        node="button"
+        waves="light"
+      >
+        Close
+      </Button>,
+    ]
+  }
+  bottomSheet={false}
+  fixedFooter={false}
+  modalOptions={
+    Object {
+      "dismissible": true,
+      "opacity": 0.4,
+    }
+  }
+>
+  <div>
+    <div
+      className="modal"
+      id="modal_2"
+    >
+      <div
+        className="modal-content"
+      >
+        <h4 />
+        <div>
+          <h1>
+            Hello
+          </h1>
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <Button
+          flat={true}
+          key=".0"
+          modal="close"
+          node="button"
+          waves="light"
+        >
+          <button
+            className="btn waves-effect waves-light btn-flat modal-action modal-close"
+            disabled={false}
+          >
+            Close
+          </button>
+        </Button>
+      </div>
+    </div>
+  </div>
+</Modal>
+`;
+
+exports[`<Modal /> renders a modal has children 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        flat={true}
+        modal="close"
+        node="button"
+        waves="light"
+      >
+        Close
+      </Button>,
+    ]
+  }
+  bottomSheet={false}
+  fixedFooter={false}
+  header="Modal header"
+  modalOptions={
+    Object {
+      "dismissible": true,
+      "opacity": 0.4,
+    }
+  }
+  trigger={
+    <button>
+      click
+    </button>
+  }
+>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      click
+    </button>
+    <div
+      className="modal"
+      id="modal_0"
+    >
+      <div
+        className="modal-content"
+      >
+        <h4>
+          Modal header
+        </h4>
+        <div>
+          <h1>
+            Hello
+          </h1>
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <Button
+          flat={true}
+          key=".0"
+          modal="close"
+          node="button"
+          waves="light"
+        >
+          <button
+            className="btn waves-effect waves-light btn-flat modal-action modal-close"
+            disabled={false}
+          >
+            Close
+          </button>
+        </Button>
+      </div>
+    </div>
+  </div>
+</Modal>
+`;
+
+exports[`<Modal /> renders a trigger renders 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    click
+  </button>
+</div>
+`;
+
+exports[`<Modal /> without a trigger renders 1`] = `
+<Modal
+  actions={
+    Array [
+      <Button
+        flat={true}
+        modal="close"
+        node="button"
+        waves="light"
+      >
+        Close
+      </Button>,
+    ]
+  }
+  bottomSheet={false}
+  fixedFooter={false}
+  modalOptions={
+    Object {
+      "dismissible": true,
+      "opacity": 0.4,
+    }
+  }
+>
+  <div>
+    <div
+      className="modal"
+      id="modal_2"
+    >
+      <div
+        className="modal-content"
+      >
+        <h4 />
+        <div>
+          <h1>
+            Hello
+          </h1>
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <Button
+          flat={true}
+          key=".0"
+          modal="close"
+          node="button"
+          waves="light"
+        >
+          <button
+            className="btn waves-effect waves-light btn-flat modal-action modal-close"
+            disabled={false}
+          >
+            Close
+          </button>
+        </Button>
+      </div>
+    </div>
+  </div>
+</Modal>
+`;
