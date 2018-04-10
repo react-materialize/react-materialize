@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0
+
+- Added Jest as testing framework
+- Migrated all specs to Jest
+- Removed mocha/sinon setup
+
 ## 2.1.4
 
 - Adding prettier to project (onluiz #519)
