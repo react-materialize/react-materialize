@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> accepts active prop 1`] = `
+<ul
+  className="pagination"
+>
+  <PaginationButton
+    disabled={false}
+    key="pagination-0"
+    onSelect={[Function]}
+  >
+    <Icon>
+      chevron_left
+    </Icon>
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-1"
+    onSelect={[Function]}
+  >
+    1
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-2"
+    onSelect={[Function]}
+  >
+    2
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-3"
+    onSelect={[Function]}
+  >
+    3
+  </PaginationButton>
+  <PaginationButton
+    active={true}
+    key="pagination-4"
+    onSelect={[Function]}
+  >
+    4
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-5"
+    onSelect={[Function]}
+  >
+    5
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-6"
+    onSelect={[Function]}
+  >
+    6
+  </PaginationButton>
+  <PaginationButton
+    disabled={false}
+    key="pagination-11"
+    onSelect={[Function]}
+  >
+    <Icon>
+      chevron_right
+    </Icon>
+  </PaginationButton>
+</ul>
+`;
+
+exports[`<Pagination /> doesn't update state with wrong activePage prop 1`] = `
+<ul
+  className="pagination"
+>
+  <PaginationButton
+    disabled={true}
+    key="pagination-0"
+    onSelect={[Function]}
+  >
+    <Icon>
+      chevron_left
+    </Icon>
+  </PaginationButton>
+  <PaginationButton
+    active={true}
+    key="pagination-1"
+    onSelect={[Function]}
+  >
+    1
+  </PaginationButton>
+  <PaginationButton
+    disabled={true}
+    key="pagination-2"
+    onSelect={[Function]}
+  >
+    <Icon>
+      chevron_right
+    </Icon>
+  </PaginationButton>
+</ul>
+`;
+
+exports[`<Pagination /> renders 1`] = `
+<ul
+  className="pagination"
+>
+  <PaginationButton
+    disabled={false}
+    key="pagination-0"
+    onSelect={[Function]}
+  >
+    <Icon>
+      chevron_left
+    </Icon>
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-1"
+    onSelect={[Function]}
+  >
+    1
+  </PaginationButton>
+  <PaginationButton
+    active={true}
+    key="pagination-2"
+    onSelect={[Function]}
+  >
+    2
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-3"
+    onSelect={[Function]}
+  >
+    3
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-4"
+    onSelect={[Function]}
+  >
+    4
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-5"
+    onSelect={[Function]}
+  >
+    5
+  </PaginationButton>
+  <PaginationButton
+    active={false}
+    key="pagination-6"
+    onSelect={[Function]}
+  >
+    6
+  </PaginationButton>
+  <PaginationButton
+    disabled={false}
+    key="pagination-11"
+    onSelect={[Function]}
+  >
+    <Icon>
+      chevron_right
+    </Icon>
+  </PaginationButton>
+</ul>
+`;
