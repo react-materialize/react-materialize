@@ -1,5 +1,5 @@
 # Contributing
-First of all thanks for contributing!, by participating
+First of all, thanks for contributing! By participating
 you agree to abide by the [code of conduct](https://github.com/react-materialize/react-materialize/blob/master/CODE_OF_CONDUCT.md).
 <br/>
 Now that you've spent a couple hours reading let's get down to business.
