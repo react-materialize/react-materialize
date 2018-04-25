@@ -65,4 +65,17 @@ describe('Button', () => {
       expect(wrapper.prop('disabled')).toEqual(true);
     });
   });
+
+  describe('with a tooltip', () => {
+    let tooltip = 'Hello';
+    let tooltipOptions = {
+      position: 'top',
+      delay: 50
+    };
+
+    let wrapper = mount(<Button tooltip={tooltip}>Stuff</Button>);
+    test('initializes Button with tooltip options', () => {
+      expect(wrapper.prop('tooltip')).toEqual(tooltip);
+    });
+  });
 });
