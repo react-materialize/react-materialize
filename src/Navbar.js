@@ -25,7 +25,16 @@ class Navbar extends Component {
   }
 
   render() {
-    const { brand, className, fixed, left, right, href, ...other } = this.props;
+    const {
+      brand,
+      className,
+      fixed,
+      left,
+      right,
+      centerLogo,
+      href,
+      ...other
+    } = this.props;
 
     delete other.options;
 
@@ -36,7 +45,8 @@ class Navbar extends Component {
 
     let brandClasses = {
       'brand-logo': true,
-      right: left
+      right: left,
+      center: centerLogo
     };
 
     let content = (
@@ -70,6 +80,7 @@ Navbar.propTypes = {
   className: PropTypes.string,
   left: PropTypes.bool,
   right: PropTypes.bool,
+  centerLogo: PropTypes.bool,
   href: PropTypes.string,
   /**
    * Makes the navbar fixed
