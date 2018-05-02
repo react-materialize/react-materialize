@@ -7,13 +7,19 @@ class NavItem extends Component {
 
     if (divider) return <li className="divider" />;
 
-    const a = onClick ? (
-      <a onClick={onClick}>{children}</a>
-    ) : (
-      <a href={href}>{children}</a>
-    );
+    let content;
 
-    return <li {...other}>{a}</li>;
+    if (typeof children !== 'string') {
+      content = { ...children };
+    } else {
+      content = onClick ? (
+        <a onClick={onClick}>{children}</a>
+      ) : (
+        <a href={href}>{children}</a>
+      );
+    }
+
+    return <li {...other}>{content}</li>;
   }
 }
 
