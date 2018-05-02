@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const NavItem = ({ divider, children, href = '', onClick, ...props }) => {
-  if (divider) return <li className="divider" />;
-  const a = onClick ? (
-    <a onClick={onClick}>{children}</a>
-  ) : (
-    <a href={href}>{children}</a>
-  );
-  return <li {...props}>{a}</li>;
-};
+class NavItem extends Component {
+  render() {
+    const { divider, children, href, onClick, ...other } = this.props;
+
+    if (divider) return <li className="divider" />;
+
+    const a = onClick ? (
+      <a onClick={onClick}>{children}</a>
+    ) : (
+      <a href={href}>{children}</a>
+    );
+
+    return <li {...other}>{a}</li>;
+  }
+}
 
 NavItem.propTypes = {
   /**
@@ -23,6 +29,10 @@ NavItem.propTypes = {
    * will not be rendered
    */
   onClick: PropTypes.func
+};
+
+NavItem.defaultProps = {
+  href: ''
 };
 
 export default NavItem;
