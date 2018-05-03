@@ -1,18 +1,19 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 
-class Card extends Component{
-  constructor(props){
+class Card extends Component {
+  constructor(props) {
     super(props);
     this.renderTitle = this.renderTitle.bind(this);
     this.renderReveal = this.renderReveal.bind(this);
     this.renderAction = this.renderAction.bind(this);
     this.renderContent = this.renderContent.bind(this);
-  };
+    this.renderAll = this.renderAll.bind(this);
+  }
 
-  renderTitle(title, reveal){
+  renderTitle(title, reveal) {
     return (
       <span
         className={cx('card-title', 'grey-text', 'text-darken-4', {
@@ -21,12 +22,12 @@ class Card extends Component{
       >
         {title}
         {reveal && <Icon right>more_vert</Icon>}
-      </span>      
+      </span>
     );
-  };
+  }
 
-  renderReveal(title, reveal){
-    return(
+  renderReveal(title, reveal) {
+    return (
       <div className="card-reveal">
         <span className="card-title grey-text text-darken-4">
           {title}
@@ -35,18 +36,14 @@ class Card extends Component{
         {reveal}
       </div>
     );
-  };
+  }
 
-  renderAction(actions){
-    return(
-      <div className="card-action">
-        {actions}
-      </div>
-    );
-  };
+  renderAction(actions) {
+    return <div className="card-action">{actions}</div>;
+  }
 
-  renderContent(title, reveal, textClassName, children){
-    return(
+  renderContent(title, reveal, textClassName, children) {
+    return (
       <div className={cx('card-content', textClassName)}>
         {title && this.renderTitle(title, reveal)}
         <div>{children}</div>
@@ -54,7 +51,17 @@ class Card extends Component{
     );
   }
 
-  render(){
+  renderAll(title, reveal, textClassName, children, actions) {
+    return (
+      <React.Fragment>
+        {this.renderContent(title, reveal, textClassName, children)}
+        {this.renderReveal(title, reveal)}
+        {actions && this.renderAction(actions)}
+      </React.Fragment>
+    );
+  }
+
+  render() {
     const {
       title,
       header,
@@ -68,17 +75,21 @@ class Card extends Component{
     } = this.props;
 
     const classes = {
-      card: true ,
-      horizontal: horizontal,
+      card: true,
+      horizontal: horizontal
     };
 
-    return(
+    return (
       <div {...other} className={cx(className, classes)}>
-      {header}
-      {this.renderContent(title, reveal, textClassName, children)}
-      {this.renderReveal(title, reveal)}
-      {actions && this.renderAction(actions)}
-    </div>
+        {header}
+        {horizontal ? (
+          <div className="card-stacked">
+            {this.renderAll(title, reveal, textClassName, children, actions)}
+          </div>
+        ) : (
+          this.renderAll(title, reveal, textClassName, children, actions)
+        )}
+      </div>
     );
   }
 }
