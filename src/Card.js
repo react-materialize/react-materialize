@@ -1,55 +1,87 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import cx from 'classnames';
 import Icon from './Icon';
 
-const renderTitle = (title, reveal) => (
-  <span
-    className={cx('card-title', 'grey-text', 'text-darken-4', {
-      activator: reveal
-    })}
-  >
-    {title}
-    {reveal && <Icon right>more_vert</Icon>}
-  </span>
-);
+class Card extends Component{
+  constructor(props){
+    super(props);
+    this.renderTitle = this.renderTitle.bind(this);
+    this.renderReveal = this.renderReveal.bind(this);
+    this.renderAction = this.renderAction.bind(this);
+    this.renderContent = this.renderContent.bind(this);
+  };
 
-const renderReveal = (title, reveal) => (
-  <div className="card-reveal">
-    <span className="card-title grey-text text-darken-4">
-      {title}
-      <Icon right>close</Icon>
-    </span>
-    {reveal}
-  </div>
-);
+  renderTitle(title, reveal){
+    return (
+      <span
+        className={cx('card-title', 'grey-text', 'text-darken-4', {
+          activator: reveal
+        })}
+      >
+        {title}
+        {reveal && <Icon right>more_vert</Icon>}
+      </span>      
+    );
+  };
 
-const renderAction = actions => <div className="card-action">{actions}</div>;
+  renderReveal(title, reveal){
+    return(
+      <div className="card-reveal">
+        <span className="card-title grey-text text-darken-4">
+          {title}
+          <Icon right>close</Icon>
+        </span>
+        {reveal}
+      </div>
+    );
+  };
 
-const Card = ({
-  title,
-  header,
-  className,
-  textClassName,
-  actions,
-  reveal,
-  children,
-  ...props
-}) => {
-  const classes = { card: true };
+  renderAction(actions){
+    return(
+      <div className="card-action">
+        {actions}
+      </div>
+    );
+  };
 
-  return (
-    <div {...props} className={cx(className, classes)}>
-      {header}
+  renderContent(title, reveal, textClassName, children){
+    return(
       <div className={cx('card-content', textClassName)}>
-        {title && renderTitle(title, reveal)}
+        {title && this.renderTitle(title, reveal)}
         <div>{children}</div>
       </div>
-      {renderReveal(title, reveal)}
-      {actions && renderAction(actions)}
+    );
+  }
+
+  render(){
+    const {
+      title,
+      header,
+      className,
+      textClassName,
+      actions,
+      reveal,
+      children,
+      horizontal,
+      ...other
+    } = this.props;
+
+    const classes = {
+      card: true ,
+      horizontal: horizontal,
+    };
+
+    return(
+      <div {...other} className={cx(className, classes)}>
+      {header}
+      {this.renderContent(title, reveal, textClassName, children)}
+      {this.renderReveal(title, reveal)}
+      {actions && this.renderAction(actions)}
     </div>
-  );
-};
+    );
+  }
+}
 
 Card.propTypes = {
   children: PropTypes.node,
@@ -59,7 +91,8 @@ Card.propTypes = {
   reveal: PropTypes.element,
   header: PropTypes.element,
   // The buttons to be displayed at the action area
-  actions: PropTypes.arrayOf(PropTypes.element)
+  actions: PropTypes.arrayOf(PropTypes.element),
+  horizontal: PropTypes.bool
 };
 
 export default Card;
