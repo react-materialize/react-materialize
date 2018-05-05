@@ -1,49 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import constants from './constants';
 
-const Col = ({
-  children,
-  className,
-  node: C = 'div',
-  s,
-  m,
-  l,
-  offset,
-  ...other
-}) => {
-  let sizes = { s, m, l };
-  let classes = { col: true };
-  constants.SIZES.forEach(size => {
-    classes[size + sizes[size]] = sizes[size];
-  });
+class Col extends Component {
+  render() {
+    const {
+      children,
+      className,
+      node: C = 'div',
+      s,
+      m,
+      l,
+      xl,
+      offset,
+      ...other
+    } = this.props;
 
-  if (offset) {
-    offset.split(' ').forEach(off => {
-      classes['offset-' + off] = true;
-    });
+    let sizes = { s, m, l, xl };
+    let classes = {
+      col: true
+    };
+
+    constants.SIZES.forEach(
+      size => (classes[size + sizes[size]] = sizes[size])
+    );
+
+    if (offset) {
+      offset.split(' ').forEach(off => (classes['offset-' + off] = true));
+    }
+
+    return (
+      <C {...other} className={cx(classes, className)}>
+        {children}
+      </C>
+    );
   }
-
-  return (
-    <C {...other} className={cx(classes, className)}>
-      {children}
-    </C>
-  );
-};
+}
 
 Col.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   /**
-   * Columns for large size screens
+   * Columns for extra large size screens (Large Desktop Devices > 1200px)
+   */
+  xl: PropTypes.number,
+  /**
+   * Columns for large size screens (Desktop Devices > 992px)
    */
   l: PropTypes.number,
   /**
-   * Columns for middle size screens
+   * Columns for middle size screens (Tablet Devices > 600px)
    */
   m: PropTypes.number,
+  /**
+   * Columns for small size screens (Mobile Devices <= 600px)
+   */
+  s: PropTypes.number,
   /**
    * The node to be used for the column
    * @default div
@@ -55,10 +69,10 @@ Col.propTypes = {
    * is the number of columns you want to offset by.
    */
   offset: PropTypes.string,
-  /**
-   * Columns for small size screens
-   */
-  s: PropTypes.number
 };
+
+// Col.defaultProps = {
+//   node: 'div'
+// };
 
 export default Col;
