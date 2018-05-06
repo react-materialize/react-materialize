@@ -1,87 +1,42 @@
-import Autocomplete from './Autocomplete';
-import Badge from './Badge';
-import Breadcrumb from './Breadcrumb';
-import Button from './Button';
-import Carousel from './Carousel';
-import Card from './Card';
-import CardPanel from './CardPanel';
-import CardTitle from './CardTitle';
-import Chip from './Chip';
-import Col from './Col';
-import Collapsible from './Collapsible';
-import CollapsibleItem from './CollapsibleItem';
-import Collection from './Collection';
-import CollectionItem from './CollectionItem';
-import Container from './Container';
-import Divider from './Divider';
-import Dropdown from './Dropdown';
-import Footer from './Footer';
-import Icon from './Icon';
-import Input from './Input';
-import MediaBox from './MediaBox';
-import MenuItem from './MenuItem';
-import Modal from './Modal';
-import NavItem from './NavItem';
-import Navbar from './Navbar';
-import Pagination from './Pagination';
-import PaginationButton from './PaginationButton';
-import Parallax from './Parallax';
-import Preloader from './Preloader';
-import ProgressBar from './ProgressBar';
-import Row from './Row';
-import SearchForm from './SearchForm';
-import Section from './Section';
-import SideNav from './SideNav';
-import SideNavItem from './SideNavItem';
-import Slide from './Slide';
-import Slider from './Slider';
-import Tab from './Tab';
-import Table from './Table';
-import Tabs from './Tabs';
-import Tag from './Tag';
-import Toast from './Toast';
-
-export {
-  Autocomplete,
-  Badge,
-  Breadcrumb,
-  Button,
-  Carousel,
-  Card,
-  CardPanel,
-  CardTitle,
-  Chip,
-  Col,
-  Collapsible,
-  CollapsibleItem,
-  Collection,
-  CollectionItem,
-  Container,
-  Divider,
-  Dropdown,
-  Footer,
-  Icon,
-  Input,
-  MediaBox,
-  MenuItem,
-  Modal,
-  NavItem,
-  Navbar,
-  Pagination,
-  PaginationButton,
-  Parallax,
-  Preloader,
-  ProgressBar,
-  Row,
-  SearchForm,
-  Section,
-  SideNav,
-  SideNavItem,
-  Slide,
-  Slider,
-  Tab,
-  Table,
-  Tabs,
-  Tag,
-  Toast
-};
+export { default as Autocomplete } from './Autocomplete';
+export { default as Badge } from './Badge';
+export { default as Breadcrumb } from './Breadcrumb';
+export { default as Button } from './Button';
+export { default as Carousel } from './Carousel';
+export { default as Card } from './Card';
+export { default as CardPanel } from './CardPanel';
+export { default as CardTitle } from './CardTitle';
+export { default as Chip } from './Chip';
+export { default as Col } from './Col';
+export { default as Collapsible } from './Collapsible';
+export { default as CollapsibleItem } from './CollapsibleItem';
+export { default as Collection } from './Collection';
+export { default as CollectionItem } from './CollectionItem';
+export { default as Container } from './Container';
+export { default as Divider } from './Divider';
+export { default as Dropdown } from './Dropdown';
+export { default as Footer } from './Footer';
+export { default as Icon } from './Icon';
+export { default as Input } from './Input';
+export { default as MediaBox } from './MediaBox';
+export { default as MenuItem } from './MenuItem';
+export { default as Modal } from './Modal';
+export { default as NavItem } from './NavItem';
+export { default as Navbar } from './Navbar';
+export { default as Pagination } from './Pagination';
+export { default as PaginationButton } from './PaginationButton';
+export { default as Parallax } from './Parallax';
+export { default as Preloader } from './Preloader';
+export { default as ProgressBar } from './ProgressBar';
+export { default as Row } from './Row';
+export { default as SearchForm } from './SearchForm';
+export { default as Section } from './Section';
+export { default as SideNav } from './SideNav';
+export { default as SideNavItem } from './SideNavItem';
+export { default as Slide } from './Slide';
+export { default as Slider } from './Slider';
+export { default as Tab } from './Tab';
+export { default as Table } from './Table';
+export { default as Tabs } from './Tabs';
+export { default as Tag } from './Tag';
+export { default as Toast } from './Toast';
