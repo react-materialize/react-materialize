@@ -68,7 +68,7 @@ Col.propTypes = {
    * class-prefix (s = small, m = medium, l = large) and the number after
    * is the number of columns you want to offset by.
    */
-  offset: PropTypes.string,
+  offset: PropTypes.string
 };
 
 // Col.defaultProps = {
