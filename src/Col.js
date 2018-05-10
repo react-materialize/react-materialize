@@ -71,8 +71,4 @@ Col.propTypes = {
   offset: PropTypes.string
 };
 
-// Col.defaultProps = {
-//   node: 'div'
-// };
-
 export default Col;
