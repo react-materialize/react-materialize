@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.1
+
+- Col component now supports xl (CloudPower97 #541)
+- Horizontal card fix (CloudPower97 #538)
+- Section improvement (CloudPower97 #533)
+- Add Tooltips for buttons. (anshulk #530)
+
 ## 2.2.0
 
 - Added Jest as testing framework
