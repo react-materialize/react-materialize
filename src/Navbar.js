@@ -78,8 +78,18 @@ Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
+  /**
+   * Makes the navbar links left aligned
+   */
   left: PropTypes.bool,
+  /**
+   * Makes the navbar links right aligned
+   */
   right: PropTypes.bool,
+  /**
+   * The logo will center itself on medium and down screens.
+   * Specifying centerLogo as a prop the logo will always be centered
+   */
   centerLogo: PropTypes.bool,
   href: PropTypes.string,
   /**
