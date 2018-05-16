@@ -10,8 +10,8 @@ function setup(props = {}, children, mounted) {
   };
   const component = <SideNav {...propsIn}>{children}</SideNav>;
   const wrapper = mounted ? mount(component) : shallow(component);
-  const sideNav = wrapper.find('.side-nav');
-  const trigger = wrapper.find('.trigger');
+  const sideNav = wrapper.find('.sidenav');
+  const trigger = wrapper.find('.sidenav-trigger');
   const sideNavProps = sideNav.props();
   const triggerProps = trigger.props();
 
@@ -27,7 +27,7 @@ function setup(props = {}, children, mounted) {
 
 describe('<SideNav />', () => {
   const sideNavMock = jest.fn();
-  const restore = mocker('sideNav', sideNavMock);
+  const restore = mocker('sidenav', sideNavMock);
 
   afterAll(() => {
     restore();
@@ -56,14 +56,14 @@ describe('<SideNav />', () => {
   test('should be fixed if no trigger is passed', () => {
     const component = <SideNav className="red" />;
     const wrapper = shallow(component);
-    const sideNav = wrapper.find('.side-nav');
+    const sideNav = wrapper.find('.sidenav');
     expect(sideNav).toMatchSnapshot();
   });
 
   test('should render a given id', () => {
     const { sideNavProps, triggerProps } = setup({ id: 'test' });
     expect(sideNavProps.id).toEqual('test');
-    expect(triggerProps['data-activates']).toEqual('test');
+    expect(triggerProps['data-target']).toEqual('test');
   });
 
   test('should render children', () => {

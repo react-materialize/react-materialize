@@ -2,44 +2,44 @@
 
 exports[`<SideNav /> can be \`fixed\` 1`] = `
 <ul
-  className="side-nav fixed red"
+  className="sidenav sidenav-fixed red"
   id="sidenav_1"
 />
 `;
 
 exports[`<SideNav /> renders 1`] = `
 <ul
-  className="side-nav"
+  className="sidenav"
   id="sidenav_0"
 />
 `;
 
 exports[`<SideNav /> should be fixed if no trigger is passed 1`] = `
 <ul
-  className="side-nav fixed red"
+  className="sidenav sidenav-fixed red"
   id="sidenav_4"
 />
 `;
 
 exports[`<SideNav /> should render fixed if not passed trigger or fixed 1`] = `
-<span>
+<div>
   <button
-    className="trigger show-on-large"
-    data-activates="sidenav_2"
+    className="trigger show-on-large sidenav-trigger"
+    data-target="sidenav_2"
   >
     Show sidenav
   </button>
   <ul
-    className="side-nav red"
+    className="sidenav red"
     id="sidenav_2"
   />
-</span>
+</div>
 `;
 
 exports[`<SideNav /> should render trigger on large screens not fixed\` 1`] = `
 <button
-  className="trigger show-on-large"
-  data-activates="sidenav_3"
+  className="trigger show-on-large sidenav-trigger"
+  data-target="sidenav_3"
 >
   Show sidenav
 </button>
