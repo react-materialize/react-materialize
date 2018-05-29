@@ -90,7 +90,7 @@ const devConfig = {
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],
-  devServer: {
+  serve: {
     contentBase: path.resolve(BASE_PATH, 'assets'),
     historyApiFallback: true,
     hot: true,
@@ -110,6 +110,9 @@ const prodConfig = {
       })
     }]
   },
+  optimization: {
+    minimize: false
+  },
   plugins: [
     new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
@@ -120,17 +123,6 @@ const prodConfig = {
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true
-      },
-      compress: {
-        screw_ie8: true
-      },
-      comments: false
     })
   ]
 };
