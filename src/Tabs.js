@@ -103,6 +103,10 @@ Tabs.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
+  /*
+   * Used to change the active tab classes
+   * e.g. indicatorClasses="grey lighten-4"
+   */
   indicatorClasses: PropTypes.string,
   /*
    * More info
