@@ -34,7 +34,10 @@ class Tabs extends Component {
 
     const scope = `${idgen()}`;
 
-    const indicatorColor = `indicator ${this.props.indicatorColor}`
+    let indicatorClasses = 'indicator';
+    if (this.props.indicatorClasses) {
+      indicatorClasses += ` ${this.props.indicatorClasses}`;
+    }
 
     return (
       <Row>
@@ -71,7 +74,7 @@ class Tabs extends Component {
                 </li>
               );
             })}
-            <div class={indicatorColor} style={{zIndex: 1}}></div>
+            <div className={indicatorClasses} style={{ zIndex: 1 }} />
           </ul>
         </Col>
         {React.Children.map(children, (child, id) => {
@@ -100,7 +103,7 @@ Tabs.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
-  indicatorColor: PropTypes.string,
+  indicatorClasses: PropTypes.string,
   /*
    * More info
    * <a href='http://materializecss.com/tabs.html'>http://materializecss.com/tabs.html</a>

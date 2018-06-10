@@ -32,6 +32,14 @@ exports[`Tabs should create list of Tab itemt 1`] = `
           Two
         </a>
       </li>
+      <div
+        className="indicator"
+        style={
+          Object {
+            "zIndex": 1,
+          }
+        }
+      />
     </ul>
   </Col>
   <Col
