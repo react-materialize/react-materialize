@@ -30,14 +30,9 @@ class Tabs extends Component {
   }
 
   render() {
-    const { children, className, defaultValue } = this.props;
+    const { children, className, defaultValue, indicatorClasses } = this.props;
 
     const scope = `${idgen()}`;
-
-    let indicatorClasses = 'indicator';
-    if (this.props.indicatorClasses) {
-      indicatorClasses += ` ${this.props.indicatorClasses}`;
-    }
 
     return (
       <Row>
@@ -74,7 +69,10 @@ class Tabs extends Component {
                 </li>
               );
             })}
-            <div className={indicatorClasses} style={{ zIndex: 1 }} />
+            <li
+              className={cx('indicator', indicatorClasses)}
+              style={{ zIndex: 1 }}
+            />
           </ul>
         </Col>
         {React.Children.map(children, (child, id) => {

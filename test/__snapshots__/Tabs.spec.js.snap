@@ -32,7 +32,7 @@ exports[`Tabs should create list of Tab itemt 1`] = `
           Two
         </a>
       </li>
-      <div
+      <li
         className="indicator"
         style={
           Object {
