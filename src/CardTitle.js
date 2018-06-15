@@ -7,22 +7,17 @@ import constants from './constants';
 class CardTitle extends Component {
   render() {
     let { image, reveal, waves, children, ...props } = this.props;
-    let classes = {
-      'card-image': true
-    };
-    if (waves) {
-      classes['waves-effect'] = true;
-      classes['waves-' + waves] = true;
-      classes['waves-block'] = true;
-    }
-    let imgClasses = { activator: reveal };
-    let titleClasses = {
-      'card-title': true
-    };
+    const classes = cx({
+      'card-image': true,
+      'waves-effect': waves,
+      'waves-block': waves,
+      [`waves-${waves}`]: waves
+    });
+
     return (
       <div className={cx(classes)} {...props}>
-        <img className={cx(imgClasses)} src={image} />
-        <span className={cx(titleClasses)}>{children}</span>
+        <img className={cx({ activator: reveal })} src={image} />
+        <span className={cx('card-title')}>{children}</span>
       </div>
     );
   }

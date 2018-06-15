@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.3.0
+
+- All components now accept `className` prop
+
 ### 2.2.1
 
 - Col component now supports xl (CloudPower97 #541)

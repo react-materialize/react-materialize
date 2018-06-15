@@ -11,11 +11,11 @@ class Toast extends Component {
   }
 
   render() {
-    const { children, rounded } = this.props;
+    const { children, rounded, className } = this.props;
     const classes = { toast: true, rounded: rounded };
 
     return (
-      <Button onClick={this.onClick} className={cx(classes)}>
+      <Button onClick={this.onClick} className={cx(classes, className)}>
         {children}
       </Button>
     );
@@ -27,6 +27,7 @@ class Toast extends Component {
 }
 
 Toast.propTypes = {
+  className: PropTypes.string,
   toast: PropTypes.string.isRequired,
   children: PropTypes.node,
   rounded: PropTypes.bool

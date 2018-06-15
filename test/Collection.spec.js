@@ -44,6 +44,16 @@ describe('<Collection />', () => {
       expect(wrapper.find('h2').text()).toEqual('ages');
     });
 
+    test('passes classname', () => {
+      wrapper = shallow(
+        <Collection className="find">
+          <CollectionItem>Alvin</CollectionItem>
+        </Collection>
+      );
+
+      expect(wrapper.hasClass('find')).toBeTruthy();
+    });
+
     test('should render anchors if present', () => {
       wrapper = mount(
         <Collection>

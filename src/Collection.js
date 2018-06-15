@@ -9,7 +9,7 @@ class Collection extends Component {
   }
 
   render() {
-    const { children, header } = this.props;
+    const { children, header, className } = this.props;
 
     let classes = {
       collection: true,
@@ -22,7 +22,7 @@ class Collection extends Component {
       }
     });
     return (
-      <C className={cx(classes)}>
+      <C className={cx('collection', { 'with-header': !!header }, className)}>
         {header ? this.renderHeader() : null}
         {children}
       </C>
@@ -44,7 +44,8 @@ class Collection extends Component {
 
 Collection.propTypes = {
   children: PropTypes.node,
-  header: PropTypes.node
+  header: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default Collection;

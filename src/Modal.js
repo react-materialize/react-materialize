@@ -51,17 +51,21 @@ class Modal extends Component {
       children,
       fixedFooter,
       header,
+      className,
       ...other
     } = this.props;
 
     delete other.modalOptions;
     delete other.trigger;
 
-    const classes = cx({
-      modal: true,
-      'modal-fixed-footer': fixedFooter,
-      'bottom-sheet': bottomSheet
-    });
+    const classes = cx(
+      'modal',
+      {
+        'modal-fixed-footer': fixedFooter,
+        'bottom-sheet': bottomSheet
+      },
+      className
+    );
 
     return this.modalRoot
       ? ReactDOM.createPortal(
@@ -142,6 +146,10 @@ Modal.propTypes = {
      */
     complete: PropTypes.func
   }),
+  /**
+   * Extra class to added to the Modal
+   */
+  className: PropTypes.string,
   /**
    * Modal is opened on mount
    */
