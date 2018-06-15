@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Chip = ({ children, close }) => {
+const Chip = ({ children, close, ...props }) => {
   return (
-    <div className="chip">
+    <div className="chip" {...props}>
       {children}
       {close ? <i className="close material-icons">close</i> : null}
     </div>
