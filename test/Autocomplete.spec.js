@@ -5,7 +5,8 @@ import Autocomplete from '../src/Autocomplete';
 const data = {
   Apple: null,
   Microsoft: null,
-  Google: 'http://placehold.it/250x250'
+  Google: 'http://placehold.it/250x250',
+  'Apple Inc': null
 };
 
 const componentId = 'testAutocompleteId';
@@ -43,7 +44,13 @@ describe('<Autocomplete />', () => {
     });
 
     test("highlight's results", () => {
-      expect(wrapper.find('.highlight').text()).toEqual(typedKey);
+      expect(wrapper.find('.highlight').length).toEqual(2);
+      expect(
+        wrapper
+          .find('.highlight')
+          .first()
+          .text()
+      ).toEqual(typedKey);
     });
   });
 
@@ -54,7 +61,10 @@ describe('<Autocomplete />', () => {
       wrapper
         .find('.autocomplete')
         .simulate('change', { target: { value: typedKey } });
-      wrapper.find('ul li').simulate('click');
+      wrapper
+        .find('ul li')
+        .first()
+        .simulate('click');
     });
 
     test('updates the state with the new value', () => {
@@ -65,6 +75,10 @@ describe('<Autocomplete />', () => {
       expect(wrapper.find('.autocomplete').prop('value')).toEqual(
         expectedValue
       );
+    });
+
+    test('hides other matches', () => {
+      expect(wrapper.find('.highlight').length).toEqual(0);
     });
   });
 
@@ -105,7 +119,10 @@ describe('<Autocomplete />', () => {
     });
 
     test('adds clicked value to input', () => {
-      wrapper2.find('ul li').simulate('click');
+      wrapper2
+        .find('ul li')
+        .first()
+        .simulate('click');
 
       expect(wrapper2.find('.autocomplete').prop('value')).toEqual(
         expectedValue
