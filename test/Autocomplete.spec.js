@@ -54,7 +54,7 @@ describe('<Autocomplete />', () => {
     });
   });
 
-  describe('on dropdown select', () => {
+  describe('on dropdown first item select', () => {
     const expectedValue = 'Apple';
 
     beforeAll(() => {
@@ -64,6 +64,34 @@ describe('<Autocomplete />', () => {
       wrapper
         .find('ul li')
         .first()
+        .simulate('click');
+    });
+
+    test('updates the state with the new value', () => {
+      expect(wrapper.state('value')).toEqual(expectedValue);
+    });
+
+    test('adds clicked value to input', () => {
+      expect(wrapper.find('.autocomplete').prop('value')).toEqual(
+        expectedValue
+      );
+    });
+
+    test('hides other matches', () => {
+      expect(wrapper.find('.highlight').length).toEqual(0);
+    });
+  });
+
+  describe('on dropdown second item select', () => {
+    const expectedValue = 'Apple Inc';
+
+    beforeAll(() => {
+      wrapper
+        .find('.autocomplete')
+        .simulate('change', { target: { value: typedKey } });
+      wrapper
+        .find('ul li')
+        .last()
         .simulate('click');
     });
 
