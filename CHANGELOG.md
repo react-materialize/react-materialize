@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.3.1
+
+- Fixes `autocomplete` with similar values (niross #556)
+
 ### 2.3.0
 
 - All components now accept `className` prop
