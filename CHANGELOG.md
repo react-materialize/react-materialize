@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.3.2
+
+- Fixes non-flashing Preloader (dmitry-yudakov #564)
+
 ### 2.3.1
 
 - Fixes `autocomplete` with similar values (niross #556)
