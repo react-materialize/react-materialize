@@ -7,7 +7,7 @@ let colors = ['blue', 'red', 'yellow', 'green'];
 
 class Preloader extends Component {
   render() {
-    const { active, size, flashing, className } = this.props;
+    const { active, size, color, flashing, className } = this.props;
 
     let classes = cx('preloader-wrapper', { active: active, size: size });
 

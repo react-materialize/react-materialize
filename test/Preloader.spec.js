@@ -16,4 +16,10 @@ describe('<Preloader />', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('should render a Preloader with default properties', () => {
+    const wrapper = shallow(<Preloader />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
 });
