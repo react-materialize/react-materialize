@@ -26,3 +26,14 @@ exports[`<Preloader /> should render a Preloader 1`] = `
   />
 </div>
 `;
+
+exports[`<Preloader /> should render a Preloader with default properties 1`] = `
+<div
+  className="preloader-wrapper active"
+>
+  <Spinner
+    color="blue"
+    only={true}
+  />
+</div>
+`;
