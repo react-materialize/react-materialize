@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.3.3
+
+- Fixes lib not uploading
+
 ### 2.3.2
 
 - Fixes non-flashing Preloader (dmitry-yudakov #564)
