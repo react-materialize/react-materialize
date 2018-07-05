@@ -186,4 +186,9 @@ describe('<Input />', () => {
     expect(pickatimeMock).toHaveBeenCalledWith(options);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('file input', () => {
+    wrapper = shallow(<Input type="file" multiple />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

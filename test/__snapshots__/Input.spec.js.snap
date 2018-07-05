@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Input /> file input 1`] = `
+<div
+  className="col file-field"
+>
+  <div
+    className="btn"
+  >
+    <span />
+    <input
+      checked={false}
+      multiple={true}
+      type="file"
+    />
+  </div>
+  <div
+    className="file-path-wrapper"
+  >
+    <input
+      className="file-path"
+      id="input_20"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
 exports[`<Input /> input value 1`] = `
 <div
   className="col input-field"
@@ -18,29 +44,34 @@ exports[`<Input /> input value 1`] = `
 
 exports[`<Input /> input values 1`] = `
 <div
-  className="col input-field"
+  className="col file-field"
 >
-  <input
-    checked={false}
-    className=""
-    defaultValue={
-      Array [
-        1,
-        2,
-        3,
-      ]
-    }
-    id="input_3"
-    onChange={[Function]}
-    type="file"
-    value={
-      Array [
-        1,
-        2,
-        3,
-      ]
-    }
-  />
+  <div
+    className="btn"
+  >
+    <span />
+    <input
+      checked={false}
+      multiple={true}
+      type="file"
+      value={
+        Array [
+          1,
+          2,
+          3,
+        ]
+      }
+    />
+  </div>
+  <div
+    className="file-path-wrapper"
+  >
+    <input
+      className="file-path"
+      id="input_3"
+      type="text"
+    />
+  </div>
 </div>
 `;
 
