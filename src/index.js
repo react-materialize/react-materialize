@@ -15,6 +15,7 @@ import CollectionItem from './CollectionItem';
 import Container from './Container';
 import Divider from './Divider';
 import Dropdown from './Dropdown';
+import FeatureDiscovery from './FeatureDiscovery';
 import Footer from './Footer';
 import Icon from './Icon';
 import Input from './Input';
@@ -59,6 +60,7 @@ export {
   Container,
   Divider,
   Dropdown,
+  FeatureDiscovery,
   Footer,
   Icon,
   Input,

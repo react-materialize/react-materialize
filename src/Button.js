@@ -9,7 +9,6 @@ class Button extends Component {
   constructor(props) {
     super(props);
     this.renderIcon = this.renderIcon.bind(this);
-    this.renderFab = this.renderFab.bind(this);
   }
 
   componentDidMount() {
@@ -60,7 +59,23 @@ class Button extends Component {
       classes['modal-' + modal] = true;
     }
     if (fab) {
-      return this.renderFab(cx(classes, className), fab, toggle);
+      const int = cx(classes, className);
+      const out = cx(fab, toggle, 'fixed-action-btn');
+      return (
+        <div
+          className={out}
+          disabled={!!disabled}
+          data-tooltip={tooltip}
+          ref={el => (this._btnEl = el)}
+        >
+          <a id={other.id} className={int}>{this.renderIcon()}</a>
+          <ul>
+            {React.Children.map(this.props.children, child => {
+              return <li key={idgen()}>{child}</li>;
+            })}
+          </ul>
+        </div>
+      );
     } else {
       return (
         <C
@@ -76,20 +91,6 @@ class Button extends Component {
         </C>
       );
     }
-  }
-
-  renderFab(className, orientation, clickOnly) {
-    const classes = cx(orientation, clickOnly);
-    return (
-      <div className={cx('fixed-action-btn', classes)}>
-        <a className={className}>{this.renderIcon()}</a>
-        <ul>
-          {React.Children.map(this.props.children, child => {
-            return <li key={idgen()}>{child}</li>;
-          })}
-        </ul>
-      </div>
-    );
   }
 
   renderIcon() {
