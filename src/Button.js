@@ -59,16 +59,16 @@ class Button extends Component {
       classes['modal-' + modal] = true;
     }
     if (fab) {
-      const int = cx(classes, className);
-      const out = cx(fab, toggle, 'fixed-action-btn');
+      const button = cx(classes, className);
+      const parent = cx(fab, toggle, 'fixed-action-btn');
       return (
         <div
-          className={out}
+          className={parent}
           disabled={!!disabled}
           data-tooltip={tooltip}
           ref={el => (this._btnEl = el)}
         >
-          <a id={other.id} className={int}>{this.renderIcon()}</a>
+          <a id={other.id} className={button}>{this.renderIcon()}</a>
           <ul>
             {React.Children.map(this.props.children, child => {
               return <li key={idgen()}>{child}</li>;
