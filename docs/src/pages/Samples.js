@@ -21,6 +21,7 @@ export default {
   flatButton: require('!raw-loader!../../../examples/FlatButton.js'),
   floatingButton: require('!raw-loader!../../../examples/FloatingButton.js'),
   buttonAsLink: require('!raw-loader!../../../examples/ButtonAsLink.js'),
+  featurediscovery: require('!raw-loader!../../../examples/FeatureDiscovery.js'),
   footer: require('!raw-loader!../../../examples/Footer.js'),
   grid: require('!raw-loader!../../../examples/Grid.js'),
   horizontalFab: require('!raw-loader!../../../examples/HorizontalFAB.js'),

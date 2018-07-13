@@ -7,6 +7,7 @@ import Grid from './pages/GridPage';
 import CarouselPage from './pages/CarouselPage';
 import CollapsiblePage from './pages/CollapsiblesPage';
 import DropdownPage from './pages/DropdownPage';
+import FeatureDiscoveryPage from './pages/FeatureDiscoveryPage';
 import MediaPage from './pages/MediaPage';
 import ModalsPage from './pages/ModalsPage';
 import ParallaxPage from './pages/ParallaxPage';
@@ -37,6 +38,7 @@ const jsComponents = {
   carousel: CarouselPage,
   collapsible: CollapsiblePage,
   dropdown: DropdownPage,
+  featurediscovery: FeatureDiscoveryPage,
   media: MediaPage,
   modals: ModalsPage,
   parallax: ParallaxPage,
