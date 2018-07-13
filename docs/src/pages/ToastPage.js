@@ -25,7 +25,6 @@ const ToastPage = () => (
       <Col s={12}>
         <ReactPlayground code={Samples.toastProgrammatically} />
       </Col>
-
       <Col s={12}>
         <PropTable header='Toast' component={toastCode} />
       </Col>
