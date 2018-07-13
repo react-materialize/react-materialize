@@ -38,9 +38,12 @@ class FeatureDiscovery extends Component {
 
     const parent = element.parent('.tap-target-wrapper');
     const origin = parent.find('.tap-target-origin');
-    const target = $("#" + this.props.target);
+    const target = $('#' + this.props.target);
     origin.click(
-      () => target.trigger('click')
+      () => {
+        target.trigger('click')
+        target.trigger('mouseover')
+      }
     )
   }
 
