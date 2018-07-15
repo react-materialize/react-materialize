@@ -9,6 +9,12 @@ Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=mas
 
 # [react-materialize](https://react-materialize.github.io/)
 
+# 3.0.0-beta.0
+
+## Unstable version
+
+We're updating to the latest materialize-css version, please don't use this branch yet.
+
 Material design components for react, powered by [materializecss](http://materializecss.com/).
 
 ## Install
