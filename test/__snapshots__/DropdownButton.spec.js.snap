@@ -3,8 +3,8 @@
 exports[`<Dropdown /> renders 1`] = `
 <span>
   <button
-    className="dropdown-button"
-    data-activates="dropdown_0"
+    className="dropdown-trigger"
+    data-target="dropdown_0"
   >
     Drop me!
   </button>

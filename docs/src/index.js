@@ -5,17 +5,17 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 require('../assets/stylesheets/ghpages-materialize.css');
-require('materialize-css/dist/css/materialize.css')
 require('../assets/stylesheets/main.css');
 
 import App from './components/App';
 
 const target = document.getElementById('root');
-const render = (Component) => {
+const render = Component => {
   ReactDOM.render(
     <AppContainer>
       <Component />
-    </AppContainer>, target
+    </AppContainer>,
+    target
   );
 };
 
