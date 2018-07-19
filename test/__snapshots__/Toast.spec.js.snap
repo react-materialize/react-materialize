@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast renders 1`] = `
+<Button
+  className="toast"
+  node="button"
+  onClick={[Function]}
+>
+  toast content
+</Button>
+`;
