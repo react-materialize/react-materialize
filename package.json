@@ -16,7 +16,8 @@
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
-    "prettier": "prettier --write \"{src,test}/**/*.js\""
+    "prettier": "prettier --write \"{src,test}/**/*.js\"",
+    "prepush": "npm run lint"
   },
   "repository": {
     "type": "git",
