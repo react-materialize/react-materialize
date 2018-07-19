@@ -9,19 +9,18 @@ import toastCode from '!raw-loader!Toast';
 const ToastPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
-      <p className='caption'>
-        Materialize provides an easy way for you to send unobtrusive alerts to your users through toasts.
-        These toasts are also placed and sized responsively,
-        try it out by clicking the button below on different device sizes.
+      <p className="caption">
+        Materialize provides an easy way for you to send unobtrusive alerts to
+        your users through toasts. These toasts are also placed and sized
+        responsively, try it out by clicking the button below on
+        different device sizes.
       </p>
       <Col s={12}>
-        <ReactPlayground code={Samples.toast}>
-          {toast}
-        </ReactPlayground>
+        <ReactPlayground code={Samples.toast} />
       </Col>
 
       <Col s={12}>
-        <PropTable header='Toast' component={toastCode} />
+        <PropTable header="Toast" component={toastCode} />
       </Col>
     </Col>
   </Row>

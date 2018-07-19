@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.0.0
+
+- (BREAKING) Toast [new implementation]
+- ... add changes here ...
+
 ### 2.3.3
 
 - Fixes lib not uploading
