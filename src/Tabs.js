@@ -7,6 +7,10 @@ import Row from './Row';
 import Col from './Col';
 
 class Tabs extends Component {
+  constructor(props) {
+    super(props);
+    this.scope = `${idgen()}`;
+  }
   componentDidMount() {
     const { tabOptions = {} } = this.props;
 
@@ -21,8 +25,8 @@ class Tabs extends Component {
     if (onChange) onChange(idx, e);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { tabOptions = {} } = nextProps;
+  componentDidUpdate() {
+    const { tabOptions = {} } = this.props;
 
     if (typeof $ !== 'undefined') {
       $(this._tabsEl).tabs(tabOptions);
@@ -38,15 +42,12 @@ class Tabs extends Component {
 
   render() {
     const { children, className, defaultValue } = this.props;
-
-    const scope = `${idgen()}`;
-
     return (
       <Row>
         <Col s={12}>
           <ul className={cx('tabs', className)} ref={el => (this._tabsEl = el)}>
             {React.Children.map(children, (child, id) => {
-              const idx = `${scope}${id}`;
+              const idx = `${this.scope}${id}`;
               const {
                 active,
                 className,
@@ -79,7 +80,7 @@ class Tabs extends Component {
           </ul>
         </Col>
         {React.Children.map(children, (child, id) => {
-          const idx = `${scope}${id}`;
+          const idx = `${this.scope}${id}`;
           return (
             <Col
               id={`tab_${idx}`}
