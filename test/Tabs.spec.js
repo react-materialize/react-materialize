@@ -1,13 +1,15 @@
 import React from 'react';
-import { shallow, mount, unmount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
 import mocker from './helper/mocker';
+import * as idgenHolder from '../src/idgen';
 
 describe('Tabs', () => {
   let wrapper;
   const tabsMock = jest.fn();
   const restore = mocker('tabs', tabsMock);
+  const idgenSpy = jest.spyOn(idgenHolder, 'default');
 
   const options = {
     duration: 400,
@@ -25,6 +27,11 @@ describe('Tabs', () => {
 
   afterAll(() => {
     restore();
+    idgenSpy.mockRestore();
+  });
+
+  beforeEach(() => {
+    tabsMock.mockClear();
   });
 
   test('should create list of Tab itemt', () => {
@@ -48,6 +55,7 @@ describe('Tabs', () => {
 
   describe('when updated', () => {
     beforeEach(() => {
+      idgenSpy.mockClear();
       wrapper = mount(
         <Tabs tabOptions={options}>
           <Tab title="one">One</Tab>
@@ -58,10 +66,15 @@ describe('Tabs', () => {
 
     test('should re-initialize with options', () => {
       expect(tabsMock).toHaveBeenCalledWith(options);
-      expect(tabsMock).toHaveBeenCalledTimes(3);
+      tabsMock.mockClear();
       wrapper.setProps({ className: 'test' });
       expect(tabsMock).toHaveBeenCalledWith(options);
-      expect(tabsMock).toHaveBeenCalledTimes(4);
+    });
+
+    test('idgen is not called after update', () => {
+      expect(idgenSpy).toHaveBeenCalledTimes(1);
+      wrapper.setProps({ className: 'test' });
+      expect(idgenSpy).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -72,7 +85,6 @@ describe('Tabs', () => {
 
     test('should be destroyed', () => {
       expect(tabsMock).toHaveBeenCalledWith('destroy');
-      expect(tabsMock).toHaveBeenCalledTimes(5);
     });
   });
 });
