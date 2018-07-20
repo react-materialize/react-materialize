@@ -29,6 +29,13 @@ class Tabs extends Component {
     }
   }
 
+  componentWillUnmount() {
+    if (typeof $ !== 'undefined') {
+      console.log('destroy');
+      $(this._tabsEl).tabs('destroy');
+    }
+  }
+
   render() {
     const { children, className, defaultValue } = this.props;
 
@@ -102,8 +109,25 @@ Tabs.propTypes = {
    * <a href='http://materializecss.com/tabs.html'>http://materializecss.com/tabs.html</a>
    */
   tabOptions: PropTypes.shape({
+    /*
+     * Transition duration in milliseconds.
+     * @default 300
+     */
+    duration: PropTypes.number,
+    /*
+     * Callback for when a new tab content is showns.
+     * @default null
+     */
     onShow: PropTypes.func,
+    /*
+     * Set to true to enable swipeable tabs. This also uses the responsiveThreshold option.
+     * @default false
+     */
     swipeable: PropTypes.bool,
+    /*
+     * The maximum width of the screen, in pixels, where the swipeable functionality initializes.
+     * @default Infinity
+     */
     responsiveThreshold: PropTypes.number
   })
 };

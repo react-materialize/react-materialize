@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, unmount } from 'enzyme';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
 import mocker from './helper/mocker';
@@ -10,6 +10,7 @@ describe('Tabs', () => {
   const restore = mocker('tabs', tabsMock);
 
   const options = {
+    duration: 400,
     onShow: jest.fn(),
     swipeable: true,
     responsiveThreshold: 2
@@ -56,9 +57,22 @@ describe('Tabs', () => {
     });
 
     test('should re-initialize with options', () => {
-      expect(tabsMock).toHaveBeenCalled();
+      expect(tabsMock).toHaveBeenCalledWith(options);
+      expect(tabsMock).toHaveBeenCalledTimes(3);
       wrapper.setProps({ className: 'test' });
-      expect(tabsMock).toHaveBeenCalled();
+      expect(tabsMock).toHaveBeenCalledWith(options);
+      expect(tabsMock).toHaveBeenCalledTimes(4);
+    });
+  });
+
+  describe('when unmounted', () => {
+    beforeEach(() => {
+      wrapper.unmount();
+    });
+
+    test('should be destroyed', () => {
+      expect(tabsMock).toHaveBeenCalledWith('destroy');
+      expect(tabsMock).toHaveBeenCalledTimes(5);
     });
   });
 });
