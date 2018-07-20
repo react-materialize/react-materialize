@@ -18,6 +18,7 @@ We're updating to the latest materialize-css version, please don't use this bran
 Material design components for react, powered by [materializecss](http://materializecss.com/).
 
 ##### New materialize-css version and *removal of jquery* is being developed under the branch `3.0.0-beta.0`, please try it out and file any issue under the [3.0.0](https://github.com/react-materialize/react-materialize/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A3.0.0) label. Thanks!
+[Join us on discord](https://discordapp.com/invite/H2E65sB)
 
 ## Install
 ```
