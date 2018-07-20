@@ -34,10 +34,7 @@ class Tabs extends Component {
   }
 
   componentWillUnmount() {
-    if (typeof $ !== 'undefined') {
-      console.log('destroy');
-      $(this._tabsEl).tabs('destroy');
-    }
+    $(this._tabsEl).tabs('destroy');
   }
 
   render() {
