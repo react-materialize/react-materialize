@@ -14,8 +14,8 @@ class Tabs extends Component {
   componentDidMount() {
     const { tabOptions = {} } = this.props;
 
-    if (typeof $ !== 'undefined') {
-      $(this._tabsEl).tabs(tabOptions);
+    if (typeof M !== 'undefined') {
+      this.instance = M.Tabs.init(this._tabsEl, tabOptions);
     }
   }
 
@@ -28,13 +28,16 @@ class Tabs extends Component {
   componentDidUpdate() {
     const { tabOptions = {} } = this.props;
 
-    if (typeof $ !== 'undefined') {
-      $(this._tabsEl).tabs(tabOptions);
+    if (typeof M !== 'undefined') {
+      this.instance.destroy();
+      this.instance = M.Tabs.init(this._tabsEl, tabOptions);
     }
   }
 
   componentWillUnmount() {
-    $(this._tabsEl).tabs('destroy');
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   render() {

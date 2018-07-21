@@ -2,13 +2,22 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
 import * as idgenHolder from '../src/idgen';
 
 describe('Tabs', () => {
   let wrapper;
-  const tabsMock = jest.fn();
-  const restore = mocker('tabs', tabsMock);
+  const tabsInitMock = jest.fn();
+  const tabInstanceDestroyMock = jest.fn();
+  const tabsMock = {
+    init: (el, options) => {
+      tabsInitMock(options);
+      return {
+        destroy: tabInstanceDestroyMock
+      };
+    }
+  };
+  const restore = mocker('Tabs', tabsMock);
   const idgenSpy = jest.spyOn(idgenHolder, 'default');
 
   const options = {
@@ -31,7 +40,7 @@ describe('Tabs', () => {
   });
 
   beforeEach(() => {
-    tabsMock.mockClear();
+    tabsInitMock.mockClear();
   });
 
   test('should create list of Tab itemt', () => {
@@ -49,7 +58,7 @@ describe('Tabs', () => {
     });
 
     test('initializes Tabs with options', () => {
-      expect(tabsMock).toHaveBeenCalledWith(options);
+      expect(tabsInitMock).toHaveBeenCalledWith(options);
     });
   });
 
@@ -65,10 +74,12 @@ describe('Tabs', () => {
     });
 
     test('should re-initialize with options', () => {
-      expect(tabsMock).toHaveBeenCalledWith(options);
-      tabsMock.mockClear();
+      expect(tabsInitMock).toHaveBeenCalledWith(options);
+      tabsInitMock.mockClear();
+      tabInstanceDestroyMock.mockClear();
       wrapper.setProps({ className: 'test' });
-      expect(tabsMock).toHaveBeenCalledWith(options);
+      expect(tabInstanceDestroyMock).toHaveBeenCalled();
+      expect(tabsInitMock).toHaveBeenCalledWith(options);
     });
 
     test('idgen is not called after update', () => {
@@ -80,11 +91,12 @@ describe('Tabs', () => {
 
   describe('when unmounted', () => {
     beforeEach(() => {
+      tabInstanceDestroyMock.mockClear();
       wrapper.unmount();
     });
 
     test('should be destroyed', () => {
-      expect(tabsMock).toHaveBeenCalledWith('destroy');
+      expect(tabInstanceDestroyMock).toHaveBeenCalled();
     });
   });
 });
