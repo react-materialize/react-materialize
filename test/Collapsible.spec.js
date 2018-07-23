@@ -2,15 +2,45 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
 
 describe('<Collapsible />', () => {
   let wrapper;
-  const collapsibleMock = jest.fn();
-  const restore = mocker('collapsible', collapsibleMock);
+  const collapsibleInitMock = jest.fn();
+  const collapsibleInstanceDestroyMock = jest.fn();
+  const collapsibleMock = {
+    init: (el, options) => {
+      collapsibleInitMock(options);
+      return {
+        destroy: collapsibleInstanceDestroyMock
+      };
+    }
+  };
+  const restore = mocker('Collapsible', collapsibleMock);
+
+  const options = {
+    onOpenStart: () => {},
+    inDuration: 100,
+    outDuration: 50
+  };
+
+  beforeEach(() => {
+    collapsibleInitMock.mockClear();
+  });
 
   afterAll(() => {
     restore();
+  });
+
+  test('initializes Collapsible with options', () => {
+    wrapper = shallow(<Collapsible options={options} />);
+    expect(collapsibleInitMock).toHaveBeenCalledWith(options);
+  });
+
+  test('Destroyed when unmounted', () => {
+    wrapper = shallow(<Collapsible options={options} />);
+    wrapper.unmount();
+    expect(collapsibleInstanceDestroyMock).toHaveBeenCalled();
   });
 
   test('renders', () => {
@@ -90,5 +120,25 @@ describe('<Collapsible />', () => {
       .simulate('click');
     expect(wrapper.state().activeKey).toEqual(1);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  test('onSelect with right called with right argument', () => {
+    const onSelect = jest.fn();
+    wrapper = mount(
+      <Collapsible accordion onSelect={onSelect}>
+        <CollapsibleItem header="A">A</CollapsibleItem>
+        <CollapsibleItem header="B">B</CollapsibleItem>
+        <CollapsibleItem header="C">C</CollapsibleItem>
+        <CollapsibleItem header="D">D</CollapsibleItem>
+        <CollapsibleItem header="E">E</CollapsibleItem>
+      </Collapsible>
+    );
+
+    const clickedIndex = 3;
+    wrapper
+      .find('.collapsible-header')
+      .at(clickedIndex)
+      .simulate('click');
+    expect(onSelect).toHaveBeenCalledWith(clickedIndex);
   });
 });

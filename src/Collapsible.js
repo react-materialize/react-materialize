@@ -15,7 +15,13 @@ class Collapsible extends Component {
   }
 
   componentDidMount() {
-    $(this._collapsible).collapsible();
+    this.instance = M.Collapsible.init(this._collapsible, this.props.options);
+  }
+
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   render() {
@@ -95,7 +101,11 @@ Collapsible.propTypes = {
    * item's eventKey value. Ignored if accordion is false.
    */
   defaultActiveKey: PropTypes.any,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
+  /**
+   * Options passed to initializer
+   */
+  options: PropTypes.any
 };
 
 Collapsible.defaultProps = {
