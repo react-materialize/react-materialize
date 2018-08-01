@@ -22,7 +22,7 @@ class Toast extends Component {
   }
 
   onClick() {
-    Materialize.toast(this.props.toast, 1000);
+    Materialize.toast({ html: this.props.toast }, 1000);
   }
 }
 
