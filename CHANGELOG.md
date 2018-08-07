@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.4.1
+
+- No significant changes
+
 ### 2.4.0
 
 - [NEW Feature] File Input (niross #570)
