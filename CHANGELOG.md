@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.4.2
+
+- Fix travis authentication
+
 ### 2.4.1
 
 - No significant changes
