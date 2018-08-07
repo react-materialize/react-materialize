@@ -33,6 +33,18 @@ const FormsPage = () => (
       </Section>
 
       <Section>
+        <p className='caption'>
+          If you want to style an input button with a path input we provide this structure.
+        </p>
+        <h4 className='col s12'>File Input</h4>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputFile.js')} />
+        <p>
+          You can also use the <code className="language-markup">multiple</code> attribute to allow multiple file uploads.
+        </p>
+        <ReactPlayground code={require('!raw-loader!../../../examples/InputFiles.js')} />
+      </Section>
+
+      <Section>
         <h4 className='col s12'>Select</h4>
         <ReactPlayground code={require('!raw-loader!../../../examples/SelectSimple.js')} />
 

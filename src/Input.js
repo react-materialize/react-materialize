@@ -112,7 +112,8 @@ class Input extends Component {
     let classes = {
       col: true,
       inline: type !== 'checkbox' && type !== 'radio' && inline,
-      'input-field': type !== 'checkbox' && type !== 'radio'
+      'input-field': type !== 'checkbox' && type !== 'radio' && type !== 'file',
+      'file-field': type === 'file'
     };
     constants.SIZES.forEach(size => {
       classes[size + sizes[size]] = sizes[size];
@@ -133,6 +134,9 @@ class Input extends Component {
         C = 'input';
         inputType = 'checkbox';
         break;
+      case 'file':
+        C = 'input';
+        inputClasses['file-path'] = true;
       default:
         C = 'input';
         inputType = type || 'text';
@@ -232,6 +236,24 @@ class Input extends Component {
           </label>
         </div>
       );
+    } else if (type === 'file') {
+      return (
+        <div className={cx(classes)}>
+          <div className="btn">
+            <span>{label}</span>
+            <C type="file" multiple={multiple} {...other} />
+          </div>
+          <div className="file-path-wrapper">
+            <C
+              type="text"
+              className={cx(className, inputClasses)}
+              defaultValue={defaultValue}
+              id={this._id}
+              placeholder={placeholder}
+            />
+          </div>
+        </div>
+      );
     } else {
       let defaultValue =
         inputType !== 'checkbox' && inputType !== 'radio'
@@ -316,7 +338,7 @@ Input.propTypes = {
   error: PropTypes.string,
   success: PropTypes.string,
   /**
-   * Input field type, e.g. select, checkbox, radio, text, tel, email
+   * Input field type, e.g. select, checkbox, radio, text, tel, email, file
    * @default 'text'
    */
   type: PropTypes.string,
