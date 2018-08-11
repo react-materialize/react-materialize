@@ -4,14 +4,19 @@ import cx from 'classnames';
 
 class Slider extends Component {
   componentDidMount() {
-    const { fullscreen, indicators, interval, transition } = this.props;
-
-    $('.slider').slider({
-      full_width: fullscreen,
+    const { indicators, interval, duration, height } = this.props;
+    this.instance = M.Slider.init(this._slider, {
       indicators,
       interval,
-      transition
+      duration,
+      height
     });
+  }
+
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   render() {
@@ -22,7 +27,10 @@ class Slider extends Component {
     };
 
     return (
-      <div className={cx(classes, className)}>
+      <div
+        ref={node => (this._slider = node)}
+        className={cx(classes, className)}
+      >
         <ul className="slides">{children}</ul>
       </div>
     );
@@ -47,13 +55,20 @@ Slider.propTypes = {
    * The duration of the transation animation in ms
    * @default 500
    */
-  transition: PropTypes.number
+  duration: PropTypes.number,
+  /**
+   * The height of the Slider window
+   * @default 400
+   */
+  height: PropTypes.number
 };
 
 Slider.defaultProps = {
   fullscreen: false,
   indicators: true,
-  interval: 6000
+  interval: 6000,
+  duration: 500,
+  height: 400
 };
 
 export default Slider;
