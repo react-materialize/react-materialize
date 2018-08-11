@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class Slider extends Component {
-  componentDidMount() {
+  constructor() {
+    super();
+    this.initSlider = this.initSlider.bind(this);
+  }
+
+  initSlider() {
     const { indicators, interval, duration, height } = this.props;
     this.instance = M.Slider.init(this._slider, {
       indicators,
@@ -11,6 +16,28 @@ class Slider extends Component {
       duration,
       height
     });
+  }
+
+  componentDidMount() {
+    this.initSlider();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.instance) {
+      this.instance.destroy();
+      var activeIndex = this.instance.activeIndex;
+      // When instance is destroyed, the style attribute which determines the
+      // height of the slider is not removed, making the fullscreen incorrect height
+      if (prevProps.fullscreen === false && this.props.fullscreen) {
+        this.instance.el.removeAttribute('style');
+        this.instance.el.childNodes[0].removeAttribute('style');
+      }
+      this.initSlider();
+      // keep indicator at current index displayed
+      if (this.props.indicators && activeIndex)
+        this.instance['$indicators'][activeIndex].className =
+          'indicator-item active';
+    }
   }
 
   componentWillUnmount() {

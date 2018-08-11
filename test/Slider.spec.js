@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import Slider from '../src/Slider';
 import mocker from './helper/new-mocker';
 
@@ -11,7 +11,12 @@ describe('<Slider />', () => {
     init: (el, options) => {
       sliderInitMock(options);
       return {
-        destroy: sliderInstanceDestroyMock
+        destroy: sliderInstanceDestroyMock,
+        el: {
+          removeAttribute: jest.fn(),
+          childNodes: [{ removeAttribute: jest.fn() }]
+        },
+        $indicators: [{ className: 'indicator-item' }]
       };
     }
   };
