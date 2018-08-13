@@ -6,6 +6,8 @@ class Slider extends Component {
   constructor() {
     super();
     this.initSlider = this.initSlider.bind(this);
+    this.fullscreenReset = this.fullscreenReset.bind(this);
+    this.setActiveIndex = this.setActiveIndex.bind(this);
   }
 
   initSlider() {
@@ -18,26 +20,36 @@ class Slider extends Component {
     });
   }
 
+  /**
+   * If the slider was not in fullscreen, the height is set as a style attribute
+   * on the Slider element. When `.destroy()` is called, this attribute is not
+   * removed, resulting in a fullscreen displayed incorrectly.
+   */
+  fullscreenReset(was_fullscreen) {
+    if (!was_fullscreen && this.props.fullscreen) {
+      this.instance.el.removeAttribute('style');
+      this.instance.el.childNodes[0].removeAttribute('style');
+    }
+  }
+
+  setActiveIndex(activeIndex) {
+    if (this.props.indicators && activeIndex)
+      this.instance['$indicators'][activeIndex].className =
+        'indicator-item active';
+  }
+
   componentDidMount() {
     this.initSlider();
   }
 
   componentDidUpdate(prevProps) {
-    if (this.instance) {
-      this.instance.destroy();
-      var activeIndex = this.instance.activeIndex;
-      // When instance is destroyed, the style attribute which determines the
-      // height of the slider is not removed, making the fullscreen incorrect height
-      if (prevProps.fullscreen === false && this.props.fullscreen) {
-        this.instance.el.removeAttribute('style');
-        this.instance.el.childNodes[0].removeAttribute('style');
-      }
-      this.initSlider();
-      // keep indicator at current index displayed
-      if (this.props.indicators && activeIndex)
-        this.instance['$indicators'][activeIndex].className =
-          'indicator-item active';
-    }
+    if (!this.instance) return;
+    const active_index = this.instance.activeIndex;
+    this.instance.destroy();
+    this.fullscreenReset(prevProps.fullscreen);
+    this.initSlider();
+    // keep indicator at current index displayed
+    this.setActiveIndex(active_index);
   }
 
   componentWillUnmount() {

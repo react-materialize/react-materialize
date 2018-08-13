@@ -57,4 +57,18 @@ describe('<Slider />', () => {
     wrapper = shallow(<Slider fullscreen />);
     expect(wrapper.hasClass('fullscreen'));
   });
+
+  test('update should destroy and re-initialize with new options', () => {
+    wrapper = shallow(<Slider />);
+    expect(sliderInitMock).toHaveBeenCalledWith(defaultOptions);
+    const nextProps = {
+      indicators: false,
+      interval: 500,
+      duration: 1000,
+      height: 500
+    };
+    wrapper.setProps(nextProps);
+    expect(sliderInstanceDestroyMock).toHaveBeenCalled();
+    expect(sliderInitMock.mock.calls[1][0]).toEqual(nextProps);
+  });
 });
