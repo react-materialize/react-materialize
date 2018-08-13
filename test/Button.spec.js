@@ -31,6 +31,11 @@ describe('Button', () => {
     expect(wrapper.find('.btn-large')).toHaveLength(1);
   });
 
+  test('should apply small styles', () => {
+    wrapper = shallow(<Button small>Stuff</Button>);
+    expect(wrapper.find('.btn-small')).toHaveLength(1);
+  });
+
   test('should apply floating styles', () => {
     wrapper = shallow(<Button floating>Stuff</Button>);
     expect(wrapper.find('.btn-floating')).toHaveLength(1);
