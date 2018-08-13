@@ -23,6 +23,7 @@ import ChipsPage from './pages/ChipsPage';
 import CollectionsPage from './pages/CollectionsPage';
 import FooterPage from './pages/FooterPage';
 import FormsPage from './pages/FormsPage';
+import FloatingActionButtonsPage from './pages/FloatingActionButtonsPage';
 import IconsPage from './pages/IconsPage';
 import NavbarPage from './pages/NavbarPage';
 import PaginationPage from './pages/PaginationPage';
@@ -53,6 +54,7 @@ const components = {
   chips: ChipsPage,
   collections: CollectionsPage,
   footer: FooterPage,
+  floatingActionButton: FloatingActionButtonsPage,
   forms: FormsPage,
   icon: IconsPage,
   navbar: NavbarPage,

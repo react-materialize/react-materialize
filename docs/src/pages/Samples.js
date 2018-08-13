@@ -50,6 +50,7 @@ export default {
   sideNav: require('!raw-loader!../../../examples/SideNavBasic.js'),
   sliders: require('!raw-loader!../../../examples/Sliders.js'),
   submitButton: require('!raw-loader!../../../examples/SubmitButton.js'),
+  smallButtom: require('!raw-loader!../../../examples/SmallButtom.js'),
   tab: require('!raw-loader!../../../examples/Tab.js'),
   tableBorderless: require('!raw-loader!../../../examples/BorderlessTable.js'),
   toast: require('!raw-loader!../../../examples/Toast.js')

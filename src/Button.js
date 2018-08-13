@@ -13,12 +13,15 @@ class Button extends Component {
   }
 
   componentDidMount() {
-    const { tooltip, tooltipOptions } = this.props;
+    const { tooltip, tooltipOptions, fab } = this.props;
     if (
       typeof $ !== 'undefined' &&
       (typeof tooltip !== 'undefined' || typeof tooltipOptions !== 'undefined')
     ) {
       $(this._btnEl).tooltip(tooltipOptions);
+    }
+    if (fab && this._floatingActionBtn) {
+      $(this._floatingActionBtn).floatingActionButton();
     }
   }
 
@@ -32,6 +35,7 @@ class Button extends Component {
       flat,
       floating,
       large,
+      small,
       disabled,
       waves,
       tooltip,
@@ -50,9 +54,12 @@ class Button extends Component {
       classes['waves-' + waves] = true;
     }
 
-    let styles = { flat, floating, large };
+    let styles = { flat, floating, large, small };
     constants.STYLES.forEach(style => {
-      classes['btn-' + style] = styles[style];
+      if (styles[style]) {
+        classes.btn = false;
+        classes['btn-' + style] = true;
+      }
     });
 
     if (modal) {
@@ -81,7 +88,10 @@ class Button extends Component {
   renderFab(className, orientation, clickOnly) {
     const classes = cx(orientation, clickOnly);
     return (
-      <div className={cx('fixed-action-btn', classes)}>
+      <div
+        ref={el => (this._floatingActionBtn = el)}
+        className={cx('fixed-action-btn', classes)}
+      >
         <a className={className}>{this.renderIcon()}</a>
         <ul>
           {React.Children.map(this.props.children, child => {
@@ -109,6 +119,7 @@ Button.propTypes = {
    */
   flat: PropTypes.bool,
   large: PropTypes.bool,
+  small: PropTypes.bool,
   floating: PropTypes.bool,
   /**
    * Fixed action button
