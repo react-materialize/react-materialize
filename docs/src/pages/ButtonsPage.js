@@ -70,30 +70,6 @@ const ButtonsPage = () => (
       <Col s={12}>
         <ReactPlayground code={Samples.disabledButton} />
       </Col>
-      <h4 className='col s12'>
-        Fixed Action Button
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.fixedActionButton}>
-          {fixedActionButton}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Horizontal FAB
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.horizontalFab}>
-          {horizontalFab}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Button as Link
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.buttonAsLink}>
-          {buttonAsLink}
-        </ReactPlayground>
-      </Col>
       <Col s={12}>
         <PropTable header='Buttons' component={ButtonCode} />
       </Col>
