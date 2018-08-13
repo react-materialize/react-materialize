@@ -12,7 +12,7 @@ import floatingButton from '../../../examples/FloatingButton';
 import horizontalFab from '../../../examples/HorizontalFAB';
 import buttonAsLink from '../../../examples/ButtonAsLink';
 
-const ButtonsPage = () => (
+const FloatingActionButtonsPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
       <p className='caption'>
@@ -101,4 +101,4 @@ const ButtonsPage = () => (
   </Row>
 );
 
-export default ButtonsPage;
+export default FloatingActionButtonsPage;
