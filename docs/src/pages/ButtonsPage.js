@@ -7,10 +7,7 @@ import Samples from './Samples';
 import ButtonCode from '!raw-loader!Button';
 
 import raisedButton from '../../../examples/RaisedButton';
-import fixedActionButton from '../../../examples/FixedActionButton';
 import floatingButton from '../../../examples/FloatingButton';
-import horizontalFab from '../../../examples/HorizontalFAB';
-import buttonAsLink from '../../../examples/ButtonAsLink';
 
 const ButtonsPage = () => (
   <Row>
