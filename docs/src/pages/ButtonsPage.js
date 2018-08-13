@@ -7,10 +7,7 @@ import Samples from './Samples';
 import ButtonCode from '!raw-loader!Button';
 
 import raisedButton from '../../../examples/RaisedButton';
-import fixedActionButton from '../../../examples/FixedActionButton';
 import floatingButton from '../../../examples/FloatingButton';
-import horizontalFab from '../../../examples/HorizontalFAB';
-import buttonAsLink from '../../../examples/ButtonAsLink';
 
 const ButtonsPage = () => (
   <Row>
@@ -35,28 +32,40 @@ const ButtonsPage = () => (
         </ReactPlayground>
       </Col>
       <h4 className='col s12'>
-        Fixed Action Button
+        Submit Button
       </h4>
+      <p className='col s12 caption'>
+        When you use a button to submit a form, instead of using a input tag, use a button tag with a type submit
+      </p>
       <Col s={12}>
-        <ReactPlayground code={Samples.fixedActionButton}>
-          {fixedActionButton}
-        </ReactPlayground>
+        <ReactPlayground code={Samples.submitButton} />
       </Col>
       <h4 className='col s12'>
-        Horizontal FAB
+        Large Button
       </h4>
+      <p className='col s12 caption'>
+        This button has a larger height for buttons that need more attention.
+      </p>
       <Col s={12}>
-        <ReactPlayground code={Samples.horizontalFab}>
-          {horizontalFab}
-        </ReactPlayground>
+        <ReactPlayground code={Samples.largeButton} />
       </Col>
       <h4 className='col s12'>
-        Button as Link
+        Small Button
       </h4>
+      <p className='col s12 caption'>
+        When mouse and keyboard are the primary input methods, this smaller button is useful for denser UI layouts.
+      </p>
       <Col s={12}>
-        <ReactPlayground code={Samples.buttonAsLink}>
-          {buttonAsLink}
-        </ReactPlayground>
+        <ReactPlayground code={Samples.smallButtom} />
+      </Col>
+      <h4 className='col s12'>
+        Disabled Button
+      </h4>
+      <p className='col s12 caption'>
+        This style can be applied to all button types
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.disabledButton} />
       </Col>
       <Col s={12}>
         <PropTable header='Buttons' component={ButtonCode} />
