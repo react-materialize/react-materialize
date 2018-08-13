@@ -54,7 +54,7 @@ const components = {
   chips: ChipsPage,
   collections: CollectionsPage,
   footer: FooterPage,
-  floatActionButton: FloatingActionButtonsPage,
+  floatingActionButton: FloatingActionButtonsPage,
   forms: FormsPage,
   icon: IconsPage,
   navbar: NavbarPage,
