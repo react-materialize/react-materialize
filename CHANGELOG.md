@@ -5,20 +5,6 @@
 - (BREAKING) Toast [new implementation]
 - ... add changes here ...
 
-### 2.4.2
-
-- Fix travis authentication
-
-### 2.4.1
-
-- No significant changes
-
-### 2.4.0
-
-- [NEW Feature] File Input (niross #570)
-- Fixed `Icon` not having refs (XavierForks #572)
-- Add Toast update to docs (hnrchrdl #576)
-
 ### 2.3.3
 
 - Fixes lib not uploading
