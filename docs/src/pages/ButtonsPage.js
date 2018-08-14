@@ -56,7 +56,7 @@ const ButtonsPage = () => (
         When mouse and keyboard are the primary input methods, this smaller button is useful for denser UI layouts.
       </p>
       <Col s={12}>
-        <ReactPlayground code={Samples.smallButtom} />
+        <ReactPlayground code={Samples.smallButton} />
       </Col>
       <h4 className='col s12'>
         Disabled Button
