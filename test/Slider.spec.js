@@ -62,13 +62,15 @@ describe('<Slider />', () => {
     wrapper = shallow(<Slider />);
     expect(sliderInitMock).toHaveBeenCalledWith(defaultOptions);
     const nextProps = {
-      indicators: false,
-      interval: 500,
-      duration: 1000,
-      height: 500
+      options: {
+        indicators: false,
+        interval: 500,
+        duration: 1000,
+        height: 500
+      }
     };
     wrapper.setProps(nextProps);
     expect(sliderInstanceDestroyMock).toHaveBeenCalled();
-    expect(sliderInitMock.mock.calls[1][0]).toEqual(nextProps);
+    expect(sliderInitMock.mock.calls[1][0]).toEqual(nextProps.options);
   });
 });

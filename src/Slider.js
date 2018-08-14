@@ -3,21 +3,15 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class Slider extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.initSlider = this.initSlider.bind(this);
     this.fullscreenReset = this.fullscreenReset.bind(this);
     this.setActiveIndex = this.setActiveIndex.bind(this);
   }
 
   initSlider() {
-    const { indicators, interval, duration, height } = this.props;
-    this.instance = M.Slider.init(this._slider, {
-      indicators,
-      interval,
-      duration,
-      height
-    });
+    this.instance = M.Slider.init(this._slider, this.props.options);
   }
 
   /**
@@ -25,17 +19,21 @@ class Slider extends Component {
    * on the Slider element. When `.destroy()` is called, this attribute is not
    * removed, resulting in a fullscreen displayed incorrectly.
    */
-  fullscreenReset(was_fullscreen) {
-    if (!was_fullscreen && this.props.fullscreen) {
+  fullscreenReset(wasFullscreen) {
+    if (!wasFullscreen && this.props.fullscreen) {
       this.instance.el.removeAttribute('style');
       this.instance.el.childNodes[0].removeAttribute('style');
     }
   }
 
   setActiveIndex(activeIndex) {
-    if (this.props.indicators && activeIndex)
+    let { indicators } = this.props.options;
+    // In case this option is not defined, we assume true, as per default
+    let showIndicators = typeof indicators === 'undefined' || indicators;
+    if (showIndicators && activeIndex) {
       this.instance['$indicators'][activeIndex].className =
         'indicator-item active';
+    }
   }
 
   componentDidMount() {
@@ -44,12 +42,12 @@ class Slider extends Component {
 
   componentDidUpdate(prevProps) {
     if (!this.instance) return;
-    const active_index = this.instance.activeIndex;
+    const activeIndex = this.instance.activeIndex;
     this.instance.destroy();
     this.fullscreenReset(prevProps.fullscreen);
     this.initSlider();
     // keep indicator at current index displayed
-    this.setActiveIndex(active_index);
+    this.setActiveIndex(activeIndex);
   }
 
   componentWillUnmount() {
@@ -79,35 +77,43 @@ class Slider extends Component {
 Slider.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  /**
+   * Whether or not the Slider should be fullscreen
+   * @default false
+   */
   fullscreen: PropTypes.bool,
-  /**
-   * Set to false to hide slide indicators
-   * @default true
-   */
-  indicators: PropTypes.bool,
-  /**
-   * The interval between transitions in ms
-   * @default 6000
-   */
-  interval: PropTypes.number,
-  /**
-   * The duration of the transation animation in ms
-   * @default 500
-   */
-  duration: PropTypes.number,
-  /**
-   * The height of the Slider window
-   * @default 400
-   */
-  height: PropTypes.number
+  options: PropTypes.shape({
+    /**
+     * Set to false to hide slide indicators
+     * @default true
+     */
+    indicators: PropTypes.bool,
+    /**
+     * The interval between transitions in ms
+     * @default 6000
+     */
+    interval: PropTypes.number,
+    /**
+     * The duration of the transation animation in ms
+     * @default 500
+     */
+    duration: PropTypes.number,
+    /**
+     * The height of the Slider window
+     * @default 400
+     */
+    height: PropTypes.number
+  })
 };
 
 Slider.defaultProps = {
   fullscreen: false,
-  indicators: true,
-  interval: 6000,
-  duration: 500,
-  height: 400
+  options: {
+    indicators: true,
+    interval: 6000,
+    duration: 500,
+    height: 400
+  }
 };
 
 export default Slider;
