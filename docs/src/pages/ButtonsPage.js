@@ -32,6 +32,15 @@ const ButtonsPage = () => (
         </ReactPlayground>
       </Col>
       <h4 className='col s12'>
+        Flat
+      </h4>
+      <p className='col s12 caption'>
+        Flat buttons are used to reduce excessive layering. For example, flat buttons are usually used for actions within a card or modal so there aren't too many overlapping shadows.
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.flatButton} />
+      </Col>
+      <h4 className='col s12'>
         Submit Button
       </h4>
       <p className='col s12 caption'>
