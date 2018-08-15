@@ -13,15 +13,15 @@ class Button extends Component {
   }
 
   componentDidMount() {
+    if (!M) return;
+
     const { tooltip, tooltipOptions, fab } = this.props;
-    if (
-      typeof $ !== 'undefined' &&
-      (typeof tooltip !== 'undefined' || typeof tooltipOptions !== 'undefined')
-    ) {
-      $(this._btnEl).tooltip(tooltipOptions);
+    if (tooltip || tooltipOptions) {
+      M.Tooltip.init(this._btnEl, tooltipOptions);
     }
+
     if (fab && this._floatingActionBtn) {
-      $(this._floatingActionBtn).floatingActionButton();
+      M.FloatingActionButton.init(this._floatingActionBtn);
     }
   }
 
