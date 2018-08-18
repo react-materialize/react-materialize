@@ -16,7 +16,7 @@ class Button extends Component {
     if (!M) return;
 
     const { tooltip, tooltipOptions, fab } = this.props;
-    if (tooltip || tooltipOptions) {
+    if (tooltip) {
       this.tooltipInstance = M.Tooltip.init(this._btnEl, tooltipOptions);
     }
 
