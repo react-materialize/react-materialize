@@ -21,7 +21,9 @@ class Button extends Component {
     }
 
     if (fab && this._floatingActionBtn) {
-      this.floatingActionButtonInstance = M.FloatingActionButton.init(this._floatingActionBtn);
+      this.floatingActionButtonInstance = M.FloatingActionButton.init(
+        this._floatingActionBtn
+      );
     }
   }
 
