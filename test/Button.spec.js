@@ -105,7 +105,11 @@ describe('Button', () => {
     });
 
     test('initializes Button with tooltip options', () => {
-      wrapper = shallow(<Button tooltipOptions={tooltipOptions}>Stuff</Button>);
+      wrapper = shallow(
+        <Button tooltip={tooltip} tooltipOptions={tooltipOptions}>
+          Stuff
+        </Button>
+      );
       expect(tooltipInitMock).toHaveBeenCalledWith(tooltipOptions);
     });
 
