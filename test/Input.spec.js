@@ -55,9 +55,7 @@ describe('<Input />', () => {
     const values = [1, 2, 3, 4, 5];
     wrapper = shallow(
       <Input type="select">
-        {values.map(val => (
-          <option key={val} value={val} />
-        ))}
+        {values.map(val => <option key={val} value={val} />)}
       </Input>
     );
     expect(wrapper.instance().isSelect()).toBeTruthy();
