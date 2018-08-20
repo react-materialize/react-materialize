@@ -5,10 +5,10 @@ import Collapsible from 'Collapsible';
 import CollapsibleItem from 'CollapsibleItem';
 import Search from './Search';
 import routes from '../routes';
-import { capitalizeAndAddSpaces } from '../helper/string-helper';
 
 const isMobile = () => ($(window).width() < 993);
 const getPageTitle = () => window.location.hash.substring(2) || 'react materialize';
+const capitalize = path => path[0] ? path[0].toUpperCase() + path.substr(1) : '';
 
 class Navigation extends React.Component {
   constructor (props) {
@@ -78,7 +78,7 @@ const renderNavItems = (navItem, idx) => {
 const renderSubNavItems = ({ path }) => (
   <li key={path}>
     <NavLink to={path} className='waves-effect waves-teal'>
-      {capitalizeAndAddSpaces(path.substr(1))}
+      {capitalize(path.substr(1))}
     </NavLink>
   </li>
 );
