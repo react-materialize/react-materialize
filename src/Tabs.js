@@ -29,6 +29,14 @@ class Tabs extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const { tabOptions = {} } = this.props;
+
+    if (typeof $ !== 'undefined') {
+      $(this._tabsEl).tabs(tabOptions);
+    }
+  }
+
   render() {
     const { children, className, defaultValue } = this.props;
 
