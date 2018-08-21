@@ -113,10 +113,59 @@ describe('Button', () => {
       expect(tooltipInitMock).toHaveBeenCalledWith(tooltipOptions);
     });
 
-    test('Destroyed when unmounted', () => {
+    test('destroyed when unmounted', () => {
       wrapper = shallow(<Button tooltip={tooltip}>Stuff</Button>);
       wrapper.unmount();
       expect(tooltipInstanceDestroyMock).toHaveBeenCalled();
+    });
+  });
+
+  describe('with fixed action button', () => {
+    const fabInitMock = jest.fn();
+    const fabInstanceDestroyMock = jest.fn();
+    const fabMock = {
+      init: (el, options) => {
+        fabInitMock(options);
+        return {
+          destroy: fabInstanceDestroyMock
+        };
+      }
+    };
+    const restore = mocker('FloatingActionButton', fabMock);
+    const fab = 'vertical';
+    let wrapper;
+
+    beforeEach(() => {
+      fabInitMock.mockClear();
+      wrapper = mount(
+        <Button
+          floating
+          fab={fab}
+          className="red"
+          large
+          style={{
+            bottom: '45px',
+            right: '24px'
+          }}
+        >
+          <Button floating icon="insert_chart" className="red" />
+          <Button floating icon="format_quote" className="yellow darken-1" />
+          <Button floating icon="publish" className="green" />
+          <Button floating icon="attach_file" className="blue" />
+        </Button>
+      );
+    });
+
+    afterAll(() => {
+      restore();
+    });
+
+    test('initializes FloatingActionButton instance', () => {
+      expect(fabInitMock).toHaveBeenCalled();
+    });
+    test('destroys FloatingActionButton instance when unmounted', () => {
+      wrapper.unmount();
+      expect(fabInstanceDestroyMock).toHaveBeenCalled();
     });
   });
 });
