@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
-import Icon from './Icon';
 
 class TextInput extends Component {
   constructor(props) {
@@ -36,6 +35,7 @@ class TextInput extends Component {
       noLayout,
       placeholder,
       id,
+      icon,
       label,
       inputClassName,
       validate,
@@ -65,8 +65,12 @@ class TextInput extends Component {
     const renderLabel = () =>
       label && <label htmlFor={inputProps.id}>{label}</label>;
 
+    const renderIcon = () =>
+      icon && <i className="material-icons prefix">{icon}</i>;
+
     return (
       <div className={wrapperClasses}>
+        {renderIcon()}
         <input
           ref={el => {
             this.inputRef = el;
@@ -108,6 +112,10 @@ TextInput.propTypes = {
    * @default idgen()
    */
   id: PropTypes.string,
+  /*
+   * prefix icon
+   */
+  icon: PropTypes.string,
   /*
    * label text
    */
