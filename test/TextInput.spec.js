@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import TextInput from '../src/TextInput';
-import Icon from '../src/Icon';
 // import mocker from './helper/new-mocker';
 
 describe('<TextInput />', () => {
@@ -61,5 +60,10 @@ describe('<TextInput />', () => {
     wrapper = shallow(<TextInput />);
     wrapper.setState({ value: 'hello' });
     expect(wrapper.find('input').prop('value')).toEqual('hello');
+  });
+
+  test('with icon', () => {
+    wrapper = shallow(<TextInput icon="cloud" />);
+    expect(wrapper.find('i.material-icons.prefix')).toHaveLength(1);
   });
 });
