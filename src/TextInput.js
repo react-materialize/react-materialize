@@ -9,7 +9,7 @@ class TextInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: props.value
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,10 +17,15 @@ class TextInput extends Component {
 
   handleChange(event) {
     const { onChange } = this.props;
-
     if (onChange) onChange(event);
 
     this.setState({ value: event.target.value });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.value !== prevProps.value) {
+      M.updateTextFields();
+    }
   }
 
   render() {
@@ -34,7 +39,6 @@ class TextInput extends Component {
       label,
       inputClassName,
       validate,
-      value,
       type
     } = this.props;
 
