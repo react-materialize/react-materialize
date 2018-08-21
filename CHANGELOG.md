@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.4.4
+
+- Fix vulnerable dependencies + linting
+
 ### 2.4.3
 
 - Fixes tabs update bug (osztenkurden #634)
