@@ -1,17 +1,9 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import TextInput from '../src/TextInput';
-// import mocker from './helper/new-mocker';
 
 describe('<TextInput />', () => {
   let wrapper;
-
-  // const textareaAutoResizeMock = jest.fn();
-  // const restore = mocker('textareaAutoResize', textareaAutoResizeMock);
-
-  // afterAll(() => {
-  // restore();
-  // });
 
   test('handles layout classes', () => {
     wrapper = shallow(<TextInput s={4} m={6} />);
