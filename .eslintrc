@@ -8,6 +8,7 @@ globals:
   Materialize: true
   React: true
   ReactDOM: true
+  M: true
 
 plugins: ['prettier']
 
