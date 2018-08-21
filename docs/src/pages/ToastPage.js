@@ -18,7 +18,12 @@ const ToastPage = () => (
       <Col s={12}>
         <ReactPlayground code={Samples.toast} />
       </Col>
-
+      <h5 className='col s12'>
+        Programmatic use
+      </h5>
+      <Col s={12}>
+        <ReactPlayground code={Samples.toastProgrammatically} />
+      </Col>
       <Col s={12}>
         <PropTable header="Toast" component={toastCode} />
       </Col>

@@ -11,10 +11,6 @@ class Collection extends Component {
   render() {
     const { children, header, className } = this.props;
 
-    let classes = {
-      collection: true,
-      'with-header': !!header
-    };
     let C = 'ul';
     React.Children.forEach(children, child => {
       if (child.props.href) {

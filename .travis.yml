@@ -1,9 +1,10 @@
 language: node_js
 node_js: stable
 before_deploy:
-  - npm run build
+- npm run build
 deploy:
   provider: npm
-  email: $NPM_EMAIL
-  api_key: $NPM_TOKEN
+  email: "$NPM_EMAIL"
+  api_key:
+    secure: J7gG98WsK9OEbcRa2B4gR24pKhkhkGeUeMU5ERv0n4HCVvak2pae4pCabmwKm1kPx9/db+c2xDFq7IBVkbEwU3lDXqWQZWGgCaeVwMXQoVcS0FvegQ3KruvFG+lirn7CV22k033thdXlDvaiGoBFpDKES7TWyMSav8eDNTZgnvM=
   skip_cleanup: true

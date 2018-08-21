@@ -35,12 +35,6 @@ describe('<Input />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('input values', () => {
-    const values = [1, 2, 3];
-    wrapper = shallow(<Input type="file" multiple value={values} />);
-    expect(wrapper).toMatchSnapshot();
-  });
-
   test('label', () => {
     wrapper = shallow(<Input label="Name" labelClassName="red" />);
     expect(wrapper).toMatchSnapshot();
@@ -184,6 +178,11 @@ describe('<Input />', () => {
     wrapper = mount(<Input type="time" options={options} />);
 
     expect(pickatimeMock).toHaveBeenCalledWith(options);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('file input', () => {
+    wrapper = shallow(<Input type="file" label="Upload" multiple />);
     expect(wrapper).toMatchSnapshot();
   });
 });
