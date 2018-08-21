@@ -137,6 +137,7 @@ class Input extends Component {
       case 'file':
         C = 'input';
         inputClasses['file-path'] = true;
+        break;
       default:
         C = 'input';
         inputType = type || 'text';
