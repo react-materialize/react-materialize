@@ -8,9 +8,10 @@ class TextInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value
+      value: ''
     };
 
+    this.id = props.id || idgen();
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -32,17 +33,18 @@ class TextInput extends Component {
       s,
       m,
       l,
+      disabled,
       noLayout,
       placeholder,
-      id,
       icon,
       label,
       inputClassName,
+      success,
+      error,
       validate,
+      value,
       type
     } = this.props;
-
-    this.id = id || idgen();
 
     const sizes = { s, m, l };
 
@@ -59,11 +61,21 @@ class TextInput extends Component {
     const inputProps = {
       placeholder,
       type: type || 'text',
-      id: this.id
+      id: this.id,
+      value: value || this.state.value,
+      disabled
     };
 
     const renderLabel = () =>
-      label && <label htmlFor={inputProps.id}>{label}</label>;
+      label && (
+        <label
+          data-success={success}
+          data-error={error}
+          htmlFor={inputProps.id}
+        >
+          {label}
+        </label>
+      );
 
     const renderIcon = () =>
       icon && <i className="material-icons prefix">{icon}</i>;
@@ -75,7 +87,6 @@ class TextInput extends Component {
           ref={el => {
             this.inputRef = el;
           }}
-          value={this.state.value}
           onChange={this.handleChange}
           className={cx({ validate }, inputClassName)}
           {...inputProps}
@@ -104,6 +115,10 @@ TextInput.propTypes = {
    */
   l: PropTypes.number,
   /*
+   * disabled input
+   */
+  disabled: PropTypes.bool,
+  /*
    * Placeholder string
    */
   placeholder: PropTypes.string,
@@ -128,6 +143,14 @@ TextInput.propTypes = {
    * Add validate class to input
    */
   validate: PropTypes.bool,
+  /*
+   * Custom success message
+   */
+  success: PropTypes.string,
+  /*
+   * Custom error message
+   */
+  error: PropTypes.string,
   /*
    * Additional classes for input
    */
