@@ -11,13 +11,6 @@ class Tabs extends Component {
     super(props);
     this.scope = `${idgen()}`;
   }
-  componentDidMount() {
-    const { tabOptions = {} } = this.props;
-
-    if (typeof M !== 'undefined') {
-      this.instance = M.Tabs.init(this._tabsEl, tabOptions);
-    }
-  }
 
   _onSelect(idx, e) {
     const { onChange } = this.props;
@@ -37,14 +30,6 @@ class Tabs extends Component {
   componentWillUnmount() {
     if (this.instance) {
       this.instance.destroy();
-    }
-  }
-
-  componentDidUpdate() {
-    const { tabOptions = {} } = this.props;
-
-    if (typeof $ !== 'undefined') {
-      $(this._tabsEl).tabs(tabOptions);
     }
   }
 
