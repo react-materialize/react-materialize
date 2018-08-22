@@ -4,33 +4,31 @@ exports[`<Card /> renders 1`] = `
 <div
   className="blue-grey darken-1 card"
 >
-  <React.Fragment>
-    <div
-      className="card-content white-text"
+  <div
+    className="card-content white-text"
+  >
+    <span
+      className="card-title grey-text text-darken-4"
     >
-      <span
-        className="card-title grey-text text-darken-4"
-      >
-        card title
-      </span>
-      <div>
-        I am a very simple card
-      </div>
+      card title
+    </span>
+    <div>
+      I am a very simple card
     </div>
-    <div
-      className="card-reveal"
+  </div>
+  <div
+    className="card-reveal"
+  >
+    <span
+      className="card-title grey-text text-darken-4"
     >
-      <span
-        className="card-title grey-text text-darken-4"
+      card title
+      <Icon
+        right={true}
       >
-        card title
-        <Icon
-          right={true}
-        >
-          close
-        </Icon>
-      </span>
-    </div>
-  </React.Fragment>
+        close
+      </Icon>
+    </span>
+  </div>
 </div>
 `;

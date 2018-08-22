@@ -52,5 +52,6 @@ export default {
   submitButton: require('!raw-loader!../../../examples/SubmitButton.js'),
   tab: require('!raw-loader!../../../examples/Tab.js'),
   tableBorderless: require('!raw-loader!../../../examples/BorderlessTable.js'),
-  toast: require('!raw-loader!../../../examples/Toast.js')
+  toast: require('!raw-loader!../../../examples/Toast.js'),
+  toastProgrammatically: require('!raw-loader!../../../examples/ToastProgrammatically.js')
 };

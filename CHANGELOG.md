@@ -1,9 +1,30 @@
 # Changelog
 
-### 3.0.0
+### 2.4.5
 
-- (BREAKING) Toast [new implementation]
-- ... add changes here ...
+- Fix docs vulnerabilities
+
+### 2.4.4
+
+- Fix vulnerable dependencies + linting
+
+### 2.4.3
+
+- Fixes tabs update bug (osztenkurden #634)
+
+### 2.4.2
+
+- Fix travis authentication
+
+### 2.4.1
+
+- No significant changes
+
+### 2.4.0
+
+- [NEW Feature] File Input (niross #570)
+- Fixed `Icon` not having refs (XavierForks #572)
+- Add Toast update to docs (hnrchrdl #576)
 
 ### 2.3.3
 

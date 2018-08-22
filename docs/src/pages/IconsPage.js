@@ -12,12 +12,27 @@ const IconsPage = () => (
   <Row>
     <Col m={9} s={12} l={10}>
       <p className='caption'>
-        We have included 740 Material Design Icons courtesy of Google. You can download them directly from the
+        We have included 932 Material Design Icons courtesy of Google. You can download them directly from the
         {' '}
         <a href='http://google.github.io/material-design-icons/#icon-font-for-the-web' target='_blank'>
           Material Design specs
         </a>.
       </p>
+      <h4 className='col s12'>
+        Usage
+      </h4>
+      <Col s={12}>
+        <p>
+          To be able to use these icons, you must include this line in the
+          <code className=" language-markup">&lt;head&gt;</code>
+          portion of your HTML code
+        </p>
+        <pre className="language-markup">
+          <code className="language-markup">
+              &lt;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"&gt;
+          </code>
+        </pre>
+      </Col>
       <h4 className='col s12'>
         Simple
       </h4>
