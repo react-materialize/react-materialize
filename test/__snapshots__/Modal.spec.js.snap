@@ -142,6 +142,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
   >
     click
   </button>
+  <Portal />
 </div>
 `;
 
