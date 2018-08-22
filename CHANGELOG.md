@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.4.5
+
+- Fix docs vulnerabilities
+
 ### 2.4.4
 
 - Fix vulnerable dependencies + linting
