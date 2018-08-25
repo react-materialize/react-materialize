@@ -17,22 +17,17 @@ class Button extends Component {
 
     const { tooltip, tooltipOptions = {}, fab } = this.props;
     if (tooltip) {
-      this.tooltipInstance = M.Tooltip.init(this._btnEl, tooltipOptions);
+      this.instance = M.Tooltip.init(this._btnEl, tooltipOptions);
     }
 
     if (fab && this._floatingActionBtn) {
-      this.floatingActionButtonInstance = M.FloatingActionButton.init(
-        this._floatingActionBtn
-      );
+      this.instance = M.FloatingActionButton.init(this._floatingActionBtn);
     }
   }
 
   componentWillUnmount() {
-    if (this.tooltipInstance) {
-      this.tooltipInstance.destroy();
-    }
-    if (this.floatingActionButtonInstance) {
-      this.floatingActionButtonInstance.destroy();
+    if (this.instance) {
+      this.instance.destroy();
     }
   }
 
