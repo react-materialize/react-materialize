@@ -16,44 +16,36 @@ exports[`<Navbar /> adds a brand node 1`] = `
     <div
       className="nav-wrapper"
     >
-      <Col
-        s={12}
+      <a
+        className="brand-logo"
+        href="/"
       >
-        <div
-          className="col s12"
+        <span
+          className="brando"
         >
-          <a
-            className="brand-logo"
-            href="/"
+          I AM BRAND
+        </span>
+      </a>
+      <ul
+        className="hide-on-med-and-down"
+      />
+      <ul
+        className="side-nav"
+        id="nav-mobile"
+      />
+      <a
+        className="button-collapse"
+        data-activates="nav-mobile"
+        href="#"
+      >
+        <Icon>
+          <i
+            className="material-icons"
           >
-            <span
-              className="brando"
-            >
-              I AM BRAND
-            </span>
-          </a>
-          <ul
-            className="hide-on-med-and-down"
-          />
-          <ul
-            className="side-nav"
-            id="nav-mobile"
-          />
-          <a
-            className="button-collapse"
-            data-activates="nav-mobile"
-            href="#"
-          >
-            <Icon>
-              <i
-                className="material-icons"
-              >
-                view_headline
-              </i>
-            </Icon>
-          </a>
-        </div>
-      </Col>
+            view_headline
+          </i>
+        </Icon>
+      </a>
     </div>
   </nav>
 </Navbar>
@@ -67,49 +59,10 @@ exports[`<Navbar /> can be fixed 1`] = `
     <div
       className="nav-wrapper"
     >
-      <Col
-        s={12}
-      >
-        <a
-          className="brand-logo"
-          href="/"
-        />
-        <ul
-          className="hide-on-med-and-down"
-        />
-        <ul
-          className="side-nav"
-          id="nav-mobile"
-        />
-        <a
-          className="button-collapse"
-          data-activates="nav-mobile"
-          href="#"
-        >
-          <Icon>
-            view_headline
-          </Icon>
-        </a>
-      </Col>
-    </div>
-  </nav>
-</div>
-`;
-
-exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
-<nav>
-  <div
-    className="nav-wrapper"
-  >
-    <Col
-      s={12}
-    >
       <a
-        className="brand-logo right"
+        className="brand-logo"
         href="/"
-      >
-        logo
-      </a>
+      />
       <ul
         className="hide-on-med-and-down"
       />
@@ -126,7 +79,38 @@ exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
           view_headline
         </Icon>
       </a>
-    </Col>
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
+<nav>
+  <div
+    className="nav-wrapper"
+  >
+    <a
+      className="brand-logo right"
+      href="/"
+    >
+      logo
+    </a>
+    <ul
+      className="hide-on-med-and-down"
+    />
+    <ul
+      className="side-nav"
+      id="nav-mobile"
+    />
+    <a
+      className="button-collapse"
+      data-activates="nav-mobile"
+      href="#"
+    >
+      <Icon>
+        view_headline
+      </Icon>
+    </a>
   </div>
 </nav>
 `;
@@ -136,54 +120,50 @@ exports[`<Navbar /> renders 1`] = `
   <div
     className="nav-wrapper"
   >
-    <Col
-      s={12}
+    <a
+      className="brand-logo"
+      href="/"
     >
-      <a
-        className="brand-logo"
-        href="/"
+      Logo
+    </a>
+    <ul
+      className="right hide-on-med-and-down"
+    >
+      <NavItem
+        href="get-started.html"
       >
-        Logo
-      </a>
-      <ul
-        className="right hide-on-med-and-down"
+        Getting started
+      </NavItem>
+      <NavItem
+        href="components.html"
       >
-        <NavItem
-          href="get-started.html"
-        >
-          Getting started
-        </NavItem>
-        <NavItem
-          href="components.html"
-        >
-          Components
-        </NavItem>
-      </ul>
-      <ul
-        className="side-nav"
-        id="nav-mobile"
+        Components
+      </NavItem>
+    </ul>
+    <ul
+      className="side-nav"
+      id="nav-mobile"
+    >
+      <NavItem
+        href="get-started.html"
       >
-        <NavItem
-          href="get-started.html"
-        >
-          Getting started
-        </NavItem>
-        <NavItem
-          href="components.html"
-        >
-          Components
-        </NavItem>
-      </ul>
-      <a
-        className="button-collapse"
-        data-activates="nav-mobile"
-        href="#"
+        Getting started
+      </NavItem>
+      <NavItem
+        href="components.html"
       >
-        <Icon>
-          view_headline
-        </Icon>
-      </a>
-    </Col>
+        Components
+      </NavItem>
+    </ul>
+    <a
+      className="button-collapse"
+      data-activates="nav-mobile"
+      href="#"
+    >
+      <Icon>
+        view_headline
+      </Icon>
+    </a>
   </div>
 </nav>
 `;

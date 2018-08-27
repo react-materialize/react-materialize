@@ -7,7 +7,7 @@ import mocker from './helper/mocker';
 describe('<Navbar />', () => {
   let wrapper;
   const sideNavMock = jest.fn();
-  const restore = mocker('sideNav', sideNavMock);
+  const restore = mocker('sidenav', sideNavMock);
 
   afterAll(() => {
     restore();

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Col from './Col';
 import Icon from './Icon';
 
 class Navbar extends Component {
@@ -12,7 +11,7 @@ class Navbar extends Component {
 
   componentDidMount() {
     if (typeof $ !== 'undefined') {
-      $('.button-collapse').sideNav(this.props.options);
+      $('.button-collapse').sidenav(this.props.options);
     }
   }
 
@@ -25,9 +24,23 @@ class Navbar extends Component {
   }
 
   render() {
-    const { brand, className, fixed, left, right, href, ...other } = this.props;
+    const {
+      brand,
+      className,
+      fixed,
+      left,
+      right,
+      href,
+      container,
+      ...other
+    } = this.props;
 
     delete other.options;
+
+    let insideClasses = {
+      'nav-wrapper': true,
+      container: container
+    };
 
     let classes = {
       right: right,
@@ -41,17 +54,15 @@ class Navbar extends Component {
 
     let content = (
       <nav {...other} className={className}>
-        <div className="nav-wrapper">
-          <Col s={12}>
-            <a href={href} className={cx(brandClasses)}>
-              {brand}
-            </a>
-            <ul className={cx(className, classes)}>{this.props.children}</ul>
-            {this.renderSideNav()}
-            <a className="button-collapse" href="#" data-activates="nav-mobile">
-              <Icon>view_headline</Icon>
-            </a>
-          </Col>
+        <div className={cx(insideClasses)}>
+          <a href={href} className={cx(brandClasses)}>
+            {brand}
+          </a>
+          <ul className={cx(className, classes)}>{this.props.children}</ul>
+          {this.renderSideNav()}
+          <a className="button-collapse" href="#" data-activates="nav-mobile">
+            <Icon>view_headline</Icon>
+          </a>
         </div>
       </nav>
     );
@@ -71,6 +82,7 @@ Navbar.propTypes = {
   left: PropTypes.bool,
   right: PropTypes.bool,
   href: PropTypes.string,
+  container: PropTypes.string,
   /**
    * Makes the navbar fixed
    */
