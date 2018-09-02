@@ -60,3 +60,9 @@ ul.side-nav.fixed li.logo {
 ul.side-nav.fixed li.logo img {
   max-height: 100% !important;
 }
+
+.react-live-preview .toast {
+  top: 0;
+  float: none !important;
+  width: fit-content !important;
+}

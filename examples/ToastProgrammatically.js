@@ -1,21 +1,24 @@
 import React from 'react';
 import Button from '../src/Button';
 
-export default
-<div>
-    <Button onClick={() => {
-            window.Materialize.toast('I am a toast!', 10000);
-        }
-    }>
-        Click to show
+export default 
+  <div>
+    <Button
+      onClick={() => {
+        window.Materialize.toast('I am a toast!', 10000);
+      }}
+    >
+      Show Toast
     </Button>
-    <Button onClick={() => {
-            const toast = document.querySelector('#toast-container>.toast');
-            if (toast) {
-                toast.remove();
-            }
+    {'  '}
+    <Button
+      onClick={() => {
+        const toast = document.querySelector('#toast-container>.toast');
+        if (toast) {
+          toast.remove();
         }
-    }>
-        Click to hide
+      }}
+    >
+      Hide Toast
     </Button>
-</div>
+  </div>
