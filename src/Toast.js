@@ -28,7 +28,13 @@ class Toast extends Component {
 
 Toast.propTypes = {
   className: PropTypes.string,
+  /**
+   * The message to display in the toast
+   */
   toast: PropTypes.string.isRequired,
+  /**
+   * The text to render in the button that fires the toast
+   */
   children: PropTypes.node,
   rounded: PropTypes.bool
 };
