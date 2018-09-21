@@ -18,6 +18,14 @@ class Tabs extends Component {
     if (onChange) onChange(idx, e);
   }
 
+  componentDidMount() {
+    const { tabOptions = {} } = this.props;
+
+    if (typeof M !== 'undefined') {
+      this.instance = M.Tabs.init(this._tabsEl, tabOptions);
+    }
+  }
+
   componentDidUpdate() {
     const { tabOptions = {} } = this.props;
 
