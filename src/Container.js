@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'class-names';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 const Container = props => (
