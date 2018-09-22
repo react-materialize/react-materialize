@@ -12,15 +12,29 @@ class Carousel extends React.Component {
   componentDidMount() {
     const { options = {} } = this.props;
 
-    if (typeof $ !== 'undefined') {
-      $(this._carousel).carousel(options);
+    if (typeof window.$ !== 'undefined') {
+      window.$(this._carousel).carousel(options);
+    } else if (typeof window.M !== 'undefined') {
+      this.instance = window.M.Carousel.init(this._carousel, options);
     }
   }
 
-  renderItems(child, idx) {
+  componentWillUnmount() {
+    if (typeof $ !== 'undefined') {
+      window.$(this._carousel).carousel('destroy');
+    } else if (typeof M !== 'undefined') {
+      this.instance.destroy();
+    }
+  }
+
+  renderItems(child, centerImages) {
     if (typeof child === 'string') {
       return (
-        <a className="carousel-item">
+        <a
+          className={cx('carousel-item', {
+            'valign-wrapper': centerImages
+          })}
+        >
           <img src={child} />
         </a>
       );
@@ -43,6 +57,7 @@ class Carousel extends React.Component {
       className,
       carouselId,
       images,
+      centerImages,
       options = {}
     } = this.props;
     const elemsToRender = children || images || [];
@@ -61,7 +76,9 @@ class Carousel extends React.Component {
           )}
         >
           {this.renderFixedItem()}
-          {React.Children.map(elemsToRender, this.renderItems)}
+          {React.Children.map(elemsToRender, child =>
+            this.renderItems(child, this.props.centerImages)
+          )}
         </div>
       )
     );
@@ -77,6 +94,10 @@ Carousel.propTypes = {
   * Array of image url's
   */
   images: PropTypes.arrayOf(PropTypes.string),
+  /*
+  * Makes the images centered inside the carousel using '.valign-wrapper' CSS helper
+  */
+  centerImages: PropTypes.bool,
   /*
   * Fixed element on slider
   */
@@ -111,7 +132,11 @@ Carousel.propTypes = {
     */
     padding: PropTypes.number,
     /*
-    * Make the carousel a full width slider like the second example. (Default: false)
+    * Set the number of visible items. (Default: 5)
+    */
+    numVisible: PropTypes.number,
+    /*
+    * Make the carousel a full width slider. (Default: false)
     */
     fullWidth: PropTypes.bool,
     /*
@@ -121,7 +146,11 @@ Carousel.propTypes = {
     /*
      * Don't wrap around and cycle through items. (Default: false)
     */
-    noWrap: PropTypes.bool
+    noWrap: PropTypes.bool,
+    /*
+    * Callback for when a new slide is cycled to. (Default: null)
+    */
+    onCycleTo: PropTypes.func
   })
 };
 
