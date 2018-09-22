@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Dropdown from '../src/Dropdown';
+import Divider from '../src/Divider';
 import mocker from './helper/mocker';
 
 describe('<Dropdown />', () => {
@@ -36,5 +37,18 @@ describe('<Dropdown />', () => {
     const { idx } = wrapper.instance();
     wrapper.render();
     expect(wrapper.instance().idx).toEqual(idx);
+  });
+
+  test('does correctly render dividers', () => {
+    wrapper = shallow(
+      <Dropdown trigger={<span>hi</span>}>
+        <a href="#">test</a>
+        <Divider />
+        <a href="#">test</a>
+      </Dropdown>
+    );
+    const { idx } = wrapper.instance();
+    wrapper.render();
+    expect(wrapper.contains(<li className="divider" tanIndex="-1" />));
   });
 });
