@@ -15,23 +15,20 @@ class Select extends Component {
 
   handleChange(event) {
     const { onChange } = this.props;
+    let value = event.target.value;
+
+    if (this.props.multiple) {
+      value = this.instance.getSelectedValues();
+    }
+
     if (onChange) onChange(event);
 
-    this.setState({ value: event.target.value });
+    this.setState({ value });
   }
 
   componentDidMount() {
-    // const { selectOptions = {} } = this.props;
-    const selectOptions = {}; // needed?
-
     if (typeof M !== 'undefined') {
-      this.instance = M.FormSelect.init(this._selectRef, selectOptions);
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.value !== prevProps.value) {
-      M.updateTextFields();
+      this.instance = M.FormSelect.init(this._selectRef);
     }
   }
 
@@ -51,7 +48,6 @@ class Select extends Component {
       validate,
       children,
       multiple,
-      selectedIndex,
       value,
       type
     } = this.props;
@@ -92,10 +88,9 @@ class Select extends Component {
       icon && <i className="material-icons prefix">{icon}</i>;
 
     const renderOption = child =>
-      React.cloneElement(child, { key: child.props.value })
+      React.cloneElement(child, { key: child.props.value });
 
-    const renderOptions = () =>
-      React.Children.map(children, renderOption)
+    const renderOptions = () => React.Children.map(children, renderOption);
 
     return (
       <div className={wrapperClasses}>
@@ -106,7 +101,7 @@ class Select extends Component {
             this._selectRef = el;
           }}
           onChange={this.handleChange}
-          className={cx({ validate }, inputClassName)}
+          className={cx({ validate, multiple }, inputClassName)}
           {...inputProps}
         >
           {renderOptions()}
@@ -186,11 +181,14 @@ Select.propTypes = {
   /*
    * onChange callback
    */
-  onChange: PropTypes.func
-};
-
-Select.defaultProps = {
-  selectedIndex: 0
+  onChange: PropTypes.func,
+  /*
+   * Render a multiple dropdown,
+   * use instance.getSelectedValues()
+   * to get array of selected values
+   */
+  multiple: PropTypes.bool,
+  children: PropTypes.any
 };
 
 export default Select;
