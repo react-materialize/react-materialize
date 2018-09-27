@@ -14,17 +14,13 @@ class Dropdown extends Component {
   componentDidMount() {
     const options = this.props.options || {};
 
-    if (typeof $ !== undefined) {
-      $(this._trigger).dropdown(options);
-    } else if (typeof M !== undefined) {
+    if (typeof M !== undefined) {
       this.instance = M.Dropdown.init(this._trigger, options);
     }
   }
 
   componentWillUnmount() {
-    if (typeof $ !== undefined) {
-      $(this._trigger).off();
-    } else if (typeof M !== undefined) {
+    if (typeof M !== undefined) {
       this.instance.destroy();
     }
   }
