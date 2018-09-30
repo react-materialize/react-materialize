@@ -26,8 +26,9 @@ class Checkbox extends Component {
     const checkboxClassName = { 'filled-in': filledIn };
 
     return (
-      <label>
+      <label htmlFor={this.id}>
         <input
+          id={this.id}
           className={cx(checkboxClassName)}
           disabled={disabled}
           onChange={this.handleChange}
