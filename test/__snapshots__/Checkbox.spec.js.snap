@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Checkbox /> filled-in 1`] = `
-<label>
+<label
+  htmlFor={2}
+>
   <input
     className="filled-in"
+    id={2}
     onChange={[Function]}
     type="checkbox"
     value="red"
@@ -15,9 +18,12 @@ exports[`<Checkbox /> filled-in 1`] = `
 `;
 
 exports[`<Checkbox /> renders 1`] = `
-<label>
+<label
+  htmlFor={0}
+>
   <input
     className=""
+    id={0}
     onChange={[Function]}
     type="checkbox"
     value="red"
@@ -29,10 +35,13 @@ exports[`<Checkbox /> renders 1`] = `
 `;
 
 exports[`<Checkbox /> renders disabled 1`] = `
-<label>
+<label
+  htmlFor={1}
+>
   <input
     className=""
     disabled={true}
+    id={1}
     onChange={[Function]}
     type="checkbox"
     value="red"
