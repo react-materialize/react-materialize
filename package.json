@@ -72,6 +72,7 @@
     "eslint-plugin-standard": "^2.0.0",
     "husky": "^0.14.3",
     "jest": "^23.5.0",
+    "jquery": "^3.3.1",
     "jsdom": "^11.7.0",
     "materialize-css": "^1.0.0",
     "prettier": "^1.11.1",
