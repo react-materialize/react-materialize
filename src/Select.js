@@ -42,7 +42,7 @@ class Select extends Component {
       placeholder,
       icon,
       label,
-      inputClassName,
+      selectClassName,
       success,
       error,
       validate,
@@ -64,7 +64,7 @@ class Select extends Component {
 
     const wrapperClasses = cx('input-field', responsiveClasses);
 
-    const inputProps = {
+    const selectProps = {
       placeholder,
       type: 'select',
       id: this.id,
@@ -78,7 +78,7 @@ class Select extends Component {
         <label
           data-success={success}
           data-error={error}
-          htmlFor={inputProps.id}
+          htmlFor={selectProps.id}
         >
           {label}
         </label>
@@ -101,8 +101,8 @@ class Select extends Component {
             this._selectRef = el;
           }}
           onChange={this.handleChange}
-          className={cx({ validate, multiple }, inputClassName)}
-          {...inputProps}
+          className={cx({ validate, multiple }, selectClassName)}
+          {...selectProps}
         >
           {renderOptions()}
         </select>
@@ -173,7 +173,7 @@ Select.propTypes = {
   /*
    * Additional classes for input
    */
-  inputClassName: PropTypes.string,
+  selectClassName: PropTypes.string,
   /*
    * override type="text"
    */
