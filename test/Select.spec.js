@@ -39,8 +39,8 @@ describe('<Select />', () => {
     expect(wrapper.find('select.validate')).toHaveLength(1);
   });
 
-  test('handles inputClassName', () => {
-    wrapper = shallow(<Select validate inputClassName={'hello red'} />);
+  test('handles selectClassName', () => {
+    wrapper = shallow(<Select validate selectClassName={'hello red'} />);
     expect(wrapper.find('select.hello.red.validate')).toHaveLength(1);
   });
 
