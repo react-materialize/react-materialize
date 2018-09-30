@@ -6,6 +6,7 @@ import Carousel from './Carousel';
 import Card from './Card';
 import CardPanel from './CardPanel';
 import CardTitle from './CardTitle';
+import Checkbox from './Checkbox';
 import Chip from './Chip';
 import Col from './Col';
 import Collapsible from './Collapsible';
@@ -46,10 +47,11 @@ export {
   Badge,
   Breadcrumb,
   Button,
-  Carousel,
   Card,
   CardPanel,
   CardTitle,
+  Carousel,
+  Checkbox,
   Chip,
   Col,
   Collapsible,

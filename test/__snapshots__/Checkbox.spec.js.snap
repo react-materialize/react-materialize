@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checkbox /> filled-in 1`] = `
+<label>
+  <input
+    className="filled-in"
+    onChange={[Function]}
+    type="checkbox"
+    value="red"
+  />
+  <span>
+    red
+  </span>
+</label>
+`;
+
+exports[`<Checkbox /> renders 1`] = `
+<label>
+  <input
+    className=""
+    onChange={[Function]}
+    type="checkbox"
+    value="red"
+  />
+  <span>
+    red
+  </span>
+</label>
+`;
+
+exports[`<Checkbox /> renders disabled 1`] = `
+<label>
+  <input
+    className=""
+    disabled={true}
+    onChange={[Function]}
+    type="checkbox"
+    value="red"
+  />
+  <span>
+    red
+  </span>
+</label>
+`;
