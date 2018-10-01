@@ -41,7 +41,7 @@ class Input extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.isMaterialSelect() && !this.props.multiple) {
+    if (this.isMaterialSelect()) {
       this.setState(
         {
           value: nextProps.defaultValue
