@@ -65,7 +65,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-config-standard-react": "^4.0.0",
-    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
@@ -73,7 +73,7 @@
     "jest": "^23.5.0",
     "jsdom": "^11.7.0",
     "materialize-css": "^0.100.2",
-    "prettier": "^1.11.1",
+    "prettier": "^1.14.3",
     "webpack": "^1.13.1"
   },
   "dependencies": {

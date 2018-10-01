@@ -2,7 +2,7 @@
 logs
 *.log
 dist
-lib
+#lib
 
 # Runtime data
 pids
