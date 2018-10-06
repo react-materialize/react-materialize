@@ -33,7 +33,7 @@ class Input extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.isMaterialSelect()) {
+    if (this.isMaterialSelect() && !this.props.multiple) {
       this.setState(
         {
           value: nextProps.defaultValue

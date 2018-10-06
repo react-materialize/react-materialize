@@ -1,5 +1,13 @@
 # Changelog
 
+### 2.5.6
+
+- Fixes multiple input bug (trishtzy #658)
+- Adds centerLogo prop to Navbar (CloudPower97 #534)
+- Adds FAB into Toolbar (CloudPower97 #537)
+- Adds extra classes to `<Container />` (CloudPower97 #648)
+- Docs improvements (dmitry-yudakov #640)
+
 ### 2.4.5
 
 - Fix docs vulnerabilities
