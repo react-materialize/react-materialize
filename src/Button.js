@@ -6,11 +6,6 @@ import Icon from './Icon';
 import idgen from './idgen';
 
 class Button extends Component {
-  constructor(props) {
-    super(props);
-    this.renderIcon = this.renderIcon.bind(this);
-    this.renderFab = this.renderFab.bind(this);
-  }
 
   componentDidMount() {
     const { tooltip, tooltipOptions } = this.props;
@@ -78,7 +73,7 @@ class Button extends Component {
     }
   }
 
-  renderFab(className, orientation, clickOnly) {
+  renderFab = (className, orientation, clickOnly) => {
     const classes = cx(orientation, clickOnly);
     return (
       <div className={cx('fixed-action-btn', classes)}>
@@ -92,7 +87,7 @@ class Button extends Component {
     );
   }
 
-  renderIcon() {
+  renderIcon = () => {
     const { icon } = this.props;
     if (!icon) return;
 

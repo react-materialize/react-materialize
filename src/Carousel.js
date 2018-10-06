@@ -3,12 +3,6 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.renderFixedItem = this.renderFixedItem.bind(this);
-  }
-
   componentDidMount() {
     const { options = {} } = this.props;
 
@@ -30,7 +24,7 @@ class Carousel extends React.Component {
     });
   }
 
-  renderFixedItem() {
+  renderFixedItem = () => {
     const { fixedItem } = this.props;
     return (
       fixedItem && <div className="carousel-fixed-item center">{fixedItem}</div>

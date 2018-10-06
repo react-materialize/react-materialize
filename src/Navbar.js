@@ -5,18 +5,13 @@ import Col from './Col';
 import Icon from './Icon';
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.renderSideNav = this.renderSideNav.bind(this);
-  }
-
   componentDidMount() {
     if (typeof $ !== 'undefined') {
       $('.button-collapse').sideNav(this.props.options);
     }
   }
 
-  renderSideNav() {
+  renderSideNav = () => {
     return (
       <ul id="nav-mobile" className="side-nav">
         {this.props.children}

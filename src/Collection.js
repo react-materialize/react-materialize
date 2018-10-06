@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class Collection extends Component {
-  constructor(props) {
-    super(props);
-    this.renderHeader = this.renderHeader.bind(this);
-  }
-
   render() {
     const { children, header, className } = this.props;
 
@@ -25,7 +20,7 @@ class Collection extends Component {
     );
   }
 
-  renderHeader() {
+  renderHeader = () => {
     let header;
     if (this.props.header) {
       if (React.isValidElement(this.props.header)) {

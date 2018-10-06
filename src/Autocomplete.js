@@ -7,18 +7,10 @@ import Icon from './Icon';
 import idgen from './idgen';
 
 class Autocomplete extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: props.value || '',
-      itemSelected: false
-    };
-
-    this.renderIcon = this.renderIcon.bind(this);
-    this.renderDropdown = this.renderDropdown.bind(this);
-    this._onChange = this._onChange.bind(this);
-  }
+  state = {
+    value: this.props.value || '',
+    itemSelected: false
+  };
 
   componentWillReceiveProps({ value }) {
     if (value !== undefined) {
@@ -26,11 +18,11 @@ class Autocomplete extends Component {
     }
   }
 
-  renderIcon(icon, iconClassName) {
+  renderIcon = (icon, iconClassName) => {
     return <Icon className={iconClassName}>{icon}</Icon>;
-  }
+  };
 
-  renderDropdown(data, minLength, limit) {
+  renderDropdown = (data, minLength, limit) => {
     const { value, itemSelected } = this.state;
 
     if ((minLength && minLength > value.length) || !value || itemSelected) {
@@ -70,9 +62,9 @@ class Autocomplete extends Component {
         })}
       </ul>
     );
-  }
+  };
 
-  _onChange(evt) {
+  _onChange = evt => {
     const { onChange } = this.props;
     const value = evt.target.value;
     if (onChange) {
@@ -80,7 +72,7 @@ class Autocomplete extends Component {
     }
 
     this.setState({ value, itemSelected: false });
-  }
+  };
 
   _onAutocomplete(value, evt) {
     const { onChange, onAutocomplete } = this.props;

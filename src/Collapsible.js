@@ -3,16 +3,9 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class Collapsible extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeKey: props.defaultActiveKey
-    };
-
-    this.renderItem = this.renderItem.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-  }
+  state = {
+    activeKey: this.props.defaultActiveKey
+  };
 
   componentDidMount() {
     $(this._collapsible).collapsible();
@@ -43,7 +36,7 @@ class Collapsible extends Component {
     );
   }
 
-  renderItem(child, key) {
+  renderItem = (child, key) => {
     if (!child) return null;
     const props = {
       onSelect: this.handleSelect
@@ -58,9 +51,9 @@ class Collapsible extends Component {
     }
 
     return React.cloneElement(child, props);
-  }
+  };
 
-  handleSelect(key) {
+  handleSelect = key => {
     const { onSelect } = this.props;
 
     if (onSelect) {
@@ -74,7 +67,7 @@ class Collapsible extends Component {
     if (this.props.accordion) {
       this.setState({ activeKey: key });
     }
-  }
+  };
 }
 
 Collapsible.propTypes = {

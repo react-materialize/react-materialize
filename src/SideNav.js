@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import idgen from './idgen';
 
 class SideNav extends Component {
-  constructor(props) {
-    super(props);
-    this.id = props.id || `sidenav_${idgen()}`;
-  }
+  id = this.props.id || `sidenav_${idgen()}`;
 
   componentDidMount() {
     const { options = {} } = this.props;

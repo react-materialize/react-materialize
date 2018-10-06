@@ -12,9 +12,6 @@ class Pagination extends Component {
     this.state = {
       activePage: activePage > 0 && activePage <= items ? activePage : 1
     };
-
-    this.renderButtons = this.renderButtons.bind(this);
-    this._onClick = this._onClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,7 +20,7 @@ class Pagination extends Component {
     }
   }
 
-  _onClick(i) {
+  _onClick = (i) => {
     const { items, onSelect } = this.props;
 
     return () => {
@@ -36,7 +33,7 @@ class Pagination extends Component {
     };
   }
 
-  renderButtons() {
+  renderButtons = () => {
     const { items, children, maxButtons = items } = this.props;
     const { activePage } = this.state;
 

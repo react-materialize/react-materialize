@@ -4,16 +4,7 @@ import cx from 'classnames';
 import Icon from './Icon';
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.renderTitle = this.renderTitle.bind(this);
-    this.renderReveal = this.renderReveal.bind(this);
-    this.renderAction = this.renderAction.bind(this);
-    this.renderContent = this.renderContent.bind(this);
-    this.renderAll = this.renderAll.bind(this);
-  }
-
-  renderTitle(title, reveal) {
+  renderTitle = (title, reveal) => {
     return (
       <span
         className={cx('card-title', 'grey-text', 'text-darken-4', {
@@ -26,7 +17,7 @@ class Card extends Component {
     );
   }
 
-  renderReveal(title, reveal) {
+  renderReveal = (title, reveal) => {
     return (
       <div className="card-reveal">
         <span className="card-title grey-text text-darken-4">
@@ -38,7 +29,7 @@ class Card extends Component {
     );
   }
 
-  renderAction(actions) {
+  renderAction = (actions) => {
     return <div className="card-action">{actions}</div>;
   }
 
@@ -51,7 +42,7 @@ class Card extends Component {
     );
   }
 
-  renderAll(title, reveal, textClassName, children, actions) {
+  renderAll = (title, reveal, textClassName, children, actions) => {
     return (
       <React.Fragment>
         {this.renderContent(title, reveal, textClassName, children)}

@@ -4,11 +4,6 @@ import cx from 'classnames';
 import constants from './constants';
 
 class Slide extends Component {
-  constructor(props) {
-    super(props);
-    this.renderCaption = this.renderCaption.bind(this);
-  }
-
   render() {
     return (
       <li>
@@ -18,7 +13,7 @@ class Slide extends Component {
     );
   }
 
-  renderCaption() {
+  renderCaption = () => {
     const { title, className, placement, children, ...props } = this.props;
 
     delete props.placement;

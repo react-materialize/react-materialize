@@ -6,18 +6,10 @@ import constants from './constants';
 import Icon from './Icon';
 
 class Input extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: props.value || props.defaultValue,
-      checked: !!props.checked
-    };
-
-    this._onChange = this._onChange.bind(this);
-    this.getMultipleValues = this.getMultipleValues.bind(this);
-    this.isSelect = this.isSelect.bind(this);
-  }
+  state = {
+    value: this.props.value || this.props.defaultValue,
+    checked: !!this.props.checked
+  };
 
   componentDidMount() {
     if (this.isMaterialSelect()) {
@@ -57,7 +49,7 @@ class Input extends Component {
     }
   }
 
-  getMultipleValues({ options }) {
+  getMultipleValues = ({ options }) => {
     if (!options) {
       return;
     }
@@ -65,9 +57,9 @@ class Input extends Component {
     return Array.from(options)
       .filter(opt => opt.selected)
       .map(opt => opt.value);
-  }
+  };
 
-  _onChange(e) {
+  _onChange = e => {
     const { onChange } = this.props;
     var types = {
       checkbox: e.target.checked,
@@ -83,7 +75,7 @@ class Input extends Component {
     }
 
     this.setState({ value, checked: e.target.checked });
-  }
+  };
 
   render() {
     const {
@@ -314,9 +306,9 @@ class Input extends Component {
     }
   }
 
-  isSelect() {
+  isSelect = () => {
     return this.props.type === 'select';
-  }
+  };
 
   isMaterialSelect() {
     return (

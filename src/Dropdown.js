@@ -8,11 +8,7 @@ const classes = {
 };
 
 class Dropdown extends Component {
-  constructor(props) {
-    super(props);
-    this.idx = 'dropdown_' + idgen();
-    this.renderTrigger = this.renderTrigger.bind(this);
-  }
+  idx = 'dropdown_' + idgen();
 
   componentDidMount() {
     const options = this.props.options || {};
@@ -38,7 +34,7 @@ class Dropdown extends Component {
     );
   }
 
-  renderTrigger() {
+  renderTrigger = () => {
     const { trigger } = this.props;
 
     return React.cloneElement(trigger, {

@@ -7,12 +7,12 @@ import idgen from './idgen';
 import Button from './Button';
 
 class Modal extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.modalID = props.id || `modal_${idgen()}`;
-    this.showModal = this.showModal.bind(this);
     this.createRoot();
   }
+  
+  modalID = this.props.id || `modal_${idgen()}`;
 
   createRoot() {
     this.modalRoot = document.createElement('div');
@@ -83,7 +83,7 @@ class Modal extends Component {
       : null;
   }
 
-  showModal(e) {
+  showModal = (e) => {
     if (e) e.preventDefault();
     const { modalOptions = {} } = this.props;
     $(`#${this.modalID}`).modal(modalOptions);
