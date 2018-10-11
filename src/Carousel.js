@@ -12,17 +12,11 @@ class Carousel extends React.Component {
   componentDidMount() {
     const { options = {} } = this.props;
 
-    if (typeof window.$ !== 'undefined') {
-      window.$(this._carousel).carousel(options);
-    } else if (typeof window.M !== 'undefined') {
-      this.instance = window.M.Carousel.init(this._carousel, options);
-    }
+    this.instance = M.Carousel.init(this._carousel, options);
   }
 
   componentWillUnmount() {
-    if (typeof $ !== 'undefined') {
-      window.$(this._carousel).carousel('destroy');
-    } else if (typeof M !== 'undefined') {
+    if (this.instance) {
       this.instance.destroy();
     }
   }
@@ -77,7 +71,7 @@ class Carousel extends React.Component {
         >
           {this.renderFixedItem()}
           {React.Children.map(elemsToRender, child =>
-            this.renderItems(child, this.props.centerImages)
+            this.renderItems(child, centerImages)
           )}
         </div>
       )
