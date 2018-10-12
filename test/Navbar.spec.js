@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Navbar from '../src/Navbar';
-import NavItem from '../src/NavItem';
 import mocker from './helper/mocker';
 
 describe('<Navbar />', () => {
@@ -43,5 +42,10 @@ describe('<Navbar />', () => {
     wrapper = shallow(<Navbar fixed />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.navbar-fixed')).toBeTruthy();
+  });
+
+  test('should have a sidenav component', () => {
+    wrapper = shallow(<Navbar />);
+    expect(wrapper.find('.sidenav')).toBeTruthy();
   });
 });
