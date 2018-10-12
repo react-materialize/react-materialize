@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Icon from './Icon';
 
-class Chip extends Component {
-  constructor(props) {
-    super(props);
-    this.renderIcon = this.renderIcon.bind(this);
-  }
-
-  renderIcon() {
-    return <Icon className="close material-icons">close</Icon>;
-  }
-
-  render() {
-    const { children, close } = this.props;
-
-    return (
-      <div className="chip">
-        {children}
-        {close && this.renderIcon()}
-      </div>
-    );
-  }
-}
+const Chip = ({ children, close, className, ...props }) => {
+  return (
+    <div className={cx('chip', className)} {...props}>
+      {children}
+      {close && <Icon className="close material-icons">close</Icon>}
+    </div>
+  );
+};
 
 Chip.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node,
   /**
    * Shows a close icon
