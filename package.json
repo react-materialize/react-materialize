@@ -9,6 +9,7 @@
     "lib"
   ],
   "scripts": {
+    "prepare": "npm run build", 
     "test": "jest",
     "test:watch": "jest --watch",
     "pretest": "npm run lint",
