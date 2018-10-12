@@ -9,8 +9,16 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    if (typeof $ !== 'undefined') {
-      $('.button-collapse').sideNav(this.props.options);
+    const { options } = this.props;
+
+    if (typeof M !== 'undefined') {
+      this.instance = M.Sidenav.init(this._sidenav, options);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
     }
   }
 
