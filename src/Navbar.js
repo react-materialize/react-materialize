@@ -101,7 +101,6 @@ Navbar.propTypes = {
    * left makes the navbar links left aligned, right makes them right aligned
    */
   alignLinks: PropTypes.oneOf(['left', 'right']),
-  left: PropTypes.bool,
   /**
    * The logo will center itself on medium and down screens.
    * Specifying centerLogo as a prop the logo will always be centered
