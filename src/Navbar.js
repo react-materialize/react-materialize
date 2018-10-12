@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Col from './Col';
 import Icon from './Icon';
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.renderSideNav = this.renderSideNav.bind(this);
   }
 
   componentDidMount() {
@@ -16,61 +14,73 @@ class Navbar extends Component {
     }
   }
 
-  renderSideNav() {
-    return (
-      <ul id="nav-mobile" className="side-nav">
-        {this.props.children}
-      </ul>
-    );
-  }
-
   render() {
     const {
       brand,
       className,
+      extendsWith,
       fixed,
-      left,
-      right,
+      alignLinks,
       centerLogo,
       href,
+      children,
       ...other
     } = this.props;
 
     delete other.options;
 
-    let classes = {
-      right: right,
-      'hide-on-med-and-down': true
-    };
-
-    let brandClasses = {
+    let brandClasses = cx({
       'brand-logo': true,
-      right: left,
-      center: centerLogo
-    };
+      center: centerLogo,
+      left: alignLinks === 'right'
+    });
 
-    let content = (
+    const navMobileCSS = cx('hide-on-med-and-down', [alignLinks]);
+
+    const links = React.Children.map((link, index) => (
+      <li key={index}>{link}</li>
+    ));
+
+    let navbar = (
       <nav {...other} className={className}>
         <div className="nav-wrapper">
-          <Col s={12}>
-            <a href={href} className={cx(brandClasses)}>
+          {brand && (
+            <a href="/" className={brandClasses}>
               {brand}
             </a>
-            <ul className={cx(className, classes)}>{this.props.children}</ul>
-            {this.renderSideNav()}
-            <a className="button-collapse" href="#" data-activates="nav-mobile">
-              <Icon>view_headline</Icon>
-            </a>
-          </Col>
+          )}
+          <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
+            <Icon>menu</Icon>
+          </a>
+          <ul className={navMobileCSS}>{links}</ul>
         </div>
+        {extendsWith && (
+          <div className="nav-content">
+            {extendsWith.map((elem, index) => <div key={index}>{elem}</div>)}
+          </div>
+        )}
       </nav>
     );
 
     if (fixed) {
-      content = <div className="navbar-fixed">{content}</div>;
+      navbar = <div className="navbar-fixed">{navbar}</div>;
     }
 
-    return content;
+    return (
+      <React.Fragment>
+        {navbar}
+
+        <ul
+          id="mobile-nav"
+          className="sidenav"
+          ref={ul => {
+            this._sidenav = ul;
+          }}
+        >
+          {links}
+        </ul>
+      </React.Fragment>
+    );
   }
 }
 
@@ -78,14 +88,12 @@ Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
+  extendsWith: PropTypes.arrayOf(PropTypes.node),
   /**
-   * Makes the navbar links left aligned
+   * left makes the navbar links left aligned, right makes them right aligned
    */
+  alignLinks: PropTypes.oneOf(['left', 'right']),
   left: PropTypes.bool,
-  /**
-   * Makes the navbar links right aligned
-   */
-  right: PropTypes.bool,
   /**
    * The logo will center itself on medium and down screens.
    * Specifying centerLogo as a prop the logo will always be centered

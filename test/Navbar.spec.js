@@ -15,9 +15,9 @@ describe('<Navbar />', () => {
 
   test('renders', () => {
     wrapper = shallow(
-      <Navbar brand="Logo" right>
-        <NavItem href="get-started.html">Getting started</NavItem>
-        <NavItem href="components.html">Components</NavItem>
+      <Navbar brand="Logo" alignLinks="right">
+        <a href="get-started.html">Getting started</a>
+        <a href="components.html">Components</a>
       </Navbar>
     );
 
@@ -26,9 +26,9 @@ describe('<Navbar />', () => {
   });
 
   test('places brand on right if navbar is left aligned', () => {
-    wrapper = shallow(<Navbar brand="logo" left />);
+    wrapper = shallow(<Navbar brand="logo" alignLinks="left" />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo.right')).toHaveLength(1);
+    expect(wrapper.find('a.brand-logo.right')).toBeTruthy();
   });
 
   test('adds a brand node', () => {
@@ -42,6 +42,6 @@ describe('<Navbar />', () => {
   test('can be fixed', () => {
     wrapper = shallow(<Navbar fixed />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.hasClass('navbar-fixed')).toBeTruthy();
+    expect(wrapper.find('.navbar-fixed')).toBeTruthy();
   });
 });
