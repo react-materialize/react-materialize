@@ -1,45 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SideNav /> can be \`fixed\` 1`] = `
+exports[`<SideNav /> initialises can be \`fixed\` 1`] = `
 <ul
   className="sidenav sidenav-fixed red"
+  id="sidenav_2"
+/>
+`;
+
+exports[`<SideNav /> initialises renders 1`] = `
+<ul
+  className="sidenav"
   id="sidenav_1"
 />
 `;
 
-exports[`<SideNav /> renders 1`] = `
-<ul
-  className="sidenav"
-  id="sidenav_0"
-/>
-`;
-
-exports[`<SideNav /> should be fixed if no trigger is passed 1`] = `
+exports[`<SideNav /> initialises should be fixed if no trigger is passed 1`] = `
 <ul
   className="sidenav sidenav-fixed red"
-  id="sidenav_4"
+  id="sidenav_5"
 />
 `;
 
-exports[`<SideNav /> should render fixed if not passed trigger or fixed 1`] = `
+exports[`<SideNav /> initialises should render fixed if not passed trigger or fixed 1`] = `
 <div>
   <button
     className="trigger show-on-large sidenav-trigger"
-    data-target="sidenav_2"
+    data-target="sidenav_3"
   >
     Show sidenav
   </button>
   <ul
     className="sidenav red"
-    id="sidenav_2"
+    id="sidenav_3"
   />
 </div>
 `;
 
-exports[`<SideNav /> should render trigger on large screens not fixed\` 1`] = `
+exports[`<SideNav /> initialises should render trigger on large screens not fixed\` 1`] = `
 <button
   className="trigger show-on-large sidenav-trigger"
-  data-target="sidenav_3"
+  data-target="sidenav_4"
 >
   Show sidenav
 </button>
