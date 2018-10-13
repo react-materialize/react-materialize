@@ -33,6 +33,7 @@ class TextInput extends Component {
       s,
       m,
       l,
+      xl,
       disabled,
       noLayout,
       placeholder,
@@ -46,7 +47,7 @@ class TextInput extends Component {
       type
     } = this.props;
 
-    const sizes = { s, m, l };
+    const sizes = { s, m, l, xl };
 
     let responsiveClasses;
     if (!noLayout) {
@@ -103,17 +104,21 @@ TextInput.propTypes = {
    */
   noLayout: PropTypes.bool,
   /*
-   * Responsive size for Small
+   * Responsive size for Mobile Devices
    */
   s: PropTypes.number,
   /*
-   * Responsive size for Medium
+   * Responsive size for Tablet Devices
    */
   m: PropTypes.number,
   /*
-   * Responsive size for Large
+   * Responsive size for Desktop Devices
    */
   l: PropTypes.number,
+  /**
+   *  Responsive size for Large Desktop Devices
+   */
+  xl: PropTypes.number,
   /*
    * disabled input
    */
