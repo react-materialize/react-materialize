@@ -56,7 +56,6 @@ class Button extends Component {
     });
 
     if (modal) {
-      classes['modal-action'] = true;
       classes['modal-' + modal] = true;
     }
     if (fab) {
