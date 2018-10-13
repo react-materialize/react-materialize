@@ -10,8 +10,14 @@ class SideNav extends Component {
   }
 
   componentDidMount() {
-    const { options = {} } = this.props;
-    $('.sidenav').sidenav(options);
+    if (M) {
+      const { options } = this.props;
+      this.instance = M.Sidenav.init(this._sidenav, options);
+    }
+  }
+
+  componentWillUnmount() {
+    this.instance && this.instance.destroy();
   }
 
   render() {
@@ -27,7 +33,12 @@ class SideNav extends Component {
     return (
       <div>
         {this.renderTrigger()}
-        <ul id={this.id} className={classNames} {...props}>
+        <ul
+          id={this.id}
+          className={classNames}
+          {...props}
+          ref={ul => (this._sidenav = ul)}
+        >
           {children}
         </ul>
       </div>
@@ -71,14 +82,62 @@ SideNav.propTypes = {
    * More info: http://materializecss.com/side-nav.html#options
    */
   options: PropTypes.shape({
+    /**
+     * Side of screen on which Sidenav appears.
+     */
     edge: PropTypes.oneOf(['left', 'right']),
-    draggable: PropTypes.bool
+    /**
+     * Allow swipe gestures to open/close Sidenav.
+     */
+    draggable: PropTypes.bool,
+    /**
+     * Length in ms of enter transition.
+     */
+    inDuration: PropTypes.number,
+    /**
+     * Length in ms of exit transition.
+     */
+    outDuration: PropTypes.number,
+    /**
+     * Function called when sidenav starts entering.
+     */
+    onOpenStart: PropTypes.func,
+    /**
+     * Function called when sidenav finishes entering.
+     */
+    onOpenEnd: PropTypes.func,
+    /**
+     * Function called when sidenav starts exiting.
+     */
+    onCloseStart: PropTypes.func,
+    /**
+     * Function called when sidenav finishes exiting.
+     */
+    onCloseEnd: PropTypes.func,
+    /**
+     * Prevent page from scrolling while sidenav is open.
+     */
+    preventScrolling: PropTypes.bool
   }),
   /**
    * Additional classes added to 'sidenav'
    */
   className: PropTypes.string,
   children: PropTypes.node
+};
+
+SideNav.defaultProps = {
+  options: {
+    edge: 'left',
+    draggable: true,
+    inDuration: 250,
+    outDuration: 200,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    preventScrolling: true
+  }
 };
 
 export default SideNav;
