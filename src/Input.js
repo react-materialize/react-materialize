@@ -100,6 +100,7 @@ class Input extends Component {
       s,
       m,
       l,
+      xl,
       type,
       validate,
       onLabel,
@@ -107,7 +108,7 @@ class Input extends Component {
       inline,
       ...other
     } = this.props;
-    let sizes = { s, m, l };
+    let sizes = { s, m, l, xl };
     this._id = this._id || this.props.id || `input_${idgen()}`;
     let classes = {
       col: true,
@@ -328,9 +329,22 @@ class Input extends Component {
 }
 
 Input.propTypes = {
+  /*
+   * Responsive size for Mobile Devices
+   */
   s: PropTypes.number,
+  /*
+   * Responsive size for Tablet Devices
+   */
   m: PropTypes.number,
+  /*
+   * Responsive size for Desktop Devices
+   */
   l: PropTypes.number,
+  /**
+   *  Responsive size for Large Desktop Devices
+   */
+  xl: PropTypes.number,
   inline: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
