@@ -23,3 +23,12 @@ exports[`<Badge /> should output a badge with the className of \`badge\` 1`] = `
   4
 </span>
 `;
+
+exports[`<Badge /> should output a custom caption if provided 1`] = `
+<span
+  className="badge"
+  data-badge-caption="custom caption"
+>
+  4
+</span>
+`;

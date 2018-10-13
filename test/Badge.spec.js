@@ -19,4 +19,9 @@ describe('<Badge />', () => {
     wrapper = shallow(<Badge newIcon>3</Badge>);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('should output a custom caption if provided', () => {
+    wrapper = shallow(<Badge caption="custom caption">4</Badge>);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
