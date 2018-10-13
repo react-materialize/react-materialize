@@ -16,80 +16,40 @@ class Autocomplete extends Component {
     };
 
     this.renderIcon = this.renderIcon.bind(this);
-    this.renderDropdown = this.renderDropdown.bind(this);
     this._onChange = this._onChange.bind(this);
   }
 
-  componentWillReceiveProps({ value }) {
-    if (value !== undefined) {
-      this.setState({ value });
+  componentDidMount() {
+    if (M) {
+      const { options } = this.props;
+      this.instance = M.Autocomplete.init(this._autocomplete, options);
     }
+  }
+
+  componentWillUnmount() {
+    this.instance && this.instance.destroy();
   }
 
   renderIcon(icon, iconClassName) {
     return <Icon className={iconClassName}>{icon}</Icon>;
   }
 
-  renderDropdown(data, minLength, limit) {
-    const { value, itemSelected } = this.state;
-
-    if ((minLength && minLength > value.length) || !value || itemSelected) {
-      return null;
-    }
-
-    let matches = Object.keys(data).filter(key => {
-      const index = key.toUpperCase().indexOf(value.toUpperCase());
-      return index !== -1 && value.length < key.length;
-    });
-    if (limit) matches = matches.slice(0, limit);
-    if (matches.length === 0) {
-      return null;
-    }
-
-    return (
-      <ul className="autocomplete-content dropdown-content">
-        {matches.map((key, idx) => {
-          const index = key.toUpperCase().indexOf(value.toUpperCase());
-          return (
-            <li
-              key={key + '_' + idx}
-              onClick={this._onAutocomplete.bind(this, key)}
-            >
-              {data[key] ? (
-                <img src={data[key]} className="right circle" />
-              ) : null}
-              <span>
-                {index !== 0 ? key.substring(0, index) : ''}
-                <span className="highlight">{value}</span>
-                {key.length !== index + value.length
-                  ? key.substring(index + value.length)
-                  : ''}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
-
-  _onChange(evt) {
+  _onChange(e) {
     const { onChange } = this.props;
-    const value = evt.target.value;
-    if (onChange) {
-      onChange(evt, value);
-    }
+    const value = e.target.value;
+
+    onChange && onChange(e, value);
 
     this.setState({ value, itemSelected: false });
   }
 
-  _onAutocomplete(value, evt) {
-    const { onChange, onAutocomplete } = this.props;
-    if (onAutocomplete) {
-      onAutocomplete(value);
-    }
-    if (onChange) {
-      onChange(evt, value);
-    }
+  _onAutocomplete(value, e) {
+    const { onChange, options } = this.props;
+    const { onAutocomplete } = options;
+
+    onAutocomplete && onAutocomplete(value);
+
+    onChange && onChange(e, value);
 
     this.setState({ value, itemSelected: true });
   }
@@ -99,25 +59,23 @@ class Autocomplete extends Component {
       id,
       className,
       title,
-      data,
       icon,
       iconClassName,
       s,
       m,
       l,
+      xl,
       offset,
-      minLength,
       placeholder,
-      limit,
       // these are mentioned here only to prevent from getting into ...props
       value,
       onChange,
-      onAutocomplete,
+      options,
       ...props
     } = this.props;
 
     const _id = id || `autocomplete-${idgen()}`;
-    const sizes = { s, m, l };
+    const sizes = { s, m, l, xl };
     let classes = {
       col: true
     };
@@ -139,9 +97,11 @@ class Autocomplete extends Component {
           onChange={this._onChange}
           type="text"
           value={this.state.value}
+          ref={input => {
+            this._autocomplete = input;
+          }}
         />
         <label htmlFor={_id}>{title}</label>
-        {this.renderDropdown(data, minLength, limit)}
       </div>
     );
   }
@@ -159,11 +119,6 @@ Autocomplete.propTypes = {
    */
   title: PropTypes.string,
   /*
-   * An object with the keys of the items to match in autocomplete
-   * The values are either null or a location to an image
-   */
-  data: PropTypes.object.isRequired,
-  /*
    * Optional materialize icon to add to the autocomplete bar
    */
   icon: PropTypes.string,
@@ -171,15 +126,8 @@ Autocomplete.propTypes = {
   s: PropTypes.number,
   m: PropTypes.number,
   l: PropTypes.number,
+  xl: PropTypes.number,
   offset: PropTypes.string,
-  /*
-   * Determine input length before dropdown
-   */
-  minLength: PropTypes.number,
-  /**
-   * The max amount of results that can be shown at once. Default: Infinity
-   * */
-  limit: PropTypes.number,
   /**
    * Placeholder for input element
    * */
@@ -190,14 +138,45 @@ Autocomplete.propTypes = {
    */
   onChange: PropTypes.func,
   /**
-   * Called when auto-completed item is selected.
-   * Function signature: (value) => ()
-   */
-  onAutocomplete: PropTypes.func,
-  /**
    * The value of the input
    */
-  value: PropTypes.string
+  value: PropTypes.string,
+  /**
+   * Options for the autocomplete
+   * <a target="_blank" rel="external" href="https://materializecss.com/autocomplete.html#options</a>
+   */
+  options: PropTypes.shape({
+    /**
+     * Data object defining autocomplete options with optional icon strings.
+     */
+    data: PropTypes.object.isRequired,
+    /**
+     * Limit of results the autocomplete shows.
+     */
+    limit: PropTypes.number,
+    /**
+     * Callback for when autocompleted.
+     */
+    onAutocomplete: PropTypes.func,
+    /**
+     * 	Minimum number of characters before autocomplete starts.
+     */
+    minLength: PropTypes.func,
+    /**
+     * Sort function that defines the order of the list of autocomplete options.
+     */
+    sortFunction: PropTypes.func
+  })
+};
+
+Autocomplete.defaultProps = {
+  options: {
+    data: {},
+    limit: Infinity,
+    onAutocomplete: null,
+    minLength: 1,
+    sortFunction: null
+  }
 };
 
 export default Autocomplete;
