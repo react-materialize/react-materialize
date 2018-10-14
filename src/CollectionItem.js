@@ -1,31 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-class CollectionItem extends Component {
-  render() {
-    const { active, children, className, ...other } = this.props;
+const CollectionItem = props => {
+  const { active, children, className, avatar, ...other } = props;
 
-    const classes = {
-      'collection-item': true,
-      active: active
-    };
+  const classes = cx(
+    'collection-item',
+    {
+      active,
+      avatar
+    },
+    className
+  );
 
-    let C = this.props.href ? 'a' : 'li';
+  let C = props.href ? 'a' : 'li';
 
-    return (
-      <C {...other} className={cx(className, classes)}>
-        {children}
-      </C>
-    );
-  }
-}
+  return (
+    <C {...other} className={classes}>
+      {children}
+    </C>
+  );
+};
 
 CollectionItem.propTypes = {
   active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  href: PropTypes.string
+  href: PropTypes.string,
+  avatar: PropTypes.bool
+};
+
+CollectionItem.defaultProps = {
+  active: false,
+  avatar: false
 };
 
 export default CollectionItem;
