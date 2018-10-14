@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Chip from '../src/Chip';
+import mocker from './helper/new-mocker';
 
 describe('<Chip />', () => {
   let wrapper;
@@ -24,5 +25,58 @@ describe('<Chip />', () => {
   test('accepts className', () => {
     wrapper = shallow(<Chip className="find" />);
     expect(wrapper.hasClass('find')).toBeTruthy();
+  });
+
+  describe('initialises', () => {
+    const chipInitMock = jest.fn();
+    const chipInstanceDestroyMock = jest.fn();
+    const chipMock = {
+      init: (el, options) => {
+        chipInitMock(options);
+        return {
+          destroy: chipInstanceDestroyMock
+        };
+      }
+    };
+    const restore = mocker('Chips', chipMock);
+
+    beforeEach(() => {
+      chipInitMock.mockClear();
+      chipInstanceDestroyMock.mockClear();
+    });
+
+    afterAll(() => {
+      restore();
+    });
+
+    test('calls Chips', () => {
+      const options = {
+        data: [
+          {
+            tag: 'Apple'
+          },
+          {
+            tag: 'Microsoft'
+          },
+          {
+            tag: 'Google'
+          }
+        ],
+        placeholder: 'Enter a tag',
+        secondaryPlaceholder: '+Tag',
+        autocompleteOptions: {
+          data: {
+            Apple: null,
+            Microsoft: null,
+            Google: null
+          },
+          limit: Infinity
+        }
+      };
+
+      mount(<Chip options={options} />);
+
+      expect(chipInitMock).toHaveBeenCalledWith(options);
+    });
   });
 });
