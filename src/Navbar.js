@@ -43,6 +43,8 @@ class Navbar extends Component {
       left: alignLinks === 'right'
     });
 
+    const classes = cx({ 'nav-extended': extendWith }, className);
+
     const navMobileCSS = cx('hide-on-med-and-down', [alignLinks]);
 
     const links = React.Children.map((link, index) => (
@@ -50,7 +52,7 @@ class Navbar extends Component {
     ));
 
     let navbar = (
-      <nav {...other} className={className}>
+      <nav {...other} className={classes}>
         <div className="nav-wrapper">
           {brand && (
             <a href={href} className={brandClasses}>
