@@ -5,6 +5,7 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const TARGET = process.env.npm_lifecycle_event;
 const BASE_PATH = path.resolve(__dirname);
@@ -110,6 +111,11 @@ const prodConfig = {
       })
     }]
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin()
+    ]
+  },
   plugins: [
     new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
@@ -120,17 +126,6 @@ const prodConfig = {
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true
-      },
-      compress: {
-        screw_ie8: true
-      },
-      comments: false
     })
   ]
 };

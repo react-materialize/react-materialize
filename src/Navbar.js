@@ -25,7 +25,16 @@ class Navbar extends Component {
   }
 
   render() {
-    const { brand, className, fixed, left, right, href, ...other } = this.props;
+    const {
+      brand,
+      className,
+      fixed,
+      left,
+      right,
+      centerLogo,
+      href,
+      ...other
+    } = this.props;
 
     delete other.options;
 
@@ -36,7 +45,8 @@ class Navbar extends Component {
 
     let brandClasses = {
       'brand-logo': true,
-      right: left
+      right: left,
+      center: centerLogo
     };
 
     let content = (
@@ -68,8 +78,19 @@ Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
+  /**
+   * Makes the navbar links left aligned
+   */
   left: PropTypes.bool,
+  /**
+   * Makes the navbar links right aligned
+   */
   right: PropTypes.bool,
+  /**
+   * The logo will center itself on medium and down screens.
+   * Specifying centerLogo as a prop the logo will always be centered
+   */
+  centerLogo: PropTypes.bool,
   href: PropTypes.string,
   /**
    * Makes the navbar fixed

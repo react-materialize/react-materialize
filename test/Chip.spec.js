@@ -20,4 +20,9 @@ describe('<Chip />', () => {
     wrapper = shallow(<Chip close>{child}</Chip>);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('accepts className', () => {
+    wrapper = shallow(<Chip className="find" />);
+    expect(wrapper.hasClass('find')).toBeTruthy();
+  });
 });

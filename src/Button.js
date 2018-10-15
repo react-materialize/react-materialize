@@ -12,6 +12,16 @@ class Button extends Component {
     this.renderFab = this.renderFab.bind(this);
   }
 
+  componentDidMount() {
+    const { tooltip, tooltipOptions } = this.props;
+    if (
+      typeof $ !== 'undefined' &&
+      (typeof tooltip !== 'undefined' || typeof tooltipOptions !== 'undefined')
+    ) {
+      $(this._btnEl).tooltip(tooltipOptions);
+    }
+  }
+
   render() {
     const {
       className,
@@ -24,6 +34,7 @@ class Button extends Component {
       large,
       disabled,
       waves,
+      tooltip,
       ...other
     } = this.props;
 
@@ -57,6 +68,8 @@ class Button extends Component {
           disabled={!!disabled}
           onClick={this.props.onClick}
           className={cx(classes, className)}
+          ref={el => (this._btnEl = el)}
+          data-tooltip={tooltip}
         >
           {this.renderIcon()}
           {this.props.children}
@@ -65,8 +78,8 @@ class Button extends Component {
     }
   }
 
-  renderFab(className, orientation, clickOnly) {
-    const classes = cx(orientation, clickOnly);
+  renderFab(className, mode, clickOnly) {
+    const classes = cx(mode, clickOnly);
     return (
       <div className={cx('fixed-action-btn', classes)}>
         <a className={className}>{this.renderIcon()}</a>
@@ -102,7 +115,7 @@ Button.propTypes = {
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
    * @default vertical. This will disable any onClick function from being called on the main button.
    */
-  fab: PropTypes.oneOf(['vertical', 'horizontal']),
+  fab: PropTypes.oneOf(['vertical', 'horizontal', 'toolbar']),
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */
@@ -117,6 +130,16 @@ Button.propTypes = {
    * Tooltip to show when mouse hovered
    */
   tooltip: PropTypes.string,
+  /**
+   * Tooltips options as here
+   * http://archives.materializecss.com/0.100.2/dialogs.html#tooltip
+   */
+  tooltipOptions: PropTypes.shape({
+    delay: PropTypes.number,
+    position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    tooltip: PropTypes.string,
+    html: PropTypes.bool
+  }),
   waves: PropTypes.oneOf([
     'light',
     'red',

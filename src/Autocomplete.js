@@ -11,7 +11,8 @@ class Autocomplete extends Component {
     super(props);
 
     this.state = {
-      value: props.value || ''
+      value: props.value || '',
+      itemSelected: false
     };
 
     this.renderIcon = this.renderIcon.bind(this);
@@ -30,9 +31,9 @@ class Autocomplete extends Component {
   }
 
   renderDropdown(data, minLength, limit) {
-    const { value } = this.state;
+    const { value, itemSelected } = this.state;
 
-    if ((minLength && minLength > value.length) || !value) {
+    if ((minLength && minLength > value.length) || !value || itemSelected) {
       return null;
     }
 
@@ -78,7 +79,7 @@ class Autocomplete extends Component {
       onChange(evt, value);
     }
 
-    this.setState({ value });
+    this.setState({ value, itemSelected: false });
   }
 
   _onAutocomplete(value, evt) {
@@ -90,7 +91,7 @@ class Autocomplete extends Component {
       onChange(evt, value);
     }
 
-    this.setState({ value });
+    this.setState({ value, itemSelected: true });
   }
 
   render() {

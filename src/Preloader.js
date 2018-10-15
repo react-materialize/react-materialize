@@ -7,25 +7,19 @@ let colors = ['blue', 'red', 'yellow', 'green'];
 
 class Preloader extends Component {
   render() {
-    let classes = {
-      'preloader-wrapper': true,
-      active: this.props.active
-    };
+    const { active, size, color, flashing, className } = this.props;
 
-    if (this.props.size) {
-      classes[this.props.size] = true;
-    }
+    let classes = cx('preloader-wrapper', { active: active, size: size });
 
     let spinners;
-    if (this.props.flashing) {
-      spinners = [];
-      colors.map(color => {
-        spinners.push(<Spinner color={color} only={false} key={color} />);
-      });
+    if (flashing) {
+      spinners = colors.map(color => (
+        <Spinner color={color} only={false} key={color} />
+      ));
     } else {
-      spinners = <Spinner color={this.props.color} />;
+      spinners = <Spinner color={color} />;
     }
-    return <div className={cx(this.props.className, classes)}>{spinners}</div>;
+    return <div className={cx(className, classes)}>{spinners}</div>;
   }
 }
 

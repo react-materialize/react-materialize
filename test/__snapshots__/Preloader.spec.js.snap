@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Preloader /> should render a Preloader 1`] = `
+<div
+  className="find preloader-wrapper size"
+>
+  <Spinner
+    color="blue"
+    key="blue"
+    only={false}
+  />
+  <Spinner
+    color="red"
+    key="red"
+    only={false}
+  />
+  <Spinner
+    color="yellow"
+    key="yellow"
+    only={false}
+  />
+  <Spinner
+    color="green"
+    key="green"
+    only={false}
+  />
+</div>
+`;
+
+exports[`<Preloader /> should render a Preloader with default properties 1`] = `
+<div
+  className="preloader-wrapper active"
+>
+  <Spinner
+    color="blue"
+    only={true}
+  />
+</div>
+`;

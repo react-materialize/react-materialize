@@ -2,17 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const Spinner = ({ color, only }) => {
-  let spinnerClasses = {
-    'spinner-layer': true
-  };
-  if (only) {
-    spinnerClasses['spinner-' + color + '-only'] = true;
-  } else {
-    spinnerClasses['spinner-' + color] = true;
-  }
+const Spinner = ({ color, only, className }) => {
+  const spinnerClasses = cx('spinner-layer', {
+    [`spinner-${color}-only`]: only,
+    [`spinner-${color}`]: !only
+  });
+
   return (
-    <div className={cx(spinnerClasses)}>
+    <div className={cx(spinnerClasses, className)}>
       <div className="circle-clipper left">
         <div className="circle" />
       </div>
@@ -31,6 +28,7 @@ Spinner.defaultProps = {
 };
 
 Spinner.propTypes = {
+  className: PropTypes.string,
   color: PropTypes.string,
   only: PropTypes.bool
 };

@@ -2,14 +2,29 @@
 
 exports[`<Breadcrumb /> renders 1`] = `
 <nav
-  className="row"
+  className="row blue"
 >
   <div
     className="nav-wrapper"
   >
     <Col
-      s={12}
-    />
+      s={6}
+    >
+      <a
+        className="breadcrumb"
+        href="#"
+        key=".0"
+      >
+        Home
+      </a>
+      <a
+        className="breadcrumb"
+        href="#"
+        key=".1"
+      >
+        Login
+      </a>
+    </Col>
   </div>
 </nav>
 `;

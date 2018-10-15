@@ -1,9 +1,11 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Button from '../src/Button';
+import mocker from './helper/mocker';
 
 describe('Button', () => {
   let wrapper;
+
   beforeEach(() => {
     wrapper = shallow(<Button waves="light">Stuff</Button>);
   });
@@ -63,6 +65,26 @@ describe('Button', () => {
 
     test('should have a disabled attribute', () => {
       expect(wrapper.prop('disabled')).toEqual(true);
+    });
+  });
+
+  describe('with a tooltip', () => {
+    let tooltip = 'Hello';
+    let tooltipOptions = {
+      position: 'top',
+      delay: 50
+    };
+
+    const tooltipMock = jest.fn();
+    mocker('tooltip', tooltipMock);
+    wrapper = shallow(<Button tooltip={tooltip}>Stuff</Button>);
+    test('initializes Button with tooltip', () => {
+      expect(tooltipMock).toHaveBeenCalled();
+    });
+
+    wrapper = shallow(<Button tooltipOptions={tooltipOptions}>Stuff</Button>);
+    test('initializes Button with tooltip options', () => {
+      expect(tooltipMock).toHaveBeenCalledWith(tooltipOptions);
     });
   });
 });

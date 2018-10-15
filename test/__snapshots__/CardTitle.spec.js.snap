@@ -5,7 +5,7 @@ exports[`<CardTitle /> renders 1`] = `
   className="card-image"
 >
   <img
-    className="activator"
+    className=""
     src=""
   />
   <span

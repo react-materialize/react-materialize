@@ -4,6 +4,12 @@ import Breadcrumb from '../src/Breadcrumb';
 
 describe('<Breadcrumb />', () => {
   test('renders', () => {
-    expect(shallow(<Breadcrumb />)).toMatchSnapshot();
+    const wrapper = (
+      <Breadcrumb cols={6} className="blue">
+        <a href="#">Home</a>
+        <a href="#">Login</a>
+      </Breadcrumb>
+    );
+    expect(shallow(wrapper)).toMatchSnapshot();
   });
 });
