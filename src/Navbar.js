@@ -53,7 +53,7 @@ class Navbar extends Component {
       <nav {...other} className={className}>
         <div className="nav-wrapper">
           {brand && (
-            <a href="/" className={brandClasses}>
+            <a href={href} className={brandClasses}>
               {brand}
             </a>
           )}
