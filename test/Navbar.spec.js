@@ -27,7 +27,7 @@ describe('<Navbar />', () => {
   test('places brand on right if navbar is left aligned', () => {
     wrapper = shallow(<Navbar brand="logo" alignLinks="left" />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo.right')).toBeTruthy();
+    expect(wrapper.find('a.brand-logo').hasClass('right'));
   });
 
   test('adds a brand node', () => {
@@ -41,11 +41,11 @@ describe('<Navbar />', () => {
   test('can be fixed', () => {
     wrapper = shallow(<Navbar fixed />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.navbar-fixed')).toBeTruthy();
+    expect(wrapper.find('.navbar-fixed')).toHaveLength(1);
   });
 
   test('should have a sidenav component', () => {
     wrapper = shallow(<Navbar />);
-    expect(wrapper.find('.sidenav')).toBeTruthy();
+    expect(wrapper.find('.sidenav')).toHaveLength(1);
   });
 });
