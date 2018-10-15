@@ -26,7 +26,7 @@ class Navbar extends Component {
     const {
       brand,
       className,
-      extendsWith,
+      extendWith,
       fixed,
       alignLinks,
       centerLogo,
@@ -37,7 +37,7 @@ class Navbar extends Component {
 
     delete other.options;
 
-    let brandClasses = cx({
+    const brandClasses = cx({
       'brand-logo': true,
       center: centerLogo,
       left: alignLinks === 'right'
@@ -62,9 +62,9 @@ class Navbar extends Component {
           </a>
           <ul className={navMobileCSS}>{links}</ul>
         </div>
-        {extendsWith && (
+        {extendWith && (
           <div className="nav-content">
-            {extendsWith.map((elem, index) => <div key={index}>{elem}</div>)}
+            {extendWith.map((elem, index) => <div key={index}>{elem}</div>)}
           </div>
         )}
       </nav>
@@ -96,7 +96,7 @@ Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
-  extendsWith: PropTypes.arrayOf(PropTypes.node),
+  extendWith: PropTypes.arrayOf(PropTypes.node),
   /**
    * left makes the navbar links left aligned, right makes them right aligned
    */
