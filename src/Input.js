@@ -41,6 +41,9 @@ class Input extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+	if (nextProps.type === 'checkbox' && this.state.checked !== nextProps.checked) {
+         this.setState({checked: nextProps.checked});
+    }
     if (this.isMaterialSelect() && !this.props.multiple) {
       this.setState(
         {
