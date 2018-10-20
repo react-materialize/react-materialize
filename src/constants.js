@@ -4,5 +4,6 @@ export default {
   SIZES: ['s', 'm', 'l', 'xl'],
   PLACEMENTS: ['left', 'center', 'right'],
   SCALES: ['big', 'small'],
-  ICON_SIZES: ['tiny', 'small', 'medium', 'large']
+  ICON_SIZES: ['tiny', 'small', 'medium', 'large'],
+  MOBILE_NAV_ID: 'mobile-nav'
 };

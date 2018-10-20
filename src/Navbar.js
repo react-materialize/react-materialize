@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 
+import constants from './constants';
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -81,7 +82,7 @@ class Navbar extends Component {
         {navbar}
 
         <ul
-          id="mobile-nav"
+          id={constants.MOBILE_NAV_ID}
           className="sidenav"
           ref={ul => {
             this._sidenav = ul;
