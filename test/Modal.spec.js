@@ -5,6 +5,8 @@ import mocker from './helper/new-mocker';
 
 describe('<Modal />', () => {
   let wrapper;
+  const modalOpenMock = jest.fn();
+  const modalCloseMock = jest.fn();
   const modalInitMock = jest.fn();
   const modalInstanceDestroyMock = jest.fn();
   const modalMock = {
@@ -13,7 +15,9 @@ describe('<Modal />', () => {
       return {
         destroy: modalInstanceDestroyMock
       };
-    }
+    },
+    open: modalOpenMock,
+    close: modalCloseMock
   };
   const restore = mocker('Modal', modalMock);
 
@@ -91,10 +95,8 @@ describe('<Modal />', () => {
   });
 
   // describe('controlled modal with `open` prop', () => {
-  //   let testModal;
-
   //   beforeEach(() => {
-  //     testModal = shallow(
+  //     wrapper = shallow(
   //       <Modal options={{ one: 1 }} open>
   //         {children}
   //       </Modal>

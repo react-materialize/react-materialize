@@ -20,7 +20,7 @@ class Modal extends Component {
   }
 
   componentDidMount() {
-    if (M) {
+    if (typeof M !== 'undefined') {
       const { trigger, options, open } = this.props;
 
       this.instance = M.Modal.init(this._modal, options);
@@ -32,7 +32,10 @@ class Modal extends Component {
   componentWillUnmount() {
     document.body.removeChild(this.modalRoot);
     this.modalRoot = null;
-    this.instance && this.instance.destroy();
+
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
