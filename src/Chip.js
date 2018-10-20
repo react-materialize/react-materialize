@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import Icon from './Icon';
 
 class Chip extends Component {
   componentDidMount() {
     const { options } = this.props;
 
-    if (options && M) {
+    if (options && typeof M !== 'undefined') {
       this.instance = M.Chips.init(this._chips, options);
     }
   }
@@ -27,7 +28,7 @@ class Chip extends Component {
     let chipContent = (
       <React.Fragment>
         {children}
-        {close ? <i className="close material-icons">close</i> : null}{' '}
+        {close && <Icon className="close material-icons">close</Icon>}
       </React.Fragment>
     );
 
@@ -56,6 +57,9 @@ Chip.propTypes = {
    * Shows a close icon
    */
   close: PropTypes.bool,
+  /**
+   * Options object for the Chip Javascript Plugin
+   */
   options: PropTypes.shape({
     /**
      * Set the chip data
@@ -72,7 +76,20 @@ Chip.propTypes = {
     /**
      * Set autocomplete options.
      */
-    autocompleteOptions: PropTypes.objectOf(PropTypes.object),
+    autocompleteOptions: PropTypes.shape({
+      /**
+       * Data object defining autocomplete options with optional icon strings.
+       */
+      data: PropTypes.objectOf(PropTypes.string),
+      /**
+       * Limit of results the autocomplete shows.
+       */
+      limit: PropTypes.number,
+      /**
+       * Minimum number of characters before autocomplete starts.
+       */
+      minLength: PropTypes.number
+    }),
     /**
      * Set chips limit.
      */
@@ -93,7 +110,8 @@ Chip.propTypes = {
 };
 
 Chip.defaultProps = {
-  close: false
+  close: false,
+  options: null
 };
 
 export default Chip;

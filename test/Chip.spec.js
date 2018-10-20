@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Chip from '../src/Chip';
+import Icon from '../src/Icon';
 import mocker from './helper/new-mocker';
 
 describe('<Chip />', () => {
@@ -13,7 +14,7 @@ describe('<Chip />', () => {
 
   test('accepts a close prop', () => {
     wrapper = shallow(<Chip close />);
-    expect(wrapper.find('i.material-icons.close')).toHaveLength(1);
+    expect(wrapper.find(Icon).hasClass('close')).toBeTruthy();
   });
 
   test('accepts children', () => {
