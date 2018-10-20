@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 class Parallax extends Component {
   componentDidMount() {
-    if (M) {
+    if (typeof M !== 'undefined') {
       const { options } = this.props;
       this.instance = M.Parallax.init(this._parallax, options);
     }
