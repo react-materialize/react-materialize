@@ -10,7 +10,7 @@ class SideNav extends Component {
   }
 
   componentDidMount() {
-    if (M) {
+    if (typeof M !== 'undefined') {
       const { options } = this.props;
       this.instance = M.Sidenav.init(this._sidenav, options);
     }
