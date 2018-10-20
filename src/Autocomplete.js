@@ -20,14 +20,16 @@ class Autocomplete extends Component {
   }
 
   componentDidMount() {
-    if (M) {
+    if (typeof M !== 'undefined') {
       const { options } = this.props;
       this.instance = M.Autocomplete.init(this._autocomplete, options);
     }
   }
 
   componentWillUnmount() {
-    this.instance && this.instance.destroy();
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   renderIcon(icon, iconClassName) {
