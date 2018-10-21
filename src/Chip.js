@@ -29,7 +29,7 @@ class Chip extends Component {
     let chipContent = (
       <React.Fragment>
         {children}
-        {close && <Icon className="close material-icons">close</Icon>}
+        {close && <Icon>close</Icon>}
       </React.Fragment>
     );
 
