@@ -1,5 +1,10 @@
 # Changelog
 
+### 2.5.7
+
+- Updates npm scripts
+- Added `pull` and `push` modifiers to `<Columns/>` (CloudPower97 #647)
+
 ### 2.5.6
 
 - Fixes multiple input bug (trishtzy #658)
