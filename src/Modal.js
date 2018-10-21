@@ -31,7 +31,6 @@ class Modal extends Component {
 
   componentWillUnmount() {
     document.body.removeChild(this.modalRoot);
-    this.modalRoot = null;
 
     if (this.instance) {
       this.instance.destroy();

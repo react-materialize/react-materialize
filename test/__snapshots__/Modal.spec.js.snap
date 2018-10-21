@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Modal /> controlled modal with \`open\` prop mounts opened 1`] = `
+<div>
+  <Portal />
+</div>
+`;
+
 exports[`<Modal /> renders a modal has children 1`] = `
 <Modal
   actions={
@@ -111,7 +117,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
     </button>
     <div
       className="modal"
-      id="modal_4"
+      id="modal_1"
     >
       <div
         className="modal-content"
@@ -174,7 +180,7 @@ exports[`<Modal /> without a trigger renders 1`] = `
   <div>
     <div
       className="modal"
-      id="modal_3"
+      id="modal_1"
     >
       <div
         className="modal-content"
