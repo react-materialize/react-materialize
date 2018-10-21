@@ -163,7 +163,7 @@ Autocomplete.propTypes = {
     /**
      * 	Minimum number of characters before autocomplete starts.
      */
-    minLength: PropTypes.func,
+    minLength: PropTypes.number,
     /**
      * Sort function that defines the order of the list of autocomplete options.
      */
