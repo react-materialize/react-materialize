@@ -3,17 +3,13 @@
 exports[`<Chip /> accepts children 1`] = `
 <div
   className="chip"
-  close={true}
-  options={null}
 >
   <p
     className="child"
   >
     Child
   </p>
-  <Icon
-    className="close material-icons"
-  >
+  <Icon>
     close
   </Icon>
 </div>
@@ -22,7 +18,5 @@ exports[`<Chip /> accepts children 1`] = `
 exports[`<Chip /> should render 1`] = `
 <div
   className="chip"
-  close={false}
-  options={null}
 />
 `;
