@@ -17,7 +17,8 @@ class Chip extends Component {
   }
 
   render() {
-    const { children, close, className, options } = this.props;
+    const { children, close, className, options, ...other } = this.props;
+
     const classes = cx(
       {
         chip: !options,
@@ -36,10 +37,12 @@ class Chip extends Component {
       chipContent = null;
     }
 
+    delete other.close;
+
     return (
       <div
         className={classes}
-        {...this.props}
+        {...this.other}
         ref={div => {
           this._chips = div;
         }}
