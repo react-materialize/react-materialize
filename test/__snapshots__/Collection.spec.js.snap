@@ -11,10 +11,7 @@ exports[`<Collection /> renders 1`] = `
       names
     </h4>
   </li>
-  <CollectionItem
-    active={false}
-    avatar={false}
-  >
+  <CollectionItem>
     Alvin
   </CollectionItem>
 </ul>

@@ -2,46 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const CollectionItem = props => {
-  const { active, children, className, avatar, ...other } = props;
-
-  const classes = cx(
-    'collection-item',
-    {
-      active,
-      avatar
-    },
-    className
-  );
-
-  let C = props.href ? 'a' : 'li';
-
-  return (
-    <C {...other} className={classes}>
+const CollectionItem = ({ children, className, href, ...other }) => {
+  let item = (
+    <li {...other} className={cx('collection-item', className)}>
       {children}
-    </C>
+    </li>
   );
+
+  if (href) {
+    item = (
+      <a {...other} href={href} className={cx('collection-item', className)}>
+        {children}
+      </a>
+    );
+  }
+
+  return item;
 };
 
 CollectionItem.propTypes = {
-  active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   /* 
    * Default: false
    * For more information refer to : https://materializecss.com/collections.html#links 
    */
-  href: PropTypes.string,
-  /* 
-   * Default: false
-   * For more information refer to : https://materializecss.com/collections.html#circle 
-   */
-  avatar: PropTypes.bool
-};
-
-CollectionItem.defaultProps = {
-  active: false,
-  avatar: false
+  href: PropTypes.string
 };
 
 export default CollectionItem;
