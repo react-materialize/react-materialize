@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 class MediaBox extends Component {
   componentDidMount() {
-    if (M) {
+    if (typeof M !== 'undefined') {
       const { options } = this.props;
 
       this.instance = M.Materialbox.init(this._materialBoxed, options);
@@ -12,7 +12,9 @@ class MediaBox extends Component {
   }
 
   componentWillUnmount() {
-    this.instance && this.instance.destroy();
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   render() {
