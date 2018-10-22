@@ -2,7 +2,7 @@
 
 exports[`<Table /> renders 1`] = `
 <table
-  className="centered highlight responsive-table striped bordered"
+  className="centered highlight responsive-table striped"
 >
   <tr>
     <td>
