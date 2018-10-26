@@ -51,7 +51,7 @@ export default {
   sliders: require('!raw-loader!../../../examples/Sliders.js'),
   submitButton: require('!raw-loader!../../../examples/SubmitButton.js'),
   tab: require('!raw-loader!../../../examples/Tab.js'),
-  tableBorderless: require('!raw-loader!../../../examples/BorderlessTable.js'),
+  table: require('!raw-loader!../../../examples/Table.js'),
   toast: require('!raw-loader!../../../examples/Toast.js'),
   toastProgrammatically: require('!raw-loader!../../../examples/ToastProgrammatically.js')
 };

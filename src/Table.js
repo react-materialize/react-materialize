@@ -5,7 +5,6 @@ import cx from 'classnames';
 class Table extends Component {
   render() {
     const {
-      bordered,
       centered,
       children,
       className,
@@ -19,8 +18,7 @@ class Table extends Component {
       centered: centered,
       highlight: hoverable,
       'responsive-table': responsive,
-      striped: striped,
-      bordered: bordered
+      striped: striped
     };
 
     return (
@@ -53,12 +51,7 @@ Table.propTypes = {
    * striped style
    * @default false
    */
-  striped: PropTypes.bool,
-  /**
-   * Add border to each row
-   * @default false
-   */
-  bordered: PropTypes.bool
+  striped: PropTypes.bool
 };
 
 export default Table;
