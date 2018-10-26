@@ -28,7 +28,9 @@ describe('<CollectionItem />', () => {
   });
 
   test('can have an active state', () => {
-    wrapper = shallow(<CollectionItem active>Alvin</CollectionItem>);
+    wrapper = shallow(
+      <CollectionItem className="active">Alvin</CollectionItem>
+    );
     expect(wrapper.find('.collection-item.active')).toHaveLength(1);
   });
 });
