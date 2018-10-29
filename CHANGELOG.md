@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.5.7
+
+- Fixes input#checkbox bug (Marzon #680)
+
 ### 2.5.6
 
 - Fixes multiple input bug (trishtzy #658)
