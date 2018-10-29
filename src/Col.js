@@ -15,6 +15,8 @@ class Col extends Component {
       l,
       xl,
       offset,
+      push,
+      pull,
       ...other
     } = this.props;
 
@@ -28,7 +30,15 @@ class Col extends Component {
     );
 
     if (offset) {
-      offset.split(' ').forEach(off => (classes['offset-' + off] = true));
+      offset.split(' ').forEach(offset => (classes['offset-' + offset] = true));
+    }
+
+    if (push) {
+      push.split(' ').forEach(push => (classes['push-' + push] = true));
+    }
+
+    if (pull) {
+      pull.split(' ').forEach(pull => (classes['pull-' + pull] = true));
     }
 
     return (
@@ -64,11 +74,13 @@ Col.propTypes = {
    */
   node: PropTypes.node,
   /**
-   * To offset, simply add s2 to the class where s signifies the screen
-   * class-prefix (s = small, m = medium, l = large) and the number after
-   * is the number of columns you want to offset by.
+   * To offset/push/pull, simply add s2 to the class where s signifies the screen
+   * class-prefix (s = mobile devices, m = tablet devices, l = desktop devices, xl= large desktop devices) and the number after
+   * is the number of columns you want to offset/push/pull by.
    */
-  offset: PropTypes.string
+  offset: PropTypes.string,
+  push: PropTypes.string,
+  pull: PropTypes.string
 };
 
 export default Col;

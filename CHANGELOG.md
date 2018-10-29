@@ -1,8 +1,13 @@
 # Changelog
 
-### 2.5.7
+### 2.5.8
 
 - Fixes input#checkbox bug (Marzon #680)
+
+### 2.5.7
+
+- Updates npm scripts
+- Added `pull` and `push` modifiers to `<Columns/>` (CloudPower97 #647)
 
 ### 2.5.6
 
