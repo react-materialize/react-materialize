@@ -20,7 +20,7 @@ class Button extends Component {
       this.instance = M.Tooltip.init(this._btnEl, tooltipOptions);
     }
 
-    if (fab && this._floatingActionBtn) {
+    if (fab) {
       this.instance = M.FloatingActionButton.init(this._floatingActionBtn);
     }
   }
