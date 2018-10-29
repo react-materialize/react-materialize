@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.5.8
+
+- Fixes input#checkbox bug (Marzon #680)
+
 ### 2.5.7
 
 - Updates npm scripts
