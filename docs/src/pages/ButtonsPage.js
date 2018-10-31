@@ -8,6 +8,8 @@ import ButtonCode from '!raw-loader!Button';
 
 import raisedButton from '../../../examples/RaisedButton';
 import floatingButton from '../../../examples/FloatingButton';
+import verticalFAB from '../../../examples/VerticalFAB';
+import horizontalFab from '../../../examples/HorizontalFAB';
 
 const ButtonsPage = () => (
   <Row>
@@ -75,6 +77,25 @@ const ButtonsPage = () => (
       </p>
       <Col s={12}>
         <ReactPlayground code={Samples.disabledButton} />
+      </Col>
+      <h4 className='col s12'>
+        Fixed Action Button
+      </h4>
+      <p className='col s12  caption'>
+        If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in the bottom righthand corner of the page.
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.verticalFAB}>
+          {verticalFAB}
+        </ReactPlayground>
+      </Col>
+      <h4 className='col s12'>
+        Horizontal FAB
+      </h4>
+      <Col s={12}>
+        <ReactPlayground code={Samples.horizontalFab}>
+          {horizontalFab}
+        </ReactPlayground>
       </Col>
       <Col s={12}>
         <PropTable header='Buttons' component={ButtonCode} />
