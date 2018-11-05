@@ -1,15 +1,33 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Modal from '../src/Modal';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
+import idgen from '../src/idgen';
+
+jest.mock('../src/idgen');
 
 describe('<Modal />', () => {
   let wrapper;
-  const modalMock = jest.fn();
-  const restore = mocker('modal', modalMock);
+  const modalOpenMock = jest.fn();
+  const modalCloseMock = jest.fn();
+  const modalInitMock = jest.fn();
+  const modalInstanceDestroyMock = jest.fn();
+  const modalMock = {
+    init: (el, options) => {
+      modalInitMock(options);
+      return {
+        open: modalOpenMock,
+        close: modalCloseMock,
+        destroy: modalInstanceDestroyMock
+      };
+    }
+  };
+  const restore = mocker('Modal', modalMock);
+  idgen.mockReturnValue(1);
 
   afterAll(() => {
     restore();
+    idgen.restore();
   });
 
   const trigger = <button>click</button>;
@@ -19,17 +37,29 @@ describe('<Modal />', () => {
     </div>
   );
   const header = 'Modal header';
-  const modalOptions = {
+  const options = {
     dismissible: true,
     opacity: 0.4
   };
 
   let renderedWrapper;
 
+  describe('initialises', () => {
+    beforeEach(() => {
+      modalInitMock.mockClear();
+    });
+
+    test('calls Modal', () => {
+      shallow(<Modal />);
+
+      expect(modalInitMock).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('renders a modal', () => {
     beforeEach(() => {
       wrapper = mount(
-        <Modal trigger={trigger} modalOptions={modalOptions} header={header}>
+        <Modal trigger={trigger} options={options} header={header}>
           {children}
         </Modal>
       );
@@ -38,8 +68,7 @@ describe('<Modal />', () => {
     });
 
     afterEach(() => {
-      modalMock.mockClear();
-      document.body.removeChild(document.body.lastElementChild);
+      modalInitMock.mockClear();
     });
 
     test('has children', () => {
@@ -54,85 +83,61 @@ describe('<Modal />', () => {
 
   describe('without a trigger', () => {
     beforeEach(() => {
-      wrapper = mount(<Modal modalOptions={modalOptions}>{children}</Modal>);
+      wrapper = mount(<Modal options={options}>{children}</Modal>);
     });
 
     afterEach(() => {
-      modalMock.mockClear();
+      modalInitMock.mockClear();
       document.body.removeChild(document.body.lastElementChild);
     });
 
     test('renders', () => {
       expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(Modal).length).toEqual(1);
+      expect(wrapper.find(Modal)).toHaveLength(1);
     });
   });
 
   describe('controlled modal with `open` prop', () => {
-    let testModal;
     beforeEach(() => {
-      testModal = shallow(
-        <Modal modalOptions={{ one: 1 }} open>
-          {children}
-        </Modal>
-      );
+      // initially set to open
+      wrapper = shallow(<Modal open>{children}</Modal>);
     });
 
     afterEach(() => {
-      modalMock.mockClear();
-      document.body.removeChild(document.body.lastElementChild);
+      modalInitMock.mockClear();
     });
 
-    test('mounts opened', () => {
-      // once in mount and twice in #showModal
-      expect(modalMock).toHaveBeenCalledTimes(3);
-      expect(wrapper).toMatchSnapshot();
+    test('calls `open` on mount', () => {
+      expect(modalOpenMock).toHaveBeenCalledTimes(1);
     });
 
     test('open on prop change', () => {
-      testModal.setProps({ open: true });
-      expect(modalMock).toHaveBeenCalledTimes(3);
-      // no trigger is defined, modal should be configured in constructor
-      expect(modalMock.mock.calls[0]).toEqual([{ one: 1 }]);
-      // showModal initializes the modal again
-      expect(modalMock.mock.calls[1]).toEqual([{ one: 1 }]);
-      expect(modalMock).toHaveBeenLastCalledWith('open');
-    });
-
-    test('closes on prop change', () => {
-      testModal.setProps({ open: false });
-      expect(modalMock).toHaveBeenCalledTimes(4);
-      // no trigger is defined, modal should be configured in constructor
-      expect(modalMock.mock.calls[0]).toEqual([{ one: 1 }]);
-      // open prop is set, so showModal is called
-      expect(modalMock.mock.calls[1]).toEqual([{ one: 1 }]);
-      expect(modalMock.mock.calls[2]).toEqual(['open']);
-      expect(modalMock).toHaveBeenLastCalledWith('close');
+      wrapper.setProps({ open: false });
+      // called once when mounted to `open` and once
+      // after new props to close
+      expect(modalOpenMock).toHaveBeenCalledTimes(2);
     });
   });
 
   describe('renders a trigger', () => {
     beforeEach(() => {
-      wrapper = shallow(
-        <Modal trigger={trigger} modalOptions={modalOptions} header={header}>
+      wrapper = mount(
+        <Modal trigger={trigger} options={options} header={header}>
           {children}
         </Modal>
       );
     });
 
     afterEach(() => {
-      modalMock.mockClear();
-      document.body.removeChild(document.body.lastElementChild);
+      modalInitMock.mockClear();
     });
 
     test('renders', () => {
-      expect(wrapper.find('button').length).toEqual(1);
       expect(wrapper).toMatchSnapshot();
     });
 
-    test('initializes with modalOptions', () => {
-      wrapper.find('button').simulate('click');
-      expect(modalMock).toHaveBeenCalledWith(modalOptions);
+    test('initializes with options', () => {
+      expect(modalInitMock).toHaveBeenCalledWith(options);
     });
   });
 });

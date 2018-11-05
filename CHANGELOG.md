@@ -1,9 +1,43 @@
 # Changelog
 
-### 3.0.0
+### 2.5.7
 
-- (BREAKING) Toast [new implementation]
-- ... add changes here ...
+- Updates npm scripts
+- Added `pull` and `push` modifiers to `<Columns/>` (CloudPower97 #647)
+
+### 2.5.6
+
+- Fixes multiple input bug (trishtzy #658)
+- Adds centerLogo prop to Navbar (CloudPower97 #534)
+- Adds FAB into Toolbar (CloudPower97 #537)
+- Adds extra classes to `<Container />` (CloudPower97 #648)
+- Docs improvements (dmitry-yudakov #640)
+
+### 2.4.5
+
+- Fix docs vulnerabilities
+
+### 2.4.4
+
+- Fix vulnerable dependencies + linting
+
+### 2.4.3
+
+- Fixes tabs update bug (osztenkurden #634)
+
+### 2.4.2
+
+- Fix travis authentication
+
+### 2.4.1
+
+- No significant changes
+
+### 2.4.0
+
+- [NEW Feature] File Input (niross #570)
+- Fixed `Icon` not having refs (XavierForks #572)
+- Add Toast update to docs (hnrchrdl #576)
 
 ### 2.3.3
 

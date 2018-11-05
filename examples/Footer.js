@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../src/Footer';
 
 export default
-<Footer copyrights="&copy; 2015 Copyright Text"
+<Footer copyrights="© 2015 Copyright Text"
   moreLinks={
     <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
   }

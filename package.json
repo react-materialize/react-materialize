@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "2.3.3",
+  "version": "2.4.7",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
@@ -9,8 +9,9 @@
     "lib"
   ],
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "npm run test:unit",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
     "pretest": "npm run lint",
     "build": "babel -d lib src",
     "lint": "eslint src test",
@@ -41,21 +42,25 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
     ]
   },
   "homepage": "https://github.com/react-materialize/react-materialize",
   "devDependencies": {
-    "babel-cli": "^6.1.18",
-    "babel-core": "^6.1.21",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.1.19",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.5.0-1",
-    "babel-register": "^6.22.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "babel-register": "^6.26.0",
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.3",
     "es5-shim": "^4.2.0",
     "eslint": "^3.4.0",
@@ -67,9 +72,10 @@
     "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
     "husky": "^0.14.3",
-    "jest": "^22.4.3",
+    "jest": "^23.5.0",
+    "jquery": "^3.3.1",
     "jsdom": "^11.7.0",
-    "materialize-css": "^0.100.2",
+    "materialize-css": "^1.0.0",
     "prettier": "^1.11.1",
     "webpack": "^1.13.1"
   },

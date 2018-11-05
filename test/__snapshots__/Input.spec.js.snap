@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Input /> file input 1`] = `
+<div
+  className="col file-field"
+>
+  <div
+    className="btn"
+  >
+    <span>
+      Upload
+    </span>
+    <input
+      checked={false}
+      multiple={true}
+      type="file"
+    />
+  </div>
+  <div
+    className="file-path-wrapper"
+  >
+    <input
+      className="file-path"
+      id="input_19"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
 exports[`<Input /> input value 1`] = `
 <div
   className="col input-field"
@@ -16,34 +44,6 @@ exports[`<Input /> input value 1`] = `
 </div>
 `;
 
-exports[`<Input /> input values 1`] = `
-<div
-  className="col input-field"
->
-  <input
-    checked={false}
-    className=""
-    defaultValue={
-      Array [
-        1,
-        2,
-        3,
-      ]
-    }
-    id="input_3"
-    onChange={[Function]}
-    type="file"
-    value={
-      Array [
-        1,
-        2,
-        3,
-      ]
-    }
-  />
-</div>
-`;
-
 exports[`<Input /> label 1`] = `
 <div
   className="col input-field"
@@ -51,13 +51,13 @@ exports[`<Input /> label 1`] = `
   <input
     checked={false}
     className=""
-    id="input_4"
+    id="input_3"
     onChange={[Function]}
     type="text"
   />
   <label
     className="red"
-    htmlFor="input_4"
+    htmlFor="input_3"
   >
     Name
   </label>
@@ -71,12 +71,12 @@ exports[`<Input /> multiple select 1`] = `
   <select
     checked={false}
     className=""
-    id="input_10"
+    id="input_9"
     multiple={true}
   >
     <option
       disabled={true}
-      key="11"
+      key="10"
     >
       Choose your option
     </option>
@@ -109,7 +109,7 @@ exports[`<Input /> pickadate 1`] = `
   <input
     checked={false}
     className=""
-    id="input_17"
+    id="input_16"
     type="date"
   />
 </div>
@@ -127,7 +127,7 @@ exports[`<Input /> pickadate with icon 1`] = `
   <input
     checked={false}
     className=""
-    id="input_18"
+    id="input_17"
     type="date"
   />
 </div>
@@ -149,7 +149,7 @@ exports[`<Input /> pickatime 1`] = `
     <input
       checked={false}
       className=""
-      id="input_19"
+      id="input_18"
     />
   </div>
 </Input>
@@ -162,11 +162,11 @@ exports[`<Input /> placeholder 1`] = `
   <select
     checked={false}
     className=""
-    id="input_8"
+    id="input_7"
   >
     <option
       disabled={true}
-      key="9"
+      key="8"
     >
       Choose your option
     </option>
@@ -199,6 +199,28 @@ exports[`<Input /> radio 1`] = `
   <input
     checked={false}
     className=""
+    id="input_12"
+    name="group1"
+    onChange={[Function]}
+    type="radio"
+    value="yellow"
+  />
+  <label
+    className="active"
+    htmlFor="input_12"
+  >
+    Yellow
+  </label>
+</div>
+`;
+
+exports[`<Input /> radio checked 1`] = `
+<div
+  className="col"
+>
+  <input
+    checked={false}
+    className=""
     id="input_13"
     name="group1"
     onChange={[Function]}
@@ -214,7 +236,7 @@ exports[`<Input /> radio 1`] = `
 </div>
 `;
 
-exports[`<Input /> radio checked 1`] = `
+exports[`<Input /> radio event 1`] = `
 <div
   className="col"
 >
@@ -236,28 +258,6 @@ exports[`<Input /> radio checked 1`] = `
 </div>
 `;
 
-exports[`<Input /> radio event 1`] = `
-<div
-  className="col"
->
-  <input
-    checked={false}
-    className=""
-    id="input_15"
-    name="group1"
-    onChange={[Function]}
-    type="radio"
-    value="yellow"
-  />
-  <label
-    className="active"
-    htmlFor="input_15"
-  >
-    Yellow
-  </label>
-</div>
-`;
-
 exports[`<Input /> radio event 2`] = `
 <div
   className="col"
@@ -265,7 +265,7 @@ exports[`<Input /> radio event 2`] = `
   <input
     checked={true}
     className=""
-    id="input_15"
+    id="input_14"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -273,7 +273,7 @@ exports[`<Input /> radio event 2`] = `
   />
   <label
     className="active"
-    htmlFor="input_15"
+    htmlFor="input_14"
   >
     Yellow
   </label>
@@ -287,7 +287,7 @@ exports[`<Input /> radio onChange 1`] = `
   <input
     checked={true}
     className=""
-    id="input_16"
+    id="input_15"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -295,7 +295,7 @@ exports[`<Input /> radio onChange 1`] = `
   />
   <label
     className="active"
-    htmlFor="input_16"
+    htmlFor="input_15"
   >
     Yellow
   </label>
@@ -309,7 +309,7 @@ exports[`<Input /> radio onChange 2`] = `
   <input
     checked={false}
     className=""
-    id="input_16"
+    id="input_15"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -317,7 +317,7 @@ exports[`<Input /> radio onChange 2`] = `
   />
   <label
     className=""
-    htmlFor="input_16"
+    htmlFor="input_15"
   >
     Yellow
   </label>
@@ -351,7 +351,7 @@ exports[`<Input /> renders an icon child with prefix class 1`] = `
     checked={false}
     className=""
     icon="weekend"
-    id="input_7"
+    id="input_6"
   >
     <option
       key="yes/.0"
@@ -368,7 +368,7 @@ exports[`<Input /> select 1`] = `
   <select
     checked={false}
     className=""
-    id="input_6"
+    id="input_5"
   >
     <option
       key=".$1"
@@ -434,7 +434,7 @@ exports[`<Input /> textarea 1`] = `
   <textarea
     checked={false}
     className="materialize-textarea"
-    id="input_5"
+    id="input_4"
     onChange={[Function]}
   />
 </div>

@@ -3,6 +3,7 @@
 exports[`Tabs renders 1`] = `
 <Chip
   close={true}
+  options={null}
 >
   hey
 </Chip>
