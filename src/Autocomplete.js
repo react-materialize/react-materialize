@@ -12,12 +12,14 @@ class Autocomplete extends Component {
 
     this.state = {
       value: props.value || '',
-      itemSelected: false
+      itemSelected: false,
+      activeItem: 0
     };
 
     this.renderIcon = this.renderIcon.bind(this);
     this.renderDropdown = this.renderDropdown.bind(this);
     this._onChange = this._onChange.bind(this);
+    this._onKeyDown = this._onKeyDown.bind(this);
   }
 
   componentWillReceiveProps({ value }) {
@@ -31,7 +33,7 @@ class Autocomplete extends Component {
   }
 
   renderDropdown(data, minLength, limit) {
-    const { value, itemSelected } = this.state;
+    const { value, itemSelected, activeItem } = this.state;
 
     if ((minLength && minLength > value.length) || !value || itemSelected) {
       return null;
@@ -47,13 +49,19 @@ class Autocomplete extends Component {
     }
 
     return (
-      <ul className="autocomplete-content dropdown-content">
+      <ul
+        className="autocomplete-content dropdown-content"
+        ref={autoCompleteContent =>
+          (this.autoCompleteContent = autoCompleteContent)
+        }
+      >
         {matches.map((key, idx) => {
           const index = key.toUpperCase().indexOf(value.toUpperCase());
           return (
             <li
               key={key + '_' + idx}
               onClick={this._onAutocomplete.bind(this, key)}
+              className={idx === activeItem ? 'active' : null}
             >
               {data[key] ? (
                 <img src={data[key]} className="right circle" />
@@ -79,7 +87,58 @@ class Autocomplete extends Component {
       onChange(evt, value);
     }
 
-    this.setState({ value, itemSelected: false });
+    this.setState({ value, itemSelected: false, activeItem: 0 });
+  }
+
+  _onKeyDown(evt) {
+    const { activeItem } = this.state;
+    const matches = this.autoCompleteContent
+      ? this.autoCompleteContent.childNodes
+      : null;
+    let matchCount = 0;
+
+    if (
+      this.autoCompleteContent !== null &&
+      this.autoCompleteContent !== undefined
+    ) {
+      matchCount = matches.length - 1; // -1 for start index from 0.
+    }
+
+    // if event is arrow down
+    if (evt.keyCode === 40) {
+      evt.preventDefault();
+      if (matchCount > activeItem) {
+        this.setState({
+          activeItem: activeItem + 1
+        });
+      }
+    }
+
+    // if event is arrow up
+    if (evt.keyCode === 38) {
+      evt.preventDefault();
+      if (activeItem > 0) {
+        this.setState({
+          activeItem: activeItem - 1
+        });
+      }
+    }
+
+    // if event is esc, reset value.
+    if (evt.keyCode === 27) {
+      this.setState({ value: '' });
+    }
+
+    if (evt.keyCode === 13) {
+      evt.preventDefault();
+      const liValue = matches[activeItem].textContent;
+      let value = Object.keys(this.props.data).filter(key => {
+        const index = key.toUpperCase().indexOf(liValue.toUpperCase());
+        return index !== -1 && liValue.length <= key.length;
+      });
+
+      this._onAutocomplete(value);
+    }
   }
 
   _onAutocomplete(value, evt) {
@@ -137,6 +196,7 @@ class Autocomplete extends Component {
           className="autocomplete"
           id={_id}
           onChange={this._onChange}
+          onKeyDown={this._onKeyDown}
           type="text"
           value={this.state.value}
         />
