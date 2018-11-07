@@ -39,10 +39,8 @@ class Autocomplete extends Component {
       return null;
     }
 
-    let matches = Object.keys(data).filter(key => {
-      const index = key.toUpperCase().indexOf(value.toUpperCase());
-      return index !== -1 && value.length < key.length;
-    });
+    let matches = this._findRealValue(value);
+
     if (limit) matches = matches.slice(0, limit);
     if (matches.length === 0) {
       return null;
@@ -129,16 +127,25 @@ class Autocomplete extends Component {
       this.setState({ value: '' });
     }
 
+    // if event is enter
     if (evt.keyCode === 13) {
       evt.preventDefault();
+      // liValue is gets text content of item that pressed enter.
+      // we can't do innerHTML or innerText because there is <span className="highlight"></span>
       const liValue = matches[activeItem].textContent;
-      let value = Object.keys(this.props.data).filter(key => {
-        const index = key.toUpperCase().indexOf(liValue.toUpperCase());
-        return index !== -1 && liValue.length <= key.length;
-      });
-
+      const value = this._findRealValue(liValue);
       this._onAutocomplete(value);
     }
+  }
+
+  _findRealValue(liValue) {
+    const { data } = this.props;
+
+    // go and look to data. if you find a key that have same name with value, return it.
+    return Object.keys(data).filter(key => {
+      const index = key.toUpperCase().indexOf(liValue.toUpperCase());
+      return index !== -1 && liValue.length <= key.length;
+    });
   }
 
   _onAutocomplete(value, evt) {
