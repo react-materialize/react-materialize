@@ -1,15 +1,20 @@
 # Changelog
 
-### 2.5.8
+### 2.5.0
+
+- Feature `<Autocomplete/>` supports arrow navigation (mustaphaturhan #690)
+- Adds `xl` size to `<Input/>` (CloudPower97 #676)
+
+### 2.4.8
 
 - Fixes input#checkbox bug (Marzon #680)
 
-### 2.5.7
+### 2.4.7
 
 - Updates npm scripts
 - Added `pull` and `push` modifiers to `<Columns/>` (CloudPower97 #647)
 
-### 2.5.6
+### 2.4.6
 
 - Fixes multiple input bug (trishtzy #658)
 - Adds centerLogo prop to Navbar (CloudPower97 #534)
