@@ -8,6 +8,7 @@ exports[`<Autocomplete /> renders 1`] = `
     className="autocomplete"
     id="testAutocompleteId"
     onChange={[Function]}
+    onKeyDown={[Function]}
     type="text"
     value=""
   />
