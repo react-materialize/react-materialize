@@ -39,7 +39,7 @@ class Autocomplete extends Component {
       return null;
     }
 
-    let matches = this._findRealValue(value);
+    let matches = this._findMatches(value);
 
     if (limit) matches = matches.slice(0, limit);
     if (matches.length === 0) {
@@ -127,18 +127,32 @@ class Autocomplete extends Component {
       this.setState({ value: '' });
     }
 
-    // if event is enter
-    if (evt.keyCode === 13) {
+    // if event is enter and matchCount isn't zero.
+    // matchCount should be bigger than 0 for send something to onAutocomplete.
+    if (evt.keyCode === 13 && matchCount !== 0) {
       evt.preventDefault();
       // liValue is gets text content of item that pressed enter.
       // we can't do innerHTML or innerText because there is <span className="highlight"></span>
       const liValue = matches[activeItem].textContent;
-      const value = this._findRealValue(liValue);
-      this._onAutocomplete(value);
+
+      // looking for matches.
+      const values = this._findMatches(liValue);
+
+      // should find value in mathes.
+      const value =
+        values.length > 0 &&
+        values.filter(key => {
+          if (liValue.toLowerCase() === key.toLowerCase()) {
+            return key;
+          }
+        });
+
+      // value returns array. we should change it to string.
+      this._onAutocomplete(value.toString());
     }
   }
 
-  _findRealValue(liValue) {
+  _findMatches(liValue) {
     const { data } = this.props;
 
     // go and look to data. if you find a key that have same name with value, return it.
