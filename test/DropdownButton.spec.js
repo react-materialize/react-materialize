@@ -27,7 +27,6 @@ describe('<Dropdown />', () => {
         <a href="#">test</a>
       </Dropdown>
     );
-    const { idx } = wrapper.instance();
     wrapper.render();
     expect(wrapper.contains(<li className="divider" tanIndex="-1" />));
   });
