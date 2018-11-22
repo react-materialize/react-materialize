@@ -9,9 +9,7 @@ exports[`<Chip /> accepts children 1`] = `
   >
     Child
   </p>
-  <Icon
-    className="close material-icons"
-  >
+  <Icon>
     close
   </Icon>
 </div>
