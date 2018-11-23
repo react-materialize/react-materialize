@@ -3,6 +3,7 @@
 exports[`<Slide /> renders 1`] = `
 <li>
   <img
+    alt=""
     src="#"
   />
 </li>
