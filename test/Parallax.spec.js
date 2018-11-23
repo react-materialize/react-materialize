@@ -36,11 +36,28 @@ describe('<Parallax />', () => {
       expect(parallaxInitMock).toHaveBeenCalledTimes(1);
     });
 
+    test('should have default options if none are given', () => {
+      mount(<Parallax />);
+      expect(parallaxInitMock).toHaveBeenCalledWith({
+        responsiveThreshold: 0
+      });
+    });
+
     test('should call Parallax with the given options', () => {
       const options = { responsiveThreshold: 200 };
 
       mount(<Parallax options={options} />);
       expect(parallaxInitMock).toHaveBeenCalledWith(options);
+    });
+
+    test('can render children element', () => {
+      const wrapper = mount(
+        <Parallax>
+          <h1>Test</h1>
+        </Parallax>
+      );
+
+      expect(wrapper.find('h1'));
     });
   });
 });
