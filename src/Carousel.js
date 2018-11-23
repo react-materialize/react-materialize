@@ -10,7 +10,7 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    const { options = {} } = this.props;
+    const { options } = this.props;
 
     this.instance = M.Carousel.init(this._carousel, options);
   }
@@ -29,20 +29,20 @@ class Carousel extends React.Component {
             'valign-wrapper': centerImages
           })}
         >
-          <img src={child} />
+          <img src={child} alt="" />
         </a>
       );
     }
+
     return React.cloneElement(child, {
-      className: cx(child.props.className, 'carousel-item')
+      className: cx('carousel-item', child.props.className, {
+        'valign-wrapper': centerImages
+      })
     });
   }
 
-  renderFixedItem() {
-    const { fixedItem } = this.props;
-    return (
-      fixedItem && <div className="carousel-fixed-item center">{fixedItem}</div>
-    );
+  renderFixedItem(fixedItem) {
+    return <div className="carousel-fixed-item center">{fixedItem}</div>;
   }
 
   render() {
@@ -50,9 +50,10 @@ class Carousel extends React.Component {
       children,
       className,
       carouselId,
+      fixedItem,
       images,
       centerImages,
-      options = {}
+      options: { fullWidth }
     } = this.props;
     const elemsToRender = children || images || [];
 
@@ -65,11 +66,11 @@ class Carousel extends React.Component {
           }}
           className={cx(
             'carousel',
-            { 'carousel-slider': options.fullWidth },
+            { 'carousel-slider': fullWidth },
             className
           )}
         >
-          {this.renderFixedItem()}
+          {fixedItem && this.renderFixedItem(fixedItem)}
           {React.Children.map(elemsToRender, child =>
             this.renderItems(child, centerImages)
           )}
@@ -87,10 +88,14 @@ Carousel.propTypes = {
   /*
   * Array of image url's
   */
-  images: PropTypes.arrayOf(PropTypes.string),
-  /*
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string
+    })
+  ) /*
   * Makes the images centered inside the carousel using '.valign-wrapper' CSS helper
-  */
+  */,
   centerImages: PropTypes.bool,
   /*
   * Fixed element on slider
@@ -146,6 +151,20 @@ Carousel.propTypes = {
     */
     onCycleTo: PropTypes.func
   })
+};
+
+Carousel.defaultProps = {
+  options: {
+    duration: 200,
+    dist: -100,
+    shift: 0,
+    padding: 0,
+    numVisible: 5,
+    fullWidth: false,
+    indicators: false,
+    noWrap: false,
+    onCycleTo: null
+  }
 };
 
 export default Carousel;

@@ -24,6 +24,11 @@ describe('<Carousel />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  test('renders centered images', () => {
+    wrapper = shallow(<Carousel images={images} centerImages />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('handles content slides', () => {
     const child = (
       <div className="red">
