@@ -16,14 +16,17 @@ class TextInput extends Component {
   }
 
   handleChange(event) {
+    const { target: { value } } = event;
     const { onChange } = this.props;
     if (onChange) onChange(event);
 
-    this.setState({ value: event.target.value });
+    this.setState({ value });
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.value !== prevProps.value) {
+    const { value } = this.props;
+
+    if (value !== prevProps.value) {
       M.updateTextFields();
     }
   }
