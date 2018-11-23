@@ -74,6 +74,22 @@ describe('<Carousel />', () => {
       restore();
     });
 
+    test('uses default options if none are given', () => {
+      wrapper = shallow(<Carousel />);
+
+      expect(carouselInitMock).toHaveBeenCalledWith({
+        duration: 200,
+        dist: -100,
+        shift: 0,
+        padding: 0,
+        numVisible: 5,
+        fullWidth: false,
+        indicators: false,
+        noWrap: false,
+        onCycleTo: null
+      });
+    });
+
     test('handles full width sliders', () => {
       wrapper = shallow(
         <Carousel images={images} options={{ fullWidth: true }} />

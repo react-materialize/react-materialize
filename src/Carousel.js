@@ -82,20 +82,16 @@ class Carousel extends React.Component {
 
 Carousel.propTypes = {
   /*
-  * Children to render as slider elements
+  * Children to render as carousel elements
   */
   children: PropTypes.any,
   /*
   * Array of image url's
   */
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      src: PropTypes.string.isRequired,
-      alt: PropTypes.string
-    })
-  ) /*
+  images: PropTypes.arrayOf(PropTypes.string),
+  /*
   * Makes the images centered inside the carousel using '.valign-wrapper' CSS helper
-  */,
+  */
   centerImages: PropTypes.bool,
   /*
   * Fixed element on slider
