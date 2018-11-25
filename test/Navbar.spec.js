@@ -1,13 +1,26 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Navbar from '../src/Navbar';
-import NavItem from '../src/NavItem';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
 
 describe('<Navbar />', () => {
   let wrapper;
-  const sideNavMock = jest.fn();
-  const restore = mocker('sideNav', sideNavMock);
+  const sidenavInitMock = jest.fn();
+  const sidenavInstanceDestroyMock = jest.fn();
+  const sidenavMock = {
+    init: (el, options) => {
+      sidenavInitMock(options);
+      return {
+        destroy: sidenavInstanceDestroyMock
+      };
+    }
+  };
+  const restore = mocker('Sidenav', sidenavMock);
+
+  beforeEach(() => {
+    sidenavInitMock.mockClear();
+    sidenavInstanceDestroyMock.mockClear();
+  });
 
   afterAll(() => {
     restore();
@@ -15,9 +28,9 @@ describe('<Navbar />', () => {
 
   test('renders', () => {
     wrapper = shallow(
-      <Navbar brand="Logo" right>
-        <NavItem href="get-started.html">Getting started</NavItem>
-        <NavItem href="components.html">Components</NavItem>
+      <Navbar brand={<a href="/">Logo</a>} alignLinks="right">
+        <a href="get-started.html">Getting started</a>
+        <a href="components.html">Components</a>
       </Navbar>
     );
 
@@ -25,10 +38,33 @@ describe('<Navbar />', () => {
     expect(wrapper.find('nav')).toHaveLength(1);
   });
 
-  test('places brand on right if navbar is left aligned', () => {
-    wrapper = shallow(<Navbar brand="logo" left />);
+  test('sidenav get initialized with default options if none are given', () => {
+    mount(<Navbar />);
+    expect(sidenavInitMock).toHaveBeenCalledWith({
+      edge: 'left',
+      draggable: true,
+      inDuration: 250,
+      outDuration: 200,
+      onOpenStart: null,
+      onOpenEnd: null,
+      onCloseStart: null,
+      onCloseEnd: null,
+      preventScrolling: true
+    });
+  });
+
+  test('can center the brand logo', () => {
+    wrapper = shallow(<Navbar brand={<a href="/">Logo</a>} centerLogo />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo.right')).toHaveLength(1);
+    expect(wrapper.find('a.brand-logo').hasClass('center'));
+  });
+
+  test('places brand on right if navbar is left aligned', () => {
+    wrapper = shallow(
+      <Navbar brand={<a href="/">Logo</a>} alignLinks="left" />
+    );
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('a.brand-logo').hasClass('right'));
   });
 
   test('adds a brand node', () => {
@@ -36,12 +72,17 @@ describe('<Navbar />', () => {
 
     wrapper = mount(<Navbar brand={brandNode} />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo').contains(brandNode)).toBeTruthy();
+    expect(wrapper.find('span.brand-logo.brandp')).toBeTruthy();
   });
 
   test('can be fixed', () => {
     wrapper = shallow(<Navbar fixed />);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.hasClass('navbar-fixed')).toBeTruthy();
+    expect(wrapper.find('.navbar-fixed')).toHaveLength(1);
+  });
+
+  test('should have a sidenav component', () => {
+    wrapper = shallow(<Navbar />);
+    expect(wrapper.find('.sidenav')).toHaveLength(1);
   });
 });
