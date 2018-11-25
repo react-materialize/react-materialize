@@ -16,14 +16,17 @@ class TextInput extends Component {
   }
 
   handleChange(event) {
+    const { target: { value } } = event;
     const { onChange } = this.props;
     if (onChange) onChange(event);
 
-    this.setState({ value: event.target.value });
+    this.setState({ value });
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.value !== prevProps.value) {
+    const { value } = this.props;
+
+    if (value !== prevProps.value) {
       M.updateTextFields();
     }
   }
@@ -33,6 +36,7 @@ class TextInput extends Component {
       s,
       m,
       l,
+      xl,
       disabled,
       noLayout,
       placeholder,
@@ -46,7 +50,7 @@ class TextInput extends Component {
       type
     } = this.props;
 
-    const sizes = { s, m, l };
+    const sizes = { s, m, l, xl };
 
     let responsiveClasses;
     if (!noLayout) {
@@ -103,17 +107,21 @@ TextInput.propTypes = {
    */
   noLayout: PropTypes.bool,
   /*
-   * Responsive size for Small
+   * Responsive size for Mobile Devices
    */
   s: PropTypes.number,
   /*
-   * Responsive size for Medium
+   * Responsive size for Tablet Devices
    */
   m: PropTypes.number,
   /*
-   * Responsive size for Large
+   * Responsive size for Desktop Devices
    */
   l: PropTypes.number,
+  /**
+   *  Responsive size for Large Desktop Devices
+   */
+  xl: PropTypes.number,
   /*
    * disabled input
    */
