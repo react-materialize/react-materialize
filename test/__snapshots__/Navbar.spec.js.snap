@@ -59,6 +59,61 @@ exports[`<Navbar /> adds a brand node 1`] = `
 </Navbar>
 `;
 
+exports[`<Navbar /> can be extended with custom elements 1`] = `
+<Fragment>
+  <nav
+    className="nav-extended"
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      />
+    </div>
+    <div
+      className="nav-content"
+    >
+      <div
+        className="col s12"
+      >
+        <a
+          className="breadcrumb"
+          href="#!"
+        >
+          First
+        </a>
+        <a
+          className="breadcrumb"
+          href="#!"
+        >
+          Second
+        </a>
+        <a
+          className="breadcrumb"
+          href="#!"
+        >
+          Third
+        </a>
+      </div>
+    </div>
+  </nav>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  />
+</Fragment>
+`;
+
 exports[`<Navbar /> can be fixed 1`] = `
 <Fragment>
   <div

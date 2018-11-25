@@ -85,4 +85,27 @@ describe('<Navbar />', () => {
     wrapper = shallow(<Navbar />);
     expect(wrapper.find('.sidenav')).toHaveLength(1);
   });
+
+  test('can be extended with custom elements', () => {
+    wrapper = shallow(
+      <Navbar
+        extendWith={
+          <div className="col s12">
+            <a href="#!" className="breadcrumb">
+              First
+            </a>
+            <a href="#!" className="breadcrumb">
+              Second
+            </a>
+            <a href="#!" className="breadcrumb">
+              Third
+            </a>
+          </div>
+        }
+      />
+    );
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('.breadcrumb')).toHaveLength(3);
+  });
 });

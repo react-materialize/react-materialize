@@ -56,11 +56,7 @@ class Navbar extends Component {
           </a>
           <ul className={navMobileCSS}>{links}</ul>
         </div>
-        {extendWith && (
-          <div className="nav-content">
-            {extendWith.map((elem, index) => <div key={index}>{elem}</div>)}
-          </div>
-        )}
+        {extendWith && <div className="nav-content">{extendWith}</div>}
       </nav>
     );
 
@@ -90,7 +86,7 @@ Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
-  extendWith: PropTypes.arrayOf(PropTypes.node),
+  extendWith: PropTypes.node,
   /**
    * left makes the navbar links left aligned, right makes them right aligned
    */
