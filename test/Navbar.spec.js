@@ -81,11 +81,6 @@ describe('<Navbar />', () => {
     expect(wrapper.find('.navbar-fixed')).toHaveLength(1);
   });
 
-  test('should have a sidenav component', () => {
-    wrapper = shallow(<Navbar />);
-    expect(wrapper.find('.sidenav')).toHaveLength(1);
-  });
-
   test('can be extended with custom elements', () => {
     wrapper = shallow(
       <Navbar

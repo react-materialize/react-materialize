@@ -2,8 +2,6 @@ import React, { Component, Fragment, Children } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
-
-import constants from './constants';
 class Navbar extends Component {
   componentDidMount() {
     const { options } = this.props;
@@ -69,7 +67,7 @@ class Navbar extends Component {
         {navbar}
 
         <ul
-          id={constants.MOBILE_NAV_ID}
+          id="mobile-nav"
           className={cx('sidenav', [alignLinks])}
           ref={ul => {
             this._sidenav = ul;
