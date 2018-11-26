@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Slide from '../src/Slide';
 
 describe('<Slide />', () => {
-  let wrapper = shallow(<Slide src="#" />);
+  let wrapper = shallow(<Slide image="#" />);
 
   test('renders', () => {
     expect(wrapper).toMatchSnapshot();
@@ -14,9 +14,23 @@ describe('<Slide />', () => {
     expect(wrapper.childAt(0).is({ src: '#' })).toEqual(true);
   });
 
+  test('can render a picture element', () => {
+    const pictureTag = (
+      <picture>
+        <source srcSet="#" type="image/webp" />
+        <source srcSet="#" type="image/jpg" />
+        <img src="#" alt="" />
+      </picture>
+    );
+
+    wrapper = shallow(<Slide image={pictureTag} />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('can render a custom caption', () => {
     wrapper = shallow(
-      <Slide src="#">
+      <Slide image="#">
         <h2>test</h2>
       </Slide>
     );

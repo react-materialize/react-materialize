@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Slide = ({ src, children }) => {
-  if (typeof src === 'string') {
+const Slide = ({ image, children }) => {
+  if (typeof image === 'string') {
     return (
       <li>
-        <img src={src} alt="" />
+        <img src={image} alt="" />
         {children}
       </li>
     );
   } else {
     return (
       <li>
-        {src}
+        {image}
         {children}
       </li>
     );
@@ -25,7 +25,7 @@ Slide.propTypes = {
   /**
    * The path of the background image
    */
-  src: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired
+  image: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired
 };
 
 export default Slide;
