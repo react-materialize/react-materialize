@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SideNav /> initialises can be \`fixed\` 1`] = `
+exports[`<SideNav /> can be \`fixed\` 1`] = `
 <ul
   className="sidenav sidenav-fixed red"
-  id="sidenav_2"
+  id="sidenav_1"
 />
 `;
 
@@ -16,14 +16,14 @@ exports[`<SideNav /> initialises can render a \`trigger\` 1`] = `
 </button>
 `;
 
-exports[`<SideNav /> initialises renders 1`] = `
+exports[`<SideNav /> renders 1`] = `
 <ul
   className="sidenav"
-  id="sidenav_1"
+  id="sidenav_0"
 />
 `;
 
-exports[`<SideNav /> initialises should be fixed if no trigger is passed 1`] = `
+exports[`<SideNav /> should be fixed if no trigger is passed 1`] = `
 <ul
   className="sidenav sidenav-fixed red"
   id="sidenav_4"

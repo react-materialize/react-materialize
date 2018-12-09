@@ -1,66 +1,82 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, Children } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Col from './Col';
 import Icon from './Icon';
-
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.renderSideNav = this.renderSideNav.bind(this);
-  }
-
   componentDidMount() {
-    if (typeof $ !== 'undefined') {
-      $('.button-collapse').sideNav(this.props.options);
+    const { options } = this.props;
+
+    if (typeof M !== 'undefined') {
+      this.instance = M.Sidenav.init(this._sidenav, options);
     }
   }
 
-  renderSideNav() {
-    return (
-      <ul id="nav-mobile" className="side-nav">
-        {this.props.children}
-      </ul>
-    );
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   render() {
-    const { brand, className, fixed, left, right, href, ...other } = this.props;
+    const {
+      children,
+      brand,
+      className,
+      extendWith,
+      fixed,
+      alignLinks,
+      centerLogo
+    } = this.props;
 
-    delete other.options;
-
-    let classes = {
-      right: right,
-      'hide-on-med-and-down': true
-    };
-
-    let brandClasses = {
+    const brandClasses = cx({
       'brand-logo': true,
-      right: left
-    };
+      center: centerLogo
+    });
 
-    let content = (
-      <nav {...other} className={className}>
+    const navCSS = cx({ 'nav-extended': extendWith }, className);
+
+    const navMobileCSS = cx('hide-on-med-and-down', [alignLinks]);
+
+    const links = Children.map(children, (link, index) => (
+      <li key={index}>{link}</li>
+    ));
+
+    let navbar = (
+      <nav className={navCSS}>
         <div className="nav-wrapper">
-          <Col s={12}>
-            <a href={href} className={cx(brandClasses)}>
-              {brand}
-            </a>
-            <ul className={cx(className, classes)}>{this.props.children}</ul>
-            {this.renderSideNav()}
-            <a className="button-collapse" href="#" data-activates="nav-mobile">
-              <Icon>view_headline</Icon>
-            </a>
-          </Col>
+          {brand &&
+            React.cloneElement(brand, {
+              className: cx(brand.props.className, brandClasses)
+            })}
+
+          <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
+            <Icon>menu</Icon>
+          </a>
+          <ul className={navMobileCSS}>{links}</ul>
         </div>
+        {extendWith && <div className="nav-content">{extendWith}</div>}
       </nav>
     );
 
     if (fixed) {
-      content = <div className="navbar-fixed">{content}</div>;
+      navbar = <div className="navbar-fixed">{navbar}</div>;
     }
 
-    return content;
+    return (
+      <Fragment>
+        {navbar}
+
+        <ul
+          id="mobile-nav"
+          className={cx('sidenav', [alignLinks])}
+          ref={ul => {
+            this._sidenav = ul;
+          }}
+        >
+          {links}
+        </ul>
+      </Fragment>
+    );
   }
 }
 
@@ -68,28 +84,58 @@ Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
-  left: PropTypes.bool,
-  right: PropTypes.bool,
-  href: PropTypes.string,
+  extendWith: PropTypes.node,
+  /**
+   * left makes the navbar links left aligned, right makes them right aligned
+   */
+  alignLinks: PropTypes.oneOf(['left', 'right']),
+  /**
+   * The logo will center itself on medium and down screens.
+   * Specifying centerLogo as a prop the logo will always be centered
+   */
+  centerLogo: PropTypes.bool,
   /**
    * Makes the navbar fixed
    */
   fixed: PropTypes.bool,
   /**
    * Options hash for the sidenav.
-   * More info: http://materializecss.com/side-nav.html#options
+   * More info: https://materializecss.com/sidenav.html#options
    */
   options: PropTypes.shape({
-    menuWidth: PropTypes.number,
+    // Side of screen on which Sidenav appears.
     edge: PropTypes.oneOf(['left', 'right']),
-    closeOnClick: PropTypes.bool,
-    draggable: PropTypes.bool
+    // Allow swipe gestures to open / close Sidenav.
+    draggable: PropTypes.bool,
+    // Length in ms of enter transition.
+    inDuration: PropTypes.number,
+    // Length in ms of exit transition.
+    outDuration: PropTypes.number,
+    // Function called when sidenav starts entering.
+    onOpenStart: PropTypes.func,
+    // Function called when sidenav finishes entering.
+    onOpenEnd: PropTypes.func,
+    // Function called when sidenav starts exiting.
+    onCloseStart: PropTypes.func,
+    // Function called when sidenav finishes exiting.
+    onCloseEnd: PropTypes.func,
+    // Prevent page from scrolling while sidenav is open.
+    preventScrolling: PropTypes.bool
   })
 };
 
 Navbar.defaultProps = {
-  href: '/',
-  options: {}
+  options: {
+    edge: 'left',
+    draggable: true,
+    inDuration: 250,
+    outDuration: 200,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    preventScrolling: true
+  }
 };
 
 export default Navbar;

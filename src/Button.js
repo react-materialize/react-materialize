@@ -56,7 +56,6 @@ class Button extends Component {
     });
 
     if (modal) {
-      classes['modal-action'] = true;
       classes['modal-' + modal] = true;
     }
     if (fab) {
@@ -78,8 +77,8 @@ class Button extends Component {
     }
   }
 
-  renderFab(className, orientation, clickOnly) {
-    const classes = cx(orientation, clickOnly);
+  renderFab(className, mode, clickOnly) {
+    const classes = cx(mode, clickOnly);
     return (
       <div className={cx('fixed-action-btn', classes)}>
         <a className={className}>{this.renderIcon()}</a>
@@ -115,7 +114,7 @@ Button.propTypes = {
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
    * @default vertical. This will disable any onClick function from being called on the main button.
    */
-  fab: PropTypes.oneOf(['vertical', 'horizontal']),
+  fab: PropTypes.oneOf(['vertical', 'horizontal', 'toolbar']),
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */

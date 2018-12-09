@@ -1,12 +1,21 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import MediaBox from '../src/MediaBox';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
 
 describe('<MediaBox />', () => {
   let wrapper;
-  const materialboxMock = jest.fn();
-  const restore = mocker('materialbox', materialboxMock);
+  const materialboxInitMock = jest.fn();
+  const materialboxInstanceDestroyMock = jest.fn();
+  const materialboxMock = {
+    init: (el, options) => {
+      materialboxInitMock(options);
+      return {
+        destroy: materialboxInstanceDestroyMock
+      };
+    }
+  };
+  const restore = mocker('Materialbox', materialboxMock);
 
   afterAll(() => {
     restore();
@@ -23,5 +32,29 @@ describe('<MediaBox />', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('initialises', () => {
+    beforeEach(() => {
+      materialboxInitMock.mockClear();
+      materialboxInstanceDestroyMock.mockClear();
+    });
+
+    test('calls Materialbox', () => {
+      mount(<MediaBox />);
+
+      expect(materialboxInitMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('calls Materialbox with options', () => {
+      const options = {
+        inDuration: 325,
+        outDuration: 250
+      };
+
+      mount(<MediaBox options={options} />);
+
+      expect(materialboxInitMock).toHaveBeenCalledWith(options);
+    });
   });
 });

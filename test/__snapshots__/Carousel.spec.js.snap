@@ -97,7 +97,7 @@ exports[`<Carousel /> handles content slides 1`] = `
 </div>
 `;
 
-exports[`<Carousel /> handles full width sliders 1`] = `
+exports[`<Carousel /> initialises handles full width sliders 1`] = `
 <div
   className="carousel carousel-slider"
 >
