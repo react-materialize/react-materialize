@@ -1,5 +1,11 @@
 # Changelog
 
+### 2.5.1
+
+- NPM vulnerability fix
+- `<Container/>` enhancement (CloudPower97 #705)
+- `<Chip/>` refactor (CloudPower97 #543)
+
 ### 2.5.0
 
 - Feature `<Autocomplete/>` supports arrow navigation (mustaphaturhan #690)
