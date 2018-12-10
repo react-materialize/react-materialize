@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import Icon from './Icon';
 
-const Chip = ({ children, close, className, ...props }) => {
-  return (
-    <div className={cx('chip', className)} {...props}>
-      {children}
-      {close ? <i className="close material-icons">close</i> : null}
-    </div>
-  );
-};
+const Chip = ({ children, close, className, ...props }) => (
+  <div className={cx('chip', className)} {...props}>
+    {children}
+    {close && <Icon>close</Icon>}
+  </div>
+);
 
 Chip.propTypes = {
   className: PropTypes.string,
