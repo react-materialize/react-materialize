@@ -51,13 +51,13 @@ describe('<Parallax />', () => {
     });
 
     test('can render children element', () => {
-      const wrapper = mount(
-        <Parallax>
+      const wrapper = shallow(
+        <Parallax imageSrc="image.jpg">
           <h1>Test</h1>
         </Parallax>
       );
 
-      expect(wrapper.find('h1'));
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });
