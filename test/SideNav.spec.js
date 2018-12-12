@@ -52,13 +52,6 @@ describe('<SideNav />', () => {
     expect(sideNav).toMatchSnapshot();
   });
 
-  test('can be `fixed`', () => {
-    const component = <SideNav className="red" />;
-    const wrapper = shallow(component);
-    const sideNav = wrapper.find('.sidenav-fixed');
-    expect(sideNav).toMatchSnapshot();
-  });
-
   test('can render a `trigger`', () => {
     const { trigger } = setup({ className: 'green' });
     expect(trigger).toMatchSnapshot();
@@ -75,23 +68,6 @@ describe('<SideNav />', () => {
     const sideNav = wrapper.find('.sidenav-fixed');
     expect(sideNav).toMatchSnapshot();
     expect(sideNavProps.trigger).toBeUndefined();
-  });
-
-  test('should render fixed if not passed trigger or fixed', () => {
-    const { wrapper } = setup({ className: 'red' });
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  test('should render trigger on large screens not fixed`', () => {
-    const { trigger } = setup({ className: 'green' });
-    expect(trigger).toMatchSnapshot();
-  });
-
-  test('should be fixed if no trigger is passed', () => {
-    const component = <SideNav className="red" />;
-    const wrapper = shallow(component);
-    const sideNav = wrapper.find('.sidenav');
-    expect(sideNav).toMatchSnapshot();
   });
 
   test('should render a given id', () => {
