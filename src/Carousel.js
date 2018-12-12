@@ -53,7 +53,7 @@ class Carousel extends React.Component {
       fixedItem,
       images,
       centerImages,
-      options: { fullWidth }
+      options
     } = this.props;
     const elemsToRender = children || images || [];
 
@@ -66,7 +66,7 @@ class Carousel extends React.Component {
           }}
           className={cx(
             'carousel',
-            { 'carousel-slider': fullWidth },
+            { 'carousel-slider': options.fullWidth },
             className
           )}
         >
