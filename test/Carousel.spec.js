@@ -24,6 +24,11 @@ describe('<Carousel />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  test('renders centered images', () => {
+    wrapper = shallow(<Carousel images={images} centerImages />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('handles content slides', () => {
     const child = (
       <div className="red">
@@ -67,6 +72,22 @@ describe('<Carousel />', () => {
 
     afterAll(() => {
       restore();
+    });
+
+    test('uses default options if none are given', () => {
+      wrapper = shallow(<Carousel />);
+
+      expect(carouselInitMock).toHaveBeenCalledWith({
+        duration: 200,
+        dist: -100,
+        shift: 0,
+        padding: 0,
+        numVisible: 5,
+        fullWidth: false,
+        indicators: false,
+        noWrap: false,
+        onCycleTo: null
+      });
     });
 
     test('handles full width sliders', () => {
