@@ -19,7 +19,6 @@ import Footer from './Footer';
 import Icon from './Icon';
 import Input from './Input';
 import MediaBox from './MediaBox';
-import MenuItem from './MenuItem';
 import Modal from './Modal';
 import NavItem from './NavItem';
 import Navbar from './Navbar';
@@ -64,7 +63,6 @@ export {
   Icon,
   Input,
   MediaBox,
-  MenuItem,
   Modal,
   NavItem,
   Navbar,
