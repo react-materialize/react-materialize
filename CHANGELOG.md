@@ -1,5 +1,14 @@
 # Changelog
 
+### 2.6.0
+
+- update to babel7
+
+### 2.5.2
+
+- revert #690
+- mocks `idgen` globally
+
 ### 2.5.1
 
 - NPM vulnerability fix
