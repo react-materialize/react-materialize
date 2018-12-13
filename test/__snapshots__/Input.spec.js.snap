@@ -21,7 +21,7 @@ exports[`<Input /> file input 1`] = `
   >
     <input
       className="file-path"
-      id="input_19"
+      id="input_mockId"
       type="text"
     />
   </div>
@@ -36,7 +36,7 @@ exports[`<Input /> input value 1`] = `
     checked={false}
     className=""
     defaultValue="name"
-    id="input_2"
+    id="input_mockId"
     onChange={[Function]}
     type="text"
     value="name"
@@ -51,13 +51,13 @@ exports[`<Input /> label 1`] = `
   <input
     checked={false}
     className=""
-    id="input_3"
+    id="input_mockId"
     onChange={[Function]}
     type="text"
   />
   <label
     className="red"
-    htmlFor="input_3"
+    htmlFor="input_mockId"
   >
     Name
   </label>
@@ -71,12 +71,12 @@ exports[`<Input /> multiple select 1`] = `
   <select
     checked={false}
     className=""
-    id="input_9"
+    id="input_mockId"
     multiple={true}
   >
     <option
       disabled={true}
-      key="10"
+      key="mockId"
     >
       Choose your option
     </option>
@@ -109,7 +109,7 @@ exports[`<Input /> pickadate 1`] = `
   <input
     checked={false}
     className=""
-    id="input_16"
+    id="input_mockId"
     type="date"
   />
 </div>
@@ -127,7 +127,7 @@ exports[`<Input /> pickadate with icon 1`] = `
   <input
     checked={false}
     className=""
-    id="input_17"
+    id="input_mockId"
     type="date"
   />
 </div>
@@ -149,7 +149,7 @@ exports[`<Input /> pickatime 1`] = `
     <input
       checked={false}
       className=""
-      id="input_18"
+      id="input_mockId"
     />
   </div>
 </Input>
@@ -162,11 +162,11 @@ exports[`<Input /> placeholder 1`] = `
   <select
     checked={false}
     className=""
-    id="input_7"
+    id="input_mockId"
   >
     <option
       disabled={true}
-      key="8"
+      key="mockId"
     >
       Choose your option
     </option>
@@ -199,7 +199,7 @@ exports[`<Input /> radio 1`] = `
   <input
     checked={false}
     className=""
-    id="input_12"
+    id="input_mockId"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -207,7 +207,7 @@ exports[`<Input /> radio 1`] = `
   />
   <label
     className="active"
-    htmlFor="input_12"
+    htmlFor="input_mockId"
   >
     Yellow
   </label>
@@ -221,7 +221,7 @@ exports[`<Input /> radio checked 1`] = `
   <input
     checked={false}
     className=""
-    id="input_13"
+    id="input_mockId"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -229,7 +229,7 @@ exports[`<Input /> radio checked 1`] = `
   />
   <label
     className="active"
-    htmlFor="input_13"
+    htmlFor="input_mockId"
   >
     Yellow
   </label>
@@ -243,7 +243,7 @@ exports[`<Input /> radio event 1`] = `
   <input
     checked={false}
     className=""
-    id="input_14"
+    id="input_mockId"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -251,7 +251,7 @@ exports[`<Input /> radio event 1`] = `
   />
   <label
     className="active"
-    htmlFor="input_14"
+    htmlFor="input_mockId"
   >
     Yellow
   </label>
@@ -265,7 +265,7 @@ exports[`<Input /> radio event 2`] = `
   <input
     checked={true}
     className=""
-    id="input_14"
+    id="input_mockId"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -273,7 +273,7 @@ exports[`<Input /> radio event 2`] = `
   />
   <label
     className="active"
-    htmlFor="input_14"
+    htmlFor="input_mockId"
   >
     Yellow
   </label>
@@ -287,7 +287,7 @@ exports[`<Input /> radio onChange 1`] = `
   <input
     checked={true}
     className=""
-    id="input_15"
+    id="input_mockId"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -295,7 +295,7 @@ exports[`<Input /> radio onChange 1`] = `
   />
   <label
     className="active"
-    htmlFor="input_15"
+    htmlFor="input_mockId"
   >
     Yellow
   </label>
@@ -309,7 +309,7 @@ exports[`<Input /> radio onChange 2`] = `
   <input
     checked={false}
     className=""
-    id="input_15"
+    id="input_mockId"
     name="group1"
     onChange={[Function]}
     type="radio"
@@ -317,7 +317,7 @@ exports[`<Input /> radio onChange 2`] = `
   />
   <label
     className=""
-    htmlFor="input_15"
+    htmlFor="input_mockId"
   >
     Yellow
   </label>
@@ -331,7 +331,7 @@ exports[`<Input /> renders 1`] = `
   <input
     checked={false}
     className=""
-    id="input_0"
+    id="input_mockId"
     onChange={[Function]}
     type="text"
   />
@@ -351,7 +351,7 @@ exports[`<Input /> renders an icon child with prefix class 1`] = `
     checked={false}
     className=""
     icon="weekend"
-    id="input_6"
+    id="input_mockId"
   >
     <option
       key="yes/.0"
@@ -368,7 +368,7 @@ exports[`<Input /> select 1`] = `
   <select
     checked={false}
     className=""
-    id="input_5"
+    id="input_mockId"
   >
     <option
       key=".$1"
@@ -420,7 +420,7 @@ exports[`<Input /> text input 1`] = `
   <input
     checked={false}
     className="red"
-    id="input_1"
+    id="input_mockId"
     onChange={[Function]}
     type="text"
   />
@@ -434,7 +434,7 @@ exports[`<Input /> textarea 1`] = `
   <textarea
     checked={false}
     className="materialize-textarea"
-    id="input_4"
+    id="input_mockId"
     onChange={[Function]}
   />
 </div>
