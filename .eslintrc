@@ -12,6 +12,7 @@ globals:
   document: true
   global: true
   window: true
+  module: true
 
 plugins: ['prettier']
 
