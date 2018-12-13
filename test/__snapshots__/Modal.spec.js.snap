@@ -37,7 +37,7 @@ exports[`<Modal /> renders a modal has children 1`] = `
     </button>
     <div
       className="modal"
-      id="modal_1"
+      id="modal_mockId"
     >
       <div
         className="modal-content"
@@ -111,7 +111,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
     </button>
     <div
       className="modal"
-      id="modal_1"
+      id="modal_mockId"
     >
       <div
         className="modal-content"
@@ -174,7 +174,7 @@ exports[`<Modal /> without a trigger renders 1`] = `
   <div>
     <div
       className="modal"
-      id="modal_1"
+      id="modal_mockId"
     >
       <div
         className="modal-content"

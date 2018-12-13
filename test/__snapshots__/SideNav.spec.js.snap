@@ -3,14 +3,14 @@
 exports[`<SideNav /> can be \`fixed\` 1`] = `
 <ul
   className="sidenav sidenav-fixed red"
-  id="sidenav_1"
+  id="sidenav_mockId"
 />
 `;
 
 exports[`<SideNav /> can render a \`trigger\` 1`] = `
 <button
   className="trigger show-on-large sidenav-trigger"
-  data-target="sidenav_2"
+  data-target="sidenav_mockId"
 >
   Show sidenav
 </button>
@@ -19,13 +19,13 @@ exports[`<SideNav /> can render a \`trigger\` 1`] = `
 exports[`<SideNav /> renders 1`] = `
 <ul
   className="sidenav"
-  id="sidenav_0"
+  id="sidenav_mockId"
 />
 `;
 
 exports[`<SideNav /> should be fixed if no trigger is passed 1`] = `
 <ul
   className="sidenav sidenav-fixed red"
-  id="sidenav_3"
+  id="sidenav_mockId"
 />
 `;
