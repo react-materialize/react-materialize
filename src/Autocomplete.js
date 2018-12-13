@@ -12,14 +12,12 @@ class Autocomplete extends Component {
 
     this.state = {
       value: props.value || '',
-      itemSelected: false,
-      activeItem: 0
+      itemSelected: false
     };
 
     this.renderIcon = this.renderIcon.bind(this);
     this.renderDropdown = this.renderDropdown.bind(this);
     this._onChange = this._onChange.bind(this);
-    this._onKeyDown = this._onKeyDown.bind(this);
   }
 
   componentWillReceiveProps({ value }) {
@@ -33,33 +31,29 @@ class Autocomplete extends Component {
   }
 
   renderDropdown(data, minLength, limit) {
-    const { value, itemSelected, activeItem } = this.state;
+    const { value, itemSelected } = this.state;
 
     if ((minLength && minLength > value.length) || !value || itemSelected) {
       return null;
     }
 
-    let matches = this._findRealValue(value);
-
+    let matches = Object.keys(data).filter(key => {
+      const index = key.toUpperCase().indexOf(value.toUpperCase());
+      return index !== -1 && value.length < key.length;
+    });
     if (limit) matches = matches.slice(0, limit);
     if (matches.length === 0) {
       return null;
     }
 
     return (
-      <ul
-        className="autocomplete-content dropdown-content"
-        ref={autoCompleteContent =>
-          (this.autoCompleteContent = autoCompleteContent)
-        }
-      >
+      <ul className="autocomplete-content dropdown-content">
         {matches.map((key, idx) => {
           const index = key.toUpperCase().indexOf(value.toUpperCase());
           return (
             <li
               key={key + '_' + idx}
               onClick={this._onAutocomplete.bind(this, key)}
-              className={idx === activeItem ? 'active' : null}
             >
               {data[key] ? (
                 <img src={data[key]} className="right circle" />
@@ -85,67 +79,7 @@ class Autocomplete extends Component {
       onChange(evt, value);
     }
 
-    this.setState({ value, itemSelected: false, activeItem: 0 });
-  }
-
-  _onKeyDown(evt) {
-    const { activeItem } = this.state;
-    const matches = this.autoCompleteContent
-      ? this.autoCompleteContent.childNodes
-      : null;
-    let matchCount = 0;
-
-    if (
-      this.autoCompleteContent !== null &&
-      this.autoCompleteContent !== undefined
-    ) {
-      matchCount = matches.length - 1; // -1 for start index from 0.
-    }
-
-    // if event is arrow down
-    if (evt.keyCode === 40) {
-      evt.preventDefault();
-      if (matchCount > activeItem) {
-        this.setState({
-          activeItem: activeItem + 1
-        });
-      }
-    }
-
-    // if event is arrow up
-    if (evt.keyCode === 38) {
-      evt.preventDefault();
-      if (activeItem > 0) {
-        this.setState({
-          activeItem: activeItem - 1
-        });
-      }
-    }
-
-    // if event is esc, reset value.
-    if (evt.keyCode === 27) {
-      this.setState({ value: '' });
-    }
-
-    // if event is enter
-    if (evt.keyCode === 13) {
-      evt.preventDefault();
-      // liValue is gets text content of item that pressed enter.
-      // we can't do innerHTML or innerText because there is <span className="highlight"></span>
-      const liValue = matches[activeItem].textContent;
-      const value = this._findRealValue(liValue);
-      this._onAutocomplete(value);
-    }
-  }
-
-  _findRealValue(liValue) {
-    const { data } = this.props;
-
-    // go and look to data. if you find a key that have same name with value, return it.
-    return Object.keys(data).filter(key => {
-      const index = key.toUpperCase().indexOf(liValue.toUpperCase());
-      return index !== -1 && liValue.length <= key.length;
-    });
+    this.setState({ value, itemSelected: false });
   }
 
   _onAutocomplete(value, evt) {
@@ -203,7 +137,6 @@ class Autocomplete extends Component {
           className="autocomplete"
           id={_id}
           onChange={this._onChange}
-          onKeyDown={this._onKeyDown}
           type="text"
           value={this.state.value}
         />
