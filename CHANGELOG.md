@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.6.0
+
+- update to babel7
+
 ### 2.5.2
 
 - revert #690
