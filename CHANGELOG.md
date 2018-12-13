@@ -1,5 +1,10 @@
 # Changelog
 
+### 2.5.2
+
+- revert #690
+- mocks `idgen` globally
+
 ### 2.5.1
 
 - NPM vulnerability fix
