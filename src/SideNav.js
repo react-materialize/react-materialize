@@ -10,8 +10,14 @@ class SideNav extends Component {
   }
 
   componentDidMount() {
-    const { options = {} } = this.props;
-    $('.sidenav').sidenav(options);
+    if (typeof M !== 'undefined') {
+      const { options } = this.props;
+      this.instance = M.Sidenav.init(this._sidenav, options);
+    }
+  }
+
+  componentWillUnmount() {
+    this.instance && this.instance.destroy();
   }
 
   render() {
