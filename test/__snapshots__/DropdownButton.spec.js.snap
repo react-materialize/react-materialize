@@ -4,13 +4,13 @@ exports[`<Dropdown /> renders 1`] = `
 <span>
   <button
     className="dropdown-button"
-    data-activates="dropdown_0"
+    data-activates="dropdown_mockId"
   >
     Drop me!
   </button>
   <ul
     className="dropdown-content"
-    id="dropdown_0"
+    id="dropdown_mockId"
   />
 </span>
 `;

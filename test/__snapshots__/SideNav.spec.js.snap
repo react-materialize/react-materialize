@@ -3,21 +3,21 @@
 exports[`<SideNav /> can be \`fixed\` 1`] = `
 <ul
   className="side-nav fixed red"
-  id="sidenav_1"
+  id="sidenav_mockId"
 />
 `;
 
 exports[`<SideNav /> renders 1`] = `
 <ul
   className="side-nav"
-  id="sidenav_0"
+  id="sidenav_mockId"
 />
 `;
 
 exports[`<SideNav /> should be fixed if no trigger is passed 1`] = `
 <ul
   className="side-nav fixed red"
-  id="sidenav_4"
+  id="sidenav_mockId"
 />
 `;
 
@@ -25,13 +25,13 @@ exports[`<SideNav /> should render fixed if not passed trigger or fixed 1`] = `
 <span>
   <button
     className="trigger show-on-large"
-    data-activates="sidenav_2"
+    data-activates="sidenav_mockId"
   >
     Show sidenav
   </button>
   <ul
     className="side-nav red"
-    id="sidenav_2"
+    id="sidenav_mockId"
   />
 </span>
 `;
@@ -39,7 +39,7 @@ exports[`<SideNav /> should render fixed if not passed trigger or fixed 1`] = `
 exports[`<SideNav /> should render trigger on large screens not fixed\` 1`] = `
 <button
   className="trigger show-on-large"
-  data-activates="sidenav_3"
+  data-activates="sidenav_mockId"
 >
   Show sidenav
 </button>
