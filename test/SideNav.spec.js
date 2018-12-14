@@ -3,29 +3,8 @@ import { shallow, mount } from 'enzyme';
 import SideNav from '../src/SideNav';
 import mocker from './helper/new-mocker';
 
-function setup(props = {}, children, mounted) {
-  const propsIn = {
-    trigger: <button className="trigger">Show sidenav</button>,
-    ...props
-  };
-  const component = <SideNav {...propsIn}>{children}</SideNav>;
-  const wrapper = mounted ? mount(component) : shallow(component);
-  const sideNav = wrapper.find('.sidenav');
-  const trigger = wrapper.find('.sidenav-trigger');
-  const sideNavProps = sideNav.props();
-  const triggerProps = trigger.props();
-
-  return {
-    propsIn,
-    wrapper,
-    sideNav,
-    trigger,
-    sideNavProps,
-    triggerProps
-  };
-}
-
 describe('<SideNav />', () => {
+  let wrapper;
   const sideNavInitMock = jest.fn();
   const sideNavInstanceDestroyMock = jest.fn();
   const sideNavMock = {
@@ -37,57 +16,40 @@ describe('<SideNav />', () => {
     }
   };
   const restore = mocker('Sidenav', sideNavMock);
+  const trigger = <button className="trigger">Show sidenav</button>;
 
   afterAll(() => {
     restore();
   });
 
   test('renders', () => {
-    const { sideNav } = setup();
-    expect(sideNav).toMatchSnapshot();
+    wrapper = shallow(<SideNav trigger={trigger} />);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('can be `fixed`', () => {
-    const { sideNav } = setup({ className: 'red', fixed: true });
-    expect(sideNav).toMatchSnapshot();
+    wrapper = shallow(<SideNav trigger={trigger} fixed />);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('can render a `trigger`', () => {
-    const { trigger } = setup({ className: 'green' });
-    expect(trigger).toMatchSnapshot();
+  test('is `fixed` if no trigger is passed', () => {
+    wrapper = shallow(<SideNav />);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('should be fixed if no trigger is passed', () => {
-    const { sideNavProps } = setup({
-      id: 'test123',
-      options: {},
-      shouldTransfer: true
-    });
-    const component = <SideNav className="red" />;
-    const wrapper = shallow(component);
-    const sideNav = wrapper.find('.sidenav-fixed');
-    expect(sideNav).toMatchSnapshot();
-    expect(sideNavProps.trigger).toBeUndefined();
+  test('renders', () => {
+    wrapper = shallow(<SideNav trigger={trigger} id="test" />);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('should render a given id', () => {
-    const { sideNavProps, triggerProps } = setup({ id: 'test' });
-    expect(sideNavProps.id).toEqual('test');
-    expect(triggerProps['data-target']).toEqual('test');
-  });
-  test('should render children', () => {
-    const { sideNav } = setup({}, <span className="test-child" />);
-    const children = sideNav.find('.test-child');
+  test('renders children', () => {
+    wrapper = shallow(
+      <SideNav trigger={trigger}>
+        <span className="test-child" />
+      </SideNav>
+    );
 
-    expect(children).toHaveLength(1);
-  });
-
-  test('should consume props it uses', () => {
-    const { sideNavProps } = setup({
-      id: 'test123',
-      options: {},
-      shouldTransfer: true
-    });
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('should call sideNav with the given options', () => {
@@ -95,13 +57,15 @@ describe('<SideNav />', () => {
       closeOnClick: true,
       edge: 'right'
     };
-    mount(<SideNav trigger={<span>trigger</span>} options={options} />);
+    mount(<SideNav trigger={trigger} options={options} />);
+
     expect(sideNavInitMock).toHaveBeenCalledWith(options);
   });
 
   test('should be destroyed when unmounted', () => {
-    const component = shallow(<SideNav className="red" />);
+    const component = shallow(<SideNav />);
     component.unmount();
+
     expect(sideNavInstanceDestroyMock).toHaveBeenCalled();
   });
 });

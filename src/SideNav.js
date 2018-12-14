@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
@@ -31,12 +31,12 @@ class SideNav extends Component {
     );
 
     return (
-      <div>
+      <Fragment>
         {this.renderTrigger()}
         <ul id={this.id} className={classNames} {...props}>
           {children}
         </ul>
-      </div>
+      </Fragment>
     );
   }
 
