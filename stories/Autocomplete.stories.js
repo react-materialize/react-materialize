@@ -4,17 +4,23 @@ import Autocomplete from '../src/Autocomplete';
 
 const stories = storiesOf('javascript/Autocomplete', module);
 
-stories.add('Default', () => {
-  const props = {
-    options: {
-      data: {
-        Apple: null,
-        Microsoft: null,
-        Google: 'https://placehold.it/250x250'
-      }
-    },
-    placeholder: 'Insert here'
-  };
-
-  return <Autocomplete {...props} />;
+stories.addParameters({
+  info: {
+    text: `Add an autocomplete dropdown below your input 
+    to suggest possible values in your form. You can 
+    populate the list of autocomplete options dynamically as well.`
+  }
 });
+
+stories.add('Default', () => (
+  <Autocomplete
+    options={{
+      data: {
+        ['Gus Fring']: null,
+        ['Saul Goodman']: null,
+        ['Tuco Salamanca']: 'https://placehold.it/250x250'
+      }
+    }}
+    placeholder="Insert here"
+  />
+));

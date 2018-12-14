@@ -4,6 +4,14 @@ import Badge from '../src/Badge';
 
 const stories = storiesOf('components/Badge', module);
 
+stories.addParameters({
+  info: {
+    text: `Badges can notify you that there are 
+    new or unread messages or notifications. Add the 
+    'newIcon' prop to the badge to give it the background.`
+  }
+});
+
 stories.add('Default', () => <Badge>4</Badge>);
 
 stories.add('newIcon', () => (
