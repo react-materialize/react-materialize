@@ -13,12 +13,21 @@ class Button extends Component {
   }
 
   componentDidMount() {
-    const { tooltip, tooltipOptions } = this.props;
-    if (
-      typeof $ !== 'undefined' &&
-      (typeof tooltip !== 'undefined' || typeof tooltipOptions !== 'undefined')
-    ) {
-      $(this._btnEl).tooltip(tooltipOptions);
+    if (!M) return;
+
+    const { tooltip, tooltipOptions = {}, fab } = this.props;
+    if (tooltip) {
+      this.instance = M.Tooltip.init(this._btnEl, tooltipOptions);
+    }
+
+    if (fab) {
+      this.instance = M.FloatingActionButton.init(this._floatingActionBtn);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
     }
   }
 
@@ -32,6 +41,7 @@ class Button extends Component {
       flat,
       floating,
       large,
+      small,
       disabled,
       waves,
       tooltip,
@@ -50,9 +60,12 @@ class Button extends Component {
       classes['waves-' + waves] = true;
     }
 
-    let styles = { flat, floating, large };
+    let styles = { flat, floating, large, small };
     constants.STYLES.forEach(style => {
-      classes['btn-' + style] = styles[style];
+      if (styles[style]) {
+        classes.btn = false;
+        classes['btn-' + style] = true;
+      }
     });
 
     if (modal) {
@@ -80,7 +93,10 @@ class Button extends Component {
   renderFab(className, mode, clickOnly) {
     const classes = cx(mode, clickOnly);
     return (
-      <div className={cx('fixed-action-btn', classes)}>
+      <div
+        ref={el => (this._floatingActionBtn = el)}
+        className={cx('fixed-action-btn', classes)}
+      >
         <a className={className}>{this.renderIcon()}</a>
         <ul>
           {React.Children.map(this.props.children, child => {
@@ -108,6 +124,7 @@ Button.propTypes = {
    */
   flat: PropTypes.bool,
   large: PropTypes.bool,
+  small: PropTypes.bool,
   floating: PropTypes.bool,
   /**
    * Fixed action button

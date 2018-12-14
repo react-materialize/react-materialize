@@ -62,7 +62,7 @@ exports[`<Modal /> renders a modal has children 1`] = `
           waves="green"
         >
           <button
-            className="btn waves-effect waves-green btn-flat modal-close"
+            className="waves-effect waves-green btn-flat modal-close"
             disabled={false}
           >
             Close
@@ -136,7 +136,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
           waves="green"
         >
           <button
-            className="btn waves-effect waves-green btn-flat modal-close"
+            className="waves-effect waves-green btn-flat modal-close"
             disabled={false}
           >
             Close
@@ -197,7 +197,7 @@ exports[`<Modal /> without a trigger renders 1`] = `
           waves="green"
         >
           <button
-            className="btn waves-effect waves-green btn-flat modal-close"
+            className="waves-effect waves-green btn-flat modal-close"
             disabled={false}
           >
             Close

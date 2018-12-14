@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Button from '../src/Button';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
 
 describe('Button', () => {
   let wrapper;
@@ -29,6 +29,11 @@ describe('Button', () => {
   test('should apply large styles', () => {
     wrapper = shallow(<Button large>Stuff</Button>);
     expect(wrapper.find('.btn-large')).toHaveLength(1);
+  });
+
+  test('should apply small styles', () => {
+    wrapper = shallow(<Button small>Stuff</Button>);
+    expect(wrapper.find('.btn-small')).toHaveLength(1);
   });
 
   test('should apply floating styles', () => {
@@ -69,22 +74,98 @@ describe('Button', () => {
   });
 
   describe('with a tooltip', () => {
-    let tooltip = 'Hello';
-    let tooltipOptions = {
+    const tooltipInitMock = jest.fn();
+    const tooltipInstanceDestroyMock = jest.fn();
+    const tooltipMock = {
+      init: (el, options) => {
+        tooltipInitMock(options);
+        return {
+          destroy: tooltipInstanceDestroyMock
+        };
+      }
+    };
+    const restore = mocker('Tooltip', tooltipMock);
+    const tooltip = 'Hello';
+    const tooltipOptions = {
       position: 'top',
       delay: 50
     };
 
-    const tooltipMock = jest.fn();
-    mocker('tooltip', tooltipMock);
-    wrapper = shallow(<Button tooltip={tooltip}>Stuff</Button>);
-    test('initializes Button with tooltip', () => {
-      expect(tooltipMock).toHaveBeenCalled();
+    beforeEach(() => {
+      tooltipInitMock.mockClear();
     });
 
-    wrapper = shallow(<Button tooltipOptions={tooltipOptions}>Stuff</Button>);
+    afterAll(() => {
+      restore();
+    });
+
+    test('initializes Button with tooltip', () => {
+      wrapper = shallow(<Button tooltip={tooltip}>Stuff</Button>);
+      expect(tooltipInitMock).toHaveBeenCalled();
+    });
+
     test('initializes Button with tooltip options', () => {
-      expect(tooltipMock).toHaveBeenCalledWith(tooltipOptions);
+      wrapper = shallow(
+        <Button tooltip={tooltip} tooltipOptions={tooltipOptions}>
+          Stuff
+        </Button>
+      );
+      expect(tooltipInitMock).toHaveBeenCalledWith(tooltipOptions);
+    });
+
+    test('destroyed when unmounted', () => {
+      wrapper = shallow(<Button tooltip={tooltip}>Stuff</Button>);
+      wrapper.unmount();
+      expect(tooltipInstanceDestroyMock).toHaveBeenCalled();
+    });
+  });
+
+  describe('with fixed action button', () => {
+    const fabInitMock = jest.fn();
+    const fabInstanceDestroyMock = jest.fn();
+    const fabMock = {
+      init: (el, options) => {
+        fabInitMock(options);
+        return {
+          destroy: fabInstanceDestroyMock
+        };
+      }
+    };
+    const restore = mocker('FloatingActionButton', fabMock);
+    const fab = 'vertical';
+    let wrapper;
+
+    beforeEach(() => {
+      fabInitMock.mockClear();
+      wrapper = mount(
+        <Button
+          floating
+          fab={fab}
+          className="red"
+          large
+          style={{
+            bottom: '45px',
+            right: '24px'
+          }}
+        >
+          <Button floating icon="insert_chart" className="red" />
+          <Button floating icon="format_quote" className="yellow darken-1" />
+          <Button floating icon="publish" className="green" />
+          <Button floating icon="attach_file" className="blue" />
+        </Button>
+      );
+    });
+
+    afterAll(() => {
+      restore();
+    });
+
+    test('initializes FloatingActionButton instance', () => {
+      expect(fabInitMock).toHaveBeenCalled();
+    });
+    test('destroys FloatingActionButton instance when unmounted', () => {
+      wrapper.unmount();
+      expect(fabInstanceDestroyMock).toHaveBeenCalled();
     });
   });
 });

@@ -7,10 +7,9 @@ import Samples from './Samples';
 import ButtonCode from '!raw-loader!Button';
 
 import raisedButton from '../../../examples/RaisedButton';
-import fixedActionButton from '../../../examples/FixedActionButton';
 import floatingButton from '../../../examples/FloatingButton';
+import verticalFAB from '../../../examples/VerticalFAB';
 import horizontalFab from '../../../examples/HorizontalFAB';
-import buttonAsLink from '../../../examples/ButtonAsLink';
 
 const ButtonsPage = () => (
   <Row>
@@ -35,11 +34,59 @@ const ButtonsPage = () => (
         </ReactPlayground>
       </Col>
       <h4 className='col s12'>
+        Flat
+      </h4>
+      <p className='col s12 caption'>
+        Flat buttons are used to reduce excessive layering. For example, flat buttons are usually used for actions within a card or modal so there aren't too many overlapping shadows.
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.flatButton} />
+      </Col>
+      <h4 className='col s12'>
+        Submit Button
+      </h4>
+      <p className='col s12 caption'>
+        When you use a button to submit a form, instead of using a input tag, use a button tag with a type submit
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.submitButton} />
+      </Col>
+      <h4 className='col s12'>
+        Large Button
+      </h4>
+      <p className='col s12 caption'>
+        This button has a larger height for buttons that need more attention.
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.largeButton} />
+      </Col>
+      <h4 className='col s12'>
+        Small Button
+      </h4>
+      <p className='col s12 caption'>
+        When mouse and keyboard are the primary input methods, this smaller button is useful for denser UI layouts.
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.smallButton} />
+      </Col>
+      <h4 className='col s12'>
+        Disabled Button
+      </h4>
+      <p className='col s12 caption'>
+        This style can be applied to all button types
+      </p>
+      <Col s={12}>
+        <ReactPlayground code={Samples.disabledButton} />
+      </Col>
+      <h4 className='col s12'>
         Fixed Action Button
       </h4>
+      <p className='col s12  caption'>
+        If you want a fixed floating action button, you can add multiple actions that will appear on hover. Our demo is in the bottom righthand corner of the page.
+      </p>
       <Col s={12}>
-        <ReactPlayground code={Samples.fixedActionButton}>
-          {fixedActionButton}
+        <ReactPlayground code={Samples.verticalFAB}>
+          {verticalFAB}
         </ReactPlayground>
       </Col>
       <h4 className='col s12'>
@@ -48,14 +95,6 @@ const ButtonsPage = () => (
       <Col s={12}>
         <ReactPlayground code={Samples.horizontalFab}>
           {horizontalFab}
-        </ReactPlayground>
-      </Col>
-      <h4 className='col s12'>
-        Button as Link
-      </h4>
-      <Col s={12}>
-        <ReactPlayground code={Samples.buttonAsLink}>
-          {buttonAsLink}
         </ReactPlayground>
       </Col>
       <Col s={12}>
