@@ -13,12 +13,16 @@
     "test:unit": "jest",
     "test:unit:watch": "jest --watch",
     "pretest": "npm run lint",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "build": "babel -d lib src",
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
-    "prettier": "prettier --write \"{src,test}/**/*.js\"",
+    "prettier": "prettier --write \"{src,test,stories}/**/*.js\"",
     "prepush": "npm run lint"
+  },
+  "engines": {
+    "node" : ">=8"
   },
   "repository": {
     "type": "git",
@@ -54,6 +58,7 @@
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/react": "^4.1.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "enzyme": "^3.4.4",
@@ -76,7 +81,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.3"
   }
 }
