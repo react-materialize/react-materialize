@@ -17,7 +17,7 @@ export default {
   collectionWithHref: require('!raw-loader!../../../examples/CollectionWithHref.js'),
   disabledButton: require('!raw-loader!../../../examples/DisabledButton.js'),
   dropdown: require('!raw-loader!../../../examples/DropdownBasic.js'),
-  verticalFAB: require('!raw-loader!../../../examples/VerticalFAB.js'),
+  fixedActionButton: require('!raw-loader!../../../examples/FixedActionButton.js'),
   flatButton: require('!raw-loader!../../../examples/FlatButton.js'),
   floatingButton: require('!raw-loader!../../../examples/FloatingButton.js'),
   buttonAsLink: require('!raw-loader!../../../examples/ButtonAsLink.js'),
