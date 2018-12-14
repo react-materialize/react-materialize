@@ -1,7 +1,8 @@
 import { configure, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import centered from '@storybook/addon-centered';
 import { withOptions } from '@storybook/addon-options';
+
+import './overrides.css';
 
 global.$ = require('jquery');
 global.M = require('materialize-css');
@@ -21,8 +22,6 @@ addDecorator(
     showAddonPanel: false,
   })
 );
-
-addDecorator(centered);
 
 function loadStories() {
   const req = require.context('../stories', true, /.js$/);
