@@ -1,3 +1,12 @@
 h2 {
-  display: none;
+  padding-bottom: 2rem;
+  font-size: large;
+  font-weight: bold;
+}
+
+.sb-show-main {
+  border: 1px solid rgb(238, 238, 238);
+  padding: 20px 40px 40px;
+  border-radius: 2px;
+  margin: 20px 40px;
 }
