@@ -22,7 +22,7 @@
     "prepush": "npm run lint"
   },
   "engines": {
-    "node" : ">=8"
+    "node": ">=8"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,9 @@
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-centered": "^4.1.1",
+    "@storybook/addon-info": "^4.1.1",
+    "@storybook/addon-options": "^4.1.1",
     "@storybook/react": "^4.1.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",

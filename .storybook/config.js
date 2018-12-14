@@ -1,7 +1,28 @@
-import { configure } from '@storybook/react';
- 
+import { configure, addDecorator } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
+import centered from '@storybook/addon-centered';
+import { withOptions } from '@storybook/addon-options';
+
 global.$ = require('jquery');
 global.M = require('materialize-css');
+
+// https://www.npmjs.com/package/@storybook/addon-info
+addDecorator(withInfo({
+  inline: false,
+  header: false,
+  source: true
+}));
+
+// https://www.npmjs.com/package/@storybook/addon-options
+addDecorator(
+  withOptions({
+    name: 'react-materialize',
+    url: 'http://react-materialize.github.io',
+    showAddonPanel: false,
+  })
+);
+
+addDecorator(centered);
 
 function loadStories() {
   const req = require.context('../stories', true, /.js$/);
