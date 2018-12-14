@@ -4,13 +4,13 @@ exports[`<SideNav /> can be \`fixed\` 1`] = `
 <Fragment>
   <button
     className="trigger hide-on-large-only sidenav-trigger"
-    data-target="sidenav_1"
+    data-target="sidenav_mockId"
   >
     Show sidenav
   </button>
   <ul
     className="sidenav sidenav-fixed"
-    id="sidenav_1"
+    id="sidenav_mockId"
   />
 </Fragment>
 `;
@@ -19,7 +19,7 @@ exports[`<SideNav /> is \`fixed\` if no trigger is passed 1`] = `
 <Fragment>
   <ul
     className="sidenav sidenav-fixed"
-    id="sidenav_2"
+    id="sidenav_mockId"
   />
 </Fragment>
 `;
@@ -28,13 +28,13 @@ exports[`<SideNav /> renders 1`] = `
 <Fragment>
   <button
     className="trigger show-on-large sidenav-trigger"
-    data-target="sidenav_0"
+    data-target="sidenav_mockId"
   >
     Show sidenav
   </button>
   <ul
     className="sidenav"
-    id="sidenav_0"
+    id="sidenav_mockId"
   />
 </Fragment>
 `;
@@ -58,13 +58,13 @@ exports[`<SideNav /> renders children 1`] = `
 <Fragment>
   <button
     className="trigger show-on-large sidenav-trigger"
-    data-target="sidenav_3"
+    data-target="sidenav_mockId"
   >
     Show sidenav
   </button>
   <ul
     className="sidenav"
-    id="sidenav_3"
+    id="sidenav_mockId"
   >
     <span
       className="test-child"

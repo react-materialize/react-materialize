@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
 import mocker from './helper/new-mocker';
-import * as idgenHolder from '../src/idgen';
 
 describe('Tabs', () => {
   let wrapper;
@@ -18,7 +17,6 @@ describe('Tabs', () => {
     }
   };
   const restore = mocker('Tabs', tabsMock);
-  const idgenSpy = jest.spyOn(idgenHolder, 'default');
 
   const options = {
     duration: 400,
@@ -36,7 +34,6 @@ describe('Tabs', () => {
 
   afterAll(() => {
     restore();
-    idgenSpy.mockRestore();
   });
 
   beforeEach(() => {
@@ -64,7 +61,6 @@ describe('Tabs', () => {
 
   describe('when updated', () => {
     beforeEach(() => {
-      idgenSpy.mockClear();
       wrapper = mount(
         <Tabs tabOptions={options}>
           <Tab title="one">One</Tab>
@@ -80,12 +76,6 @@ describe('Tabs', () => {
       wrapper.setProps({ className: 'test' });
       expect(tabInstanceDestroyMock).toHaveBeenCalled();
       expect(tabsInitMock).toHaveBeenCalledWith(options);
-    });
-
-    test('idgen is not called after update', () => {
-      expect(idgenSpy).toHaveBeenCalledTimes(1);
-      wrapper.setProps({ className: 'test' });
-      expect(idgenSpy).toHaveBeenCalledTimes(1);
     });
   });
 

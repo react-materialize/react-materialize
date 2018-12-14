@@ -2,8 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
-const Container = props => (
-  <div className={cx('container', props.className)}>{props.children}</div>
+const Container = ({ className, children, ...props }) => (
+  <div className={cx('container', className)} {...props}>
+    {children}
+  </div>
 );
 
 Container.propTypes = {

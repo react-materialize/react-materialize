@@ -2,9 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Modal from '../src/Modal';
 import mocker from './helper/new-mocker';
-import idgen from '../src/idgen';
-
-jest.mock('../src/idgen');
 
 describe('<Modal />', () => {
   let wrapper;
@@ -23,11 +20,9 @@ describe('<Modal />', () => {
     }
   };
   const restore = mocker('Modal', modalMock);
-  idgen.mockReturnValue(1);
 
   afterAll(() => {
     restore();
-    idgen.restore();
   });
 
   const trigger = <button>click</button>;
