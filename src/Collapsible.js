@@ -109,7 +109,7 @@ Collapsible.propTypes = {
 };
 
 Collapsible.defaultProps = {
-  accordion: false
+  accordion: true
 };
 
 export default Collapsible;

@@ -125,7 +125,7 @@ exports[`<Collapsible /> defaultActiveKey 2`] = `
 exports[`<Collapsible /> renders 1`] = `
 <ul
   className="collapsible"
-  data-collapsible="expandable"
+  data-collapsible="accordion"
 />
 `;
 
@@ -402,11 +402,11 @@ exports[`<Collapsible /> with accordion 1`] = `
 
 exports[`<Collapsible /> with expanded prop 1`] = `
 <Collapsible
-  accordion={false}
+  accordion={true}
 >
   <ul
     className="collapsible"
-    data-collapsible="expandable"
+    data-collapsible="accordion"
   >
     <CollapsibleItem
       eventKey={0}
@@ -463,7 +463,7 @@ exports[`<Collapsible /> with expanded prop 1`] = `
 exports[`<Collapsible /> with invalid elements 1`] = `
 <ul
   className="collapsible"
-  data-collapsible="expandable"
+  data-collapsible="accordion"
 >
   <CollapsibleItem
     eventKey={1}
