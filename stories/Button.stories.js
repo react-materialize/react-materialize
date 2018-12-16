@@ -60,7 +60,7 @@ stories.add('Link', () =>
   <Button waves='light' node='a' href='http://react-materialize.github.io/'>Open Me In New Tab</Button>
 );
 
-stories.add('Fixed Action Button', () => 
+stories.add('Vertical FAB', () => 
   <Button floating fab='vertical' icon='edit' className='red' large>
     <Button floating icon='insert_chart' className='red'/>
     <Button floating icon='format_quote' className='yellow darken-1'/>
