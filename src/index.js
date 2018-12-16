@@ -35,6 +35,7 @@ import SideNav from './SideNav';
 import SideNavItem from './SideNavItem';
 import Slide from './Slide';
 import Slider from './Slider';
+import Switch from './Switch';
 import Tab from './Tab';
 import Table from './Table';
 import Tabs from './Tabs';
@@ -80,6 +81,7 @@ export {
   SideNavItem,
   Slide,
   Slider,
+  Switch,
   Tab,
   Table,
   Tabs,
