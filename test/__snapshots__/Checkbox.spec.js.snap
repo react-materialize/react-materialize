@@ -48,3 +48,35 @@ exports[`<Checkbox /> renders disabled 1`] = `
   </span>
 </label>
 `;
+
+exports[`<Checkbox /> with id 1`] = `
+<label
+  htmlFor="test"
+>
+  <input
+    className=""
+    id="test"
+    type="checkbox"
+    value="red"
+  />
+  <span>
+    red
+  </span>
+</label>
+`;
+
+exports[`<Checkbox /> with indeterminate 1`] = `
+<label
+  htmlFor="indeterminate-checkbox"
+>
+  <input
+    className=""
+    id="indeterminate-checkbox"
+    type="checkbox"
+    value="red"
+  />
+  <span>
+    red
+  </span>
+</label>
+`;

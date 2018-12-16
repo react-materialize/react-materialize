@@ -9,14 +9,23 @@ const Checkbox = ({
   filledIn,
   label,
   disabled,
-  value
+  value,
+  id,
+  indeterminate
 }) => {
-  const id = id || idgen();
+  let computedId;
+  if (indeterminate) {
+    computedId = 'indeterminate-checkbox';
+  } else if (id) {
+    computedId = id;
+  } else {
+    computedId = idgen();
+  }
 
   return (
-    <label htmlFor={id}>
+    <label htmlFor={computedId}>
       <input
-        id={id}
+        id={computedId}
         className={cx({ 'filled-in': filledIn })}
         disabled={disabled}
         onChange={onChange}
@@ -42,6 +51,10 @@ Checkbox.propTypes = {
    * label next to checkbox
    */
   label: PropTypes.string.isRequired,
+  /*
+   * Indeterminate Style
+   */
+  indeterminate: PropTypes.bool,
   /*
    * onChange callback
    */
