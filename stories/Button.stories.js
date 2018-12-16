@@ -57,7 +57,7 @@ stories.add('Disabled', () =>
 );
 
 stories.add('Link', () => 
-  <Button waves='light' node='a' href='http://www.google.com'> Open Me In New Tab </Button>
+  <Button waves='light' node='a' href='http://react-materialize.github.io/'>Open Me In New Tab</Button>
 );
 
 stories.add('Fixed Action Button', () => 
