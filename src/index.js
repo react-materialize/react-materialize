@@ -41,6 +41,7 @@ import Tab from './Tab';
 import Table from './Table';
 import Tabs from './Tabs';
 import Tag from './Tag';
+import Textarea from './Textarea';
 import TextInput from './TextInput';
 import Toast from './Toast';
 
@@ -88,6 +89,7 @@ export {
   Table,
   Tabs,
   Tag,
+  Textarea,
   TextInput,
   Toast
 };
