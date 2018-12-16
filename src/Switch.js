@@ -4,7 +4,7 @@ import cx from 'classnames';
 import idgen from './idgen';
 
 const Switch = ({ checked, onChange, disabled, id, offLabel, onLabel }) => {
-  const computedId = idgen();
+  const computedId = id || idgen();
 
   return (
     <div className="switch">
