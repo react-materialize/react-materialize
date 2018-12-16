@@ -33,6 +33,7 @@ import SearchForm from './SearchForm';
 import Section from './Section';
 import SideNav from './SideNav';
 import SideNavItem from './SideNavItem';
+import Select from './Select';
 import Slide from './Slide';
 import Slider from './Slider';
 import Tab from './Tab';
@@ -78,6 +79,7 @@ export {
   Section,
   SideNav,
   SideNavItem,
+  Select,
   Slide,
   Slider,
   Tab,
