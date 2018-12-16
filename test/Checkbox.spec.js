@@ -19,9 +19,4 @@ describe('<Checkbox />', () => {
     wrapper = shallow(<Checkbox value="red" label="red" filledIn />);
     expect(wrapper).toMatchSnapshot();
   });
-
-  test('handles checked state', () => {
-    wrapper = shallow(<Checkbox value="red" label="red" checked />);
-    expect(wrapper.state().checked).toEqual(true);
-  });
 });

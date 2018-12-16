@@ -2,12 +2,11 @@
 
 exports[`<Checkbox /> filled-in 1`] = `
 <label
-  htmlFor={2}
+  htmlFor="mockId"
 >
   <input
     className="filled-in"
-    id={2}
-    onChange={[Function]}
+    id="mockId"
     type="checkbox"
     value="red"
   />
@@ -19,12 +18,11 @@ exports[`<Checkbox /> filled-in 1`] = `
 
 exports[`<Checkbox /> renders 1`] = `
 <label
-  htmlFor={0}
+  htmlFor="mockId"
 >
   <input
     className=""
-    id={0}
-    onChange={[Function]}
+    id="mockId"
     type="checkbox"
     value="red"
   />
@@ -36,13 +34,12 @@ exports[`<Checkbox /> renders 1`] = `
 
 exports[`<Checkbox /> renders disabled 1`] = `
 <label
-  htmlFor={1}
+  htmlFor="mockId"
 >
   <input
     className=""
     disabled={true}
-    id={1}
-    onChange={[Function]}
+    id="mockId"
     type="checkbox"
     value="red"
   />

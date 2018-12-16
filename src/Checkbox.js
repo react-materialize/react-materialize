@@ -3,44 +3,31 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 
-class Checkbox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: props.checked
-    };
+const Checkbox = ({
+  checked,
+  onChange,
+  filledIn,
+  label,
+  disabled,
+  value
+}) => {
+  const id = id || idgen();
 
-    this.id = props.id || idgen();
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    const { onChange } = this.props;
-    if (onChange) onChange(event);
-
-    this.setState({ checked: event.target.checked });
-  }
-
-  render() {
-    const { filledIn, label, disabled, value } = this.props;
-    const checkboxClassName = { 'filled-in': filledIn };
-
-    return (
-      <label htmlFor={this.id}>
-        <input
-          id={this.id}
-          className={cx(checkboxClassName)}
-          disabled={disabled}
-          onChange={this.handleChange}
-          type="checkbox"
-          checked={this.state.checked}
-          value={value}
-        />
-        <span>{label}</span>
-      </label>
-    );
-  }
-}
+  return (
+    <label htmlFor={id}>
+      <input
+        id={id}
+        className={cx({ 'filled-in': filledIn })}
+        disabled={disabled}
+        onChange={onChange}
+        type="checkbox"
+        defaultChecked={checked}
+        value={value}
+      />
+      <span>{label}</span>
+    </label>
+  );
+};
 
 Checkbox.propTypes = {
   /*
