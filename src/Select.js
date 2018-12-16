@@ -100,7 +100,14 @@ class Select extends Component {
             this._selectRef = el;
           }}
           onChange={this.handleChange}
-          className={cx({ validate, multiple }, selectClassName)}
+          className={cx(
+            {
+              validate,
+              multiple,
+              ['browser-default']: browserDefault
+            },
+            selectClassName
+          )}
           {...selectProps}
         >
           {renderOptions()}
