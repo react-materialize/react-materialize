@@ -19,7 +19,6 @@ import Divider from './Divider';
 import Dropdown from './Dropdown';
 import Footer from './Footer';
 import Icon from './Icon';
-import Input from './Input';
 import MediaBox from './MediaBox';
 import Modal from './Modal';
 import NavItem from './NavItem';
@@ -69,7 +68,6 @@ export {
   Dropdown,
   Footer,
   Icon,
-  Input,
   MediaBox,
   Modal,
   NavItem,
