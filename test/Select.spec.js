@@ -24,9 +24,9 @@ describe('<Select />', () => {
     expect(wrapper.hasClass('m6')).toBeFalsy();
   });
 
-  test('renders placeholder', () => {
-    wrapper = shallow(<Select placeholder="Name" />);
-    expect(wrapper.find('select').prop('placeholder')).toEqual('Name');
+  test('renders browserDefault', () => {
+    wrapper = shallow(<Select browserDefault />);
+    expect(wrapper.find('select').hasClass('browser-default')).toBeTruthy();
   });
 
   test('renders label', () => {

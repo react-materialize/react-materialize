@@ -39,7 +39,7 @@ class Select extends Component {
       l,
       disabled,
       noLayout,
-      placeholder,
+      browserDefault,
       icon,
       label,
       selectClassName,
@@ -65,7 +65,6 @@ class Select extends Component {
     const wrapperClasses = cx('input-field', responsiveClasses);
 
     const selectProps = {
-      placeholder,
       type: 'select',
       id: this.id,
       value: this.state.value,
@@ -137,10 +136,6 @@ Select.propTypes = {
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
-   * Placeholder string
-   */
-  placeholder: PropTypes.string,
   /*
    * override id
    * @default idgen()
