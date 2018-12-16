@@ -186,7 +186,11 @@ Button.propTypes = {
    * FAB Click-Only
    * Turns a FAB from a hover-toggle to a click-toggle
    */
-  fabClickOnly: PropTypes.bool
+  fabClickOnly: PropTypes.bool,
+  /**
+   * Styles
+   */
+  style: PropTypes.object,
 };
 
 Button.defaultProps = {
