@@ -190,7 +190,7 @@ Button.propTypes = {
   /**
    * Styles
    */
-  style: PropTypes.object,
+  style: PropTypes.object
 };
 
 Button.defaultProps = {
