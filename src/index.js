@@ -29,6 +29,7 @@ import Parallax from './Parallax';
 import Preloader from './Preloader';
 import ProgressBar from './ProgressBar';
 import Row from './Row';
+import RadioGroup from './RadioGroup';
 import SearchForm from './SearchForm';
 import Section from './Section';
 import SideNav from './SideNav';
@@ -77,6 +78,7 @@ export {
   Preloader,
   ProgressBar,
   Row,
+  RadioGroup,
   SearchForm,
   Section,
   SideNav,
