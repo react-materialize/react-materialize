@@ -44,14 +44,8 @@ describe('<TextInput />', () => {
   });
 
   test('handles other types', () => {
-    wrapper = shallow(<TextInput type="password" />);
+    wrapper = shallow(<TextInput password />);
     expect(wrapper.find('input').prop('type')).toEqual('password');
-  });
-
-  test('calls onChange if provided', () => {
-    wrapper = shallow(<TextInput />);
-    wrapper.setState({ value: 'hello' });
-    expect(wrapper.find('input').prop('value')).toEqual('hello');
   });
 
   test('with icon', () => {
