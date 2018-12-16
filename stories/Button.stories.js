@@ -11,7 +11,7 @@ stories.addParameters({
   }
 });
 
-stories.add('Default', () => 
+stories.add('Default', () =>
   <div>
     <Button waves='light' style={{marginRight: '5px'}}>button</Button>
     <Button waves='light' style={{marginRight: '5px'}}>button<Icon left>cloud</Icon></Button>
@@ -19,19 +19,19 @@ stories.add('Default', () =>
   </div>
 );
 
-stories.add('Floating', () => 
+stories.add('Floating', () =>
   <Button floating large className='red' waves='light' icon='add' />
 );
 
-stories.add('Flat', () => 
+stories.add('Flat', () =>
   <Button flat waves='light'>Button</Button>
 );
 
-stories.add('Submit', () => 
+stories.add('Submit', () =>
   <Button type='submit' waves='light'>Submit<Icon right>send</Icon></Button>
 );
 
-stories.add('Large', () => 
+stories.add('Large', () =>
   <div>
     <Button node='a' waves='light' large style={{marginRight: '5px'}}>Button</Button>
     <Button node='a' waves='light' large style={{marginRight: '5px'}}>Button<Icon left>cloud</Icon></Button>
@@ -39,7 +39,7 @@ stories.add('Large', () =>
   </div>
 );
 
-stories.add('Small', () => 
+stories.add('Small', () =>
   <div>
     <Button node='a' waves='light' small style={{marginRight: '5px'}}>Button</Button>
     <Button node='a' waves='light' small style={{marginRight: '5px'}}>Button<Icon left>cloud</Icon></Button>
@@ -47,7 +47,7 @@ stories.add('Small', () =>
   </div>
 );
 
-stories.add('Disabled', () => 
+stories.add('Disabled', () =>
   <div>
     <Button large disabled style={{marginRight: '5px'}}>Button</Button>
     <Button disabled style={{marginRight: '5px'}}>Button</Button>
@@ -56,12 +56,12 @@ stories.add('Disabled', () =>
   </div>
 );
 
-stories.add('Link', () => 
+stories.add('Link', () =>
   <Button waves='light' node='a' href='http://react-materialize.github.io/'>Open Me In New Tab</Button>
 );
 
-stories.add('Vertical FAB', () => 
-  <Button floating fab='vertical' icon='edit' className='red' large>
+stories.add('Top FAB', () =>
+  <Button floating fab='top' icon='edit' className='red' large>
     <Button floating icon='insert_chart' className='red'/>
     <Button floating icon='format_quote' className='yellow darken-1'/>
     <Button floating icon='publish' className='green'/>
@@ -69,8 +69,8 @@ stories.add('Vertical FAB', () =>
   </Button>
 );
 
-stories.add('Horizontal FAB', () => 
-  <Button floating fab='direction-left' icon='edit' className='green' large>
+stories.add('Left FAB', () =>
+  <Button floating fab='left' icon='edit' className='green' large>
     <Button floating icon='insert_chart' className='red'/>
     <Button floating icon='format_quote' className='yellow darken-1'/>
     <Button floating icon='publish' className='green'/>
@@ -78,4 +78,20 @@ stories.add('Horizontal FAB', () =>
   </Button>
 );
 
+stories.add('Right FAB', () => 
+  <Button floating fab='right' icon='edit' className='blue' large style={{left: '23px', right: 'unset'}}>
+    <Button floating icon='insert_chart' className='red'/>
+    <Button floating icon='format_quote' className='yellow darken-1'/>
+    <Button floating icon='publish' className='green'/>
+    <Button floating icon='attach_file' className='blue'/>
+  </Button>
+);
 
+stories.add('Bottom FAB', () =>
+  <Button floating fab='bottom' icon='edit' className='pinl' large style={{left: '50px', top: '23px', bottom: 'unset', right: 'unset'}}>
+    <Button floating icon='insert_chart' className='red'/>
+    <Button floating icon='format_quote' className='yellow darken-1'/>
+    <Button floating icon='publish' className='green'/>
+    <Button floating icon='attach_file' className='blue'/>
+  </Button>
+);

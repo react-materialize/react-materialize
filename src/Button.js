@@ -91,11 +91,12 @@ class Button extends Component {
   }
 
   renderFab(className, mode, clickOnly) {
-    const classes = cx(mode, clickOnly);
+    const classes = cx(this.getFabClasses(mode), clickOnly);
     return (
       <div
         ref={el => (this._floatingActionBtn = el)}
         className={cx('fixed-action-btn', classes)}
+        style={this.props.style}
       >
         <a className={className}>{this.renderIcon()}</a>
         <ul>
@@ -105,6 +106,14 @@ class Button extends Component {
         </ul>
       </div>
     );
+  }
+
+  getFabClasses(mode) {
+    if (mode === 'toolbar') return mode;
+    // keep retrocompatibility on old params
+    if (mode === 'vertical') mode = 'top';
+    if (mode === 'horizontal') mode = 'left';
+    return `direction-${mode}`;
   }
 
   renderIcon() {
@@ -131,7 +140,15 @@ Button.propTypes = {
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
    * @default vertical. This will disable any onClick function from being called on the main button.
    */
-  fab: PropTypes.oneOf(['vertical', 'horizontal', 'toolbar']),
+  fab: PropTypes.oneOf([
+    'vertical',
+    'horizontal',
+    'top',
+    'bottom',
+    'left',
+    'right',
+    'toolbar'
+  ]),
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */
