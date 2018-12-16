@@ -7,20 +7,16 @@ import constants from './constants';
 class TextInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: ''
-    };
 
     this.id = props.id || idgen();
-    this.handleChange = this.handleChange.bind(this);
-  }
 
-  handleChange(event) {
-    const { target: { value } } = event;
-    const { onChange } = this.props;
-    if (onChange) onChange(event);
+    if (props.password) {
+      this.id = 'password';
+    }
 
-    this.setState({ value });
+    if (props.email) {
+      this.id = 'email';
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -45,6 +41,8 @@ class TextInput extends Component {
       inputClassName,
       success,
       error,
+      password,
+      email,
       validate,
       value,
       type
@@ -62,23 +60,44 @@ class TextInput extends Component {
 
     const wrapperClasses = cx('input-field', responsiveClasses);
 
+    let computedType;
+    if (type) {
+      computedType = type;
+    } else if (password) {
+      computedType = 'password';
+    } else if (email) {
+      computedType = 'email';
+    } else {
+      computedType = 'text';
+    }
+
     const inputProps = {
       placeholder,
-      type: type || 'text',
+      type: computedType,
       id: this.id,
-      value: value || this.state.value,
+      defaultValue: value,
       disabled
     };
 
     const renderLabel = () =>
       label && (
         <label
+          className={cx({ active: value || placeholder })}
           data-success={success}
           data-error={error}
           htmlFor={inputProps.id}
         >
           {label}
         </label>
+      );
+
+    const renderHelper = () =>
+      [error || success] && (
+        <span
+          className="helper-text"
+          data-error={error}
+          data-success={success}
+        />
       );
 
     const renderIcon = () =>
@@ -96,6 +115,7 @@ class TextInput extends Component {
           {...inputProps}
         />
         {renderLabel()}
+        {renderHelper()}
       </div>
     );
   }
@@ -170,7 +190,15 @@ TextInput.propTypes = {
   /*
    * onChange callback
    */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  /*
+   * password type
+   */
+  password: PropTypes.bool,
+  /*
+   * email type
+   */
+  email: PropTypes.bool
 };
 
 export default TextInput;
