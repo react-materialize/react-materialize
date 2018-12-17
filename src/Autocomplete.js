@@ -32,8 +32,8 @@ class Autocomplete extends Component {
     }
   }
 
-  renderIcon(icon, iconClassName) {
-    return <Icon className={iconClassName}>{icon}</Icon>;
+  renderIcon(icon) {
+    return <Icon className="prefix">{icon}</Icon>;
   }
 
   _onChange(e) {
@@ -62,7 +62,6 @@ class Autocomplete extends Component {
       className,
       title,
       icon,
-      iconClassName,
       s,
       m,
       l,
@@ -91,7 +90,7 @@ class Autocomplete extends Component {
         className={cx('input-field', className, classes)}
         {...props}
       >
-        {icon && this.renderIcon(icon, iconClassName)}
+        {icon && this.renderIcon(icon)}
         <input
           placeholder={placeholder}
           className="autocomplete"
@@ -124,7 +123,6 @@ Autocomplete.propTypes = {
    * Optional materialize icon to add to the autocomplete bar
    */
   icon: PropTypes.string,
-  iconClassName: PropTypes.string,
   s: PropTypes.number,
   m: PropTypes.number,
   l: PropTypes.number,
