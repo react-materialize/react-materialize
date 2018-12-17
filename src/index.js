@@ -41,7 +41,6 @@ import Switch from './Switch';
 import Tab from './Tab';
 import Table from './Table';
 import Tabs from './Tabs';
-import Tag from './Tag';
 import Textarea from './Textarea';
 import TextInput from './TextInput';
 import TimePicker from './TimePicker';
@@ -90,7 +89,6 @@ export {
   Tab,
   Table,
   Tabs,
-  Tag,
   Textarea,
   TextInput,
   Toast
