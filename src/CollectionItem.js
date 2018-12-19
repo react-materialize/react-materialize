@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const CollectionItem = ({ children, className, href, ...other }) => {
+const CollectionItem = ({ active, children, className, href, ...other }) => {
   let item = (
     <li {...other} className={cx('collection-item', className)}>
       {children}
@@ -11,7 +11,11 @@ const CollectionItem = ({ children, className, href, ...other }) => {
 
   if (href) {
     item = (
-      <a {...other} href={href} className={cx('collection-item', className)}>
+      <a
+        {...other}
+        href={href}
+        className={cx('collection-item', { active }, className)}
+      >
         {children}
       </a>
     );
@@ -21,6 +25,7 @@ const CollectionItem = ({ children, className, href, ...other }) => {
 };
 
 CollectionItem.propTypes = {
+  active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   /* 
