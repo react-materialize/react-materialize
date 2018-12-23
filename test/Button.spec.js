@@ -47,14 +47,14 @@ describe('Button', () => {
   });
 
   test('should apply FAB hover', () => {
-    wrapper = shallow(<Button fab="vertical">Stuff</Button>);
+    wrapper = shallow(<Button fab>Stuff</Button>);
     wrapper.simulate('hover');
     expect(wrapper.find('.fixed-action-btn active'));
   });
 
   test('should apply FAB click-only', () => {
     wrapper = shallow(
-      <Button fab="horizontal" fabClickOnly>
+      <Button fab fabOptions={{ hoverEnabled: false }}>
         Stuff
       </Button>
     );
@@ -132,7 +132,6 @@ describe('Button', () => {
       }
     };
     const restore = mocker('FloatingActionButton', fabMock);
-    const fab = 'vertical';
     let wrapper;
 
     beforeEach(() => {
@@ -140,7 +139,7 @@ describe('Button', () => {
       wrapper = mount(
         <Button
           floating
-          fab={fab}
+          fab
           className="red"
           large
           style={{

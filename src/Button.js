@@ -15,13 +15,16 @@ class Button extends Component {
   componentDidMount() {
     if (!M) return;
 
-    const { tooltip, tooltipOptions = {}, fab } = this.props;
+    const { tooltip, tooltipOptions = {}, fab, fabOptions = {} } = this.props;
     if (tooltip) {
       this.instance = M.Tooltip.init(this._btnEl, tooltipOptions);
     }
 
     if (fab) {
-      this.instance = M.FloatingActionButton.init(this._floatingActionBtn);
+      this.instance = M.FloatingActionButton.init(
+        this._floatingActionBtn,
+        fabOptions
+      );
     }
   }
 
@@ -36,7 +39,6 @@ class Button extends Component {
       className,
       node,
       fab,
-      fabClickOnly,
       modal,
       flat,
       floating,
@@ -48,7 +50,6 @@ class Button extends Component {
       ...other
     } = this.props;
 
-    const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
     let classes = {
       btn: true,
@@ -72,7 +73,7 @@ class Button extends Component {
       classes['modal-' + modal] = true;
     }
     if (fab) {
-      return this.renderFab(cx(classes, className), fab, toggle);
+      return this.renderFab(cx(classes, className));
     } else {
       return (
         <C
@@ -90,12 +91,11 @@ class Button extends Component {
     }
   }
 
-  renderFab(className, mode, clickOnly) {
-    const classes = cx(mode, clickOnly);
+  renderFab(className) {
     return (
       <div
         ref={el => (this._floatingActionBtn = el)}
-        className={cx('fixed-action-btn', classes)}
+        className={cx('fixed-action-btn')}
       >
         <a className={className}>{this.renderIcon()}</a>
         <ul>
@@ -129,9 +129,23 @@ Button.propTypes = {
   /**
    * Fixed action button
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
-   * @default vertical. This will disable any onClick function from being called on the main button.
+   * @default false
    */
-  fab: PropTypes.oneOf(['vertical', 'horizontal', 'toolbar']),
+  fab: PropTypes.bool,
+  /**
+   * Fixed action button options
+   * FAB Options are here: https://materializecss.com/floating-action-button.html#options
+   * @default {
+   *  direction: 'top',
+   *  hoverEnabled: true,
+   *  toolbarEnables: false,
+   * }
+   */
+  fabOptions: PropTypes.shape({
+    direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    hoverEnabled: PropTypes.bool,
+    toolbarEnabled: PropTypes.bool
+  }),
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */
@@ -164,12 +178,7 @@ Button.propTypes = {
     'purple',
     'green',
     'teal'
-  ]),
-  /**
-   * FAB Click-Only
-   * Turns a FAB from a hover-toggle to a click-toggle
-   */
-  fabClickOnly: PropTypes.bool
+  ])
 };
 
 Button.defaultProps = {
