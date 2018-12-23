@@ -60,8 +60,8 @@ stories.add('Link', () =>
   <Button waves='light' node='a' href='http://react-materialize.github.io/'>Open Me In New Tab</Button>
 );
 
-stories.add('Top FAB', () =>
-  <Button floating fab='top' icon='edit' className='red' large>
+stories.add('Vertical FAB', () =>
+  <Button floating fab='vertical' icon='edit' className='red' large>
     <Button floating icon='insert_chart' className='red'/>
     <Button floating icon='format_quote' className='yellow darken-1'/>
     <Button floating icon='publish' className='green'/>
@@ -69,26 +69,8 @@ stories.add('Top FAB', () =>
   </Button>
 );
 
-stories.add('Left FAB', () =>
-  <Button floating fab='left' icon='edit' className='green' large>
-    <Button floating icon='insert_chart' className='red'/>
-    <Button floating icon='format_quote' className='yellow darken-1'/>
-    <Button floating icon='publish' className='green'/>
-    <Button floating icon='attach_file' className='blue'/>
-  </Button>
-);
-
-stories.add('Right FAB', () => 
-  <Button floating fab='right' icon='edit' className='blue' large style={{left: '23px', right: 'unset'}}>
-    <Button floating icon='insert_chart' className='red'/>
-    <Button floating icon='format_quote' className='yellow darken-1'/>
-    <Button floating icon='publish' className='green'/>
-    <Button floating icon='attach_file' className='blue'/>
-  </Button>
-);
-
-stories.add('Bottom FAB', () =>
-  <Button floating fab='bottom' icon='edit' className='pinl' large style={{left: '50px', top: '23px', bottom: 'unset', right: 'unset'}}>
+stories.add('Horizontal FAB', () =>
+  <Button floating fab='horizontal' icon='edit' className='green' large>
     <Button floating icon='insert_chart' className='red'/>
     <Button floating icon='format_quote' className='yellow darken-1'/>
     <Button floating icon='publish' className='green'/>
