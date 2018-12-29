@@ -22,7 +22,6 @@ exports[`<Slide /> can render a picture element 1`] = `
 exports[`<Slide /> renders 1`] = `
 <li>
   <img
-    alt=""
     src="#"
   />
 </li>
