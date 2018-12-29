@@ -48,10 +48,6 @@ CollapsibleItem.propTypes = {
    * @default a
    */
   node: PropTypes.node,
-  /**
-   * The scroll behavior for scrollIntoView
-   */
-  scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
 };
 
 CollapsibleItem.defaultProps = {
