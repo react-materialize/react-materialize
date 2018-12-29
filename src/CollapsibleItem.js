@@ -47,7 +47,7 @@ CollapsibleItem.propTypes = {
    * The node type of the header
    * @default a
    */
-  node: PropTypes.node,
+  node: PropTypes.node
 };
 
 CollapsibleItem.defaultProps = {
