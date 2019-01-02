@@ -47,11 +47,7 @@ CollapsibleItem.propTypes = {
    * The node type of the header
    * @default a
    */
-  node: PropTypes.node,
-  /**
-   * The scroll behavior for scrollIntoView
-   */
-  scroll: PropTypes.oneOf(['auto', 'instant', 'smooth'])
+  node: PropTypes.node
 };
 
 CollapsibleItem.defaultProps = {
