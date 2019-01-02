@@ -47,14 +47,14 @@ describe('Button', () => {
   });
 
   test('should apply FAB hover', () => {
-    wrapper = shallow(<Button fab="vertical">Stuff</Button>);
+    wrapper = shallow(<Button fab>Stuff</Button>);
     wrapper.simulate('hover');
     expect(wrapper.find('.fixed-action-btn active'));
   });
 
   test('should apply FAB click-only', () => {
     wrapper = shallow(
-      <Button fab="horizontal" fabClickOnly>
+      <Button fab fabOptions={{ hoverEnabled: false }}>
         Stuff
       </Button>
     );
@@ -132,28 +132,32 @@ describe('Button', () => {
       }
     };
     const restore = mocker('FloatingActionButton', fabMock);
-    const fab = 'vertical';
+    const fabOptions = {
+      direction: 'left',
+      hoverEnabled: false,
+      toolbarEnabled: true
+    };
     let wrapper;
+    const FabButton = (fabOptions = true) => (
+      <Button
+        floating
+        fab={fabOptions}
+        className="red"
+        large
+        style={{
+          bottom: '45px',
+          right: '24px'
+        }}
+      >
+        <Button floating icon="insert_chart" className="red" />
+        <Button floating icon="format_quote" className="yellow darken-1" />
+        <Button floating icon="publish" className="green" />
+        <Button floating icon="attach_file" className="blue" />
+      </Button>
+    );
 
     beforeEach(() => {
       fabInitMock.mockClear();
-      wrapper = mount(
-        <Button
-          floating
-          fab={fab}
-          className="red"
-          large
-          style={{
-            bottom: '45px',
-            right: '24px'
-          }}
-        >
-          <Button floating icon="insert_chart" className="red" />
-          <Button floating icon="format_quote" className="yellow darken-1" />
-          <Button floating icon="publish" className="green" />
-          <Button floating icon="attach_file" className="blue" />
-        </Button>
-      );
     });
 
     afterAll(() => {
@@ -161,9 +165,15 @@ describe('Button', () => {
     });
 
     test('initializes FloatingActionButton instance', () => {
+      wrapper = mount(FabButton());
       expect(fabInitMock).toHaveBeenCalled();
     });
+    test('initializes FloatingActionButton with fab options', () => {
+      wrapper = mount(FabButton(fabOptions));
+      expect(fabInitMock).toHaveBeenCalledWith(fabOptions);
+    });
     test('destroys FloatingActionButton instance when unmounted', () => {
+      wrapper = mount(FabButton());
       wrapper.unmount();
       expect(fabInstanceDestroyMock).toHaveBeenCalled();
     });

@@ -24,3 +24,17 @@ stories.add('Default', () => (
     placeholder="Insert here"
   />
 ));
+
+stories.add('With icon', () => (
+  <Autocomplete
+    options={{
+      data: {
+        ['Gus Fring']: null,
+        ['Saul Goodman']: null,
+        ['Tuco Salamanca']: 'https://placehold.it/250x250'
+      }
+    }}
+    placeholder="Insert here"
+    icon="textsms"
+  />
+));

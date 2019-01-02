@@ -4,26 +4,31 @@ import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
-class TextInput extends Component {
+class Select extends Component {
   constructor(props) {
     super(props);
 
     this.id = props.id || idgen();
-
-    if (props.password) {
-      this.id = 'password';
-    }
-
-    if (props.email) {
-      this.id = 'email';
-    }
+    this.handleChange = this.handleChange.bind(this);
+    this.state = { value: props.value };
   }
 
-  componentDidUpdate(prevProps) {
-    const { value } = this.props;
+  handleChange(event) {
+    const { onChange } = this.props;
+    let value = event.target.value;
 
-    if (value !== prevProps.value) {
-      M.updateTextFields();
+    if (this.props.multiple) {
+      value = this.instance.getSelectedValues();
+    }
+
+    if (onChange) onChange(event);
+
+    this.setState({ value });
+  }
+
+  componentDidMount() {
+    if (typeof M !== 'undefined') {
+      this.instance = M.FormSelect.init(this._selectRef);
     }
   }
 
@@ -32,23 +37,22 @@ class TextInput extends Component {
       s,
       m,
       l,
-      xl,
       disabled,
       noLayout,
-      placeholder,
+      browserDefault,
       icon,
       label,
-      inputClassName,
+      selectClassName,
       success,
       error,
-      password,
-      email,
       validate,
+      children,
+      multiple,
       value,
       type
     } = this.props;
 
-    const sizes = { s, m, l, xl };
+    const sizes = { s, m, l };
 
     let responsiveClasses;
     if (!noLayout) {
@@ -60,96 +64,85 @@ class TextInput extends Component {
 
     const wrapperClasses = cx('input-field', responsiveClasses);
 
-    let computedType;
-    if (type) {
-      computedType = type;
-    } else if (password) {
-      computedType = 'password';
-    } else if (email) {
-      computedType = 'email';
-    } else {
-      computedType = 'text';
-    }
-
-    const inputProps = {
-      placeholder,
-      type: computedType,
+    const selectProps = {
+      type: 'select',
       id: this.id,
-      defaultValue: value,
-      disabled
+      value: this.state.value,
+      disabled,
+      multiple
     };
 
     const renderLabel = () =>
       label && (
         <label
-          className={cx({ active: value || placeholder })}
           data-success={success}
           data-error={error}
-          htmlFor={inputProps.id}
+          htmlFor={selectProps.id}
         >
           {label}
         </label>
       );
 
-    const renderHelper = () =>
-      [error || success] && (
-        <span
-          className="helper-text"
-          data-error={error}
-          data-success={success}
-        />
-      );
-
     const renderIcon = () =>
       icon && <i className="material-icons prefix">{icon}</i>;
+
+    const renderOption = child =>
+      React.cloneElement(child, { key: child.props.value });
+
+    const renderOptions = () => React.Children.map(children, renderOption);
 
     return (
       <div className={wrapperClasses}>
         {renderIcon()}
-        <input
+        <select
+          value={this.state.value}
           ref={el => {
-            this.inputRef = el;
+            this._selectRef = el;
           }}
           onChange={this.handleChange}
-          className={cx({ validate }, inputClassName)}
-          {...inputProps}
-        />
+          className={cx(
+            {
+              validate,
+              multiple,
+              ['browser-default']: browserDefault
+            },
+            selectClassName
+          )}
+          {...selectProps}
+        >
+          {renderOptions()}
+        </select>
         {renderLabel()}
-        {renderHelper()}
       </div>
     );
   }
 }
 
-TextInput.propTypes = {
+Select.propTypes = {
+  /*
+   * Use browser default styles
+   */
+  browserDefault: PropTypes.bool,
   /*
    * Strip away all layout classes such as col and sX
    */
   noLayout: PropTypes.bool,
   /*
-   * Responsive size for Mobile Devices
+   * Responsive size for Small
    */
   s: PropTypes.number,
   /*
-   * Responsive size for Tablet Devices
+   * Responsive size for Medium
    */
   m: PropTypes.number,
   /*
-   * Responsive size for Desktop Devices
+   * Responsive size for Large
    */
   l: PropTypes.number,
-  /**
-   *  Responsive size for Large Desktop Devices
-   */
-  xl: PropTypes.number,
   /*
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
-   * Placeholder string
-   */
-  placeholder: PropTypes.string,
   /*
    * override id
    * @default idgen()
@@ -182,7 +175,7 @@ TextInput.propTypes = {
   /*
    * Additional classes for input
    */
-  inputClassName: PropTypes.string,
+  selectClassName: PropTypes.string,
   /*
    * override type="text"
    */
@@ -192,13 +185,12 @@ TextInput.propTypes = {
    */
   onChange: PropTypes.func,
   /*
-   * password type
+   * Render a multiple dropdown,
+   * use instance.getSelectedValues()
+   * to get array of selected values
    */
-  password: PropTypes.bool,
-  /*
-   * email type
-   */
-  email: PropTypes.bool
+  multiple: PropTypes.bool,
+  children: PropTypes.any
 };
 
-export default TextInput;
+export default Select;

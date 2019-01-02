@@ -6,6 +6,7 @@ import Carousel from './Carousel';
 import Card from './Card';
 import CardPanel from './CardPanel';
 import CardTitle from './CardTitle';
+import Checkbox from './Checkbox';
 import Chip from './Chip';
 import Col from './Col';
 import Collapsible from './Collapsible';
@@ -13,11 +14,11 @@ import CollapsibleItem from './CollapsibleItem';
 import Collection from './Collection';
 import CollectionItem from './CollectionItem';
 import Container from './Container';
+import DatePicker from './DatePicker';
 import Divider from './Divider';
 import Dropdown from './Dropdown';
 import Footer from './Footer';
 import Icon from './Icon';
-import Input from './Input';
 import MediaBox from './MediaBox';
 import Modal from './Modal';
 import NavItem from './NavItem';
@@ -28,17 +29,21 @@ import Parallax from './Parallax';
 import Preloader from './Preloader';
 import ProgressBar from './ProgressBar';
 import Row from './Row';
+import RadioGroup from './RadioGroup';
 import SearchForm from './SearchForm';
 import Section from './Section';
 import SideNav from './SideNav';
 import SideNavItem from './SideNavItem';
+import Select from './Select';
 import Slide from './Slide';
 import Slider from './Slider';
+import Switch from './Switch';
 import Tab from './Tab';
 import Table from './Table';
 import Tabs from './Tabs';
-import Tag from './Tag';
+import Textarea from './Textarea';
 import TextInput from './TextInput';
+import TimePicker from './TimePicker';
 import Toast from './Toast';
 
 export {
@@ -46,10 +51,11 @@ export {
   Badge,
   Breadcrumb,
   Button,
-  Carousel,
   Card,
   CardPanel,
   CardTitle,
+  Carousel,
+  Checkbox,
   Chip,
   Col,
   Collapsible,
@@ -61,7 +67,6 @@ export {
   Dropdown,
   Footer,
   Icon,
-  Input,
   MediaBox,
   Modal,
   NavItem,
@@ -72,16 +77,19 @@ export {
   Preloader,
   ProgressBar,
   Row,
+  RadioGroup,
   SearchForm,
   Section,
   SideNav,
   SideNavItem,
+  Select,
   Slide,
   Slider,
+  Switch,
   Tab,
   Table,
   Tabs,
-  Tag,
+  Textarea,
   TextInput,
   Toast
 };

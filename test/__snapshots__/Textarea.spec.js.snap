@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Textarea /> Disabled 1`] = `
+<div
+  className="input-field"
+>
+  <textarea
+    className="materialize-textarea"
+    disabled={true}
+    id="mockId"
+    value="I was here"
+  />
+  <label
+    htmlFor="mockId"
+  />
+</div>
+`;
+
+exports[`<Textarea /> Icon 1`] = `
+<div
+  className="input-field"
+>
+  <Icon
+    className="material-icons prefix"
+  >
+    mode_edit
+  </Icon>
+  <textarea
+    className="materialize-textarea"
+    id="mockId"
+  />
+  <label
+    htmlFor="mockId"
+  />
+</div>
+`;
+
+exports[`<Textarea /> Label 1`] = `
+<div
+  className="input-field"
+>
+  <textarea
+    className="materialize-textarea"
+    id="mockId"
+  />
+  <label
+    htmlFor="mockId"
+  >
+    Write something here...
+  </label>
+</div>
+`;
+
+exports[`<Textarea /> Placeholder 1`] = `
+<div
+  className="input-field"
+>
+  <textarea
+    className="materialize-textarea"
+    id="mockId"
+    placeholder="I was here"
+  />
+  <label
+    htmlFor="mockId"
+  />
+</div>
+`;
+
+exports[`<Textarea /> Textarea 1`] = `
+<div
+  className="input-field"
+>
+  <textarea
+    className="materialize-textarea"
+    id="mockId"
+  />
+  <label
+    htmlFor="mockId"
+  />
+</div>
+`;
