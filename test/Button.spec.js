@@ -132,27 +132,33 @@ describe('Button', () => {
       }
     };
     const restore = mocker('FloatingActionButton', fabMock);
+    const fabOptions = {
+      direction: 'left',
+      hoverEnabled: false,
+      toolbarEnabled: true
+    };
     let wrapper;
+    const FabButton = fabOptions => (
+      <Button
+        floating
+        fab
+        fabOptions={fabOptions}
+        className="red"
+        large
+        style={{
+          bottom: '45px',
+          right: '24px'
+        }}
+      >
+        <Button floating icon="insert_chart" className="red" />
+        <Button floating icon="format_quote" className="yellow darken-1" />
+        <Button floating icon="publish" className="green" />
+        <Button floating icon="attach_file" className="blue" />
+      </Button>
+    );
 
     beforeEach(() => {
       fabInitMock.mockClear();
-      wrapper = mount(
-        <Button
-          floating
-          fab
-          className="red"
-          large
-          style={{
-            bottom: '45px',
-            right: '24px'
-          }}
-        >
-          <Button floating icon="insert_chart" className="red" />
-          <Button floating icon="format_quote" className="yellow darken-1" />
-          <Button floating icon="publish" className="green" />
-          <Button floating icon="attach_file" className="blue" />
-        </Button>
-      );
     });
 
     afterAll(() => {
@@ -160,9 +166,15 @@ describe('Button', () => {
     });
 
     test('initializes FloatingActionButton instance', () => {
+      wrapper = mount(FabButton());
       expect(fabInitMock).toHaveBeenCalled();
     });
+    test('initializes FloatingActionButton with fab options', () => {
+      wrapper = mount(FabButton(fabOptions));
+      expect(fabInitMock).toHaveBeenCalledWith(fabOptions);
+    });
     test('destroys FloatingActionButton instance when unmounted', () => {
+      wrapper = mount(FabButton());
       wrapper.unmount();
       expect(fabInstanceDestroyMock).toHaveBeenCalled();
     });

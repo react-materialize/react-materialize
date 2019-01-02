@@ -138,7 +138,7 @@ Button.propTypes = {
    * @default {
    *  direction: 'top',
    *  hoverEnabled: true,
-   *  toolbarEnables: false,
+   *  toolbarEnabled: false,
    * }
    */
   fabOptions: PropTypes.shape({
