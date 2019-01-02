@@ -138,11 +138,10 @@ describe('Button', () => {
       toolbarEnabled: true
     };
     let wrapper;
-    const FabButton = fabOptions => (
+    const FabButton = (fabOptions = true) => (
       <Button
         floating
-        fab
-        fabOptions={fabOptions}
+        fab={fabOptions}
         className="red"
         large
         style={{

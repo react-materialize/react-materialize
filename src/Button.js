@@ -15,16 +15,13 @@ class Button extends Component {
   componentDidMount() {
     if (!M) return;
 
-    const { tooltip, tooltipOptions = {}, fab, fabOptions = {} } = this.props;
+    const { tooltip, tooltipOptions = {}, fab } = this.props;
     if (tooltip) {
       this.instance = M.Tooltip.init(this._btnEl, tooltipOptions);
     }
 
     if (fab) {
-      this.instance = M.FloatingActionButton.init(
-        this._floatingActionBtn,
-        fabOptions
-      );
+      this.instance = M.FloatingActionButton.init(this._floatingActionBtn, fab);
     }
   }
 
@@ -129,23 +126,22 @@ Button.propTypes = {
   /**
    * Fixed action button
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
+   *  FAB Options are here: https://materializecss.com/floating-action-button.html#options
    * @default false
-   */
-  fab: PropTypes.bool,
-  /**
-   * Fixed action button options
-   * FAB Options are here: https://materializecss.com/floating-action-button.html#options
-   * @default {
+   * @default options {
    *  direction: 'top',
    *  hoverEnabled: true,
    *  toolbarEnabled: false,
    * }
    */
-  fabOptions: PropTypes.shape({
-    direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-    hoverEnabled: PropTypes.bool,
-    toolbarEnabled: PropTypes.bool
-  }),
+  fab: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({
+      direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+      hoverEnabled: PropTypes.bool,
+      toolbarEnabled: PropTypes.bool
+    })
+  ]),
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */
