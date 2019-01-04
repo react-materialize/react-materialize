@@ -89,8 +89,10 @@ class Button extends Component {
   }
 
   renderFab(className) {
+    const { fab, floating, large, ...other } = this.props;
     return (
       <div
+        {...other}
         ref={el => (this._floatingActionBtn = el)}
         className={cx('fixed-action-btn')}
       >
