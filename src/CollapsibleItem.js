@@ -8,6 +8,7 @@ const CollapsibleItem = ({
   eventKey,
   expanded,
   header,
+  headerClassName,
   children,
   icon,
   iconClassName,
@@ -17,7 +18,7 @@ const CollapsibleItem = ({
 }) => (
   <li className={cx(className, { active: expanded })} {...props}>
     <Node
-      className={cx('collapsible-header', { active: expanded })}
+      className={cx('collapsible-header', headerClassName, { active: expanded })}
       onClick={() => onSelect(eventKey)}
     >
       {icon && <Icon className={iconClassName}>{icon}</Icon>}
