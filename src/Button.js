@@ -88,15 +88,15 @@ class Button extends Component {
     }
   }
 
-  renderFab(className) {
-    const { fab, floating, large, ...other } = this.props;
+  renderFab(classes) {
+    const { fab, floating, large, className, ...other } = this.props;
     return (
       <div
         {...other}
         ref={el => (this._floatingActionBtn = el)}
         className={cx('fixed-action-btn')}
       >
-        <a className={className}>{this.renderIcon()}</a>
+        <a className={classes}>{this.renderIcon()}</a>
         <ul>
           {React.Children.map(this.props.children, child => {
             return <li key={idgen()}>{child}</li>;
