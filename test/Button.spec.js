@@ -171,7 +171,7 @@ describe('Button', () => {
     test('renders FloatingActionButton with passed styles', () => {
       const style = { bottom: '45px', right: '24px' };
       wrapper = shallow(FabButton(true, style));
-      expect(Object.keys(wrapper.props().style).length).toBeGreaterThan(0)
+      expect(Object.keys(wrapper.props().style).length).toBeGreaterThan(0);
     });
   });
 });
