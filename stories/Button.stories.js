@@ -120,6 +120,7 @@ stories.add('Right FAB', () => (
   <Button
     floating
     fab={{ direction: 'right' }}
+    style={{ left: '23px' }}
     icon="edit"
     className="blue"
     large
@@ -135,6 +136,7 @@ stories.add('Bottom FAB', () => (
   <Button
     floating
     fab={{ direction: 'bottom' }}
+    style={{ top: '50px' }}
     icon="edit"
     className="pink"
     large
