@@ -138,17 +138,8 @@ describe('Button', () => {
       toolbarEnabled: true
     };
     let wrapper;
-    const FabButton = (fabOptions = true) => (
-      <Button
-        floating
-        fab={fabOptions}
-        className="red"
-        large
-        style={{
-          bottom: '45px',
-          right: '24px'
-        }}
-      >
+    const FabButton = (fabOptions = true, style = {}) => (
+      <Button floating fab={fabOptions} className="red" large style={style}>
         <Button floating icon="insert_chart" className="red" />
         <Button floating icon="format_quote" className="yellow darken-1" />
         <Button floating icon="publish" className="green" />
@@ -176,6 +167,11 @@ describe('Button', () => {
       wrapper = mount(FabButton());
       wrapper.unmount();
       expect(fabInstanceDestroyMock).toHaveBeenCalled();
+    });
+    test('renders FloatingActionButton with passed styles', () => {
+      const style = { bottom: '45px', right: '24px' };
+      wrapper = shallow(FabButton(true, style));
+      expect(Object.keys(wrapper.props().style).length).toBeGreaterThan(0);
     });
   });
 });
