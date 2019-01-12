@@ -92,7 +92,8 @@ stories.add('Link', () => (
   </Button>
 ));
 
-stories.add('Top FAB', () => (
+const storiesFab = storiesOf('components/Button/FAB', module);
+storiesFab.add('Top', () => (
   <Button floating fab icon="edit" className="red" large>
     <Button floating icon="insert_chart" className="red" />
     <Button floating icon="format_quote" className="yellow darken-1" />
@@ -101,7 +102,7 @@ stories.add('Top FAB', () => (
   </Button>
 ));
 
-stories.add('Left FAB', () => (
+storiesFab.add('Left', () => (
   <Button
     floating
     fab={{ direction: 'left' }}
@@ -116,7 +117,7 @@ stories.add('Left FAB', () => (
   </Button>
 ));
 
-stories.add('Right FAB', () => (
+storiesFab.add('Right', () => (
   <Button
     floating
     fab={{ direction: 'right' }}
@@ -132,7 +133,7 @@ stories.add('Right FAB', () => (
   </Button>
 ));
 
-stories.add('Bottom FAB', () => (
+storiesFab.add('Bottom', () => (
   <Button
     floating
     fab={{ direction: 'bottom' }}
