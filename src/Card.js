@@ -16,7 +16,7 @@ class Card extends Component {
   renderTitle(title, reveal) {
     return (
       <span
-        className={cx('card-title', 'grey-text', 'text-darken-4', {
+        className={cx('card-title', {
           activator: reveal
         })}
       >
@@ -29,7 +29,7 @@ class Card extends Component {
   renderReveal(title, reveal) {
     return (
       <div className="card-reveal">
-        <span className="card-title grey-text text-darken-4">
+        <span className="card-title">
           {title}
           <Icon right>close</Icon>
         </span>

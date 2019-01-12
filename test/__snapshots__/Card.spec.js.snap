@@ -8,7 +8,7 @@ exports[`<Card /> renders 1`] = `
     className="card-content white-text"
   >
     <span
-      className="card-title grey-text text-darken-4"
+      className="card-title"
     >
       card title
     </span>
@@ -20,7 +20,7 @@ exports[`<Card /> renders 1`] = `
     className="card-reveal"
   >
     <span
-      className="card-title grey-text text-darken-4"
+      className="card-title"
     >
       card title
       <Icon
