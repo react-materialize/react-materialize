@@ -91,4 +91,5 @@ describe('<Collapsible />', () => {
     expect(wrapper.state().activeKey).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
+
 });

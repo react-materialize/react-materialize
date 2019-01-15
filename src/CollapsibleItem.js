@@ -44,6 +44,7 @@ CollapsibleItem.propTypes = {
    */
   eventKey: PropTypes.any,
   className: PropTypes.string,
+  headerClassName: PropTypes.string,
   /**
    * The node type of the header
    * @default a
