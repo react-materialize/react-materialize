@@ -93,60 +93,36 @@ stories.add('Link', () => (
 ));
 
 const storiesFab = storiesOf('components/Button/FAB', module);
-storiesFab.add('Top', () => (
-  <Button floating fab icon="edit" className="red" large>
-    <Button floating icon="insert_chart" className="red" />
-    <Button floating icon="format_quote" className="yellow darken-1" />
-    <Button floating icon="publish" className="green" />
-    <Button floating icon="attach_file" className="blue" />
-  </Button>
-));
+const children = [
+  <Button floating icon="insert_chart" className="red" />,
+  <Button floating icon="format_quote" className="yellow darken-1" />,
+  <Button floating icon="publish" className="green" />,
+  <Button floating icon="attach_file" className="blue" />
+];
+const props = {
+  floating: true,
+  fab: true,
+  icon: 'edit',
+  className: 'red',
+  large: true
+};
+
+storiesFab.add('Top', () => <Button {...props}>{children}</Button>);
 
 storiesFab.add('Left', () => (
-  <Button
-    floating
-    fab={{ direction: 'left' }}
-    icon="edit"
-    className="green"
-    large
-  >
-    <Button floating icon="insert_chart" className="red" />
-    <Button floating icon="format_quote" className="yellow darken-1" />
-    <Button floating icon="publish" className="green" />
-    <Button floating icon="attach_file" className="blue" />
+  <Button {...props} fab={{ direction: 'left' }}>
+    {children}
   </Button>
 ));
 
 storiesFab.add('Right', () => (
-  <Button
-    floating
-    fab={{ direction: 'right' }}
-    style={{ left: '23px' }}
-    icon="edit"
-    className="blue"
-    large
-  >
-    <Button floating icon="insert_chart" className="red" />
-    <Button floating icon="format_quote" className="yellow darken-1" />
-    <Button floating icon="publish" className="green" />
-    <Button floating icon="attach_file" className="blue" />
+  <Button {...props} fab={{ direction: 'right' }} style={{ left: '23px' }}>
+    {children}
   </Button>
 ));
 
 storiesFab.add('Bottom', () => (
-  <Button
-    floating
-    fab={{ direction: 'bottom' }}
-    style={{ top: '50px' }}
-    icon="edit"
-    className="pink"
-    large
-  >
-    <Button floating icon="insert_chart" className="red" />
-    <Button floating icon="format_quote" className="yellow darken-1" />
-    <Button floating icon="publish" className="green" />
-    <Button floating icon="attach_file" className="blue" />
+  <Button {...props} fab={{ direction: 'bottom' }} style={{ top: '50px' }}>
+    {children}
   </Button>
 ));
-
-
