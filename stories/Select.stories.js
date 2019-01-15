@@ -1,5 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+
 import Select from '../src/Select';
 
 const stories = storiesOf('components/Select', module);
@@ -11,7 +13,7 @@ stories.addParameters({
 });
 
 stories.add('Default', () => (
-  <Select>
+  <Select onChange={action('Select changed')}>
     <option value="" disabled selected>Choose your option</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>

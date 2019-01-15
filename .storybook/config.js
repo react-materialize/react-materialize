@@ -19,7 +19,7 @@ addDecorator(
   withOptions({
     name: 'react-materialize',
     url: 'http://react-materialize.github.io',
-    showAddonPanel: false,
+    showAddonPanel: true
   })
 );
 
