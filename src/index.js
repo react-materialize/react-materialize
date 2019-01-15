@@ -28,8 +28,9 @@ import PaginationButton from './PaginationButton';
 import Parallax from './Parallax';
 import Preloader from './Preloader';
 import ProgressBar from './ProgressBar';
-import Row from './Row';
+import Range from './Range';
 import RadioGroup from './RadioGroup';
+import Row from './Row';
 import SearchForm from './SearchForm';
 import Section from './Section';
 import SideNav from './SideNav';
@@ -77,6 +78,7 @@ export {
   Preloader,
   ProgressBar,
   Row,
+  Range,
   RadioGroup,
   SearchForm,
   Section,
