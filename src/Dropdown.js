@@ -15,7 +15,8 @@ class Dropdown extends Component {
     const options = this.props.options || {};
 
     if (typeof M !== undefined) {
-      this.instance = M.Dropdown.init(this._trigger, options);
+      const selector = document.querySelectorAll(this._trigger);
+      this.instance = M.Dropdown.init(selector, options);
     }
   }
 
@@ -48,9 +49,9 @@ class Dropdown extends Component {
     const { trigger } = this.props;
 
     return React.cloneElement(trigger, {
+      'data-target': this.idx,
       ref: t => (this._trigger = `[data-target=${this.idx}]`),
-      className: cx(trigger.props.className, 'dropdown-trigger'),
-      'data-target': this.idx
+      className: cx(trigger.props.className, 'dropdown-trigger')
     });
   }
 

@@ -65,5 +65,14 @@ describe('<Dropdown />', () => {
       );
       expect(dropdownInitMock).toHaveBeenCalledWith(options);
     });
+
+    test('should destroy when unmounted', () => {
+      const options = { constrainWidth: true };
+      wrapper = shallow(
+        <Dropdown trigger={<button>Drop me!</button>} options={options} />
+      );
+      wrapper.unmount();
+      expect(dropdownInstanceDestroyMock).toHaveBeenCalledTimes(1);
+    });
   });
 });
