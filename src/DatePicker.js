@@ -25,13 +25,25 @@ class DatePicker extends React.Component {
   }
 
   render() {
-    const { id, ...other } = this.props;
+    const { id, onChange, ...other } = this.props;
+    const onSelect = onChange;
 
-    return <TextInput id={this.id} inputClassName="datepicker" {...other} />;
+    return (
+      <TextInput
+        id={this.id}
+        inputClassName="datepicker"
+        onSelect={onSelect}
+        {...other}
+      />
+    );
   }
 }
 
 DatePicker.propTypes = {
+  /**
+   * Event called when Time has been selected
+   */
+  onChange: PropTypes.func,
   /**
    * id passed to datepicker, also used for init method
    */
