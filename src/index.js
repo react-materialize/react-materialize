@@ -1,97 +1,48 @@
-import Autocomplete from './Autocomplete';
-import Badge from './Badge';
-import Breadcrumb from './Breadcrumb';
-import Button from './Button';
-import Carousel from './Carousel';
-import Card from './Card';
-import CardPanel from './CardPanel';
-import CardTitle from './CardTitle';
-import Checkbox from './Checkbox';
-import Chip from './Chip';
-import Col from './Col';
-import Collapsible from './Collapsible';
-import CollapsibleItem from './CollapsibleItem';
-import Collection from './Collection';
-import CollectionItem from './CollectionItem';
-import Container from './Container';
-import DatePicker from './DatePicker';
-import Divider from './Divider';
-import Dropdown from './Dropdown';
-import Footer from './Footer';
-import Icon from './Icon';
-import MediaBox from './MediaBox';
-import Modal from './Modal';
-import NavItem from './NavItem';
-import Navbar from './Navbar';
-import Pagination from './Pagination';
-import PaginationButton from './PaginationButton';
-import Parallax from './Parallax';
-import Preloader from './Preloader';
-import ProgressBar from './ProgressBar';
-import Range from './Range';
-import RadioGroup from './RadioGroup';
-import Row from './Row';
-import SearchForm from './SearchForm';
-import Section from './Section';
-import SideNav from './SideNav';
-import SideNavItem from './SideNavItem';
-import Select from './Select';
-import Slide from './Slide';
-import Slider from './Slider';
-import Switch from './Switch';
-import Tab from './Tab';
-import Table from './Table';
-import Tabs from './Tabs';
-import Textarea from './Textarea';
-import TextInput from './TextInput';
-import TimePicker from './TimePicker';
-import Toast from './Toast';
-
-export {
-  Autocomplete,
-  Badge,
-  Breadcrumb,
-  Button,
-  Card,
-  CardPanel,
-  CardTitle,
-  Carousel,
-  Checkbox,
-  Chip,
-  Col,
-  Collapsible,
-  CollapsibleItem,
-  Collection,
-  CollectionItem,
-  Container,
-  Divider,
-  Dropdown,
-  Footer,
-  Icon,
-  MediaBox,
-  Modal,
-  NavItem,
-  Navbar,
-  Pagination,
-  PaginationButton,
-  Parallax,
-  Preloader,
-  ProgressBar,
-  Row,
-  Range,
-  RadioGroup,
-  SearchForm,
-  Section,
-  SideNav,
-  SideNavItem,
-  Select,
-  Slide,
-  Slider,
-  Switch,
-  Tab,
-  Table,
-  Tabs,
-  Textarea,
-  TextInput,
-  Toast
-};
+export { default as Autocomplete } from './Autocomplete';
+export { default as Badge } from './Badge';
+export { default as Breadcrumb } from './Breadcrumb';
+export { default as Button } from './Button';
+export { default as Card } from './Card';
+export { default as CardPanel } from './CardPanel';
+export { default as CardTitle } from './CardTitle';
+export { default as Carousel } from './Carousel';
+export { default as Checkbox } from './Checkbox';
+export { default as Chip } from './Chip';
+export { default as Col } from './Col';
+export { default as Collapsible } from './Collapsible';
+export { default as CollapsibleItem } from './CollapsibleItem';
+export { default as Collection } from './Collection';
+export { default as CollectionItem } from './CollectionItem';
+export { default as Container } from './Container';
+export { default as DatePicker } from './DatePicker';
+export { default as Divider } from './Divider';
+export { default as Dropdown } from './Dropdown';
+export { default as Footer } from './Footer';
+export { default as Icon } from './Icon';
+export { default as MediaBox } from './MediaBox';
+export { default as Modal } from './Modal';
+export { default as NavItem } from './NavItem';
+export { default as Navbar } from './Navbar';
+export { default as Pagination } from './Pagination';
+export { default as PaginationButton } from './PaginationButton';
+export { default as Parallax } from './Parallax';
+export { default as Preloader } from './Preloader';
+export { default as ProgressBar } from './ProgressBar';
+export { default as RadioGroup } from './RadioGroup';
+export { default as Range } from './Range';
+export { default as Row } from './Row';
+export { default as SearchForm } from './SearchForm';
+export { default as Section } from './Section';
+export { default as Select } from './Select';
+export { default as SideNav } from './SideNav';
+export { default as SideNavItem } from './SideNavItem';
+export { default as Slide } from './Slide';
+export { default as Slider } from './Slider';
+export { default as Switch } from './Switch';
+export { default as Tab } from './Tab';
+export { default as Table } from './Table';
+export { default as Tabs } from './Tabs';
+export { default as TextInput } from './TextInput';
+export { default as Textarea } from './Textarea';
+export { default as TimePicker } from './TimePicker';
+export { default as Toast } from './Toast';
