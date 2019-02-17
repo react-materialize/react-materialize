@@ -25,13 +25,25 @@ class TimePicker extends React.Component {
   }
 
   render() {
-    const { id, ...other } = this.props;
+    const { id, onChange, ...other } = this.props;
+    const onSelect = onChange;
 
-    return <TextInput id={this.id} inputClassName="timepicker" {...other} />;
+    return (
+      <TextInput
+        id={this.id}
+        inputClassName="timepicker"
+        onSelect={onSelect}
+        {...other}
+      />
+    );
   }
 }
 
 TimePicker.propTypes = {
+  /**
+   * Event called when Time has been selected
+   */
+  onChange: PropTypes.func,
   /**
    * id passed to Timepicker, also used for init method
    */

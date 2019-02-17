@@ -45,7 +45,8 @@ class TextInput extends Component {
       email,
       validate,
       value,
-      type
+      type,
+      ...other
     } = this.props;
 
     const sizes = { s, m, l, xl };
@@ -76,7 +77,8 @@ class TextInput extends Component {
       type: computedType,
       id: this.id,
       defaultValue: value,
-      disabled
+      disabled,
+      ...other
     };
 
     const renderLabel = () =>
@@ -110,7 +112,6 @@ class TextInput extends Component {
           ref={el => {
             this.inputRef = el;
           }}
-          onChange={this.handleChange}
           className={cx({ validate }, inputClassName)}
           {...inputProps}
         />

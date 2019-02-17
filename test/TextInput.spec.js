@@ -52,4 +52,12 @@ describe('<TextInput />', () => {
     wrapper = shallow(<TextInput icon="cloud" />);
     expect(wrapper.find('i.material-icons.prefix')).toHaveLength(1);
   });
+
+  test('handles other props', () => {
+    const mockOnChange = jest.fn();
+    wrapper = shallow(<TextInput onChange={mockOnChange} />);
+    wrapper.find('input').simulate('change', { target: { value: '7' } });
+
+    expect(mockOnChange).toHaveBeenCalledTimes(1);
+  });
 });
