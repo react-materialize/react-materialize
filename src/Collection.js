@@ -8,33 +8,35 @@ class Collection extends Component {
     this.renderHeader = this.renderHeader.bind(this);
   }
 
-  render() {
-    const { children, header, className } = this.props;
-
-    let C = 'ul';
-    React.Children.forEach(children, child => {
-      if (child.props.href) {
-        C = 'div';
-      }
-    });
-    return (
-      <C className={cx('collection', { 'with-header': !!header }, className)}>
-        {header ? this.renderHeader() : null}
-        {children}
-      </C>
-    );
+  getNodeType(children) {
+    return React.Children.toArray(children).some(child => child.props.href)
+      ? 'div'
+      : 'ul';
   }
 
   renderHeader() {
     let header;
-    if (this.props.header) {
-      if (React.isValidElement(this.props.header)) {
-        header = this.props.header;
-      } else {
-        header = <h4>{this.props.header}</h4>;
-      }
-      return <li className="collection-header">{header}</li>;
+    if (React.isValidElement(this.props.header)) {
+      header = this.props.header;
+    } else {
+      header = <h4>{this.props.header}</h4>;
     }
+    return <li className="collection-header">{header}</li>;
+  }
+
+  render() {
+    const { children, header, className, ...other } = this.props;
+    const C = this.getNodeType(children);
+
+    return (
+      <C
+        {...other}
+        className={cx('collection', { 'with-header': !!header }, className)}
+      >
+        {header ? this.renderHeader() : null}
+        {children}
+      </C>
+    );
   }
 }
 
