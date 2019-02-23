@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/react';
 import Navbar from '../src/Navbar';
 import NavItem from '../src/NavItem';
 import Icon from '../src/Icon';
+import Dropdown from '../src/Dropdown';
+import Button from '../src/Button';
 
 const stories = storiesOf('components/Navbar', module);
 
@@ -17,7 +19,7 @@ stories.add('Default', () => (
     <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
     <NavItem href='components.html'>Components</NavItem>
   </Navbar>
-), {info: `To right align your navbar links, just add a  right class to your  <ul> that contains them.`});
+));
 
 stories.add('Left Aligned Links', () => (
   <Navbar brand={<a href="#" className="brand-logo right">Logo</a>} alignLinks="left">
@@ -32,30 +34,5 @@ stories.add('Icon Links', () => (
     <NavItem href='get-started.html'><Icon>view_module</Icon></NavItem>
     <NavItem href='get-started.html'><Icon>refresh</Icon></NavItem>
     <NavItem href='get-started.html'><Icon>more_vert</Icon></NavItem>
-  </Navbar>
-));
-
-stories.add('Centering the logo', () => (
-  <Navbar centerLogo brand={<a href="#" className="brand-logo">Logo</a>} alignLinks="left">
-    <NavItem href='get-started.html'><Icon>search</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>view_module</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>refresh</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>more_vert</Icon></NavItem>
-  </Navbar>
-));
-
-stories.add('Active Items', () => (
-  <Navbar centerLogo brand={<a href="#" className="brand-logo">Logo</a>} alignLinks="left">
-    <NavItem href='components.html'>Sass</NavItem>
-    <NavItem href='components.html'>Components</NavItem>
-    <NavItem href='components.html' className="active">React</NavItem>
-  </Navbar>
-));
-
-stories.add('Fixed Navbar', () => (
-  <Navbar fixed brand={<a href="#" className="brand-logo">Logo</a>} alignLinks="right">
-    <NavItem href='components.html'>Sass</NavItem>
-    <NavItem href='components.html'>Components</NavItem>
-    <NavItem href='components.html' className="active">React</NavItem>
   </Navbar>
 ));
