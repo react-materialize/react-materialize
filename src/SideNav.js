@@ -33,7 +33,12 @@ class SideNav extends Component {
     return (
       <Fragment>
         {this.renderTrigger()}
-        <ul id={this.id} className={classNames} {...props}>
+        <ul
+          ref={el => (this._sidenav = el)}
+          id={this.id}
+          className={classNames}
+          {...props}
+        >
           {children}
         </ul>
       </Fragment>
