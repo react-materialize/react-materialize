@@ -15,11 +15,12 @@ describe('<Chip />', () => {
   test('accepts a close prop', () => {
     wrapper = shallow(<Chip close />);
     expect(wrapper.find(Icon)).toHaveLength(1);
+    expect(wrapper.find(Icon).hasClass('close')).toEqual(true);
   });
 
   test('accepts children', () => {
     let child = <p className="child">Child</p>;
-    wrapper = shallow(<Chip close>{child}</Chip>);
+    wrapper = shallow(<Chip>{child}</Chip>);
     expect(wrapper).toMatchSnapshot();
   });
 
