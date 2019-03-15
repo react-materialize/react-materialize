@@ -19,6 +19,7 @@ addDecorator(
   withOptions({
     name: 'react-materialize',
     url: 'http://react-materialize.github.io',
+    sortStoriesByKind: true,
     showAddonPanel: true
   })
 );

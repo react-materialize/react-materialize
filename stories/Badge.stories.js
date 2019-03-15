@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Badge from '../src/Badge';
 
-const stories = storiesOf('components/Badge', module);
+const stories = storiesOf('2. components/Badge', module);
 
 stories.addParameters({
   info: {

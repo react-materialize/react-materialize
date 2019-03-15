@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Footer from '../src/Footer';
 
-const stories = storiesOf('components/Footer', module);
+const stories = storiesOf('2. components/Footer', module);
 
 stories.addParameters({
   info: {

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import Select from '../src/Select';
 
-const stories = storiesOf('components/Select', module);
+const stories = storiesOf('2. components/Select', module);
 
 stories.addParameters({
   info: {

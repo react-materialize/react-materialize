@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Checkbox from '../src/Checkbox';
 
-const stories = storiesOf('components/Checkbox', module);
+const stories = storiesOf('2. components/Checkbox', module);
 
 stories.addParameters({
   info: {

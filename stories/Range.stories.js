@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Range from '../src/Range';
 
-const stories = storiesOf('components/Range', module);
+const stories = storiesOf('2. components/Range', module);
 
 stories.addParameters({
   info: {
