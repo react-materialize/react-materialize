@@ -43,7 +43,7 @@ describe('<Dropdown />', () => {
     const dropdownMock = {
       init: (el, options) => {
         dropdownInitMock(options);
-        return { destroy: dropdownInstanceDestroyMock };
+        return [{ destroy: dropdownInstanceDestroyMock }];
       }
     };
 
