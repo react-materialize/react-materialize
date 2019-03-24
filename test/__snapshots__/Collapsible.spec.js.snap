@@ -122,6 +122,13 @@ exports[`<Collapsible /> defaultActiveKey 2`] = `
 </Collapsible>
 `;
 
+exports[`<Collapsible /> expandable 1`] = `
+<ul
+  className="collapsible expandable"
+  data-collapsible="expandable"
+/>
+`;
+
 exports[`<Collapsible /> renders 1`] = `
 <ul
   className="collapsible"
