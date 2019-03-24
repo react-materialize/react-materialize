@@ -1,5 +1,12 @@
 # Changelog
 
+### 3.0.2
+
+- Upgrade to storybook 5
+- Install knobs and notes
+- Add samples knobs and notes to Autocomplete
+- Install latest eslint and react
+
 ### 3.0.1
 
 - Fix bug where dropdown could not be destroyed
