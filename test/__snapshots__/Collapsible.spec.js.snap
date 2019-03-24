@@ -400,13 +400,6 @@ exports[`<Collapsible /> updates activeKey 2`] = `
 </Collapsible>
 `;
 
-exports[`<Collapsible /> with accordion 1`] = `
-<ul
-  className="collapsible"
-  data-collapsible="accordion"
-/>
-`;
-
 exports[`<Collapsible /> with expanded prop 1`] = `
 <Collapsible
   accordion={true}
