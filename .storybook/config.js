@@ -1,5 +1,6 @@
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import theme from './theme';
 
 import './overrides.css';
 
@@ -80,7 +81,7 @@ addParameters({
     /**
      * theme storybook, see link below
      */
-    theme: undefined,
+    theme: theme
   },
 });
 
