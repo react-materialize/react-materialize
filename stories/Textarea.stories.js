@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Textarea from '../src/Textarea';
 
-const stories = storiesOf('components/Textarea', module);
+const stories = storiesOf('2. components/Textarea', module);
 
 stories.addParameters({
   info: {

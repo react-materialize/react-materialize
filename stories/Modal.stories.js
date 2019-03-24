@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Button from '../src/Button';
 import Modal from '../src/Modal';
 
-const stories = storiesOf('javascript/Modal', module);
+const stories = storiesOf('3. javascript/Modal', module);
 
 stories.addParameters({
   info: {

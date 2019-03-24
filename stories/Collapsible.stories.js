@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 
-const stories = storiesOf('javascript/Collapsible', module);
+const stories = storiesOf('3. javascript/Collapsible', module);
 
 stories.addParameters({
   info: {

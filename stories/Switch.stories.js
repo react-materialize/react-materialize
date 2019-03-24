@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Switch from '../src/Switch';
 
-const stories = storiesOf('components/Switch', module);
+const stories = storiesOf('2. components/Switch', module);
 
 stories.addParameters({
   info: {

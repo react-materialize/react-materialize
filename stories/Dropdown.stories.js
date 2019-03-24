@@ -4,7 +4,7 @@ import Dropdown from '../src/Dropdown';
 import Divider from '../src/Divider';
 import Button from '../src/Button';
 
-const stories = storiesOf('javascript/Dropdown', module);
+const stories = storiesOf('3. javascript/Dropdown', module);
 
 stories.addParameters({
   info: {
