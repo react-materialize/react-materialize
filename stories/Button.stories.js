@@ -94,10 +94,10 @@ stories.add('Link', () => (
 
 const storiesFab = storiesOf('2. components/Button/FAB', module);
 const children = [
-  <Button floating icon="insert_chart" className="red" />,
-  <Button floating icon="format_quote" className="yellow darken-1" />,
-  <Button floating icon="publish" className="green" />,
-  <Button floating icon="attach_file" className="blue" />
+  <Button key="1" floating icon="insert_chart" className="red" />,
+  <Button key="2"floating icon="format_quote" className="yellow darken-1" />,
+  <Button key="3"floating icon="publish" className="green" />,
+  <Button key="4"floating icon="attach_file" className="blue" />
 ];
 const props = {
   floating: true,
