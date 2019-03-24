@@ -22,18 +22,17 @@ npm install react-materialize
 <html>
   <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="path/to/materialize.css">
   </head>
   <body>
-    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> --> <!-- not needed anymore -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="path/to/materialize.js"></script>
     <script src="path/to/your/bundle.js"></script>
   </body>
 </html>
 ```
 
-#### JS (ES6)
-``` javascript
+#### Javascript
+``` js
 import { Button, Card, Row, Col } from 'react-materialize';
 ```
 
