@@ -16,28 +16,48 @@ stories.addParameters({
 
 stories.add('Default', () => (
   <Collapsible>
-    <CollapsibleItem header="Better safe than sorry. That's my motto." icon='filter_drama'>
+    <CollapsibleItem
+      header="Better safe than sorry. That's my motto."
+      icon="filter_drama"
+    >
       Better safe than sorry. That's my motto.
     </CollapsibleItem>
-    <CollapsibleItem header="Yeah, you do seem to have a little 'shit creek' action going." icon='place'>
+    <CollapsibleItem
+      header="Yeah, you do seem to have a little 'shit creek' action going."
+      icon="place"
+    >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>
-    <CollapsibleItem header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?" icon='whatshot'>
-      You know, FYI, you can buy a paddle. Did you not plan for this contingency?
+    <CollapsibleItem
+      header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
+      icon="whatshot"
+    >
+      You know, FYI, you can buy a paddle. Did you not plan for this
+      contingency?
     </CollapsibleItem>
   </Collapsible>
 ));
 
 stories.add('Expandable', () => (
   <Collapsible accordion={false}>
-    <CollapsibleItem header="Better safe than sorry. That's my motto." icon='filter_drama'>
+    <CollapsibleItem
+      header="Better safe than sorry. That's my motto."
+      icon="filter_drama"
+    >
       Better safe than sorry. That's my motto.
     </CollapsibleItem>
-    <CollapsibleItem header="Yeah, you do seem to have a little 'shit creek' action going." icon='place'>
+    <CollapsibleItem
+      header="Yeah, you do seem to have a little 'shit creek' action going."
+      icon="place"
+    >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>
-    <CollapsibleItem header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?" icon='whatshot'>
-      You know, FYI, you can buy a paddle. Did you not plan for this contingency?
+    <CollapsibleItem
+      header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
+      icon="whatshot"
+    >
+      You know, FYI, you can buy a paddle. Did you not plan for this
+      contingency?
     </CollapsibleItem>
   </Collapsible>
 ));

@@ -12,10 +12,6 @@ stories.addParameters({
   }
 });
 
-stories.add('Default', () => (
-  <Chip>Jane Doe</Chip>
-));
+stories.add('Default', () => <Chip>Jane Doe</Chip>);
 
-stories.add('with close', () => (
-  <Chip close>Jane Doe</Chip>
-));
+stories.add('with close', () => <Chip close>Jane Doe</Chip>);

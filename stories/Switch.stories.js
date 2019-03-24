@@ -10,10 +10,6 @@ stories.addParameters({
   }
 });
 
-stories.add('Switch', () => (
-  <Switch offLabel="Off" onLabel="On" />
-));
+stories.add('Switch', () => <Switch offLabel="Off" onLabel="On" />);
 
-stories.add('Disabled', () => (
-  <Switch disabled offLabel="Off" onLabel="On" />
-));
+stories.add('Disabled', () => <Switch disabled offLabel="Off" onLabel="On" />);
