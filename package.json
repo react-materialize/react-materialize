@@ -62,6 +62,7 @@
     "@storybook/addon-actions": "^5.0.4",
     "@storybook/addon-info": "^5.0.4",
     "@storybook/addon-knobs": "^5.0.4",
+    "@storybook/addon-notes": "^5.0.4",
     "@storybook/react": "^5.0.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",

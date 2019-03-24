@@ -6,13 +6,9 @@ import { text, withKnobs } from '@storybook/addon-knobs';
 const stories = storiesOf('Javascript|Autocomplete', module);
 stories.addDecorator(withKnobs);
 
-stories.addParameters({
-  info: {
-    text: `Add an autocomplete dropdown below your input 
-    to suggest possible values in your form. You can 
-    populate the list of autocomplete options dynamically as well.`
-  }
-});
+const notes = `Add an autocomplete dropdown below your input 
+  to suggest possible values in your form. You can 
+  populate the list of autocomplete options dynamically as well.`
 
 stories.add('Default', () => (
   <Autocomplete
@@ -25,7 +21,7 @@ stories.add('Default', () => (
     }}
     placeholder="Insert here"
   />
-));
+), { notes });
 
 stories.add('With icon', () => (
   <Autocomplete
@@ -39,4 +35,4 @@ stories.add('With icon', () => (
     placeholder="Insert here"
     icon={text('icon', 'textsms')}
   />
-));
+), { notes });
