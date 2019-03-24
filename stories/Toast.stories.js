@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Toast from '../src/Toast';
 
-const stories = storiesOf('3. javascript/Toast', module);
+const stories = storiesOf('Javascript|Toast', module);
 
 stories.addParameters({
   info: {

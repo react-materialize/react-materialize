@@ -6,7 +6,7 @@ import CardTitle from '../src/CardTitle';
 import Col from '../src/Col';
 import Row from '../src/Row';
 
-const stories = storiesOf('2. components/Card', module);
+const stories = storiesOf('Components|Card', module);
 
 stories.addParameters({
   info: {

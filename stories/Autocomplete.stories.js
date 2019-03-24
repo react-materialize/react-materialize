@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Autocomplete from '../src/Autocomplete';
 
-const stories = storiesOf('3. javascript/Autocomplete', module);
+const stories = storiesOf('Javascript|Autocomplete', module);
 
 stories.addParameters({
   info: {

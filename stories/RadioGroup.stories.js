@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import RadioGroup from '../src/RadioGroup';
 
-const stories = storiesOf('2. components/RadioGroup', module);
+const stories = storiesOf('Components|RadioGroup', module);
 
 stories.addParameters({
   info: {

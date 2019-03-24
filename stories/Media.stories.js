@@ -4,7 +4,7 @@ import MediaBox from '../src/MediaBox';
 import Slider from '../src/Slider';
 import Slide from '../src/Slide';
 
-const stories = storiesOf('3. javascript/Media', module);
+const stories = storiesOf('Javascript|Media', module);
 
 stories.addParameters({
   info: {
