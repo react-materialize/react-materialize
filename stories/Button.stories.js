@@ -92,7 +92,7 @@ stories.add('Link', () => (
   </Button>
 ));
 
-const storiesFab = storiesOf('Components|Button/FAB', module);
+const storiesFab = storiesOf('Components|FAB', module);
 const children = [
   <Button key="1" floating icon="insert_chart" className="red" />,
   <Button key="2" floating icon="format_quote" className="yellow darken-1" />,
