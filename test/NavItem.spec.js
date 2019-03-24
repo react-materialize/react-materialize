@@ -11,16 +11,6 @@ describe('<NavItem />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('passes className to first node', () => {
-    wrapper = shallow(
-      <NavItem className="red" href="get-started.html">
-        Getting
-      </NavItem>
-    );
-
-    expect(wrapper.find('li.red')).toHaveLength(1);
-  });
-
   test('passes node as a child', () => {
     wrapper = shallow(
       <NavItem href="get-started.html">
@@ -51,27 +41,13 @@ describe('<NavItem />', () => {
 
   test('passes onClick as parameter', () => {
     const onClick = jest.fn();
-    wrapper = shallow(
-      <NavItem onClick={onClick} href="get-started.html">
-        Getting
-      </NavItem>
-    );
+    wrapper = shallow(<NavItem onClick={onClick}>Getting</NavItem>);
 
     expect(wrapper).toMatchSnapshot();
 
-    wrapper
-      .children()
-      .at(0)
-      .simulate('click');
+    wrapper.simulate('click');
 
     expect(onClick).toHaveBeenCalled();
-
-    expect(
-      wrapper
-        .children()
-        .at(0)
-        .prop('href')
-    ).toBeUndefined();
   });
 
   test('passes href as parameter', () => {
