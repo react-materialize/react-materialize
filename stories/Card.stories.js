@@ -18,7 +18,13 @@ stories.addParameters({
   }
 });
 
-stories.addDecorator(story => <Row><Col m={6} s={12}>{story()}</Col></Row>)
+stories.addDecorator(story => (
+  <Row>
+    <Col m={6} s={12}>
+      {story()}
+    </Col>
+  </Row>
+));
 
 stories.add('Default', () => (
   <Card
@@ -26,17 +32,31 @@ stories.add('Default', () => (
     textClassName="white-text"
     title="Card title"
     actions={[
-      <a href="#" key="1">This is a link</a>,
-      <a href="#" key="2">This is a link</a>
-    ]}>
+      <a href="#" key="1">
+        This is a link
+      </a>,
+      <a href="#" key="2">
+        This is a link
+      </a>
+    ]}
+  >
     I am a very simple card.
   </Card>
 ));
 
 stories.add('Image', () => (
   <Card
-    header={<CardTitle image="https://materializecss.com/images/sample-1.jpg">Card Title</CardTitle>}
-    actions={[<a href="#" key="1">This is a Link</a>]}>
+    header={
+      <CardTitle image="https://materializecss.com/images/sample-1.jpg">
+        Card Title
+      </CardTitle>
+    }
+    actions={[
+      <a href="#" key="1">
+        This is a Link
+      </a>
+    ]}
+  >
     Here is the standard card with an image thumbnail.
   </Card>
 ));
@@ -44,23 +64,47 @@ stories.add('Image', () => (
 stories.add('Horizontal', () => (
   <Card
     horizontal
-    header={<CardTitle image="https://materializecss.com/images/sample-1.jpg"></CardTitle>}
-    actions={[<a href="#" key="1">This is a link</a>]}>
+    header={
+      <CardTitle image="https://materializecss.com/images/sample-1.jpg" />
+    }
+    actions={[
+      <a href="#" key="1">
+        This is a link
+      </a>
+    ]}
+  >
     Here is the standard card with a horizontal image.
   </Card>
 ));
 
 stories.add('Reveal', () => (
   <Card
-    header={<CardTitle reveal image="https://materializecss.com/images/sample-1.jpg" waves="light" />}
+    header={
+      <CardTitle
+        reveal
+        image="https://materializecss.com/images/sample-1.jpg"
+        waves="light"
+      />
+    }
     title="Card Title"
-    reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-    <p><a href="#">This is a link</a></p>
+    reveal={
+      <p>
+        Here is some more information about this product that is only revealed
+        once clicked on.
+      </p>
+    }
+  >
+    <p>
+      <a href="#">This is a link</a>
+    </p>
   </Card>
 ));
 
 stories.add('Panel', () => (
   <CardPanel className="teal">
-    <span className="white-text">For a simpler card with less markup, try using a card panel which just has padding and a shadow effect</span>
+    <span className="white-text">
+      For a simpler card with less markup, try using a card panel which just has
+      padding and a shadow effect
+    </span>
   </CardPanel>
 ));

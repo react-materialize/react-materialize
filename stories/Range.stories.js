@@ -15,10 +15,4 @@ stories.addParameters({
   }
 });
 
-stories.add('Default', () => (
-  <Range
-    min="0"
-    max="100"
-    name="points"
-  />
-));
+stories.add('Default', () => <Range min="0" max="100" name="points" />);

@@ -1,43 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<NavItem /> passes href as parameter 1`] = `
-<li>
-  <a
-    href="get-started.html"
-  >
-    Getting
-  </a>
-</li>
+<a
+  href="get-started.html"
+>
+  Getting
+</a>
 `;
 
 exports[`<NavItem /> passes node as a child 1`] = `
-<li>
-  <a
-    href="get-started.html"
-  >
-    <p>
-      Go Home
-    </p>
-  </a>
-</li>
+<a
+  href="get-started.html"
+>
+  <p>
+    Go Home
+  </p>
+</a>
 `;
 
 exports[`<NavItem /> passes onClick as parameter 1`] = `
-<li>
-  <a
-    onClick={[MockFunction]}
-  >
-    Getting
-  </a>
-</li>
+<a
+  onClick={[MockFunction]}
+>
+  Getting
+</a>
 `;
 
 exports[`<NavItem /> renders 1`] = `
-<li>
-  <a
-    href="get-started.html"
-  >
-    Getting
-  </a>
-</li>
+<a
+  href="get-started.html"
+>
+  Getting
+</a>
 `;

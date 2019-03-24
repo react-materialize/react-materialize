@@ -16,7 +16,7 @@ stories.add('Default', () => (
   <RadioGroup
     name="size"
     label="T-Shirt Size"
-    onChange={(evt) => console.log(evt.target.value)}
+    onChange={evt => console.log(evt.target.value)}
     options={[
       { label: 'XL', value: 'xl' },
       { label: 'L', value: 'l' },

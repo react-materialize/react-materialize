@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
@@ -14,7 +14,7 @@
     "test:unit:watch": "jest --watch",
     "pretest": "npm run lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook -o docs",
+    "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
     "build": "babel -d lib src",
     "lint": "eslint src test",
     "fix": "eslint src test --fix",

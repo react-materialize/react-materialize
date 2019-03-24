@@ -94,10 +94,12 @@ npm install react-materialize
       you can think of.
     </p>
     <p>
-      Disclaimer: We updated our docs after version `3.0.0` in which we removed `jQuery`
-      dependency. The docs are less pretty but much easier to maintain and update.
-      Feel free to propose any changes.
+      Disclaimer: We updated our docs after version `3.0.0` in which we removed
+      `jQuery` dependency. The docs are less pretty but much easier to maintain
+      and update. Feel free to propose any changes.
     </p>
-    <a href="https://github.com/react-materialize/react-materialize">github.com/react-materialize</a>
+    <a href="https://github.com/react-materialize/react-materialize">
+      github.com/react-materialize
+    </a>
   </div>
 ));

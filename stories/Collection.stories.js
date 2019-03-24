@@ -13,7 +13,13 @@ stories.addParameters({
   }
 });
 
-stories.addDecorator(story => <Row><Col m={6} s={12}>{story()}</Col></Row>)
+stories.addDecorator(story => (
+  <Row>
+    <Col m={6} s={12}>
+      {story()}
+    </Col>
+  </Row>
+));
 
 stories.add('Basic', () => (
   <Collection>
@@ -26,15 +32,17 @@ stories.add('Basic', () => (
 
 stories.add('Links', () => (
   <Collection>
-    <CollectionItem href='#'>Alvin</CollectionItem>
-    <CollectionItem href='#' active>Alvin</CollectionItem>
-    <CollectionItem href='#'>Alvin</CollectionItem>
-    <CollectionItem href='#'>Alvin</CollectionItem>
+    <CollectionItem href="#">Alvin</CollectionItem>
+    <CollectionItem href="#" active>
+      Alvin
+    </CollectionItem>
+    <CollectionItem href="#">Alvin</CollectionItem>
+    <CollectionItem href="#">Alvin</CollectionItem>
   </Collection>
 ));
 
 stories.add('Header', () => (
-  <Collection header='First Names'>
+  <Collection header="First Names">
     <CollectionItem>Alvin</CollectionItem>
     <CollectionItem>Alvin</CollectionItem>
     <CollectionItem>Alvin</CollectionItem>
