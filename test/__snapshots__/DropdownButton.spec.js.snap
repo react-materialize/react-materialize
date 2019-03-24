@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dropdown /> renders 1`] = `
-<span>
+<Fragment>
   <button
-    className="dropdown-button"
-    data-activates="dropdown_mockId"
+    className="dropdown-trigger"
+    data-target="dropdown_mockId"
   >
     Drop me!
   </button>
@@ -12,5 +12,5 @@ exports[`<Dropdown /> renders 1`] = `
     className="dropdown-content"
     id="dropdown_mockId"
   />
-</span>
+</Fragment>
 `;

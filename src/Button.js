@@ -13,12 +13,21 @@ class Button extends Component {
   }
 
   componentDidMount() {
-    const { tooltip, tooltipOptions } = this.props;
-    if (
-      typeof $ !== 'undefined' &&
-      (typeof tooltip !== 'undefined' || typeof tooltipOptions !== 'undefined')
-    ) {
-      $(this._btnEl).tooltip(tooltipOptions);
+    if (!M) return;
+
+    const { tooltip, tooltipOptions = {}, fab } = this.props;
+    if (tooltip) {
+      this.instance = M.Tooltip.init(this._btnEl, tooltipOptions);
+    }
+
+    if (fab) {
+      this.instance = M.FloatingActionButton.init(this._floatingActionBtn, fab);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
     }
   }
 
@@ -27,18 +36,17 @@ class Button extends Component {
       className,
       node,
       fab,
-      fabClickOnly,
       modal,
       flat,
       floating,
       large,
+      small,
       disabled,
       waves,
       tooltip,
       ...other
     } = this.props;
 
-    const toggle = fabClickOnly ? 'click-to-toggle' : '';
     let C = node;
     let classes = {
       btn: true,
@@ -50,17 +58,19 @@ class Button extends Component {
       classes['waves-' + waves] = true;
     }
 
-    let styles = { flat, floating, large };
+    let styles = { flat, floating, large, small };
     constants.STYLES.forEach(style => {
-      classes['btn-' + style] = styles[style];
+      if (styles[style]) {
+        classes.btn = false;
+        classes['btn-' + style] = true;
+      }
     });
 
     if (modal) {
-      classes['modal-action'] = true;
       classes['modal-' + modal] = true;
     }
     if (fab) {
-      return this.renderFab(cx(classes, className), fab, toggle);
+      return this.renderFab(cx(classes, className));
     } else {
       return (
         <C
@@ -78,11 +88,15 @@ class Button extends Component {
     }
   }
 
-  renderFab(className, mode, clickOnly) {
-    const classes = cx(mode, clickOnly);
+  renderFab(classes) {
+    const { fab, floating, large, className, ...other } = this.props;
     return (
-      <div className={cx('fixed-action-btn', classes)}>
-        <a className={className}>{this.renderIcon()}</a>
+      <div
+        {...other}
+        ref={el => (this._floatingActionBtn = el)}
+        className={cx('fixed-action-btn')}
+      >
+        <a className={classes}>{this.renderIcon()}</a>
         <ul>
           {React.Children.map(this.props.children, child => {
             return <li key={idgen()}>{child}</li>;
@@ -109,13 +123,27 @@ Button.propTypes = {
    */
   flat: PropTypes.bool,
   large: PropTypes.bool,
+  small: PropTypes.bool,
   floating: PropTypes.bool,
   /**
    * Fixed action button
    * If enabled, any children button will be rendered as actions, remember to provide an icon.
-   * @default vertical. This will disable any onClick function from being called on the main button.
+   *  FAB Options are here: https://materializecss.com/floating-action-button.html#options
+   * @default false
+   * @default options {
+   *  direction: 'top',
+   *  hoverEnabled: true,
+   *  toolbarEnabled: false,
+   * }
    */
-  fab: PropTypes.oneOf(['vertical', 'horizontal', 'toolbar']),
+  fab: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({
+      direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+      hoverEnabled: PropTypes.bool,
+      toolbarEnabled: PropTypes.bool
+    })
+  ]),
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */
@@ -148,12 +176,7 @@ Button.propTypes = {
     'purple',
     'green',
     'teal'
-  ]),
-  /**
-   * FAB Click-Only
-   * Turns a FAB from a hover-toggle to a click-toggle
-   */
-  fabClickOnly: PropTypes.bool
+  ])
 };
 
 Button.defaultProps = {

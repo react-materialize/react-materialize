@@ -1,5 +1,5 @@
 export default {
-  STYLES: ['large', 'floating', 'flat'],
+  STYLES: ['large', 'small', 'floating', 'flat'],
   WAVES: ['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal'],
   SIZES: ['s', 'm', 'l', 'xl'],
   PLACEMENTS: ['left', 'center', 'right'],

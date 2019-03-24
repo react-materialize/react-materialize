@@ -9,135 +9,186 @@ exports[`<Navbar /> adds a brand node 1`] = `
       I AM BRAND
     </span>
   }
-  href="/"
-  options={Object {}}
+  options={
+    Object {
+      "draggable": true,
+      "edge": "left",
+      "inDuration": 250,
+      "onCloseEnd": null,
+      "onCloseStart": null,
+      "onOpenEnd": null,
+      "onOpenStart": null,
+      "outDuration": 200,
+      "preventScrolling": true,
+    }
+  }
 >
-  <nav>
+  <nav
+    className=""
+  >
     <div
       className="nav-wrapper"
     >
-      <Col
-        s={12}
+      <span
+        className="brando brand-logo"
       >
-        <div
-          className="col s12"
-        >
-          <a
-            className="brand-logo"
-            href="/"
+        I AM BRAND
+      </span>
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          <i
+            className="material-icons"
           >
-            <span
-              className="brando"
-            >
-              I AM BRAND
-            </span>
-          </a>
-          <ul
-            className="hide-on-med-and-down"
-          />
-          <ul
-            className="side-nav"
-            id="nav-mobile"
-          />
-          <a
-            className="button-collapse"
-            data-activates="nav-mobile"
-            href="#"
-          >
-            <Icon>
-              <i
-                className="material-icons"
-              >
-                view_headline
-              </i>
-            </Icon>
-          </a>
-        </div>
-      </Col>
+            menu
+          </i>
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      />
     </div>
   </nav>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  />
 </Navbar>
 `;
 
-exports[`<Navbar /> can be fixed 1`] = `
-<div
-  className="navbar-fixed"
->
-  <nav>
+exports[`<Navbar /> can be extended with custom elements 1`] = `
+<Fragment>
+  <nav
+    className="nav-extended"
+  >
     <div
       className="nav-wrapper"
     >
-      <Col
-        s={12}
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      />
+    </div>
+    <div
+      className="nav-content"
+    >
+      <div
+        className="col s12"
       >
         <a
-          className="brand-logo"
-          href="/"
-        />
-        <ul
-          className="hide-on-med-and-down"
-        />
-        <ul
-          className="side-nav"
-          id="nav-mobile"
-        />
-        <a
-          className="button-collapse"
-          data-activates="nav-mobile"
-          href="#"
+          className="breadcrumb"
+          href="#!"
         >
-          <Icon>
-            view_headline
-          </Icon>
+          First
         </a>
-      </Col>
+        <a
+          className="breadcrumb"
+          href="#!"
+        >
+          Second
+        </a>
+        <a
+          className="breadcrumb"
+          href="#!"
+        >
+          Third
+        </a>
+      </div>
     </div>
   </nav>
-</div>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  />
+</Fragment>
+`;
+
+exports[`<Navbar /> can be fixed 1`] = `
+<Fragment>
+  <div
+    className="navbar-fixed"
+  >
+    <nav
+      className=""
+    >
+      <div
+        className="nav-wrapper"
+      >
+        <a
+          className="sidenav-trigger"
+          data-target="mobile-nav"
+          href="#!"
+        >
+          <Icon>
+            menu
+          </Icon>
+        </a>
+        <ul
+          className="hide-on-med-and-down "
+        />
+      </div>
+    </nav>
+  </div>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  />
+</Fragment>
+`;
+
+exports[`<Navbar /> can center the brand logo 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="brand-logo center"
+        href="/"
+      >
+        Logo
+      </a>
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      />
+    </div>
+  </nav>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  />
+</Fragment>
 `;
 
 exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
-<nav>
-  <div
-    className="nav-wrapper"
+<Fragment>
+  <nav
+    className=""
   >
-    <Col
-      s={12}
-    >
-      <a
-        className="brand-logo right"
-        href="/"
-      >
-        logo
-      </a>
-      <ul
-        className="hide-on-med-and-down"
-      />
-      <ul
-        className="side-nav"
-        id="nav-mobile"
-      />
-      <a
-        className="button-collapse"
-        data-activates="nav-mobile"
-        href="#"
-      >
-        <Icon>
-          view_headline
-        </Icon>
-      </a>
-    </Col>
-  </div>
-</nav>
-`;
-
-exports[`<Navbar /> renders 1`] = `
-<nav>
-  <div
-    className="nav-wrapper"
-  >
-    <Col
-      s={12}
+    <div
+      className="nav-wrapper"
     >
       <a
         className="brand-logo"
@@ -145,45 +196,96 @@ exports[`<Navbar /> renders 1`] = `
       >
         Logo
       </a>
-      <ul
-        className="right hide-on-med-and-down"
-      >
-        <NavItem
-          href="get-started.html"
-        >
-          Getting started
-        </NavItem>
-        <NavItem
-          href="components.html"
-        >
-          Components
-        </NavItem>
-      </ul>
-      <ul
-        className="side-nav"
-        id="nav-mobile"
-      >
-        <NavItem
-          href="get-started.html"
-        >
-          Getting started
-        </NavItem>
-        <NavItem
-          href="components.html"
-        >
-          Components
-        </NavItem>
-      </ul>
       <a
-        className="button-collapse"
-        data-activates="nav-mobile"
-        href="#"
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
       >
         <Icon>
-          view_headline
+          menu
         </Icon>
       </a>
-    </Col>
-  </div>
-</nav>
+      <ul
+        className="hide-on-med-and-down left"
+      />
+    </div>
+  </nav>
+  <ul
+    className="sidenav left"
+    id="mobile-nav"
+  />
+</Fragment>
+`;
+
+exports[`<Navbar /> renders 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="brand-logo"
+        href="/"
+      >
+        Logo
+      </a>
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down right"
+      >
+        <li
+          key="0/.0"
+        >
+          <a
+            href="get-started.html"
+          >
+            Getting started
+          </a>
+        </li>
+        <li
+          key="1/.1"
+        >
+          <a
+            href="components.html"
+          >
+            Components
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <ul
+    className="sidenav right"
+    id="mobile-nav"
+  >
+    <li
+      key="0/.0"
+    >
+      <a
+        href="get-started.html"
+      >
+        Getting started
+      </a>
+    </li>
+    <li
+      key="1/.1"
+    >
+      <a
+        href="components.html"
+      >
+        Components
+      </a>
+    </li>
+  </ul>
+</Fragment>
 `;

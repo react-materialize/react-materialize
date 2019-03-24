@@ -1,16 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Carousel from '../src/Carousel';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
 
 describe('<Carousel />', () => {
   let wrapper;
-  const carouselMock = jest.fn();
-  const restore = mocker('carousel', carouselMock);
-
-  afterAll(() => {
-    restore();
-  });
 
   const images = [
     'https://lorempixel.com/250/250/nature/1',
@@ -27,6 +21,11 @@ describe('<Carousel />', () => {
   test('renders fixed items', () => {
     const fixedItem = <span>Do you rock!?</span>;
     wrapper = shallow(<Carousel images={images} fixedItem={fixedItem} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('renders centered images', () => {
+    wrapper = shallow(<Carousel images={images} centerImages />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -52,17 +51,57 @@ describe('<Carousel />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('handles full width sliders', () => {
-    wrapper = shallow(
-      <Carousel images={images} options={{ fullWidth: true }} />
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(carouselMock).toHaveBeenCalledWith({ fullWidth: true });
-  });
+  describe('initialises', () => {
+    const carouselInitMock = jest.fn();
+    const carouselInstanceDestroyMock = jest.fn();
+    const carouselMock = {
+      init: (el, options) => {
+        carouselInitMock(options);
+        return {
+          destroy: carouselInstanceDestroyMock
+        };
+      }
+    };
 
-  test('more options', () => {
-    const options = { padding: 12, fullWidth: true, indicators: false };
-    wrapper = shallow(<Carousel images={images} options={options} />);
-    expect(carouselMock).toHaveBeenCalledWith(options);
+    const restore = mocker('Carousel', carouselMock);
+
+    beforeEach(() => {
+      carouselInitMock.mockClear();
+      carouselInstanceDestroyMock.mockClear();
+    });
+
+    afterAll(() => {
+      restore();
+    });
+
+    test('uses default options if none are given', () => {
+      wrapper = shallow(<Carousel />);
+
+      expect(carouselInitMock).toHaveBeenCalledWith({
+        duration: 200,
+        dist: -100,
+        shift: 0,
+        padding: 0,
+        numVisible: 5,
+        fullWidth: false,
+        indicators: false,
+        noWrap: false,
+        onCycleTo: null
+      });
+    });
+
+    test('handles full width sliders', () => {
+      wrapper = shallow(
+        <Carousel images={images} options={{ fullWidth: true }} />
+      );
+      expect(wrapper).toMatchSnapshot();
+      expect(carouselInitMock).toHaveBeenCalledWith({ fullWidth: true });
+    });
+
+    test('more options', () => {
+      const options = { padding: 12, fullWidth: true, indicators: false };
+      wrapper = shallow(<Carousel images={images} options={options} />);
+      expect(carouselInitMock).toHaveBeenCalledWith(options);
+    });
   });
 });

@@ -1,30 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-class CollectionItem extends Component {
-  render() {
-    const { active, children, className, ...other } = this.props;
+const CollectionItem = ({ active, children, className, href, ...other }) => {
+  let item = (
+    <li {...other} className={cx('collection-item', className)}>
+      {children}
+    </li>
+  );
 
-    const classes = {
-      'collection-item': true,
-      active: active
-    };
-
-    let C = this.props.href ? 'a' : 'li';
-
-    return (
-      <C {...other} className={cx(className, classes)}>
+  if (href) {
+    item = (
+      <a
+        {...other}
+        href={href}
+        className={cx('collection-item', { active }, className)}
+      >
         {children}
-      </C>
+      </a>
     );
   }
-}
+
+  return item;
+};
 
 CollectionItem.propTypes = {
   active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
+  /* 
+   * Default: false
+   * For more information refer to : https://materializecss.com/collections.html#links 
+   */
   href: PropTypes.string
 };
 

@@ -2,14 +2,24 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
-import mocker from './helper/mocker';
+import mocker from './helper/new-mocker';
 
 describe('Tabs', () => {
   let wrapper;
-  const tabsMock = jest.fn();
-  const restore = mocker('tabs', tabsMock);
+  const tabsInitMock = jest.fn();
+  const tabInstanceDestroyMock = jest.fn();
+  const tabsMock = {
+    init: (el, options) => {
+      tabsInitMock(options);
+      return {
+        destroy: tabInstanceDestroyMock
+      };
+    }
+  };
+  const restore = mocker('Tabs', tabsMock);
 
   const options = {
+    duration: 400,
     onShow: jest.fn(),
     swipeable: true,
     responsiveThreshold: 2
@@ -24,6 +34,10 @@ describe('Tabs', () => {
 
   afterAll(() => {
     restore();
+  });
+
+  beforeEach(() => {
+    tabsInitMock.mockClear();
   });
 
   test('should create list of Tab itemt', () => {
@@ -41,7 +55,7 @@ describe('Tabs', () => {
     });
 
     test('initializes Tabs with options', () => {
-      expect(tabsMock).toHaveBeenCalledWith(options);
+      expect(tabsInitMock).toHaveBeenCalledWith(options);
     });
   });
 
@@ -56,9 +70,23 @@ describe('Tabs', () => {
     });
 
     test('should re-initialize with options', () => {
-      expect(tabsMock).toHaveBeenCalled();
+      expect(tabsInitMock).toHaveBeenCalledWith(options);
+      tabsInitMock.mockClear();
+      tabInstanceDestroyMock.mockClear();
       wrapper.setProps({ className: 'test' });
-      expect(tabsMock).toHaveBeenCalled();
+      expect(tabInstanceDestroyMock).toHaveBeenCalled();
+      expect(tabsInitMock).toHaveBeenCalledWith(options);
+    });
+  });
+
+  describe('when unmounted', () => {
+    beforeEach(() => {
+      tabInstanceDestroyMock.mockClear();
+      wrapper.unmount();
+    });
+
+    test('should be destroyed', () => {
+      expect(tabInstanceDestroyMock).toHaveBeenCalled();
     });
   });
 });

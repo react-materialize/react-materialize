@@ -1,11 +1,10 @@
 import React from 'react';
 
 import Breadcrumb from '../src/Breadcrumb';
-import MenuItem from '../src/MenuItem';
 
 export default
 <Breadcrumb>
-  <MenuItem>first</MenuItem>
-  <MenuItem>second</MenuItem>
-  <MenuItem>third</MenuItem>
+  <a href="#first">first</a>
+  <a href="#second">second</a>
+  <a href="#third">third</a>
 </Breadcrumb>;

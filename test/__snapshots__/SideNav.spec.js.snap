@@ -1,46 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SideNav /> can be \`fixed\` 1`] = `
-<ul
-  className="side-nav fixed red"
-  id="sidenav_mockId"
-/>
-`;
-
-exports[`<SideNav /> renders 1`] = `
-<ul
-  className="side-nav"
-  id="sidenav_mockId"
-/>
-`;
-
-exports[`<SideNav /> should be fixed if no trigger is passed 1`] = `
-<ul
-  className="side-nav fixed red"
-  id="sidenav_mockId"
-/>
-`;
-
-exports[`<SideNav /> should render fixed if not passed trigger or fixed 1`] = `
-<span>
+<Fragment>
   <button
-    className="trigger show-on-large"
-    data-activates="sidenav_mockId"
+    className="trigger hide-on-large-only sidenav-trigger"
+    data-target="sidenav_mockId"
   >
     Show sidenav
   </button>
   <ul
-    className="side-nav red"
+    className="sidenav sidenav-fixed"
     id="sidenav_mockId"
   />
-</span>
+</Fragment>
 `;
 
-exports[`<SideNav /> should render trigger on large screens not fixed\` 1`] = `
-<button
-  className="trigger show-on-large"
-  data-activates="sidenav_mockId"
->
-  Show sidenav
-</button>
+exports[`<SideNav /> is \`fixed\` if no trigger is passed 1`] = `
+<Fragment>
+  <ul
+    className="sidenav sidenav-fixed"
+    id="sidenav_mockId"
+  />
+</Fragment>
+`;
+
+exports[`<SideNav /> renders 1`] = `
+<Fragment>
+  <button
+    className="trigger show-on-large sidenav-trigger"
+    data-target="sidenav_mockId"
+  >
+    Show sidenav
+  </button>
+  <ul
+    className="sidenav"
+    id="sidenav_mockId"
+  />
+</Fragment>
+`;
+
+exports[`<SideNav /> renders 2`] = `
+<Fragment>
+  <button
+    className="trigger show-on-large sidenav-trigger"
+    data-target="test"
+  >
+    Show sidenav
+  </button>
+  <ul
+    className="sidenav"
+    id="test"
+  />
+</Fragment>
+`;
+
+exports[`<SideNav /> renders children 1`] = `
+<Fragment>
+  <button
+    className="trigger show-on-large sidenav-trigger"
+    data-target="sidenav_mockId"
+  >
+    Show sidenav
+  </button>
+  <ul
+    className="sidenav"
+    id="sidenav_mockId"
+  >
+    <span
+      className="test-child"
+    />
+  </ul>
+</Fragment>
 `;

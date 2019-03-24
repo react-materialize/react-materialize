@@ -9,10 +9,13 @@ Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=mas
 
 # [react-materialize](https://react-materialize.github.io/)
 
-Material design components for react, powered by [materializecss](http://materializecss.com/).
+# 3.0.0-beta.0
 
-##### New materialize-css version and *removal of jquery* is being developed under the branch `3.0.0-beta.0`, please try it out and file any issue under the [3.0.0](https://github.com/react-materialize/react-materialize/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A3.0.0) label. Thanks!
-[Join us on discord](https://discordapp.com/invite/H2E65sB)
+## Unstable version
+
+We're updating to the latest materialize-css version, please don't use this branch yet.
+
+Material design components for react, powered by [materializecss](http://materializecss.com/).
 
 ## Install
 ```
@@ -28,7 +31,7 @@ npm install react-materialize
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   </head>
   <body>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> --> <!-- not needed anymore -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="path/to/your/bundle.js"></script>
   </body>

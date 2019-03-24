@@ -1,7 +1,0 @@
-node_modules/
-assets/*.html
-assets/*.woff2
-assets/*.woff
-assets/bundle.js
-assets/application.css
-.cache-loader/

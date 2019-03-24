@@ -1,88 +1,55 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import SideNav from '../src/SideNav';
-import mocker from './helper/mocker';
-
-function setup(props = {}, children, mounted) {
-  const propsIn = {
-    trigger: <button className="trigger">Show sidenav</button>,
-    ...props
-  };
-  const component = <SideNav {...propsIn}>{children}</SideNav>;
-  const wrapper = mounted ? mount(component) : shallow(component);
-  const sideNav = wrapper.find('.side-nav');
-  const trigger = wrapper.find('.trigger');
-  const sideNavProps = sideNav.props();
-  const triggerProps = trigger.props();
-
-  return {
-    propsIn,
-    wrapper,
-    sideNav,
-    trigger,
-    sideNavProps,
-    triggerProps
-  };
-}
+import mocker from './helper/new-mocker';
 
 describe('<SideNav />', () => {
-  const sideNavMock = jest.fn();
-  const restore = mocker('sideNav', sideNavMock);
+  let wrapper;
+  const sideNavInitMock = jest.fn();
+  const sideNavInstanceDestroyMock = jest.fn();
+  const sideNavMock = {
+    init: (el, options) => {
+      sideNavInitMock(options);
+      return {
+        destroy: sideNavInstanceDestroyMock
+      };
+    }
+  };
+  const restore = mocker('Sidenav', sideNavMock);
+  const trigger = <button className="trigger">Show sidenav</button>;
 
   afterAll(() => {
     restore();
   });
 
   test('renders', () => {
-    const { sideNav } = setup();
-    expect(sideNav).toMatchSnapshot();
-  });
-
-  test('can be `fixed`', () => {
-    const { sideNav } = setup({ className: 'red', fixed: true });
-    expect(sideNav).toMatchSnapshot();
-  });
-
-  test('should render fixed if not passed trigger or fixed', () => {
-    const { wrapper } = setup({ className: 'red' });
+    wrapper = shallow(<SideNav trigger={trigger} />);
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('should render trigger on large screens not fixed`', () => {
-    const { trigger } = setup({ className: 'green' });
-    expect(trigger).toMatchSnapshot();
+  test('can be `fixed`', () => {
+    wrapper = shallow(<SideNav trigger={trigger} fixed />);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('should be fixed if no trigger is passed', () => {
-    const component = <SideNav className="red" />;
-    const wrapper = shallow(component);
-    const sideNav = wrapper.find('.side-nav');
-    expect(sideNav).toMatchSnapshot();
+  test('is `fixed` if no trigger is passed', () => {
+    wrapper = shallow(<SideNav />);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('should render a given id', () => {
-    const { sideNavProps, triggerProps } = setup({ id: 'test' });
-    expect(sideNavProps.id).toEqual('test');
-    expect(triggerProps['data-activates']).toEqual('test');
+  test('renders', () => {
+    wrapper = shallow(<SideNav trigger={trigger} id="test" />);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('should render children', () => {
-    const { sideNav } = setup({}, <span className="test-child" />);
-    const children = sideNav.find('.test-child');
+  test('renders children', () => {
+    wrapper = shallow(
+      <SideNav trigger={trigger}>
+        <span className="test-child" />
+      </SideNav>
+    );
 
-    expect(children).toHaveLength(1);
-  });
-
-  test('should consume props it uses', () => {
-    const { sideNavProps } = setup({
-      id: 'test123',
-      options: {},
-      shouldTransfer: true
-    });
-
-    expect(sideNavProps.trigger).toBeUndefined();
-    expect(sideNavProps.options).toBeUndefined();
-    expect(sideNavProps.shouldTransfer).toBeTruthy();
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('should call sideNav with the given options', () => {
@@ -90,7 +57,15 @@ describe('<SideNav />', () => {
       closeOnClick: true,
       edge: 'right'
     };
-    mount(<SideNav trigger={<span>trigger</span>} options={options} />);
-    expect(sideNavMock).toHaveBeenCalledWith(options);
+    mount(<SideNav trigger={trigger} options={options} />);
+
+    expect(sideNavInitMock).toHaveBeenCalledWith(options);
+  });
+
+  test('should be destroyed when unmounted', () => {
+    const component = shallow(<SideNav />);
+    component.unmount();
+
+    expect(sideNavInstanceDestroyMock).toHaveBeenCalled();
   });
 });

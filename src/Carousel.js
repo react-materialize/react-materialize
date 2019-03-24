@@ -10,31 +10,39 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    const { options = {} } = this.props;
+    const { options } = this.props;
 
-    if (typeof $ !== 'undefined') {
-      $(this._carousel).carousel(options);
+    this.instance = M.Carousel.init(this._carousel, options);
+  }
+
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
     }
   }
 
-  renderItems(child, idx) {
+  renderItems(child, centerImages) {
     if (typeof child === 'string') {
       return (
-        <a className="carousel-item">
-          <img src={child} />
+        <a
+          className={cx('carousel-item', {
+            'valign-wrapper': centerImages
+          })}
+        >
+          <img src={child} alt="" />
         </a>
       );
     }
+
     return React.cloneElement(child, {
-      className: cx(child.props.className, 'carousel-item')
+      className: cx('carousel-item', child.props.className, {
+        'valign-wrapper': centerImages
+      })
     });
   }
 
-  renderFixedItem() {
-    const { fixedItem } = this.props;
-    return (
-      fixedItem && <div className="carousel-fixed-item center">{fixedItem}</div>
-    );
+  renderFixedItem(fixedItem) {
+    return <div className="carousel-fixed-item center">{fixedItem}</div>;
   }
 
   render() {
@@ -42,8 +50,10 @@ class Carousel extends React.Component {
       children,
       className,
       carouselId,
+      fixedItem,
       images,
-      options = {}
+      centerImages,
+      options
     } = this.props;
     const elemsToRender = children || images || [];
 
@@ -60,8 +70,10 @@ class Carousel extends React.Component {
             className
           )}
         >
-          {this.renderFixedItem()}
-          {React.Children.map(elemsToRender, this.renderItems)}
+          {fixedItem && this.renderFixedItem(fixedItem)}
+          {React.Children.map(elemsToRender, child =>
+            this.renderItems(child, centerImages)
+          )}
         </div>
       )
     );
@@ -70,13 +82,17 @@ class Carousel extends React.Component {
 
 Carousel.propTypes = {
   /*
-  * Children to render as slider elements
+  * Children to render as carousel elements
   */
   children: PropTypes.any,
   /*
   * Array of image url's
   */
   images: PropTypes.arrayOf(PropTypes.string),
+  /*
+  * Makes the images centered inside the carousel using '.valign-wrapper' CSS helper
+  */
+  centerImages: PropTypes.bool,
   /*
   * Fixed element on slider
   */
@@ -111,7 +127,11 @@ Carousel.propTypes = {
     */
     padding: PropTypes.number,
     /*
-    * Make the carousel a full width slider like the second example. (Default: false)
+    * Set the number of visible items. (Default: 5)
+    */
+    numVisible: PropTypes.number,
+    /*
+    * Make the carousel a full width slider. (Default: false)
     */
     fullWidth: PropTypes.bool,
     /*
@@ -121,8 +141,26 @@ Carousel.propTypes = {
     /*
      * Don't wrap around and cycle through items. (Default: false)
     */
-    noWrap: PropTypes.bool
+    noWrap: PropTypes.bool,
+    /*
+    * Callback for when a new slide is cycled to. (Default: null)
+    */
+    onCycleTo: PropTypes.func
   })
+};
+
+Carousel.defaultProps = {
+  options: {
+    duration: 200,
+    dist: -100,
+    shift: 0,
+    padding: 0,
+    numVisible: 5,
+    fullWidth: false,
+    indicators: false,
+    noWrap: false,
+    onCycleTo: null
+  }
 };
 
 export default Carousel;

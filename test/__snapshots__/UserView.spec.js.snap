@@ -2,6 +2,6 @@
 
 exports[`<UserView /> renders 1`] = `
 <div
-  className="userView"
+  className="user-view"
 />
 `;

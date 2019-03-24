@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Switch /> renders 1`] = `
+<div
+  className="switch"
+>
+  <label
+    htmlFor="mockId"
+  >
+    Off
+    <input
+      id="mockId"
+      type="checkbox"
+    />
+    <span
+      className="lever"
+    />
+    On
+  </label>
+</div>
+`;

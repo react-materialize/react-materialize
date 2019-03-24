@@ -14,4 +14,8 @@ describe('<Icon />', () => {
     wrapper = shallow(<Icon large>cloud</Icon>);
     expect(wrapper).toMatchSnapshot();
   });
+  test('accepts placement as a prop', () => {
+    wrapper = shallow(<Icon left>cloud</Icon>);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

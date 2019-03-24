@@ -1,176 +1,59 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Autocomplete from '../src/Autocomplete';
-
-const data = {
-  Apple: null,
-  Microsoft: null,
-  Google: 'http://placehold.it/250x250',
-  'Apple Inc': null
-};
-
-const componentId = 'testAutocompleteId';
-const wrapper = shallow(
-  <Autocomplete title="Test Title" data={data} id={componentId} />
-);
+import mocker from './helper/new-mocker';
 
 describe('<Autocomplete />', () => {
-  const typedKey = 'A';
+  const data = {
+    Apple: null,
+    Microsoft: null,
+    Google: 'http://placehold.it/250x250',
+    'Apple Inc': null
+  };
+  const componentId = 'testAutocompleteId';
+
+  let wrapper;
 
   test('renders', () => {
+    wrapper = shallow(
+      <Autocomplete title="Test Title" id={componentId} options={{ data }} />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('generates correct ID for input and label', () => {
-    expect(wrapper.find('.autocomplete').props()).toHaveProperty(
-      'id',
-      componentId
-    );
-    expect(wrapper.find('label').props()).toHaveProperty(
-      'htmlFor',
-      componentId
-    );
+  test('handles layout classes', () => {
+    wrapper = shallow(<Autocomplete s={4} m={6} />);
+    expect(wrapper.hasClass('input-field')).toBeTruthy();
+    expect(wrapper.hasClass('col')).toBeTruthy();
+    expect(wrapper.hasClass('s4')).toBeTruthy();
+    expect(wrapper.hasClass('m6')).toBeTruthy();
   });
 
-  describe('on input change', () => {
-    beforeAll(() => {
-      wrapper
-        .find('.autocomplete')
-        .simulate('change', { target: { value: typedKey } });
-    });
-
-    test('renders a dropdown', () => {
-      expect(wrapper.find('.autocomplete-content')).toHaveLength(1);
-    });
-
-    test("highlight's results", () => {
-      expect(wrapper.find('.highlight').length).toEqual(2);
-      expect(
-        wrapper
-          .find('.highlight')
-          .first()
-          .text()
-      ).toEqual(typedKey);
-    });
+  test('renders placeholder', () => {
+    wrapper = shallow(<Autocomplete placeholder="Name" />);
+    expect(wrapper.find('input').prop('placeholder')).toEqual('Name');
   });
 
-  describe('on dropdown first item select', () => {
-    const expectedValue = 'Apple';
-
-    beforeAll(() => {
-      wrapper
-        .find('.autocomplete')
-        .simulate('change', { target: { value: typedKey } });
-      wrapper
-        .find('ul li')
-        .first()
-        .simulate('click');
-    });
-
-    test('updates the state with the new value', () => {
-      expect(wrapper.state('value')).toEqual(expectedValue);
-    });
-
-    test('adds clicked value to input', () => {
-      expect(wrapper.find('.autocomplete').prop('value')).toEqual(
-        expectedValue
-      );
-    });
-
-    test('hides other matches', () => {
-      expect(wrapper.find('.highlight').length).toEqual(0);
-    });
-  });
-
-  describe('on dropdown second item select', () => {
-    const expectedValue = 'Apple Inc';
-
-    beforeAll(() => {
-      wrapper
-        .find('.autocomplete')
-        .simulate('change', { target: { value: typedKey } });
-      wrapper
-        .find('ul li')
-        .last()
-        .simulate('click');
-    });
-
-    test('updates the state with the new value', () => {
-      expect(wrapper.state('value')).toEqual(expectedValue);
-    });
-
-    test('adds clicked value to input', () => {
-      expect(wrapper.find('.autocomplete').prop('value')).toEqual(
-        expectedValue
-      );
-    });
-
-    test('hides other matches', () => {
-      expect(wrapper.find('.highlight').length).toEqual(0);
-    });
-  });
-
-  describe('on controlled input', () => {
-    const expectedValue = 'Apple';
-
-    const props = {
-      onChange: jest.fn(),
-      onAutocomplete: jest.fn()
+  describe('initialises', () => {
+    const autocompleteInitMock = jest.fn();
+    const autocompleteInstanceDestroyMock = jest.fn();
+    const autocompleteMock = {
+      init: (el, options) => {
+        autocompleteInitMock(options);
+        return {
+          destroy: autocompleteInstanceDestroyMock
+        };
+      }
     };
-
-    const wrapper2 = shallow(
-      <Autocomplete title="Test Title" data={data} value="" {...props} />
-    );
-
-    beforeAll(() => {
-      wrapper2
-        .find('.autocomplete')
-        .simulate('change', { target: { value: typedKey } });
+    const restore = mocker('Autocomplete', autocompleteMock);
+    beforeEach(() => {
+      autocompleteInitMock.mockClear();
+      autocompleteInstanceDestroyMock.mockClear();
     });
 
-    test('updates the state with the new value', () => {
-      expect(wrapper2.state('value')).toEqual(typedKey);
-    });
-
-    test('calls only onChange callback', () => {
-      expect(props.onChange).toHaveBeenCalled();
-      expect(props.onChange.mock.calls[0][1]).toEqual(typedKey);
-    });
-
-    test('works after value change', () => {
-      wrapper2.setProps({
-        ...props,
-        value: typedKey
-      });
-      expect(wrapper2.state('value')).toEqual(typedKey);
-      expect(props.onChange).toHaveBeenCalled();
-    });
-
-    test('adds clicked value to input', () => {
-      wrapper2
-        .find('ul li')
-        .first()
-        .simulate('click');
-
-      expect(wrapper2.find('.autocomplete').prop('value')).toEqual(
-        expectedValue
-      );
-    });
-
-    test('calls callbacks after autocomplete', () => {
-      expect(props.onChange).toHaveBeenCalledTimes(2);
-      expect(props.onChange.mock.calls[1][1]).toEqual(expectedValue);
-      expect(props.onAutocomplete).toHaveBeenCalledWith(expectedValue);
-    });
-
-    test('clears input', () => {
-      wrapper2.setProps({
-        ...props,
-        value: ''
-      });
-      expect(wrapper2.state('value')).toEqual('');
-      expect(props.onChange).toHaveBeenCalledTimes(2);
-      expect(props.onAutocomplete).toHaveBeenCalled();
+    test('calls Autocomplete', () => {
+      mount(<Autocomplete />);
+      expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
     });
   });
 });

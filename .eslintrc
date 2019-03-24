@@ -8,6 +8,11 @@ globals:
   Materialize: true
   React: true
   ReactDOM: true
+  M: true
+  document: true
+  global: true
+  window: true
+  module: true
 
 plugins: ['prettier']
 
@@ -28,3 +33,4 @@ rules:
   standard/array-bracket-even-spacing: [0]
   standard/computed-property-even-spacing: [0]
   standard/object-curly-even-spacing: [0]
+  no-undef: [2]

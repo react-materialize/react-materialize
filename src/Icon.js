@@ -28,7 +28,7 @@ Icon.propTypes = {
   /*
    * Icon type: <a href='https://material.io/icons/'>https://material.io/icons/</a>
    */
-  children: PropTypes.string,
+  children: PropTypes.string.isRequired,
   /*
    * Placement for icon if used beside a text ↓
    */

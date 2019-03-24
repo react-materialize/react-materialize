@@ -20,18 +20,21 @@ class Modal extends Component {
   }
 
   componentDidMount() {
-    const { trigger, modalOptions, open } = this.props;
+    if (typeof M !== 'undefined') {
+      const { trigger, options, open } = this.props;
 
-    if (!trigger) {
-      $(`#${this.modalID}`).modal(modalOptions);
+      this.instance = M.Modal.init(this._modal, options);
+
+      if (open) this.showModal();
     }
-
-    if (open) this.showModal();
   }
 
   componentWillUnmount() {
     document.body.removeChild(this.modalRoot);
-    this.modalRoot = null;
+
+    if (this.instance) {
+      this.instance.destroy();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,7 +58,7 @@ class Modal extends Component {
       ...other
     } = this.props;
 
-    delete other.modalOptions;
+    delete other.options;
     delete other.trigger;
 
     const classes = cx(
@@ -69,7 +72,14 @@ class Modal extends Component {
 
     return this.modalRoot
       ? ReactDOM.createPortal(
-          <div {...other} className={classes} id={this.modalID}>
+          <div
+            {...other}
+            className={classes}
+            id={this.modalID}
+            ref={div => {
+              this._modal = div;
+            }}
+          >
             <div className="modal-content">
               <h4>{header}</h4>
               {children}
@@ -84,15 +94,15 @@ class Modal extends Component {
   }
 
   showModal(e) {
-    if (e) e.preventDefault();
-    const { modalOptions = {} } = this.props;
-    $(`#${this.modalID}`).modal(modalOptions);
-    $(`#${this.modalID}`).modal('open');
+    e && e.preventDefault();
+
+    this.instance && this.instance.open();
   }
 
   hideModal(e) {
-    if (e) e.preventDefault();
-    $(`#${this.modalID}`).modal('close');
+    e && e.preventDefault();
+
+    this.instance && this.instance.close();
   }
 
   render() {
@@ -109,42 +119,54 @@ class Modal extends Component {
 
 Modal.propTypes = {
   /**
-   * ModalOptions
+   * Options
    * Object with options for modal
    */
-  modalOptions: PropTypes.shape({
+  options: PropTypes.shape({
     /*
-     * Modal can be dismissed by clicking outside of the modal
-     */
-    dismissible: PropTypes.bool,
-    /*
-     * Opacity of modal background ( from 0 to 1 )
-     */
+    * Opacity of the modal overlay.
+    */
     opacity: PropTypes.number,
     /*
-     * Transition in duration
+     * Transition in duration in milliseconds.
      */
     inDuration: PropTypes.number,
     /*
-     * Transition out duration
+     * Transition out duration in milliseconds.
      */
     outDuration: PropTypes.number,
-    /*
-     * Starting top style attribute
+    /**
+     * Callback function called before modal is opened.
+     */
+    onOpenStart: PropTypes.func,
+    /**
+     * Callback function called after modal is opened.
+     */
+    onOpenEnd: PropTypes.func,
+    /**
+     * Callback function called before modal is closed.
+     */
+    onCloseStart: PropTypes.func,
+    /**
+     * Callback function called after modal is closed.
+     */
+    onCloseEnd: PropTypes.func,
+    /**
+     * Prevent page from scrolling while modal is open.
+     */
+    preventScrolling: PropTypes.bool,
+    /**
+     * Allow modal to be dismissed by keyboard or overlay click.
+     */
+    dismissible: PropTypes.bool,
+    /**
+     * Starting top offset
      */
     startingTop: PropTypes.string,
-    /*
-     * Ending top style attribute
+    /**
+     * Ending top offset
      */
-    endingTop: PropTypes.string,
-    /*
-     * Callback for Modal open. Modal and trigger parameters available.
-     */
-    ready: PropTypes.func,
-    /*
-     *  Callback for Modal close
-     */
-    complete: PropTypes.func
+    endingTop: PropTypes.string
   }),
   /**
    * Extra class to added to the Modal
@@ -188,11 +210,23 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  modalOptions: {},
+  options: {
+    opacity: 0.5,
+    inDuration: 250,
+    outDuration: 250,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    preventScrolling: true,
+    dismissible: true,
+    startingTop: '4%',
+    endingTop: '10%'
+  },
   fixedFooter: false,
   bottomSheet: false,
   actions: [
-    <Button waves="light" modal="close" flat>
+    <Button waves="green" modal="close" flat>
       Close
     </Button>
   ]

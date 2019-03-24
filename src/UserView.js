@@ -12,7 +12,7 @@ export class UserView extends Component {
   render() {
     const { background, image, name, email } = this.props;
     return (
-      <div className="userView">
+      <div className="user-view">
         {background && (
           <div className="background">
             <img src={background} />

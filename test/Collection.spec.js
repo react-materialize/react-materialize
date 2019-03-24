@@ -65,6 +65,9 @@ describe('<Collection />', () => {
           <CollectionItem href="#">Alvin</CollectionItem>
         </Collection>
       );
+
+      expect(wrapper.find('.collection').type()).toBe('div');
+
       expect(
         wrapper
           .find('.collection-item')

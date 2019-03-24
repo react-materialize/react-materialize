@@ -4,7 +4,7 @@ import Table from '../src/Table';
 
 describe('<Table />', () => {
   const wrapper = shallow(
-    <Table bordered centered hoverable responsive striped>
+    <Table centered hoverable responsive striped>
       <tr>
         <td>foo</td>
         <td>bar</td>
