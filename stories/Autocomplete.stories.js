@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Autocomplete from '../src/Autocomplete';
+import { text, withKnobs } from '@storybook/addon-knobs';
 
 const stories = storiesOf('Javascript|Autocomplete', module);
+stories.addDecorator(withKnobs);
 
 stories.addParameters({
   info: {
@@ -35,6 +37,6 @@ stories.add('With icon', () => (
       }
     }}
     placeholder="Insert here"
-    icon="textsms"
+    icon={text('icon', 'textsms')}
   />
 ));
