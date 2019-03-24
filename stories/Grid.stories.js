@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Row from '../src/Row';
 import Col from '../src/Col';
 
-const stories = storiesOf('1. CSS', module);
+const stories = storiesOf('CSS|Grid', module);
 
 stories.addParameters({
   info: {
@@ -13,7 +13,7 @@ stories.addParameters({
   }
 });
 
-stories.add('Grid', () => (
+stories.add('default', () => (
   <Row>
     <Col s={1} className="teal white-text">
       1

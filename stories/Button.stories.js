@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Button from '../src/Button';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('2. components/Button', module);
+const stories = storiesOf('Components|Button', module);
 
 stories.addParameters({
   info: {
@@ -92,7 +92,7 @@ stories.add('Link', () => (
   </Button>
 ));
 
-const storiesFab = storiesOf('2. components/Button/FAB', module);
+const storiesFab = storiesOf('Components|FAB', module);
 const children = [
   <Button key="1" floating icon="insert_chart" className="red" />,
   <Button key="2" floating icon="format_quote" className="yellow darken-1" />,

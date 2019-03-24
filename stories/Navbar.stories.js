@@ -6,7 +6,7 @@ import Icon from '../src/Icon';
 import Dropdown from '../src/Dropdown';
 import Button from '../src/Button';
 
-const stories = storiesOf('2. components/Navbar', module);
+const stories = storiesOf('Components|Navbar', module);
 
 stories.addParameters({
   info: {

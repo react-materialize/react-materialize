@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import TimePicker from '../src/TimePicker';
 
-const stories = storiesOf('2. components/Pickers', module);
+const stories = storiesOf('Components|Pickers', module);
 
 stories.addParameters({
   info: {

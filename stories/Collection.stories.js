@@ -5,7 +5,7 @@ import Row from '../src/Row';
 import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';
 
-const stories = storiesOf('2. components/Collection', module);
+const stories = storiesOf('Components|Collection', module);
 
 stories.addParameters({
   info: {

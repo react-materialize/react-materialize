@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Chip from '../src/Chip';
 
-const stories = storiesOf('2. components/Chip', module);
+const stories = storiesOf('Components|Chip', module);
 
 stories.addParameters({
   info: {

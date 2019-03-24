@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Breadcrumb from '../src/Breadcrumb';
 
-const stories = storiesOf('2. components/Breadcrumb', module);
+const stories = storiesOf('Components|Breadcrumb', module);
 
 stories.addParameters({
   info: {
