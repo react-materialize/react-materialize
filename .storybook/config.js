@@ -4,7 +4,6 @@ import { withOptions } from '@storybook/addon-options';
 
 import './overrides.css';
 
-global.$ = require('jquery');
 global.M = require('materialize-css');
 
 // https://www.npmjs.com/package/@storybook/addon-info
