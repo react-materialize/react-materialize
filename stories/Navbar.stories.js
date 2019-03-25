@@ -6,7 +6,7 @@ import Icon from '../src/Icon';
 import Dropdown from '../src/Dropdown';
 import Button from '../src/Button';
 
-const stories = storiesOf('components/Navbar', module);
+const stories = storiesOf('Components|Navbar', module);
 
 stories.addParameters({
   info: {
@@ -15,24 +15,53 @@ stories.addParameters({
 });
 
 stories.add('Default', () => (
-  <Navbar brand={<a href="#" className="brand-logo">Logo</a>} alignLinks="right">
+  <Navbar
+    brand={
+      <a href="#" className="brand-logo">
+        Logo
+      </a>
+    }
+    alignLinks="right"
+  >
     <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-    <NavItem href='components.html'>Components</NavItem>
+    <NavItem href="components.html">Components</NavItem>
   </Navbar>
 ));
 
 stories.add('Left Aligned Links', () => (
-  <Navbar brand={<a href="#" className="brand-logo right">Logo</a>} alignLinks="left">
+  <Navbar
+    brand={
+      <a href="#" className="brand-logo right">
+        Logo
+      </a>
+    }
+    alignLinks="left"
+  >
     <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-    <NavItem href='components.html'>Components</NavItem>
+    <NavItem href="components.html">Components</NavItem>
   </Navbar>
 ));
 
 stories.add('Icon Links', () => (
-  <Navbar brand={<a href="#" className="brand-logo">Logo</a>} alignLinks="right">
-    <NavItem href='get-started.html'><Icon>search</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>view_module</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>refresh</Icon></NavItem>
-    <NavItem href='get-started.html'><Icon>more_vert</Icon></NavItem>
+  <Navbar
+    brand={
+      <a href="#" className="brand-logo">
+        Logo
+      </a>
+    }
+    alignLinks="right"
+  >
+    <NavItem href="get-started.html">
+      <Icon>search</Icon>
+    </NavItem>
+    <NavItem href="get-started.html">
+      <Icon>view_module</Icon>
+    </NavItem>
+    <NavItem href="get-started.html">
+      <Icon>refresh</Icon>
+    </NavItem>
+    <NavItem href="get-started.html">
+      <Icon>more_vert</Icon>
+    </NavItem>
   </Navbar>
 ));

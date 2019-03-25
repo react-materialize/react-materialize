@@ -19,6 +19,7 @@ describe('<Collapsible />', () => {
   const restore = mocker('Collapsible', collapsibleMock);
 
   const options = {
+    accordion: true,
     onOpenStart: () => {},
     inDuration: 100,
     outDuration: 50
@@ -48,8 +49,8 @@ describe('<Collapsible />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('with accordion', () => {
-    wrapper = shallow(<Collapsible accordion />);
+  test('expandable', () => {
+    wrapper = shallow(<Collapsible accordion={false} />);
     expect(wrapper).toMatchSnapshot();
   });
 
