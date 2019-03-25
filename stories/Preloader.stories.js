@@ -5,7 +5,7 @@ import Col from '../src/Col';
 import ProgressBar from '../src/ProgressBar';
 import Preloader from '../src/Preloader';
 
-const stories = storiesOf('components/Preloader', module);
+const stories = storiesOf('Components|Preloader', module);
 
 stories.addParameters({
   info: {
