@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Switch from '../src/Switch';
 
-const stories = storiesOf('components/Switch', module);
+const stories = storiesOf('Components|Switch', module);
 
 stories.addParameters({
   info: {
@@ -10,10 +10,6 @@ stories.addParameters({
   }
 });
 
-stories.add('Switch', () => (
-  <Switch offLabel="Off" onLabel="On" />
-));
+stories.add('Switch', () => <Switch offLabel="Off" onLabel="On" />);
 
-stories.add('Disabled', () => (
-  <Switch disabled offLabel="Off" onLabel="On" />
-));
+stories.add('Disabled', () => <Switch disabled offLabel="Off" onLabel="On" />);

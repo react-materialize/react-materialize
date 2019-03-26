@@ -4,6 +4,12 @@ extends:
   - standard-react
   - prettier
 
+parserOptions:
+  ecmaVersion: 6
+  ecmaFeatures:
+    jsx: true
+    experimentalObjectRestSpread: true
+
 globals:
   Materialize: true
   React: true

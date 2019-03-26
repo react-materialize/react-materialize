@@ -15,7 +15,10 @@ class Collapsible extends Component {
   }
 
   componentDidMount() {
-    this.instance = M.Collapsible.init(this._collapsible, this.props.options);
+    this.instance = M.Collapsible.init(this._collapsible, {
+      accordion: this.props.accordion,
+      ...this.props.options
+    });
   }
 
   componentWillUnmount() {
@@ -29,11 +32,12 @@ class Collapsible extends Component {
 
     delete props.defaultActiveKey;
 
+    const collapsible = accordion ? 'accordion' : 'expandable';
     const classes = {
-      collapsible: true,
+      collapsible,
+      expandable: accordion !== true,
       popout
     };
-    const collapsible = accordion ? 'accordion' : 'expandable';
 
     return (
       <ul
@@ -87,7 +91,7 @@ Collapsible.propTypes = {
   /**
    * There are two ways a collapsible can behave. It can either allow multiple sections to stay open,
    * or it can only allow one section to stay open at a time, which is called an accordion.
-   * @default false
+   * @default true
    */
   accordion: PropTypes.bool,
   className: PropTypes.string,

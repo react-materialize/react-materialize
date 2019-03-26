@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import RadioGroup from '../src/RadioGroup';
 
-const stories = storiesOf('components/RadioGroup', module);
+const stories = storiesOf('Components|RadioGroup', module);
 
 stories.addParameters({
   info: {
@@ -16,7 +16,7 @@ stories.add('Default', () => (
   <RadioGroup
     name="size"
     label="T-Shirt Size"
-    onChange={(evt) => console.log(evt.target.value)}
+    onChange={evt => console.log(evt.target.value)}
     options={[
       { label: 'XL', value: 'xl' },
       { label: 'L', value: 'l' },

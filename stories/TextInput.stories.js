@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import TextInput from '../src/TextInput';
 
-const stories = storiesOf('components/TextInput', module);
+const stories = storiesOf('Components|TextInput', module);
 
 stories.addParameters({
   info: {
@@ -15,38 +15,28 @@ stories.addParameters({
   }
 });
 
-stories.add('Default', () => (
-  <TextInput />
-));
+stories.add('Default', () => <TextInput />);
 
-stories.add('Label', () => (
-  <TextInput label="First Name" />
-));
+stories.add('Label', () => <TextInput label="First Name" />);
 
-stories.add('Placeholder', () => (
-  <TextInput placeholder="First Name" />
-));
+stories.add('Placeholder', () => <TextInput placeholder="First Name" />);
 
-stories.add('Predefined value', () => (
-  <TextInput value="John" />
-));
+stories.add('Predefined value', () => <TextInput value="John" />);
 
-stories.add('Disabled', () => (
-  <TextInput disabled value="John" />
-));
+stories.add('Disabled', () => <TextInput disabled value="John" />);
 
-stories.add('Password', () => (
-  <TextInput password label="Password" />
-));
+stories.add('Password', () => <TextInput password label="Password" />);
 
-stories.add('Email validate', () => (
-  <TextInput email validate label="Email" />
-));
+stories.add('Email validate', () => <TextInput email validate label="Email" />);
 
 stories.add('with custom error/success', () => (
-  <TextInput email validate label="Email" error="Wrong Email sir" success="Great" />
+  <TextInput
+    email
+    validate
+    label="Email"
+    error="Wrong Email sir"
+    success="Great"
+  />
 ));
 
-stories.add('with Icon', () => (
-  <TextInput icon="email" label="Email" />
-));
+stories.add('with Icon', () => <TextInput icon="email" label="Email" />);
