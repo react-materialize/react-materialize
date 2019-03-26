@@ -4,8 +4,10 @@ import Row from '../src/Row';
 import Col from '../src/Col';
 import ProgressBar from '../src/ProgressBar';
 import Preloader from '../src/Preloader';
+import { number, withKnobs } from '@storybook/addon-knobs';
 
 const stories = storiesOf('Components|Preloader', module);
+stories.addDecorator(withKnobs);
 
 stories.addParameters({
   info: {
@@ -16,7 +18,7 @@ stories.addParameters({
 stories.add('Default', () => (
   <Row>
     <Col s={12}>
-      <ProgressBar progress={70} />
+      <ProgressBar progress={number('progress', 70)} />
     </Col>
     <Col s={12}>
       <ProgressBar />
