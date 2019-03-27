@@ -1,5 +1,13 @@
 # Changelog
 
+### 3.0.3
+
+- Add Parallax story (onluiz #771)
+- Add Preloader story (onluiz #772)
+- Fix SideNav init bug (onluiz #773)
+- Fix Welcome story typo
+- Fix close icon on Chip
+
 ### 3.0.2
 
 - Upgrade to storybook 5
