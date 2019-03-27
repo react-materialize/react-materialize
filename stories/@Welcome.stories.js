@@ -27,7 +27,7 @@ stories.add('Welcome', () => (
       <img
         src="https://camo.githubusercontent.com/4533a6b0f2046a75aa9b965477287088b86e3897/687474703a2f2f696d672e736869656c64732e696f2f6e706d2f762f72656163742d6d6174657269616c697a652e7376673f7374796c653d666c6174"
         alt="npm version"
-        dataCanonicalSrc="http://img.shields.io/npm/v/react-materialize.svg?style=flat"
+        datacanonicalsrc="http://img.shields.io/npm/v/react-materialize.svg?style=flat"
         style={{ maxWidth: '100%' }}
       />
     </a>
