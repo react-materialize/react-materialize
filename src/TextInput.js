@@ -44,6 +44,7 @@ class TextInput extends Component {
       password,
       email,
       validate,
+      defaultValue,
       value,
       type,
       ...other
@@ -76,7 +77,8 @@ class TextInput extends Component {
       placeholder,
       type: computedType,
       id: this.id,
-      defaultValue: value,
+      value: value,
+      defaultValue: defaultValue,
       disabled,
       ...other
     };
@@ -164,8 +166,12 @@ TextInput.propTypes = {
    * label text
    */
   label: PropTypes.string,
-  /*
+   /*
    * Input initial value
+   */
+  defaultValue: PropTypes.string,
+  /*
+   * Input value
    */
   value: PropTypes.string,
   /*
