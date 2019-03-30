@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { shallow, mount } from 'enzyme';
 import Navbar from '../src/Navbar';
 import mocker from './helper/new-mocker';
@@ -102,5 +102,25 @@ describe('<Navbar />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.breadcrumb')).toHaveLength(3);
+  });
+
+  test('can render a different menu on mobile devices', () => {
+    wrapper = shallow(
+      <Navbar
+        brand={<a href="/">Logo</a>}
+        mobileNav={
+          <Fragment>
+            <a href="#!">Mobile link 1</a>
+            <a href="#!">Mobile link 2</a>
+          </Fragment>
+        }
+      >
+        <a href="get-started.html">Getting started</a>
+        <a href="components.html">Components</a>
+      </Navbar>
+    );
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('nav')).toHaveLength(1);
   });
 });

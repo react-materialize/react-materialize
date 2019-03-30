@@ -20,6 +20,7 @@ class Navbar extends Component {
   render() {
     const {
       children,
+      mobileNav,
       brand,
       className,
       extendWith,
@@ -73,7 +74,7 @@ class Navbar extends Component {
             this._sidenav = ul;
           }}
         >
-          {links}
+          {mobileNav || links}
         </ul>
       </Fragment>
     );
@@ -83,6 +84,7 @@ class Navbar extends Component {
 Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
+  mobileNav: PropTypes.node,
   className: PropTypes.string,
   extendWith: PropTypes.node,
   /**
