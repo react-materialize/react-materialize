@@ -15,7 +15,7 @@ class DatePicker extends React.Component {
       const { onChange } = this.props;
       const elem = document.getElementById(this.id);
       const options = onChange
-        ? { onSelect: onChange, ...this.props.options }
+        ? { ...this.props.options, onSelect: onChange }
         : this.props.options;
 
       this.instance = M.Datepicker.init(elem, options);
@@ -102,7 +102,7 @@ DatePicker.propTypes = {
      * Number of years either side, or array of upper/lower range.
      * @default 10
      */
-    yearRange: PropTypes.oneOf([PropTypes.number, PropTypes.array]),
+    yearRange: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
     /**
      * Changes Datepicker to RTL.
      * @default false
@@ -173,73 +173,75 @@ DatePicker.propTypes = {
 };
 
 DatePicker.defaultProps = {
-  autoClose: false,
-  format: 'mmm dd, yyyy',
-  parse: null,
-  defaultDate: null,
-  setDefaultDate: false,
-  disableWeekends: false,
-  disableDayFn: null,
-  firstDay: 0,
-  minDate: null,
-  maxDate: null,
-  yearRange: 10,
-  isRTL: false,
-  showMonthAfterYear: false,
-  showDaysInNextAndPreviousMonths: false,
-  container: null,
-  showClearBtn: false,
-  i18n: {
-    cancel: 'Cancel',
-    clear: 'Clear',
-    done: 'Ok',
-    previousMonth: '‹',
-    nextMonth: '›',
-    months: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ],
-    monthsShort: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ],
-    weekdays: [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
-    ],
-    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-  },
-  events: [],
-  onSelect: null,
-  onOpen: null,
-  onClose: null,
-  onDraw: null
+  options: {
+    autoClose: false,
+    format: 'mmm dd, yyyy',
+    parse: null,
+    defaultDate: null,
+    setDefaultDate: false,
+    disableWeekends: false,
+    disableDayFn: null,
+    firstDay: 0,
+    minDate: null,
+    maxDate: null,
+    yearRange: 10,
+    isRTL: false,
+    showMonthAfterYear: false,
+    showDaysInNextAndPreviousMonths: false,
+    container: null,
+    showClearBtn: false,
+    i18n: {
+      cancel: 'Cancel',
+      clear: 'Clear',
+      done: 'Ok',
+      previousMonth: '‹',
+      nextMonth: '›',
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ],
+      monthsShort: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+      ],
+      weekdays: [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ],
+      weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+    },
+    events: [],
+    onSelect: null,
+    onOpen: null,
+    onClose: null,
+    onDraw: null
+  }
 };
 
 export default DatePicker;

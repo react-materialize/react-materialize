@@ -47,7 +47,75 @@ describe('<DatePicker />', () => {
     test('uses default options if none are given', () => {
       wrapper = mount(<DatePicker />);
 
-      expect(datePickerInitMock).toHaveBeenCalled();
+      expect(datePickerInitMock).toHaveBeenCalledWith({
+        autoClose: false,
+        format: 'mmm dd, yyyy',
+        parse: null,
+        defaultDate: null,
+        setDefaultDate: false,
+        disableWeekends: false,
+        disableDayFn: null,
+        firstDay: 0,
+        minDate: null,
+        maxDate: null,
+        yearRange: 10,
+        isRTL: false,
+        showMonthAfterYear: false,
+        showDaysInNextAndPreviousMonths: false,
+        container: null,
+        showClearBtn: false,
+        i18n: {
+          cancel: 'Cancel',
+          clear: 'Clear',
+          done: 'Ok',
+          previousMonth: '‹',
+          nextMonth: '›',
+          months: [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+          ],
+          monthsShort: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+          ],
+          weekdays: [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+          ],
+          weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+        },
+        events: [],
+        onSelect: null,
+        onOpen: null,
+        onClose: null,
+        onDraw: null
+      });
     });
   });
 });
