@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
@@ -13,8 +12,13 @@ class DatePicker extends React.Component {
 
   componentDidMount() {
     if (typeof M !== 'undefined') {
+      const { onChange } = this.props;
       const elem = document.getElementById(this.id);
-      this.instance = M.Datepicker.init(elem, this.props.options);
+      const options = onChange
+        ? { onSelect: onChange, ...this.props.options }
+        : this.props.options;
+
+      this.instance = M.Datepicker.init(elem, options);
     }
   }
 
@@ -25,17 +29,9 @@ class DatePicker extends React.Component {
   }
 
   render() {
-    const { id, onChange, ...other } = this.props;
-    const onSelect = onChange;
+    const { ...other } = this.props;
 
-    return (
-      <TextInput
-        id={this.id}
-        inputClassName="datepicker"
-        onSelect={onSelect}
-        {...other}
-      />
-    );
+    return <TextInput id={this.id} inputClassName="datepicker" {...other} />;
   }
 }
 
@@ -66,7 +62,7 @@ DatePicker.propTypes = {
      * Used to create date object from current input string.
      * @default null
      */
-    parse: PropTypes.any,
+    parse: PropTypes.func,
     /**
      * The initial date to view when first opened.
      * @default null
@@ -86,7 +82,7 @@ DatePicker.propTypes = {
      * Custom function to disable certain days.
      * @default null
      */
-    disableDayFn: PropTypes.any,
+    disableDayFn: PropTypes.func,
     /**
      * First day of week (0: Sunday, 1: Monday etc).
      * @default 0
@@ -136,33 +132,114 @@ DatePicker.propTypes = {
      * Internationalization options.
      * @default See i18n documentation.
      */
-    i18n: PropTypes.any,
+    i18n: PropTypes.shape({
+      cancel: PropTypes.string,
+      clear: PropTypes.string,
+      done: PropTypes.string,
+      previousMonth: PropTypes.string,
+      nextMonth: PropTypes.string,
+      months: PropTypes.arrayOf(PropTypes.string),
+      monthsShort: PropTypes.arrayOf(PropTypes.string),
+      weekdays: PropTypes.arrayOf(PropTypes.string),
+      weekdaysShort: PropTypes.arrayOf(PropTypes.string),
+      weekdaysAbbrev: PropTypes.arrayOf(PropTypes.string)
+    }),
     /**
      * An array of string returned by `Date.toDateString()`, indicating there are events in the specified days.
      * @default []
      */
-    events: PropTypes.array,
+    events: PropTypes.arrayOf(PropTypes.string),
     /**
      * Callback function when date is selected, first parameter is the newly selected date.
      * @default null
      */
-    onSelect: PropTypes.any,
+    onSelect: PropTypes.func,
     /**
      * Callback function when Datepicker is opened.
      * @default null
      */
-    onOpen: PropTypes.any,
+    onOpen: PropTypes.func,
     /**
      * Callback function when Datepicker is closed.
      * @default null
      */
-    onClose: PropTypes.any,
+    onClose: PropTypes.func,
     /**
      * Callback function when Datepicker HTML is refreshed.
      * @default null
      */
-    onDraw: PropTypes.any
+    onDraw: PropTypes.func
   })
+};
+
+DatePicker.defaultProps = {
+  autoClose: false,
+  format: 'mmm dd, yyyy',
+  parse: null,
+  defaultDate: null,
+  setDefaultDate: false,
+  disableWeekends: false,
+  disableDayFn: null,
+  firstDay: 0,
+  minDate: null,
+  maxDate: null,
+  yearRange: 10,
+  isRTL: false,
+  showMonthAfterYear: false,
+  showDaysInNextAndPreviousMonths: false,
+  container: null,
+  showClearBtn: false,
+  i18n: {
+    cancel: 'Cancel',
+    clear: 'Clear',
+    done: 'Ok',
+    previousMonth: '‹',
+    nextMonth: '›',
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ],
+    monthsShort: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ],
+    weekdays: [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ],
+    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+  },
+  events: [],
+  onSelect: null,
+  onOpen: null,
+  onClose: null,
+  onDraw: null
 };
 
 export default DatePicker;
