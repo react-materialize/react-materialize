@@ -14,7 +14,15 @@ class Textarea extends Component {
   }
 
   render() {
-    const { className, iconClassName, icon, label, id, onChange, ...other } = this.props;
+    const {
+      className,
+      iconClassName,
+      icon,
+      label,
+      id,
+      onChange,
+      ...other
+    } = this.props;
 
     const computedId = id || idgen();
 
@@ -65,7 +73,8 @@ Textarea.propTypes = {
   /*
   * predefined value
   */
-  value: PropTypes.string
+  value: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Textarea;
