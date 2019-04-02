@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import Icon from './Icon';
-import TextInput from './TextInput';
+import cx from 'classnames';
 
 class Textarea extends Component {
   componentDidUpdate() {
@@ -14,7 +14,7 @@ class Textarea extends Component {
   }
 
   render() {
-    const { iconClassName, icon, label, id, onChange, ...other } = this.props;
+    const { className, iconClassName, icon, label, id, onChange, ...other } = this.props;
 
     const computedId = id || idgen();
 
@@ -27,7 +27,7 @@ class Textarea extends Component {
           }}
           onChange={onChange}
           id={computedId}
-          className="materialize-textarea"
+          className={cx('materialize-textarea', className)}
           {...other}
         />
         <label htmlFor={computedId}>{label}</label>
