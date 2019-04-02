@@ -16,7 +16,7 @@ class Dropdown extends Component {
 
     if (typeof M !== undefined) {
       const selector = document.querySelectorAll(this._trigger);
-      this.instance = M.Dropdown.init(selector, options);
+      this.instance = M.Dropdown.init(selector, options)[0];
     }
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "3.0.0",
+  "version": "3.0.3",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
@@ -14,7 +14,7 @@
     "test:unit:watch": "jest --watch",
     "pretest": "npm run lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook -o docs",
+    "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
     "build": "babel -d lib src",
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
@@ -59,22 +59,23 @@
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
-    "@storybook/addon-actions": "^4.1.6",
-    "@storybook/addon-info": "^4.1.1",
-    "@storybook/addon-options": "^4.1.1",
-    "@storybook/react": "^4.1.1",
+    "@storybook/addon-actions": "^5.0.4",
+    "@storybook/addon-info": "^5.0.4",
+    "@storybook/addon-knobs": "^5.0.4",
+    "@storybook/addon-notes": "^5.0.4",
+    "@storybook/react": "^5.0.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "enzyme": "^3.4.4",
-    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.3",
     "eslint": "^3.4.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^6.0.0",
-    "eslint-config-standard-react": "^4.0.0",
+    "eslint-config-standard-react": "^7.0.2",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-promise": "^3.0.0",
-    "eslint-plugin-react": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "^2.0.0",
     "husky": "^0.14.3",
     "jest": "^23.6.0",
@@ -84,7 +85,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.3"
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
   }
 }

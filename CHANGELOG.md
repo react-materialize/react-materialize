@@ -1,5 +1,33 @@
 # Changelog
 
+### 3.0.3
+
+- Add Parallax story (onluiz #771)
+- Add Preloader story (onluiz #772)
+- Fix SideNav init bug (onluiz #773)
+- Fix Welcome story typo
+- Fix close icon on Chip
+
+### 3.0.2
+
+- Upgrade to storybook 5
+- Install knobs and notes
+- Add samples knobs and notes to Autocomplete
+- Install latest eslint and react
+
+### 3.0.1
+
+- Fix bug where dropdown could not be destroyed
+- Fix Collapsible not being able to be `expandable`
+- Remove `NavItem` <li> wrapper
+- Fix Button story warnings
+
+### 3.0.0
+
+- update all components to `materialize-css@1.x`
+- remove old docs and replace with storybook
+- remove jQuery dependency
+
 ### 2.6.0
 
 - update to babel7

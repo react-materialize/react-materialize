@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import Button from '../src/Button';
 import Modal from '../src/Modal';
 
-const stories = storiesOf('0. React Materialize', module);
+const stories = storiesOf('@|React Materialize', module);
 
 const reactMaterializeLogo = require('./react-materialize-logo.svg');
 
@@ -27,7 +27,7 @@ stories.add('Welcome', () => (
       <img
         src="https://camo.githubusercontent.com/4533a6b0f2046a75aa9b965477287088b86e3897/687474703a2f2f696d672e736869656c64732e696f2f6e706d2f762f72656163742d6d6174657269616c697a652e7376673f7374796c653d666c6174"
         alt="npm version"
-        dataCanonicalSrc="http://img.shields.io/npm/v/react-materialize.svg?style=flat"
+        datacanonicalsrc="http://img.shields.io/npm/v/react-materialize.svg?style=flat"
         style={{ maxWidth: '100%' }}
       />
     </a>
@@ -94,10 +94,12 @@ npm install react-materialize
       you can think of.
     </p>
     <p>
-      Disclaimer: We updated our docs after version `3.0.0` in which we removed `jQuery`
-      dependency. The docs are less pretty but much easier to maintain and update.
-      Feel free to propose any changes.
+      Disclaimer: We updated our docs after version `3.0.0` in which we removed
+      `jQuery` dependency. The docs are less pretty but much easier to maintain
+      and update. Feel free to propose any changes.
     </p>
-    <a href="https://github.com/react-materialize/react-materialize">github.com/react-materialize</a>
+    <a href="https://github.com/react-materialize/react-materialize">
+      github.com/react-materialize
+    </a>
   </div>
 ));
