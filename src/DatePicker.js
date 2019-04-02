@@ -31,7 +31,9 @@ class DatePicker extends React.Component {
   render() {
     const { ...other } = this.props;
 
-    return <TextInput id={this.id} inputClassName="datepicker" {...this.props} />;
+    return (
+      <TextInput id={this.id} inputClassName="datepicker" {...this.props} />
+    );
   }
 }
 
