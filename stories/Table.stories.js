@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Table from '../src/Table';
 
-const stories = storiesOf('1. CSS', module);
+const stories = storiesOf('CSS|Table', module);
 
 stories.addParameters({
   info: {
@@ -14,7 +14,7 @@ stories.addParameters({
   }
 });
 
-stories.add('Table', () => (
+stories.add('Default', () => (
   <Table>
     <thead>
       <tr>

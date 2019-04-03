@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import Select from '../src/Select';
 
-const stories = storiesOf('2. components/Select', module);
+const stories = storiesOf('Components|Select', module);
 
 stories.addParameters({
   info: {
@@ -14,7 +14,9 @@ stories.addParameters({
 
 stories.add('Default', () => (
   <Select onChange={action('Select changed')}>
-    <option value="" disabled selected>Choose your option</option>
+    <option value="" disabled selected>
+      Choose your option
+    </option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -23,7 +25,9 @@ stories.add('Default', () => (
 
 stories.add('Multiple', () => (
   <Select multiple>
-    <option value="" disabled selected>Choose your option</option>
+    <option value="" disabled selected>
+      Choose your option
+    </option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -33,7 +37,9 @@ stories.add('Multiple', () => (
 stories.add('Label', () => (
   <Select label="Choose your option">
     <option value="1">Option 1</option>
-    <option value="2" selected>Option 2</option>
+    <option value="2" selected>
+      Option 2
+    </option>
     <option value="3">Option 3</option>
   </Select>
 ));
@@ -41,7 +47,9 @@ stories.add('Label', () => (
 stories.add('Disabled', () => (
   <Select disabled>
     <option value="1">Option 1</option>
-    <option value="2" selected>Option 2</option>
+    <option value="2" selected>
+      Option 2
+    </option>
     <option value="3">Option 3</option>
   </Select>
 ));
@@ -49,7 +57,9 @@ stories.add('Disabled', () => (
 stories.add('Browser default', () => (
   <Select browserDefault>
     <option value="1">Option 1</option>
-    <option value="2" selected>Option 2</option>
+    <option value="2" selected>
+      Option 2
+    </option>
     <option value="3">Option 3</option>
   </Select>
 ));

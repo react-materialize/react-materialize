@@ -9,12 +9,6 @@ Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=mas
 
 # [react-materialize](https://react-materialize.github.io/)
 
-# 3.0.0-beta.0
-
-## Unstable version
-
-We're updating to the latest materialize-css version, please don't use this branch yet.
-
 Material design components for react, powered by [materializecss](http://materializecss.com/).
 
 ## Install
@@ -28,18 +22,17 @@ npm install react-materialize
 <html>
   <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="path/to/materialize.css">
   </head>
   <body>
-    <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> --> <!-- not needed anymore -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="path/to/materialize.js"></script>
     <script src="path/to/your/bundle.js"></script>
   </body>
 </html>
 ```
 
-#### JS (ES6)
-``` javascript
+#### Javascript
+``` js
 import { Button, Card, Row, Col } from 'react-materialize';
 ```
 
