@@ -84,6 +84,10 @@ class Navbar extends Component {
 Navbar.propTypes = {
   brand: PropTypes.node,
   children: PropTypes.node,
+  /**
+   * When your nav bar is resized, if mobileNav is provided it will be used as a menu in the sidenav.
+   * Otherwise the same links used in the desktop version will be shown.
+   */
   mobileNav: PropTypes.node,
   className: PropTypes.string,
   extendWith: PropTypes.node,
