@@ -66,17 +66,23 @@ exports[`<Checkbox /> with id 1`] = `
 `;
 
 exports[`<Checkbox /> with indeterminate 1`] = `
-<label
-  htmlFor="indeterminate-checkbox"
+<Checkbox
+  indeterminate={true}
+  label="red"
+  value="red"
 >
-  <input
-    className=""
-    id="indeterminate-checkbox"
-    type="checkbox"
-    value="red"
-  />
-  <span>
-    red
-  </span>
-</label>
+  <label
+    htmlFor="indeterminate-checkbox-mockId"
+  >
+    <input
+      className=""
+      id="indeterminate-checkbox-mockId"
+      type="checkbox"
+      value="red"
+    />
+    <span>
+      red
+    </span>
+  </label>
+</Checkbox>
 `;

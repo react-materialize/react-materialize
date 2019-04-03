@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Checkbox from '../src/Checkbox';
 import idgen from '../src/idgen';
 
@@ -35,8 +35,9 @@ describe('<Checkbox />', () => {
   });
 
   test('with indeterminate', () => {
-    wrapper = shallow(<Checkbox value="red" label="red" indeterminate />);
-    expect(idgen).not.toHaveBeenCalled();
+    wrapper = mount(<Checkbox value="red" label="red" indeterminate />);
+    expect(wrapper.find('input').instance().checked).toBe(false);
+    expect(wrapper.find('input').instance().indeterminate).toBe(true);
     expect(wrapper).toMatchSnapshot();
   });
 });
