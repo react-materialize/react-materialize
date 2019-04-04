@@ -30,13 +30,13 @@ class Textarea extends Component {
       <div className="input-field">
         {icon && this.renderIcon(icon, iconClassName)}
         <textarea
+          {...other}
           ref={input => {
             this._textarea = input;
           }}
           onChange={onChange}
           id={computedId}
           className={cx('materialize-textarea', className)}
-          {...other}
         />
         <label htmlFor={computedId}>{label}</label>
       </div>
