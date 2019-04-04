@@ -1,5 +1,15 @@
 # Changelog
 
+### 3.0.4
+
+- Textarea now correctly handles layout classes (CloudPower97 #794)
+- Fix Datepicker now correctly onChange (CloudPower97 #800)
+- Caption component is now exported (CloudPower97 #802)
+- Add defaultProps to TimePicker component (CloudPower97 #803)
+- Add missing knobs to TextInput story (CloudPower97 #805)
+- Fix FAB to Toolbar bug (CloudPower97 #808)
+- Add missing Collection stories (CloudPower97 #810)
+
 ### 3.0.3
 
 - Add Parallax story (onluiz #771)
