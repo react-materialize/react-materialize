@@ -28,7 +28,7 @@ stories.add('Default', () => (
       >
       <SideNavItem userView
         user={{
-          background: 'https://onluiz.github.io/react-materialize-docs/img/office.jpg',
+          background: 'https://placeimg.com/640/480/tech',
           image: reactMaterializeLogo,
           name: 'John Doe',
           email: 'jdandturk@gmail.com'
