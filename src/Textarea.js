@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import Icon from './Icon';
-import cx from 'classnames';
 import constants from './constants';
 
 class Textarea extends Component {
