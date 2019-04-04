@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean, withKnobs } from '@storybook/addon-knobs';
+import { text, boolean, number, withKnobs } from '@storybook/addon-knobs';
+import Row from '../src/Row';
 import Textarea from '../src/Textarea';
 
 const stories = storiesOf('Components|Textarea', module);
@@ -15,7 +16,26 @@ stories.addParameters({
   }
 });
 
-stories.add('Textarea', () => <Textarea />);
+stories.add('Textarea', () => {
+  const defaultValue = 12;
+  const options = {
+    range: true,
+    min: 1,
+    max: 12,
+    step: 1
+  };
+
+  return (
+    <Row>
+      <Textarea
+        s={number('s', defaultValue, options)}
+        m={number('m', defaultValue, options)}
+        l={number('l', defaultValue, options)}
+        xl={number('xl', defaultValue, options)}
+      />
+    </Row>
+  );
+});
 
 stories.add('Disabled', () => (
   <Textarea
