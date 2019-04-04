@@ -40,14 +40,14 @@ describe('Tabs', () => {
     tabsInitMock.mockClear();
   });
 
-  test('should create list of Tab itemt', () => {
+  test('should create list of Tab items', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   describe('with options', () => {
     beforeEach(() => {
       wrapper = mount(
-        <Tabs tabOptions={options}>
+        <Tabs options={options}>
           <Tab title="one">One</Tab>
           <Tab title="Two">Two</Tab>
         </Tabs>
@@ -62,7 +62,7 @@ describe('Tabs', () => {
   describe('when updated', () => {
     beforeEach(() => {
       wrapper = mount(
-        <Tabs tabOptions={options}>
+        <Tabs options={options}>
           <Tab title="one">One</Tab>
           <Tab title="Two">Two</Tab>
         </Tabs>
