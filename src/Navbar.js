@@ -2,6 +2,7 @@ import React, { Component, Fragment, Children } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
+import TextInput from '../src/TextInput';
 class Navbar extends Component {
   componentDidMount() {
     const { options } = this.props;
@@ -25,7 +26,8 @@ class Navbar extends Component {
       extendWith,
       fixed,
       alignLinks,
-      centerLogo
+      centerLogo,
+      search
     } = this.props;
 
     const brandClasses = cx({
@@ -44,15 +46,24 @@ class Navbar extends Component {
     let navbar = (
       <nav className={navCSS}>
         <div className="nav-wrapper">
-          {brand &&
-            React.cloneElement(brand, {
-              className: cx(brand.props.className, brandClasses)
-            })}
-
-          <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
-            <Icon>menu</Icon>
-          </a>
-          <ul className={navMobileCSS}>{links}</ul>
+          {search ? (
+            <form>
+              <TextInput label={<Icon>search</Icon>} type="search">
+                <Icon>close</Icon>
+              </TextInput>
+            </form>
+          ) : (
+            <Fragment>
+              {brand &&
+                React.cloneElement(brand, {
+                  className: cx(brand.props.className, brandClasses)
+                })}
+              <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
+                <Icon>menu</Icon>
+              </a>
+              <ul className={navMobileCSS}>{links}</ul>
+            </Fragment>
+          )}
         </div>
         {extendWith && <div className="nav-content">{extendWith}</div>}
       </nav>
@@ -85,6 +96,7 @@ Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   extendWith: PropTypes.node,
+  search: PropTypes.bool,
   /**
    * left makes the navbar links left aligned, right makes them right aligned
    */
