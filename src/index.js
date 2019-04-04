@@ -2,6 +2,7 @@ export { default as Autocomplete } from './Autocomplete';
 export { default as Badge } from './Badge';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
+export { default as Caption } from './Caption';
 export { default as Card } from './Card';
 export { default as CardPanel } from './CardPanel';
 export { default as CardTitle } from './CardTitle';
