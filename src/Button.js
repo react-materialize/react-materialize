@@ -94,7 +94,9 @@ class Button extends Component {
       <div
         {...other}
         ref={el => (this._floatingActionBtn = el)}
-        className={cx('fixed-action-btn')}
+        className={cx('fixed-action-btn', {
+          toolbar: fab && fab.toolbarEnabled
+        })}
       >
         <a className={classes}>{this.renderIcon()}</a>
         <ul>

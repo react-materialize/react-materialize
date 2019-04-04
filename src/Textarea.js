@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import idgen from './idgen';
 import Icon from './Icon';
-import TextInput from './TextInput';
+import constants from './constants';
 
 class Textarea extends Component {
   componentDidUpdate() {
@@ -14,12 +15,36 @@ class Textarea extends Component {
   }
 
   render() {
-    const { iconClassName, icon, label, id, onChange, ...other } = this.props;
+    const {
+      s,
+      m,
+      l,
+      xl,
+      noLayout,
+      iconClassName,
+      icon,
+      label,
+      id,
+      onChange,
+      ...other
+    } = this.props;
 
     const computedId = id || idgen();
 
+    const sizes = { s, m, l, xl };
+
+    let responsiveClasses;
+    if (!noLayout) {
+      responsiveClasses = { col: true };
+      constants.SIZES.forEach(size => {
+        responsiveClasses[size + sizes[size]] = sizes[size];
+      });
+    }
+
+    const wrapperClasses = cx('input-field', responsiveClasses);
+
     return (
-      <div className="input-field">
+      <div className={wrapperClasses}>
         {icon && this.renderIcon(icon, iconClassName)}
         <textarea
           ref={input => {
@@ -37,6 +62,26 @@ class Textarea extends Component {
 }
 
 Textarea.propTypes = {
+  /*
+ * Strip away all layout classes such as col and sX
+ */
+  noLayout: PropTypes.bool,
+  /*
+   * Responsive size for Mobile Devices
+   */
+  s: PropTypes.number,
+  /*
+   * Responsive size for Tablet Devices
+   */
+  m: PropTypes.number,
+  /*
+   * Responsive size for Desktop Devices
+   */
+  l: PropTypes.number,
+  /**
+   *  Responsive size for Large Desktop Devices
+   */
+  xl: PropTypes.number,
   /*
    * render icon next to input
    */

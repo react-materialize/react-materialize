@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
@@ -13,8 +12,13 @@ class TimePicker extends React.Component {
 
   componentDidMount() {
     if (typeof M !== 'undefined') {
+      const { onChange } = this.props;
       const elem = document.getElementById(this.id);
-      this.instance = M.Timepicker.init(elem, this.props.options);
+      const options = onChange
+        ? { ...this.props.options, onSelect: onChange }
+        : this.props.options;
+
+      this.instance = M.Timepicker.init(elem, options);
     }
   }
 
@@ -25,16 +29,8 @@ class TimePicker extends React.Component {
   }
 
   render() {
-    const { id, onChange, ...other } = this.props;
-    const onSelect = onChange;
-
     return (
-      <TextInput
-        id={this.id}
-        inputClassName="timepicker"
-        onSelect={onSelect}
-        {...other}
-      />
+      <TextInput id={this.id} inputClassName="timepicker" {...this.props} />
     );
   }
 }
@@ -82,7 +78,11 @@ TimePicker.propTypes = {
      * Internationalization options.
      * @default See i18n documentation.
      */
-    i18n: PropTypes.any,
+    i18n: PropTypes.shape({
+      cancel: PropTypes.string,
+      clear: PropTypes.string,
+      done: PropTypes.string
+    }),
     /**
      * Automatically close picker when minute is selected.
      * @default false
@@ -102,28 +102,51 @@ TimePicker.propTypes = {
      * Callback function called before modal is opened.
      * @default null
      */
-    onOpenStart: PropTypes.any,
+    onOpenStart: PropTypes.func,
     /**
      * Callback function called after modal is opened.
      * @default null
      */
-    onOpenEnd: PropTypes.any,
+    onOpenEnd: PropTypes.func,
     /**
      * Callback function called before modal is closed.
      * @default null
      */
-    onCloseStart: PropTypes.any,
+    onCloseStart: PropTypes.func,
     /**
      * Callback function called after modal is closed.
      * @default null
      */
-    onCloseEnd: PropTypes.any,
+    onCloseEnd: PropTypes.func,
     /**
      * Callback function when a time is selected, first parameter is the hour and the second is the minute.
      * @default null
      */
-    onSelect: PropTypes.any
+    onSelect: PropTypes.func
   })
+};
+
+TimePicker.defaultProps = {
+  options: {
+    duration: 350,
+    container: null,
+    showClearBtn: false,
+    defaultTime: 'now',
+    fromNow: 0,
+    i18n: {
+      cancel: 'Cancel',
+      clear: 'Clear',
+      done: 'Ok'
+    },
+    autoClose: false,
+    twelveHour: true,
+    vibrate: true,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null,
+    onSelect: null
+  }
 };
 
 export default TimePicker;
