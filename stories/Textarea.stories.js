@@ -1,8 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { text, boolean, number, withKnobs } from '@storybook/addon-knobs';
+import Row from '../src/Row';
 import Textarea from '../src/Textarea';
 
 const stories = storiesOf('Components|Textarea', module);
+stories.addDecorator(withKnobs);
 
 stories.addParameters({
   info: {
@@ -13,12 +16,40 @@ stories.addParameters({
   }
 });
 
-stories.add('Textarea', () => <Textarea />);
+stories.add('Textarea', () => {
+  const defaultValue = 12;
+  const options = {
+    range: true,
+    min: 1,
+    max: 12,
+    step: 1
+  };
 
-stories.add('Disabled', () => <Textarea value="I was here" disabled />);
+  return (
+    <Row>
+      <Textarea
+        s={number('s', defaultValue, options)}
+        m={number('m', defaultValue, options)}
+        l={number('l', defaultValue, options)}
+        xl={number('xl', defaultValue, options)}
+      />
+    </Row>
+  );
+});
 
-stories.add('Placeholder', () => <Textarea placeholder="I was here" />);
+stories.add('Disabled', () => (
+  <Textarea
+    value={text('value', 'I was here')}
+    disabled={boolean('disabled', true)}
+  />
+));
 
-stories.add('Label', () => <Textarea label="Write something here..." />);
+stories.add('Placeholder', () => (
+  <Textarea placeholder={text('placeholder', 'I was here')} />
+));
 
-stories.add('Icon', () => <Textarea icon="mode_edit" />);
+stories.add('Label', () => (
+  <Textarea label={text('label', 'Write something here...')} />
+));
+
+stories.add('Icon', () => <Textarea icon={text('icon', 'mode_edit')} />);
