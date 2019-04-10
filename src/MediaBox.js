@@ -20,6 +20,8 @@ class MediaBox extends Component {
   render() {
     const { src, className, caption, ...props } = this.props;
 
+    delete props.options;
+
     return (
       <img
         className={cx('materialboxed', className)}
