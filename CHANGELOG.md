@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.0.5
+
+- Apply iconClassName to textarea icon #820
+- Add SideNav stories #807
+- Fix textarea custom css classes #806
+
 ### 3.0.4
 
 - Textarea now correctly handles layout classes (CloudPower97 #794)

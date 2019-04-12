@@ -10,12 +10,15 @@ class Textarea extends Component {
     M.textareaAutoResize(this._textarea);
   }
 
-  renderIcon(icon) {
-    return <Icon className="material-icons prefix">{icon}</Icon>;
+  renderIcon(icon, className) {
+    return (
+      <Icon className={cx('material-icons prefix', className)}>{icon}</Icon>
+    );
   }
 
   render() {
     const {
+      className,
       s,
       m,
       l,
@@ -47,13 +50,13 @@ class Textarea extends Component {
       <div className={wrapperClasses}>
         {icon && this.renderIcon(icon, iconClassName)}
         <textarea
+          {...other}
           ref={input => {
             this._textarea = input;
           }}
           onChange={onChange}
           id={computedId}
-          className="materialize-textarea"
-          {...other}
+          className={cx('materialize-textarea', className)}
         />
         <label htmlFor={computedId}>{label}</label>
       </div>
@@ -110,7 +113,11 @@ Textarea.propTypes = {
   /*
   * predefined value
   */
-  value: PropTypes.string
+  value: PropTypes.string,
+  /*
+  * textarea classname
+  */
+  className: PropTypes.string
 };
 
 export default Textarea;

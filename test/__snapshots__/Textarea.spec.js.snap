@@ -21,7 +21,7 @@ exports[`<Textarea /> Icon 1`] = `
   className="input-field col"
 >
   <Icon
-    className="material-icons prefix"
+    className="material-icons prefix red"
   >
     mode_edit
   </Icon>
