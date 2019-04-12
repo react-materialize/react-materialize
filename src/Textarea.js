@@ -18,6 +18,7 @@ class Textarea extends Component {
 
   render() {
     const {
+      className,
       s,
       m,
       l,
@@ -49,13 +50,13 @@ class Textarea extends Component {
       <div className={wrapperClasses}>
         {icon && this.renderIcon(icon, iconClassName)}
         <textarea
+          {...other}
           ref={input => {
             this._textarea = input;
           }}
           onChange={onChange}
           id={computedId}
-          className="materialize-textarea"
-          {...other}
+          className={cx('materialize-textarea', className)}
         />
         <label htmlFor={computedId}>{label}</label>
       </div>
@@ -114,7 +115,7 @@ Textarea.propTypes = {
   */
   value: PropTypes.string,
   /*
-  * predefined value
+  * textarea classname
   */
   className: PropTypes.string
 };

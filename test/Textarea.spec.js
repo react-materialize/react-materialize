@@ -47,4 +47,11 @@ describe('<Textarea />', () => {
     wrapper = shallow(<Textarea icon="mode_edit" iconClassName="red" />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('with custom className', () => {
+    wrapper = shallow(<Textarea className="custom-class" />);
+    const textareaElement = wrapper.find('textarea');
+    expect(textareaElement.hasClass('materialize-textarea')).toBeTruthy();
+    expect(textareaElement.hasClass('custom-class')).toBeTruthy();
+  });
 });
