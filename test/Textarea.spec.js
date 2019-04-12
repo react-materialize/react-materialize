@@ -44,7 +44,7 @@ describe('<Textarea />', () => {
   });
 
   test('Icon', () => {
-    wrapper = shallow(<Textarea icon="mode_edit" />);
+    wrapper = shallow(<Textarea icon="mode_edit" iconClassName="red" />);
     expect(wrapper).toMatchSnapshot();
   });
 });

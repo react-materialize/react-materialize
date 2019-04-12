@@ -10,8 +10,10 @@ class Textarea extends Component {
     M.textareaAutoResize(this._textarea);
   }
 
-  renderIcon(icon) {
-    return <Icon className="material-icons prefix">{icon}</Icon>;
+  renderIcon(icon, className) {
+    return (
+      <Icon className={cx('material-icons prefix', className)}>{icon}</Icon>
+    );
   }
 
   render() {
@@ -110,7 +112,11 @@ Textarea.propTypes = {
   /*
   * predefined value
   */
-  value: PropTypes.string
+  value: PropTypes.string,
+  /*
+  * predefined value
+  */
+  className: PropTypes.string
 };
 
 export default Textarea;
