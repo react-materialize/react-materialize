@@ -89,6 +89,10 @@ describe('<Select />', () => {
       selectInstanceDestroyMock.mockClear();
     });
 
+    afterAll(() => {
+      restore();
+    });
+
     test('calls FormSelect', () => {
       mount(<Select />);
 
