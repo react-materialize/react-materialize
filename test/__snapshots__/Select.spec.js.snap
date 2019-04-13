@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> with icon 1`] = `
+<div
+  className="input-field col"
+>
+  <Icon
+    className="prefix"
+  >
+    cloud
+  </Icon>
+  <select
+    className=""
+    id="mockId"
+    onChange={[Function]}
+    type="select"
+  />
+</div>
+`;

@@ -52,7 +52,7 @@ describe('<Select />', () => {
 
   test('with icon', () => {
     wrapper = shallow(<Select icon="cloud" />);
-    expect(wrapper.find('i.material-icons.prefix')).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('renders options', () => {
@@ -93,6 +93,29 @@ describe('<Select />', () => {
       mount(<Select />);
 
       expect(selectInitMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('with default options if none are given', () => {
+      mount(<Select />);
+
+      expect(selectInitMock).toHaveBeenCalledWith({
+        classes: '',
+        dropdownOptions: {
+          alignment: 'left',
+          autoTrigger: true,
+          constrainWidth: true,
+          container: null,
+          coverTrigger: true,
+          closeOnClick: true,
+          hover: false,
+          inDuration: 150,
+          outDuration: 250,
+          onOpenStart: null,
+          onOpenEnd: null,
+          onCloseStart: null,
+          onCloseEnd: null
+        }
+      });
     });
   });
 });
