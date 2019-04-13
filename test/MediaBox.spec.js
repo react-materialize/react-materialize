@@ -25,7 +25,7 @@ describe('<MediaBox />', () => {
     wrapper = shallow(
       <MediaBox
         className="more"
-        src="image.jpg"
+        image={<img src="image.jpg" alt="" />}
         caption="A demo media box1"
         width="650"
       />
@@ -41,7 +41,7 @@ describe('<MediaBox />', () => {
     });
 
     test('calls Materialbox', () => {
-      mount(<MediaBox />);
+      mount(<MediaBox image={<img src="image.jpg" alt="" />} />);
 
       expect(materialboxInitMock).toHaveBeenCalledTimes(1);
     });
@@ -52,7 +52,9 @@ describe('<MediaBox />', () => {
         outDuration: 250
       };
 
-      mount(<MediaBox options={options} />);
+      mount(
+        <MediaBox image={<img src="image.jpg" alt="" />} options={options} />
+      );
 
       expect(materialboxInitMock).toHaveBeenCalledWith(options);
     });
