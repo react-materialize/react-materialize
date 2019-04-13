@@ -15,31 +15,43 @@ stories.addParameters({
 
 stories.addDecorator(withKnobs);
 
-stories.add('Default', () => <Chip>{text('text', 'Jane Doe')}</Chip>);
+stories.add('Default', () => <Chip>{text('text', 'Jane Doe')}</Chip>, {
+  notes:
+    'Chips can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.'
+});
 
-stories.add('Tags', () => <Chip close={boolean('close', true)}>Tag</Chip>);
+stories.add('Tags', () => <Chip close={boolean('close', true)}>Tag</Chip>, {
+  notes:
+    'To create a tag chip just add a close icon inside with the prop `close`.'
+});
 
-stories.add('Contacts', () => (
-  <Chip>
-    <img
-      src={text('image', 'https://materializecss.com/images/yuna.jpg')}
-      className="responsive-img"
-      alt="Contact Person"
-    />
-    {text('text', 'Jane Doe')}
-  </Chip>
-));
+stories.add(
+  'Contacts',
+  () => (
+    <Chip>
+      <img
+        src={text('image', 'https://materializecss.com/images/yuna.jpg')}
+        className="responsive-img"
+        alt="Contact Person"
+      />
+      {text('text', 'Jane Doe')}
+    </Chip>
+  ),
+  {
+    notes: 'To create a contact chip just add an img inside.'
+  }
+);
 
-stories.add('Javascript Plugin', () => (
-  <Fragment>
-    <p>
-      To add tags, just enter your tag text and press enter. You can delete them
-      by clicking on the close icon or by using your delete button.
-    </p>
-    <Chip options={{}} />
+const JavaScriptPlugin = storiesOf('Components|Chip/Javascript Plugin', module);
 
-    <p>Set initial tags.</p>
+JavaScriptPlugin.add('Default', () => <Chip options={{}} />, {
+  notes:
+    'To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by using your delete button.'
+});
 
+JavaScriptPlugin.add(
+  'Initial tags',
+  () => (
     <Chip
       options={{
         data: [
@@ -55,18 +67,30 @@ stories.add('Javascript Plugin', () => (
         ]
       }}
     />
+  ),
+  {
+    notes: 'Set initial tags.'
+  }
+);
 
-    <p>Use placeholders and override hint texts.</p>
-
+JavaScriptPlugin.add(
+  'Placeholders',
+  () => (
     <Chip
       options={{
         placeholder: 'Enter a tag',
         secondaryPlaceholder: '+Tag'
       }}
     />
+  ),
+  {
+    notes: 'Use placeholders and override hint texts.'
+  }
+);
 
-    <p>Use autocomplete with chips.</p>
-
+JavaScriptPlugin.add(
+  'Autocomplete',
+  () => (
     <Chip
       options={{
         autocompleteOptions: {
@@ -80,5 +104,8 @@ stories.add('Javascript Plugin', () => (
         }
       }}
     />
-  </Fragment>
-));
+  ),
+  {
+    notes: 'Use autocomplete with chips.'
+  }
+);
