@@ -1,12 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Checkbox /> does not overwrite materialize-css classnames 1`] = `
+<Checkbox
+  className="my-class"
+  filledIn={true}
+  label="red"
+  value="red"
+>
+  <label
+    htmlFor="checkboxmockId"
+  >
+    <input
+      className="filled-in my-class"
+      id="checkboxmockId"
+      type="checkbox"
+      value="red"
+    />
+    <span>
+      red
+    </span>
+  </label>
+</Checkbox>
+`;
+
 exports[`<Checkbox /> filled-in 1`] = `
 <label
-  htmlFor="mockId"
+  htmlFor="checkboxmockId"
 >
   <input
     className="filled-in"
-    id="mockId"
+    id="checkboxmockId"
     type="checkbox"
     value="red"
   />
@@ -18,11 +41,11 @@ exports[`<Checkbox /> filled-in 1`] = `
 
 exports[`<Checkbox /> renders 1`] = `
 <label
-  htmlFor="mockId"
+  htmlFor="checkboxmockId"
 >
   <input
     className=""
-    id="mockId"
+    id="checkboxmockId"
     type="checkbox"
     value="red"
   />
@@ -34,12 +57,12 @@ exports[`<Checkbox /> renders 1`] = `
 
 exports[`<Checkbox /> renders disabled 1`] = `
 <label
-  htmlFor="mockId"
+  htmlFor="checkboxmockId"
 >
   <input
     className=""
     disabled={true}
-    id="mockId"
+    id="checkboxmockId"
     type="checkbox"
     value="red"
   />
@@ -67,11 +90,11 @@ exports[`<Checkbox /> with id 1`] = `
 
 exports[`<Checkbox /> with indeterminate 1`] = `
 <label
-  htmlFor="indeterminate-checkbox"
+  htmlFor="indeterminate-checkboxmockId"
 >
   <input
     className=""
-    id="indeterminate-checkbox"
+    id="indeterminate-checkboxmockId"
     type="checkbox"
     value="red"
   />

@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 
 const Checkbox = ({
+  className,
   checked,
   onChange,
   filledIn,
@@ -11,27 +12,24 @@ const Checkbox = ({
   disabled,
   value,
   id,
-  indeterminate
+  indeterminate,
+  ...other
 }) => {
-  let computedId;
-  if (indeterminate) {
-    computedId = 'indeterminate-checkbox';
-  } else if (id) {
-    computedId = id;
-  } else {
-    computedId = idgen();
-  }
+  const computedId =
+    id ||
+    (indeterminate ? `indeterminate-checkbox${idgen()}` : `checkbox${idgen()}`);
 
   return (
     <label htmlFor={computedId}>
       <input
         id={computedId}
-        className={cx({ 'filled-in': filledIn })}
+        className={cx({ 'filled-in': filledIn }, className)}
         disabled={disabled}
         onChange={onChange}
         type="checkbox"
-        defaultChecked={checked}
+        checked={checked}
         value={value}
+        {...other}
       />
       <span>{label}</span>
     </label>
@@ -39,6 +37,7 @@ const Checkbox = ({
 };
 
 Checkbox.propTypes = {
+  className: PropTypes.string,
   /*
    * checkbox value
    */
@@ -69,7 +68,7 @@ Checkbox.propTypes = {
    */
   disabled: PropTypes.bool,
   /*
-   * initialise checkbox checked
+   * A Boolean attribute indicating whether or not this checkbox is checked
    */
   checked: PropTypes.bool
 };
