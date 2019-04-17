@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Dropdown from '../src/Dropdown';
 import Divider from '../src/Divider';
 import Button from '../src/Button';
+import Icon from '../src/Icon';
 
 const stories = storiesOf('Javascript|Dropdown', module);
 
@@ -15,9 +16,16 @@ stories.addParameters({
 });
 
 stories.add('Default', () => (
-  <Dropdown trigger={<Button>open</Button>}>
-    <a href="#">test</a>
+  <Dropdown trigger={<Button>Drop Me!</Button>}>
+    <a href="#">one</a>
+    <a href="#">two</a>
     <Divider />
-    <a href="#">test</a>
+    <a href="#">three</a>
+    <a href="#">
+      <Icon>view_module</Icon>four
+    </a>
+    <a href="#">
+      <Icon>cloud</Icon> five
+    </a>
   </Dropdown>
 ));
