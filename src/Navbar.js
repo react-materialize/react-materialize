@@ -2,7 +2,7 @@ import React, { Component, Fragment, Children } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
-import TextInput from '../src/TextInput';
+import TextInput from './TextInput';
 class Navbar extends Component {
   componentDidMount() {
     const { options } = this.props;
