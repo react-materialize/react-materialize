@@ -1,5 +1,15 @@
 # Changelog
 
+### 3.1.0
+
+- Add `defaultProps` to Dropdown #825
+- Remove unnecessary `div`; use `Fragment` in Modal #827
+- Dynamically update `checked` props in Checkbox #824
+- Allow the use of `picture` HTML element in Parallax #795
+- Add missing Chip stories #812
+- Add missing Navbar stories #813
+- Swipeable Tabs broken and className not passed to Tab #816
+
 ### 3.0.5
 
 - Apply iconClassName to textarea icon #820
