@@ -8,31 +8,39 @@ stories.addDecorator(withKnobs);
 
 const notes = `Add an autocomplete dropdown below your input 
   to suggest possible values in your form. You can 
-  populate the list of autocomplete options dynamically as well.`
+  populate the list of autocomplete options dynamically as well.`;
 
-stories.add('Default', () => (
-  <Autocomplete
-    options={{
-      data: {
-        ['Gus Fring']: null,
-        ['Saul Goodman']: null,
-        ['Tuco Salamanca']: 'https://placehold.it/250x250'
-      }
-    }}
-    placeholder="Insert here"
-  />
-), { notes });
+stories.add(
+  'Default',
+  () => (
+    <Autocomplete
+      options={{
+        data: {
+          ['Gus Fring']: null,
+          ['Saul Goodman']: null,
+          ['Tuco Salamanca']: 'https://placehold.it/250x250'
+        }
+      }}
+      placeholder="Insert here"
+    />
+  ),
+  { notes }
+);
 
-stories.add('With icon', () => (
-  <Autocomplete
-    options={{
-      data: {
-        ['Gus Fring']: null,
-        ['Saul Goodman']: null,
-        ['Tuco Salamanca']: 'https://placehold.it/250x250'
-      }
-    }}
-    placeholder="Insert here"
-    icon={text('icon', 'textsms')}
-  />
-), { notes });
+stories.add(
+  'With icon',
+  () => (
+    <Autocomplete
+      options={{
+        data: {
+          ['Gus Fring']: null,
+          ['Saul Goodman']: null,
+          ['Tuco Salamanca']: 'https://placehold.it/250x250'
+        }
+      }}
+      placeholder="Insert here"
+      icon={text('icon', 'textsms')}
+    />
+  ),
+  { notes }
+);

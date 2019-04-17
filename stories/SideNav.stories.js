@@ -25,8 +25,9 @@ stories.add('Default', () => (
     <SideNav
       trigger={<Button>SIDE NAV DEMO</Button>}
       options={{ closeOnClick: true }}
-      >
-      <SideNavItem userView
+    >
+      <SideNavItem
+        userView
         user={{
           background: 'https://placeimg.com/640/480/tech',
           image: reactMaterializeLogo,
@@ -34,11 +35,15 @@ stories.add('Default', () => (
           email: 'jdandturk@gmail.com'
         }}
       />
-      <SideNavItem href='#!icon' icon='cloud'>First Link With Icon</SideNavItem>
-      <SideNavItem href='#!second'>Second Link</SideNavItem>
+      <SideNavItem href="#!icon" icon="cloud">
+        First Link With Icon
+      </SideNavItem>
+      <SideNavItem href="#!second">Second Link</SideNavItem>
       <SideNavItem divider />
       <SideNavItem subheader>Subheader</SideNavItem>
-      <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
+      <SideNavItem waves href="#!third">
+        Third Link With Waves
+      </SideNavItem>
     </SideNav>
   </div>
 ));

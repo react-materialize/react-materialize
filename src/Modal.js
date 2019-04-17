@@ -124,8 +124,8 @@ Modal.propTypes = {
    */
   options: PropTypes.shape({
     /*
-    * Opacity of the modal overlay.
-    */
+     * Opacity of the modal overlay.
+     */
     opacity: PropTypes.number,
     /*
      * Transition in duration in milliseconds.
