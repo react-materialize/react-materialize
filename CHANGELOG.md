@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.1.1
+
+- Fix broken Navbar import
+
 ### 3.1.0
 
 - Add `defaultProps` to Dropdown #825
