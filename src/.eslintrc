@@ -1,0 +1,14 @@
+# JavaScript Standard Style Guide: http://standardjs.com
+# https://github.com/feross/eslint-config-standard-react
+rules:
+  no-restricted-imports: [
+    "error",
+    {
+      "paths": [
+        "../src/",
+      ],
+      "patterns": [
+        "../src/*",
+      ]
+    }
+  ]
