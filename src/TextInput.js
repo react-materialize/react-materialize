@@ -106,8 +106,15 @@ class TextInput extends Component {
         />
       );
 
-    const renderIcon = () =>
-      icon && <i className="material-icons prefix">{icon}</i>;
+    const renderIcon = () => {
+      if (!icon) return;
+
+      if (typeof icon === 'string') {
+        return <i className="material-icons prefix">{icon}</i>;
+      }
+
+      return React.cloneElement(icon, { className: 'prefix' });
+    };
 
     return (
       <div className={wrapperClasses}>
@@ -163,9 +170,9 @@ TextInput.propTypes = {
    */
   id: PropTypes.string,
   /*
-   * prefix icon
+   * prefix icon, name of the icon or a node
    */
-  icon: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /*
    * label text
    */
