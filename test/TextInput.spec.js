@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import TextInput from '../src/TextInput';
+import Icon from '../src/Icon';
 
 describe('<TextInput />', () => {
   let wrapper;
@@ -48,16 +49,31 @@ describe('<TextInput />', () => {
     expect(wrapper.find('input').prop('type')).toEqual('password');
   });
 
-  test('with icon', () => {
-    wrapper = shallow(<TextInput icon="cloud" />);
-    expect(wrapper.find('i.material-icons.prefix')).toHaveLength(1);
-  });
-
   test('handles other props', () => {
     const mockOnChange = jest.fn();
     wrapper = shallow(<TextInput onChange={mockOnChange} />);
     wrapper.find('input').simulate('change', { target: { value: '7' } });
 
     expect(mockOnChange).toHaveBeenCalledTimes(1);
+  });
+
+  describe('Icon', () => {
+    test('renders as a string', () => {
+      wrapper = shallow(<TextInput icon="cloud" />);
+      expect(wrapper.find('i.material-icons.prefix')).toHaveLength(1);
+    });
+
+    test('renders as a node', () => {
+      const mockIconClick = jest.fn();
+      wrapper = shallow(
+        <TextInput icon={<Icon onClick={mockIconClick}>cloud</Icon>} />
+      );
+
+      const iconWrapper = wrapper.find('Icon').shallow();
+      expect(iconWrapper.find('i.material-icons.prefix')).toHaveLength(1);
+
+      wrapper.find('Icon').simulate('click');
+      expect(mockIconClick).toBeCalled();
+    });
   });
 });

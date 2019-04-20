@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, withKnobs } from '@storybook/addon-knobs';
 import TextInput from '../src/TextInput';
+import Icon from '../src/Icon';
 
 const stories = storiesOf('Components|TextInput', module);
 stories.addDecorator(withKnobs);
@@ -55,6 +56,10 @@ stories.add('with custom error/success', () => (
   />
 ));
 
-stories.add('with Icon', () => (
+stories.add('with icon string', () => (
   <TextInput icon={text('icon', 'email')} label="Email" />
+));
+
+stories.add('with icon node', () => (
+  <TextInput icon={<Icon>{text('icon', 'email')}</Icon>} label="Email" />
 ));
