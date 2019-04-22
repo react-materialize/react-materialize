@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Carousel from '../src/Carousel';
 import mocker from './helper/new-mocker';
 
@@ -102,6 +102,22 @@ describe('<Carousel />', () => {
       const options = { padding: 12, fullWidth: true, indicators: false };
       wrapper = shallow(<Carousel images={images} options={options} />);
       expect(carouselInitMock).toHaveBeenCalledWith(options);
+    });
+  });
+  describe('undefined M', () => {
+    let __M;
+    beforeEach(() => {
+      __M = global.M;
+      global.M = undefined;
+    });
+    afterEach(() => {
+      global.M = __M;
+    });
+    test('doesnt throw without M', () => {
+      const tooltip = {};
+      expect(() =>
+        mount(<Carousel options={{ fullWidth: true }} />)
+      ).not.toThrow();
     });
   });
 });

@@ -142,4 +142,23 @@ describe('<Collapsible />', () => {
       .simulate('click');
     expect(onSelect).toHaveBeenCalledWith(clickedIndex);
   });
+  describe('undefined M', () => {
+    let __M;
+    beforeEach(() => {
+      __M = global.M;
+      global.M = undefined;
+    });
+    afterEach(() => {
+      global.M = __M;
+    });
+    test('doesnt throw without M', () => {
+      expect(() =>
+        mount(
+          <Collapsible accordion>
+            <CollapsibleItem header="A">A</CollapsibleItem>
+          </Collapsible>
+        )
+      ).not.toThrow();
+    });
+  });
 });

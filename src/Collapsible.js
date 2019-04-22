@@ -15,10 +15,12 @@ class Collapsible extends Component {
   }
 
   componentDidMount() {
-    this.instance = M.Collapsible.init(this._collapsible, {
-      accordion: this.props.accordion,
-      ...this.props.options
-    });
+    if (typeof M !== 'undefined') {
+      this.instance = M.Collapsible.init(this._collapsible, {
+        accordion: this.props.accordion,
+        ...this.props.options
+      });
+    }
   }
 
   componentWillUnmount() {

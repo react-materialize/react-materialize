@@ -120,6 +120,23 @@ describe('Button', () => {
     });
   });
 
+  describe('undefined M', () => {
+    let __M;
+    beforeEach(() => {
+      __M = global.M;
+      global.M = undefined;
+    });
+    afterEach(() => {
+      global.M = __M;
+    });
+    test('doesnt throw without M', () => {
+      const tooltip = {};
+      expect(() =>
+        mount(<Button tooltip={tooltip}>Stuff</Button>)
+      ).not.toThrow();
+    });
+  });
+
   describe('with fixed action button', () => {
     const fabInitMock = jest.fn();
     const fabInstanceDestroyMock = jest.fn();

@@ -7,7 +7,9 @@ import constants from './constants';
 
 class Textarea extends Component {
   componentDidUpdate() {
-    M.textareaAutoResize(this._textarea);
+    if (typeof M !== 'undefined') {
+      M.textareaAutoResize(this._textarea);
+    }
   }
 
   renderIcon(icon, className) {

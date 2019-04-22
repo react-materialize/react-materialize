@@ -22,7 +22,7 @@ class TextInput extends Component {
   componentDidUpdate(prevProps) {
     const { value } = this.props;
 
-    if (value !== prevProps.value) {
+    if (value !== prevProps.value && typeof M !== 'undefined') {
       M.updateTextFields();
     }
   }
