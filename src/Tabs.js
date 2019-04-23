@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
 
 import Row from './Row';
-import Col from './Col';
+import Tab from './Tab';
 
 class Tabs extends Component {
   constructor(props) {
@@ -19,19 +19,19 @@ class Tabs extends Component {
   }
 
   componentDidMount() {
-    const { tabOptions = {} } = this.props;
+    const { options } = this.props;
 
     if (typeof M !== 'undefined') {
-      this.instance = M.Tabs.init(this._tabsEl, tabOptions);
+      this.instance = M.Tabs.init(this._tabsEl, options);
     }
   }
 
   componentDidUpdate() {
-    const { tabOptions = {} } = this.props;
+    const { options } = this.props;
 
     if (typeof M !== 'undefined') {
       this.instance.destroy();
-      this.instance = M.Tabs.init(this._tabsEl, tabOptions);
+      this.instance = M.Tabs.init(this._tabsEl, options);
     }
   }
 
@@ -44,59 +44,44 @@ class Tabs extends Component {
   render() {
     const { children, className, defaultValue } = this.props;
     return (
-      <Row>
-        <Col s={12}>
-          <ul className={cx('tabs', className)} ref={el => (this._tabsEl = el)}>
-            {React.Children.map(children, (child, id) => {
-              const idx = `${this.scope}${id}`;
-              const {
-                active,
-                className,
-                disabled,
-                tabWidth,
-                title
-              } = child.props;
+      <Fragment>
+        <ul className={cx('tabs', className)} ref={el => (this._tabsEl = el)}>
+          {React.Children.map(children, (child, id) => {
+            const idx = `${this.scope}${id}`;
+            const { active, disabled, tabWidth, title } = child.props;
 
-              const classes = {
-                [`s${tabWidth}`]: tabWidth,
-                tab: true,
-                disabled,
-                col: true
-              };
+            const classes = {
+              [`s${tabWidth}`]: tabWidth,
+              tab: true,
+              disabled,
+              col: true
+            };
 
-              return (
-                <li className={cx(classes, className)} key={idx}>
-                  <a
-                    href={`#tab_${idx}`}
-                    className={active || defaultValue === idx ? 'active' : ''}
-                    {...(disabled
-                      ? {}
-                      : { onClick: this._onSelect.bind(this, idx) })}
-                  >
-                    {title}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </Col>
-        {React.Children.map(children, (child, id) => {
-          const idx = `${this.scope}${id}`;
-          return (
-            <Col
-              id={`tab_${idx}`}
-              s={12}
-              key={`tab${idx}`}
-              style={{
-                display:
-                  child.props.active || defaultValue === idx ? 'block' : 'none'
-              }}
-            >
-              {child.props.children}
-            </Col>
-          );
-        })}
-      </Row>
+            return (
+              <li className={cx(classes)} key={idx}>
+                <a
+                  href={`#tab_${idx}`}
+                  className={active || defaultValue === idx ? 'active' : ''}
+                  {...(disabled
+                    ? {}
+                    : { onClick: this._onSelect.bind(this, idx) })}
+                >
+                  {title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <Row>
+          {React.Children.map(children, (child, id) => {
+            const idx = `${this.scope}${id}`;
+            return cloneElement(child, {
+              defaultValue,
+              idx
+            });
+          })}
+        </Row>
+      </Fragment>
     );
   }
 }
@@ -110,7 +95,7 @@ Tabs.propTypes = {
    * More info
    * <a href='http://materializecss.com/tabs.html'>http://materializecss.com/tabs.html</a>
    */
-  tabOptions: PropTypes.shape({
+  options: PropTypes.shape({
     /*
      * Transition duration in milliseconds.
      * @default 300
@@ -132,6 +117,15 @@ Tabs.propTypes = {
      */
     responsiveThreshold: PropTypes.number
   })
+};
+
+Tab.defaultProps = {
+  options: {
+    duration: 300,
+    onShow: null,
+    swipeable: false,
+    responsiveThreshold: Infinity
+  }
 };
 
 export default Tabs;

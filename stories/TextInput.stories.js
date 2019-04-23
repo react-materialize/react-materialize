@@ -1,8 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { text, boolean, withKnobs } from '@storybook/addon-knobs';
 import TextInput from '../src/TextInput';
+import Icon from '../src/Icon';
 
 const stories = storiesOf('Components|TextInput', module);
+stories.addDecorator(withKnobs);
 
 stories.addParameters({
   info: {
@@ -17,26 +20,46 @@ stories.addParameters({
 
 stories.add('Default', () => <TextInput />);
 
-stories.add('Label', () => <TextInput label="First Name" />);
+stories.add('Label', () => <TextInput label={text('label', 'First Name')} />);
 
-stories.add('Placeholder', () => <TextInput placeholder="First Name" />);
+stories.add('Placeholder', () => (
+  <TextInput placeholder={text('placeholder', 'First Name')} />
+));
 
-stories.add('Predefined value', () => <TextInput value="John" />);
+stories.add('Predefined value', () => (
+  <TextInput value={text('value', 'John')} />
+));
 
-stories.add('Disabled', () => <TextInput disabled value="John" />);
+stories.add('Disabled', () => (
+  <TextInput disabled={boolean('disabled', true)} value="John" />
+));
 
-stories.add('Password', () => <TextInput password label="Password" />);
+stories.add('Password', () => (
+  <TextInput password={boolean('password', true)} label="Password" />
+));
 
-stories.add('Email validate', () => <TextInput email validate label="Email" />);
+stories.add('Email validate', () => (
+  <TextInput
+    email={boolean('email', true)}
+    validate={boolean('validate', true)}
+    label="Email"
+  />
+));
 
 stories.add('with custom error/success', () => (
   <TextInput
     email
     validate
     label="Email"
-    error="Wrong Email sir"
-    success="Great"
+    error={text('error', 'Wrong Email sir')}
+    success={text('success', 'Great')}
   />
 ));
 
-stories.add('with Icon', () => <TextInput icon="email" label="Email" />);
+stories.add('with icon string', () => (
+  <TextInput icon={text('icon', 'email')} label="Email" />
+));
+
+stories.add('with icon node', () => (
+  <TextInput icon={<Icon>{text('icon', 'email')}</Icon>} label="Email" />
+));

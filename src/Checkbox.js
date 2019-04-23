@@ -62,6 +62,7 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
+  className: PropTypes.string,
   /*
    * checkbox value
    */
@@ -92,7 +93,7 @@ Checkbox.propTypes = {
    */
   disabled: PropTypes.bool,
   /*
-   * initialise checkbox checked
+   * A Boolean attribute indicating whether or not this checkbox is checked
    */
   checked: PropTypes.bool
 };

@@ -1,5 +1,35 @@
 # Changelog
 
+### 3.1.1
+
+- Fix broken Navbar import
+
+### 3.1.0
+
+- Add `defaultProps` to Dropdown #825
+- Remove unnecessary `div`; use `Fragment` in Modal #827
+- Dynamically update `checked` props in Checkbox #824
+- Allow the use of `picture` HTML element in Parallax #795
+- Add missing Chip stories #812
+- Add missing Navbar stories #813
+- Swipeable Tabs broken and className not passed to Tab #816
+
+### 3.0.5
+
+- Apply iconClassName to textarea icon #820
+- Add SideNav stories #807
+- Fix textarea custom css classes #806
+
+### 3.0.4
+
+- Textarea now correctly handles layout classes (CloudPower97 #794)
+- Fix Datepicker now correctly onChange (CloudPower97 #800)
+- Caption component is now exported (CloudPower97 #802)
+- Add defaultProps to TimePicker component (CloudPower97 #803)
+- Add missing knobs to TextInput story (CloudPower97 #805)
+- Fix FAB to Toolbar bug (CloudPower97 #808)
+- Add missing Collection stories (CloudPower97 #810)
+
 ### 3.0.3
 
 - Add Parallax story (onluiz #771)

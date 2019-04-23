@@ -29,81 +29,79 @@ exports[`<Modal /> renders a modal has children 1`] = `
     </button>
   }
 >
-  <div>
-    <button
-      onClick={[Function]}
-    >
-      click
-    </button>
-    <Portal
-      containerInfo={
-        <div>
+  <button
+    onClick={[Function]}
+  >
+    click
+  </button>
+  <Portal
+    containerInfo={
+      <div>
+        <div
+          class="modal"
+          id="modal_mockId"
+        >
           <div
-            class="modal"
-            id="modal_mockId"
+            class="modal-content"
           >
-            <div
-              class="modal-content"
-            >
-              <h4>
-                Modal header
-              </h4>
-              <div>
-                <h1>
-                  Hello
-                </h1>
-              </div>
-            </div>
-            <div
-              class="modal-footer"
-            >
-              <button
-                class="waves-effect waves-green btn-flat modal-close"
-              >
-                Close
-              </button>
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
             </div>
           </div>
-        </div>
-      }
-    >
-      <div
-        className="modal"
-        id="modal_mockId"
-      >
-        <div
-          className="modal-content"
-        >
-          <h4>
-            Modal header
-          </h4>
-          <div>
-            <h1>
-              Hello
-            </h1>
-          </div>
-        </div>
-        <div
-          className="modal-footer"
-        >
-          <Button
-            flat={true}
-            key=".0"
-            modal="close"
-            node="button"
-            waves="green"
+          <div
+            class="modal-footer"
           >
             <button
-              className="waves-effect waves-green btn-flat modal-close"
-              disabled={false}
+              class="waves-effect waves-green btn-flat modal-close"
             >
               Close
             </button>
-          </Button>
+          </div>
         </div>
       </div>
-    </Portal>
-  </div>
+    }
+  >
+    <div
+      className="modal"
+      id="modal_mockId"
+    >
+      <div
+        className="modal-content"
+      >
+        <h4>
+          Modal header
+        </h4>
+        <div>
+          <h1>
+            Hello
+          </h1>
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <Button
+          flat={true}
+          key=".0"
+          modal="close"
+          node="button"
+          waves="green"
+        >
+          <button
+            className="waves-effect waves-green btn-flat modal-close"
+            disabled={false}
+          >
+            Close
+          </button>
+        </Button>
+      </div>
+    </div>
+  </Portal>
 </Modal>
 `;
 
@@ -136,81 +134,79 @@ exports[`<Modal /> renders a trigger renders 1`] = `
     </button>
   }
 >
-  <div>
-    <button
-      onClick={[Function]}
-    >
-      click
-    </button>
-    <Portal
-      containerInfo={
-        <div>
+  <button
+    onClick={[Function]}
+  >
+    click
+  </button>
+  <Portal
+    containerInfo={
+      <div>
+        <div
+          class="modal"
+          id="modal_mockId"
+        >
           <div
-            class="modal"
-            id="modal_mockId"
+            class="modal-content"
           >
-            <div
-              class="modal-content"
-            >
-              <h4>
-                Modal header
-              </h4>
-              <div>
-                <h1>
-                  Hello
-                </h1>
-              </div>
-            </div>
-            <div
-              class="modal-footer"
-            >
-              <button
-                class="waves-effect waves-green btn-flat modal-close"
-              >
-                Close
-              </button>
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
             </div>
           </div>
-        </div>
-      }
-    >
-      <div
-        className="modal"
-        id="modal_mockId"
-      >
-        <div
-          className="modal-content"
-        >
-          <h4>
-            Modal header
-          </h4>
-          <div>
-            <h1>
-              Hello
-            </h1>
-          </div>
-        </div>
-        <div
-          className="modal-footer"
-        >
-          <Button
-            flat={true}
-            key=".0"
-            modal="close"
-            node="button"
-            waves="green"
+          <div
+            class="modal-footer"
           >
             <button
-              className="waves-effect waves-green btn-flat modal-close"
-              disabled={false}
+              class="waves-effect waves-green btn-flat modal-close"
             >
               Close
             </button>
-          </Button>
+          </div>
         </div>
       </div>
-    </Portal>
-  </div>
+    }
+  >
+    <div
+      className="modal"
+      id="modal_mockId"
+    >
+      <div
+        className="modal-content"
+      >
+        <h4>
+          Modal header
+        </h4>
+        <div>
+          <h1>
+            Hello
+          </h1>
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <Button
+          flat={true}
+          key=".0"
+          modal="close"
+          node="button"
+          waves="green"
+        >
+          <button
+            className="waves-effect waves-green btn-flat modal-close"
+            disabled={false}
+          >
+            Close
+          </button>
+        </Button>
+      </div>
+    </div>
+  </Portal>
 </Modal>
 `;
 
@@ -237,71 +233,69 @@ exports[`<Modal /> without a trigger renders 1`] = `
     }
   }
 >
-  <div>
-    <Portal
-      containerInfo={
-        <div>
+  <Portal
+    containerInfo={
+      <div>
+        <div
+          class="modal"
+          id="modal_mockId"
+        >
           <div
-            class="modal"
-            id="modal_mockId"
+            class="modal-content"
           >
-            <div
-              class="modal-content"
-            >
-              <h4 />
-              <div>
-                <h1>
-                  Hello
-                </h1>
-              </div>
-            </div>
-            <div
-              class="modal-footer"
-            >
-              <button
-                class="waves-effect waves-green btn-flat modal-close"
-              >
-                Close
-              </button>
+            <h4 />
+            <div>
+              <h1>
+                Hello
+              </h1>
             </div>
           </div>
-        </div>
-      }
-    >
-      <div
-        className="modal"
-        id="modal_mockId"
-      >
-        <div
-          className="modal-content"
-        >
-          <h4 />
-          <div>
-            <h1>
-              Hello
-            </h1>
-          </div>
-        </div>
-        <div
-          className="modal-footer"
-        >
-          <Button
-            flat={true}
-            key=".0"
-            modal="close"
-            node="button"
-            waves="green"
+          <div
+            class="modal-footer"
           >
             <button
-              className="waves-effect waves-green btn-flat modal-close"
-              disabled={false}
+              class="waves-effect waves-green btn-flat modal-close"
             >
               Close
             </button>
-          </Button>
+          </div>
         </div>
       </div>
-    </Portal>
-  </div>
+    }
+  >
+    <div
+      className="modal"
+      id="modal_mockId"
+    >
+      <div
+        className="modal-content"
+      >
+        <h4 />
+        <div>
+          <h1>
+            Hello
+          </h1>
+        </div>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <Button
+          flat={true}
+          key=".0"
+          modal="close"
+          node="button"
+          waves="green"
+        >
+          <button
+            className="waves-effect waves-green btn-flat modal-close"
+            disabled={false}
+          >
+            Close
+          </button>
+        </Button>
+      </div>
+    </div>
+  </Portal>
 </Modal>
 `;

@@ -2,7 +2,7 @@
 
 exports[`<Textarea /> Disabled 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
@@ -18,10 +18,10 @@ exports[`<Textarea /> Disabled 1`] = `
 
 exports[`<Textarea /> Icon 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <Icon
-    className="material-icons prefix"
+    className="material-icons prefix red"
   >
     mode_edit
   </Icon>
@@ -37,7 +37,7 @@ exports[`<Textarea /> Icon 1`] = `
 
 exports[`<Textarea /> Label 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
@@ -53,7 +53,7 @@ exports[`<Textarea /> Label 1`] = `
 
 exports[`<Textarea /> Placeholder 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
@@ -68,7 +68,7 @@ exports[`<Textarea /> Placeholder 1`] = `
 
 exports[`<Textarea /> Textarea 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
