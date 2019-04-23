@@ -97,7 +97,7 @@ stories.add('Preselected Section', () => (
     <CollapsibleItem
       header="Yeah, you do seem to have a little 'shit creek' action going."
       icon="place"
-      className="active"
+      expanded
     >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>
