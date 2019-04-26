@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import { shallow, mount } from 'enzyme';
 import MediaBox from '../src/MediaBox';
 import mocker from './helper/new-mocker';
 
 describe('<MediaBox />', () => {
-  let wrapper;
+  const wrapper = (
+    <MediaBox className="more" caption="A demo media box1" width="650">
+      <img src="image.jpg" alt="" />
+    </MediaBox>
+  );
   const materialboxInitMock = jest.fn();
   const materialboxInstanceDestroyMock = jest.fn();
   const materialboxMock = {
@@ -22,16 +26,7 @@ describe('<MediaBox />', () => {
   });
 
   test('renders', () => {
-    wrapper = shallow(
-      <MediaBox
-        className="more"
-        image={<img src="image.jpg" alt="" />}
-        caption="A demo media box1"
-        width="650"
-      />
-    );
-
-    expect(wrapper).toMatchSnapshot();
+    expect(shallow(wrapper)).toMatchSnapshot();
   });
 
   describe('initialises', () => {
@@ -41,7 +36,7 @@ describe('<MediaBox />', () => {
     });
 
     test('calls Materialbox', () => {
-      mount(<MediaBox image={<img src="image.jpg" alt="" />} />);
+      mount(wrapper);
 
       expect(materialboxInitMock).toHaveBeenCalledTimes(1);
     });
@@ -52,9 +47,7 @@ describe('<MediaBox />', () => {
         outDuration: 250
       };
 
-      mount(
-        <MediaBox image={<img src="image.jpg" alt="" />} options={options} />
-      );
+      mount(cloneElement(wrapper, { options }));
 
       expect(materialboxInitMock).toHaveBeenCalledWith(options);
     });

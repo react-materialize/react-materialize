@@ -28,11 +28,11 @@ class MediaBox extends Component {
   }
 
   render() {
-    const { image, className, caption, ...props } = this.props;
+    const { children, className, caption, ...props } = this.props;
 
     delete props.options;
 
-    return cloneElement(image, {
+    return cloneElement(children, {
       id: this.id,
       className: cx('materialboxed', className),
       'data-caption': caption,
@@ -42,16 +42,13 @@ class MediaBox extends Component {
 }
 
 MediaBox.propTypes = {
+  children: PropTypes.node.isRequired,
   id: PropTypes.string,
   className: PropTypes.string,
   /**
    * The caption shown below the image when opened
    */
   caption: PropTypes.string,
-  /**
-   * The image
-   */
-  image: PropTypes.node.isRequired,
   options: PropTypes.shape({
     /**
      * Transition in duration in milliseconds.
