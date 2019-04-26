@@ -66,8 +66,8 @@ class Textarea extends Component {
 
 Textarea.propTypes = {
   /*
- * Strip away all layout classes such as col and sX
- */
+   * Strip away all layout classes such as col and sX
+   */
   noLayout: PropTypes.bool,
   /*
    * Responsive size for Mobile Devices
@@ -111,12 +111,12 @@ Textarea.propTypes = {
    */
   disabled: PropTypes.bool,
   /*
-  * predefined value
-  */
+   * predefined value
+   */
   value: PropTypes.string,
   /*
-  * textarea classname
-  */
+   * textarea classname
+   */
   className: PropTypes.string
 };
 
