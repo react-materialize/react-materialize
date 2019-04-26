@@ -1,5 +1,14 @@
 # Changelog
 
+### 3.2.0
+
+- Pass value prop as value to input #831
+- Select component improvements #822
+- Parallax story now uses the correct props #844
+- Checkbox component indeterminate state broken #809
+- Add missing Collapsible stories #814
+- Allow TextInput to have node as an Icon #840
+
 ### 3.1.1
 
 - Fix broken Navbar import
