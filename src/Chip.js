@@ -37,12 +37,10 @@ class Chip extends Component {
       chipContent = null;
     }
 
-    delete other.close;
-
     return (
       <div
         className={classes}
-        {...this.other}
+        {...other}
         ref={div => {
           this._chips = div;
         }}
