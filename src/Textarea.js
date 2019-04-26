@@ -6,6 +6,13 @@ import Icon from './Icon';
 import constants from './constants';
 
 class Textarea extends Component {
+  componentDidMount() {
+    if (typeof M !== undefined) {
+      // eslint-disable-next-line react/prop-types
+      this.props['data-length'] && M.CharacterCounter.init(this._textarea);
+    }
+  }
+
   componentDidUpdate() {
     if (typeof M !== 'undefined') {
       M.textareaAutoResize(this._textarea);

@@ -53,3 +53,14 @@ stories.add('Label', () => (
 ));
 
 stories.add('Icon', () => <Textarea icon={text('icon', 'mode_edit')} />);
+
+stories.add(
+  'Character Counter',
+  () => <Textarea label="Textarea" data-length={120} />,
+  {
+    info: {
+      text:
+        'Use a character counter in fields where a character restriction is in place.'
+    }
+  }
+);
