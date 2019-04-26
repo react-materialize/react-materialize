@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -21,7 +21,7 @@ class Modal extends Component {
 
   componentDidMount() {
     if (typeof M !== 'undefined') {
-      const { trigger, options, open } = this.props;
+      const { options, open } = this.props;
 
       this.instance = M.Modal.init(this._modal, options);
 
@@ -70,27 +70,26 @@ class Modal extends Component {
       className
     );
 
-    return this.modalRoot
-      ? ReactDOM.createPortal(
-          <div
-            {...other}
-            className={classes}
-            id={this.modalID}
-            ref={div => {
-              this._modal = div;
-            }}
-          >
-            <div className="modal-content">
-              <h4>{header}</h4>
-              {children}
-            </div>
-            <div className="modal-footer">
-              {React.Children.toArray(actions)}
-            </div>
-          </div>,
-          this.modalRoot
-        )
-      : null;
+    return (
+      this.modalRoot &&
+      ReactDOM.createPortal(
+        <div
+          {...other}
+          className={classes}
+          id={this.modalID}
+          ref={div => {
+            this._modal = div;
+          }}
+        >
+          <div className="modal-content">
+            <h4>{header}</h4>
+            {children}
+          </div>
+          <div className="modal-footer">{React.Children.toArray(actions)}</div>
+        </div>,
+        this.modalRoot
+      )
+    );
   }
 
   showModal(e) {
@@ -109,10 +108,10 @@ class Modal extends Component {
     const { trigger } = this.props;
 
     return (
-      <div>
+      <Fragment>
         {trigger && React.cloneElement(trigger, { onClick: this.showModal })}
         {this.renderModalPortal()}
-      </div>
+      </Fragment>
     );
   }
 }

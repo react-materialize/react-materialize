@@ -1,33 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Col from './Col';
 
 // This is just a holder for the props and children for tab, thus
 // there is no logic here.
-class Tab extends React.Component {
-  render() {
-    return null;
-  }
-}
-
+const Tab = ({ children, idx, className }) => (
+  <Col id={`tab_${idx}`} s={12} className={className}>
+    {children}
+  </Col>
+);
 Tab.propTypes = {
-  /**
-   * The title shown in the tabs list
-   */
-  title: PropTypes.node.isRequired,
-  /**
-   * The width of the Tab
-   */
-  tabWidth: PropTypes.number,
-  /**
-   * Pre-select the tab
-   * @default false
-   */
-  active: PropTypes.bool,
-  /**
-   * Disable the tab
-   * @default false
-   */
-  disabled: PropTypes.bool
+  children: PropTypes.node,
+  idx: PropTypes.string,
+  className: PropTypes.string
 };
 
 Tab.defaultProps = {

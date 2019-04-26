@@ -1,62 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tabs should create list of Tab itemt 1`] = `
-<Row>
-  <Col
-    s={12}
+exports[`Tabs should create list of Tab items 1`] = `
+<Fragment>
+  <ul
+    className="tabs"
   >
-    <ul
-      className="tabs"
+    <li
+      className="tab col"
+      key="mockId0/.0"
     >
-      <li
-        className="tab col"
-        key="mockId0/.0"
+      <a
+        className=""
+        href="#tab_mockId0"
+        onClick={[Function]}
       >
-        <a
-          className=""
-          href="#tab_mockId0"
-          onClick={[Function]}
-        >
-          one
-        </a>
-      </li>
-      <li
-        className="tab col"
-        key="mockId1/.1"
+        one
+      </a>
+    </li>
+    <li
+      className="tab col"
+      key="mockId1/.1"
+    >
+      <a
+        className=""
+        href="#tab_mockId1"
+        onClick={[Function]}
       >
-        <a
-          className=""
-          href="#tab_mockId1"
-          onClick={[Function]}
-        >
-          Two
-        </a>
-      </li>
-    </ul>
-  </Col>
-  <Col
-    id="tab_mockId0"
-    key="tabmockId0/.0"
-    s={12}
-    style={
-      Object {
-        "display": "none",
+        Two
+      </a>
+    </li>
+  </ul>
+  <Row>
+    <Tab
+      idx="mockId0"
+      key=".0"
+      options={
+        Object {
+          "duration": 300,
+          "onShow": null,
+          "responsiveThreshold": Infinity,
+          "swipeable": false,
+        }
       }
-    }
-  >
-    One
-  </Col>
-  <Col
-    id="tab_mockId1"
-    key="tabmockId1/.1"
-    s={12}
-    style={
-      Object {
-        "display": "none",
+      title="one"
+    >
+      One
+    </Tab>
+    <Tab
+      idx="mockId1"
+      key=".1"
+      options={
+        Object {
+          "duration": 300,
+          "onShow": null,
+          "responsiveThreshold": Infinity,
+          "swipeable": false,
+        }
       }
-    }
-  >
-    Two
-  </Col>
-</Row>
+      title="Two"
+    >
+      Two
+    </Tab>
+  </Row>
+</Fragment>
 `;

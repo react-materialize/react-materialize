@@ -15,7 +15,7 @@ class Parallax extends Component {
   }
 
   render() {
-    const { children, className, imageSrc, ...props } = this.props;
+    const { children, className, image, ...props } = this.props;
 
     delete props.options;
 
@@ -28,7 +28,7 @@ class Parallax extends Component {
             this._parallax = div;
           }}
         >
-          <img src={imageSrc} />
+          {image}
         </div>
       </div>
     );
@@ -39,9 +39,9 @@ Parallax.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   /**
-   * The image path which will be used for the background of the parallax
+   * The image which will be used for the background of the parallax
    */
-  imageSrc: PropTypes.string.isRequired,
+  image: PropTypes.node.isRequired,
   options: PropTypes.shape({
     /**
      * The minimum width of the screen, in pixels, where the parallax functionality starts working.

@@ -14,7 +14,7 @@ stories.addParameters({
   }
 });
 
-stories.add('Default', () => (
+stories.add('Accordion', () => (
   <Collapsible>
     <CollapsibleItem
       header="Better safe than sorry. That's my motto."
@@ -49,6 +49,55 @@ stories.add('Expandable', () => (
     <CollapsibleItem
       header="Yeah, you do seem to have a little 'shit creek' action going."
       icon="place"
+    >
+      Yeah, you do seem to have a little 'shit creek' action going.
+    </CollapsibleItem>
+    <CollapsibleItem
+      header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
+      icon="whatshot"
+    >
+      You know, FYI, you can buy a paddle. Did you not plan for this
+      contingency?
+    </CollapsibleItem>
+  </Collapsible>
+));
+
+stories.add('Popout', () => (
+  <Collapsible popout>
+    <CollapsibleItem
+      header="Better safe than sorry. That's my motto."
+      icon="filter_drama"
+    >
+      Better safe than sorry. That's my motto.
+    </CollapsibleItem>
+    <CollapsibleItem
+      header="Yeah, you do seem to have a little 'shit creek' action going."
+      icon="place"
+    >
+      Yeah, you do seem to have a little 'shit creek' action going.
+    </CollapsibleItem>
+    <CollapsibleItem
+      header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
+      icon="whatshot"
+    >
+      You know, FYI, you can buy a paddle. Did you not plan for this
+      contingency?
+    </CollapsibleItem>
+  </Collapsible>
+));
+
+stories.add('Preselected Section', () => (
+  <Collapsible>
+    <CollapsibleItem
+      header="Better safe than sorry. That's my motto."
+      icon="filter_drama"
+    >
+      Better safe than sorry. That's my motto.
+    </CollapsibleItem>
+    <CollapsibleItem
+      header="Yeah, you do seem to have a little 'shit creek' action going."
+      icon="place"
+      expanded
     >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>

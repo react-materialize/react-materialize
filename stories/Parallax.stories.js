@@ -12,7 +12,11 @@ stories.addParameters({
 
 stories.add('Default', () => (
   <div>
-    <Parallax imageSrc="http://materializecss.com/images/parallax1.jpg" />
+    <Parallax
+      image={
+        <img src="http://materializecss.com/images/parallax1.jpg" alt="" />
+      }
+    />
     <div className="section white">
       <div className="row container">
         <h2 className="header">Parallax</h2>
@@ -23,6 +27,10 @@ stories.add('Default', () => (
         </p>
       </div>
     </div>
-    <Parallax imageSrc="http://materializecss.com/images/parallax2.jpg" />
+    <Parallax
+      image={
+        <img src="http://materializecss.com/images/parallax2.jpg" alt="" />
+      }
+    />
   </div>
 ));
