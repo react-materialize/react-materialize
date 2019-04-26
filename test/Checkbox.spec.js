@@ -35,8 +35,9 @@ describe('<Checkbox />', () => {
   });
 
   test('with indeterminate', () => {
-    wrapper = shallow(<Checkbox value="red" label="red" indeterminate />);
-    expect(wrapper).toMatchSnapshot();
+    wrapper = mount(<Checkbox value="red" label="red" indeterminate />);
+    expect(wrapper.find('input').instance().checked).toBe(false);
+    expect(wrapper.find('input').instance().indeterminate).toBe(true);
   });
 
   test('does not overwrite materialize-css classnames', () => {

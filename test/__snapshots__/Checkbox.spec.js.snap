@@ -8,11 +8,11 @@ exports[`<Checkbox /> does not overwrite materialize-css classnames 1`] = `
   value="red"
 >
   <label
-    htmlFor="checkboxmockId"
+    htmlFor="mockId"
   >
     <input
-      className="filled-in my-class"
-      id="checkboxmockId"
+      className="filled-in"
+      id="mockId"
       type="checkbox"
       value="red"
     />
@@ -25,11 +25,11 @@ exports[`<Checkbox /> does not overwrite materialize-css classnames 1`] = `
 
 exports[`<Checkbox /> filled-in 1`] = `
 <label
-  htmlFor="checkboxmockId"
+  htmlFor="mockId"
 >
   <input
     className="filled-in"
-    id="checkboxmockId"
+    id="mockId"
     type="checkbox"
     value="red"
   />
@@ -41,11 +41,11 @@ exports[`<Checkbox /> filled-in 1`] = `
 
 exports[`<Checkbox /> renders 1`] = `
 <label
-  htmlFor="checkboxmockId"
+  htmlFor="mockId"
 >
   <input
     className=""
-    id="checkboxmockId"
+    id="mockId"
     type="checkbox"
     value="red"
   />
@@ -57,12 +57,12 @@ exports[`<Checkbox /> renders 1`] = `
 
 exports[`<Checkbox /> renders disabled 1`] = `
 <label
-  htmlFor="checkboxmockId"
+  htmlFor="mockId"
 >
   <input
     className=""
     disabled={true}
-    id="checkboxmockId"
+    id="mockId"
     type="checkbox"
     value="red"
   />
@@ -79,22 +79,6 @@ exports[`<Checkbox /> with id 1`] = `
   <input
     className=""
     id="test"
-    type="checkbox"
-    value="red"
-  />
-  <span>
-    red
-  </span>
-</label>
-`;
-
-exports[`<Checkbox /> with indeterminate 1`] = `
-<label
-  htmlFor="indeterminate-checkboxmockId"
->
-  <input
-    className=""
-    id="indeterminate-checkboxmockId"
     type="checkbox"
     value="red"
   />
