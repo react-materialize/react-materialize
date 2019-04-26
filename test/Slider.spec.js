@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Slider from '../src/Slider';
 import mocker from './helper/new-mocker';
 
@@ -72,5 +72,18 @@ describe('<Slider />', () => {
     wrapper.setProps(nextProps);
     expect(sliderInstanceDestroyMock).toHaveBeenCalled();
     expect(sliderInitMock.mock.calls[1][0]).toEqual(nextProps.options);
+  });
+  describe('undefined M', () => {
+    let __M;
+    beforeEach(() => {
+      __M = global.M;
+      global.M = undefined;
+    });
+    afterEach(() => {
+      global.M = __M;
+    });
+    test('doesnt throw without M', () => {
+      expect(() => mount(<Slider />)).not.toThrow();
+    });
   });
 });

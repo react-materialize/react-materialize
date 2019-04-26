@@ -7,7 +7,7 @@ import Button from './Button';
 const Toast = props => {
   const { children, className, options = {} } = props;
 
-  const showToast = () => M.toast(options);
+  const showToast = () => (typeof M !== 'undefined' ? M.toast(options) : null);
 
   return (
     <Button onClick={showToast} className={cx('toast', className)}>

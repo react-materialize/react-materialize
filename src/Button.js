@@ -13,7 +13,7 @@ class Button extends Component {
   }
 
   componentDidMount() {
-    if (!M) return;
+    if (typeof M === 'undefined') return;
 
     const { tooltip, tooltipOptions = {}, fab } = this.props;
     if (tooltip) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import TextInput from '../src/TextInput';
 import Icon from '../src/Icon';
 
@@ -74,6 +74,20 @@ describe('<TextInput />', () => {
 
       wrapper.find('Icon').simulate('click');
       expect(mockIconClick).toBeCalled();
+    });
+  });
+  describe('undefined M', () => {
+    let __M;
+    beforeEach(() => {
+      __M = global.M;
+      global.M = undefined;
+    });
+    afterEach(() => {
+      global.M = __M;
+    });
+    test('doesnt throw without M', () => {
+      const element = mount(<TextInput value="foo" />);
+      expect(() => element.setProps({ value: 'bar' })).not.toThrow();
     });
   });
 });
