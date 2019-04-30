@@ -11,7 +11,7 @@ class Checkbox extends Component {
   componentDidMount() {
     const { indeterminate } = this.props;
 
-    if (this._input) {
+    if (this._input && indeterminate) {
       this._input.indeterminate = indeterminate;
       this._input.checked = false;
     }
@@ -26,6 +26,7 @@ class Checkbox extends Component {
   render() {
     const {
       id,
+      className,
       indeterminate,
       filledIn,
       disabled,
@@ -45,9 +46,12 @@ class Checkbox extends Component {
       <label htmlFor={computedId}>
         <input
           id={computedId}
-          className={cx({
-            'filled-in': filledIn
-          })}
+          className={cx(
+            {
+              'filled-in': filledIn
+            },
+            className
+          )}
           disabled={disabled}
           onChange={onChange}
           type="checkbox"
