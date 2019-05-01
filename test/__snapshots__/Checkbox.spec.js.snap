@@ -11,7 +11,7 @@ exports[`<Checkbox /> does not overwrite materialize-css classnames 1`] = `
     htmlFor="mockId"
   >
     <input
-      className="filled-in"
+      className="filled-in my-class"
       id="mockId"
       type="checkbox"
       value="red"
