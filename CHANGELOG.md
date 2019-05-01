@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.2.1
+
+- Fixes `checked` checkbox bug #854
+
 ### 3.2.0
 
 - Pass value prop as value to input #831
