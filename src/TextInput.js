@@ -11,11 +11,11 @@ class TextInput extends Component {
     this.id = props.id || idgen();
 
     if (props.password) {
-      this.id = 'password';
+      this.id = `password${idgen()}`;
     }
 
     if (props.email) {
-      this.id = 'email';
+      this.id = `email${idgen()}`;
     }
   }
 
