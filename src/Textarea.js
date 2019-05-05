@@ -6,42 +6,49 @@ import Icon from './Icon';
 import constants from './constants';
 
 class Textarea extends Component {
+  constructor(props) {
+    super(props);
+
+    this.id = props.id || idgen();
+  }
+
   componentDidMount() {
     if (typeof M !== undefined) {
       // eslint-disable-next-line react/prop-types
       this.props['data-length'] && M.CharacterCounter.init(this._textarea);
     }
   }
+  
+  componentDidUpdate(prevProps) {
+    const { value } = this.props;
 
-  componentDidUpdate() {
-    if (typeof M !== 'undefined') {
+    if (typeof M !== 'undefined' && value !== prevProps.value) {
       M.textareaAutoResize(this._textarea);
     }
   }
 
-  renderIcon(icon, className) {
-    return (
-      <Icon className={cx('material-icons prefix', className)}>{icon}</Icon>
-    );
-  }
-
   render() {
     const {
+      children,
       className,
       s,
       m,
       l,
       xl,
+      disabled,
       noLayout,
-      iconClassName,
+      placeholder,
       icon,
       label,
-      id,
+      success,
+      error,
+      iconClassName,
       onChange,
+      validate,
+      defaultValue,
+      value,
       ...other
     } = this.props;
-
-    const computedId = id || idgen();
 
     const sizes = { s, m, l, xl };
 
@@ -55,25 +62,70 @@ class Textarea extends Component {
 
     const wrapperClasses = cx('input-field', responsiveClasses);
 
+    const textareaProps = {
+      placeholder,
+      id: this.id,
+      value,
+      defaultValue,
+      disabled,
+      ...other
+    };
+
+    const renderLabel = () =>
+      label && (
+        <label
+          className={cx({
+            active: value || placeholder,
+            'label-icon': typeof label !== 'string'
+          })}
+          data-success={success}
+          data-error={error}
+          htmlFor={this.id}
+        >
+          {label}
+        </label>
+      );
+
+    const renderHelper = () =>
+      [error || success] && (
+        <span
+          className="helper-text"
+          data-error={error}
+          data-success={success}
+        />
+      );
+
+    const renderIcon = () => {
+      if (!icon) return;
+
+      if (typeof icon === 'string') {
+        return <Icon className="prefix">{icon}</Icon>;
+      }
+
+      return React.cloneElement(icon, { className: 'prefix' });
+    };
+
     return (
       <div className={wrapperClasses}>
-        {icon && this.renderIcon(icon, iconClassName)}
+        {renderIcon()}
         <textarea
-          {...other}
-          ref={input => {
-            this._textarea = input;
+          {...textareaProps}
+          ref={textarea => {
+            this._textarea = textarea;
           }}
           onChange={onChange}
-          id={computedId}
-          className={cx('materialize-textarea', className)}
+          className={cx('materialize-textarea', { validate }, className)}
         />
-        <label htmlFor={computedId}>{label}</label>
+        {renderLabel()}
+        {renderHelper()}
+        {children}
       </div>
     );
   }
 }
 
 Textarea.propTypes = {
+  children: PropTypes.node,
   /*
    * Strip away all layout classes such as col and sX
    */
@@ -95,6 +147,19 @@ Textarea.propTypes = {
    */
   xl: PropTypes.number,
   /*
+   * disabled input
+   */
+  disabled: PropTypes.bool,
+  /*
+   * Placeholder string
+   */
+  placeholder: PropTypes.string,
+  /*
+   * override id
+   * @default idgen()
+   */
+  id: PropTypes.string,
+  /*
    * render icon next to input
    */
   icon: PropTypes.string,
@@ -107,26 +172,33 @@ Textarea.propTypes = {
    */
   label: PropTypes.string,
   /*
-   * onChange callback
+   * Input initial value
    */
-  onChange: PropTypes.func,
-  /*
-   * override id
-   * @default idgen()
-   */
-  id: PropTypes.string,
-  /*
-   * disabled input
-   */
-  disabled: PropTypes.bool,
+  defaultValue: PropTypes.string,
   /*
    * predefined value
    */
   value: PropTypes.string,
   /*
+   * Add validate class to input
+   */
+  validate: PropTypes.bool,
+  /*
+   * Custom success message
+   */
+  success: PropTypes.string,
+  /*
+   * Custom error message
+   */
+  error: PropTypes.string,
+  /*
    * textarea classname
    */
-  className: PropTypes.string
+  className: PropTypes.string,
+  /*
+   * onChange callback
+   */
+  onChange: PropTypes.func
 };
 
 export default Textarea;

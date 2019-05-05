@@ -71,6 +71,11 @@ describe('<Select />', () => {
     expect(wrapper.find('select.multiple')).toHaveLength(1);
   });
 
+  test('handles other attributes', () => {
+    wrapper = shallow(<Select name="foo" />);
+    expect(wrapper.find('select').prop('name')).toBe('foo');
+  });
+
   describe('initialises', () => {
     const selectInitMock = jest.fn();
     const selectInstanceDestroyMock = jest.fn();

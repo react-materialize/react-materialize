@@ -11,11 +11,18 @@ class TextInput extends Component {
     this.id = props.id || idgen();
 
     if (props.password) {
-      this.id = 'password';
+      this.id = `password${idgen()}`;
     }
 
     if (props.email) {
-      this.id = 'email';
+      this.id = `email${idgen()}`;
+    }
+  }
+
+  componentDidMount() {
+    if (typeof M !== undefined) {
+      // eslint-disable-next-line react/prop-types
+      this.props['data-length'] && M.CharacterCounter.init(this.inputRef);
     }
   }
 
