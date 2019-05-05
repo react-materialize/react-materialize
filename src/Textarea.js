@@ -12,6 +12,13 @@ class Textarea extends Component {
     this.id = props.id || idgen();
   }
 
+  componentDidMount() {
+    if (typeof M !== undefined) {
+      // eslint-disable-next-line react/prop-types
+      this.props['data-length'] && M.CharacterCounter.init(this._textarea);
+    }
+  }
+
   componentDidUpdate(prevProps) {
     const { value } = this.props;
 
