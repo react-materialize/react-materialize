@@ -67,7 +67,8 @@ class Select extends Component {
       error,
       validate,
       children,
-      multiple
+      multiple,
+      ...other
     } = this.props;
 
     const sizes = { s, m, l, xl };
@@ -87,7 +88,8 @@ class Select extends Component {
       id: this.id,
       value: this.state.value,
       disabled,
-      multiple
+      multiple,
+      ...other
     };
 
     const renderLabel = () =>
