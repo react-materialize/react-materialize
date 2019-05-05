@@ -182,7 +182,7 @@ Select.propTypes = {
   /*
    * Input initial value
    */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /*
    * Add validate class to input
    */
