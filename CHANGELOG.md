@@ -1,5 +1,13 @@
 # Changelog
 
+### 3.2.2
+
+- Feat/textarea character counter #858
+- Add Character Counter to TextInput #849
+- Avoid non-unique id warning on TextInput #851
+- Custom error/success messages for Textarea #852
+- Select other attributes #857
+
 ### 3.2.1
 
 - Fixes `checked` checkbox bug #854
