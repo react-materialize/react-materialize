@@ -40,6 +40,12 @@ describe('<Checkbox />', () => {
     expect(wrapper.find('input').instance().indeterminate).toBe(true);
   });
 
+  test('checked', () => {
+    wrapper = mount(<Checkbox value="red" label="red" checked />);
+    expect(wrapper.find('input').instance().checked).toBe(true);
+    expect(wrapper.find('input').instance().indeterminate).toBe(false);
+  });
+
   test('does not overwrite materialize-css classnames', () => {
     wrapper = mount(
       <Checkbox value="red" label="red" filledIn className="my-class" />

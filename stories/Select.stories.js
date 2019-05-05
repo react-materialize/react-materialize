@@ -35,7 +35,7 @@ stories.add('with Icon', () => (
 ));
 
 stories.add('Multiple', () => (
-  <Select multiple value="">
+  <Select multiple value={['']}>
     <option value="" disabled>
       Choose your option
     </option>
