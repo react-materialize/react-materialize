@@ -67,7 +67,8 @@ class Select extends Component {
       error,
       validate,
       children,
-      multiple
+      multiple,
+      ...other
     } = this.props;
 
     const sizes = { s, m, l, xl };
@@ -87,7 +88,8 @@ class Select extends Component {
       id: this.id,
       value: this.state.value,
       disabled,
-      multiple
+      multiple,
+      ...other
     };
 
     const renderLabel = () =>
@@ -180,7 +182,7 @@ Select.propTypes = {
   /*
    * Input initial value
    */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /*
    * Add validate class to input
    */
