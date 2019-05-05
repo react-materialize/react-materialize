@@ -46,6 +46,16 @@ stories.add('Email validate', () => (
   />
 ));
 
+stories.add(
+  'Character Counter',
+  () => <TextInput label="Input text" data-length={10} />,
+  {
+    info: {
+      text: `Use a character counter in fields where a character restriction is in place.`
+    }
+  }
+);
+
 stories.add('with custom error/success', () => (
   <TextInput
     email
