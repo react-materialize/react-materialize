@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import idgen from './idgen';
 
-const Switch = ({ checked, onChange, disabled, id, offLabel, onLabel }) => {
+const Switch = ({
+  id,
+  className,
+  checked,
+  onChange,
+  disabled,
+  offLabel,
+  onLabel
+}) => {
   const computedId = id || idgen();
 
   return (
@@ -12,10 +19,11 @@ const Switch = ({ checked, onChange, disabled, id, offLabel, onLabel }) => {
         {offLabel}
         <input
           id={computedId}
+          className={className}
           disabled={disabled}
           onChange={onChange}
           type="checkbox"
-          defaultChecked={checked}
+          checked={checked}
         />
         <span className="lever" />
         {onLabel}
@@ -25,6 +33,12 @@ const Switch = ({ checked, onChange, disabled, id, offLabel, onLabel }) => {
 };
 
 Switch.propTypes = {
+  /*
+   * override id
+   * @default idgen()
+   */
+  id: PropTypes.string,
+  className: PropTypes.string,
   /*
    * label for off
    */
@@ -37,11 +51,6 @@ Switch.propTypes = {
    * onChange callback
    */
   onChange: PropTypes.func,
-  /*
-   * override id
-   * @default idgen()
-   */
-  id: PropTypes.string,
   /*
    * disabled input
    */
