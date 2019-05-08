@@ -59,3 +59,8 @@ include css in the js - which can be cumbersome to some project's architecture.
 > Yes, please!
 
 We have a `help-wanted` label in the issues page for convenience
+
+## Support
+
+This library is only a react wrapper around the awesome [materializecss](http://materializecss.com), if you or 
+your company uses this library please support them, all this work requires time :) ✌️
