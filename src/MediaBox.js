@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
+import { Component, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import idgen from './idgen';
 
 class MediaBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.id = props.id || `mediabox${idgen()}`;
+  }
+
   componentDidMount() {
     if (typeof M !== 'undefined') {
       const { options } = this.props;
 
-      this.instance = M.Materialbox.init(this._materialBoxed, options);
+      this.instance = M.Materialbox.init(
+        document.getElementById(this.id),
+        options
+      );
     }
   }
 
@@ -18,32 +28,27 @@ class MediaBox extends Component {
   }
 
   render() {
-    const { src, className, caption, ...props } = this.props;
+    const { children, className, caption, ...props } = this.props;
 
-    return (
-      <img
-        className={cx('materialboxed', className)}
-        data-caption={caption}
-        src={src}
-        ref={img => {
-          this._materialBoxed = img;
-        }}
-        {...props}
-      />
-    );
+    delete props.options;
+
+    return cloneElement(children, {
+      id: this.id,
+      className: cx('materialboxed', className),
+      'data-caption': caption,
+      ...props
+    });
   }
 }
 
 MediaBox.propTypes = {
+  children: PropTypes.node.isRequired,
+  id: PropTypes.string,
   className: PropTypes.string,
   /**
    * The caption shown below the image when opened
    */
   caption: PropTypes.string,
-  /**
-   * The path to the image
-   */
-  src: PropTypes.string.isRequired,
   options: PropTypes.shape({
     /**
      * Transition in duration in milliseconds.
