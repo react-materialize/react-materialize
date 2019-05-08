@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.3.0
+
+- Props not spreaded correctly to Chip #848
+- Add note about supporting origin library #863
+- Mediabox renders children insted of image #834
+
 ### 3.2.2
 
 - Feat/textarea character counter #858
