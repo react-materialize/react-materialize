@@ -10,6 +10,7 @@ exports[`<Switch /> renders 1`] = `
     Off
     <input
       id="switch-mockId"
+      onChange={[Function]}
       type="checkbox"
     />
     <span
