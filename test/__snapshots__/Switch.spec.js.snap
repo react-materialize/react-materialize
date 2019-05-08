@@ -5,11 +5,11 @@ exports[`<Switch /> renders 1`] = `
   className="switch"
 >
   <label
-    htmlFor="mockId"
+    htmlFor="switch-mockId"
   >
     Off
     <input
-      id="mockId"
+      id="switch-mockId"
       type="checkbox"
     />
     <span

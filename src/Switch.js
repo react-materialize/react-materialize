@@ -60,7 +60,7 @@ Switch.propTypes = {
 };
 
 Switch.defaultProps = {
-  id: idgen()
+  id: `switch-${idgen()}`
 };
 
 export default Switch;
