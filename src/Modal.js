@@ -9,7 +9,6 @@ import Button from './Button';
 class Modal extends Component {
   constructor(props) {
     super(props);
-    this.modalID = props.id || `modal_${idgen()}`;
     this.showModal = this.showModal.bind(this);
     this.createRoot();
   }
@@ -33,6 +32,7 @@ class Modal extends Component {
     document.body.removeChild(this.modalRoot);
 
     if (this.instance) {
+      this.hideModal();
       this.instance.destroy();
     }
   }
@@ -49,6 +49,7 @@ class Modal extends Component {
 
   renderModalPortal() {
     const {
+      id,
       actions,
       bottomSheet,
       children,
@@ -74,12 +75,12 @@ class Modal extends Component {
       this.modalRoot &&
       ReactDOM.createPortal(
         <div
-          {...other}
+          id={id}
           className={classes}
-          id={this.modalID}
           ref={div => {
             this._modal = div;
           }}
+          {...other}
         >
           <div className="modal-content">
             <h4>{header}</h4>
@@ -209,6 +210,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
+  id: `modal-${idgen()}`,
   options: {
     opacity: 0.5,
     inDuration: 250,

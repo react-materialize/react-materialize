@@ -17,6 +17,7 @@ exports[`<Modal /> renders a modal has children 1`] = `
   bottomSheet={false}
   fixedFooter={false}
   header="Modal header"
+  id="modal-mockId"
   options={
     Object {
       "dismissible": true,
@@ -39,7 +40,7 @@ exports[`<Modal /> renders a modal has children 1`] = `
       <div>
         <div
           class="modal"
-          id="modal_mockId"
+          id="modal-mockId"
         >
           <div
             class="modal-content"
@@ -68,7 +69,7 @@ exports[`<Modal /> renders a modal has children 1`] = `
   >
     <div
       className="modal"
-      id="modal_mockId"
+      id="modal-mockId"
     >
       <div
         className="modal-content"
@@ -122,6 +123,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
   bottomSheet={false}
   fixedFooter={false}
   header="Modal header"
+  id="modal-mockId"
   options={
     Object {
       "dismissible": true,
@@ -144,7 +146,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
       <div>
         <div
           class="modal"
-          id="modal_mockId"
+          id="modal-mockId"
         >
           <div
             class="modal-content"
@@ -173,7 +175,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
   >
     <div
       className="modal"
-      id="modal_mockId"
+      id="modal-mockId"
     >
       <div
         className="modal-content"
@@ -226,6 +228,7 @@ exports[`<Modal /> without a trigger renders 1`] = `
   }
   bottomSheet={false}
   fixedFooter={false}
+  id="modal-mockId"
   options={
     Object {
       "dismissible": true,
@@ -238,7 +241,7 @@ exports[`<Modal /> without a trigger renders 1`] = `
       <div>
         <div
           class="modal"
-          id="modal_mockId"
+          id="modal-mockId"
         >
           <div
             class="modal-content"
@@ -265,7 +268,7 @@ exports[`<Modal /> without a trigger renders 1`] = `
   >
     <div
       className="modal"
-      id="modal_mockId"
+      id="modal-mockId"
     >
       <div
         className="modal-content"
