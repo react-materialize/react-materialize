@@ -78,4 +78,11 @@ describe('<SideNavItem />', () => {
     });
     expect(firstChild.props().href).toEqual('www.test.nl');
   });
+
+  test('should render a given onClick', () => {
+    const { firstChild } = setup({
+      onClick: () => {}
+    });
+    expect(firstChild.props().onClick).toBeTruthy();
+  });
 });

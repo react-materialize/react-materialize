@@ -14,6 +14,7 @@ class SideNavItem extends Component {
       waves,
       user = {},
       children,
+      onClick,
       ...props
     } = this.props;
     const itemClasses = {
@@ -28,7 +29,7 @@ class SideNavItem extends Component {
       <li className={cx(itemClasses)} {...props}>
         {userView && user && <UserView {...user} />}
         {!userView && (
-          <a className={cx(linkClasses)} href={href}>
+          <a className={cx(linkClasses)} href={href} onClick={onClick}>
             {icon && <i className="material-icons">{icon}</i>}
             {children}
           </a>
@@ -46,7 +47,8 @@ SideNavItem.propTypes = {
   waves: PropTypes.bool,
   href: PropTypes.string,
   icon: PropTypes.string,
-  user: PropTypes.shape(UserShape)
+  user: PropTypes.shape(UserShape),
+  onClick: PropTypes.func
 };
 
 export default SideNavItem;
