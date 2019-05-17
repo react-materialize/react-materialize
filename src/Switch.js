@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import idgen from './idgen';
 
-const Switch = ({ checked, onChange, disabled, id, offLabel, onLabel }) => {
-  const computedId = id || idgen();
-
+const Switch = ({
+  id,
+  checked,
+  onChange,
+  disabled,
+  offLabel,
+  onLabel,
+  ...props
+}) => {
   return (
     <div className="switch">
-      <label htmlFor={computedId}>
+      <label htmlFor={id}>
         {offLabel}
         <input
-          id={computedId}
+          id={id}
           disabled={disabled}
           onChange={onChange}
           type="checkbox"
-          defaultChecked={checked}
+          checked={checked}
+          {...props}
         />
         <span className="lever" />
         {onLabel}
@@ -25,6 +31,12 @@ const Switch = ({ checked, onChange, disabled, id, offLabel, onLabel }) => {
 };
 
 Switch.propTypes = {
+  /*
+   * override id
+   * @default idgen()
+   */
+  id: PropTypes.string.isRequired,
+  className: PropTypes.string,
   /*
    * label for off
    */
@@ -38,11 +50,6 @@ Switch.propTypes = {
    */
   onChange: PropTypes.func,
   /*
-   * override id
-   * @default idgen()
-   */
-  id: PropTypes.string,
-  /*
    * disabled input
    */
   disabled: PropTypes.bool,
@@ -50,6 +57,11 @@ Switch.propTypes = {
    * initialise checkbox checked
    */
   checked: PropTypes.bool
+};
+
+Switch.defaultProps = {
+  id: `switch-${idgen()}`,
+  onChange: () => {}
 };
 
 export default Switch;
