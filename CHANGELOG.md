@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.3.1
+
+- Dynamically update `checked` prop for Switch component (#861)
+- Modal correctly closes itself when unmounted (#865)
+
 ### 3.3.0
 
 - Props not spreaded correctly to Chip #848
