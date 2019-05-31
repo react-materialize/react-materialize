@@ -47,3 +47,4 @@ export { default as TextInput } from './TextInput';
 export { default as Textarea } from './Textarea';
 export { default as TimePicker } from './TimePicker';
 export { default as Toast } from './Toast';
+export { resetID } from './idgen.js';
