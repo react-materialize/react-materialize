@@ -98,6 +98,7 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
+  id: PropTypes.string,
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
