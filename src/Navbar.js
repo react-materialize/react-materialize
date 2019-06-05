@@ -44,6 +44,16 @@ class Navbar extends Component {
       <li key={index}>{link}</li>
     ));
 
+    const sidenavLinks = Children.map(children, (link, index) => {
+      const clonedLink = link.props.id
+        ? React.cloneElement(link, {
+            ...link.props,
+            id: `sidenav-${link.props.id}`
+          })
+        : link;
+      return <li key={index}>{clonedLink}</li>;
+    });
+
     let navbar = (
       <nav className={navCSS}>
         <div className="nav-wrapper">
@@ -85,7 +95,7 @@ class Navbar extends Component {
             this._sidenav = ul;
           }}
         >
-          {links}
+          {sidenavLinks}
         </ul>
       </Fragment>
     );
