@@ -28,7 +28,8 @@ class Navbar extends Component {
       fixed,
       alignLinks,
       centerLogo,
-      search
+      search,
+      sidenav
     } = this.props;
 
     const brandClasses = cx({
@@ -74,6 +75,8 @@ class Navbar extends Component {
       navbar = <div className="navbar-fixed">{navbar}</div>;
     }
 
+    const sidenavLinks = sidenav ? sidenav : links;
+
     return (
       <Fragment>
         {navbar}
@@ -85,7 +88,7 @@ class Navbar extends Component {
             this._sidenav = ul;
           }}
         >
-          {links}
+          {sidenavLinks}
         </ul>
       </Fragment>
     );
@@ -98,6 +101,7 @@ Navbar.propTypes = {
   className: PropTypes.string,
   extendWith: PropTypes.node,
   search: PropTypes.bool,
+  sidenav: PropTypes.node,
   /**
    * left makes the navbar links left aligned, right makes them right aligned
    */
