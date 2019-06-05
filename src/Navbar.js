@@ -46,7 +46,7 @@ class Navbar extends Component {
 
     const sidenavLinks = Children.map(children, (link, index) => {
       const clonedLink =
-        link.props && link.props.id
+        link && link.props && link.props.id
           ? React.cloneElement(link, {
               ...link.props,
               id: `sidenav-${link.props.id}`
