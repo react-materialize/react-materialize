@@ -182,6 +182,47 @@ exports[`<Navbar /> can center the brand logo 1`] = `
 </Fragment>
 `;
 
+exports[`<Navbar /> can have children with custom ids 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      >
+        <li
+          key="0/.0"
+        >
+          Hi
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  >
+    <li
+      key="0/.0"
+    >
+      Hi
+    </li>
+  </ul>
+</Fragment>
+`;
+
 exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
 <Fragment>
   <nav
@@ -285,6 +326,73 @@ exports[`<Navbar /> renders 1`] = `
       >
         Components
       </a>
+    </li>
+  </ul>
+</Fragment>
+`;
+
+exports[`<Navbar /> can have children with custom ids 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      >
+        <li
+          key="0/.0"
+        >
+          <span
+            id="custom-1"
+          >
+            Custom 1
+          </span>
+        </li>
+        <li
+          key="1/.1"
+        >
+          <span
+            id="custom-2"
+          >
+            Custom 2
+          </span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  >
+    <li
+      key="0/.0"
+    >
+      <span
+        id="sidenav-custom-1"
+      >
+        Custom 1
+      </span>
+    </li>
+    <li
+      key="1/.1"
+    >
+      <span
+        id="sidenav-custom-2"
+      >
+        Custom 2
+      </span>
     </li>
   </ul>
 </Fragment>
