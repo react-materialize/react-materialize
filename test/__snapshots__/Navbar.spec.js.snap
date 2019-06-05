@@ -9,6 +9,7 @@ exports[`<Navbar /> adds a brand node 1`] = `
       I AM BRAND
     </span>
   }
+  id="mobile-nav"
   options={
     Object {
       "draggable": true,
@@ -287,5 +288,34 @@ exports[`<Navbar /> renders 1`] = `
       </a>
     </li>
   </ul>
+</Fragment>
+`;
+
+exports[`<Navbar /> can have custom id 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="sidenav-trigger"
+        data-target="custom-id"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      />
+    </div>
+  </nav>
+  <ul
+    className="sidenav "
+    id="custom-id"
+  />
 </Fragment>
 `;

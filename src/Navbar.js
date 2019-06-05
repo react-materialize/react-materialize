@@ -5,11 +5,6 @@ import Icon from './Icon';
 import TextInput from './TextInput';
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.idx = props.id || `mobile-nav`;
-  }
-
   componentDidMount() {
     const { options } = this.props;
 
@@ -26,6 +21,7 @@ class Navbar extends Component {
 
   render() {
     const {
+      id,
       children,
       brand,
       className,
@@ -64,7 +60,7 @@ class Navbar extends Component {
                 React.cloneElement(brand, {
                   className: cx(brand.props.className, brandClasses)
                 })}
-              <a href="#!" data-target={this.idx} className="sidenav-trigger">
+              <a href="#!" data-target={id} className="sidenav-trigger">
                 <Icon>menu</Icon>
               </a>
               <ul className={navMobileCSS}>{links}</ul>
@@ -84,7 +80,7 @@ class Navbar extends Component {
         {navbar}
 
         <ul
-          id={this.idx}
+          id={id}
           className={cx('sidenav', [alignLinks])}
           ref={ul => {
             this._sidenav = ul;
@@ -98,6 +94,10 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
+  /*
+   * override id
+   * @default 'mobile-nav'
+   */
   id: PropTypes.string,
   brand: PropTypes.node,
   children: PropTypes.node,
@@ -144,6 +144,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
+  id: 'mobile-nav',
   options: {
     edge: 'left',
     draggable: true,

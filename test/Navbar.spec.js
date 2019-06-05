@@ -103,4 +103,9 @@ describe('<Navbar />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.breadcrumb')).toHaveLength(3);
   });
+
+  test('can have custom id', () => {
+    wrapper = shallow(<Navbar id="custom-id" />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
