@@ -45,6 +45,8 @@ class Navbar extends Component {
       <li key={index}>{link}</li>
     ));
 
+    const sidenavLinks = sidenav ? sidenav : links;
+
     let navbar = (
       <nav className={navCSS}>
         <div className="nav-wrapper">
@@ -75,8 +77,6 @@ class Navbar extends Component {
       navbar = <div className="navbar-fixed">{navbar}</div>;
     }
 
-    const sidenavLinks = sidenav ? sidenav : links;
-
     return (
       <Fragment>
         {navbar}
@@ -101,6 +101,9 @@ Navbar.propTypes = {
   className: PropTypes.string,
   extendWith: PropTypes.node,
   search: PropTypes.bool,
+  /**
+   * Allows for custom sidenav node, used for mobile view
+   */
   sidenav: PropTypes.node,
   /**
    * left makes the navbar links left aligned, right makes them right aligned

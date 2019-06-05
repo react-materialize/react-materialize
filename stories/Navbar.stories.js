@@ -197,3 +197,18 @@ stories.add('Search Bar', () => (
     <NavItem href="components.html">Components</NavItem>
   </Navbar>
 ));
+
+stories.add('Custom Sidenav', () => (
+  <Navbar
+    brand={
+      <a href="#" className="brand-logo">
+        Logo
+      </a>
+    }
+    alignLinks="right"
+    sidenav={<li>Custom node!</li>}
+  >
+    <NavItem href="">Getting started</NavItem>
+    <NavItem href="components.html">Components</NavItem>
+  </Navbar>
+));
