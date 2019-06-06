@@ -103,4 +103,16 @@ describe('<Navbar />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.breadcrumb')).toHaveLength(3);
   });
+
+  test('can have custom sidenav', () => {
+    wrapper = shallow(
+      <Navbar
+        brand={<a href="/">Logo</a>}
+        alignLinks="left"
+        sidenav={<li className="custom-node">Custom node!</li>}
+      />
+    );
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('li').hasClass('custom-node'));
+  });
 });

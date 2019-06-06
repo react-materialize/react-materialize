@@ -28,7 +28,8 @@ class Navbar extends Component {
       fixed,
       alignLinks,
       centerLogo,
-      search
+      search,
+      sidenav
     } = this.props;
 
     const brandClasses = cx({
@@ -43,6 +44,8 @@ class Navbar extends Component {
     const links = Children.map(children, (link, index) => (
       <li key={index}>{link}</li>
     ));
+
+    const sidenavLinks = sidenav ? sidenav : links;
 
     let navbar = (
       <nav className={navCSS}>
@@ -85,7 +88,7 @@ class Navbar extends Component {
             this._sidenav = ul;
           }}
         >
-          {links}
+          {sidenavLinks}
         </ul>
       </Fragment>
     );
@@ -98,6 +101,10 @@ Navbar.propTypes = {
   className: PropTypes.string,
   extendWith: PropTypes.node,
   search: PropTypes.bool,
+  /**
+   * Allows for custom sidenav node, used for mobile view
+   */
+  sidenav: PropTypes.node,
   /**
    * left makes the navbar links left aligned, right makes them right aligned
    */
