@@ -28,7 +28,8 @@ class Navbar extends Component {
       fixed,
       alignLinks,
       centerLogo,
-      search
+      search,
+      sidenav
     } = this.props;
 
     const brandClasses = cx({
@@ -44,16 +45,18 @@ class Navbar extends Component {
       <li key={index}>{link}</li>
     ));
 
-    const sidenavLinks = Children.map(children, (link, index) => {
-      const clonedLink =
-        link && link.props && link.props.id
-          ? React.cloneElement(link, {
-              ...link.props,
-              id: `sidenav-${link.props.id}`
-            })
-          : link;
-      return <li key={index}>{clonedLink}</li>;
-    });
+    const sidenavLinks = sidenav
+      ? sidenav
+      : Children.map(children, (link, index) => {
+          const clonedLink =
+            link && link.props && link.props.id
+              ? React.cloneElement(link, {
+                  ...link.props,
+                  id: `sidenav-${link.props.id}`
+                })
+              : link;
+          return <li key={index}>{clonedLink}</li>;
+        });
 
     let navbar = (
       <nav className={navCSS}>
@@ -109,6 +112,10 @@ Navbar.propTypes = {
   className: PropTypes.string,
   extendWith: PropTypes.node,
   search: PropTypes.bool,
+  /**
+   * Allows for custom sidenav node, used for mobile view
+   */
+  sidenav: PropTypes.node,
   /**
    * left makes the navbar links left aligned, right makes them right aligned
    */
