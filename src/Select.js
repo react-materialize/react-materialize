@@ -36,7 +36,10 @@ class Select extends Component {
   }
 
   componentDidUpdate() {
-    const { options } = this.props;
+    let { options, error } = this.props;
+    if (error) {
+      options = { ...options, classes: cx(options.classes, 'invalid') };
+    }
 
     if (this.instance) {
       this.instance.destroy();
@@ -103,6 +106,15 @@ class Select extends Component {
         </label>
       );
 
+    const renderHelper = () =>
+      [error || success] && (
+        <span
+          className="helper-text"
+          data-error={error}
+          data-success={success}
+        />
+      );
+
     const renderIcon = () => icon && <Icon className="prefix">{icon}</Icon>;
 
     const renderOption = child =>
@@ -132,6 +144,7 @@ class Select extends Component {
           {renderOptions()}
         </select>
         {renderLabel()}
+        {renderHelper()}
       </div>
     );
   }

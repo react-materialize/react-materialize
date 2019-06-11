@@ -35,5 +35,8 @@ exports[`<Select /> with icon 1`] = `
     }
     type="select"
   />
+  <span
+    className="helper-text"
+  />
 </div>
 `;
