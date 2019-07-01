@@ -23,7 +23,7 @@ const RadioGroup = ({
             id={`radio${idx}`}
             value={radioItem.value}
             type="radio"
-            defaultChecked={radioItem.value === value}
+            checked={radioItem.value === value}
             name={name}
             onChange={onChange}
             disabled={disabled}
