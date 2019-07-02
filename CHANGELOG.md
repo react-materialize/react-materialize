@@ -1,9 +1,13 @@
 # Changelog
 
+### 3.3.2
+
+- Fix radio group checked prop #883
+
 ### 3.3.1
 
-- Dynamically update `checked` prop for Switch component (#861)
-- Modal correctly closes itself when unmounted (#865)
+- Dynamically update `checked` prop for Switch component #861
+- Modal correctly closes itself when unmounted #865
 
 ### 3.3.0
 
