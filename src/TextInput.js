@@ -181,7 +181,7 @@ TextInput.propTypes = {
   /*
    * prefix icon, name of the icon or a node
    */
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  icon: PropTypes.node,
   /*
    * label text
    */

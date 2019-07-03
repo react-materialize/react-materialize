@@ -28,7 +28,13 @@ stories.add('Default', () => (
 ));
 
 stories.add('Floating', () => (
-  <Button floating large className="red" waves="light" icon="add" />
+  <Button
+    floating
+    large
+    className="red"
+    waves="light"
+    icon={<Icon>add</Icon>}
+  />
 ));
 
 stories.add('Flat', () => (
@@ -115,7 +121,7 @@ stories.add('Waves', () => (
         ['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal'],
         'light'
       )}
-      icon="add"
+      icon={<Icon>add</Icon>}
     />
   </div>
 ));
@@ -173,15 +179,20 @@ stories.add('Tooltip', () => {
 
 const storiesFab = storiesOf('Components|FAB', module);
 const children = [
-  <Button key="1" floating icon="insert_chart" className="red" />,
-  <Button key="2" floating icon="format_quote" className="yellow darken-1" />,
-  <Button key="3" floating icon="publish" className="green" />,
-  <Button key="4" floating icon="attach_file" className="blue" />
+  <Button key="1" floating icon={<Icon>insert_chart</Icon>} className="red" />,
+  <Button
+    key="2"
+    floating
+    icon={<Icon>format_quote</Icon>}
+    className="yellow darken-1"
+  />,
+  <Button key="3" floating icon={<Icon>publish</Icon>} className="green" />,
+  <Button key="4" floating icon={<Icon>attach_file</Icon>} className="blue" />
 ];
 const props = {
   floating: true,
   fab: true,
-  icon: 'edit',
+  icon: <Icon>edit</Icon>,
   className: 'red',
   large: true
 };
@@ -214,6 +225,6 @@ storiesFab.add('Click-only', () => (
 
 storiesFab.add('To toolbar', () => (
   <Button {...props} fab={{ direction: 'top', toolbarEnabled: true }}>
-    {children}
+    {children.map(c => React.cloneElement(c, { className: 'btn-large red' }))}
   </Button>
 ));

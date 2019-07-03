@@ -37,7 +37,13 @@ class Pagination extends Component {
   }
 
   renderButtons() {
-    const { items, children, maxButtons = items } = this.props;
+    const {
+      items,
+      children,
+      maxButtons = items,
+      leftBtn,
+      rightBtn
+    } = this.props;
     const { activePage } = this.state;
 
     if (children) return children;
@@ -61,7 +67,7 @@ class Pagination extends Component {
         key={'pagination-0'}
         onSelect={this._onClick(activePage - 1)}
       >
-        <Icon>chevron_left</Icon>
+        {leftBtn}
       </PaginationButton>
     ];
 
@@ -83,7 +89,7 @@ class Pagination extends Component {
         disabled={activePage === items}
         onSelect={this._onClick(activePage + 1)}
       >
-        <Icon>chevron_right</Icon>
+        {rightBtn}
       </PaginationButton>
     );
 
@@ -111,12 +117,16 @@ Pagination.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   maxButtons: PropTypes.number,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
+  leftBtn: PropTypes.node.isRequired,
+  rightBtn: PropTypes.node.isRequired
 };
 
 Pagination.defaultProps = {
   activePage: 1,
-  items: 10
+  items: 10,
+  leftBtn: <Icon>chevron_left</Icon>,
+  rightBtn: <Icon>chevron_right</Icon>
 };
 
 export default Pagination;
