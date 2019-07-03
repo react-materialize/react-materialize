@@ -59,5 +59,17 @@ describe('<Parallax />', () => {
 
       expect(wrapper).toMatchSnapshot();
     });
+
+    test('can render a picture element', () => {
+      const pictureTag = (
+        <picture>
+          <source srcSet="#" type="image/webp" />
+          <source srcSet="#" type="image/jpg" />
+          <img src="#" alt="" />
+        </picture>
+      );
+
+      expect(shallow(<Parallax image={pictureTag} />)).toMatchSnapshot();
+    });
   });
 });

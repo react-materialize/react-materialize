@@ -32,4 +32,18 @@ describe('Toast', () => {
     wrapper.simulate('click');
     expect(toastMock).toHaveBeenCalledWith(options);
   });
+  describe('undefined M', () => {
+    let __M;
+    beforeEach(() => {
+      __M = global.M;
+      global.M = undefined;
+    });
+    afterEach(() => {
+      global.M = __M;
+    });
+    test('doesnt throw without M', () => {
+      const undefWrapper = shallow(<Toast options={options}>{child}</Toast>);
+      expect(() => undefWrapper.simulate('click')).not.toThrow();
+    });
+  });
 });

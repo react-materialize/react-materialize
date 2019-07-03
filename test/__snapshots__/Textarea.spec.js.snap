@@ -2,7 +2,7 @@
 
 exports[`<Textarea /> Disabled 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
@@ -10,18 +10,18 @@ exports[`<Textarea /> Disabled 1`] = `
     id="mockId"
     value="I was here"
   />
-  <label
-    htmlFor="mockId"
+  <span
+    className="helper-text"
   />
 </div>
 `;
 
 exports[`<Textarea /> Icon 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <Icon
-    className="material-icons prefix"
+    className="prefix"
   >
     mode_edit
   </Icon>
@@ -29,53 +29,57 @@ exports[`<Textarea /> Icon 1`] = `
     className="materialize-textarea"
     id="mockId"
   />
-  <label
-    htmlFor="mockId"
+  <span
+    className="helper-text"
   />
 </div>
 `;
 
 exports[`<Textarea /> Label 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
     id="mockId"
   />
   <label
+    className=""
     htmlFor="mockId"
   >
     Write something here...
   </label>
+  <span
+    className="helper-text"
+  />
 </div>
 `;
 
 exports[`<Textarea /> Placeholder 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
     id="mockId"
     placeholder="I was here"
   />
-  <label
-    htmlFor="mockId"
+  <span
+    className="helper-text"
   />
 </div>
 `;
 
 exports[`<Textarea /> Textarea 1`] = `
 <div
-  className="input-field"
+  className="input-field col"
 >
   <textarea
     className="materialize-textarea"
     id="mockId"
   />
-  <label
-    htmlFor="mockId"
+  <span
+    className="helper-text"
   />
 </div>
 `;

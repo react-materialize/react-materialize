@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import Icon from './Icon';
 import idgen from './idgen';
 import constants from './constants';
 
@@ -27,8 +28,26 @@ class Select extends Component {
   }
 
   componentDidMount() {
+    const { options } = this.props;
+
     if (typeof M !== 'undefined') {
-      this.instance = M.FormSelect.init(this._selectRef);
+      this.instance = M.FormSelect.init(this._selectRef, options);
+    }
+  }
+
+  componentDidUpdate() {
+    const { options } = this.props;
+
+    if (this.instance) {
+      this.instance.destroy();
+    }
+
+    this.instance = M.FormSelect.init(this._selectRef, options);
+  }
+
+  componentWillUnmount() {
+    if (this.instance) {
+      this.instance.destroy();
     }
   }
 
@@ -37,6 +56,7 @@ class Select extends Component {
       s,
       m,
       l,
+      xl,
       disabled,
       noLayout,
       browserDefault,
@@ -48,11 +68,10 @@ class Select extends Component {
       validate,
       children,
       multiple,
-      value,
-      type
+      ...other
     } = this.props;
 
-    const sizes = { s, m, l };
+    const sizes = { s, m, l, xl };
 
     let responsiveClasses;
     if (!noLayout) {
@@ -69,7 +88,8 @@ class Select extends Component {
       id: this.id,
       value: this.state.value,
       disabled,
-      multiple
+      multiple,
+      ...other
     };
 
     const renderLabel = () =>
@@ -83,13 +103,12 @@ class Select extends Component {
         </label>
       );
 
-    const renderIcon = () =>
-      icon && <i className="material-icons prefix">{icon}</i>;
+    const renderIcon = () => icon && <Icon className="prefix">{icon}</Icon>;
 
     const renderOption = child =>
-      React.cloneElement(child, { key: child.props.value });
+      cloneElement(child, { key: child.props.value });
 
-    const renderOptions = () => React.Children.map(children, renderOption);
+    const renderOptions = () => Children.map(children, renderOption);
 
     return (
       <div className={wrapperClasses}>
@@ -128,17 +147,21 @@ Select.propTypes = {
    */
   noLayout: PropTypes.bool,
   /*
-   * Responsive size for Small
+   * Responsive size for small size screens (Mobile Devices <= 600px)
    */
   s: PropTypes.number,
   /*
-   * Responsive size for Medium
+   * Responsive size for middle size screens (Tablet Devices > 600px)
    */
   m: PropTypes.number,
   /*
-   * Responsive size for Large
+   * Responsive size for large size screens (Desktop Devices > 992px)
    */
   l: PropTypes.number,
+  /**
+   * Responsive size for extra large screens (Large Desktop Devices > 1200px)
+   */
+  xl: PropTypes.number,
   /*
    * disabled input
    */
@@ -159,7 +182,7 @@ Select.propTypes = {
   /*
    * Input initial value
    */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /*
    * Add validate class to input
    */
@@ -190,7 +213,54 @@ Select.propTypes = {
    * to get array of selected values
    */
   multiple: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.any,
+  /**
+   * Options for the select
+   * <a target="_blank" href="https://materializecss.com/select.html#options">https://materializecss.com/select.html</a>
+   */
+  options: PropTypes.shape({
+    classes: PropTypes.string,
+    /**
+     * Options for the dropdown
+     * <a target="_blank" href="http://materializecss.com/dropdown.html#options">http://materializecss.com/dropdown.html</a>
+     */
+    dropdownOptions: PropTypes.shape({
+      alignment: PropTypes.oneOf(['left', 'right']),
+      autoTrigger: PropTypes.bool,
+      constrainWidth: PropTypes.bool,
+      container: PropTypes.node,
+      coverTrigger: PropTypes.bool,
+      closeOnClick: PropTypes.bool,
+      hover: PropTypes.bool,
+      inDuration: PropTypes.number,
+      outDuration: PropTypes.number,
+      onOpenStart: PropTypes.func,
+      onOpenEnd: PropTypes.func,
+      onCloseStart: PropTypes.func,
+      onCloseEnd: PropTypes.func
+    })
+  })
+};
+
+Select.defaultProps = {
+  options: {
+    classes: '',
+    dropdownOptions: {
+      alignment: 'left',
+      autoTrigger: true,
+      constrainWidth: true,
+      container: null,
+      coverTrigger: true,
+      closeOnClick: true,
+      hover: false,
+      inDuration: 150,
+      outDuration: 250,
+      onOpenStart: null,
+      onOpenEnd: null,
+      onCloseStart: null,
+      onCloseEnd: null
+    }
+  }
 };
 
 export default Select;

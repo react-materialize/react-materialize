@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -9,7 +9,6 @@ import Button from './Button';
 class Modal extends Component {
   constructor(props) {
     super(props);
-    this.modalID = props.id || `modal_${idgen()}`;
     this.showModal = this.showModal.bind(this);
     this.createRoot();
   }
@@ -21,7 +20,7 @@ class Modal extends Component {
 
   componentDidMount() {
     if (typeof M !== 'undefined') {
-      const { trigger, options, open } = this.props;
+      const { options, open } = this.props;
 
       this.instance = M.Modal.init(this._modal, options);
 
@@ -33,6 +32,7 @@ class Modal extends Component {
     document.body.removeChild(this.modalRoot);
 
     if (this.instance) {
+      this.hideModal();
       this.instance.destroy();
     }
   }
@@ -49,6 +49,7 @@ class Modal extends Component {
 
   renderModalPortal() {
     const {
+      id,
       actions,
       bottomSheet,
       children,
@@ -70,27 +71,26 @@ class Modal extends Component {
       className
     );
 
-    return this.modalRoot
-      ? ReactDOM.createPortal(
-          <div
-            {...other}
-            className={classes}
-            id={this.modalID}
-            ref={div => {
-              this._modal = div;
-            }}
-          >
-            <div className="modal-content">
-              <h4>{header}</h4>
-              {children}
-            </div>
-            <div className="modal-footer">
-              {React.Children.toArray(actions)}
-            </div>
-          </div>,
-          this.modalRoot
-        )
-      : null;
+    return (
+      this.modalRoot &&
+      ReactDOM.createPortal(
+        <div
+          id={id}
+          className={classes}
+          ref={div => {
+            this._modal = div;
+          }}
+          {...other}
+        >
+          <div className="modal-content">
+            <h4>{header}</h4>
+            {children}
+          </div>
+          <div className="modal-footer">{React.Children.toArray(actions)}</div>
+        </div>,
+        this.modalRoot
+      )
+    );
   }
 
   showModal(e) {
@@ -109,10 +109,10 @@ class Modal extends Component {
     const { trigger } = this.props;
 
     return (
-      <div>
+      <Fragment>
         {trigger && React.cloneElement(trigger, { onClick: this.showModal })}
         {this.renderModalPortal()}
-      </div>
+      </Fragment>
     );
   }
 }
@@ -124,8 +124,8 @@ Modal.propTypes = {
    */
   options: PropTypes.shape({
     /*
-    * Opacity of the modal overlay.
-    */
+     * Opacity of the modal overlay.
+     */
     opacity: PropTypes.number,
     /*
      * Transition in duration in milliseconds.
@@ -210,6 +210,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
+  id: `modal-${idgen()}`,
   options: {
     opacity: 0.5,
     inDuration: 250,

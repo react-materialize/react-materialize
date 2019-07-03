@@ -1,9 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { text, select, withKnobs } from '@storybook/addon-knobs';
 import Button from '../src/Button';
 import Icon from '../src/Icon';
 
 const stories = storiesOf('Components|Button', module);
+stories.addDecorator(withKnobs);
 
 stories.addParameters({
   info: {
@@ -92,6 +94,83 @@ stories.add('Link', () => (
   </Button>
 ));
 
+stories.add('Waves', () => (
+  <div>
+    <Button
+      flat
+      waves={select(
+        'waves',
+        ['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal'],
+        'light'
+      )}
+      style={{ marginRight: '5px' }}
+    >
+      button
+    </Button>
+    <Button
+      floating
+      large
+      waves={select(
+        'waves',
+        ['light', 'red', 'yellow', 'orange', 'purple', 'green', 'teal'],
+        'light'
+      )}
+      icon="add"
+    />
+  </div>
+));
+
+stories.add('Tooltip', () => {
+  const tooltip = text('tooltip', 'I am a tooltip');
+
+  return (
+    <div
+      className="row"
+      style={{
+        margin: '50px 0'
+      }}
+    >
+      <Button
+        className="col l2 offset-l1 offset-s4 s4"
+        waves="ligth"
+        tooltip={tooltip}
+      >
+        BOTTOM
+      </Button>
+      <Button
+        className="col l2 offset-l1 offset-s4 s4"
+        waves="ligth"
+        tooltip={tooltip}
+        tooltipOptions={{
+          position: 'top'
+        }}
+      >
+        TOP
+      </Button>
+      <Button
+        className="col l2 offset-l1 offset-s4 s4"
+        waves="ligth"
+        tooltip={tooltip}
+        tooltipOptions={{
+          position: 'left'
+        }}
+      >
+        LEFT
+      </Button>
+      <Button
+        className="col l2 offset-l1 offset-s4 s4"
+        waves="ligth"
+        tooltip={tooltip}
+        tooltipOptions={{
+          position: 'right'
+        }}
+      >
+        RIGHT
+      </Button>
+    </div>
+  );
+});
+
 const storiesFab = storiesOf('Components|FAB', module);
 const children = [
   <Button key="1" floating icon="insert_chart" className="red" />,
@@ -123,6 +202,18 @@ storiesFab.add('Right', () => (
 
 storiesFab.add('Bottom', () => (
   <Button {...props} fab={{ direction: 'bottom' }} style={{ top: '50px' }}>
+    {children}
+  </Button>
+));
+
+storiesFab.add('Click-only', () => (
+  <Button {...props} fab={{ direction: 'left', hoverEnabled: false }}>
+    {children}
+  </Button>
+));
+
+storiesFab.add('To toolbar', () => (
+  <Button {...props} fab={{ direction: 'top', toolbarEnabled: true }}>
     {children}
   </Button>
 ));

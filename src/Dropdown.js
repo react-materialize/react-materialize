@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
@@ -6,22 +6,24 @@ import cx from 'classnames';
 class Dropdown extends Component {
   constructor(props) {
     super(props);
-    this.idx = 'dropdown_' + idgen();
+    this.idx = props.id || `dropdown${idgen()}`;
     this.renderTrigger = this.renderTrigger.bind(this);
     this.renderItems = this.renderItems.bind(this);
   }
 
   componentDidMount() {
-    const options = this.props.options || {};
+    const { options } = this.props;
 
     if (typeof M !== undefined) {
-      const selector = document.querySelectorAll(this._trigger);
-      this.instance = M.Dropdown.init(selector, options)[0];
+      this.instance = M.Dropdown.init(
+        document.querySelectorAll(this._trigger),
+        options
+      )[0];
     }
   }
 
   componentWillUnmount() {
-    if (typeof M !== undefined) {
+    if (this.instance) {
       this.instance.destroy();
     }
   }
@@ -32,7 +34,7 @@ class Dropdown extends Component {
     delete props.options;
 
     return (
-      <React.Fragment>
+      <Fragment>
         {this.renderTrigger()}
         <ul
           {...props}
@@ -41,14 +43,14 @@ class Dropdown extends Component {
         >
           {this.renderItems()}
         </ul>
-      </React.Fragment>
+      </Fragment>
     );
   }
 
   renderTrigger() {
     const { trigger } = this.props;
 
-    return React.cloneElement(trigger, {
+    return cloneElement(trigger, {
       'data-target': this.idx,
       ref: t => (this._trigger = `[data-target=${this.idx}]`),
       className: cx(trigger.props.className, 'dropdown-trigger')
@@ -58,9 +60,9 @@ class Dropdown extends Component {
   renderItems() {
     const { children } = this.props;
 
-    return React.Children.map(children, element => {
+    return Children.map(children, element => {
       if (element.type.name === 'Divider') {
-        return <li className="divider" tabIndex="-1" />;
+        return <li key={idgen()} className="divider" tabIndex="-1" />;
       } else {
         return <li key={idgen()}>{element}</li>;
       }
@@ -69,6 +71,7 @@ class Dropdown extends Component {
 }
 
 Dropdown.propTypes = {
+  id: PropTypes.string,
   /**
    * The node to trigger the dropdown
    */
@@ -95,6 +98,24 @@ Dropdown.propTypes = {
     onCloseStart: PropTypes.func,
     onCloseEnd: PropTypes.func
   })
+};
+
+Dropdown.defaultProps = {
+  options: {
+    alignment: 'left',
+    autoTrigger: true,
+    constrainWidth: true,
+    container: null,
+    coverTrigger: true,
+    closeOnClick: true,
+    hover: false,
+    inDuration: 150,
+    outDuration: 250,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null
+  }
 };
 
 export default Dropdown;

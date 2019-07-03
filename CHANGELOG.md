@@ -1,5 +1,71 @@
 # Changelog
 
+### 3.3.2
+
+- Fix radio group checked prop #883
+
+### 3.3.1
+
+- Dynamically update `checked` prop for Switch component #861
+- Modal correctly closes itself when unmounted #865
+
+### 3.3.0
+
+- Props not spreaded correctly to Chip #848
+- Add note about supporting origin library #863
+- Mediabox renders children insted of image #834
+
+### 3.2.2
+
+- Feat/textarea character counter #858
+- Add Character Counter to TextInput #849
+- Avoid non-unique id warning on TextInput #851
+- Custom error/success messages for Textarea #852
+- Select other attributes #857
+
+### 3.2.1
+
+- Fixes `checked` checkbox bug #854
+
+### 3.2.0
+
+- Pass value prop as value to input #831
+- Select component improvements #822
+- Parallax story now uses the correct props #844
+- Checkbox component indeterminate state broken #809
+- Add missing Collapsible stories #814
+- Allow TextInput to have node as an Icon #840
+
+### 3.1.1
+
+- Fix broken Navbar import
+
+### 3.1.0
+
+- Add `defaultProps` to Dropdown #825
+- Remove unnecessary `div`; use `Fragment` in Modal #827
+- Dynamically update `checked` props in Checkbox #824
+- Allow the use of `picture` HTML element in Parallax #795
+- Add missing Chip stories #812
+- Add missing Navbar stories #813
+- Swipeable Tabs broken and className not passed to Tab #816
+
+### 3.0.5
+
+- Apply iconClassName to textarea icon #820
+- Add SideNav stories #807
+- Fix textarea custom css classes #806
+
+### 3.0.4
+
+- Textarea now correctly handles layout classes (CloudPower97 #794)
+- Fix Datepicker now correctly onChange (CloudPower97 #800)
+- Caption component is now exported (CloudPower97 #802)
+- Add defaultProps to TimePicker component (CloudPower97 #803)
+- Add missing knobs to TextInput story (CloudPower97 #805)
+- Fix FAB to Toolbar bug (CloudPower97 #808)
+- Add missing Collection stories (CloudPower97 #810)
+
 ### 3.0.3
 
 - Add Parallax story (onluiz #771)

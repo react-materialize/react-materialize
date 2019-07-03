@@ -11,8 +11,9 @@ class Carousel extends React.Component {
 
   componentDidMount() {
     const { options } = this.props;
-
-    this.instance = M.Carousel.init(this._carousel, options);
+    if (options && typeof M !== 'undefined') {
+      this.instance = M.Carousel.init(this._carousel, options);
+    }
   }
 
   componentWillUnmount() {
@@ -82,69 +83,69 @@ class Carousel extends React.Component {
 
 Carousel.propTypes = {
   /*
-  * Children to render as carousel elements
-  */
+   * Children to render as carousel elements
+   */
   children: PropTypes.any,
   /*
-  * Array of image url's
-  */
+   * Array of image url's
+   */
   images: PropTypes.arrayOf(PropTypes.string),
   /*
-  * Makes the images centered inside the carousel using '.valign-wrapper' CSS helper
-  */
+   * Makes the images centered inside the carousel using '.valign-wrapper' CSS helper
+   */
   centerImages: PropTypes.bool,
   /*
-  * Fixed element on slider
-  */
+   * Fixed element on slider
+   */
   fixedItem: PropTypes.node,
   /*
-  * Additional classNames for carousel wrapper
-  */
+   * Additional classNames for carousel wrapper
+   */
   className: PropTypes.string,
   /*
-  * Carousel ID for jQuery manipulating
-  */
+   * Carousel ID for jQuery manipulating
+   */
   carouselId: PropTypes.string,
   /*
    * Carousel initialization options
    * <a href="http://materializecss.com/carousel.html">http://materializecss.com/carousel.html</a>
-  */
+   */
   options: PropTypes.shape({
     /*
-    * Transition duration in milliseconds. (Default: 200)
-    */
+     * Transition duration in milliseconds. (Default: 200)
+     */
     duration: PropTypes.number,
     /*
-    * Perspective zoom. If 0, all items are the same size. (Default: -100)
-    */
+     * Perspective zoom. If 0, all items are the same size. (Default: -100)
+     */
     dist: PropTypes.number,
     /*
-    * Set the spacing of the center item. (Default: 0)
-    */
+     * Set the spacing of the center item. (Default: 0)
+     */
     shift: PropTypes.number,
     /*
-    * Set the padding between non center items. (Default: 0)
-    */
+     * Set the padding between non center items. (Default: 0)
+     */
     padding: PropTypes.number,
     /*
-    * Set the number of visible items. (Default: 5)
-    */
+     * Set the number of visible items. (Default: 5)
+     */
     numVisible: PropTypes.number,
     /*
-    * Make the carousel a full width slider. (Default: false)
-    */
+     * Make the carousel a full width slider. (Default: false)
+     */
     fullWidth: PropTypes.bool,
     /*
-    * Set to true to show indicators. (Default: false)
-    */
+     * Set to true to show indicators. (Default: false)
+     */
     indicators: PropTypes.bool,
     /*
      * Don't wrap around and cycle through items. (Default: false)
-    */
+     */
     noWrap: PropTypes.bool,
     /*
-    * Callback for when a new slide is cycled to. (Default: null)
-    */
+     * Callback for when a new slide is cycled to. (Default: null)
+     */
     onCycleTo: PropTypes.func
   })
 };

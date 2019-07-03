@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Checkbox from '../src/Checkbox';
 import idgen from '../src/idgen';
 
@@ -35,8 +35,21 @@ describe('<Checkbox />', () => {
   });
 
   test('with indeterminate', () => {
-    wrapper = shallow(<Checkbox value="red" label="red" indeterminate />);
-    expect(idgen).not.toHaveBeenCalled();
+    wrapper = mount(<Checkbox value="red" label="red" indeterminate />);
+    expect(wrapper.find('input').instance().checked).toBe(false);
+    expect(wrapper.find('input').instance().indeterminate).toBe(true);
+  });
+
+  test('checked', () => {
+    wrapper = mount(<Checkbox value="red" label="red" checked />);
+    expect(wrapper.find('input').instance().checked).toBe(true);
+    expect(wrapper.find('input').instance().indeterminate).toBe(false);
+  });
+
+  test('does not overwrite materialize-css classnames', () => {
+    wrapper = mount(
+      <Checkbox value="red" label="red" filledIn className="my-class" />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 });

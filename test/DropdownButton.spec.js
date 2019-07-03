@@ -58,6 +58,25 @@ describe('<Dropdown />', () => {
       restore();
     });
 
+    test('with default options if none are given', () => {
+      wrapper = shallow(<Dropdown trigger={<button>Drop me!</button>} />);
+      expect(dropdownInitMock).toHaveBeenCalledWith({
+        alignment: 'left',
+        autoTrigger: true,
+        constrainWidth: true,
+        container: null,
+        coverTrigger: true,
+        closeOnClick: true,
+        hover: false,
+        inDuration: 150,
+        outDuration: 250,
+        onOpenStart: null,
+        onOpenEnd: null,
+        onCloseStart: null,
+        onCloseEnd: null
+      });
+    });
+
     test('handles options prop', () => {
       const options = { constrainWidth: true };
       wrapper = shallow(

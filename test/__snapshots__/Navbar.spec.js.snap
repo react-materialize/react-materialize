@@ -182,6 +182,41 @@ exports[`<Navbar /> can center the brand logo 1`] = `
 </Fragment>
 `;
 
+exports[`<Navbar /> can have custom sidenav 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="brand-logo"
+        href="/"
+      >
+        Logo
+      </a>
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down left"
+      />
+    </div>
+  </nav>
+  <ul
+    className="sidenav left"
+    id="mobile-nav"
+  />
+</Fragment>
+`;
+
 exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
 <Fragment>
   <nav
@@ -285,6 +320,47 @@ exports[`<Navbar /> renders 1`] = `
       >
         Components
       </a>
+    </li>
+  </ul>
+</Fragment>
+`;
+
+exports[`<Navbar /> can have custom sidenav 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="brand-logo"
+        href="/"
+      >
+        Logo
+      </a>
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down left"
+      />
+    </div>
+  </nav>
+  <ul
+    className="sidenav left"
+    id="mobile-nav"
+  >
+    <li
+      className="custom-node"
+    >
+      Custom node!
     </li>
   </ul>
 </Fragment>

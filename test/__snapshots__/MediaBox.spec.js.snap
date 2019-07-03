@@ -2,18 +2,10 @@
 
 exports[`<MediaBox /> renders 1`] = `
 <img
+  alt=""
   className="materialboxed more"
   data-caption="A demo media box1"
-  options={
-    Object {
-      "inDuration": 275,
-      "onCloseEnd": null,
-      "onCloseStart": null,
-      "onOpenEnd": null,
-      "onOpenStart": null,
-      "outDuration": 200,
-    }
-  }
+  id="mediaboxmockId"
   src="image.jpg"
   width="650"
 />

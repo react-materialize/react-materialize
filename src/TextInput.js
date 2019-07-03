@@ -11,24 +11,32 @@ class TextInput extends Component {
     this.id = props.id || idgen();
 
     if (props.password) {
-      this.id = 'password';
+      this.id = `password${idgen()}`;
     }
 
     if (props.email) {
-      this.id = 'email';
+      this.id = `email${idgen()}`;
+    }
+  }
+
+  componentDidMount() {
+    if (typeof M !== undefined) {
+      // eslint-disable-next-line react/prop-types
+      this.props['data-length'] && M.CharacterCounter.init(this.inputRef);
     }
   }
 
   componentDidUpdate(prevProps) {
     const { value } = this.props;
 
-    if (value !== prevProps.value) {
+    if (value !== prevProps.value && typeof M !== 'undefined') {
       M.updateTextFields();
     }
   }
 
   render() {
     const {
+      children,
       s,
       m,
       l,
@@ -44,6 +52,7 @@ class TextInput extends Component {
       password,
       email,
       validate,
+      defaultValue,
       value,
       type,
       ...other
@@ -76,7 +85,8 @@ class TextInput extends Component {
       placeholder,
       type: computedType,
       id: this.id,
-      defaultValue: value,
+      value,
+      defaultValue,
       disabled,
       ...other
     };
@@ -84,7 +94,10 @@ class TextInput extends Component {
     const renderLabel = () =>
       label && (
         <label
-          className={cx({ active: value || placeholder })}
+          className={cx({
+            active: value || placeholder,
+            'label-icon': typeof label !== 'string'
+          })}
           data-success={success}
           data-error={error}
           htmlFor={inputProps.id}
@@ -102,8 +115,15 @@ class TextInput extends Component {
         />
       );
 
-    const renderIcon = () =>
-      icon && <i className="material-icons prefix">{icon}</i>;
+    const renderIcon = () => {
+      if (!icon) return;
+
+      if (typeof icon === 'string') {
+        return <i className="material-icons prefix">{icon}</i>;
+      }
+
+      return React.cloneElement(icon, { className: 'prefix' });
+    };
 
     return (
       <div className={wrapperClasses}>
@@ -117,12 +137,14 @@ class TextInput extends Component {
         />
         {renderLabel()}
         {renderHelper()}
+        {children}
       </div>
     );
   }
 }
 
 TextInput.propTypes = {
+  children: PropTypes.node,
   /*
    * Strip away all layout classes such as col and sX
    */
@@ -157,15 +179,19 @@ TextInput.propTypes = {
    */
   id: PropTypes.string,
   /*
-   * prefix icon
+   * prefix icon, name of the icon or a node
    */
-  icon: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /*
    * label text
    */
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /*
    * Input initial value
+   */
+  defaultValue: PropTypes.string,
+  /*
+   * Input value
    */
   value: PropTypes.string,
   /*

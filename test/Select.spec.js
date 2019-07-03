@@ -52,7 +52,7 @@ describe('<Select />', () => {
 
   test('with icon', () => {
     wrapper = shallow(<Select icon="cloud" />);
-    expect(wrapper.find('i.material-icons.prefix')).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
   });
 
   test('renders options', () => {
@@ -69,6 +69,11 @@ describe('<Select />', () => {
   test('renders multiple', () => {
     wrapper = shallow(<Select multiple />);
     expect(wrapper.find('select.multiple')).toHaveLength(1);
+  });
+
+  test('handles other attributes', () => {
+    wrapper = shallow(<Select name="foo" />);
+    expect(wrapper.find('select').prop('name')).toBe('foo');
   });
 
   describe('initialises', () => {
@@ -89,10 +94,37 @@ describe('<Select />', () => {
       selectInstanceDestroyMock.mockClear();
     });
 
+    afterAll(() => {
+      restore();
+    });
+
     test('calls FormSelect', () => {
       mount(<Select />);
 
       expect(selectInitMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('with default options if none are given', () => {
+      mount(<Select />);
+
+      expect(selectInitMock).toHaveBeenCalledWith({
+        classes: '',
+        dropdownOptions: {
+          alignment: 'left',
+          autoTrigger: true,
+          constrainWidth: true,
+          container: null,
+          coverTrigger: true,
+          closeOnClick: true,
+          hover: false,
+          inDuration: 150,
+          outDuration: 250,
+          onOpenStart: null,
+          onOpenEnd: null,
+          onCloseStart: null,
+          onCloseEnd: null
+        }
+      });
     });
   });
 });
