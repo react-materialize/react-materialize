@@ -7,8 +7,8 @@ exports[`<RadioGroup /> disabled 1`] = `
     key="radio0"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       disabled={true}
       id="radio0"
       name="size"
@@ -25,8 +25,8 @@ exports[`<RadioGroup /> disabled 1`] = `
     key="radio1"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       disabled={true}
       id="radio1"
       name="size"
@@ -43,8 +43,8 @@ exports[`<RadioGroup /> disabled 1`] = `
     key="radio2"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       disabled={true}
       id="radio2"
       name="size"
@@ -66,8 +66,8 @@ exports[`<RadioGroup /> renders 1`] = `
     key="radio0"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio0"
       name="size"
       onChange={[MockFunction]}
@@ -83,8 +83,8 @@ exports[`<RadioGroup /> renders 1`] = `
     key="radio1"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio1"
       name="size"
       onChange={[MockFunction]}
@@ -100,8 +100,8 @@ exports[`<RadioGroup /> renders 1`] = `
     key="radio2"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio2"
       name="size"
       onChange={[MockFunction]}
@@ -123,8 +123,8 @@ exports[`<RadioGroup /> with classnames 1`] = `
     key="radio0"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio0"
       name="size"
       onChange={[MockFunction]}
@@ -141,8 +141,8 @@ exports[`<RadioGroup /> with classnames 1`] = `
     key="radio1"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio1"
       name="size"
       onChange={[MockFunction]}
@@ -159,8 +159,8 @@ exports[`<RadioGroup /> with classnames 1`] = `
     key="radio2"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio2"
       name="size"
       onChange={[MockFunction]}
@@ -181,8 +181,8 @@ exports[`<RadioGroup /> with gap 1`] = `
     key="radio0"
   >
     <input
+      checked={false}
       className="with-gap"
-      defaultChecked={false}
       id="radio0"
       name="size"
       onChange={[MockFunction]}
@@ -198,8 +198,8 @@ exports[`<RadioGroup /> with gap 1`] = `
     key="radio1"
   >
     <input
+      checked={false}
       className="with-gap"
-      defaultChecked={false}
       id="radio1"
       name="size"
       onChange={[MockFunction]}
@@ -215,8 +215,8 @@ exports[`<RadioGroup /> with gap 1`] = `
     key="radio2"
   >
     <input
+      checked={false}
       className="with-gap"
-      defaultChecked={false}
       id="radio2"
       name="size"
       onChange={[MockFunction]}
@@ -237,8 +237,8 @@ exports[`<RadioGroup /> with predefined value 1`] = `
     key="radio0"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio0"
       name="size"
       onChange={[MockFunction]}
@@ -254,8 +254,8 @@ exports[`<RadioGroup /> with predefined value 1`] = `
     key="radio1"
   >
     <input
+      checked={true}
       className=""
-      defaultChecked={true}
       id="radio1"
       name="size"
       onChange={[MockFunction]}
@@ -271,8 +271,8 @@ exports[`<RadioGroup /> with predefined value 1`] = `
     key="radio2"
   >
     <input
+      checked={false}
       className=""
-      defaultChecked={false}
       id="radio2"
       name="size"
       onChange={[MockFunction]}

@@ -4,11 +4,9 @@ exports[`<Select /> with icon 1`] = `
 <div
   className="input-field col"
 >
-  <Icon
+  <Component
     className="prefix"
-  >
-    cloud
-  </Icon>
+  />
   <select
     className=""
     id="mockId"

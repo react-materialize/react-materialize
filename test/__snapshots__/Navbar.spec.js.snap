@@ -9,6 +9,11 @@ exports[`<Navbar /> adds a brand node 1`] = `
       I AM BRAND
     </span>
   }
+  menuIcon={
+    <Icon>
+      menu
+    </Icon>
+  }
   options={
     Object {
       "draggable": true,
@@ -179,6 +184,47 @@ exports[`<Navbar /> can center the brand logo 1`] = `
     className="sidenav "
     id="mobile-nav"
   />
+</Fragment>
+`;
+
+exports[`<Navbar /> can have custom sidenav 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="brand-logo"
+        href="/"
+      >
+        Logo
+      </a>
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down left"
+      />
+    </div>
+  </nav>
+  <ul
+    className="sidenav left"
+    id="mobile-nav"
+  >
+    <li
+      className="custom-node"
+    >
+      Custom node!
+    </li>
+  </ul>
 </Fragment>
 `;
 
