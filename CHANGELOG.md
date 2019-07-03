@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.3.3
+
+- security fix and install babel-loader
+
 ### 3.3.2
 
 - Fix radio group checked prop #883
