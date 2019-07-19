@@ -55,7 +55,7 @@ class Checkbox extends Component {
           disabled={disabled}
           onChange={onChange}
           type="checkbox"
-          defaultChecked={checked}
+          checked={checked}
           value={value}
           ref={input => (this._input = input)}
         />
