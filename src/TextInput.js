@@ -107,7 +107,7 @@ class TextInput extends Component {
       );
 
     const renderHelper = () =>
-      [error || success] && (
+      (error || success) && (
         <span
           className="helper-text"
           data-error={error}
