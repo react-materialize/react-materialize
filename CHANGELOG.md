@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.3.4
+
+- security fix
+- Not render helperText for InputText if !error. For decries height of InputText. #893
+- Fix defaultChecked property of Checkbox.js #891
+
 ### 3.3.3
 
 - security fix and install babel-loader
