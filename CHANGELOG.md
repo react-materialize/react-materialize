@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.3.5
+
+- fix dropdown-navbar-id #877
+
 ### 3.3.4
 
 - security fix
