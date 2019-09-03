@@ -104,6 +104,16 @@ describe('<Navbar />', () => {
     expect(wrapper.find('.breadcrumb')).toHaveLength(3);
   });
 
+  test('can have children with custom ids', () => {
+    wrapper = shallow(
+      <Navbar>
+        <span id="custom-1">Custom 1</span>
+        <span id="custom-2">Custom 2</span>
+      </Navbar>
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
   test('can have custom sidenav', () => {
     wrapper = shallow(
       <Navbar

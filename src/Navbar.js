@@ -46,7 +46,18 @@ class Navbar extends Component {
       <li key={index}>{link}</li>
     ));
 
-    const sidenavLinks = sidenav ? sidenav : links;
+    const sidenavLinks = sidenav
+      ? sidenav
+      : Children.map(children, (link, index) => {
+          const clonedLink =
+            link && link.props && link.props.id
+              ? React.cloneElement(link, {
+                  ...link.props,
+                  id: `sidenav-${link.props.id}`
+                })
+              : link;
+          return <li key={index}>{clonedLink}</li>;
+        });
 
     let navbar = (
       <nav className={navCSS}>
