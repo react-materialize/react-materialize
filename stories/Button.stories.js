@@ -192,7 +192,6 @@ const children = [
 const props = {
   floating: true,
   fab: true,
-  icon: <Icon>edit</Icon>,
   className: 'red',
   large: true
 };

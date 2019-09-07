@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Icon from './Icon';
 import PropTypes from 'prop-types';
 import constants from './constants';
 import cx from 'classnames';
@@ -175,7 +176,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  node: 'button'
+  node: 'button',
+  icon: <Icon>edit</Icon>
 };
 
 export default Button;
