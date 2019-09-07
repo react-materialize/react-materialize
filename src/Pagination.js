@@ -118,8 +118,8 @@ Pagination.propTypes = {
   className: PropTypes.string,
   maxButtons: PropTypes.number,
   onSelect: PropTypes.func,
-  leftBtn: PropTypes.node.isRequired,
-  rightBtn: PropTypes.node.isRequired
+  leftBtn: PropTypes.node,
+  rightBtn: PropTypes.node
 };
 
 Pagination.defaultProps = {
