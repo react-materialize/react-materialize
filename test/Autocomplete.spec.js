@@ -10,6 +10,7 @@ describe('<Autocomplete />', () => {
     Google: 'http://placehold.it/250x250',
     'Apple Inc': null
   };
+
   const componentId = 'testAutocompleteId';
 
   let wrapper;
@@ -36,24 +37,38 @@ describe('<Autocomplete />', () => {
 
   describe('initialises', () => {
     const autocompleteInitMock = jest.fn();
+    const autocompleteUpdateDataMock = jest.fn();
     const autocompleteInstanceDestroyMock = jest.fn();
     const autocompleteMock = {
       init: (el, options) => {
         autocompleteInitMock(options);
         return {
-          destroy: autocompleteInstanceDestroyMock
+          destroy: autocompleteInstanceDestroyMock,
+          updateData: autocompleteUpdateDataMock
         };
       }
     };
     const restore = mocker('Autocomplete', autocompleteMock);
+
     beforeEach(() => {
       autocompleteInitMock.mockClear();
       autocompleteInstanceDestroyMock.mockClear();
     });
 
+    afterAll(() => {
+      restore();
+    });
+
     test('calls Autocomplete', () => {
       mount(<Autocomplete />);
       expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('calls updateData when providing new data', () => {
+      const wrapper = shallow(<Autocomplete />);
+      expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+      wrapper.setProps({ options: { data: { Google: null } } });
+      expect(autocompleteUpdateDataMock).toHaveBeenCalledWith({ Google: null });
     });
   });
 });
