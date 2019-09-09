@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.4.1
+
+- Fixes bug on button always rendering icon
+
 ### 3.4.0
 
 - Allow `icon` to be a node instead of string #890

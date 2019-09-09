@@ -3,11 +3,6 @@
 exports[`Toast renders 1`] = `
 <Button
   className="toast"
-  icon={
-    <Icon>
-      edit
-    </Icon>
-  }
   node="button"
   onClick={[Function]}
 >

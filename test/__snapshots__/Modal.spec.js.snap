@@ -6,11 +6,6 @@ exports[`<Modal /> renders a modal has children 1`] = `
     Array [
       <Button
         flat={true}
-        icon={
-          <Icon>
-            edit
-          </Icon>
-        }
         modal="close"
         node="button"
         waves="green"
@@ -65,11 +60,6 @@ exports[`<Modal /> renders a modal has children 1`] = `
             <button
               class="waves-effect waves-green btn-flat modal-close"
             >
-              <i
-                class="material-icons"
-              >
-                edit
-              </i>
               Close
             </button>
           </div>
@@ -98,11 +88,6 @@ exports[`<Modal /> renders a modal has children 1`] = `
       >
         <Button
           flat={true}
-          icon={
-            <Icon>
-              edit
-            </Icon>
-          }
           key=".0"
           modal="close"
           node="button"
@@ -112,13 +97,6 @@ exports[`<Modal /> renders a modal has children 1`] = `
             className="waves-effect waves-green btn-flat modal-close"
             disabled={false}
           >
-            <Icon>
-              <i
-                className="material-icons"
-              >
-                edit
-              </i>
-            </Icon>
             Close
           </button>
         </Button>
@@ -134,11 +112,6 @@ exports[`<Modal /> renders a trigger renders 1`] = `
     Array [
       <Button
         flat={true}
-        icon={
-          <Icon>
-            edit
-          </Icon>
-        }
         modal="close"
         node="button"
         waves="green"
@@ -193,11 +166,6 @@ exports[`<Modal /> renders a trigger renders 1`] = `
             <button
               class="waves-effect waves-green btn-flat modal-close"
             >
-              <i
-                class="material-icons"
-              >
-                edit
-              </i>
               Close
             </button>
           </div>
@@ -226,11 +194,6 @@ exports[`<Modal /> renders a trigger renders 1`] = `
       >
         <Button
           flat={true}
-          icon={
-            <Icon>
-              edit
-            </Icon>
-          }
           key=".0"
           modal="close"
           node="button"
@@ -240,13 +203,6 @@ exports[`<Modal /> renders a trigger renders 1`] = `
             className="waves-effect waves-green btn-flat modal-close"
             disabled={false}
           >
-            <Icon>
-              <i
-                className="material-icons"
-              >
-                edit
-              </i>
-            </Icon>
             Close
           </button>
         </Button>
@@ -262,11 +218,6 @@ exports[`<Modal /> without a trigger renders 1`] = `
     Array [
       <Button
         flat={true}
-        icon={
-          <Icon>
-            edit
-          </Icon>
-        }
         modal="close"
         node="button"
         waves="green"
@@ -308,11 +259,6 @@ exports[`<Modal /> without a trigger renders 1`] = `
             <button
               class="waves-effect waves-green btn-flat modal-close"
             >
-              <i
-                class="material-icons"
-              >
-                edit
-              </i>
               Close
             </button>
           </div>
@@ -339,11 +285,6 @@ exports[`<Modal /> without a trigger renders 1`] = `
       >
         <Button
           flat={true}
-          icon={
-            <Icon>
-              edit
-            </Icon>
-          }
           key=".0"
           modal="close"
           node="button"
@@ -353,13 +294,6 @@ exports[`<Modal /> without a trigger renders 1`] = `
             className="waves-effect waves-green btn-flat modal-close"
             disabled={false}
           >
-            <Icon>
-              <i
-                className="material-icons"
-              >
-                edit
-              </i>
-            </Icon>
             Close
           </button>
         </Button>
