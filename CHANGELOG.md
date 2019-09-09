@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.4.0
+
+- Allow `icon` to be a node instead of string #890
+- Sets default icon props to a few components #890
+
 ### 3.3.5
 
 - fix dropdown-navbar-id #877
