@@ -90,7 +90,15 @@ class Button extends Component {
   }
 
   renderFab(classes) {
-    const { fab, floating, large, className, icon, ...other } = this.props;
+    const {
+      fab,
+      floating,
+      large,
+      className,
+      icon = <Icon>edit</Icon>,
+      ...other
+    } = this.props;
+
     return (
       <div
         {...other}
@@ -176,8 +184,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  node: 'button',
-  icon: <Icon>edit</Icon>
+  node: 'button'
 };
 
 export default Button;

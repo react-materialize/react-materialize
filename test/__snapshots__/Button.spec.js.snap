@@ -5,9 +5,6 @@ exports[`Button renders 1`] = `
   className="btn waves-effect waves-light"
   disabled={false}
 >
-  <Icon>
-    edit
-  </Icon>
   Stuff
 </button>
 `;
