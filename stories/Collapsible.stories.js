@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
+import Icon from '../src/Icon';
 
 const stories = storiesOf('Javascript|Collapsible', module);
 
@@ -18,19 +19,19 @@ stories.add('Accordion', () => (
   <Collapsible>
     <CollapsibleItem
       header="Better safe than sorry. That's my motto."
-      icon="filter_drama"
+      icon={<Icon>filter_drama</Icon>}
     >
       Better safe than sorry. That's my motto.
     </CollapsibleItem>
     <CollapsibleItem
       header="Yeah, you do seem to have a little 'shit creek' action going."
-      icon="place"
+      icon={<Icon>place</Icon>}
     >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>
     <CollapsibleItem
       header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
-      icon="whatshot"
+      icon={<Icon>whatshot</Icon>}
     >
       You know, FYI, you can buy a paddle. Did you not plan for this
       contingency?
@@ -42,19 +43,19 @@ stories.add('Expandable', () => (
   <Collapsible accordion={false}>
     <CollapsibleItem
       header="Better safe than sorry. That's my motto."
-      icon="filter_drama"
+      icon={<Icon>filter_drama</Icon>}
     >
       Better safe than sorry. That's my motto.
     </CollapsibleItem>
     <CollapsibleItem
       header="Yeah, you do seem to have a little 'shit creek' action going."
-      icon="place"
+      icon={<Icon>place</Icon>}
     >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>
     <CollapsibleItem
       header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
-      icon="whatshot"
+      icon={<Icon>whatshot</Icon>}
     >
       You know, FYI, you can buy a paddle. Did you not plan for this
       contingency?
@@ -66,19 +67,19 @@ stories.add('Popout', () => (
   <Collapsible popout>
     <CollapsibleItem
       header="Better safe than sorry. That's my motto."
-      icon="filter_drama"
+      icon={<Icon>filter_drama</Icon>}
     >
       Better safe than sorry. That's my motto.
     </CollapsibleItem>
     <CollapsibleItem
       header="Yeah, you do seem to have a little 'shit creek' action going."
-      icon="place"
+      icon={<Icon>place</Icon>}
     >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>
     <CollapsibleItem
       header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
-      icon="whatshot"
+      icon={<Icon>whatshot</Icon>}
     >
       You know, FYI, you can buy a paddle. Did you not plan for this
       contingency?
@@ -90,20 +91,20 @@ stories.add('Preselected Section', () => (
   <Collapsible>
     <CollapsibleItem
       header="Better safe than sorry. That's my motto."
-      icon="filter_drama"
+      icon={<Icon>filter_drama</Icon>}
     >
       Better safe than sorry. That's my motto.
     </CollapsibleItem>
     <CollapsibleItem
       header="Yeah, you do seem to have a little 'shit creek' action going."
-      icon="place"
+      icon={<Icon>place</Icon>}
       expanded
     >
       Yeah, you do seem to have a little 'shit creek' action going.
     </CollapsibleItem>
     <CollapsibleItem
       header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
-      icon="whatshot"
+      icon={<Icon>whatshot</Icon>}
     >
       You know, FYI, you can buy a paddle. Did you not plan for this
       contingency?

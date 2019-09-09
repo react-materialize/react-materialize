@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -17,7 +17,14 @@ class Chip extends Component {
   }
 
   render() {
-    const { children, close, className, options, ...other } = this.props;
+    const {
+      children,
+      close,
+      closeIcon,
+      className,
+      options,
+      ...other
+    } = this.props;
 
     const classes = cx(
       {
@@ -27,10 +34,10 @@ class Chip extends Component {
       className
     );
     let chipContent = (
-      <React.Fragment>
+      <Fragment>
         {children}
-        {close && <Icon className="close">close</Icon>}
-      </React.Fragment>
+        {close && { closeIcon }}
+      </Fragment>
     );
 
     if (options) {
@@ -58,6 +65,7 @@ Chip.propTypes = {
    * Shows a close icon
    */
   close: PropTypes.bool,
+  closeIcon: PropTypes.node,
   /**
    * Options object for the Chip Javascript Plugin
    */
@@ -112,6 +120,7 @@ Chip.propTypes = {
 
 Chip.defaultProps = {
   close: false,
+  closeIcon: <Icon>close</Icon>,
   options: null
 };
 

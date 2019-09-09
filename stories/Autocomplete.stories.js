@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Autocomplete from '../src/Autocomplete';
+import Icon from '../src/Icon';
 import { text, withKnobs } from '@storybook/addon-knobs';
 
 const stories = storiesOf('Javascript|Autocomplete', module);
@@ -39,7 +40,7 @@ stories.add(
         }
       }}
       placeholder="Insert here"
-      icon={text('icon', 'textsms')}
+      icon={<Icon>{text('icon', 'textsms')}</Icon>}
     />
   ),
   { notes }

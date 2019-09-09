@@ -2,7 +2,7 @@ import React, { Component, Fragment, Children } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
-import TextInput from './TextInput';
+import SearchForm from './SearchForm';
 
 class Navbar extends Component {
   componentDidMount() {
@@ -29,6 +29,7 @@ class Navbar extends Component {
       alignLinks,
       centerLogo,
       search,
+      menuIcon,
       sidenav
     } = this.props;
 
@@ -62,11 +63,7 @@ class Navbar extends Component {
       <nav className={navCSS}>
         <div className="nav-wrapper">
           {search ? (
-            <form>
-              <TextInput label={<Icon>search</Icon>} type="search">
-                <Icon>close</Icon>
-              </TextInput>
-            </form>
+            <SearchForm />
           ) : (
             <Fragment>
               {brand &&
@@ -74,7 +71,7 @@ class Navbar extends Component {
                   className: cx(brand.props.className, brandClasses)
                 })}
               <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
-                <Icon>menu</Icon>
+                {menuIcon}
               </a>
               <ul className={navMobileCSS}>{links}</ul>
             </Fragment>
@@ -152,7 +149,8 @@ Navbar.propTypes = {
     onCloseEnd: PropTypes.func,
     // Prevent page from scrolling while sidenav is open.
     preventScrolling: PropTypes.bool
-  })
+  }),
+  menuIcon: PropTypes.node.isRequired
 };
 
 Navbar.defaultProps = {
@@ -166,7 +164,8 @@ Navbar.defaultProps = {
     onCloseStart: null,
     onCloseEnd: null,
     preventScrolling: true
-  }
+  },
+  menuIcon: <Icon>menu</Icon>
 };
 
 export default Navbar;

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Icon from './Icon';
 
 const CollapsibleItem = ({
   className,
@@ -20,7 +19,7 @@ const CollapsibleItem = ({
       className={cx('collapsible-header', { active: expanded })}
       onClick={() => onSelect(eventKey)}
     >
-      {icon && <Icon className={iconClassName}>{icon}</Icon>}
+      {icon}
       {header}
     </Node>
     <div className="collapsible-body">{children}</div>
@@ -29,7 +28,7 @@ const CollapsibleItem = ({
 
 CollapsibleItem.propTypes = {
   header: PropTypes.any.isRequired,
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   iconClassName: PropTypes.string,
   children: PropTypes.node,
   onSelect: PropTypes.func,

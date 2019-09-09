@@ -1,16 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from './Icon';
+import TextInput from './TextInput';
 
-const SearchForm = () => (
+const SearchForm = ({ searchIcon, closeIcon }) => (
   <form>
-    <div className="input-field">
-      <input id="search" type="search" required />
-      <label className="label-icon" htmlFor="search">
-        <Icon>search</Icon>
-      </label>
-      <Icon>close</Icon>
-    </div>
+    <TextInput label={searchIcon} type="search">
+      {closeIcon}
+    </TextInput>
   </form>
 );
+
+SearchForm.propTypes = {
+  searchIcon: PropTypes.node.isRequired,
+  closeIcon: PropTypes.node.isRequired
+};
+
+SearchForm.defaultProps = {
+  searchIcon: <Icon>search</Icon>,
+  closeIcon: <Icon>close</Icon>
+};
 
 export default SearchForm;

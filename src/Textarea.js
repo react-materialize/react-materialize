@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
-import Icon from './Icon';
 import constants from './constants';
 
 class Textarea extends Component {
@@ -98,10 +97,6 @@ class Textarea extends Component {
     const renderIcon = () => {
       if (!icon) return;
 
-      if (typeof icon === 'string') {
-        return <Icon className="prefix">{icon}</Icon>;
-      }
-
       return React.cloneElement(icon, { className: 'prefix' });
     };
 
@@ -162,7 +157,7 @@ Textarea.propTypes = {
   /*
    * render icon next to input
    */
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   /*
    * icon classname
    */

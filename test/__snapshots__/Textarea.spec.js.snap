@@ -20,11 +20,9 @@ exports[`<Textarea /> Icon 1`] = `
 <div
   className="input-field col"
 >
-  <Icon
+  <Component
     className="prefix"
-  >
-    mode_edit
-  </Icon>
+  />
   <textarea
     className="materialize-textarea"
     id="mockId"

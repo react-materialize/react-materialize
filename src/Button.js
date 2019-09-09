@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import Icon from './Icon';
 import PropTypes from 'prop-types';
 import constants from './constants';
 import cx from 'classnames';
-import Icon from './Icon';
 import idgen from './idgen';
 
 class Button extends Component {
   constructor(props) {
     super(props);
-    this.renderIcon = this.renderIcon.bind(this);
     this.renderFab = this.renderFab.bind(this);
   }
 
@@ -33,6 +32,7 @@ class Button extends Component {
 
   render() {
     const {
+      children,
       className,
       node,
       fab,
@@ -44,6 +44,7 @@ class Button extends Component {
       disabled,
       waves,
       tooltip,
+      icon,
       ...other
     } = this.props;
 
@@ -81,15 +82,15 @@ class Button extends Component {
           ref={el => (this._btnEl = el)}
           data-tooltip={tooltip}
         >
-          {this.renderIcon()}
-          {this.props.children}
+          {icon}
+          {children}
         </C>
       );
     }
   }
 
   renderFab(classes) {
-    const { fab, floating, large, className, ...other } = this.props;
+    const { fab, floating, large, className, icon, ...other } = this.props;
     return (
       <div
         {...other}
@@ -98,7 +99,7 @@ class Button extends Component {
           toolbar: fab && fab.toolbarEnabled
         })}
       >
-        <a className={classes}>{this.renderIcon()}</a>
+        <a className={classes}>{icon}</a>
         <ul>
           {React.Children.map(this.props.children, child => {
             return <li key={idgen()}>{child}</li>;
@@ -106,13 +107,6 @@ class Button extends Component {
         </ul>
       </div>
     );
-  }
-
-  renderIcon() {
-    const { icon } = this.props;
-    if (!icon) return;
-
-    return <Icon>{icon}</Icon>;
   }
 }
 
@@ -149,7 +143,7 @@ Button.propTypes = {
   /**
    * The icon to display, if specified it will create a button with the material icon.
    */
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   modal: PropTypes.oneOf(['close', 'confirm']),
   node: PropTypes.node,
   /**
@@ -182,7 +176,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  node: 'button'
+  node: 'button',
+  icon: <Icon>edit</Icon>
 };
 
 export default Button;

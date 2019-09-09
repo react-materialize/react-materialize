@@ -2,25 +2,17 @@
 
 exports[`<SearchForm /> should render 1`] = `
 <form>
-  <div
-    className="input-field"
-  >
-    <input
-      id="search"
-      required={true}
-      type="search"
-    />
-    <label
-      className="label-icon"
-      htmlFor="search"
-    >
+  <TextInput
+    label={
       <Icon>
         search
       </Icon>
-    </label>
+    }
+    type="search"
+  >
     <Icon>
       close
     </Icon>
-  </div>
+  </TextInput>
 </form>
 `;

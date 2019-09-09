@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -14,6 +14,8 @@ class Card extends Component {
   }
 
   renderTitle(title, reveal) {
+    const { revealIcon } = this.props;
+
     return (
       <span
         className={cx('card-title', {
@@ -21,17 +23,19 @@ class Card extends Component {
         })}
       >
         {title}
-        {reveal && <Icon right>more_vert</Icon>}
+        {reveal && { revealIcon }}
       </span>
     );
   }
 
   renderReveal(title, reveal) {
+    const { closeIcon } = this.props;
+
     return (
       <div className="card-reveal">
         <span className="card-title">
           {title}
-          <Icon right>close</Icon>
+          {cloneElement(closeIcon, { right: true })}
         </span>
         {reveal}
       </div>
@@ -53,11 +57,11 @@ class Card extends Component {
 
   renderAll(title, reveal, textClassName, children, actions) {
     return (
-      <React.Fragment>
+      <Fragment>
         {this.renderContent(title, reveal, textClassName, children)}
         {this.renderReveal(title, reveal)}
         {actions && this.renderAction(actions)}
-      </React.Fragment>
+      </Fragment>
     );
   }
 
@@ -103,7 +107,14 @@ Card.propTypes = {
   header: PropTypes.element,
   // The buttons to be displayed at the action area
   actions: PropTypes.arrayOf(PropTypes.element),
-  horizontal: PropTypes.bool
+  horizontal: PropTypes.bool,
+  closeIcon: PropTypes.node,
+  revealIcon: PropTypes.node
+};
+
+Card.defaultProps = {
+  closeIcon: <Icon>close</Icon>,
+  revealIcon: <Icon>more_vert</Icon>
 };
 
 export default Card;

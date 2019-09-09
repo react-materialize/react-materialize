@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import constants from './constants';
-import Icon from './Icon';
 import idgen from './idgen';
 
 class Autocomplete extends Component {
@@ -33,7 +32,7 @@ class Autocomplete extends Component {
   }
 
   renderIcon(icon) {
-    return <Icon className="prefix">{icon}</Icon>;
+    return React.cloneElement(icon, { className: 'prefix' });
   }
 
   _onChange(e) {
@@ -122,7 +121,7 @@ Autocomplete.propTypes = {
   /*
    * Optional materialize icon to add to the autocomplete bar
    */
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   s: PropTypes.number,
   m: PropTypes.number,
   l: PropTypes.number,

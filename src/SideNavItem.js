@@ -45,7 +45,7 @@ SideNavItem.propTypes = {
   userView: PropTypes.bool,
   waves: PropTypes.bool,
   href: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   user: PropTypes.shape(UserShape)
 };
 

@@ -1,7 +1,6 @@
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Icon from './Icon';
 import idgen from './idgen';
 import constants from './constants';
 
@@ -103,7 +102,8 @@ class Select extends Component {
         </label>
       );
 
-    const renderIcon = () => icon && <Icon className="prefix">{icon}</Icon>;
+    const renderIcon = () =>
+      icon && React.cloneElement(icon, { className: 'prefix' });
 
     const renderOption = child =>
       cloneElement(child, { key: child.props.value });
@@ -174,7 +174,7 @@ Select.propTypes = {
   /*
    * prefix icon
    */
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   /*
    * label text
    */
