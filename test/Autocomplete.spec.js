@@ -53,6 +53,7 @@ describe('<Autocomplete />', () => {
     beforeEach(() => {
       autocompleteInitMock.mockClear();
       autocompleteInstanceDestroyMock.mockClear();
+      autocompleteUpdateDataMock.mockClear();
     });
 
     afterAll(() => {
@@ -62,6 +63,7 @@ describe('<Autocomplete />', () => {
     test('calls Autocomplete', () => {
       mount(<Autocomplete />);
       expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+      expect(autocompleteUpdateDataMock).not.toHaveBeenCalled();
     });
 
     test('calls updateData when providing new data', () => {
