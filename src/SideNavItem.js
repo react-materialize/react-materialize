@@ -29,7 +29,7 @@ class SideNavItem extends Component {
         {userView && user && <UserView {...user} />}
         {!userView && (
           <a className={cx(linkClasses)} href={href}>
-            {icon && <i className="material-icons">{icon}</i>}
+            {icon}
             {children}
           </a>
         )}

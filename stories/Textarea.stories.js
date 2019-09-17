@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { text, boolean, number, withKnobs } from '@storybook/addon-knobs';
 import Row from '../src/Row';
 import Textarea from '../src/Textarea';
+import Icon from '../src/Icon';
 
 const stories = storiesOf('Components|Textarea', module);
 stories.addDecorator(withKnobs);
@@ -52,7 +53,9 @@ stories.add('Label', () => (
   <Textarea label={text('label', 'Write something here...')} />
 ));
 
-stories.add('Icon', () => <Textarea icon={text('icon', 'mode_edit')} />);
+stories.add('Icon', () => (
+  <Textarea icon={<Icon>{text('icon', 'mode_edit')}</Icon>} />
+));
 
 stories.add(
   'Character Counter',
