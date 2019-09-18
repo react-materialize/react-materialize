@@ -10,7 +10,6 @@ exports[`<SearchForm /> should render 1`] = `
     }
     onChange={[Function]}
     type="search"
-    value=""
   >
     <Icon>
       close
