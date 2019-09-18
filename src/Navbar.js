@@ -30,7 +30,8 @@ class Navbar extends Component {
       centerLogo,
       search,
       menuIcon,
-      sidenav
+      sidenav,
+      onChange
     } = this.props;
 
     const brandClasses = cx({
@@ -63,7 +64,11 @@ class Navbar extends Component {
       <nav className={navCSS}>
         <div className="nav-wrapper">
           {search ? (
-            <SearchForm />
+            <SearchForm
+              onChange={
+                typeof onChange == 'function' ? e => onChange(e) : false
+              }
+            />
           ) : (
             <Fragment>
               {brand &&
@@ -150,7 +155,8 @@ Navbar.propTypes = {
     // Prevent page from scrolling while sidenav is open.
     preventScrolling: PropTypes.bool
   }),
-  menuIcon: PropTypes.node.isRequired
+  menuIcon: PropTypes.node.isRequired,
+  onChange: PropTypes.func
 };
 
 Navbar.defaultProps = {
