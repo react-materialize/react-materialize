@@ -53,7 +53,7 @@
       "src"
     ]
   },
-  "homepage": "https://github.com/react-materialize/react-materialize",
+  "homepage": "https://github.com/BrightEntity/react-materialize",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
