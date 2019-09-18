@@ -8,7 +8,9 @@ exports[`<SearchForm /> should render 1`] = `
         search
       </Icon>
     }
+    onChange={[Function]}
     type="search"
+    value=""
   >
     <Icon>
       close
