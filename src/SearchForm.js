@@ -8,7 +8,7 @@ const SearchForm = ({ searchIcon, closeIcon, onChange, value }) => (
     <TextInput
       label={searchIcon}
       type="search"
-      onChange={e => onChange(e)}
+      onChange={e => (typeof (onChange == 'function') ? onChange(e) : false)}
       value={value}
     >
       {closeIcon}
