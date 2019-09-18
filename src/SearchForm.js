@@ -9,7 +9,6 @@ const SearchForm = ({ searchIcon, closeIcon, onChange, value }) => (
       label={searchIcon}
       type="search"
       onChange={e => (typeof onChange == 'function' ? onChange(e) : false)}
-      value={value}
     >
       {closeIcon}
     </TextInput>
@@ -19,15 +18,13 @@ const SearchForm = ({ searchIcon, closeIcon, onChange, value }) => (
 SearchForm.propTypes = {
   searchIcon: PropTypes.node.isRequired,
   closeIcon: PropTypes.node.isRequired,
-  onChange: PropTypes.func,
-  value: PropTypes.string
+  onChange: PropTypes.func
 };
 
 SearchForm.defaultProps = {
   searchIcon: <Icon>search</Icon>,
   closeIcon: <Icon>close</Icon>,
-  onChange: null,
-  value: ''
+  onChange: null
 };
 
 export default SearchForm;
