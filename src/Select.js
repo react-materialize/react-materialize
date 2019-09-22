@@ -34,14 +34,13 @@ class Select extends Component {
     }
   }
 
-  componentDidUpdate() {
-    const { options } = this.props;
+  componentDidUpdate(prevProps) {
+    const { options, value } = this.props;
 
-    if (this.instance) {
-      this.instance.destroy();
+    if (prevProps.value !== value) {
+      if (this.instance) this.instance.destroy();
+      this.instance = M.FormSelect.init(this._selectRef, options);
     }
-
-    this.instance = M.FormSelect.init(this._selectRef, options);
   }
 
   componentWillUnmount() {
@@ -85,7 +84,7 @@ class Select extends Component {
     const selectProps = {
       type: 'select',
       id: this.id,
-      value: this.state.value,
+      defaultValue: this.state.value,
       disabled,
       multiple,
       ...other
@@ -114,7 +113,6 @@ class Select extends Component {
       <div className={wrapperClasses}>
         {renderIcon()}
         <select
-          value={this.state.value}
           ref={el => {
             this._selectRef = el;
           }}
