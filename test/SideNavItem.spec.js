@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import SideNavItem from '../src/SideNavItem';
+import Icon from '../src/Icon';
 
 function setup(props = {}, children) {
   const propsIn = {
@@ -67,7 +68,7 @@ describe('<SideNavItem />', () => {
 
   test('should render an icon when needed', () => {
     const { firstChild } = setup({
-      icon: 'car'
+      icon: <Icon>car</Icon>
     });
     expect(firstChild).toMatchSnapshot();
   });
@@ -77,5 +78,12 @@ describe('<SideNavItem />', () => {
       href: 'www.test.nl'
     });
     expect(firstChild.props().href).toEqual('www.test.nl');
+  });
+
+  test('should render a given onClick', () => {
+    const { firstChild } = setup({
+      onClick: () => {}
+    });
+    expect(firstChild.props().onClick).toBeTruthy();
   });
 });

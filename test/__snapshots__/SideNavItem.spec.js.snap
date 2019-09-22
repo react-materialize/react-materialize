@@ -23,10 +23,8 @@ exports[`<SideNavItem /> should render an icon when needed 1`] = `
   className=""
   href="#!"
 >
-  <i
-    className="material-icons"
-  >
+  <Icon>
     car
-  </i>
+  </Icon>
 </a>
 `;
