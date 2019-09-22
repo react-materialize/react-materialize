@@ -44,10 +44,29 @@ describe('<Select />', () => {
     expect(wrapper.find('select.hello.red.validate')).toHaveLength(1);
   });
 
-  test('calls onChange if provided', () => {
+  test('updates select prop', () => {
     wrapper = shallow(<Select />);
     wrapper.setState({ value: 'hello' });
-    expect(wrapper.find('select').prop('value')).toEqual('hello');
+    expect(wrapper.find('select').prop('defaultValue')).toEqual('hello');
+  });
+
+  test('calls onChange if provided', () => {
+    const mockOnChange = jest.fn();
+    wrapper = shallow(
+      <Select onChange={mockOnChange}>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+      </Select>
+    );
+    const event = {
+      target: {
+        name: 'one',
+        value: 'two'
+      }
+    };
+
+    wrapper.find('select').simulate('change', event);
+    expect(mockOnChange).toHaveBeenNthCalledWith(1, event);
   });
 
   test('with icon', () => {

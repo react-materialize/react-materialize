@@ -35,13 +35,13 @@ stories.add('with Icon', () => (
 ));
 
 stories.add('Multiple', () => (
-  <Select multiple value={['']}>
+  <Select multiple>
     <option value="" disabled>
       Choose your option
     </option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
+    <option value="Option 1">Option 1</option>
+    <option value="Option 2">Option 2</option>
+    <option value="Option 3">Option 3</option>
   </Select>
 ));
 

@@ -14,12 +14,11 @@ class Select extends Component {
   }
 
   handleChange(event) {
-    const { onChange } = this.props;
-    let value = event.target.value;
+    const { onChange, multiple } = this.props;
 
-    if (this.props.multiple) {
-      value = this.instance.getSelectedValues();
-    }
+    const value = multiple
+      ? this.instance.getSelectedValues()
+      : event.target.value;
 
     if (onChange) onChange(event);
 
@@ -107,7 +106,11 @@ class Select extends Component {
     const renderOption = child =>
       cloneElement(child, { key: child.props.value });
 
-    const renderOptions = () => Children.map(children, renderOption);
+    const classes = cx(selectClassName, {
+      validate,
+      multiple,
+      ['browser-default']: browserDefault
+    });
 
     return (
       <div className={wrapperClasses}>
@@ -117,17 +120,10 @@ class Select extends Component {
             this._selectRef = el;
           }}
           onChange={this.handleChange}
-          className={cx(
-            {
-              validate,
-              multiple,
-              ['browser-default']: browserDefault
-            },
-            selectClassName
-          )}
+          className={classes}
           {...selectProps}
         >
-          {renderOptions()}
+          {Children.map(children, renderOption)}
         </select>
         {renderLabel()}
       </div>
