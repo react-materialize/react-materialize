@@ -66,7 +66,7 @@ class Select extends Component {
       validate,
       children,
       multiple,
-      ...other
+      name
     } = this.props;
 
     const sizes = { s, m, l, xl };
@@ -87,7 +87,7 @@ class Select extends Component {
       defaultValue: this.state.value,
       disabled,
       multiple,
-      ...other
+      name
     };
 
     const renderLabel = () =>
@@ -178,13 +178,19 @@ Select.propTypes = {
    */
   label: PropTypes.string,
   /*
-   * Input initial value
+   * Input initial value, or array of values if `multiple`
+   * remove this prop if no initial value should be checked by default.
+   * Controlled component: this value is converted to defaultValue.
    */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /*
    * Add validate class to input
    */
   validate: PropTypes.bool,
+  /*
+   * Select name tag
+   */
+  name: PropTypes.string,
   /*
    * Custom success message
    */
