@@ -1,4 +1,4 @@
-import React, { Component, Fragment, Children } from 'react';
+import React, { Component, Fragment, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -27,6 +27,8 @@ class Navbar extends Component {
       extendWith,
       fixed,
       alignLinks,
+      rightLinks,
+      leftLinks,
       centerLogo,
       search,
       menuIcon,
@@ -35,7 +37,7 @@ class Navbar extends Component {
 
     const brandClasses = cx({
       'brand-logo': true,
-      center: centerLogo
+      center: centerLogo || leftLinks || rightLinks
     });
 
     const navCSS = cx({ 'nav-extended': extendWith }, className);
@@ -48,16 +50,13 @@ class Navbar extends Component {
 
     const sidenavLinks = sidenav
       ? sidenav
-      : Children.map(children, (link, index) => {
-          const clonedLink =
-            link && link.props && link.props.id
-              ? React.cloneElement(link, {
-                  ...link.props,
-                  id: `sidenav-${link.props.id}`
-                })
-              : link;
-          return <li key={index}>{clonedLink}</li>;
-        });
+      : [...leftLinks, ...rightLinks].map((link, index) => (
+          <li key={index}>
+            {cloneElement(link, {
+              id: `sidenav-link-${index}`
+            })}
+          </li>
+        ));
 
     let navbar = (
       <nav className={navCSS}>
@@ -67,13 +66,27 @@ class Navbar extends Component {
           ) : (
             <Fragment>
               {brand &&
-                React.cloneElement(brand, {
+                cloneElement(brand, {
                   className: cx(brand.props.className, brandClasses)
                 })}
               <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
                 {menuIcon}
               </a>
-              <ul className={navMobileCSS}>{links}</ul>
+              {links && <ul className={navMobileCSS}>{links}</ul>}
+              {leftLinks && (
+                <ul className={cx('hide-on-med-and-down left')}>
+                  {leftLinks.map((link, index) => (
+                    <li key={`left-link-${index}`}>{link}</li>
+                  ))}
+                </ul>
+              )}
+              {rightLinks && (
+                <ul className={cx('hide-on-med-and-down right')}>
+                  {rightLinks.map((link, index) => (
+                    <li key={`right-link-${index}`}>{link}</li>
+                  ))}
+                </ul>
+              )}
             </Fragment>
           )}
         </div>
@@ -117,6 +130,8 @@ Navbar.propTypes = {
    * left makes the navbar links left aligned, right makes them right aligned
    */
   alignLinks: PropTypes.oneOf(['left', 'right']),
+  rightLinks: PropTypes.arrayOf(PropTypes.node),
+  leftLinks: PropTypes.arrayOf(PropTypes.node),
   /**
    * The logo will center itself on medium and down screens.
    * Specifying centerLogo as a prop the logo will always be centered
@@ -154,6 +169,8 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
+  leftLinks: [],
+  rightLinks: [],
   options: {
     edge: 'left',
     draggable: true,

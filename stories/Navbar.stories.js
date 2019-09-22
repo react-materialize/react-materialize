@@ -44,6 +44,26 @@ stories.add('Left Aligned Links', () => (
   </Navbar>
 ));
 
+stories.add('Left and Right Aligned Links', () => (
+  <Navbar
+    brand={
+      <a href="#" className="brand-logo right">
+        Logo
+      </a>
+    }
+    leftLinks={[
+      <NavItem onClick={() => console.log('test click')}>Sass</NavItem>,
+      <NavItem href="components.html">Components</NavItem>,
+      <NavItem href="components.html">Javascript</NavItem>
+    ]}
+    rightLinks={[
+      <NavItem onClick={() => console.log('test click')}>Less</NavItem>,
+      <NavItem href="components.html">Components</NavItem>,
+      <NavItem href="components.html">Typescript</NavItem>
+    ]}
+  />
+));
+
 stories.add('Center Logo', () => (
   <Navbar
     brand={

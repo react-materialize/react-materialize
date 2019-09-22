@@ -187,6 +187,73 @@ exports[`<Navbar /> can center the brand logo 1`] = `
 </Fragment>
 `;
 
+exports[`<Navbar /> can have children with custom ids 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper"
+    >
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down "
+      >
+        <li
+          key="0/.0"
+        >
+          <span
+            id="custom-1"
+          >
+            Custom 1
+          </span>
+        </li>
+        <li
+          key="1/.1"
+        >
+          <span
+            id="custom-2"
+          >
+            Custom 2
+          </span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <ul
+    className="sidenav "
+    id="mobile-nav"
+  >
+    <li
+      key="0/.0"
+    >
+      <span
+        id="sidenav-custom-1"
+      >
+        Custom 1
+      </span>
+    </li>
+    <li
+      key="1/.1"
+    >
+      <span
+        id="sidenav-custom-2"
+      >
+        Custom 2
+      </span>
+    </li>
+  </ul>
+</Fragment>
+`;
+
 exports[`<Navbar /> can have custom sidenav 1`] = `
 <Fragment>
   <nav
@@ -211,7 +278,7 @@ exports[`<Navbar /> can have custom sidenav 1`] = `
         </Icon>
       </a>
       <ul
-        className="hide-on-med-and-down left"
+        className="hide-on-med-and-down"
       />
     </div>
   </nav>
@@ -331,114 +398,6 @@ exports[`<Navbar /> renders 1`] = `
       >
         Components
       </a>
-    </li>
-  </ul>
-</Fragment>
-`;
-
-exports[`<Navbar /> can have custom sidenav 1`] = `
-<Fragment>
-  <nav
-    className=""
-  >
-    <div
-      className="nav-wrapper"
-    >
-      <a
-        className="brand-logo"
-        href="/"
-      >
-        Logo
-      </a>
-      <a
-        className="sidenav-trigger"
-        data-target="mobile-nav"
-        href="#!"
-      >
-        <Icon>
-          menu
-        </Icon>
-      </a>
-      <ul
-        className="hide-on-med-and-down left"
-      />
-    </div>
-  </nav>
-  <ul
-    className="sidenav left"
-    id="mobile-nav"
-  >
-    <li
-      className="custom-node"
-    >
-      Custom node!
-    </li>
-  </ul>
-</Fragment>
-`;
-
-exports[`<Navbar /> can have children with custom ids 1`] = `
-<Fragment>
-  <nav
-    className=""
-  >
-    <div
-      className="nav-wrapper"
-    >
-      <a
-        className="sidenav-trigger"
-        data-target="mobile-nav"
-        href="#!"
-      >
-        <Icon>
-          menu
-        </Icon>
-      </a>
-      <ul
-        className="hide-on-med-and-down "
-      >
-        <li
-          key="0/.0"
-        >
-          <span
-            id="custom-1"
-          >
-            Custom 1
-          </span>
-        </li>
-        <li
-          key="1/.1"
-        >
-          <span
-            id="custom-2"
-          >
-            Custom 2
-          </span>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <ul
-    className="sidenav "
-    id="mobile-nav"
-  >
-    <li
-      key="0/.0"
-    >
-      <span
-        id="sidenav-custom-1"
-      >
-        Custom 1
-      </span>
-    </li>
-    <li
-      key="1/.1"
-    >
-      <span
-        id="sidenav-custom-2"
-      >
-        Custom 2
-      </span>
     </li>
   </ul>
 </Fragment>
