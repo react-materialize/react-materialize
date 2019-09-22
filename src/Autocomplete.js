@@ -29,7 +29,7 @@ class Autocomplete extends Component {
     if (this.instance) {
       const { data } = this.props.options;
 
-      if (prevProps.options.data !== data) {
+      if (JSON.stringify(prevProps.options.data) !== JSON.stringify(data)) {
         this.instance.updateData(data);
       }
     }

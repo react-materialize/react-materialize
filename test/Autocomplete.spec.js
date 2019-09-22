@@ -72,5 +72,12 @@ describe('<Autocomplete />', () => {
       wrapper.setProps({ options: { data: { Google: null } } });
       expect(autocompleteUpdateDataMock).toHaveBeenCalledWith({ Google: null });
     });
+
+    test('does not calls updateData when providing the same data', () => {
+      const wrapper = shallow(<Autocomplete options={{ data }} />);
+      expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+      wrapper.setProps({ options: { data } });
+      expect(autocompleteUpdateDataMock).not.toHaveBeenCalled();
+    });
   });
 });
