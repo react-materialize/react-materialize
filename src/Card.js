@@ -23,7 +23,10 @@ class Card extends Component {
         })}
       >
         {title}
-        {reveal && { revealIcon }}
+        {reveal &&
+          cloneElement(revealIcon, {
+            className: 'right'
+          })}
       </span>
     );
   }

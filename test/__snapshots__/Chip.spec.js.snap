@@ -9,7 +9,11 @@ exports[`<Chip /> accepts children 1`] = `
   >
     Child
   </p>
-  <Component />
+  <Icon
+    className="close"
+  >
+    close
+  </Icon>
 </div>
 `;
 

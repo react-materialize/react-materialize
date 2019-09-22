@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, Component, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -36,7 +36,10 @@ class Chip extends Component {
     let chipContent = (
       <Fragment>
         {children}
-        {close && { closeIcon }}
+        {close &&
+          cloneElement(closeIcon, {
+            className: 'close'
+          })}
       </Fragment>
     );
 
