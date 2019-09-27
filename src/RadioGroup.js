@@ -16,11 +16,11 @@ const RadioGroup = ({
       {options.map((radioItem, idx) => (
         <label
           className={radioClassNames}
-          htmlFor={`radio${idx}`}
-          key={`radio${idx}`}
+          htmlFor={radioItem.id ? radioItem.id : `radio${idx}`}
+          key={radioItem.id ? radioItem.id : `radio${idx}`}
         >
           <input
-            id={`radio${idx}`}
+            id={radioItem.id ? radioItem.id : `radio${idx}`} //if user defined id use that, otherwise use default
             value={radioItem.value}
             type="radio"
             checked={radioItem.value === value}
@@ -40,7 +40,8 @@ RadioGroup.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
+      value: PropTypes.string.isRequired,
+      id: PropTypes.string //optional user-defined id
     })
   ).isRequired,
   /*

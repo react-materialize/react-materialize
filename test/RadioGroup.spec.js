@@ -13,7 +13,7 @@ describe('<RadioGroup />', () => {
     options: [
       { label: 'XL', value: 'xl' },
       { label: 'L', value: 'l' },
-      { label: 'M', value: 'm' }
+      { label: 'M', value: 'm', id: 'radioM' }
     ]
   };
 

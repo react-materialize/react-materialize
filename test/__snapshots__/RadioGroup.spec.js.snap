@@ -39,14 +39,14 @@ exports[`<RadioGroup /> disabled 1`] = `
     </span>
   </label>
   <label
-    htmlFor="radio2"
-    key="radio2"
+    htmlFor="radioM"
+    key="radioM"
   >
     <input
       checked={false}
       className=""
       disabled={true}
-      id="radio2"
+      id="radioM"
       name="size"
       onChange={[MockFunction]}
       type="radio"
@@ -96,13 +96,13 @@ exports[`<RadioGroup /> renders 1`] = `
     </span>
   </label>
   <label
-    htmlFor="radio2"
-    key="radio2"
+    htmlFor="radioM"
+    key="radioM"
   >
     <input
       checked={false}
       className=""
-      id="radio2"
+      id="radioM"
       name="size"
       onChange={[MockFunction]}
       type="radio"
@@ -155,13 +155,13 @@ exports[`<RadioGroup /> with classnames 1`] = `
   </label>
   <label
     className="red"
-    htmlFor="radio2"
-    key="radio2"
+    htmlFor="radioM"
+    key="radioM"
   >
     <input
       checked={false}
       className=""
-      id="radio2"
+      id="radioM"
       name="size"
       onChange={[MockFunction]}
       type="radio"
@@ -211,13 +211,13 @@ exports[`<RadioGroup /> with gap 1`] = `
     </span>
   </label>
   <label
-    htmlFor="radio2"
-    key="radio2"
+    htmlFor="radioM"
+    key="radioM"
   >
     <input
       checked={false}
       className="with-gap"
-      id="radio2"
+      id="radioM"
       name="size"
       onChange={[MockFunction]}
       type="radio"
@@ -267,13 +267,13 @@ exports[`<RadioGroup /> with predefined value 1`] = `
     </span>
   </label>
   <label
-    htmlFor="radio2"
-    key="radio2"
+    htmlFor="radioM"
+    key="radioM"
   >
     <input
       checked={false}
       className=""
-      id="radio2"
+      id="radioM"
       name="size"
       onChange={[MockFunction]}
       type="radio"
