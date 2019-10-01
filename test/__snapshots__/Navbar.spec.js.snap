@@ -9,6 +9,7 @@ exports[`<Navbar /> adds a brand node 1`] = `
       I AM BRAND
     </span>
   }
+  leftLinks={Array []}
   menuIcon={
     <Icon>
       menu
@@ -27,6 +28,7 @@ exports[`<Navbar /> adds a brand node 1`] = `
       "preventScrolling": true,
     }
   }
+  rightLinks={Array []}
 >
   <nav
     className=""
@@ -35,7 +37,7 @@ exports[`<Navbar /> adds a brand node 1`] = `
       className="nav-wrapper"
     >
       <span
-        className="brando brand-logo"
+        className="brando brand-logo center"
       >
         I AM BRAND
       </span>
@@ -53,7 +55,10 @@ exports[`<Navbar /> adds a brand node 1`] = `
         </Icon>
       </a>
       <ul
-        className="hide-on-med-and-down "
+        className="hide-on-med-and-down left"
+      />
+      <ul
+        className="hide-on-med-and-down right"
       />
     </div>
   </nav>
@@ -82,7 +87,10 @@ exports[`<Navbar /> can be extended with custom elements 1`] = `
         </Icon>
       </a>
       <ul
-        className="hide-on-med-and-down "
+        className="hide-on-med-and-down left"
+      />
+      <ul
+        className="hide-on-med-and-down right"
       />
     </div>
     <div
@@ -140,7 +148,10 @@ exports[`<Navbar /> can be fixed 1`] = `
           </Icon>
         </a>
         <ul
-          className="hide-on-med-and-down "
+          className="hide-on-med-and-down left"
+        />
+        <ul
+          className="hide-on-med-and-down right"
         />
       </div>
     </nav>
@@ -176,7 +187,10 @@ exports[`<Navbar /> can center the brand logo 1`] = `
         </Icon>
       </a>
       <ul
-        className="hide-on-med-and-down "
+        className="hide-on-med-and-down left"
+      />
+      <ul
+        className="hide-on-med-and-down right"
       />
     </div>
   </nav>
@@ -226,31 +240,18 @@ exports[`<Navbar /> can have children with custom ids 1`] = `
           </span>
         </li>
       </ul>
+      <ul
+        className="hide-on-med-and-down left"
+      />
+      <ul
+        className="hide-on-med-and-down right"
+      />
     </div>
   </nav>
   <ul
     className="sidenav "
     id="mobile-nav"
-  >
-    <li
-      key="0/.0"
-    >
-      <span
-        id="sidenav-custom-1"
-      >
-        Custom 1
-      </span>
-    </li>
-    <li
-      key="1/.1"
-    >
-      <span
-        id="sidenav-custom-2"
-      >
-        Custom 2
-      </span>
-    </li>
-  </ul>
+  />
 </Fragment>
 `;
 
@@ -263,7 +264,7 @@ exports[`<Navbar /> can have custom sidenav 1`] = `
       className="nav-wrapper"
     >
       <a
-        className="brand-logo"
+        className="brand-logo center"
         href="/"
       >
         Logo
@@ -278,7 +279,10 @@ exports[`<Navbar /> can have custom sidenav 1`] = `
         </Icon>
       </a>
       <ul
-        className="hide-on-med-and-down"
+        className="hide-on-med-and-down left"
+      />
+      <ul
+        className="hide-on-med-and-down right"
       />
     </div>
   </nav>
@@ -304,7 +308,7 @@ exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
       className="nav-wrapper"
     >
       <a
-        className="brand-logo"
+        className="brand-logo center"
         href="/"
       >
         Logo
@@ -320,6 +324,9 @@ exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
       </a>
       <ul
         className="hide-on-med-and-down left"
+      />
+      <ul
+        className="hide-on-med-and-down right"
       />
     </div>
   </nav>
@@ -339,7 +346,7 @@ exports[`<Navbar /> renders 1`] = `
       className="nav-wrapper"
     >
       <a
-        className="brand-logo"
+        className="brand-logo center"
         href="/"
       >
         Logo
@@ -375,30 +382,17 @@ exports[`<Navbar /> renders 1`] = `
           </a>
         </li>
       </ul>
+      <ul
+        className="hide-on-med-and-down left"
+      />
+      <ul
+        className="hide-on-med-and-down right"
+      />
     </div>
   </nav>
   <ul
     className="sidenav right"
     id="mobile-nav"
-  >
-    <li
-      key="0/.0"
-    >
-      <a
-        href="get-started.html"
-      >
-        Getting started
-      </a>
-    </li>
-    <li
-      key="1/.1"
-    >
-      <a
-        href="components.html"
-      >
-        Components
-      </a>
-    </li>
-  </ul>
+  />
 </Fragment>
 `;
