@@ -40,7 +40,6 @@ export { default as SideNavItem } from './SideNavItem';
 export { default as Slide } from './Slide';
 export { default as Slider } from './Slider';
 export { default as Switch } from './Switch';
-export { default as Tab } from './Tab';
 export { default as Table } from './Table';
 export { default as Tabs } from './Tabs';
 export { default as TextInput } from './TextInput';
