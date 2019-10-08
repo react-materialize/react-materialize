@@ -48,6 +48,8 @@ class Button extends Component {
       ...other
     } = this.props;
 
+    delete other.tooltipOptions;
+
     let C = node;
     let classes = {
       btn: true,
