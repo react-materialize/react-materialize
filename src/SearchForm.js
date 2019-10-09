@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from './Icon';
 import TextInput from './TextInput';
 
-const SearchForm = ({ searchIcon, closeIcon, onChange, value }) => (
+const SearchForm = ({ searchIcon, closeIcon, onChange }) => (
   <form>
     <TextInput
       label={searchIcon}
