@@ -6,7 +6,7 @@
   "files": [
     "LICENSE",
     "README.md",
-    "lib"
+    "lib/*"
   ],
   "scripts": {
     "test": "npm run test:unit",
