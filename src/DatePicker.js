@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useMemo, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
 const DatePicker = props => {
-  const [id] = useState(props.id || `datepicker${idgen()}`);
+  const id = useMemo(() => props.id || `datepicker${idgen()}`, [props.id]);
   const instance = useRef(null);
 
   useEffect(() => {
