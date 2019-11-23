@@ -57,6 +57,11 @@ describe('<TextInput />', () => {
     expect(mockOnChange).toHaveBeenCalledTimes(1);
   });
 
+  test('handles file type', () => {
+    wrapper = shallow(<TextInput type="file" label="File" />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
   describe('Icon', () => {
     test('renders as a string', () => {
       wrapper = shallow(<TextInput icon="cloud" />);
@@ -76,6 +81,7 @@ describe('<TextInput />', () => {
       expect(mockIconClick).toBeCalled();
     });
   });
+
   describe('undefined M', () => {
     let __M;
     beforeEach(() => {

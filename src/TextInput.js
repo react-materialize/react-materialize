@@ -125,6 +125,26 @@ class TextInput extends Component {
       return React.cloneElement(icon, { className: 'prefix' });
     };
 
+    if (type === 'file') {
+      return (
+        <div className={`${wrapperClasses} file-field`}>
+          <div className="btn">
+            <span>{label}</span>
+            <input
+              type="file"
+              className={cx({ validate }, inputClassName)}
+              {...inputProps}
+            />
+          </div>
+          <div className="file-path-wrapper">
+            <input className="file-path validate" type="text" />
+          </div>
+          {renderHelper()}
+          {children}
+        </div>
+      );
+    }
+
     return (
       <div className={wrapperClasses}>
         {renderIcon()}

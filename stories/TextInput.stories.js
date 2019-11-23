@@ -46,6 +46,10 @@ stories.add('Email validate', () => (
   />
 ));
 
+stories.add('File type', () => (
+  <TextInput type="file" label="File" />
+));
+
 stories.add(
   'Character Counter',
   () => <TextInput label="Input text" data-length={10} />,
