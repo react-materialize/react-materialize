@@ -1,62 +1,42 @@
-import React, { Fragment, Component } from 'react';
+import React, { useEffect, useRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 
-class Chip extends Component {
-  componentDidMount() {
-    const { options } = this.props;
+const Chip = ({ children, close, closeIcon, className, options, ...other }) => {
+  const instance = useRef(null);
+  const chipRef = useRef(null);
 
-    if (options && typeof M !== 'undefined') {
-      this.instance = M.Chips.init(this._chips, options);
-    }
-  }
+  const classes = cx(className, {
+    chip: !options,
+    chips: options
+  });
 
-  componentWillUnmount() {
-    this.instance && this.instance.destroy();
-  }
+  const chipContent = options ? null : (
+    <Fragment>
+      {children}
+      {close && closeIcon}
+    </Fragment>
+  );
 
-  render() {
-    const {
-      children,
-      close,
-      closeIcon,
-      className,
-      options,
-      ...other
-    } = this.props;
-
-    const classes = cx(
-      {
-        chip: !options,
-        chips: options
-      },
-      className
-    );
-    let chipContent = (
-      <Fragment>
-        {children}
-        {close && { closeIcon }}
-      </Fragment>
-    );
-
+  useEffect(() => {
     if (options) {
-      chipContent = null;
+      instance.current = M.Chips.init(chipRef.current, options);
     }
 
-    return (
-      <div
-        className={classes}
-        {...other}
-        ref={div => {
-          this._chips = div;
-        }}
-      >
-        {chipContent}
-      </div>
-    );
-  }
-}
+    return () => {
+      if (instance.current) {
+        instance.current.destroy();
+      }
+    };
+  }, [instance.current, chipRef.current, options]);
+
+  return (
+    <div className={classes} {...other} ref={chipRef}>
+      {chipContent}
+    </div>
+  );
+};
 
 Chip.propTypes = {
   className: PropTypes.string,
@@ -120,7 +100,7 @@ Chip.propTypes = {
 
 Chip.defaultProps = {
   close: false,
-  closeIcon: <Icon>close</Icon>,
+  closeIcon: <Icon className="close">close</Icon>,
   options: null
 };
 
