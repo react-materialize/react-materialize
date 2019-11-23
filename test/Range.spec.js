@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Range from '../src/Range';
 import mocker from './helper/new-mocker';
 
@@ -8,10 +8,10 @@ describe('<Range />', () => {
   const mockInit = jest.fn();
 
   const rangeMock = { init: mockInit };
-  const restore = mocker('Range', rangeMock);
+  mocker('Range', rangeMock);
 
   test('renders', () => {
-    wrapper = shallow(<Range min="10" max="99" />);
+    wrapper = mount(<Range min="10" max="99" />);
     expect(wrapper).toMatchSnapshot();
     expect(mockInit).toHaveBeenCalledTimes(1);
   });
