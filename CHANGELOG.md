@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.0
+
+- Feature: Add file type support to `TextInput`
+
 ### 3.4.1
 
 - Fixes bug on button always rendering icon
