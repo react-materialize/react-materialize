@@ -17,5 +17,3 @@
 **react-materialize:** x.x.x
 **materialize-css:** x.x.x
 **react:** x.x.x
-
-#### Thanks for helping out!
