@@ -1,31 +1,26 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-class Range extends React.Component {
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      this.instance = M.Range.init(this._range);
-    }
-  }
+const Range = props => {
+  const instance = useRef(null);
+  const rangeRef = useRef(null);
 
-  componentWillUnmount() {
-    this.instance && this.instance.destroy();
-  }
+  useEffect(() => {
+    instance.current = M.Range.init(rangeRef.current);
 
-  render() {
-    return (
-      <p className="range-field">
-        <input
-          type="range"
-          ref={el => {
-            this._range = el;
-          }}
-          {...this.props}
-        />
-      </p>
-    );
-  }
-}
+    return () => {
+      if (instance.current) {
+        instance.current.destroy();
+      }
+    };
+  }, [rangeRef.current, instance.current]);
+
+  return (
+    <p className="range-field">
+      <input type="range" ref={rangeRef} {...props} />
+    </p>
+  );
+};
 
 Range.propTypes = {
   min: PropTypes.string.isRequired,
