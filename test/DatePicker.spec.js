@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import DatePicker from '../src/DatePicker';
 import mocker from './helper/new-mocker';
 
@@ -7,17 +7,17 @@ describe('<DatePicker />', () => {
   let wrapper;
 
   test('renders', () => {
-    wrapper = shallow(<DatePicker />);
+    wrapper = mount(<DatePicker />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('renders with a label', () => {
-    wrapper = shallow(<DatePicker label="DatePicker label" />);
+    wrapper = mount(<DatePicker label="DatePicker label" />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('accepts external `id` value', () => {
-    wrapper = shallow(<DatePicker id="ID" />);
+    wrapper = mount(<DatePicker id="ID" />);
     expect(wrapper).toMatchSnapshot();
   });
 

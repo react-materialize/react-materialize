@@ -1,41 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
-class DatePicker extends React.Component {
-  constructor(props) {
-    super(props);
+const DatePicker = props => {
+  const [id] = useState(props.id || `datepicker${idgen()}`);
+  const instance = useRef(null);
 
-    this.id = props.id || `datepicker${idgen()}`;
-  }
+  useEffect(() => {
+    const { onChange } = props;
+    const options = onChange
+      ? { ...props.options, onSelect: onChange }
+      : props.options;
+    const elem = document.getElementById(id);
+    instance.current = M.Datepicker.init(elem, options);
 
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { onChange } = this.props;
-      const elem = document.getElementById(this.id);
-      const options = onChange
-        ? { ...this.props.options, onSelect: onChange }
-        : this.props.options;
+    return () => {
+      if (instance.current) {
+        instance.current.destroy();
+      }
+    };
+  }, [instance.current]);
 
-      this.instance = M.Datepicker.init(elem, options);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    const { ...other } = this.props;
-
-    return (
-      <TextInput id={this.id} inputClassName="datepicker" {...this.props} />
-    );
-  }
-}
+  return <TextInput id={id} inputClassName="datepicker" {...props} />;
+};
 
 DatePicker.propTypes = {
   /**
