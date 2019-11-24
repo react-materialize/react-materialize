@@ -1,123 +1,111 @@
-import React, { Component } from 'react';
+import React, { cloneElement, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
-class Textarea extends Component {
-  constructor(props) {
-    super(props);
+const Textarea = ({
+  id,
+  children,
+  className,
+  s,
+  m,
+  l,
+  xl,
+  disabled,
+  noLayout,
+  placeholder,
+  icon,
+  label,
+  success,
+  error,
+  iconClassName,
+  onChange,
+  validate,
+  defaultValue,
+  value,
+  ...props
+}) => {
+  const _textarea = useRef(null);
+  const sizes = { s, m, l, xl };
 
-    this.id = props.id || idgen();
+  let responsiveClasses;
+  if (!noLayout) {
+    responsiveClasses = { col: true };
+    constants.SIZES.forEach(size => {
+      responsiveClasses[size + sizes[size]] = sizes[size];
+    });
   }
 
-  componentDidMount() {
-    if (typeof M !== undefined) {
-      // eslint-disable-next-line react/prop-types
-      this.props['data-length'] && M.CharacterCounter.init(this._textarea);
+  const wrapperClasses = cx('input-field', responsiveClasses);
+
+  const textareaProps = {
+    placeholder,
+    id,
+    value,
+    defaultValue,
+    disabled,
+    ...props
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line react/prop-types
+    if (props['data-length']) {
+      const instance = M.CharacterCounter.init(_textarea.current);
+
+      return () => {
+        instance && instance.destroy();
+      };
     }
-  }
+  }, [_textarea]);
 
-  componentDidUpdate(prevProps) {
-    const { value } = this.props;
-
-    if (typeof M !== 'undefined' && value !== prevProps.value) {
-      M.textareaAutoResize(this._textarea);
+  useEffect(() => {
+    if (_textarea.current) {
+      M.textareaAutoResize(_textarea.current);
     }
-  }
+  }, [value]);
 
-  render() {
-    const {
-      children,
-      className,
-      s,
-      m,
-      l,
-      xl,
-      disabled,
-      noLayout,
-      placeholder,
-      icon,
-      label,
-      success,
-      error,
-      iconClassName,
-      onChange,
-      validate,
-      defaultValue,
-      value,
-      ...other
-    } = this.props;
-
-    const sizes = { s, m, l, xl };
-
-    let responsiveClasses;
-    if (!noLayout) {
-      responsiveClasses = { col: true };
-      constants.SIZES.forEach(size => {
-        responsiveClasses[size + sizes[size]] = sizes[size];
-      });
-    }
-
-    const wrapperClasses = cx('input-field', responsiveClasses);
-
-    const textareaProps = {
-      placeholder,
-      id: this.id,
-      value,
-      defaultValue,
-      disabled,
-      ...other
-    };
-
-    const renderLabel = () =>
-      label && (
-        <label
-          className={cx({
-            active: value || placeholder,
-            'label-icon': typeof label !== 'string'
-          })}
-          data-success={success}
-          data-error={error}
-          htmlFor={this.id}
-        >
-          {label}
-        </label>
-      );
-
-    const renderHelper = () =>
-      [error || success] && (
-        <span
-          className="helper-text"
-          data-error={error}
-          data-success={success}
-        />
-      );
-
-    const renderIcon = () => {
-      if (!icon) return;
-
-      return React.cloneElement(icon, { className: 'prefix' });
-    };
-
-    return (
-      <div className={wrapperClasses}>
-        {renderIcon()}
-        <textarea
-          {...textareaProps}
-          ref={textarea => {
-            this._textarea = textarea;
-          }}
-          onChange={onChange}
-          className={cx('materialize-textarea', { validate }, className)}
-        />
-        {renderLabel()}
-        {renderHelper()}
-        {children}
-      </div>
+  const renderLabel = () =>
+    label && (
+      <label
+        className={cx({
+          active: value || placeholder,
+          'label-icon': typeof label !== 'string'
+        })}
+        data-success={success}
+        data-error={error}
+        htmlFor={id}
+      >
+        {label}
+      </label>
     );
-  }
-}
+
+  const renderHelper = () =>
+    [error || success] && (
+      <span className="helper-text" data-error={error} data-success={success} />
+    );
+
+  const renderIcon = () => {
+    if (!icon) return;
+
+    return cloneElement(icon, { className: 'prefix' });
+  };
+
+  return (
+    <div className={wrapperClasses}>
+      {renderIcon()}
+      <textarea
+        {...textareaProps}
+        ref={_textarea}
+        onChange={onChange}
+        className={cx('materialize-textarea', { validate }, className)}
+      />
+      {renderLabel()}
+      {renderHelper()}
+      {children}
+    </div>
+  );
+};
 
 Textarea.propTypes = {
   children: PropTypes.node,
@@ -194,6 +182,10 @@ Textarea.propTypes = {
    * onChange callback
    */
   onChange: PropTypes.func
+};
+
+Textarea.defaultProps = {
+  id: `textarea_${idgen()}`
 };
 
 export default Textarea;
