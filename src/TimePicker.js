@@ -132,7 +132,8 @@ TimePicker.defaultProps = {
     onCloseStart: null,
     onCloseEnd: null,
     onSelect: null
-  }
+  },
+  onChange: null
 };
 
 export default TimePicker;
