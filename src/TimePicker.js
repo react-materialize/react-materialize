@@ -1,31 +1,24 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
-class TimePicker extends React.Component {
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { onChange, id } = this.props;
-      const elem = document.getElementById(id);
-      const options = onChange
-        ? { ...this.props.options, onSelect: onChange }
-        : this.props.options;
+const TimePicker = ({ onChange, options, ...props }) => {
+  const timeEl = useRef(null);
 
-      this.instance = M.Timepicker.init(elem, options);
-    }
-  }
+  useEffect(() => {
+    const instance = M.Timepicker.init(timeEl.current, {
+      ...options,
+      onSelect: onChange
+    });
 
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
+    return () => {
+      instance && instance.destroy();
+    };
+  }, [options, onChange]);
 
-  render() {
-    return <TextInput inputClassName="timepicker" {...this.props} />;
-  }
-}
+  return <TextInput ref={timeEl} inputClassName="timepicker" {...props} />;
+};
 
 TimePicker.propTypes = {
   /**
