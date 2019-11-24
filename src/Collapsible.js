@@ -38,10 +38,10 @@ const Collapsible = ({
     }
 
     if (activeKey === key) {
-      key = null;
+      setActiveKey(null);
     }
 
-    if (props.accordion) {
+    if (accordion) {
       setActiveKey(key);
     }
   };
