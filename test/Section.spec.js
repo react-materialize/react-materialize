@@ -1,17 +1,17 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Section from '../src/Section';
 
 describe('<Section />', () => {
   let wrapper;
 
   test('renders', () => {
-    wrapper = mount(<Section />);
+    wrapper = shallow(<Section />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('renders children', () => {
-    wrapper = mount(
+    wrapper = shallow(
       <Section>
         <p>nope</p>
       </Section>
