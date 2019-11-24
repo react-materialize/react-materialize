@@ -78,27 +78,6 @@ describe('<Collapsible />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('updates activeKey', () => {
-    wrapper = mount(
-      <Collapsible accordion>
-        <CollapsibleItem header="A">A</CollapsibleItem>
-        <CollapsibleItem header="B">B</CollapsibleItem>
-        <CollapsibleItem header="C">C</CollapsibleItem>
-        <CollapsibleItem header="D">D</CollapsibleItem>
-        <CollapsibleItem header="E">E</CollapsibleItem>
-      </Collapsible>
-    );
-
-    expect(wrapper.state().activeKey).toBeUndefined();
-    expect(wrapper).toMatchSnapshot();
-    wrapper
-      .find('.collapsible-header')
-      .at(3)
-      .simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.state().activeKey).toEqual(3);
-  });
-
   test('defaultActiveKey', () => {
     const activeKey = 0;
     wrapper = mount(
