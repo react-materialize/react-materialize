@@ -1,93 +1,79 @@
-import React, { Component } from 'react';
+import React, { Children, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-class Collapsible extends Component {
-  constructor(props) {
-    super(props);
+const Collapsible = ({
+  children,
+  className,
+  accordion,
+  options,
+  defaultActiveKey,
+  popout,
+  onSelect,
+  ...props
+}) => {
+  const _collapsible = useRef(null);
+  const collapsible = accordion ? 'accordion' : 'expandable';
+  const [activeKey, setActiveKey] = useState(defaultActiveKey);
 
-    this.state = {
-      activeKey: props.defaultActiveKey
-    };
-
-    this.renderItem = this.renderItem.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      this.instance = M.Collapsible.init(this._collapsible, {
-        accordion: this.props.accordion,
-        ...this.props.options
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    const { accordion, popout, className, children, ...props } = this.props;
-
-    delete props.defaultActiveKey;
-
-    const collapsible = accordion ? 'accordion' : 'expandable';
-    const classes = {
-      collapsible,
-      expandable: accordion !== true,
-      popout
-    };
-
-    return (
-      <ul
-        ref={node => {
-          this._collapsible = node;
-        }}
-        className={cx(className, classes)}
-        data-collapsible={collapsible}
-        {...props}
-      >
-        {React.Children.map(children, this.renderItem)}
-      </ul>
-    );
-  }
-
-  renderItem(child, key) {
+  const renderItem = (child, key) => {
     if (!child) return null;
-    const props = {
-      onSelect: this.handleSelect
-    };
 
     // Extend with props if child is a react component
     if (typeof child.type === 'function') {
       Object.assign(props, {
-        expanded: this.state.activeKey === key || child.props.expanded,
+        expanded: activeKey === key || child.props.expanded,
         eventKey: key
       });
     }
 
-    return React.cloneElement(child, props);
-  }
+    return React.cloneElement(child, {
+      onSelect: handleSelect
+    });
+  };
 
-  handleSelect(key) {
-    const { onSelect } = this.props;
-
+  const handleSelect = key => {
     if (onSelect) {
       onSelect(key);
     }
 
-    if (this.state.activeKey === key) {
+    if (activeKey === key) {
       key = null;
     }
 
-    if (this.props.accordion) {
-      this.setState({ activeKey: key });
+    if (props.accordion) {
+      setActiveKey(key);
     }
-  }
-}
+  };
+
+  useEffect(() => {
+    if (typeof M !== 'undefined') {
+      const instance = M.Collapsible.init(_collapsible.current, {
+        accordion: accordion,
+        ...options
+      });
+
+      return () => {
+        instance && instance.destroy();
+      };
+    }
+  }, [_collapsible]);
+
+  return (
+    <ul
+      ref={_collapsible}
+      className={cx(className, {
+        collapsible,
+        expandable: accordion !== true,
+        popout
+      })}
+      data-collapsible={collapsible}
+      {...props}
+    >
+      {Children.map(children, renderItem)}
+    </ul>
+  );
+};
 
 Collapsible.propTypes = {
   /**

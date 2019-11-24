@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 import mocker from './helper/new-mocker';
@@ -34,28 +34,28 @@ describe('<Collapsible />', () => {
   });
 
   test('initializes Collapsible with options', () => {
-    wrapper = shallow(<Collapsible options={options} />);
+    wrapper = mount(<Collapsible options={options} />);
     expect(collapsibleInitMock).toHaveBeenCalledWith(options);
   });
 
   test('Destroyed when unmounted', () => {
-    wrapper = shallow(<Collapsible options={options} />);
+    wrapper = mount(<Collapsible options={options} />);
     wrapper.unmount();
     expect(collapsibleInstanceDestroyMock).toHaveBeenCalled();
   });
 
   test('renders', () => {
-    wrapper = shallow(<Collapsible />);
+    wrapper = mount(<Collapsible />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('expandable', () => {
-    wrapper = shallow(<Collapsible accordion={false} />);
+    wrapper = mount(<Collapsible accordion={false} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('with invalid elements', () => {
-    wrapper = shallow(
+    wrapper = mount(
       <Collapsible>
         {null}
         <CollapsibleItem header="First">A</CollapsibleItem>
