@@ -57,14 +57,13 @@ describe('<Collapsible />', () => {
   test('with invalid elements', () => {
     wrapper = mount(
       <Collapsible>
-        {null}
         <CollapsibleItem header="First">A</CollapsibleItem>
         {null}
         <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.children().length).toEqual(2);
+    expect(wrapper.find('ul').children().length).toEqual(2);
   });
 
   test('with expanded prop', () => {
@@ -113,17 +112,15 @@ describe('<Collapsible />', () => {
       .find('.collapsible-header')
       .at(0)
       .simulate('click');
-    expect(wrapper.state().activeKey).toBeNull();
     expect(wrapper).toMatchSnapshot();
     wrapper
       .find('.collapsible-header')
       .at(1)
       .simulate('click');
-    expect(wrapper.state().activeKey).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('onSelect with right called with right argument', () => {
+  test('onSelect called with right argument', () => {
     const onSelect = jest.fn();
     wrapper = mount(
       <Collapsible accordion onSelect={onSelect}>
@@ -135,13 +132,14 @@ describe('<Collapsible />', () => {
       </Collapsible>
     );
 
-    const clickedIndex = 3;
     wrapper
       .find('.collapsible-header')
-      .at(clickedIndex)
+      .at(3)
       .simulate('click');
-    expect(onSelect).toHaveBeenCalledWith(clickedIndex);
+
+    expect(onSelect).toHaveBeenCalledWith(3);
   });
+
   describe('undefined M', () => {
     let __M;
     beforeEach(() => {

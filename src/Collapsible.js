@@ -28,7 +28,7 @@ const Collapsible = ({
     }
 
     return React.cloneElement(child, {
-      onSelect: handleSelect
+      onSelect: () => handleSelect(key)
     });
   };
 

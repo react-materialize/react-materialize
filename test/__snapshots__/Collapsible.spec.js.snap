@@ -10,7 +10,6 @@ exports[`<Collapsible /> defaultActiveKey 1`] = `
     data-collapsible="accordion"
   >
     <CollapsibleItem
-      eventKey={0}
       expanded={false}
       header="First"
       key=".0"
@@ -34,7 +33,6 @@ exports[`<Collapsible /> defaultActiveKey 1`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={1}
       expanded={false}
       header="Second"
       key=".1"
@@ -71,7 +69,6 @@ exports[`<Collapsible /> defaultActiveKey 2`] = `
     data-collapsible="accordion"
   >
     <CollapsibleItem
-      eventKey={0}
       expanded={false}
       header="First"
       key=".0"
@@ -95,18 +92,17 @@ exports[`<Collapsible /> defaultActiveKey 2`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={1}
-      expanded={true}
+      expanded={false}
       header="Second"
       key=".1"
       node="div"
       onSelect={[Function]}
     >
       <li
-        className="active"
+        className=""
       >
         <div
-          className="collapsible-header active"
+          className="collapsible-header"
           onClick={[Function]}
         >
           Second
@@ -153,7 +149,6 @@ exports[`<Collapsible /> updates activeKey 1`] = `
     data-collapsible="accordion"
   >
     <CollapsibleItem
-      eventKey={0}
       expanded={false}
       header="A"
       key=".0"
@@ -177,7 +172,6 @@ exports[`<Collapsible /> updates activeKey 1`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={1}
       expanded={false}
       header="B"
       key=".1"
@@ -201,7 +195,6 @@ exports[`<Collapsible /> updates activeKey 1`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={2}
       expanded={false}
       header="C"
       key=".2"
@@ -225,7 +218,6 @@ exports[`<Collapsible /> updates activeKey 1`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={3}
       expanded={false}
       header="D"
       key=".3"
@@ -249,7 +241,6 @@ exports[`<Collapsible /> updates activeKey 1`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={4}
       expanded={false}
       header="E"
       key=".4"
@@ -285,7 +276,6 @@ exports[`<Collapsible /> updates activeKey 2`] = `
     data-collapsible="accordion"
   >
     <CollapsibleItem
-      eventKey={0}
       expanded={false}
       header="A"
       key=".0"
@@ -309,7 +299,6 @@ exports[`<Collapsible /> updates activeKey 2`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={1}
       expanded={false}
       header="B"
       key=".1"
@@ -333,7 +322,6 @@ exports[`<Collapsible /> updates activeKey 2`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={2}
       expanded={false}
       header="C"
       key=".2"
@@ -357,18 +345,17 @@ exports[`<Collapsible /> updates activeKey 2`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={3}
-      expanded={true}
+      expanded={false}
       header="D"
       key=".3"
       node="div"
       onSelect={[Function]}
     >
       <li
-        className="active"
+        className=""
       >
         <div
-          className="collapsible-header active"
+          className="collapsible-header"
           onClick={[Function]}
         >
           D
@@ -381,7 +368,6 @@ exports[`<Collapsible /> updates activeKey 2`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={4}
       expanded={false}
       header="E"
       key=".4"
@@ -477,7 +463,7 @@ exports[`<Collapsible /> with invalid elements 1`] = `
     <CollapsibleItem
       expanded={false}
       header="First"
-      key=".1"
+      key=".0"
       node="div"
       onSelect={[Function]}
     >
@@ -500,7 +486,7 @@ exports[`<Collapsible /> with invalid elements 1`] = `
     <CollapsibleItem
       expanded={false}
       header="Second"
-      key=".3"
+      key=".2"
       node="div"
       onSelect={[Function]}
     >
