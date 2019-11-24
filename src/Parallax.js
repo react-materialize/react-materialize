@@ -3,24 +3,26 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Parallax = ({ children, className, image, options, ...props }) => {
-  const parallaxContainer = useRef(null);
+  const _parallax = useRef(null);
 
   useEffect(() => {
     let instance = null;
 
-    if (parallaxContainer.current) {
+    if (_parallax.current) {
       if (typeof M !== 'undefined') {
-        instance = M.Parallax.init(parallaxContainer.current, options);
+        instance = M.Parallax.init(_parallax.current, options);
       }
     }
 
-    return instance && instance.destroy();
-  }, [parallaxContainer]);
+    return () => {
+      instance && instance.destroy();
+    };
+  }, [_parallax.current]);
 
   return (
     <div className={cx('parallax-container', className)} {...props}>
       {children}
-      <div className="parallax" ref={parallaxContainer}>
+      <div className="parallax" ref={_parallax}>
         {image}
       </div>
     </div>
