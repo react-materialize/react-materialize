@@ -6,18 +6,12 @@ const Parallax = ({ children, className, image, options, ...props }) => {
   const _parallax = useRef(null);
 
   useEffect(() => {
-    let instance = null;
-
-    if (_parallax.current) {
-      if (typeof M !== 'undefined') {
-        instance = M.Parallax.init(_parallax.current, options);
-      }
-    }
+    const instance = M.Parallax.init(_parallax.current, options);
 
     return () => {
       instance && instance.destroy();
     };
-  }, [_parallax.current]);
+  }, [_parallax]);
 
   return (
     <div className={cx('parallax-container', className)} {...props}>
