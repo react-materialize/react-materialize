@@ -106,46 +106,62 @@ exports[`<Carousel /> handles content slides 1`] = `
 `;
 
 exports[`<Carousel /> initialises handles full width sliders 1`] = `
-<div
-  className="carousel carousel-slider"
+<Carousel
+  images={
+    Array [
+      "https://lorempixel.com/250/250/nature/1",
+      "https://lorempixel.com/250/250/nature/2",
+      "https://lorempixel.com/250/250/nature/3",
+      "https://lorempixel.com/250/250/nature/4",
+    ]
+  }
+  options={
+    Object {
+      "fullWidth": true,
+    }
+  }
 >
-  <a
-    className="carousel-item"
-    key=".0"
+  <div
+    className="carousel carousel-slider"
   >
-    <img
-      alt=""
-      src="https://lorempixel.com/250/250/nature/1"
-    />
-  </a>
-  <a
-    className="carousel-item"
-    key=".1"
-  >
-    <img
-      alt=""
-      src="https://lorempixel.com/250/250/nature/2"
-    />
-  </a>
-  <a
-    className="carousel-item"
-    key=".2"
-  >
-    <img
-      alt=""
-      src="https://lorempixel.com/250/250/nature/3"
-    />
-  </a>
-  <a
-    className="carousel-item"
-    key=".3"
-  >
-    <img
-      alt=""
-      src="https://lorempixel.com/250/250/nature/4"
-    />
-  </a>
-</div>
+    <a
+      className="carousel-item"
+      key=".0"
+    >
+      <img
+        alt=""
+        src="https://lorempixel.com/250/250/nature/1"
+      />
+    </a>
+    <a
+      className="carousel-item"
+      key=".1"
+    >
+      <img
+        alt=""
+        src="https://lorempixel.com/250/250/nature/2"
+      />
+    </a>
+    <a
+      className="carousel-item"
+      key=".2"
+    >
+      <img
+        alt=""
+        src="https://lorempixel.com/250/250/nature/3"
+      />
+    </a>
+    <a
+      className="carousel-item"
+      key=".3"
+    >
+      <img
+        alt=""
+        src="https://lorempixel.com/250/250/nature/4"
+      />
+    </a>
+  </div>
+</Carousel>
 `;
 
 exports[`<Carousel /> renders 1`] = `
@@ -238,13 +254,6 @@ exports[`<Carousel /> renders fixed items 1`] = `
 <div
   className="carousel"
 >
-  <div
-    className="carousel-fixed-item center"
-  >
-    <span>
-      Do you rock!?
-    </span>
-  </div>
   <a
     className="carousel-item"
     key=".0"
@@ -281,5 +290,12 @@ exports[`<Carousel /> renders fixed items 1`] = `
       src="https://lorempixel.com/250/250/nature/4"
     />
   </a>
+  <div
+    className="carousel-fixed-item center"
+  >
+    <span>
+      Do you rock!?
+    </span>
+  </div>
 </div>
 `;
