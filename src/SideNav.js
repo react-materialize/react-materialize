@@ -13,7 +13,6 @@ const SideNav = ({
   fixed,
   ...props
 }) => {
-  const instance = useRef(null);
   const sidenavRef = useRef(null);
   const _id = id || `sidenav_${idgen()}`;
   const classNames = cx(
@@ -23,11 +22,11 @@ const SideNav = ({
   );
 
   useEffect(() => {
-    instance.current = M.Sidenav.init(sidenavRef.current, options);
+    const instance = M.Sidenav.init(sidenavRef.current, options);
 
     return () => {
-      if (instance.current) {
-        instance.current.destroy();
+      if (instance) {
+        instance.destroy();
       }
     };
   }, [options]);
