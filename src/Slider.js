@@ -1,17 +1,40 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Slider = ({ children, className, options, fullscreen, ...props }) => {
   const _slider = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
     const instance = M.Slider.init(_slider.current, options);
 
+    if (activeIndex) {
+      if (typeof indicators === 'undefined' || options.indicators) {
+        instance['$indicators'][activeIndex].className =
+          'indicator-item active';
+      }
+    }
+
     return () => {
-      instance && instance.destroy();
+      if (instance) {
+        setActiveIndex(instance.activeIndex);
+        instance.destroy();
+      }
     };
-  }, [_slider, options]);
+  }, [_slider, options, fullscreen, activeIndex]);
+
+  /**
+   * If the slider was not in fullscreen, the height is set as a style attribute
+   * on the Slider element. When `.destroy()` is called, this attribute is not
+   * removed, resulting in a fullscreen displayed incorrectly.
+   */
+  useEffect(() => {
+    if (fullscreen) {
+      _slider.current.removeAttribute('style');
+      _slider.current.childNodes[0].removeAttribute('style');
+    }
+  }, [fullscreen]);
 
   return (
     <div
