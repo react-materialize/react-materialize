@@ -29,7 +29,7 @@ const Chip = ({ children, close, closeIcon, className, options, ...other }) => {
         instance.current.destroy();
       }
     };
-  }, [instance.current, chipRef.current, options]);
+  }, [options]);
 
   return (
     <div className={classes} {...other} ref={chipRef}>
