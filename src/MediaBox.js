@@ -1,45 +1,33 @@
-import { Component, cloneElement } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+
 import idgen from './idgen';
 
-class MediaBox extends Component {
-  constructor(props) {
-    super(props);
+const MediaBox = ({ id, options, children, className, caption, ...props }) => {
+  const instance = useRef(null);
+  const _id = id || `mediabox${idgen()}`;
 
-    this.id = props.id || `mediabox${idgen()}`;
-  }
+  useEffect(() => {
+    instance.current = M.Materialbox.init(
+      document.getElementById(_id),
+      options
+    );
 
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { options } = this.props;
+    return () => {
+      if (instance.current) {
+        instance.current.destroy();
+      }
+    };
+  }, [instance.current]);
 
-      this.instance = M.Materialbox.init(
-        document.getElementById(this.id),
-        options
-      );
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    const { children, className, caption, ...props } = this.props;
-
-    delete props.options;
-
-    return cloneElement(children, {
-      id: this.id,
-      className: cx('materialboxed', className),
-      'data-caption': caption,
-      ...props
-    });
-  }
-}
+  return React.cloneElement(children, {
+    id: _id,
+    className: cx('materialboxed', className),
+    'data-caption': caption,
+    ...props
+  });
+};
 
 MediaBox.propTypes = {
   children: PropTypes.node.isRequired,
