@@ -104,20 +104,4 @@ describe('<Carousel />', () => {
       expect(carouselInitMock).toHaveBeenCalledWith(options);
     });
   });
-
-  describe('undefined M', () => {
-    let __M;
-    beforeEach(() => {
-      __M = global.M;
-      global.M = undefined;
-    });
-    afterEach(() => {
-      global.M = __M;
-    });
-    test('doesnt throw without M', () => {
-      expect(() =>
-        mount(<Carousel options={{ fullWidth: true }} />)
-      ).not.toThrow();
-    });
-  });
 });
