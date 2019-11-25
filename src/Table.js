@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-class Table extends Component {
-  render() {
-    const {
-      centered,
-      children,
-      className,
-      hoverable,
-      responsive,
-      striped,
-      ...props
-    } = this.props;
+const Table = ({
+  centered,
+  children,
+  className,
+  hoverable,
+  responsive,
+  striped,
+  ...props
+}) => {
+  const classes = {
+    centered: centered,
+    highlight: hoverable,
+    'responsive-table': responsive,
+    striped: striped
+  };
 
-    const classes = {
-      centered: centered,
-      highlight: hoverable,
-      'responsive-table': responsive,
-      striped: striped
-    };
-
-    return (
-      <table className={cx(classes, className)} {...props}>
-        {children}
-      </table>
-    );
-  }
-}
+  return (
+    <table className={cx(classes, className)} {...props}>
+      {children}
+    </table>
+  );
+};
 
 Table.propTypes = {
   className: PropTypes.string,
