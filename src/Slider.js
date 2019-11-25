@@ -11,7 +11,7 @@ const Slider = ({ children, className, options, fullscreen, ...props }) => {
     return () => {
       instance.current && instance.current.destroy();
     };
-  }, [_slider]);
+  }, [_slider, options]);
 
   return (
     <div
