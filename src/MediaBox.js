@@ -1,22 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import idgen from './idgen';
 
 const MediaBox = ({ id, options, children, className, caption, ...props }) => {
-  const instance = useRef(null);
   const _id = id || `mediabox${idgen()}`;
 
   useEffect(() => {
-    instance.current = M.Materialbox.init(
-      document.getElementById(_id),
-      options
-    );
+    const instance = M.Materialbox.init(document.getElementById(_id), options);
 
     return () => {
-      if (instance.current) {
-        instance.current.destroy();
+      if (instance) {
+        instance.destroy();
       }
     };
   }, [_id, options]);
