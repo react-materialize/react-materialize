@@ -2,18 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 const Range = props => {
-  const instance = useRef(null);
   const rangeRef = useRef(null);
 
   useEffect(() => {
-    instance.current = M.Range.init(rangeRef.current);
+    const instance = M.Range.init(rangeRef.current);
 
     return () => {
-      if (instance.current) {
-        instance.current.destroy();
-      }
+      instance && instance.destroy();
     };
-  }, [rangeRef.current, instance.current]);
+  }, []);
 
   return (
     <p className="range-field">
