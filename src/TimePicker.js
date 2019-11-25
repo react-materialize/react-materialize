@@ -15,7 +15,7 @@ const TimePicker = ({ onChange, options, ...props }) => {
     return () => {
       instance && instance.destroy();
     };
-  }, [document.getElementById(id)]);
+  }, [id, onChange, options]);
 
   return <TextInput id={id} inputClassName="timepicker" {...props} />;
 };
