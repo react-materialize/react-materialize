@@ -20,7 +20,7 @@ const Carousel = ({
     return () => {
       instance && instance.destroy();
     };
-  }, [_carousel]);
+  }, [_carousel, options]);
 
   const renderItems = child => {
     if (typeof child === 'string') {
