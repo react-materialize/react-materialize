@@ -57,7 +57,7 @@ const Textarea = ({
         instance && instance.destroy();
       };
     }
-  }, [_textarea]);
+  }, [_textarea, props]);
 
   useEffect(() => {
     if (_textarea.current) {
