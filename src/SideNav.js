@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment, useEffect, useRef, useMemo } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -31,7 +31,7 @@ const SideNav = ({
     };
   }, [options]);
 
-  const renderTrigger = () => {
+  const renderTrigger = useMemo(() => {
     if (!trigger) {
       return;
     }
@@ -46,11 +46,11 @@ const SideNav = ({
       'data-target': _id,
       className: classNames
     });
-  };
+  }, [_id, fixed, trigger]);
 
   return (
     <Fragment>
-      {renderTrigger()}
+      {renderTrigger}
       <ul
         ref={el => (sidenavRef.current = el)}
         id={_id}
