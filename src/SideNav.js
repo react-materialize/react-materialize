@@ -30,7 +30,7 @@ const SideNav = ({
         instance.current.destroy();
       }
     };
-  }, [sidenavRef.current, instance.current]);
+  }, [options]);
 
   const renderTrigger = () => {
     if (!trigger) {
