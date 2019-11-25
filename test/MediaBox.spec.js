@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import MediaBox from '../src/MediaBox';
 import mocker from './helper/new-mocker';
 
@@ -26,7 +26,7 @@ describe('<MediaBox />', () => {
   });
 
   test('renders', () => {
-    expect(shallow(wrapper)).toMatchSnapshot();
+    expect(mount(wrapper)).toMatchSnapshot();
   });
 
   describe('initialises', () => {
