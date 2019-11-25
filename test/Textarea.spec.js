@@ -54,6 +54,7 @@ describe('<Textarea />', () => {
     expect(textareaElement.hasClass('materialize-textarea')).toBeTruthy();
     expect(textareaElement.hasClass('custom-class')).toBeTruthy();
   });
+
   describe('undefined M', () => {
     let __M;
     beforeEach(() => {

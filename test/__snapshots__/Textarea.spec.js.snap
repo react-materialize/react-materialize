@@ -7,7 +7,7 @@ exports[`<Textarea /> Disabled 1`] = `
   <textarea
     className="materialize-textarea"
     disabled={true}
-    id="mockId"
+    id="textarea_mockId"
     value="I was here"
   />
   <span
@@ -25,7 +25,7 @@ exports[`<Textarea /> Icon 1`] = `
   />
   <textarea
     className="materialize-textarea"
-    id="mockId"
+    id="textarea_mockId"
   />
   <span
     className="helper-text"
@@ -39,11 +39,11 @@ exports[`<Textarea /> Label 1`] = `
 >
   <textarea
     className="materialize-textarea"
-    id="mockId"
+    id="textarea_mockId"
   />
   <label
     className=""
-    htmlFor="mockId"
+    htmlFor="textarea_mockId"
   >
     Write something here...
   </label>
@@ -59,7 +59,7 @@ exports[`<Textarea /> Placeholder 1`] = `
 >
   <textarea
     className="materialize-textarea"
-    id="mockId"
+    id="textarea_mockId"
     placeholder="I was here"
   />
   <span
@@ -74,7 +74,7 @@ exports[`<Textarea /> Textarea 1`] = `
 >
   <textarea
     className="materialize-textarea"
-    id="mockId"
+    id="textarea_mockId"
   />
   <span
     className="helper-text"
