@@ -1,69 +1,52 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 
-class Checkbox extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Checkbox = ({
+  id,
+  className,
+  indeterminate,
+  filledIn,
+  label,
+  onChange,
+  ...props
+}) => {
+  const [checked, setChecked] = useState(props.checked);
+  const _input = useRef(null);
 
-  componentDidMount() {
-    const { indeterminate } = this.props;
-
-    if (this._input && indeterminate) {
-      this._input.indeterminate = indeterminate;
-      this._input.checked = false;
+  useEffect(() => {
+    if (_input.current && indeterminate) {
+      _input.current.indeterminate = indeterminate;
+      _input.current.checked = false;
     }
-  }
+  }, [indeterminate]);
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.indeterminate !== this.props.indeterminate) {
-      this._input.indeterminate = this.props.indeterminate;
-    }
-  }
+  delete props.checked;
 
-  render() {
-    const {
-      id,
-      className,
-      indeterminate,
-      filledIn,
-      disabled,
-      onChange,
-      checked,
-      value,
-      label
-    } = this.props;
-
-    let computedId = id || idgen();
-
-    if (indeterminate) {
-      computedId = `indeterminate-checkbox-${idgen()}`;
-    }
-
-    return (
-      <label htmlFor={computedId}>
-        <input
-          id={computedId}
-          className={cx(
-            {
-              'filled-in': filledIn
-            },
-            className
-          )}
-          disabled={disabled}
-          onChange={onChange}
-          type="checkbox"
-          checked={checked}
-          value={value}
-          ref={input => (this._input = input)}
-        />
-        <span>{label}</span>
-      </label>
-    );
-  }
-}
+  return (
+    <label htmlFor={id}>
+      <input
+        id={id}
+        className={cx(
+          {
+            'filled-in': filledIn
+          },
+          className
+        )}
+        type="checkbox"
+        ref={_input}
+        checked={checked}
+        onChange={e => {
+          setChecked(prevChecked => !prevChecked);
+          onChange && onChange(e);
+        }}
+        {...props}
+      />
+      <span>{label}</span>
+    </label>
+  );
+};
 
 Checkbox.propTypes = {
   className: PropTypes.string,
@@ -100,6 +83,10 @@ Checkbox.propTypes = {
    * A Boolean attribute indicating whether or not this checkbox is checked
    */
   checked: PropTypes.bool
+};
+
+Checkbox.defaultProps = {
+  id: `checkbox_${idgen()}`
 };
 
 export default Checkbox;

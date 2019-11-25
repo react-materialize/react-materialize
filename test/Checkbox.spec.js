@@ -13,8 +13,8 @@ describe('<Checkbox />', () => {
   });
 
   test('renders', () => {
-    wrapper = shallow(<Checkbox value="red" label="red" />);
-    expect(idgen).toHaveBeenCalledTimes(1);
+    wrapper = mount(<Checkbox value="red" label="red" />);
+    expect(wrapper.prop('id')).toBe(`checkbox_${idgen()}`);
     expect(wrapper).toMatchSnapshot();
   });
 
