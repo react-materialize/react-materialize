@@ -25,6 +25,7 @@ const Checkbox = ({
 
   useEffect(() => {
     setChecked(props.checked);
+    _input.current.checked = props.checked;
   }, [props.checked]);
 
   return (
