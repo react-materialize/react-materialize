@@ -16,17 +16,21 @@ const Checkbox = ({
   const _input = useRef(null);
 
   useEffect(() => {
-    if (_input.current && indeterminate) {
+    if (_input.current) {
       _input.current.indeterminate = indeterminate;
       _input.current.checked = false;
+      setChecked(false);
     }
   }, [indeterminate]);
 
-  delete props.checked;
+  useEffect(() => {
+    setChecked(props.checked);
+  }, [props.checked]);
 
   return (
     <label htmlFor={id}>
       <input
+        {...props}
         id={id}
         className={cx(
           {
@@ -41,7 +45,6 @@ const Checkbox = ({
           setChecked(prevChecked => !prevChecked);
           onChange && onChange(e);
         }}
-        {...props}
       />
       <span>{label}</span>
     </label>
