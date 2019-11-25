@@ -20,7 +20,7 @@ globals:
   window: true
   module: true
 
-plugins: ['prettier']
+plugins: ['prettier', 'react-hooks']
 
 env:
   jquery: true
@@ -40,3 +40,5 @@ rules:
   standard/computed-property-even-spacing: [0]
   standard/object-curly-even-spacing: [0]
   no-undef: [2]
+  react-hooks/rules-of-hooks: [2]
+  react-hooks/exhaustive-deps: [2]
