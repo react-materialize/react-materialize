@@ -9,7 +9,7 @@ const Slider = ({ children, className, options, fullscreen, ...props }) => {
     const instance = M.Slider.init(_slider.current, options);
 
     return () => {
-      instance.current && instance.current.destroy();
+      instance && instance.destroy();
     };
   }, [_slider, options]);
 
