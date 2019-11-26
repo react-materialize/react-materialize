@@ -4,13 +4,21 @@ exports[`<Dropdown /> renders 1`] = `
 <Fragment>
   <button
     className="dropdown-trigger"
+<<<<<<< HEAD
     data-target="Dropdown-mockId"
+=======
+    data-target="dropdown_mockId"
+>>>>>>> spec: update snapshots
   >
     Drop me!
   </button>
   <ul
     className="dropdown-content"
+<<<<<<< HEAD
     id="Dropdown-mockId"
+=======
+    id="dropdown_mockId"
+>>>>>>> spec: update snapshots
   />
 </Fragment>
 `;
