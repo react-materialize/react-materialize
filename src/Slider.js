@@ -3,26 +3,29 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Slider = ({ children, className, options, fullscreen, ...props }) => {
+  const sliderInstance = useRef(null);
   const _slider = useRef(null);
   const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
-    const instance = M.Slider.init(_slider.current, options);
+    sliderInstance.current = M.Slider.init(_slider.current, options);
 
+    return () => {
+      if (sliderInstance.current) {
+        setActiveIndex(sliderInstance.current.activeIndex);
+        sliderInstance.current.destroy();
+      }
+    };
+  }, [_slider, options, fullscreen]);
+
+  useEffect(() => {
     if (activeIndex) {
       if (typeof indicators === 'undefined' || options.indicators) {
-        instance['$indicators'][activeIndex].className =
+        sliderInstance.current['$indicators'][activeIndex].className =
           'indicator-item active';
       }
     }
-
-    return () => {
-      if (instance) {
-        setActiveIndex(instance.activeIndex);
-        instance.destroy();
-      }
-    };
-  }, [_slider, options, fullscreen, activeIndex]);
+  }, [activeIndex, options.indicators, fullscreen]);
 
   /**
    * If the slider was not in fullscreen, the height is set as a style attribute
