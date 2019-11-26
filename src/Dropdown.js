@@ -1,74 +1,56 @@
-import React, { Component, Fragment, Children, cloneElement } from 'react';
+import React, {
+  Fragment,
+  Children,
+  cloneElement,
+  useRef,
+  useEffect
+} from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
 
-class Dropdown extends Component {
-  constructor(props) {
-    super(props);
-    this.idx = props.id || `dropdown${idgen()}`;
-    this.renderTrigger = this.renderTrigger.bind(this);
-    this.renderItems = this.renderItems.bind(this);
-  }
+const Dropdown = ({ children, className, trigger, options, ...props }) => {
+  const _dropdownContent = useRef(null);
 
-  componentDidMount() {
-    const { options } = this.props;
-
-    if (typeof M !== undefined) {
-      this.instance = M.Dropdown.init(
-        document.querySelectorAll(this._trigger),
-        options
-      )[0];
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    const { className, ...props } = this.props;
-    delete props.trigger;
-    delete props.options;
-
-    return (
-      <Fragment>
-        {this.renderTrigger()}
-        <ul
-          {...props}
-          className={cx('dropdown-content', className)}
-          id={this.idx}
-        >
-          {this.renderItems()}
-        </ul>
-      </Fragment>
+  useEffect(() => {
+    const instance = M.Dropdown.init(
+      document.querySelector(`[data-target="${props.id}"]`),
+      options
     );
-  }
 
-  renderTrigger() {
-    const { trigger } = this.props;
+    return () => {
+      instance && instance.destroy();
+    };
+  }, [options, props.id]);
 
-    return cloneElement(trigger, {
-      'data-target': this.idx,
-      ref: t => (this._trigger = `[data-target=${this.idx}]`),
+  const renderTrigger = () =>
+    cloneElement(trigger, {
+      'data-target': props.id,
       className: cx(trigger.props.className, 'dropdown-trigger')
     });
-  }
 
-  renderItems() {
-    const { children } = this.props;
-
-    return Children.map(children, element => {
+  const renderItems = () =>
+    Children.map(children, element => {
       if (element.type.name === 'Divider') {
         return <li key={idgen()} className="divider" tabIndex="-1" />;
       } else {
         return <li key={idgen()}>{element}</li>;
       }
     });
-  }
-}
+
+  return (
+    <Fragment>
+      {renderTrigger()}
+      <ul
+        {...props}
+        className={cx('dropdown-content', className)}
+        ref={_dropdownContent}
+      >
+        {renderItems()}
+      </ul>
+    </Fragment>
+  );
+};
 
 Dropdown.propTypes = {
   id: PropTypes.string,
@@ -101,6 +83,7 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
+  id: `dropdown_${idgen()}`,
   options: {
     alignment: 'left',
     autoTrigger: true,
