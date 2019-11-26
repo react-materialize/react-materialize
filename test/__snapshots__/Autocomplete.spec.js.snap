@@ -7,9 +7,7 @@ exports[`<Autocomplete /> renders 1`] = `
   <input
     className="autocomplete"
     id="testAutocompleteId"
-    onChange={[Function]}
     type="text"
-    value=""
   />
   <label
     htmlFor="testAutocompleteId"
