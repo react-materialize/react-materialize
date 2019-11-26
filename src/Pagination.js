@@ -1,51 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 import PaginationButton from './PaginationButton';
 
-class Pagination extends Component {
-  constructor(props) {
-    super(props);
-    const { activePage, items } = props;
+const Pagination = ({
+  children,
+  className,
+  items,
+  maxButtons = items,
+  leftBtn,
+  rightBtn,
+  activePage,
+  onSelect,
+  ...props
+}) => {
+  const [currentlyActivePage, setCurrentlyActivePage] = useState(
+    activePage > 0 && activePage <= items ? activePage : 1
+  );
 
-    this.state = {
-      activePage: activePage > 0 && activePage <= items ? activePage : 1
-    };
+  useEffect(() => {
+    setCurrentlyActivePage(activePage);
+  }, [activePage]);
 
-    this.renderButtons = this.renderButtons.bind(this);
-    this._onClick = this._onClick.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.activePage !== this.props.activePage) {
-      this.setState({ activePage: nextProps.activePage });
-    }
-  }
-
-  _onClick(i) {
-    const { items, onSelect } = this.props;
-
-    return () => {
-      if (i > 0 && i <= items) {
-        if (onSelect) {
-          onSelect(i);
-        }
-        this.setState({ activePage: i });
+  const _onClick = i => () => {
+    if (i > 0 && i <= items) {
+      if (onSelect) {
+        onSelect(i);
       }
-    };
-  }
+      setCurrentlyActivePage(i);
+    }
+  };
 
-  renderButtons() {
-    const {
-      items,
-      children,
-      maxButtons = items,
-      leftBtn,
-      rightBtn
-    } = this.props;
-    const { activePage } = this.state;
-
+  const renderButtons = () => {
     if (children) return children;
 
     const buttonsCount = Math.min(maxButtons, items);
@@ -53,7 +40,7 @@ class Pagination extends Component {
     const maxPos = items - buttonsCount;
     const halfButtons = parseInt(buttonsCount / 2, 10);
 
-    let hiddenPagesBefore = activePage - halfButtons;
+    let hiddenPagesBefore = currentlyActivePage - halfButtons;
     if (hiddenPagesBefore > maxPos) {
       hiddenPagesBefore = maxPos + 1;
     }
@@ -63,9 +50,9 @@ class Pagination extends Component {
 
     const buttons = [
       <PaginationButton
-        disabled={activePage === 1}
+        disabled={currentlyActivePage === 1}
         key={'pagination-0'}
-        onSelect={this._onClick(activePage - 1)}
+        onSelect={_onClick(currentlyActivePage - 1)}
       >
         {leftBtn}
       </PaginationButton>
@@ -74,9 +61,9 @@ class Pagination extends Component {
     for (let i = from; i <= to; i++) {
       buttons.push(
         <PaginationButton
-          active={i === activePage}
+          active={i === currentlyActivePage}
           key={`pagination-${i}`}
-          onSelect={this._onClick(i)}
+          onSelect={_onClick(i)}
         >
           {i}
         </PaginationButton>
@@ -86,24 +73,22 @@ class Pagination extends Component {
     buttons.push(
       <PaginationButton
         key={`pagination-${items + 1}`}
-        disabled={activePage === items}
-        onSelect={this._onClick(activePage + 1)}
+        disabled={currentlyActivePage === items}
+        onSelect={_onClick(currentlyActivePage + 1)}
       >
         {rightBtn}
       </PaginationButton>
     );
 
     return buttons;
-  }
+  };
 
-  render() {
-    return (
-      <ul className={cx('pagination', this.props.className)}>
-        {this.renderButtons()}
-      </ul>
-    );
-  }
-}
+  return (
+    <ul className={cx('pagination', className)} {...props}>
+      {renderButtons()}
+    </ul>
+  );
+};
 
 Pagination.propTypes = {
   /**
