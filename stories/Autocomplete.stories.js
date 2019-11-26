@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Autocomplete from '../src/Autocomplete';
 import Icon from '../src/Icon';
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { text, withKnobs, object } from '@storybook/addon-knobs';
 
 const stories = storiesOf('Javascript|Autocomplete', module);
 stories.addDecorator(withKnobs);
@@ -16,11 +16,11 @@ stories.add(
   () => (
     <Autocomplete
       options={{
-        data: {
+        data: object('Data', {
           ['Gus Fring']: null,
           ['Saul Goodman']: null,
           ['Tuco Salamanca']: 'https://placehold.it/250x250'
-        }
+        })
       }}
       placeholder="Insert here"
     />
@@ -33,11 +33,11 @@ stories.add(
   () => (
     <Autocomplete
       options={{
-        data: {
+        data: object('Data', {
           ['Gus Fring']: null,
           ['Saul Goodman']: null,
           ['Tuco Salamanca']: 'https://placehold.it/250x250'
-        }
+        })
       }}
       placeholder="Insert here"
       icon={<Icon>{text('icon', 'textsms')}</Icon>}
