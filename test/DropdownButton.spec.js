@@ -12,13 +12,6 @@ describe('<Dropdown />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  // test('does not update ID reference with each render', () => {
-  //   wrapper = shallow(<Dropdown trigger={<span>hi</span>} />);
-  //   const { id } = wrapper.instance();
-  //   wrapper.render();
-  //   expect(wrapper.instance().id).toEqual(id);
-  // });
-
   test('does correctly render dividers', () => {
     wrapper = shallow(
       <Dropdown trigger={<span>hi</span>}>
