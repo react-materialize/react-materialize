@@ -43,26 +43,20 @@ exports[`<Checkbox /> filled-in 1`] = `
 `;
 
 exports[`<Checkbox /> renders 1`] = `
-<Checkbox
-  id="checkbox_mockId"
-  label="red"
-  value="red"
+<label
+  htmlFor="checkbox_mockId"
 >
-  <label
-    htmlFor="checkbox_mockId"
-  >
-    <input
-      className=""
-      id="checkbox_mockId"
-      onChange={[Function]}
-      type="checkbox"
-      value="red"
-    />
-    <span>
-      red
-    </span>
-  </label>
-</Checkbox>
+  <input
+    className=""
+    id="checkbox_mockId"
+    onChange={[Function]}
+    type="checkbox"
+    value="red"
+  />
+  <span>
+    red
+  </span>
+</label>
 `;
 
 exports[`<Checkbox /> renders disabled 1`] = `
