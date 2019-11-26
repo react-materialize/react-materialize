@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Collection = ({ children, header, className, ...other }) => {
-  const getNodeType = () => {
+  const getNodeType = useMemo(() => {
     return React.Children.toArray(children).some(child => child.props.href)
       ? 'div'
       : 'ul';
-  };
+  }, [children]);
 
-  const renderHeader = () => {
+  const renderHeader = useMemo(() => {
     let _header;
     if (React.isValidElement(header)) {
       _header = header;
@@ -17,16 +17,16 @@ const Collection = ({ children, header, className, ...other }) => {
       _header = <h4>{header}</h4>;
     }
     return <li className="collection-header">{_header}</li>;
-  };
+  }, [header]);
 
-  const C = getNodeType();
+  const C = getNodeType;
 
   return (
     <C
       {...other}
       className={cx('collection', { 'with-header': !!header }, className)}
     >
-      {header ? renderHeader() : null}
+      {header ? renderHeader : null}
       {children}
     </C>
   );
