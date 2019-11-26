@@ -5,7 +5,6 @@ import idgen from './idgen';
 
 const DatePicker = props => {
   const id = useMemo(() => props.id || `datepicker${idgen()}`, [props.id]);
-  const instance = useRef(null);
 
   useEffect(() => {
     const { onChange } = props;
@@ -13,14 +12,14 @@ const DatePicker = props => {
       ? { ...props.options, onSelect: onChange }
       : props.options;
     const elem = document.getElementById(id);
-    instance.current = M.Datepicker.init(elem, options);
+    const instance = M.Datepicker.init(elem, options);
 
     return () => {
-      if (instance.current) {
-        instance.current.destroy();
+      if (instance) {
+        instance.destroy();
       }
     };
-  }, [instance.current]);
+  }, [props]);
 
   return <TextInput id={id} inputClassName="datepicker" {...props} />;
 };
