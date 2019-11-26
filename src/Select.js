@@ -28,6 +28,7 @@ const Select = ({
   multiple,
   options,
   value,
+  onChange,
   ...props
 }) => {
   const [selectedValue, setSelectedValue] = useState(value);
@@ -53,6 +54,7 @@ const Select = ({
   let responsiveClasses = {};
 
   if (!noLayout) {
+    responsiveClasses = { col: true };
     constants.SIZES.forEach(size => {
       responsiveClasses[size + sizes[size]] = sizes[size];
     });
@@ -71,7 +73,6 @@ const Select = ({
   const renderOptions = () => Children.map(children, renderOption);
 
   const handleChange = e => {
-    const { onChange } = props;
     let value = e.target.value;
 
     if (multiple) {
@@ -84,7 +85,7 @@ const Select = ({
   };
 
   return (
-    <div className={cx('input-field col', responsiveClasses)}>
+    <div className={cx('input-field', responsiveClasses)}>
       {icon && renderIcon()}
       <select
         {...props}
@@ -214,6 +215,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
   id: `select_${idgen()}`,
+  multiple: false,
   options: {
     classes: '',
     dropdownOptions: {
