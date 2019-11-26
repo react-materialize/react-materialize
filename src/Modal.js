@@ -1,67 +1,70 @@
-import React, { Component, Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import React, {
+  Fragment,
+  Children,
+  cloneElement,
+  useRef,
+  useEffect
+} from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import idgen from './idgen';
 import Button from './Button';
 
-class Modal extends Component {
-  constructor(props) {
-    super(props);
-    this.showModal = this.showModal.bind(this);
-    this.createRoot();
-  }
+const Modal = ({
+  id,
+  actions,
+  bottomSheet,
+  children,
+  fixedFooter,
+  header,
+  className,
+  trigger,
+  options,
+  open,
+  ...props
+}) => {
+  const _modal = useRef(null);
+  const _modalRoot = useRef(null);
+  const _modalInstance = useRef(null);
 
-  createRoot() {
-    this.modalRoot = document.createElement('div');
-    document.body.appendChild(this.modalRoot);
-  }
+  useEffect(() => {
+    _modalInstance.current = M.Modal.init(_modal.current, options);
 
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { options, open } = this.props;
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      document.body.removeChild(_modalRoot.current);
+      if (_modalInstance.current) {
+        hideModal();
+        _modalInstance.current.destroy();
+      }
+    };
+  }, [options]);
 
-      this.instance = M.Modal.init(this._modal, options);
-
-      if (open) this.showModal();
+  useEffect(() => {
+    if (open) {
+      showModal();
+    } else {
+      hideModal();
     }
-  }
+  }, [open]);
 
-  componentWillUnmount() {
-    document.body.removeChild(this.modalRoot);
+  const showModal = e => {
+    e && e.preventDefault();
 
-    if (this.instance) {
-      this.hideModal();
-      this.instance.destroy();
-    }
-  }
+    _modalInstance.current && _modalInstance.current.open();
+  };
 
-  componentWillReceiveProps(nextProps) {
-    // if the modal is not open yet
-    if (!this.props.open && nextProps.open) {
-      this.showModal();
-      // open could be undefined
-    } else if (nextProps.open === false) {
-      this.hideModal();
-    }
-  }
+  const hideModal = e => {
+    e && e.preventDefault();
 
-  renderModalPortal() {
-    const {
-      id,
-      actions,
-      bottomSheet,
-      children,
-      fixedFooter,
-      header,
-      className,
-      ...other
-    } = this.props;
+    _modalInstance.current && _modalInstance.current.close();
+  };
 
-    delete other.options;
-    delete other.trigger;
-
+  const renderModalPortal = () => {
+    _modalRoot.current = document.createElement('div');
+    document.body.appendChild(_modalRoot.current);
     const classes = cx(
       'modal',
       {
@@ -72,50 +75,27 @@ class Modal extends Component {
     );
 
     return (
-      this.modalRoot &&
-      ReactDOM.createPortal(
-        <div
-          id={id}
-          className={classes}
-          ref={div => {
-            this._modal = div;
-          }}
-          {...other}
-        >
+      _modalRoot.current &&
+      createPortal(
+        <div id={id} className={classes} ref={_modal} {...props}>
           <div className="modal-content">
             <h4>{header}</h4>
             {children}
           </div>
-          <div className="modal-footer">{React.Children.toArray(actions)}</div>
+          <div className="modal-footer">{Children.toArray(actions)}</div>
         </div>,
-        this.modalRoot
+        _modalRoot.current
       )
     );
-  }
+  };
 
-  showModal(e) {
-    e && e.preventDefault();
-
-    this.instance && this.instance.open();
-  }
-
-  hideModal(e) {
-    e && e.preventDefault();
-
-    this.instance && this.instance.close();
-  }
-
-  render() {
-    const { trigger } = this.props;
-
-    return (
-      <Fragment>
-        {trigger && React.cloneElement(trigger, { onClick: this.showModal })}
-        {this.renderModalPortal()}
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment>
+      {trigger && cloneElement(trigger, { onClick: showModal })}
+      {renderModalPortal()}
+    </Fragment>
+  );
+};
 
 Modal.propTypes = {
   /**
