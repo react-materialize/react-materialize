@@ -1,4 +1,10 @@
-import React, { Fragment, Children, cloneElement, useRef, useEffect } from 'react';
+import React, {
+  Fragment,
+  Children,
+  cloneElement,
+  useRef,
+  useEffect
+} from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
@@ -17,8 +23,8 @@ const Navbar = ({
   menuIcon,
   sidenav,
   options,
-  ...props }) => {
-
+  ...props
+}) => {
   const _sidenav = useRef(null);
 
   useEffect(() => {
@@ -26,9 +32,8 @@ const Navbar = ({
 
     return () => {
       instance && instance.destroy();
-    }
-
-  }, [options])
+    };
+  }, [options]);
 
   const brandClasses = cx({
     'brand-logo': true,
@@ -46,15 +51,15 @@ const Navbar = ({
   const sidenavLinks = sidenav
     ? sidenav
     : Children.map(children, (link, index) => {
-      const clonedLink =
-        link && link.props && link.props.id
-          ? cloneElement(link, {
-            ...link.props,
-            id: `sidenav-${link.props.id}`
-          })
-          : link;
-      return <li key={index}>{clonedLink}</li>;
-    });
+        const clonedLink =
+          link && link.props && link.props.id
+            ? cloneElement(link, {
+                ...link.props,
+                id: `sidenav-${link.props.id}`
+              })
+            : link;
+        return <li key={index}>{clonedLink}</li>;
+      });
 
   let navbar = (
     <nav className={navCSS} {...props}>
@@ -62,17 +67,17 @@ const Navbar = ({
         {search ? (
           <SearchForm />
         ) : (
-            <Fragment>
-              {brand &&
-                cloneElement(brand, {
-                  className: cx(brand.props.className, brandClasses)
-                })}
-              <a href="#!" data-target={id} className="sidenav-trigger">
-                {menuIcon}
-              </a>
-              <ul className={navMobileCSS}>{links}</ul>
-            </Fragment>
-          )}
+          <Fragment>
+            {brand &&
+              cloneElement(brand, {
+                className: cx(brand.props.className, brandClasses)
+              })}
+            <a href="#!" data-target={id} className="sidenav-trigger">
+              {menuIcon}
+            </a>
+            <ul className={navMobileCSS}>{links}</ul>
+          </Fragment>
+        )}
       </div>
       {extendWith && <div className="nav-content">{extendWith}</div>}
     </nav>
@@ -86,22 +91,18 @@ const Navbar = ({
     <Fragment>
       {navbar}
 
-      <ul
-        id={id}
-        className={cx('sidenav', [alignLinks])}
-        ref={_sidenav}
-      >
+      <ul id={id} className={cx('sidenav', [alignLinks])} ref={_sidenav}>
         {sidenavLinks}
       </ul>
     </Fragment>
   );
-}
+};
 
 Navbar.propTypes = {
   /*
-  * override id
-  * @default 'mobile-nav'
-  */
+   * override id
+   * @default 'mobile-nav'
+   */
   id: PropTypes.string,
   brand: PropTypes.node,
   children: PropTypes.node,
