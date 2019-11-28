@@ -9,6 +9,7 @@ exports[`<Select /> with icon 1`] = `
   />
   <select
     className=""
+<<<<<<< HEAD
     id="Select-mockId"
     onChange={[Function]}
     options={
@@ -31,6 +32,11 @@ exports[`<Select /> with icon 1`] = `
         },
       }
     }
+=======
+    id="select_mockId"
+    multiple={false}
+    onChange={[Function]}
+>>>>>>> spec: add missing test
     type="select"
   />
 </div>
