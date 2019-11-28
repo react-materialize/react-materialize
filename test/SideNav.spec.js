@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import SideNav from '../src/SideNav';
 import mocker from './helper/new-mocker';
 
@@ -23,27 +23,27 @@ describe('<SideNav />', () => {
   });
 
   test('renders', () => {
-    wrapper = shallow(<SideNav trigger={trigger} />);
+    wrapper = mount(<SideNav trigger={trigger} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('can be `fixed`', () => {
-    wrapper = shallow(<SideNav trigger={trigger} fixed />);
+    wrapper = mount(<SideNav trigger={trigger} fixed />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('is `fixed` if no trigger is passed', () => {
-    wrapper = shallow(<SideNav />);
+    wrapper = mount(<SideNav />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('renders', () => {
-    wrapper = shallow(<SideNav trigger={trigger} id="test" />);
+    wrapper = mount(<SideNav trigger={trigger} id="test" />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('renders children', () => {
-    wrapper = shallow(
+    wrapper = mount(
       <SideNav trigger={trigger}>
         <span className="test-child" />
       </SideNav>
@@ -63,7 +63,7 @@ describe('<SideNav />', () => {
   });
 
   test('should be destroyed when unmounted', () => {
-    const component = shallow(<SideNav />);
+    const component = mount(<SideNav />);
     component.unmount();
 
     expect(sideNavInstanceDestroyMock).toHaveBeenCalled();

@@ -1,39 +1,27 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-class Parallax extends Component {
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { options } = this.props;
-      this.instance = M.Parallax.init(this._parallax, options);
-    }
-  }
+const Parallax = ({ children, className, image, options, ...props }) => {
+  const _parallax = useRef(null);
 
-  componentWillUnmount() {
-    this.instance && this.instance.destroy();
-  }
+  useEffect(() => {
+    const instance = M.Parallax.init(_parallax.current, options);
 
-  render() {
-    const { children, className, image, ...props } = this.props;
+    return () => {
+      instance && instance.destroy();
+    };
+  }, [_parallax, options]);
 
-    delete props.options;
-
-    return (
-      <div className={cx('parallax-container', className)} {...props}>
-        {children}
-        <div
-          className="parallax"
-          ref={div => {
-            this._parallax = div;
-          }}
-        >
-          {image}
-        </div>
+  return (
+    <div className={cx('parallax-container', className)} {...props}>
+      {children}
+      <div className="parallax" ref={_parallax}>
+        {image}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Parallax.propTypes = {
   children: PropTypes.node,

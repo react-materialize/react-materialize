@@ -1,12 +1,33 @@
 # Changelog
 
+### 3.5.2
+
+- UserView: convert to stateless #941
+- Parallax: convert to stateless and use hooks #935
+- Preloader: convert to stateless #938
+- Col: convert to stateless #937
+- Icon: convert to stateless #936
+- Preloader: convert to stateless #938
+- Section: convert to stateless #934
+
+### 3.5.1
+
+- MediaBox: Convert to stateless #946
+- SideNav: Convert to stateless #948
+- Footer: Convert to stateless #964
+- eslint: react hooks plugin #949
+- Chip: Convert to stateless #933
+- SideNavItem: Convert to stateless #932
+- Range: Convert to stateless #930
+- Configure parcel bundler #929
+
 ### 3.5.0
 
-- Feature: Add file type support to `TextInput`
+- Feature: Add file type support to `TextInput` #926
 
 ### 3.4.1
 
-- Fixes bug on button always rendering icon
+- Fixes bug on button always rendering icon #906
 
 ### 3.4.0
 

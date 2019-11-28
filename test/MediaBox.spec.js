@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import MediaBox from '../src/MediaBox';
 import mocker from './helper/new-mocker';
 
