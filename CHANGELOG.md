@@ -6,6 +6,9 @@
 - Parallax: convert to stateless and use hooks #935
 - Preloader: convert to stateless #938
 - Col: convert to stateless #937
+- Icon: convert to stateless #936
+- Preloader: convert to stateless #938
+- Section: convert to stateless #934
 
 ### 3.5.1
 
