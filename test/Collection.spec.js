@@ -1,9 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';
 
-let wrapper = mount(
+let wrapper = shallow(
   <Collection>
     <CollectionItem>Alvin</CollectionItem>
   </Collection>
@@ -20,7 +20,7 @@ describe('<Collection />', () => {
 
   describe('with header prop', () => {
     let header = 'names';
-    wrapper = mount(
+    wrapper = shallow(
       <Collection header={header}>
         <CollectionItem>Alvin</CollectionItem>
       </Collection>
@@ -36,7 +36,7 @@ describe('<Collection />', () => {
 
     test('should render a header component', () => {
       header = <h2>ages</h2>;
-      wrapper = mount(
+      wrapper = shallow(
         <Collection header={header}>
           <CollectionItem>Alvin</CollectionItem>
         </Collection>
@@ -45,7 +45,7 @@ describe('<Collection />', () => {
     });
 
     test('passes classname', () => {
-      wrapper = mount(
+      wrapper = shallow(
         <Collection className="find">
           <CollectionItem>Alvin</CollectionItem>
         </Collection>

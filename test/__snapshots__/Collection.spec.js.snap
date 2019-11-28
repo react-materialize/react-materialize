@@ -1,26 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Collection /> renders 1`] = `
-<Collection
-  header="names"
+<ul
+  className="collection with-header"
 >
-  <ul
-    className="collection with-header"
+  <li
+    className="collection-header"
   >
-    <li
-      className="collection-header"
-    >
-      <h4>
-        names
-      </h4>
-    </li>
-    <CollectionItem>
-      <li
-        className="collection-item"
-      >
-        Alvin
-      </li>
-    </CollectionItem>
-  </ul>
-</Collection>
+    <h4>
+      names
+    </h4>
+  </li>
+  <CollectionItem>
+    Alvin
+  </CollectionItem>
+</ul>
 `;
