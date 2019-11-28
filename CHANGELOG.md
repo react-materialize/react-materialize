@@ -1,5 +1,15 @@
 # Changelog
 
+### 3.5.2
+
+- UserView: convert to stateless #941
+- Parallax: convert to stateless and use hooks #935
+- Preloader: convert to stateless #938
+- Col: convert to stateless #937
+- Icon: convert to stateless #936
+- Preloader: convert to stateless #938
+- Section: convert to stateless #934
+
 ### 3.5.1
 
 - MediaBox: Convert to stateless #946
