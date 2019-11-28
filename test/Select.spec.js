@@ -65,10 +65,10 @@ describe('<Select />', () => {
   //   expect(onChangeMock).toHaveBeenCalled();
   // });
 
-  // test('with icon', () => {
-  //   wrapper = shallow(<Select icon="cloud" />);
-  //   expect(wrapper).toMatchSnapshot();
-  // });
+  test('with icon', () => {
+    wrapper = shallow(<Select icon="cloud" />);
+    expect(wrapper).toMatchSnapshot();
+  });
 
   test('renders options', () => {
     wrapper = shallow(
