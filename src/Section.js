@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const Section = ({ className, node, id, children, ...other }) => {
-  let C = node;
-  let classes = {
-    section: true
-  };
+class Section extends Component {
+  render() {
+    const { className, node, id, ...other } = this.props;
 
-  return (
-    <C {...other} id={id} className={cx(classes, className)}>
-      {children}
-    </C>
-  );
-};
+    let C = node;
+    let classes = {
+      section: true
+    };
+
+    return (
+      <C {...other} id={id} className={cx(classes, className)}>
+        {this.props.children}
+      </C>
+    );
+  }
+}
 
 Section.propTypes = {
   children: PropTypes.node,
