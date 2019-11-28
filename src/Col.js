@@ -1,53 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import constants from './constants';
 
-class Col extends Component {
-  render() {
-    const {
-      children,
-      className,
-      node: C = 'div',
-      s,
-      m,
-      l,
-      xl,
-      offset,
-      push,
-      pull,
-      ...other
-    } = this.props;
+const Col = ({
+  children,
+  className,
+  node: C = 'div',
+  s,
+  m,
+  l,
+  xl,
+  offset,
+  push,
+  pull,
+  ...other
+}) => {
+  let sizes = { s, m, l, xl };
+  let classes = {
+    col: true
+  };
 
-    let sizes = { s, m, l, xl };
-    let classes = {
-      col: true
-    };
+  constants.SIZES.forEach(size => (classes[size + sizes[size]] = sizes[size]));
 
-    constants.SIZES.forEach(
-      size => (classes[size + sizes[size]] = sizes[size])
-    );
-
-    if (offset) {
-      offset.split(' ').forEach(offset => (classes['offset-' + offset] = true));
-    }
-
-    if (push) {
-      push.split(' ').forEach(push => (classes['push-' + push] = true));
-    }
-
-    if (pull) {
-      pull.split(' ').forEach(pull => (classes['pull-' + pull] = true));
-    }
-
-    return (
-      <C {...other} className={cx(classes, className)}>
-        {children}
-      </C>
-    );
+  if (offset) {
+    offset.split(' ').forEach(offset => (classes['offset-' + offset] = true));
   }
-}
+
+  if (push) {
+    push.split(' ').forEach(push => (classes['push-' + push] = true));
+  }
+
+  if (pull) {
+    pull.split(' ').forEach(pull => (classes['pull-' + pull] = true));
+  }
+
+  return (
+    <C {...other} className={cx(classes, className)}>
+      {children}
+    </C>
+  );
+};
 
 Col.propTypes = {
   children: PropTypes.node,
