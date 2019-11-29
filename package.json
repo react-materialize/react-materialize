@@ -60,7 +60,6 @@
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "@storybook/addon-actions": "^5.2.6",
-    "@storybook/addon-info": "^5.2.6",
     "@storybook/addon-knobs": "^5.2.6",
     "@storybook/addon-notes": "^5.2.6",
     "@storybook/react": "^5.2.6",
