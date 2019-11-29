@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.3
+
+- Move react react-dom to peer dependencies
+
 ### 3.5.2
 
 - UserView: convert to stateless #941
