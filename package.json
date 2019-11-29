@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "3.5.3",
+  "version": "3.5.4",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
@@ -15,7 +15,7 @@
     "pretest": "npm run lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
-    "build": "parcel build src/index.js --out-dir lib",
+    "build": "babel -d lib src",
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
@@ -84,7 +84,6 @@
     "jest": "^23.6.0",
     "jsdom": "^11.12.0",
     "materialize-css": "^1.0.0",
-    "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
