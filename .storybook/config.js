@@ -1,17 +1,9 @@
-import { configure, addDecorator, addParameters } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+import { configure, addParameters } from '@storybook/react';
 import theme from './theme';
 
 import './overrides.css';
 
 global.M = require('materialize-css');
-
-// https://www.npmjs.com/package/@storybook/addon-info
-addDecorator(withInfo({
-  inline: false,
-  header: false,
-  source: true
-}));
 
 function loadStories() {
   const req = require.context('../stories', true, /.js$/);
