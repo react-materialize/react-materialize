@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.4
+
+- Restore babel as bundler
+
 ### 3.5.3
 
 - Move react react-dom to peer dependencies
