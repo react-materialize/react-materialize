@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.7
+
+- [BUG] fixes SideNav unmounte error about trigger ref
+
 ### 3.5.6
 
 - Restore storybook-info-addon
