@@ -14,6 +14,7 @@ const SideNav = ({
   ...props
 }) => {
   const sidenavRef = useRef(null);
+  const triggerRef = useRef(null);
   const _id = id || `sidenav_${idgen()}`;
   const classNames = cx(
     'sidenav',
@@ -24,25 +25,21 @@ const SideNav = ({
   useEffect(() => {
     const instance = M.Sidenav.init(sidenavRef.current, options);
 
-    return () => {
-      if (instance) {
-        instance.destroy();
-      }
-    };
+    return () => instance.destroy();
   }, [options]);
 
   const renderTrigger = useMemo(() => {
-    if (!trigger) {
-      return;
-    }
+    if (!trigger) return;
+
     const triggerView = fixed ? 'hide-on-large-only' : 'show-on-large';
     const classNames = cx(
       trigger.props.className,
       triggerView,
       'sidenav-trigger'
     );
+
     return React.cloneElement(trigger, {
-      ref: t => (t._trigger = `[data-target=${_id}]`),
+      ref: triggerRef,
       'data-target': _id,
       className: classNames
     });
