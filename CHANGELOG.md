@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.6
+
+- Restore storybook-info-addon
+
 ### 3.5.5
 
 - Remove storybook-info-addon
