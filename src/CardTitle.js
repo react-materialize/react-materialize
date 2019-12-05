@@ -13,7 +13,6 @@ class CardTitle extends Component {
       'waves-block': waves,
       [`waves-${waves}`]: waves
     });
-
     return (
       <div className={cx(classes)} {...props}>
         <img className={cx({ activator: reveal })} src={image} />

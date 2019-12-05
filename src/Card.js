@@ -15,7 +15,6 @@ class Card extends Component {
 
   renderTitle(title, reveal) {
     const { revealIcon } = this.props;
-
     return (
       <span
         className={cx('card-title', {
@@ -23,7 +22,7 @@ class Card extends Component {
         })}
       >
         {title}
-        {reveal && { revealIcon }}
+        {reveal && revealIcon}
       </span>
     );
   }
@@ -77,6 +76,9 @@ class Card extends Component {
       horizontal,
       ...other
     } = this.props;
+
+    delete other.revealIcon;
+    delete other.closeIcon;
 
     const classes = {
       card: true,
