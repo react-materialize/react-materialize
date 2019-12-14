@@ -64,7 +64,7 @@ describe('<Navbar />', () => {
       <Navbar brand={<a href="/">Logo</a>} alignLinks="left" />
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo').hasClass('right'));
+    expect(wrapper.find('a.brand-logo').hasClass('right')).toBe(true);
   });
 
   test('adds a brand node', () => {
