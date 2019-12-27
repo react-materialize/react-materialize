@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.5.8
+
+- Slider: refactor using hooks (#944)
+- Collection: refactor using hooks (#954)
+- Button: remove waves effect when disabled (#960)
+
 ### 3.5.7
 
 - [BUG] fixes SideNav unmounte error about trigger ref
