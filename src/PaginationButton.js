@@ -11,7 +11,7 @@ const PaginationButton = ({
   onSelect
 }) => {
   const classes = {
-    'waves-effect': true,
+    'waves-effect': !disabled,
     disabled,
     active
   };
