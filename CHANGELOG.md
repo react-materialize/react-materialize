@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.5.9
+
+- Classnames: move back to dependencies #990
+- Checkbox: use hooks
+
 ### 3.5.8
 
 - Slider: refactor using hooks (#944)
