@@ -1,4 +1,4 @@
-import React, { Component, Fragment, cloneElement } from 'react';
+import React, { Component, Fragment, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
@@ -9,13 +9,7 @@ import Tab from './Tab';
 class Tabs extends Component {
   constructor(props) {
     super(props);
-    this.scope = `${idgen()}`;
-  }
-
-  _onSelect(idx, e) {
-    const { onChange } = this.props;
-
-    if (onChange) onChange(idx, e);
+    this.scope = idgen();
   }
 
   componentDidMount() {
@@ -42,29 +36,40 @@ class Tabs extends Component {
   }
 
   render() {
-    const { children, className, defaultValue } = this.props;
+    const {
+      children,
+      className,
+      defaultValue,
+      onChange,
+      ...props
+    } = this.props;
+
+    delete props.options;
+
     return (
       <Fragment>
-        <ul className={cx('tabs', className)} ref={el => (this._tabsEl = el)}>
-          {React.Children.map(children, (child, id) => {
+        <ul
+          className={cx('tabs', className)}
+          ref={el => (this._tabsEl = el)}
+          {...props}
+        >
+          {Children.map(children, (child, id) => {
             const idx = `${this.scope}${id}`;
             const { active, disabled, tabWidth, title } = child.props;
 
-            const classes = {
-              [`s${tabWidth}`]: tabWidth,
-              tab: true,
-              disabled,
-              col: true
-            };
-
             return (
-              <li className={cx(classes)} key={idx}>
+              <li
+                className={cx('tab col', {
+                  [`s${tabWidth}`]: tabWidth,
+                  disabled
+                })}
+                key={idx}
+              >
                 <a
                   href={`#tab_${idx}`}
-                  className={active || defaultValue === idx ? 'active' : ''}
-                  {...(disabled
-                    ? {}
-                    : { onClick: this._onSelect.bind(this, idx) })}
+                  className={cx({
+                    active: active || defaultValue === idx
+                  })}
                 >
                   {title}
                 </a>
@@ -73,18 +78,19 @@ class Tabs extends Component {
           })}
         </ul>
         <Row>
-          {React.Children.map(children, (child, id) => {
-            const idx = `${this.scope}${id}`;
-            return cloneElement(child, {
+          {Children.map(children, (child, id) =>
+            cloneElement(child, {
               defaultValue,
-              idx
-            });
-          })}
+              idx: `${this.scope}${id}`
+            })
+          )}
         </Row>
       </Fragment>
     );
   }
 }
+
+Tabs.Tab = Tab;
 
 Tabs.propTypes = {
   children: PropTypes.node.isRequired,

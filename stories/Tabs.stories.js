@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Tabs from '../src/Tabs';
-import Tab from '../src/Tab';
 
 const stories = storiesOf('Javascript|Tabs', module);
 
@@ -13,12 +12,12 @@ stories.addParameters({
 
 stories.add('Default', () => (
   <Tabs className="tab-demo z-depth-1">
-    <Tab title="Test 1">Test 1</Tab>
-    <Tab title="Test 2" active>
+    <Tabs.Tab title="Test 1">Test 1</Tabs.Tab>
+    <Tabs.Tab title="Test 2" active>
       Test 2
-    </Tab>
-    <Tab title="Test 3">Test 3</Tab>
-    <Tab title="Test 4">Test 4</Tab>
+    </Tabs.Tab>
+    <Tabs.Tab title="Test 3">Test 3</Tabs.Tab>
+    <Tabs.Tab title="Test 4">Test 4</Tabs.Tab>
   </Tabs>
 ));
 
@@ -29,28 +28,28 @@ stories.add('Swipeable Tabs', () => (
       swipeable: true
     }}
   >
-    <Tab title="Test 1" className="blue">
+    <Tabs.Tab title="Test 1" className="blue">
       Test 1
-    </Tab>
-    <Tab title="Test 2" active className="red">
+    </Tabs.Tab>
+    <Tabs.Tab title="Test 2" active className="red">
       Test 2
-    </Tab>
-    <Tab title="Test 3" className="green">
+    </Tabs.Tab>
+    <Tabs.Tab title="Test 3" className="green">
       Test 3
-    </Tab>
+    </Tabs.Tab>
   </Tabs>
 ));
 
 stories.add('Fixed Width Tabs', () => (
   <Tabs className="tab-demo z-depth-1 tabs-fixed-width">
-    <Tab title="Test 1">Test 1</Tab>
-    <Tab title="Test 2" active>
+    <Tabs.Tab title="Test 1">Test 1</Tabs.Tab>
+    <Tabs.Tab title="Test 2" active>
       Test 2
-    </Tab>
-    <Tab title="Test 3" disabled>
+    </Tabs.Tab>
+    <Tabs.Tab title="Test 3" disabled>
       Test 3
-    </Tab>
-    <Tab title="Test 4">Test 4</Tab>
-    <Tab title="Test 4">Test 5</Tab>
+    </Tabs.Tab>
+    <Tabs.Tab title="Test 4">Test 4</Tabs.Tab>
+    <Tabs.Tab title="Test 4">Test 5</Tabs.Tab>
   </Tabs>
 ));

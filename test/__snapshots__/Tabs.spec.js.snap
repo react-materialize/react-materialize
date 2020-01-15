@@ -12,7 +12,6 @@ exports[`Tabs should create list of Tab items 1`] = `
       <a
         className=""
         href="#tab_mockId0"
-        onClick={[Function]}
       >
         one
       </a>
@@ -24,7 +23,6 @@ exports[`Tabs should create list of Tab items 1`] = `
       <a
         className=""
         href="#tab_mockId1"
-        onClick={[Function]}
       >
         Two
       </a>
