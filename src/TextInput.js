@@ -1,6 +1,6 @@
-import React, { Component, useRef, useState, useEffect } from 'react';
-import cx from 'classnames';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
