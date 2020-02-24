@@ -61,7 +61,7 @@ class Dropdown extends Component {
     const { children } = this.props;
 
     return Children.map(children, element => {
-      if (element.type.name === 'Divider') {
+      if (element && element.type.name === 'Divider') {
         return <li key={idgen()} className="divider" tabIndex="-1" />;
       } else {
         return <li key={idgen()}>{element}</li>;
