@@ -9,25 +9,13 @@ const TextInput = props => {
 
   const [idSetable, setIdSetable] = useState(true);
 
-  if (props.password && idSetable) {
-    setId(`password${idgen()}`);
-    setIdSetable(false);
-  }
-
-  if (props.email && idSetable) {
-    setId(`email${idgen()}`);
-    setIdSetable(false);
-  }
-
   const inputRef = useRef(null);
 
   // eslint-disable-next-line react/prop-types
   const dataLength = props['data-length'];
 
   useEffect(() => {
-    if (typeof M !== undefined) {
-      dataLength && M.CharacterCounter.init(inputRef);
-    }
+    dataLength && M.CharacterCounter.init(inputRef);
   }, [dataLength]);
 
   useEffect(() => {
@@ -239,11 +227,7 @@ TextInput.propTypes = {
   /*
    * email type
    */
-  email: PropTypes.bool,
-  /*
-   * dataLength type
-   */
-  dataLength: PropTypes.number
+  email: PropTypes.bool
 };
 
 export default TextInput;
