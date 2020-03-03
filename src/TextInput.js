@@ -7,8 +7,6 @@ import constants from './constants';
 const TextInput = props => {
   const [id, setId] = useState(props.id || idgen());
 
-  const [idSetable, setIdSetable] = useState(true);
-
   const inputRef = useRef(null);
 
   // eslint-disable-next-line react/prop-types
