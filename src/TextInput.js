@@ -19,9 +19,7 @@ const TextInput = props => {
   }, [dataLength]);
 
   useEffect(() => {
-    if (typeof M !== 'undefined') {
-      M.updateTextFields();
-    }
+    M.updateTextFields();
   }, [props]);
 
   const {
