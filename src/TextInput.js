@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
 const TextInput = props => {
-  const [id, setId] = useState(props.id || idgen());
+  const id = props.id || idgen();
 
   const inputRef = useRef(null);
 
