@@ -15,7 +15,6 @@ const SideNav = ({
 }) => {
   const sidenavRef = useRef(null);
   const triggerRef = useRef(null);
-  const _id = id || `sidenav_${idgen()}`;
   const classNames = cx(
     'sidenav',
     { 'sidenav-fixed': fixed || !trigger },
@@ -40,17 +39,17 @@ const SideNav = ({
 
     return React.cloneElement(trigger, {
       ref: triggerRef,
-      'data-target': _id,
+      'data-target': id,
       className: classNames
     });
-  }, [_id, fixed, trigger]);
+  }, [id, fixed, trigger]);
 
   return (
     <Fragment>
       {renderTrigger}
       <ul
         ref={el => (sidenavRef.current = el)}
-        id={_id}
+        id={id}
         className={classNames}
         {...props}
       >
@@ -67,6 +66,7 @@ SideNav.propTypes = {
   fixed: PropTypes.bool,
   /**
    * sidenav id. If none is passed, an id will be generated.
+   * @default idgen()
    */
   id: PropTypes.string,
   /**
@@ -86,6 +86,10 @@ SideNav.propTypes = {
    */
   className: PropTypes.string,
   children: PropTypes.node
+};
+
+SideNav.defaultProps = {
+  id: `SideNav-${idgen()}`
 };
 
 export default SideNav;

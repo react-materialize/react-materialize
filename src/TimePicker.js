@@ -4,16 +4,10 @@ import TextInput from './TextInput';
 import idgen from './idgen';
 
 class TimePicker extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.id = props.id || `timepicker${idgen()}`;
-  }
-
   componentDidMount() {
     if (typeof M !== 'undefined') {
-      const { onChange } = this.props;
-      const elem = document.getElementById(this.id);
+      const { onChange, id } = this.props;
+      const elem = document.getElementById(id);
       const options = onChange
         ? { ...this.props.options, onSelect: onChange }
         : this.props.options;
@@ -29,9 +23,7 @@ class TimePicker extends React.Component {
   }
 
   render() {
-    return (
-      <TextInput id={this.id} inputClassName="timepicker" {...this.props} />
-    );
+    return <TextInput inputClassName="timepicker" {...this.props} />;
   }
 }
 
@@ -42,6 +34,7 @@ TimePicker.propTypes = {
   onChange: PropTypes.func,
   /**
    * id passed to Timepicker, also used for init method
+   * @default idgen()
    */
   id: PropTypes.string,
   /**
@@ -127,6 +120,7 @@ TimePicker.propTypes = {
 };
 
 TimePicker.defaultProps = {
+  id: `TimePicker-${idgen()}`,
   options: {
     duration: 350,
     container: null,

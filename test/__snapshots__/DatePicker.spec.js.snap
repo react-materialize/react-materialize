@@ -96,7 +96,7 @@ exports[`<DatePicker /> accepts external \`id\` value 1`] = `
 
 exports[`<DatePicker /> renders 1`] = `
 <TextInput
-  id="datepickermockId"
+  id="DatePicker-mockId"
   inputClassName="datepicker"
   options={
     Object {
@@ -190,7 +190,7 @@ exports[`<DatePicker /> renders 1`] = `
 
 exports[`<DatePicker /> renders with a label 1`] = `
 <TextInput
-  id="datepickermockId"
+  id="DatePicker-mockId"
   inputClassName="datepicker"
   label="DatePicker label"
   options={

@@ -6,7 +6,6 @@ import cx from 'classnames';
 class Dropdown extends Component {
   constructor(props) {
     super(props);
-    this.idx = props.id || `dropdown${idgen()}`;
     this.renderTrigger = this.renderTrigger.bind(this);
     this.renderItems = this.renderItems.bind(this);
   }
@@ -36,11 +35,7 @@ class Dropdown extends Component {
     return (
       <Fragment>
         {this.renderTrigger()}
-        <ul
-          {...props}
-          className={cx('dropdown-content', className)}
-          id={this.idx}
-        >
+        <ul {...props} className={cx('dropdown-content', className)}>
           {this.renderItems()}
         </ul>
       </Fragment>
@@ -48,11 +43,11 @@ class Dropdown extends Component {
   }
 
   renderTrigger() {
-    const { trigger } = this.props;
+    const { trigger, id } = this.props;
 
     return cloneElement(trigger, {
-      'data-target': this.idx,
-      ref: t => (this._trigger = `[data-target=${this.idx}]`),
+      'data-target': id,
+      ref: t => (this._trigger = `[data-target=${id}]`),
       className: cx(trigger.props.className, 'dropdown-trigger')
     });
   }
@@ -71,6 +66,10 @@ class Dropdown extends Component {
 }
 
 Dropdown.propTypes = {
+  /*
+   * override id
+   * @default idgen()
+   */
   id: PropTypes.string,
   /**
    * The node to trigger the dropdown
@@ -101,6 +100,7 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
+  id: `Dropdown-${idgen()}`,
   options: {
     alignment: 'left',
     autoTrigger: true,

@@ -9,7 +9,7 @@ exports[`<Select /> with icon 1`] = `
   />
   <select
     className=""
-    id="mockId"
+    id="Select-mockId"
     onChange={[Function]}
     options={
       Object {

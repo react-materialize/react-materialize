@@ -31,7 +31,7 @@ exports[`<TimePicker /> accepts external \`id\` value 1`] = `
 
 exports[`<TimePicker /> renders 1`] = `
 <TextInput
-  id="timepickermockId"
+  id="TimePicker-mockId"
   inputClassName="timepicker"
   options={
     Object {
@@ -60,7 +60,7 @@ exports[`<TimePicker /> renders 1`] = `
 
 exports[`<TimePicker /> renders with a label 1`] = `
 <TextInput
-  id="timepickermockId"
+  id="TimePicker-mockId"
   inputClassName="timepicker"
   label="TimePicker label"
   options={

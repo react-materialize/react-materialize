@@ -60,7 +60,7 @@ Switch.propTypes = {
 };
 
 Switch.defaultProps = {
-  id: `switch-${idgen()}`,
+  id: `Switch-${idgen()}`,
   onChange: () => {}
 };
 

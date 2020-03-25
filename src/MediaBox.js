@@ -5,20 +5,18 @@ import cx from 'classnames';
 import idgen from './idgen';
 
 const MediaBox = ({ id, options, children, className, caption, ...props }) => {
-  const _id = id || `mediabox${idgen()}`;
-
   useEffect(() => {
-    const instance = M.Materialbox.init(document.getElementById(_id), options);
+    const instance = M.Materialbox.init(document.getElementById(id), options);
 
     return () => {
       if (instance) {
         instance.destroy();
       }
     };
-  }, [_id, options]);
+  }, [id, options]);
 
   return React.cloneElement(children, {
-    id: _id,
+    id: id,
     className: cx('materialboxed', className),
     'data-caption': caption,
     ...props
@@ -27,6 +25,10 @@ const MediaBox = ({ id, options, children, className, caption, ...props }) => {
 
 MediaBox.propTypes = {
   children: PropTypes.node.isRequired,
+  /*
+   * override id
+   * @default idgen()
+   */
   id: PropTypes.string,
   className: PropTypes.string,
   /**
@@ -62,6 +64,7 @@ MediaBox.propTypes = {
 };
 
 MediaBox.defaultProps = {
+  id: `MediaBox_${idgen()}`,
   options: {
     inDuration: 275,
     outDuration: 200,

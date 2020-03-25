@@ -1,5 +1,13 @@
 # Changelog
 
+### 3.5.11
+
+- move id to defaultProps and use idgen
+
+### 3.5.10
+
+- integrate github actions as CI
+
 ### 3.5.9
 
 - Classnames: move back to dependencies #990
