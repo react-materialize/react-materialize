@@ -1,4 +1,4 @@
-name: react-materialize: Publish
+name: react-materialize Publish
 
 on:
   push:

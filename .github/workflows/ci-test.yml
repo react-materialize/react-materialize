@@ -1,4 +1,4 @@
-name: react-materialize: Test
+name: react-materialize Test
 
 on: [push]
 
