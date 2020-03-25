@@ -4,16 +4,10 @@ import TextInput from './TextInput';
 import idgen from './idgen';
 
 class DatePicker extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.id = props.id || `datepicker${idgen()}`;
-  }
-
   componentDidMount() {
     if (typeof M !== 'undefined') {
-      const { onChange } = this.props;
-      const elem = document.getElementById(this.id);
+      const { onChange, id } = this.props;
+      const elem = document.getElementById(id);
       const options = onChange
         ? { ...this.props.options, onSelect: onChange }
         : this.props.options;
@@ -29,11 +23,7 @@ class DatePicker extends React.Component {
   }
 
   render() {
-    const { ...other } = this.props;
-
-    return (
-      <TextInput id={this.id} inputClassName="datepicker" {...this.props} />
-    );
+    return <TextInput inputClassName="datepicker" {...this.props} />;
   }
 }
 
@@ -44,6 +34,7 @@ DatePicker.propTypes = {
   onChange: PropTypes.func,
   /**
    * id passed to datepicker, also used for init method
+   * @default idgen()
    */
   id: PropTypes.string,
   /**
@@ -175,6 +166,7 @@ DatePicker.propTypes = {
 };
 
 DatePicker.defaultProps = {
+  id: `DatePicker-${idgen()}`,
   options: {
     autoClose: false,
     format: 'mmm dd, yyyy',

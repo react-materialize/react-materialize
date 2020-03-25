@@ -4,16 +4,16 @@ exports[`<Checkbox /> does not overwrite materialize-css classnames 1`] = `
 <Checkbox
   className="my-class"
   filledIn={true}
-  id="checkbox_mockId"
+  id="Checkbox_mockId"
   label="red"
   value="red"
 >
   <label
-    htmlFor="checkbox_mockId"
+    htmlFor="Checkbox_mockId"
   >
     <input
       className="filled-in my-class"
-      id="checkbox_mockId"
+      id="Checkbox_mockId"
       onChange={[Function]}
       type="checkbox"
       value="red"
@@ -27,11 +27,11 @@ exports[`<Checkbox /> does not overwrite materialize-css classnames 1`] = `
 
 exports[`<Checkbox /> filled-in 1`] = `
 <label
-  htmlFor="checkbox_mockId"
+  htmlFor="Checkbox_mockId"
 >
   <input
     className="filled-in"
-    id="checkbox_mockId"
+    id="Checkbox_mockId"
     onChange={[Function]}
     type="checkbox"
     value="red"
@@ -44,11 +44,11 @@ exports[`<Checkbox /> filled-in 1`] = `
 
 exports[`<Checkbox /> renders 1`] = `
 <label
-  htmlFor="checkbox_mockId"
+  htmlFor="Checkbox_mockId"
 >
   <input
     className=""
-    id="checkbox_mockId"
+    id="Checkbox_mockId"
     onChange={[Function]}
     type="checkbox"
     value="red"
@@ -61,12 +61,12 @@ exports[`<Checkbox /> renders 1`] = `
 
 exports[`<Checkbox /> renders disabled 1`] = `
 <label
-  htmlFor="checkbox_mockId"
+  htmlFor="Checkbox_mockId"
 >
   <input
     className=""
     disabled={true}
-    id="checkbox_mockId"
+    id="Checkbox_mockId"
     onChange={[Function]}
     type="checkbox"
     value="red"

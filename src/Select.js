@@ -8,16 +8,15 @@ class Select extends Component {
   constructor(props) {
     super(props);
 
-    this.id = props.id || idgen();
     this.handleChange = this.handleChange.bind(this);
     this.state = { value: props.value };
   }
 
   handleChange(event) {
-    const { onChange } = this.props;
+    const { onChange, multiple } = this.props;
     let value = event.target.value;
 
-    if (this.props.multiple) {
+    if (multiple) {
       value = this.instance.getSelectedValues();
     }
 
@@ -56,7 +55,6 @@ class Select extends Component {
       m,
       l,
       xl,
-      disabled,
       noLayout,
       browserDefault,
       icon,
@@ -84,9 +82,7 @@ class Select extends Component {
 
     const selectProps = {
       type: 'select',
-      id: this.id,
       value: this.state.value,
-      disabled,
       multiple,
       ...other
     };
@@ -243,6 +239,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+  id: `Select-${idgen()}`,
   options: {
     classes: '',
     dropdownOptions: {

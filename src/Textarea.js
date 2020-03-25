@@ -196,4 +196,8 @@ Textarea.propTypes = {
   onChange: PropTypes.func
 };
 
+Textarea.defaultProps = {
+  id: `Textarea-${idgen()}`
+};
+
 export default Textarea;

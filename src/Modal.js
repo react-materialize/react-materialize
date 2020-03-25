@@ -210,7 +210,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  id: `modal-${idgen()}`,
+  id: `Modal-${idgen()}`,
   options: {
     opacity: 0.5,
     inDuration: 250,

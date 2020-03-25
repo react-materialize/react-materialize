@@ -5,8 +5,6 @@ import idgen from './idgen';
 import constants from './constants';
 
 const TextInput = props => {
-  const id = props.id || idgen();
-
   const inputRef = useRef(null);
 
   // eslint-disable-next-line react/prop-types
@@ -69,7 +67,6 @@ const TextInput = props => {
   const inputProps = {
     placeholder,
     type: computedType,
-    id: id,
     value,
     defaultValue,
     disabled,
@@ -224,6 +221,10 @@ TextInput.propTypes = {
    * email type
    */
   email: PropTypes.bool
+};
+
+TextInput.defaultProps = {
+  id: `TextInput-${idgen()}`
 };
 
 export default TextInput;
