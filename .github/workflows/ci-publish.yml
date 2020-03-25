@@ -1,4 +1,4 @@
-name: react-materialize Publish
+name: Publish
 
 on:
   push:
@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+        with:
+          registry-url: 'https://registry.npmjs.org'
       - uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -18,11 +20,8 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Publish
-        run: npm publish
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

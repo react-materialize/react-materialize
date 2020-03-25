@@ -1,6 +1,9 @@
-name: react-materialize Test
+name: Test
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - 'master'
 
 jobs:
   build:
@@ -17,7 +20,5 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm test
+      - run: npm ci
+      - run: npm test
