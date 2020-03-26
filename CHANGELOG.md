@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.5.12
+
+- version bump to configure github actions
+
 ### 3.5.11
 
 - move id to defaultProps and use idgen
