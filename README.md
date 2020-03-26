@@ -60,6 +60,13 @@ include css in the js - which can be cumbersome to some project's architecture.
 
 We have a `help-wanted` label in the issues page for convenience
 
+### Deployment workflow
+
+We are now using github actions.
+For every push, `test` action will run. When creating a new version a postscript is executed pushing
+the tags. Therefor if a new package version was included in the pull-request, you can go ahead
+and create a Release after the pull-request is merged.
+
 ## Support
 
 This library is only a react wrapper around the awesome [materializecss](http://materializecss.com), if you or 
