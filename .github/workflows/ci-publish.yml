@@ -26,6 +26,9 @@ jobs:
           npm ci
           npm run build
 
+      - name: Storybook
+        run: npm run build-storybook
+
       - name: Github Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
