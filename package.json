@@ -20,7 +20,8 @@
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"{src,test,stories}/**/*.js\"",
-    "prepush": "npm run lint"
+    "prepush": "npm run lint",
+    "postversion": "git push && git push --tags"
   },
   "engines": {
     "node": ">=8"
