@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "3.5.14",
+  "version": "3.6.0",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "files": [
@@ -20,8 +20,7 @@
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"{src,test,stories}/**/*.js\"",
-    "prepush": "npm run lint",
-    "postversion": "git push && git push --tags"
+    "prepush": "npm run lint"
   },
   "engines": {
     "node": ">=8"
@@ -65,6 +64,8 @@
     "@storybook/addon-knobs": "^5.2.6",
     "@storybook/addon-notes": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "@types/react": "^16.9.25",
+    "@types/react-dom": "^16.9.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.5",

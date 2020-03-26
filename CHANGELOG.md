@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.6.0
+
+- initial type definition setup, started with Autocomplete
+
 ### 3.5.14
 
 - version bump to configure github actions
