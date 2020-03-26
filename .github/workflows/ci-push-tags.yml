@@ -1,10 +1,9 @@
 name: Push tags
 
-# on:
-  # push:
-    # branches:
-      # - master
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   tags:
