@@ -3,10 +3,10 @@ name: Test
 on:
   push:
     branches-ignore:
-      - 'master'
+      - master
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
