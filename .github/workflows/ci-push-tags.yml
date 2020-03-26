@@ -1,0 +1,15 @@
+name: Push tags
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  tags:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git push --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

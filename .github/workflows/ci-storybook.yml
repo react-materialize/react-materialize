@@ -1,17 +1,15 @@
-name: Publish
+name: Github Pages
 
 on:
   release:
     types: [created]
 
 jobs:
-  publish:
+  gh-pages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-        with:
-          registry-url: 'https://registry.npmjs.org'
       - uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -20,12 +18,14 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
 
-      - name: Build
+      - name: Storybook
         run: |
           npm ci
-          npm run build
+          npm run build-storybook
 
-      - name: Publish to NPM
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Github Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
