@@ -1,110 +1,52 @@
-/* eslint no-unused-vars: ["error", { "ignoreRestSiblings": true }] */
-import React, { Component } from 'react';
+import React, { cloneElement, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import constants from './constants';
 import idgen from './idgen';
 
-class Autocomplete extends Component {
-  constructor(props) {
-    super(props);
+const Autocomplete = ({
+  className,
+  title,
+  icon,
+  s,
+  m,
+  l,
+  xl,
+  id,
+  options,
+  ...rest
+}) => {
+  const autocompleteRef = useRef(null);
+  const sizes = { s, m, l, xl };
 
-    this.state = {
-      value: props.value || '',
-      itemSelected: false
+  let classes = { col: true };
+
+  constants.SIZES.forEach(size => {
+    classes[size + sizes[size]] = sizes[size];
+  });
+
+  useEffect(() => {
+    const instance = M.Autocomplete.init(autocompleteRef.current, options);
+
+    return () => {
+      instance && instance.destroy();
     };
+  }, [options]);
 
-    this.renderIcon = this.renderIcon.bind(this);
-    this._onChange = this._onChange.bind(this);
-  }
-
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { options } = this.props;
-      this.instance = M.Autocomplete.init(this._autocomplete, options);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  renderIcon(icon) {
-    return React.cloneElement(icon, { className: 'prefix' });
-  }
-
-  _onChange(e) {
-    const { onChange } = this.props;
-    const value = e.target.value;
-
-    onChange && onChange(e, value);
-
-    this.setState({ value, itemSelected: false });
-  }
-
-  _onAutocomplete(value, e) {
-    const { onChange, options } = this.props;
-    const { onAutocomplete } = options;
-
-    onAutocomplete && onAutocomplete(value);
-
-    onChange && onChange(e, value);
-
-    this.setState({ value, itemSelected: true });
-  }
-
-  render() {
-    const {
-      id,
-      className,
-      title,
-      icon,
-      s,
-      m,
-      l,
-      xl,
-      offset,
-      placeholder,
-      // these are mentioned here only to prevent from getting into ...props
-      value,
-      onChange,
-      options,
-      ...props
-    } = this.props;
-
-    const sizes = { s, m, l, xl };
-    let classes = {
-      col: true
-    };
-    constants.SIZES.forEach(size => {
-      classes[size + sizes[size]] = sizes[size];
-    });
-
-    return (
-      <div
-        offset={offset}
-        className={cx('input-field', className, classes)}
-        {...props}
-      >
-        {icon && this.renderIcon(icon)}
-        <input
-          placeholder={placeholder}
-          className="autocomplete"
-          id={id}
-          onChange={this._onChange}
-          type="text"
-          value={this.state.value}
-          ref={input => {
-            this._autocomplete = input;
-          }}
-        />
-        <label htmlFor={id}>{title}</label>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={cx('input-field', className, classes)}>
+      {icon && cloneElement(icon, { className: 'prefix' })}
+      <input
+        className="autocomplete"
+        type="text"
+        ref={autocompleteRef}
+        id={id}
+        {...rest}
+      />
+      <label htmlFor={id}>{title}</label>
+    </div>
+  );
+};
 
 Autocomplete.propTypes = {
   /**
@@ -126,7 +68,6 @@ Autocomplete.propTypes = {
   m: PropTypes.number,
   l: PropTypes.number,
   xl: PropTypes.number,
-  offset: PropTypes.string,
   /**
    * Placeholder for input element
    * */
