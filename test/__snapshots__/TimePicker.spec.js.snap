@@ -4,28 +4,6 @@ exports[`<TimePicker /> accepts external \`id\` value 1`] = `
 <TextInput
   id="ID"
   inputClassName="timepicker"
-  options={
-    Object {
-      "autoClose": false,
-      "container": null,
-      "defaultTime": "now",
-      "duration": 350,
-      "fromNow": 0,
-      "i18n": Object {
-        "cancel": "Cancel",
-        "clear": "Clear",
-        "done": "Ok",
-      },
-      "onCloseEnd": null,
-      "onCloseStart": null,
-      "onOpenEnd": null,
-      "onOpenStart": null,
-      "onSelect": null,
-      "showClearBtn": false,
-      "twelveHour": true,
-      "vibrate": true,
-    }
-  }
 />
 `;
 
@@ -33,28 +11,6 @@ exports[`<TimePicker /> renders 1`] = `
 <TextInput
   id="TimePicker-mockId"
   inputClassName="timepicker"
-  options={
-    Object {
-      "autoClose": false,
-      "container": null,
-      "defaultTime": "now",
-      "duration": 350,
-      "fromNow": 0,
-      "i18n": Object {
-        "cancel": "Cancel",
-        "clear": "Clear",
-        "done": "Ok",
-      },
-      "onCloseEnd": null,
-      "onCloseStart": null,
-      "onOpenEnd": null,
-      "onOpenStart": null,
-      "onSelect": null,
-      "showClearBtn": false,
-      "twelveHour": true,
-      "vibrate": true,
-    }
-  }
 />
 `;
 
@@ -63,27 +19,5 @@ exports[`<TimePicker /> renders with a label 1`] = `
   id="TimePicker-mockId"
   inputClassName="timepicker"
   label="TimePicker label"
-  options={
-    Object {
-      "autoClose": false,
-      "container": null,
-      "defaultTime": "now",
-      "duration": 350,
-      "fromNow": 0,
-      "i18n": Object {
-        "cancel": "Cancel",
-        "clear": "Clear",
-        "done": "Ok",
-      },
-      "onCloseEnd": null,
-      "onCloseStart": null,
-      "onOpenEnd": null,
-      "onOpenStart": null,
-      "onSelect": null,
-      "showClearBtn": false,
-      "twelveHour": true,
-      "vibrate": true,
-    }
-  }
 />
 `;
