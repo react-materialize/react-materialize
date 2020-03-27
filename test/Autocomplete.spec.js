@@ -4,6 +4,7 @@ import Autocomplete from '../src/Autocomplete';
 import mocker from './helper/new-mocker';
 
 describe('<Autocomplete />', () => {
+  const autocompleteInitMock = jest.fn();
   const data = {
     Apple: null,
     Microsoft: null,
@@ -13,6 +14,10 @@ describe('<Autocomplete />', () => {
   const componentId = 'testAutocompleteId';
 
   let wrapper;
+
+  beforeEach(() => {
+    autocompleteInitMock.mockClear();
+  });
 
   test('renders', () => {
     wrapper = shallow(
@@ -35,7 +40,6 @@ describe('<Autocomplete />', () => {
   });
 
   describe('initialises', () => {
-    const autocompleteInitMock = jest.fn();
     const autocompleteInstanceDestroyMock = jest.fn();
     const autocompleteMock = {
       init: (el, options) => {
@@ -54,6 +58,34 @@ describe('<Autocomplete />', () => {
     test('calls Autocomplete', () => {
       mount(<Autocomplete />);
       expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('with new data', () => {
+    test('reinitializes', () => {
+      const wrapper = mount(<Autocomplete />);
+
+      expect(autocompleteInitMock).lastCalledWith({
+        data: {},
+        limit: Infinity,
+        minLength: 1,
+        onAutocomplete: null,
+        sortFunction: null
+      });
+
+      wrapper.setProps({
+        options: {
+          data: {
+            foo: 'bar'
+          }
+        }
+      });
+
+      expect(autocompleteInitMock).lastCalledWith({
+        data: {
+          foo: 'bar'
+        }
+      });
     });
   });
 });
