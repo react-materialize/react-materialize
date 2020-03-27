@@ -36,6 +36,7 @@ class Navbar extends Component {
 
     const brandClasses = cx({
       'brand-logo': true,
+      right: alignLinks == 'left',
       center: centerLogo
     });
 

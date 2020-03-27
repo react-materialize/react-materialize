@@ -336,7 +336,7 @@ exports[`<Navbar /> can have custom sidenav 1`] = `
       className="nav-wrapper"
     >
       <a
-        className="brand-logo"
+        className="brand-logo right"
         href="/"
       >
         Logo
@@ -377,7 +377,7 @@ exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
       className="nav-wrapper"
     >
       <a
-        className="brand-logo"
+        className="brand-logo right"
         href="/"
       >
         Logo
