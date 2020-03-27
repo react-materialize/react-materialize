@@ -1,8 +1,6 @@
 <img alt='React Materialize' src="https://cloud.githubusercontent.com/assets/4152819/12703340/23b90e56-c841-11e5-933a-99bfa107db07.jpg" width="890">
 
 [![Join the chat at https://gitter.im/react-materialize/react-materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-materialize/react-materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build
-Status](https://travis-ci.org/react-materialize/react-materialize.svg?branch=master)](https://travis-ci.org/react-materialize/react-materialize)
 [![npm version](http://img.shields.io/npm/v/react-materialize.svg?style=flat)](https://npmjs.org/package/react-materialize "View this project on npm")
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
@@ -62,10 +60,10 @@ We have a `help-wanted` label in the issues page for convenience
 
 ### Deployment workflow
 
-We are now using github actions.
-For every push, `test` action will run. When creating a new version a postscript is executed pushing
-the tags. Therefor if a new package version was included in the pull-request, you can go ahead
-and create a Release after the pull-request is merged.
+We are now using github actions. For every push, `test` action will run.
+
+To publish a new version update the package version, update the change log and create a PR.
+Once merged to master push tags `git push --tags` and create a new release.
 
 ## Support
 
