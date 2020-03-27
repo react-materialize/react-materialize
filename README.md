@@ -11,8 +11,10 @@ Material design components for react, powered by [materializecss](http://materia
 
 ## Install
 ```
+npm install materialize-css@next
 npm install react-materialize
 ```
+
 ## Use
 #### HTML Setup (from [materializecss](http://materializecss.com/))
 ```html
@@ -23,7 +25,6 @@ npm install react-materialize
     <link rel="stylesheet" href="path/to/materialize.css">
   </head>
   <body>
-    <script src="path/to/materialize.js"></script>
     <script src="path/to/your/bundle.js"></script>
   </body>
 </html>
@@ -31,8 +32,13 @@ npm install react-materialize
 
 #### Javascript
 ``` js
+import 'materialize-css';
 import { Button, Card, Row, Col } from 'react-materialize';
 ```
+
+##### Note
+`materialize-css` exposes css via `style` field in `package.json`, if you have another tool for CSS that
+identifies this field you can remove the import from `index.html`.
 
 ## Docs && Examples
 
