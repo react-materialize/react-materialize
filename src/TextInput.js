@@ -1,18 +1,19 @@
-import React, { useRef, useEffect } from 'react';
+import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
-const TextInput = props => {
-  const inputRef = useRef(null);
-
+const TextInput = React.forwardRef((props, ref) => {
   // eslint-disable-next-line react/prop-types
   const dataLength = props['data-length'];
+  const inputRef = ref || createRef(null);
 
   useEffect(() => {
-    dataLength && M.CharacterCounter.init(inputRef);
-  }, [dataLength]);
+    if (inputRef && dataLength) {
+      M.CharacterCounter.init(inputRef.current);
+    }
+  }, [dataLength, inputRef]);
 
   useEffect(() => {
     M.updateTextFields();
@@ -136,10 +137,11 @@ const TextInput = props => {
       {children}
     </div>
   );
-};
+});
+
+TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
-  children: PropTypes.node,
   /*
    * Strip away all layout classes such as col and sX
    */
@@ -152,8 +154,8 @@ TextInput.propTypes = {
    * Responsive size for Tablet Devices
    */
   m: PropTypes.number,
-  /*
-   * Responsive size for Desktop Devices
+  /**
+   *  Responsive size for Desktop Devices
    */
   l: PropTypes.number,
   /**
@@ -220,7 +222,11 @@ TextInput.propTypes = {
   /*
    * email type
    */
-  email: PropTypes.bool
+  email: PropTypes.bool,
+  /*
+   * children
+   */
+  children: PropTypes.node
 };
 
 TextInput.defaultProps = {
