@@ -83,7 +83,7 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
-  id: `dropdown_${idgen()}`,
+  id: `Dropdown-${idgen()}`,
   options: {
     alignment: 'left',
     autoTrigger: true,
