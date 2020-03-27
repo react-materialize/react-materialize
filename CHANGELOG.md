@@ -1,5 +1,14 @@
 # Changelog
 
+### 3.6.1
+
+- Dropdown: support false/null elements #996
+- Navbar: add `centerChildren` interface #979
+- Navbar: fixes brand alignment bug #981
+- Dropdown: use hooks #956 #1066
+- DatePicker: use hooks #998 #1067
+- TimePicker: use hooks #943 #1068
+
 ### 3.6.0
 
 - initial type definition setup, started with Autocomplete
