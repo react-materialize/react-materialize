@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 
+// eslint-disable-next-line react/prop-types
+const Wrapper = ({ condition, children }) =>
+  condition ? (
+    <div className="card-stacked">{children}</div>
+  ) : (
+    <Fragment>{children}</Fragment>
+  );
+
 const Card = ({
   title,
   header,
@@ -12,60 +20,10 @@ const Card = ({
   reveal,
   children,
   horizontal,
+  closeIcon,
+  revealIcon,
   ...other
 }) => {
-  const renderTitle = (title, reveal) => {
-    const { revealIcon } = other;
-
-    return (
-      <span
-        className={cx('card-title', {
-          activator: reveal
-        })}
-      >
-        {title}
-        {reveal && revealIcon}
-      </span>
-    );
-  };
-
-  const renderReveal = (title, reveal) => {
-    const { closeIcon } = other;
-
-    return (
-      <div className="card-reveal">
-        <span className="card-title">
-          {title}
-          {cloneElement(closeIcon, { right: true })}
-        </span>
-        {reveal}
-      </div>
-    );
-  };
-
-  const renderAction = actions => {
-    return <div className="card-action">{actions}</div>;
-  };
-
-  const renderContent = (title, reveal, textClassName, children) => {
-    return (
-      <div className={cx('card-content', textClassName)}>
-        {title && renderTitle(title, reveal)}
-        <div>{children}</div>
-      </div>
-    );
-  };
-
-  const renderAll = (title, reveal, textClassName, children, actions) => {
-    return (
-      <Fragment>
-        {renderContent(title, reveal, textClassName, children)}
-        {renderReveal(title, reveal)}
-        {actions && renderAction(actions)}
-      </Fragment>
-    );
-  };
-
   const classes = {
     card: true,
     horizontal: horizontal
@@ -74,13 +32,27 @@ const Card = ({
   return (
     <div {...other} className={cx(className, classes)}>
       {header}
-      {horizontal ? (
-        <div className="card-stacked">
-          {renderAll(title, reveal, textClassName, children, actions)}
+      <Wrapper condition={horizontal}>
+        <div className={cx('card-content', textClassName)}>
+          {title && (
+            <span className={cx('card-title', { activator: reveal })}>
+              {title}
+              {reveal && cloneElement(revealIcon, { right: true })}
+            </span>
+          )}
+          <div>{children}</div>
         </div>
-      ) : (
-        renderAll(title, reveal, textClassName, children, actions)
-      )}
+
+        <div className="card-reveal">
+          <span className="card-title">
+            {title}
+            {cloneElement(closeIcon, { right: true })}
+          </span>
+          {reveal}
+        </div>
+
+        {actions && <div className="card-action">{actions}</div>}
+      </Wrapper>
     </div>
   );
 };
@@ -95,18 +67,19 @@ Card.propTypes = {
   // The buttons to be displayed at the action area
   actions: PropTypes.arrayOf(PropTypes.element),
   horizontal: PropTypes.bool,
+  /*
+   * @default <Icon>close</Icon>
+   */
   closeIcon: PropTypes.node,
   /*
-   * The icon node used to reveal content
-   * add `right` class to aligned icon to right
-   * @default <Icon className="right">more_vert</Icon>
+   * @default <Icon>more_vert</Icon>
    */
   revealIcon: PropTypes.node
 };
 
 Card.defaultProps = {
   closeIcon: <Icon>close</Icon>,
-  revealIcon: <Icon className="right">more_vert</Icon>
+  revealIcon: <Icon>more_vert</Icon>
 };
 
 export default Card;
