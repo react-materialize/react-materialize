@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Select from '../src/Select';
+import Icon from '../src/Icon';
 
 const stories = storiesOf('Components|Select', module);
 
@@ -24,7 +25,7 @@ stories.add('Default', () => (
 ));
 
 stories.add('with Icon', () => (
-  <Select value="" icon="cloud">
+  <Select value="" icon={<Icon>cloud</Icon>}>
     <option value="" disabled>
       Choose your option
     </option>

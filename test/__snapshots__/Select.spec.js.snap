@@ -10,27 +10,8 @@ exports[`<Select /> with icon 1`] = `
   <select
     className=""
     id="Select-mockId"
+    multiple={false}
     onChange={[Function]}
-    options={
-      Object {
-        "classes": "",
-        "dropdownOptions": Object {
-          "alignment": "left",
-          "autoTrigger": true,
-          "closeOnClick": true,
-          "constrainWidth": true,
-          "container": null,
-          "coverTrigger": true,
-          "hover": false,
-          "inDuration": 150,
-          "onCloseEnd": null,
-          "onCloseStart": null,
-          "onOpenEnd": null,
-          "onOpenStart": null,
-          "outDuration": 250,
-        },
-      }
-    }
     type="select"
   />
 </div>

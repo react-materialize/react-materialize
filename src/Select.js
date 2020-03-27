@@ -1,137 +1,106 @@
-import React, { Component, Children, cloneElement } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  useRef,
+  useEffect,
+  useState
+} from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
-class Select extends Component {
-  constructor(props) {
-    super(props);
+const Select = ({
+  id,
+  s,
+  m,
+  l,
+  xl,
+  noLayout,
+  browserDefault,
+  icon,
+  label,
+  className,
+  success,
+  error,
+  validate,
+  children,
+  multiple,
+  options,
+  value,
+  onChange,
+  ...props
+}) => {
+  const [selectedValue, setSelectedValue] = useState(value);
+  const _selectRef = useRef(null);
+  const _formSelectInstance = useRef(null);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.state = { value: props.value };
+  useEffect(() => {
+    _formSelectInstance.current = M.FormSelect.init(
+      _selectRef.current,
+      options
+    );
+
+    return () => {
+      _formSelectInstance.current && _formSelectInstance.current.destroy();
+    };
+  }, [options]);
+
+  useEffect(() => {
+    setSelectedValue(value);
+  }, [value]);
+
+  const sizes = { s, m, l, xl };
+  let responsiveClasses = {};
+
+  if (!noLayout) {
+    responsiveClasses = { col: true };
+    constants.SIZES.forEach(size => {
+      responsiveClasses[size + sizes[size]] = sizes[size];
+    });
   }
 
-  handleChange(event) {
-    const { onChange, multiple } = this.props;
-    let value = event.target.value;
+  const renderOption = child => cloneElement(child, { key: child.props.value });
+
+  const handleChange = e => {
+    let value = e.target.value;
 
     if (multiple) {
-      value = this.instance.getSelectedValues();
+      value = _formSelectInstance.current.getSelectedValues();
     }
 
-    if (onChange) onChange(event);
+    onChange && onChange(e);
 
-    this.setState({ value });
-  }
+    setSelectedValue(value);
+  };
 
-  componentDidMount() {
-    const { options } = this.props;
-
-    if (typeof M !== 'undefined') {
-      this.instance = M.FormSelect.init(this._selectRef, options);
-    }
-  }
-
-  componentDidUpdate() {
-    const { options } = this.props;
-
-    if (this.instance) {
-      this.instance.destroy();
-    }
-
-    this.instance = M.FormSelect.init(this._selectRef, options);
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    const {
-      s,
-      m,
-      l,
-      xl,
-      noLayout,
-      browserDefault,
-      icon,
-      label,
-      selectClassName,
-      success,
-      error,
-      validate,
-      children,
-      multiple,
-      ...other
-    } = this.props;
-
-    const sizes = { s, m, l, xl };
-
-    let responsiveClasses;
-    if (!noLayout) {
-      responsiveClasses = { col: true };
-      constants.SIZES.forEach(size => {
-        responsiveClasses[size + sizes[size]] = sizes[size];
-      });
-    }
-
-    const wrapperClasses = cx('input-field', responsiveClasses);
-
-    const selectProps = {
-      type: 'select',
-      value: this.state.value,
-      multiple,
-      ...other
-    };
-
-    const renderLabel = () =>
-      label && (
-        <label
-          data-success={success}
-          data-error={error}
-          htmlFor={selectProps.id}
-        >
+  return (
+    <div className={cx('input-field', responsiveClasses)}>
+      {Boolean(icon) && cloneElement(icon, { className: 'prefix' })}
+      <select
+        {...props}
+        type="select"
+        id={id}
+        value={selectedValue}
+        ref={_selectRef}
+        onChange={handleChange}
+        className={cx(className, {
+          validate,
+          multiple,
+          ['browser-default']: browserDefault
+        })}
+        multiple={multiple}
+      >
+        {Children.map(children, renderOption)}
+      </select>
+      {Boolean(label) && (
+        <label data-success={success} data-error={error} htmlFor={id}>
           {label}
         </label>
-      );
-
-    const renderIcon = () =>
-      icon && React.cloneElement(icon, { className: 'prefix' });
-
-    const renderOption = child =>
-      cloneElement(child, { key: child.props.value });
-
-    const renderOptions = () => Children.map(children, renderOption);
-
-    return (
-      <div className={wrapperClasses}>
-        {renderIcon()}
-        <select
-          value={this.state.value}
-          ref={el => {
-            this._selectRef = el;
-          }}
-          onChange={this.handleChange}
-          className={cx(
-            {
-              validate,
-              multiple,
-              ['browser-default']: browserDefault
-            },
-            selectClassName
-          )}
-          {...selectProps}
-        >
-          {renderOptions()}
-        </select>
-        {renderLabel()}
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 
 Select.propTypes = {
   /*
@@ -194,7 +163,7 @@ Select.propTypes = {
   /*
    * Additional classes for input
    */
-  selectClassName: PropTypes.string,
+  className: PropTypes.string,
   /*
    * override type="text"
    */
@@ -240,6 +209,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
   id: `Select-${idgen()}`,
+  multiple: false,
   options: {
     classes: '',
     dropdownOptions: {
