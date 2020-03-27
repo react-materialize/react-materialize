@@ -60,17 +60,7 @@ const Select = ({
     });
   }
 
-  const renderLabel = () => (
-    <label data-success={success} data-error={error} htmlFor={id}>
-      {label}
-    </label>
-  );
-
-  const renderIcon = () => cloneElement(icon, { className: 'prefix' });
-
   const renderOption = child => cloneElement(child, { key: child.props.value });
-
-  const renderOptions = () => Children.map(children, renderOption);
 
   const handleChange = e => {
     let value = e.target.value;
@@ -86,7 +76,7 @@ const Select = ({
 
   return (
     <div className={cx('input-field', responsiveClasses)}>
-      {icon && renderIcon()}
+      {Boolean(icon) && cloneElement(icon, { className: 'prefix' })}
       <select
         {...props}
         type="select"
@@ -101,9 +91,13 @@ const Select = ({
         })}
         multiple={multiple}
       >
-        {renderOptions()}
+        {Children.map(children, renderOption)}
       </select>
-      {label && renderLabel()}
+      {Boolean(label) && (
+        <label data-success={success} data-error={error} htmlFor={id}>
+          {label}
+        </label>
+      )}
     </div>
   );
 };
