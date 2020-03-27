@@ -7,10 +7,8 @@ const TimePicker = ({ onChange, options, ...props }) => {
   const timeEl = useRef(null);
 
   useEffect(() => {
-    const instance = M.Timepicker.init(timeEl.current, {
-      ...options,
-      onSelect: onChange
-    });
+    const _options = onChange ? { ...options, onSelect: onChange } : options;
+    const instance = M.Timepicker.init(timeEl.current, _options);
 
     return () => {
       instance && instance.destroy();
@@ -133,8 +131,7 @@ TimePicker.defaultProps = {
     onCloseStart: null,
     onCloseEnd: null,
     onSelect: null
-  },
-  onChange: null
+  }
 };
 
 export default TimePicker;
