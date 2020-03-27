@@ -24,7 +24,7 @@ const Card = ({
         })}
       >
         {title}
-        {reveal && { revealIcon }}
+        {reveal && revealIcon}
       </span>
     );
   };
@@ -96,12 +96,17 @@ Card.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.element),
   horizontal: PropTypes.bool,
   closeIcon: PropTypes.node,
+  /*
+   * The icon node used to reveal content
+   * add `right` class to aligned icon to right
+   * @default <Icon className="right">more_vert</Icon>
+   */
   revealIcon: PropTypes.node
 };
 
 Card.defaultProps = {
   closeIcon: <Icon>close</Icon>,
-  revealIcon: <Icon>more_vert</Icon>
+  revealIcon: <Icon className="right">more_vert</Icon>
 };
 
 export default Card;
