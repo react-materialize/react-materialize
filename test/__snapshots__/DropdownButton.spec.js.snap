@@ -4,13 +4,13 @@ exports[`<Dropdown /> renders 1`] = `
 <Fragment>
   <button
     className="dropdown-trigger"
-    data-target="Dropdown-mockId"
+    data-target="Dropdown_mockId"
   >
     Drop me!
   </button>
   <ul
     className="dropdown-content"
-    id="Dropdown-mockId"
+    id="Dropdown_mockId"
   />
 </Fragment>
 `;
