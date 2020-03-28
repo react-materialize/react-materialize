@@ -38,12 +38,12 @@ describe('<Slider />', () => {
   });
 
   test('initializes Slider with default options', () => {
-    wrapper = shallow(<Slider />);
+    wrapper = mount(<Slider />);
     expect(sliderInitMock).toHaveBeenCalledWith(defaultOptions);
   });
 
   test('Destroyed when unmounted', () => {
-    wrapper = shallow(<Slider />);
+    wrapper = mount(<Slider />);
     wrapper.unmount();
     expect(sliderInstanceDestroyMock).toHaveBeenCalled();
   });
@@ -59,7 +59,7 @@ describe('<Slider />', () => {
   });
 
   test('update should destroy and re-initialize with new options', () => {
-    wrapper = shallow(<Slider />);
+    wrapper = mount(<Slider />);
     expect(sliderInitMock).toHaveBeenCalledWith(defaultOptions);
     const nextProps = {
       options: {
@@ -72,18 +72,5 @@ describe('<Slider />', () => {
     wrapper.setProps(nextProps);
     expect(sliderInstanceDestroyMock).toHaveBeenCalled();
     expect(sliderInitMock.mock.calls[1][0]).toEqual(nextProps.options);
-  });
-  describe('undefined M', () => {
-    let __M;
-    beforeEach(() => {
-      __M = global.M;
-      global.M = undefined;
-    });
-    afterEach(() => {
-      global.M = __M;
-    });
-    test('doesnt throw without M', () => {
-      expect(() => mount(<Slider />)).not.toThrow();
-    });
   });
 });

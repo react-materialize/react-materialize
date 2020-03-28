@@ -45,7 +45,7 @@ describe('<Modal />', () => {
     });
 
     test('calls Modal', () => {
-      shallow(<Modal />);
+      mount(<Modal />);
 
       expect(modalInitMock).toHaveBeenCalledTimes(1);
     });
@@ -95,7 +95,7 @@ describe('<Modal />', () => {
   describe('controlled modal with `open` prop', () => {
     beforeEach(() => {
       // initially set to open
-      wrapper = shallow(<Modal open>{children}</Modal>);
+      wrapper = mount(<Modal open>{children}</Modal>);
     });
 
     afterEach(() => {

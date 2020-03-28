@@ -1,39 +1,22 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
-class TimePicker extends React.Component {
-  constructor(props) {
-    super(props);
+const TimePicker = ({ onChange, options, ...props }) => {
+  const timeEl = useRef(null);
 
-    this.id = props.id || `timepicker${idgen()}`;
-  }
+  useEffect(() => {
+    const _options = onChange ? { ...options, onSelect: onChange } : options;
+    const instance = M.Timepicker.init(timeEl.current, _options);
 
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { onChange } = this.props;
-      const elem = document.getElementById(this.id);
-      const options = onChange
-        ? { ...this.props.options, onSelect: onChange }
-        : this.props.options;
+    return () => {
+      instance && instance.destroy();
+    };
+  }, [options, onChange]);
 
-      this.instance = M.Timepicker.init(elem, options);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    return (
-      <TextInput id={this.id} inputClassName="timepicker" {...this.props} />
-    );
-  }
-}
+  return <TextInput ref={timeEl} inputClassName="timepicker" {...props} />;
+};
 
 TimePicker.propTypes = {
   /**
@@ -42,6 +25,7 @@ TimePicker.propTypes = {
   onChange: PropTypes.func,
   /**
    * id passed to Timepicker, also used for init method
+   * @default idgen()
    */
   id: PropTypes.string,
   /**
@@ -127,6 +111,7 @@ TimePicker.propTypes = {
 };
 
 TimePicker.defaultProps = {
+  id: `TimePicker-${idgen()}`,
   options: {
     duration: 350,
     container: null,

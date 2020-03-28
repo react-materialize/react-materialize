@@ -1,12 +1,97 @@
 # Changelog
 
+### 3.6.1
+
+- Dropdown: support false/null elements #996
+- Navbar: add `centerChildren` interface #979
+- Navbar: fixes brand alignment bug #981
+- Dropdown: use hooks #956 #1066
+- DatePicker: use hooks #998 #1067
+- TimePicker: use hooks #943 #1068
+
+### 3.6.0
+
+- initial type definition setup, started with Autocomplete
+
+### 3.5.14
+
+- version bump to configure github actions
+
+### 3.5.13
+
+- version bump to configure github actions
+
+### 3.5.12
+
+- version bump to configure github actions
+
+### 3.5.11
+
+- move id to defaultProps and use idgen
+
+### 3.5.10
+
+- integrate github actions as CI
+
+### 3.5.9
+
+- Classnames: move back to dependencies #990
+- Checkbox: use hooks
+
+### 3.5.8
+
+- Slider: refactor using hooks (#944)
+- Collection: refactor using hooks (#954)
+- Button: remove waves effect when disabled (#960)
+
+### 3.5.7
+
+- [BUG] fixes SideNav unmounte error about trigger ref
+
+### 3.5.6
+
+- Restore storybook-info-addon
+
+### 3.5.5
+
+- Remove storybook-info-addon
+
+### 3.5.4
+
+- Restore babel as bundler
+
+### 3.5.3
+
+- Move react react-dom to peer dependencies
+
+### 3.5.2
+
+- UserView: convert to stateless #941
+- Parallax: convert to stateless and use hooks #935
+- Preloader: convert to stateless #938
+- Col: convert to stateless #937
+- Icon: convert to stateless #936
+- Preloader: convert to stateless #938
+- Section: convert to stateless #934
+
+### 3.5.1
+
+- MediaBox: Convert to stateless #946
+- SideNav: Convert to stateless #948
+- Footer: Convert to stateless #964
+- eslint: react hooks plugin #949
+- Chip: Convert to stateless #933
+- SideNavItem: Convert to stateless #932
+- Range: Convert to stateless #930
+- Configure parcel bundler #929
+
 ### 3.5.0
 
-- Feature: Add file type support to `TextInput`
+- Feature: Add file type support to `TextInput` #926
 
 ### 3.4.1
 
-- Fixes bug on button always rendering icon
+- Fixes bug on button always rendering icon #906
 
 ### 3.4.0
 

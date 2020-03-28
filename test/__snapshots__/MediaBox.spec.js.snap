@@ -5,7 +5,7 @@ exports[`<MediaBox /> renders 1`] = `
   alt=""
   className="materialboxed more"
   data-caption="A demo media box1"
-  id="mediaboxmockId"
+  id="MediaBox_mockId"
   src="image.jpg"
   width="650"
 />

@@ -1,44 +1,36 @@
-import React, { Component } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-class Collection extends Component {
-  constructor(props) {
-    super(props);
-    this.renderHeader = this.renderHeader.bind(this);
-  }
-
-  getNodeType(children) {
+const Collection = ({ children, header, className, ...other }) => {
+  const getNodeType = useMemo(() => {
     return React.Children.toArray(children).some(child => child.props.href)
       ? 'div'
       : 'ul';
-  }
+  }, [children]);
 
-  renderHeader() {
-    let header;
-    if (React.isValidElement(this.props.header)) {
-      header = this.props.header;
+  const renderHeader = useMemo(() => {
+    let _header;
+    if (React.isValidElement(header)) {
+      _header = header;
     } else {
-      header = <h4>{this.props.header}</h4>;
+      _header = <h4>{header}</h4>;
     }
-    return <li className="collection-header">{header}</li>;
-  }
+    return <li className="collection-header">{_header}</li>;
+  }, [header]);
 
-  render() {
-    const { children, header, className, ...other } = this.props;
-    const C = this.getNodeType(children);
+  const C = getNodeType;
 
-    return (
-      <C
-        {...other}
-        className={cx('collection', { 'with-header': !!header }, className)}
-      >
-        {header ? this.renderHeader() : null}
-        {children}
-      </C>
-    );
-  }
-}
+  return (
+    <C
+      {...other}
+      className={cx('collection', { 'with-header': !!header }, className)}
+    >
+      {header ? renderHeader : null}
+      {children}
+    </C>
+  );
+};
 
 Collection.propTypes = {
   children: PropTypes.node,

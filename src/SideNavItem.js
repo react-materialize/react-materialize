@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { UserView, UserShape } from './UserView';
+import UserView, { UserShape } from './UserView';
 
 const SideNavItem = ({
   divider,

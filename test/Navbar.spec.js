@@ -59,12 +59,23 @@ describe('<Navbar />', () => {
     expect(wrapper.find('a.brand-logo').hasClass('center'));
   });
 
+  test('can constrain its children to a container', () => {
+    wrapper = shallow(
+      <Navbar brand={<a href="/">Logo</a>} centerChildren>
+        <a href="get-started.html">Getting started</a>
+        <a href="components.html">Components</a>
+      </Navbar>
+    );
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('div').hasClass('nav-wrapper container')).toBe(true);
+  });
+
   test('places brand on right if navbar is left aligned', () => {
     wrapper = shallow(
       <Navbar brand={<a href="/">Logo</a>} alignLinks="left" />
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo').hasClass('right'));
+    expect(wrapper.find('a.brand-logo').hasClass('right')).toBe(true);
   });
 
   test('adds a brand node', () => {

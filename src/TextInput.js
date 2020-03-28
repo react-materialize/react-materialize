@@ -1,170 +1,147 @@
-import React, { Component } from 'react';
+import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 
-class TextInput extends Component {
-  constructor(props) {
-    super(props);
+const TextInput = React.forwardRef((props, ref) => {
+  // eslint-disable-next-line react/prop-types
+  const dataLength = props['data-length'];
+  const inputRef = ref || createRef(null);
 
-    this.id = props.id || idgen();
-
-    if (props.password) {
-      this.id = `password${idgen()}`;
+  useEffect(() => {
+    if (inputRef && dataLength) {
+      M.CharacterCounter.init(inputRef.current);
     }
+  }, [dataLength, inputRef]);
 
-    if (props.email) {
-      this.id = `email${idgen()}`;
-    }
+  useEffect(() => {
+    M.updateTextFields();
+  }, [props]);
+
+  const {
+    children,
+    s,
+    m,
+    l,
+    xl,
+    disabled,
+    noLayout,
+    placeholder,
+    icon,
+    label,
+    inputClassName,
+    success,
+    error,
+    password,
+    email,
+    validate,
+    defaultValue,
+    value,
+    type,
+    ...other
+  } = props;
+
+  const sizes = { s, m, l, xl };
+
+  let responsiveClasses;
+  if (!noLayout) {
+    responsiveClasses = { col: true };
+    constants.SIZES.forEach(size => {
+      responsiveClasses[size + sizes[size]] = sizes[size];
+    });
   }
 
-  componentDidMount() {
-    if (typeof M !== undefined) {
-      // eslint-disable-next-line react/prop-types
-      this.props['data-length'] && M.CharacterCounter.init(this.inputRef);
-    }
+  const wrapperClasses = cx('input-field', responsiveClasses);
+
+  let computedType;
+  if (type) {
+    computedType = type;
+  } else if (password) {
+    computedType = 'password';
+  } else if (email) {
+    computedType = 'email';
+  } else {
+    computedType = 'text';
   }
 
-  componentDidUpdate(prevProps) {
-    const { value } = this.props;
+  const inputProps = {
+    placeholder,
+    type: computedType,
+    value,
+    defaultValue,
+    disabled,
+    ...other
+  };
 
-    if (value !== prevProps.value && typeof M !== 'undefined') {
-      M.updateTextFields();
-    }
-  }
+  const renderLabel = () =>
+    label && (
+      <label
+        className={cx({
+          active: value || placeholder,
+          'label-icon': typeof label !== 'string'
+        })}
+        data-success={success}
+        data-error={error}
+        htmlFor={inputProps.id}
+      >
+        {label}
+      </label>
+    );
 
-  render() {
-    const {
-      children,
-      s,
-      m,
-      l,
-      xl,
-      disabled,
-      noLayout,
-      placeholder,
-      icon,
-      label,
-      inputClassName,
-      success,
-      error,
-      password,
-      email,
-      validate,
-      defaultValue,
-      value,
-      type,
-      ...other
-    } = this.props;
+  const renderHelper = () =>
+    (error || success) && (
+      <span className="helper-text" data-error={error} data-success={success} />
+    );
 
-    const sizes = { s, m, l, xl };
+  const renderIcon = () => {
+    if (!icon) return;
 
-    let responsiveClasses;
-    if (!noLayout) {
-      responsiveClasses = { col: true };
-      constants.SIZES.forEach(size => {
-        responsiveClasses[size + sizes[size]] = sizes[size];
-      });
+    if (typeof icon === 'string') {
+      return <i className="material-icons prefix">{icon}</i>;
     }
 
-    const wrapperClasses = cx('input-field', responsiveClasses);
+    return React.cloneElement(icon, { className: 'prefix' });
+  };
 
-    let computedType;
-    if (type) {
-      computedType = type;
-    } else if (password) {
-      computedType = 'password';
-    } else if (email) {
-      computedType = 'email';
-    } else {
-      computedType = 'text';
-    }
-
-    const inputProps = {
-      placeholder,
-      type: computedType,
-      id: this.id,
-      value,
-      defaultValue,
-      disabled,
-      ...other
-    };
-
-    const renderLabel = () =>
-      label && (
-        <label
-          className={cx({
-            active: value || placeholder,
-            'label-icon': typeof label !== 'string'
-          })}
-          data-success={success}
-          data-error={error}
-          htmlFor={inputProps.id}
-        >
-          {label}
-        </label>
-      );
-
-    const renderHelper = () =>
-      (error || success) && (
-        <span
-          className="helper-text"
-          data-error={error}
-          data-success={success}
-        />
-      );
-
-    const renderIcon = () => {
-      if (!icon) return;
-
-      if (typeof icon === 'string') {
-        return <i className="material-icons prefix">{icon}</i>;
-      }
-
-      return React.cloneElement(icon, { className: 'prefix' });
-    };
-
-    if (type === 'file') {
-      return (
-        <div className={`${wrapperClasses} file-field`}>
-          <div className="btn">
-            <span>{label}</span>
-            <input
-              type="file"
-              className={cx({ validate }, inputClassName)}
-              {...inputProps}
-            />
-          </div>
-          <div className="file-path-wrapper">
-            <input className="file-path validate" type="text" />
-          </div>
-          {renderHelper()}
-          {children}
-        </div>
-      );
-    }
-
+  if (type === 'file') {
     return (
-      <div className={wrapperClasses}>
-        {renderIcon()}
-        <input
-          ref={el => {
-            this.inputRef = el;
-          }}
-          className={cx({ validate }, inputClassName)}
-          {...inputProps}
-        />
-        {renderLabel()}
+      <div className={`${wrapperClasses} file-field`}>
+        <div className="btn">
+          <span>{label}</span>
+          <input
+            type="file"
+            className={cx({ validate }, inputClassName)}
+            {...inputProps}
+          />
+        </div>
+        <div className="file-path-wrapper">
+          <input className="file-path validate" type="text" />
+        </div>
         {renderHelper()}
         {children}
       </div>
     );
   }
-}
+
+  return (
+    <div className={wrapperClasses}>
+      {renderIcon()}
+      <input
+        ref={inputRef}
+        className={cx({ validate }, inputClassName)}
+        {...inputProps}
+      />
+      {renderLabel()}
+      {renderHelper()}
+      {children}
+    </div>
+  );
+});
+
+TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
-  children: PropTypes.node,
   /*
    * Strip away all layout classes such as col and sX
    */
@@ -177,8 +154,8 @@ TextInput.propTypes = {
    * Responsive size for Tablet Devices
    */
   m: PropTypes.number,
-  /*
-   * Responsive size for Desktop Devices
+  /**
+   *  Responsive size for Desktop Devices
    */
   l: PropTypes.number,
   /**
@@ -245,7 +222,15 @@ TextInput.propTypes = {
   /*
    * email type
    */
-  email: PropTypes.bool
+  email: PropTypes.bool,
+  /*
+   * children
+   */
+  children: PropTypes.node
+};
+
+TextInput.defaultProps = {
+  id: `TextInput-${idgen()}`
 };
 
 export default TextInput;

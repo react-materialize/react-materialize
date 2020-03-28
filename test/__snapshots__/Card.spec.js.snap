@@ -3,42 +3,34 @@
 exports[`<Card /> renders 1`] = `
 <div
   className="blue-grey darken-1 card"
-  closeIcon={
-    <Icon>
-      close
-    </Icon>
-  }
-  revealIcon={
-    <Icon>
-      more_vert
-    </Icon>
-  }
 >
-  <div
-    className="card-content white-text"
-  >
-    <span
-      className="card-title"
+  <Wrapper>
+    <div
+      className="card-content white-text"
     >
-      card title
-    </span>
-    <div>
-      I am a very simple card
-    </div>
-  </div>
-  <div
-    className="card-reveal"
-  >
-    <span
-      className="card-title"
-    >
-      card title
-      <Icon
-        right={true}
+      <span
+        className="card-title"
       >
-        close
-      </Icon>
-    </span>
-  </div>
+        card title
+      </span>
+      <div>
+        I am a very simple card
+      </div>
+    </div>
+    <div
+      className="card-reveal"
+    >
+      <span
+        className="card-title"
+      >
+        card title
+        <Icon
+          right={true}
+        >
+          close
+        </Icon>
+      </span>
+    </div>
+  </Wrapper>
 </div>
 `;

@@ -28,6 +28,7 @@ class Navbar extends Component {
       fixed,
       alignLinks,
       centerLogo,
+      centerChildren,
       search,
       menuIcon,
       sidenav
@@ -35,6 +36,7 @@ class Navbar extends Component {
 
     const brandClasses = cx({
       'brand-logo': true,
+      right: alignLinks == 'left',
       center: centerLogo
     });
 
@@ -61,7 +63,9 @@ class Navbar extends Component {
 
     let navbar = (
       <nav className={navCSS}>
-        <div className="nav-wrapper">
+        <div
+          className={centerChildren ? 'nav-wrapper container' : 'nav-wrapper'}
+        >
           {search ? (
             <SearchForm />
           ) : (
@@ -122,6 +126,10 @@ Navbar.propTypes = {
    * Specifying centerLogo as a prop the logo will always be centered
    */
   centerLogo: PropTypes.bool,
+  /**
+   * The Navbar children will be constrained in a container rather than spread out to the far edges
+   */
+  centerChildren: PropTypes.bool,
   /**
    * Makes the navbar fixed
    */

@@ -1,102 +1,61 @@
-import React, { Component, Fragment, cloneElement } from 'react';
+import React, { Fragment, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.renderTitle = this.renderTitle.bind(this);
-    this.renderReveal = this.renderReveal.bind(this);
-    this.renderAction = this.renderAction.bind(this);
-    this.renderContent = this.renderContent.bind(this);
-    this.renderAll = this.renderAll.bind(this);
-  }
+// eslint-disable-next-line react/prop-types
+const Wrapper = ({ condition, children }) =>
+  condition ? (
+    <div className="card-stacked">{children}</div>
+  ) : (
+    <Fragment>{children}</Fragment>
+  );
 
-  renderTitle(title, reveal) {
-    const { revealIcon } = this.props;
+const Card = ({
+  title,
+  header,
+  className,
+  textClassName,
+  actions,
+  reveal,
+  children,
+  horizontal,
+  closeIcon,
+  revealIcon,
+  ...other
+}) => {
+  const classes = {
+    card: true,
+    horizontal: horizontal
+  };
 
-    return (
-      <span
-        className={cx('card-title', {
-          activator: reveal
-        })}
-      >
-        {title}
-        {reveal && { revealIcon }}
-      </span>
-    );
-  }
+  return (
+    <div {...other} className={cx(className, classes)}>
+      {header}
+      <Wrapper condition={horizontal}>
+        <div className={cx('card-content', textClassName)}>
+          {title && (
+            <span className={cx('card-title', { activator: reveal })}>
+              {title}
+              {reveal && cloneElement(revealIcon, { right: true })}
+            </span>
+          )}
+          <div>{children}</div>
+        </div>
 
-  renderReveal(title, reveal) {
-    const { closeIcon } = this.props;
+        <div className="card-reveal">
+          <span className="card-title">
+            {title}
+            {cloneElement(closeIcon, { right: true })}
+          </span>
+          {reveal}
+        </div>
 
-    return (
-      <div className="card-reveal">
-        <span className="card-title">
-          {title}
-          {cloneElement(closeIcon, { right: true })}
-        </span>
-        {reveal}
-      </div>
-    );
-  }
-
-  renderAction(actions) {
-    return <div className="card-action">{actions}</div>;
-  }
-
-  renderContent(title, reveal, textClassName, children) {
-    return (
-      <div className={cx('card-content', textClassName)}>
-        {title && this.renderTitle(title, reveal)}
-        <div>{children}</div>
-      </div>
-    );
-  }
-
-  renderAll(title, reveal, textClassName, children, actions) {
-    return (
-      <Fragment>
-        {this.renderContent(title, reveal, textClassName, children)}
-        {this.renderReveal(title, reveal)}
-        {actions && this.renderAction(actions)}
-      </Fragment>
-    );
-  }
-
-  render() {
-    const {
-      title,
-      header,
-      className,
-      textClassName,
-      actions,
-      reveal,
-      children,
-      horizontal,
-      ...other
-    } = this.props;
-
-    const classes = {
-      card: true,
-      horizontal: horizontal
-    };
-
-    return (
-      <div {...other} className={cx(className, classes)}>
-        {header}
-        {horizontal ? (
-          <div className="card-stacked">
-            {this.renderAll(title, reveal, textClassName, children, actions)}
-          </div>
-        ) : (
-          this.renderAll(title, reveal, textClassName, children, actions)
-        )}
-      </div>
-    );
-  }
-}
+        {actions && <div className="card-action">{actions}</div>}
+      </Wrapper>
+    </div>
+  );
+};
 
 Card.propTypes = {
   children: PropTypes.node,
@@ -108,7 +67,13 @@ Card.propTypes = {
   // The buttons to be displayed at the action area
   actions: PropTypes.arrayOf(PropTypes.element),
   horizontal: PropTypes.bool,
+  /*
+   * @default <Icon>close</Icon>
+   */
   closeIcon: PropTypes.node,
+  /*
+   * @default <Icon>more_vert</Icon>
+   */
   revealIcon: PropTypes.node
 };
 
