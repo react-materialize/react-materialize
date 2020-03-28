@@ -23,6 +23,7 @@ const Navbar = ({
   menuIcon,
   sidenav,
   options,
+  centerChildren,
   ...props
 }) => {
   const _sidenav = useRef(null);
@@ -37,6 +38,7 @@ const Navbar = ({
 
   const brandClasses = cx({
     'brand-logo': true,
+    right: alignLinks === 'left',
     center: centerLogo
   });
 
@@ -63,7 +65,7 @@ const Navbar = ({
 
   let navbar = (
     <nav className={navCSS} {...props}>
-      <div className="nav-wrapper">
+      <div className={cx({ container: centerChildren }, 'nav-wrapper')}>
         {search ? (
           <SearchForm />
         ) : (

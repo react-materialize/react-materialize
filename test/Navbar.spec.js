@@ -67,7 +67,7 @@ describe('<Navbar />', () => {
       </Navbar>
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('div').hasClass('nav-wrapper container')).toBe(true);
+    expect(wrapper.find('div').hasClass('container')).toBe(true);
   });
 
   test('places brand on right if navbar is left aligned', () => {
