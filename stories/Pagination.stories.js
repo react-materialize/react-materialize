@@ -10,6 +10,6 @@ stories.addParameters({
   }
 });
 
-stories.add('Default', () => (
-  <Pagination items={10} activePage={2} maxButtons={8} />
-));
+stories.add('Default', () => <Pagination items={10} maxButtons={8} />);
+
+stories.add('with activePage', () => <Pagination items={5} activePage={3} />);
