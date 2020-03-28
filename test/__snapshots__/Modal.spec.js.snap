@@ -18,6 +18,7 @@ exports[`<Modal /> renders a modal has children 1`] = `
   fixedFooter={false}
   header="Modal header"
   id="Modal-mockId"
+  open={false}
   options={
     Object {
       "dismissible": true,
@@ -124,6 +125,7 @@ exports[`<Modal /> renders a trigger renders 1`] = `
   fixedFooter={false}
   header="Modal header"
   id="Modal-mockId"
+  open={false}
   options={
     Object {
       "dismissible": true,
@@ -229,6 +231,7 @@ exports[`<Modal /> without a trigger renders 1`] = `
   bottomSheet={false}
   fixedFooter={false}
   id="Modal-mockId"
+  open={false}
   options={
     Object {
       "dismissible": true,
