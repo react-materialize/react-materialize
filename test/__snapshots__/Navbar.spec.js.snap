@@ -188,6 +188,79 @@ exports[`<Navbar /> can center the brand logo 1`] = `
 </Fragment>
 `;
 
+exports[`<Navbar /> can constrain its children to a container 1`] = `
+<Fragment>
+  <nav
+    className=""
+  >
+    <div
+      className="nav-wrapper container"
+    >
+      <a
+        className="brand-logo"
+        href="/"
+      >
+        Logo
+      </a>
+      <a
+        className="sidenav-trigger"
+        data-target="mobile-nav"
+        href="#!"
+      >
+        <Icon>
+          menu
+        </Icon>
+      </a>
+      <ul
+        className="hide-on-med-and-down"
+      >
+        <li
+          key="0/.0"
+        >
+          <a
+            href="get-started.html"
+          >
+            Getting started
+          </a>
+        </li>
+        <li
+          key="1/.1"
+        >
+          <a
+            href="components.html"
+          >
+            Components
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <ul
+    className="sidenav"
+    id="mobile-nav"
+  >
+    <li
+      key="0/.0"
+    >
+      <a
+        href="get-started.html"
+      >
+        Getting started
+      </a>
+    </li>
+    <li
+      key="1/.1"
+    >
+      <a
+        href="components.html"
+      >
+        Components
+      </a>
+    </li>
+  </ul>
+</Fragment>
+`;
+
 exports[`<Navbar /> can have children with custom ids 1`] = `
 <Fragment>
   <nav
@@ -293,7 +366,7 @@ exports[`<Navbar /> can have custom sidenav 1`] = `
       className="nav-wrapper"
     >
       <a
-        className="brand-logo"
+        className="brand-logo right"
         href="/"
       >
         Logo
@@ -334,7 +407,7 @@ exports[`<Navbar /> places brand on right if navbar is left aligned 1`] = `
       className="nav-wrapper"
     >
       <a
-        className="brand-logo"
+        className="brand-logo right"
         href="/"
       >
         Logo

@@ -1,41 +1,22 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
-class DatePicker extends React.Component {
-  constructor(props) {
-    super(props);
+const DatePicker = ({ options, onChange, ...rest }) => {
+  const dateEl = useRef(null);
 
-    this.id = props.id || `datepicker${idgen()}`;
-  }
+  useEffect(() => {
+    const _options = onChange ? { ...options, onSelect: onChange } : options;
+    const instance = M.Datepicker.init(dateEl.current, _options);
 
-  componentDidMount() {
-    if (typeof M !== 'undefined') {
-      const { onChange } = this.props;
-      const elem = document.getElementById(this.id);
-      const options = onChange
-        ? { ...this.props.options, onSelect: onChange }
-        : this.props.options;
+    return () => {
+      instance && instance.destroy();
+    };
+  }, [options, onChange]);
 
-      this.instance = M.Datepicker.init(elem, options);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    const { ...other } = this.props;
-
-    return (
-      <TextInput id={this.id} inputClassName="datepicker" {...this.props} />
-    );
-  }
-}
+  return <TextInput ref={dateEl} inputClassName="datepicker" {...rest} />;
+};
 
 DatePicker.propTypes = {
   /**
@@ -44,6 +25,7 @@ DatePicker.propTypes = {
   onChange: PropTypes.func,
   /**
    * id passed to datepicker, also used for init method
+   * @default idgen()
    */
   id: PropTypes.string,
   /**
@@ -175,6 +157,7 @@ DatePicker.propTypes = {
 };
 
 DatePicker.defaultProps = {
+  id: `DatePicker-${idgen()}`,
   options: {
     autoClose: false,
     format: 'mmm dd, yyyy',

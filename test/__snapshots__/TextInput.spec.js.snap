@@ -12,7 +12,7 @@ exports[`<TextInput /> handles file type 1`] = `
     </span>
     <input
       className=""
-      id="mockId"
+      id="TextInput-mockId"
       type="file"
     />
   </div>

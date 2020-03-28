@@ -1,46 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SideNav /> can be \`fixed\` 1`] = `
-<Fragment>
+<SideNav
+  fixed={true}
+  id="SideNav-mockId"
+  trigger={
+    <button
+      className="trigger"
+    >
+      Show sidenav
+    </button>
+  }
+>
   <button
     className="trigger hide-on-large-only sidenav-trigger"
-    data-target="sidenav_mockId"
+    data-target="SideNav-mockId"
   >
     Show sidenav
   </button>
   <ul
     className="sidenav sidenav-fixed"
-    id="sidenav_mockId"
+    id="SideNav-mockId"
   />
-</Fragment>
+</SideNav>
 `;
 
 exports[`<SideNav /> is \`fixed\` if no trigger is passed 1`] = `
-<Fragment>
+<SideNav
+  id="SideNav-mockId"
+>
   <ul
     className="sidenav sidenav-fixed"
-    id="sidenav_mockId"
+    id="SideNav-mockId"
   />
-</Fragment>
+</SideNav>
 `;
 
 exports[`<SideNav /> renders 1`] = `
-<Fragment>
+<SideNav
+  id="SideNav-mockId"
+  trigger={
+    <button
+      className="trigger"
+    >
+      Show sidenav
+    </button>
+  }
+>
   <button
     className="trigger show-on-large sidenav-trigger"
-    data-target="sidenav_mockId"
+    data-target="SideNav-mockId"
   >
     Show sidenav
   </button>
   <ul
     className="sidenav"
-    id="sidenav_mockId"
+    id="SideNav-mockId"
   />
-</Fragment>
+</SideNav>
 `;
 
 exports[`<SideNav /> renders 2`] = `
-<Fragment>
+<SideNav
+  id="test"
+  trigger={
+    <button
+      className="trigger"
+    >
+      Show sidenav
+    </button>
+  }
+>
   <button
     className="trigger show-on-large sidenav-trigger"
     data-target="test"
@@ -51,24 +81,33 @@ exports[`<SideNav /> renders 2`] = `
     className="sidenav"
     id="test"
   />
-</Fragment>
+</SideNav>
 `;
 
 exports[`<SideNav /> renders children 1`] = `
-<Fragment>
+<SideNav
+  id="SideNav-mockId"
+  trigger={
+    <button
+      className="trigger"
+    >
+      Show sidenav
+    </button>
+  }
+>
   <button
     className="trigger show-on-large sidenav-trigger"
-    data-target="sidenav_mockId"
+    data-target="SideNav-mockId"
   >
     Show sidenav
   </button>
   <ul
     className="sidenav"
-    id="sidenav_mockId"
+    id="SideNav-mockId"
   >
     <span
       className="test-child"
     />
   </ul>
-</Fragment>
+</SideNav>
 `;

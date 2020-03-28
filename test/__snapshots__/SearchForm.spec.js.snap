@@ -3,6 +3,7 @@
 exports[`<SearchForm /> should render 1`] = `
 <form>
   <TextInput
+    id="TextInput-mockId"
     label={
       <Icon>
         search

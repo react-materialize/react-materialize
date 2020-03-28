@@ -100,12 +100,12 @@ describe('Button', () => {
     });
 
     test('initializes Button with tooltip', () => {
-      wrapper = shallow(<Button tooltip={tooltip}>Stuff</Button>);
+      wrapper = mount(<Button tooltip={tooltip}>Stuff</Button>);
       expect(tooltipInitMock).toHaveBeenCalled();
     });
 
     test('initializes Button with tooltip options', () => {
-      wrapper = shallow(
+      wrapper = mount(
         <Button tooltip={tooltip} tooltipOptions={tooltipOptions}>
           Stuff
         </Button>
@@ -114,26 +114,9 @@ describe('Button', () => {
     });
 
     test('destroyed when unmounted', () => {
-      wrapper = shallow(<Button tooltip={tooltip}>Stuff</Button>);
+      wrapper = mount(<Button tooltip={tooltip}>Stuff</Button>);
       wrapper.unmount();
       expect(tooltipInstanceDestroyMock).toHaveBeenCalled();
-    });
-  });
-
-  describe('undefined M', () => {
-    let __M;
-    beforeEach(() => {
-      __M = global.M;
-      global.M = undefined;
-    });
-    afterEach(() => {
-      global.M = __M;
-    });
-    test('doesnt throw without M', () => {
-      const tooltip = {};
-      expect(() =>
-        mount(<Button tooltip={tooltip}>Stuff</Button>)
-      ).not.toThrow();
     });
   });
 

@@ -123,6 +123,10 @@ Navbar.propTypes = {
    */
   centerLogo: PropTypes.bool,
   /**
+   * The Navbar children will be constrained in a container rather than spread out to the far edges
+   */
+  centerChildren: PropTypes.bool,
+  /**
    * Makes the navbar fixed
    */
   fixed: PropTypes.bool,

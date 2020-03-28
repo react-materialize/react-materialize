@@ -59,6 +59,21 @@ stories.add('Center Logo', () => (
   </Navbar>
 ));
 
+stories.add('Center Children', () => (
+  <Navbar
+    brand={
+      <a href="#" className="brand-logo">
+        Logo
+      </a>
+    }
+    centerChildren
+    alignLinks="right"
+  >
+    <NavItem href="">Getting started</NavItem>
+    <NavItem href="components.html">Components</NavItem>
+  </Navbar>
+));
+
 stories.add('Extended Navbar with Tabs', () => (
   <Navbar
     brand={
