@@ -10,7 +10,6 @@ exports[`<Collapsible /> defaultActiveKey 1`] = `
     data-collapsible="accordion"
   >
     <CollapsibleItem
-      eventKey={0}
       expanded={false}
       header="First"
       key=".0"
@@ -34,7 +33,6 @@ exports[`<Collapsible /> defaultActiveKey 1`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={1}
       expanded={false}
       header="Second"
       key=".1"
@@ -71,7 +69,6 @@ exports[`<Collapsible /> defaultActiveKey 2`] = `
     data-collapsible="accordion"
   >
     <CollapsibleItem
-      eventKey={0}
       expanded={false}
       header="First"
       key=".0"
@@ -95,18 +92,17 @@ exports[`<Collapsible /> defaultActiveKey 2`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={1}
-      expanded={true}
+      expanded={false}
       header="Second"
       key=".1"
       node="div"
       onSelect={[Function]}
     >
       <li
-        className="active"
+        className=""
       >
         <div
-          className="collapsible-header active"
+          className="collapsible-header"
           onClick={[Function]}
         >
           Second
@@ -123,280 +119,24 @@ exports[`<Collapsible /> defaultActiveKey 2`] = `
 `;
 
 exports[`<Collapsible /> expandable 1`] = `
-<ul
-  className="collapsible expandable"
-  data-collapsible="expandable"
-/>
-`;
-
-exports[`<Collapsible /> renders 1`] = `
-<ul
-  className="collapsible"
-  data-collapsible="accordion"
-/>
-`;
-
-exports[`<Collapsible /> updates activeKey 1`] = `
 <Collapsible
-  accordion={true}
+  accordion={false}
 >
   <ul
-    className="collapsible"
-    data-collapsible="accordion"
-  >
-    <CollapsibleItem
-      eventKey={0}
-      expanded={false}
-      header="A"
-      key=".0"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          A
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          A
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={1}
-      expanded={false}
-      header="B"
-      key=".1"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          B
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          B
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={2}
-      expanded={false}
-      header="C"
-      key=".2"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          C
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          C
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={3}
-      expanded={false}
-      header="D"
-      key=".3"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          D
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          D
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={4}
-      expanded={false}
-      header="E"
-      key=".4"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          E
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          E
-        </div>
-      </li>
-    </CollapsibleItem>
-  </ul>
+    className="collapsible expandable"
+    data-collapsible="expandable"
+  />
 </Collapsible>
 `;
 
-exports[`<Collapsible /> updates activeKey 2`] = `
+exports[`<Collapsible /> renders 1`] = `
 <Collapsible
   accordion={true}
 >
   <ul
     className="collapsible"
     data-collapsible="accordion"
-  >
-    <CollapsibleItem
-      eventKey={0}
-      expanded={false}
-      header="A"
-      key=".0"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          A
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          A
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={1}
-      expanded={false}
-      header="B"
-      key=".1"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          B
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          B
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={2}
-      expanded={false}
-      header="C"
-      key=".2"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          C
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          C
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={3}
-      expanded={true}
-      header="D"
-      key=".3"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className="active"
-      >
-        <div
-          className="collapsible-header active"
-          onClick={[Function]}
-        >
-          D
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          D
-        </div>
-      </li>
-    </CollapsibleItem>
-    <CollapsibleItem
-      eventKey={4}
-      expanded={false}
-      header="E"
-      key=".4"
-      node="div"
-      onSelect={[Function]}
-    >
-      <li
-        className=""
-      >
-        <div
-          className="collapsible-header"
-          onClick={[Function]}
-        >
-          E
-        </div>
-        <div
-          className="collapsible-body"
-        >
-          E
-        </div>
-      </li>
-    </CollapsibleItem>
-  </ul>
+  />
 </Collapsible>
 `;
 
@@ -409,7 +149,6 @@ exports[`<Collapsible /> with expanded prop 1`] = `
     data-collapsible="accordion"
   >
     <CollapsibleItem
-      eventKey={0}
       expanded={true}
       header="First"
       key=".0"
@@ -433,7 +172,6 @@ exports[`<Collapsible /> with expanded prop 1`] = `
       </li>
     </CollapsibleItem>
     <CollapsibleItem
-      eventKey={1}
       expanded={false}
       header="Second"
       key=".1"
@@ -461,29 +199,59 @@ exports[`<Collapsible /> with expanded prop 1`] = `
 `;
 
 exports[`<Collapsible /> with invalid elements 1`] = `
-<ul
-  className="collapsible"
-  data-collapsible="accordion"
+<Collapsible
+  accordion={true}
 >
-  <CollapsibleItem
-    eventKey={1}
-    expanded={false}
-    header="First"
-    key=".1"
-    node="div"
-    onSelect={[Function]}
+  <ul
+    className="collapsible"
+    data-collapsible="accordion"
   >
-    A
-  </CollapsibleItem>
-  <CollapsibleItem
-    eventKey={3}
-    expanded={false}
-    header="Second"
-    key=".3"
-    node="div"
-    onSelect={[Function]}
-  >
-    B
-  </CollapsibleItem>
-</ul>
+    <CollapsibleItem
+      expanded={false}
+      header="First"
+      key=".0"
+      node="div"
+      onSelect={[Function]}
+    >
+      <li
+        className=""
+      >
+        <div
+          className="collapsible-header"
+          onClick={[Function]}
+        >
+          First
+        </div>
+        <div
+          className="collapsible-body"
+        >
+          A
+        </div>
+      </li>
+    </CollapsibleItem>
+    <CollapsibleItem
+      expanded={false}
+      header="Second"
+      key=".2"
+      node="div"
+      onSelect={[Function]}
+    >
+      <li
+        className=""
+      >
+        <div
+          className="collapsible-header"
+          onClick={[Function]}
+        >
+          Second
+        </div>
+        <div
+          className="collapsible-body"
+        >
+          B
+        </div>
+      </li>
+    </CollapsibleItem>
+  </ul>
+</Collapsible>
 `;

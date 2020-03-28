@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 import mocker from './helper/new-mocker';
@@ -34,37 +34,36 @@ describe('<Collapsible />', () => {
   });
 
   test('initializes Collapsible with options', () => {
-    wrapper = shallow(<Collapsible options={options} />);
+    wrapper = mount(<Collapsible options={options} />);
     expect(collapsibleInitMock).toHaveBeenCalledWith(options);
   });
 
   test('Destroyed when unmounted', () => {
-    wrapper = shallow(<Collapsible options={options} />);
+    wrapper = mount(<Collapsible options={options} />);
     wrapper.unmount();
     expect(collapsibleInstanceDestroyMock).toHaveBeenCalled();
   });
 
   test('renders', () => {
-    wrapper = shallow(<Collapsible />);
+    wrapper = mount(<Collapsible />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('expandable', () => {
-    wrapper = shallow(<Collapsible accordion={false} />);
+    wrapper = mount(<Collapsible accordion={false} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   test('with invalid elements', () => {
-    wrapper = shallow(
+    wrapper = mount(
       <Collapsible>
-        {null}
         <CollapsibleItem header="First">A</CollapsibleItem>
         {null}
         <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.children().length).toEqual(2);
+    expect(wrapper.find('ul').children().length).toEqual(2);
   });
 
   test('with expanded prop', () => {
@@ -77,27 +76,6 @@ describe('<Collapsible />', () => {
       </Collapsible>
     );
     expect(wrapper).toMatchSnapshot();
-  });
-
-  test('updates activeKey', () => {
-    wrapper = mount(
-      <Collapsible accordion>
-        <CollapsibleItem header="A">A</CollapsibleItem>
-        <CollapsibleItem header="B">B</CollapsibleItem>
-        <CollapsibleItem header="C">C</CollapsibleItem>
-        <CollapsibleItem header="D">D</CollapsibleItem>
-        <CollapsibleItem header="E">E</CollapsibleItem>
-      </Collapsible>
-    );
-
-    expect(wrapper.state().activeKey).toBeUndefined();
-    expect(wrapper).toMatchSnapshot();
-    wrapper
-      .find('.collapsible-header')
-      .at(3)
-      .simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.state().activeKey).toEqual(3);
   });
 
   test('defaultActiveKey', () => {
@@ -113,17 +91,15 @@ describe('<Collapsible />', () => {
       .find('.collapsible-header')
       .at(0)
       .simulate('click');
-    expect(wrapper.state().activeKey).toBeNull();
     expect(wrapper).toMatchSnapshot();
     wrapper
       .find('.collapsible-header')
       .at(1)
       .simulate('click');
-    expect(wrapper.state().activeKey).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('onSelect with right called with right argument', () => {
+  test('onSelect called with right argument', () => {
     const onSelect = jest.fn();
     wrapper = mount(
       <Collapsible accordion onSelect={onSelect}>
@@ -135,13 +111,14 @@ describe('<Collapsible />', () => {
       </Collapsible>
     );
 
-    const clickedIndex = 3;
     wrapper
       .find('.collapsible-header')
-      .at(clickedIndex)
+      .at(3)
       .simulate('click');
-    expect(onSelect).toHaveBeenCalledWith(clickedIndex);
+
+    expect(onSelect).toHaveBeenCalledWith(3);
   });
+
   describe('undefined M', () => {
     let __M;
     beforeEach(() => {
