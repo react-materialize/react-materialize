@@ -138,14 +138,14 @@ stories.add('Tooltip', () => {
     >
       <Button
         className="col l2 offset-l1 offset-s4 s4"
-        waves="ligth"
+        waves="light"
         tooltip={tooltip}
       >
         BOTTOM
       </Button>
       <Button
         className="col l2 offset-l1 offset-s4 s4"
-        waves="ligth"
+        waves="light"
         tooltip={tooltip}
         tooltipOptions={{
           position: 'top'
@@ -155,7 +155,7 @@ stories.add('Tooltip', () => {
       </Button>
       <Button
         className="col l2 offset-l1 offset-s4 s4"
-        waves="ligth"
+        waves="light"
         tooltip={tooltip}
         tooltipOptions={{
           position: 'left'
@@ -165,7 +165,7 @@ stories.add('Tooltip', () => {
       </Button>
       <Button
         className="col l2 offset-l1 offset-s4 s4"
-        waves="ligth"
+        waves="light"
         tooltip={tooltip}
         tooltipOptions={{
           position: 'right'
