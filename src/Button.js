@@ -1,124 +1,109 @@
-import React, { Component } from 'react';
+import React, { Children, useRef, useEffect } from 'react';
 import Icon from './Icon';
 import PropTypes from 'prop-types';
 import constants from './constants';
 import cx from 'classnames';
 import idgen from './idgen';
 
-class Button extends Component {
-  constructor(props) {
-    super(props);
-    this.renderFab = this.renderFab.bind(this);
-  }
+const Button = ({
+  children,
+  className,
+  node,
+  fab,
+  modal,
+  flat,
+  floating,
+  large,
+  small,
+  disabled,
+  waves,
+  tooltip,
+  tooltipOptions = {},
+  icon,
+  ...props
+}) => {
+  const _btn = useRef(null);
+  const _fab = useRef(null);
 
-  componentDidMount() {
-    if (typeof M === 'undefined') return;
-
-    const { tooltip, tooltipOptions = {}, fab } = this.props;
+  useEffect(() => {
     if (tooltip) {
-      this.instance = M.Tooltip.init(this._btnEl, tooltipOptions);
-    }
+      const instance = M.Tooltip.init(_btn.current, tooltipOptions);
 
+      return () => {
+        instance && instance.destroy();
+      };
+    }
+  }, [tooltip, tooltipOptions]);
+
+  useEffect(() => {
     if (fab) {
-      this.instance = M.FloatingActionButton.init(this._floatingActionBtn, fab);
+      const instance = M.FloatingActionButton.init(_fab.current, fab);
+
+      return () => {
+        instance && instance.destroy();
+      };
     }
-  }
+  }, [fab]);
 
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
-
-  render() {
-    const {
-      children,
-      className,
-      node,
-      fab,
-      modal,
-      flat,
-      floating,
-      large,
-      small,
-      disabled,
-      waves,
-      tooltip,
-      icon,
-      ...other
-    } = this.props;
-
-    delete other.tooltipOptions;
-
-    let C = node;
-    let classes = {
-      btn: true,
-      disabled,
-      'waves-effect': waves
-    };
-
-    if (constants.WAVES.indexOf(waves) > -1) {
-      classes['waves-' + waves] = true;
-    }
-
-    let styles = { flat, floating, large, small };
-    constants.STYLES.forEach(style => {
-      if (styles[style]) {
-        classes.btn = false;
-        classes['btn-' + style] = true;
-      }
-    });
-
-    if (modal) {
-      classes['modal-' + modal] = true;
-    }
-    if (fab) {
-      return this.renderFab(cx(classes, className));
-    } else {
-      return (
-        <C
-          {...other}
-          disabled={!!disabled}
-          onClick={this.props.onClick}
-          className={cx(classes, className)}
-          ref={el => (this._btnEl = el)}
-          data-tooltip={tooltip}
-        >
-          {icon}
-          {children}
-        </C>
-      );
-    }
-  }
-
-  renderFab(classes) {
-    const {
-      fab,
-      floating,
-      large,
-      className,
-      icon = <Icon>edit</Icon>,
-      ...other
-    } = this.props;
-
+  const renderFab = classes => {
     return (
       <div
-        {...other}
-        ref={el => (this._floatingActionBtn = el)}
+        {...props}
+        ref={_fab.current}
         className={cx('fixed-action-btn', {
-          toolbar: fab && fab.toolbarEnabled
+          toolbar: fab.toolbarEnabled
         })}
       >
-        <a className={classes}>{icon}</a>
+        <a className={classes}>{icon || <Icon>edit</Icon>}</a>
         <ul>
-          {React.Children.map(this.props.children, child => {
-            return <li key={idgen()}>{child}</li>;
-          })}
+          {Children.map(children, child => (
+            <li key={idgen()}>{child}</li>
+          ))}
         </ul>
       </div>
     );
+  };
+
+  let C = node;
+  let classes = {
+    btn: true,
+    disabled,
+    'waves-effect': waves
+  };
+
+  if (constants.WAVES.indexOf(waves) > -1) {
+    classes['waves-' + waves] = true;
   }
-}
+
+  let styles = { flat, floating, large, small };
+  constants.STYLES.forEach(style => {
+    if (styles[style]) {
+      classes.btn = false;
+      classes['btn-' + style] = true;
+    }
+  });
+
+  if (modal) {
+    classes['modal-' + modal] = true;
+  }
+
+  if (fab) {
+    return renderFab(cx(classes, className));
+  } else {
+    return (
+      <C
+        {...props}
+        disabled={disabled}
+        className={cx(classes, className)}
+        ref={_btn}
+        data-tooltip={tooltip}
+      >
+        {icon}
+        {children}
+      </C>
+    );
+  }
+};
 
 Button.propTypes = {
   children: PropTypes.node,
