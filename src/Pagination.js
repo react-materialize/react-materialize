@@ -1,38 +1,33 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-
-import Icon from './Icon';
-import PaginationButton from './PaginationButton';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const Pagination = props => {
-  const {
-    items,
-    className,
-    children,
-    maxButtons = items,
-    leftBtn,
-    rightBtn,
-    onSelect
-  } = props;
+import Icon from './Icon';
+import PaginationButton from './PaginationButton';
 
+const Pagination = ({
+  items,
+  className,
+  children,
+  maxButtons = items,
+  leftBtn,
+  rightBtn,
+  onSelect,
+  activePage: activePageProp
+}) => {
   const [activePage, setActivePage] = useState(
-    props.activePage > 0 && props.activePage <= items ? props.activePage : 1
+    activePageProp > 0 && activePageProp <= items ? activePageProp : 1
   );
 
   useEffect(() => {
-    if (activePage !== props.activePage) {
-      setActivePage(props.activePage);
-    }
-  }, [activePage, props.activePage]);
+    setActivePage(activePageProp);
+  }, [activePageProp]);
 
   const onClick = useCallback(
-    i => () => {
-      if (i > 0 && i <= items) {
-        if (onSelect) {
-          onSelect(i);
-        }
-        setActivePage(i);
+    pageIdx => {
+      if (pageIdx > 0 && pageIdx <= items) {
+        if (onSelect) onSelect(pageIdx);
+        setActivePage(pageIdx);
       }
     },
     [onSelect, items]
@@ -58,7 +53,7 @@ const Pagination = props => {
       <PaginationButton
         disabled={activePage === 1}
         key={'pagination-0'}
-        onSelect={onClick(activePage - 1)}
+        onSelect={() => onClick(activePage - 1)}
       >
         {leftBtn}
       </PaginationButton>
@@ -69,7 +64,7 @@ const Pagination = props => {
         <PaginationButton
           active={i === activePage}
           key={`pagination-${i}`}
-          onSelect={onClick(i)}
+          onSelect={() => onClick(i)}
         >
           {i}
         </PaginationButton>
@@ -80,7 +75,7 @@ const Pagination = props => {
       <PaginationButton
         key={`pagination-${items + 1}`}
         disabled={activePage === items}
-        onSelect={onClick(activePage + 1)}
+        onSelect={() => onClick(activePage + 1)}
       >
         {rightBtn}
       </PaginationButton>
