@@ -12,8 +12,9 @@ import cx from 'classnames';
 import idgen from './idgen';
 import Button from './Button';
 
+const MODAL_CONTAINER = document.body;
+
 const Modal = ({
-  id,
   actions,
   bottomSheet,
   children,
@@ -28,19 +29,17 @@ const Modal = ({
   const _modal = useRef(null);
   const _modalRoot = useRef(null);
   const _modalInstance = useRef(null);
+  const currentRoot = _modalRoot.current;
 
   useEffect(() => {
     _modalInstance.current = M.Modal.init(_modal.current, options);
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      document.body.removeChild(_modalRoot.current);
-      if (_modalInstance.current) {
-        hideModal();
-        _modalInstance.current.destroy();
-      }
+      MODAL_CONTAINER.removeChild(_modalRoot.current);
+      _modalInstance.current && _modalInstance.current.destroy();
     };
-  }, [options]);
+  }, [options, currentRoot]);
 
   useEffect(() => {
     if (open) {
@@ -64,7 +63,7 @@ const Modal = ({
 
   const renderModalPortal = () => {
     _modalRoot.current = document.createElement('div');
-    document.body.appendChild(_modalRoot.current);
+    MODAL_CONTAINER.appendChild(_modalRoot.current);
     const classes = cx(
       'modal',
       {
@@ -77,7 +76,7 @@ const Modal = ({
     return (
       _modalRoot.current &&
       createPortal(
-        <div id={id} className={classes} ref={_modal} {...props}>
+        <div className={classes} ref={_modal} {...props}>
           <div className="modal-content">
             <h4>{header}</h4>
             {children}
@@ -154,6 +153,7 @@ Modal.propTypes = {
   className: PropTypes.string,
   /**
    * Modal is opened on mount
+   * @default false
    */
   open: PropTypes.bool,
   /**
@@ -191,6 +191,7 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   id: `Modal-${idgen()}`,
+  open: false,
   options: {
     opacity: 0.5,
     inDuration: 250,
