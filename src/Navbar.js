@@ -1,113 +1,109 @@
-import React, { Component, Fragment, Children } from 'react';
+import React, {
+  Fragment,
+  Children,
+  cloneElement,
+  useRef,
+  useEffect
+} from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 import SearchForm from './SearchForm';
 
-class Navbar extends Component {
-  componentDidMount() {
-    const { options } = this.props;
+const Navbar = ({
+  id,
+  children,
+  brand,
+  className,
+  extendWith,
+  fixed,
+  alignLinks,
+  centerLogo,
+  search,
+  menuIcon,
+  sidenav,
+  options,
+  ...props
+}) => {
+  const _sidenav = useRef(null);
 
-    if (typeof M !== 'undefined') {
-      this.instance = M.Sidenav.init(this._sidenav, options);
-    }
+  useEffect(() => {
+    const instance = M.Sidenav.init(_sidenav.current, options);
+
+    return () => {
+      instance && instance.destroy();
+    };
+  }, [options]);
+
+  const brandClasses = cx({
+    'brand-logo': true,
+    center: centerLogo
+  });
+
+  const navCSS = cx({ 'nav-extended': extendWith }, className);
+
+  const navMobileCSS = cx('hide-on-med-and-down', [alignLinks]);
+
+  const links = Children.map(children, (link, index) => (
+    <li key={index}>{link}</li>
+  ));
+
+  const sidenavLinks = sidenav
+    ? sidenav
+    : Children.map(children, (link, index) => {
+        const clonedLink =
+          link && link.props && link.props.id
+            ? cloneElement(link, {
+                ...link.props,
+                id: `sidenav-${link.props.id}`
+              })
+            : link;
+        return <li key={index}>{clonedLink}</li>;
+      });
+
+  let navbar = (
+    <nav className={navCSS} {...props}>
+      <div className="nav-wrapper">
+        {search ? (
+          <SearchForm />
+        ) : (
+          <Fragment>
+            {brand &&
+              cloneElement(brand, {
+                className: cx(brand.props.className, brandClasses)
+              })}
+            <a href="#!" data-target={id} className="sidenav-trigger">
+              {menuIcon}
+            </a>
+            <ul className={navMobileCSS}>{links}</ul>
+          </Fragment>
+        )}
+      </div>
+      {extendWith && <div className="nav-content">{extendWith}</div>}
+    </nav>
+  );
+
+  if (fixed) {
+    navbar = <div className="navbar-fixed">{navbar}</div>;
   }
 
-  componentWillUnmount() {
-    if (this.instance) {
-      this.instance.destroy();
-    }
-  }
+  return (
+    <Fragment>
+      {navbar}
 
-  render() {
-    const {
-      children,
-      brand,
-      className,
-      extendWith,
-      fixed,
-      alignLinks,
-      centerLogo,
-      centerChildren,
-      search,
-      menuIcon,
-      sidenav
-    } = this.props;
-
-    const brandClasses = cx({
-      'brand-logo': true,
-      right: alignLinks == 'left',
-      center: centerLogo
-    });
-
-    const navCSS = cx({ 'nav-extended': extendWith }, className);
-
-    const navMobileCSS = cx('hide-on-med-and-down', [alignLinks]);
-
-    const links = Children.map(children, (link, index) => (
-      <li key={index}>{link}</li>
-    ));
-
-    const sidenavLinks = sidenav
-      ? sidenav
-      : Children.map(children, (link, index) => {
-          const clonedLink =
-            link && link.props && link.props.id
-              ? React.cloneElement(link, {
-                  ...link.props,
-                  id: `sidenav-${link.props.id}`
-                })
-              : link;
-          return <li key={index}>{clonedLink}</li>;
-        });
-
-    let navbar = (
-      <nav className={navCSS}>
-        <div
-          className={centerChildren ? 'nav-wrapper container' : 'nav-wrapper'}
-        >
-          {search ? (
-            <SearchForm />
-          ) : (
-            <Fragment>
-              {brand &&
-                React.cloneElement(brand, {
-                  className: cx(brand.props.className, brandClasses)
-                })}
-              <a href="#!" data-target="mobile-nav" className="sidenav-trigger">
-                {menuIcon}
-              </a>
-              <ul className={navMobileCSS}>{links}</ul>
-            </Fragment>
-          )}
-        </div>
-        {extendWith && <div className="nav-content">{extendWith}</div>}
-      </nav>
-    );
-
-    if (fixed) {
-      navbar = <div className="navbar-fixed">{navbar}</div>;
-    }
-
-    return (
-      <Fragment>
-        {navbar}
-
-        <ul
-          id="mobile-nav"
-          className={cx('sidenav', [alignLinks])}
-          ref={ul => {
-            this._sidenav = ul;
-          }}
-        >
-          {sidenavLinks}
-        </ul>
-      </Fragment>
-    );
-  }
-}
+      <ul id={id} className={cx('sidenav', [alignLinks])} ref={_sidenav}>
+        {sidenavLinks}
+      </ul>
+    </Fragment>
+  );
+};
 
 Navbar.propTypes = {
+  /*
+   * override id
+   * @default 'mobile-nav'
+   */
+  id: PropTypes.string,
   brand: PropTypes.node,
   children: PropTypes.node,
   className: PropTypes.string,
@@ -162,6 +158,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
+  id: 'mobile-nav',
   options: {
     edge: 'left',
     draggable: true,
