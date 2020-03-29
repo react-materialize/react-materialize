@@ -5,7 +5,8 @@ import {
   Tabs,
   Tab,
   Section,
-  Carousel
+  Carousel,
+  Textarea
 } from 'react-materialize';
 
 <>
@@ -14,4 +15,5 @@ import {
   <Tab idx="as" title="Hello" />
   <Section node="div" className="foo" id="bar" />
   <Carousel images={['one.jpg']} options={{ numVisible: 32, onCycleTo: () => {} }} centerImages={true} />
+  <Textarea disabled={false} value="hello">foo</Textarea>
 </>

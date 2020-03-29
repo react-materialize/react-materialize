@@ -54,18 +54,4 @@ describe('<Textarea />', () => {
     expect(textareaElement.hasClass('materialize-textarea')).toBeTruthy();
     expect(textareaElement.hasClass('custom-class')).toBeTruthy();
   });
-  describe('undefined M', () => {
-    let __M;
-    beforeEach(() => {
-      __M = global.M;
-      global.M = undefined;
-    });
-    afterEach(() => {
-      global.M = __M;
-    });
-    test('doesnt throw without M', () => {
-      const element = mount(<Textarea />);
-      expect(() => element.setProps({ label: 'foo' })).not.toThrow();
-    });
-  });
 });
