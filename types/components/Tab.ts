@@ -1,8 +1,17 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
+export interface TabProps {
+  title: string;
+  idx?: string;
+  className?: string;
+  active?: boolean;
+  disabled?: boolean;
+  tabWidth?: number;
 }
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Tab
+ */
+declare const Tab: React.FC<TabProps>
 
-export = Checkbox;
+export default Tab;
