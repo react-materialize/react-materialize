@@ -59,26 +59,6 @@ describe('Tabs', () => {
     });
   });
 
-  describe('when updated', () => {
-    beforeEach(() => {
-      wrapper = mount(
-        <Tabs options={options}>
-          <Tab title="one">One</Tab>
-          <Tab title="Two">Two</Tab>
-        </Tabs>
-      );
-    });
-
-    test('should re-initialize with options', () => {
-      expect(tabsInitMock).toHaveBeenCalledWith(options);
-      tabsInitMock.mockClear();
-      tabInstanceDestroyMock.mockClear();
-      wrapper.setProps({ className: 'test' });
-      expect(tabInstanceDestroyMock).toHaveBeenCalled();
-      expect(tabsInitMock).toHaveBeenCalledWith(options);
-    });
-  });
-
   describe('when unmounted', () => {
     beforeEach(() => {
       tabInstanceDestroyMock.mockClear();

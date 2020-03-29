@@ -7,24 +7,22 @@ exports[`Tabs should create list of Tab items 1`] = `
   >
     <li
       className="tab col"
-      key="mockId0/.0"
+      key="tabs-mockId0/.0"
     >
       <a
         className=""
-        href="#tab_mockId0"
-        onClick={[Function]}
+        href="#tab_tabs-mockId0"
       >
         one
       </a>
     </li>
     <li
       className="tab col"
-      key="mockId1/.1"
+      key="tabs-mockId1/.1"
     >
       <a
         className=""
-        href="#tab_mockId1"
-        onClick={[Function]}
+        href="#tab_tabs-mockId1"
       >
         Two
       </a>
@@ -32,7 +30,7 @@ exports[`Tabs should create list of Tab items 1`] = `
   </ul>
   <Row>
     <Tab
-      idx="mockId0"
+      idx="tabs-mockId0"
       key=".0"
       options={
         Object {
@@ -47,7 +45,7 @@ exports[`Tabs should create list of Tab items 1`] = `
       One
     </Tab>
     <Tab
-      idx="mockId1"
+      idx="tabs-mockId1"
       key=".1"
       options={
         Object {
