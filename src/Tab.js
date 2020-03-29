@@ -9,15 +9,15 @@ const Tab = ({ children, idx, className }) => (
     {children}
   </Col>
 );
-Tab.propTypes = {
-  children: PropTypes.node,
-  idx: PropTypes.string,
-  className: PropTypes.string
-};
 
-Tab.defaultProps = {
-  active: false,
-  disabled: false
+Tab.propTypes = {
+  title: PropTypes.string.isRequired,
+  idx: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  active: PropTypes.bool,
+  disabled: PropTypes.bool,
+  tabWidth: PropTypes.number
 };
 
 export default Tab;

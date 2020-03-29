@@ -1,8 +1,22 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
+interface TabsOptions {
+  duration: number;
+  onShow: () => void;
+  swipeable: boolean;
+  responsiveThreshold: number;
 }
 
-declare class Checkbox extends React.Component {}
+export interface TabsProps {
+  options?: TabsOptions;
+  className?: string;
+  defaultValue?: string;
+  onChange?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}
 
-export = Checkbox;
+/**
+ * React Materialize: Tabs
+ */
+declare const Tabs: React.FC<TabsProps>
+
+export default Tabs;

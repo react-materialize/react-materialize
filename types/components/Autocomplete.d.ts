@@ -5,27 +5,28 @@ interface AutocompleteData {
   [key: string]: string | null;
 }
 
-declare namespace Autocomplete {
-  interface AutocompleteOptions {
-    data: AutocompleteData;
-    limit?: number;
-    onAutocomplete?: () => void;
-    minLength?: number;
-    sortFunction?: <T>(a: T, b: T, inputString: string) => number;
-  }
-
-  interface AutocompleteProps extends Responsive {
-    id?: string;
-    className?: string;
-    title?: string;
-    icon?: React.ReactNode;
-    placeholder?: string;
-    onChange?: (e: React.ChangeEvent) => void;
-    value?: string;
-    options: AutocompleteOptions;
-  }
+interface AutocompleteOptions {
+  data: AutocompleteData;
+  limit?: number;
+  onAutocomplete?: () => void;
+  minLength?: number;
+  sortFunction?: <T>(a: T, b: T, inputString: string) => number;
 }
 
-declare class Autocomplete extends React.Component<Autocomplete.AutocompleteProps> {}
+export interface AutocompleteProps extends Responsive {
+  id?: string;
+  className?: string;
+  title?: string;
+  icon?: React.ReactNode;
+  placeholder?: string;
+  onChange?: (e: React.ChangeEvent) => void;
+  value?: string;
+  options: AutocompleteOptions;
+}
 
-export = Autocomplete;
+/**
+ * React Materialize: Autocomplete
+ */
+declare const Autocomplete: React.FC<AutocompleteProps>
+
+export default Autocomplete;
