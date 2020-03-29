@@ -58,27 +58,27 @@ Tabs.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
-  /*
+  /**
    * More info
    * <a href='http://materializecss.com/tabs.html'>http://materializecss.com/tabs.html</a>
    */
   options: PropTypes.shape({
-    /*
+    /**
      * Transition duration in milliseconds.
      * @default 300
      */
     duration: PropTypes.number,
-    /*
+    /**
      * Callback for when a new tab content is showns.
      * @default null
      */
     onShow: PropTypes.func,
-    /*
+    /**
      * Set to true to enable swipeable tabs. This also uses the responsiveThreshold option.
      * @default false
      */
     swipeable: PropTypes.bool,
-    /*
+    /**
      * The maximum width of the screen, in pixels, where the swipeable functionality initializes.
      * @default Infinity
      */

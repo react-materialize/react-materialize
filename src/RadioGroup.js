@@ -43,27 +43,27 @@ RadioGroup.propTypes = {
       value: PropTypes.string.isRequired
     })
   ).isRequired,
-  /*
+  /**
    * predefined checked value
    */
   value: PropTypes.string,
-  /*
+  /**
    * radio group name
    */
   name: PropTypes.string,
-  /*
+  /**
    * with-gap styled checkbox
    */
   withGap: PropTypes.bool,
-  /*
+  /**
    * onChange callback
    */
   onChange: PropTypes.func,
-  /*
+  /**
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
+  /**
    * classnames passed to label wrapper
    */
   radioClassNames: PropTypes.string

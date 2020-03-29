@@ -56,11 +56,11 @@ Autocomplete.propTypes = {
    */
   id: PropTypes.string,
   className: PropTypes.string,
-  /*
+  /**
    * The title of the autocomplete component.
    */
   title: PropTypes.string,
-  /*
+  /**
    * Optional materialize icon to add to the autocomplete bar
    */
   icon: PropTypes.node,

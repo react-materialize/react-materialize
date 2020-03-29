@@ -67,11 +67,11 @@ Card.propTypes = {
   // The buttons to be displayed at the action area
   actions: PropTypes.arrayOf(PropTypes.element),
   horizontal: PropTypes.bool,
-  /*
+  /**
    * @default <Icon>close</Icon>
    */
   closeIcon: PropTypes.node,
-  /*
+  /**
    * @default <Icon>more_vert</Icon>
    */
   revealIcon: PropTypes.node

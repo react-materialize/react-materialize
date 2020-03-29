@@ -54,36 +54,36 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
   className: PropTypes.string,
-  /*
+  /**
    * checkbox value
    */
   value: PropTypes.string.isRequired,
-  /*
+  /**
    * filled-in styled checkbox
    */
   filledIn: PropTypes.bool,
-  /*
+  /**
    * label next to checkbox
    */
   label: PropTypes.string.isRequired,
-  /*
+  /**
    * Indeterminate Style
    */
   indeterminate: PropTypes.bool,
-  /*
+  /**
    * onChange callback
    */
   onChange: PropTypes.func,
-  /*
+  /**
    * override id
    * @default idgen()
    */
   id: PropTypes.string,
-  /*
+  /**
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
+  /**
    * A Boolean attribute indicating whether or not this checkbox is checked
    */
   checked: PropTypes.bool
