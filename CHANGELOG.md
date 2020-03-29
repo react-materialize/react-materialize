@@ -1,5 +1,20 @@
 # Changelog
 
+### 3.7.0
+
+- Autocomplete: stateless/hooks #953 #907 #1070
+- Modal: stateless/hooks #1075 #959
+- Button: stateless/hooks #958
+- CardTitle: stateless/hooks #947
+- Table: stateless/hooks #951
+- Pagination: stateless/hooks #962 #1076
+- Collapsible: stateless/hooks #939
+- Navbar: stateless/hooks #965
+- Tabs: stateless/hooks / add type definition #1079
+- Section: refactor to stateless / add type definition #1080
+- Carousel: refactor to stateless / use hooks / add type definition #1081
+- Textarea: refactor to stateless / use hooks / add type definition #1082
+
 ### 3.6.1
 
 - Dropdown: support false/null elements #996
