@@ -1,8 +1,29 @@
 import * as React from 'react';
 
-declare namespace Carousel {
+interface CarouselOptions {
+  duration?: number;
+  dist?: number;
+  shift?: number;
+  padding?: number;
+  numVisible?: number;
+  fullWidth?: boolean;
+  indicators?: boolean;
+  noWrap?: boolean;
+  onCycleTo?: (currentItem: React.ReactNode) => void;
 }
 
-declare class Carousel extends React.Component {}
+export interface CarouselProps {
+  options?: CarouselOptions;
+  images?: string[];
+  centerImages?: boolean;
+  fixedItem?: React.ReactNode;
+  className?: string;
+  carouselId?: string;
+}
 
-export = Carousel;
+/**
+ * React Materialize: Carousel
+ */
+declare const Carousel: React.FC<CarouselProps>
+
+export default Carousel;
