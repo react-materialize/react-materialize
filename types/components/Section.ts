@@ -1,8 +1,14 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
+interface SectionProps {
+  node?: React.ReactElement | React.ReactNode;
+  id?: string;
+  className?: string;
 }
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Section
+ */
+declare const Section: React.FC<SectionProps>
 
-export = Checkbox;
+export default Section;
