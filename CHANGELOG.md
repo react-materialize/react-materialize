@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.7.1
+
+- Storybook: fix proptypes description in docs
+
 ### 3.7.0
 
 - Autocomplete: stateless/hooks #953 #907 #1070

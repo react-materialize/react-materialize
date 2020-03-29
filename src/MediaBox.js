@@ -25,7 +25,7 @@ const MediaBox = ({ id, options, children, className, caption, ...props }) => {
 
 MediaBox.propTypes = {
   children: PropTypes.node.isRequired,
-  /*
+  /**
    * override id
    * @default idgen()
    */

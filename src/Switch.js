@@ -31,29 +31,29 @@ const Switch = ({
 };
 
 Switch.propTypes = {
-  /*
+  /**
    * override id
    * @default idgen()
    */
   id: PropTypes.string.isRequired,
   className: PropTypes.string,
-  /*
+  /**
    * label for off
    */
   offLabel: PropTypes.string.isRequired,
-  /*
+  /**
    * label for on
    */
   onLabel: PropTypes.string.isRequired,
-  /*
+  /**
    * onChange callback
    */
   onChange: PropTypes.func,
-  /*
+  /**
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
+  /**
    * initialise checkbox checked
    */
   checked: PropTypes.bool

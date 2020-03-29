@@ -28,7 +28,7 @@ CollectionItem.propTypes = {
   active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  /*
+  /**
    * Default: false
    * For more information refer to : https://materializecss.com/collections.html#links
    */

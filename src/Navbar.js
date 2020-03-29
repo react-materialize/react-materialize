@@ -101,7 +101,7 @@ const Navbar = ({
 };
 
 Navbar.propTypes = {
-  /*
+  /**
    * override id
    * @default 'mobile-nav'
    */

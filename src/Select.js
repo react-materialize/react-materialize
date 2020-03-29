@@ -103,23 +103,23 @@ const Select = ({
 };
 
 Select.propTypes = {
-  /*
+  /**
    * Use browser default styles
    */
   browserDefault: PropTypes.bool,
-  /*
+  /**
    * Strip away all layout classes such as col and sX
    */
   noLayout: PropTypes.bool,
-  /*
+  /**
    * Responsive size for small size screens (Mobile Devices <= 600px)
    */
   s: PropTypes.number,
-  /*
+  /**
    * Responsive size for middle size screens (Tablet Devices > 600px)
    */
   m: PropTypes.number,
-  /*
+  /**
    * Responsive size for large size screens (Desktop Devices > 992px)
    */
   l: PropTypes.number,
@@ -127,52 +127,52 @@ Select.propTypes = {
    * Responsive size for extra large screens (Large Desktop Devices > 1200px)
    */
   xl: PropTypes.number,
-  /*
+  /**
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
+  /**
    * override id
    * @default idgen()
    */
   id: PropTypes.string,
-  /*
+  /**
    * prefix icon
    */
   icon: PropTypes.node,
-  /*
+  /**
    * label text
    */
   label: PropTypes.string,
-  /*
+  /**
    * Input initial value
    */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  /*
+  /**
    * Add validate class to input
    */
   validate: PropTypes.bool,
-  /*
+  /**
    * Custom success message
    */
   success: PropTypes.string,
-  /*
+  /**
    * Custom error message
    */
   error: PropTypes.string,
-  /*
+  /**
    * Additional classes for input
    */
   className: PropTypes.string,
-  /*
+  /**
    * override type="text"
    */
   type: PropTypes.string,
-  /*
+  /**
    * onChange callback
    */
   onChange: PropTypes.func,
-  /*
+  /**
    * Render a multiple dropdown,
    * use instance.getSelectedValues()
    * to get array of selected values

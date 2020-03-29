@@ -142,15 +142,15 @@ const TextInput = React.forwardRef((props, ref) => {
 TextInput.displayName = 'TextInput';
 
 TextInput.propTypes = {
-  /*
+  /**
    * Strip away all layout classes such as col and sX
    */
   noLayout: PropTypes.bool,
-  /*
+  /**
    * Responsive size for Mobile Devices
    */
   s: PropTypes.number,
-  /*
+  /**
    * Responsive size for Tablet Devices
    */
   m: PropTypes.number,
@@ -162,68 +162,68 @@ TextInput.propTypes = {
    *  Responsive size for Large Desktop Devices
    */
   xl: PropTypes.number,
-  /*
+  /**
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
+  /**
    * Placeholder string
    */
   placeholder: PropTypes.string,
-  /*
+  /**
    * override id
    * @default idgen()
    */
   id: PropTypes.string,
-  /*
+  /**
    * prefix icon, name of the icon or a node
    */
   icon: PropTypes.node,
-  /*
+  /**
    * label text
    */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  /*
+  /**
    * Input initial value
    */
   defaultValue: PropTypes.string,
-  /*
+  /**
    * Input value
    */
   value: PropTypes.string,
-  /*
+  /**
    * Add validate class to input
    */
   validate: PropTypes.bool,
-  /*
+  /**
    * Custom success message
    */
   success: PropTypes.string,
-  /*
+  /**
    * Custom error message
    */
   error: PropTypes.string,
-  /*
+  /**
    * Additional classes for input
    */
   inputClassName: PropTypes.string,
-  /*
+  /**
    * override type="text"
    */
   type: PropTypes.string,
-  /*
+  /**
    * onChange callback
    */
   onChange: PropTypes.func,
-  /*
+  /**
    * password type
    */
   password: PropTypes.bool,
-  /*
+  /**
    * email type
    */
   email: PropTypes.bool,
-  /*
+  /**
    * children
    */
   children: PropTypes.node

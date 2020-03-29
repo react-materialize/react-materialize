@@ -86,19 +86,19 @@ const Textarea = ({
 
 Textarea.propTypes = {
   children: PropTypes.node,
-  /*
+  /**
    * Strip away all layout classes such as col and sX
    */
   noLayout: PropTypes.bool,
-  /*
+  /**
    * Responsive size for Mobile Devices
    */
   s: PropTypes.number,
-  /*
+  /**
    * Responsive size for Tablet Devices
    */
   m: PropTypes.number,
-  /*
+  /**
    * Responsive size for Desktop Devices
    */
   l: PropTypes.number,
@@ -106,56 +106,56 @@ Textarea.propTypes = {
    *  Responsive size for Large Desktop Devices
    */
   xl: PropTypes.number,
-  /*
+  /**
    * disabled input
    */
   disabled: PropTypes.bool,
-  /*
+  /**
    * Placeholder string
    */
   placeholder: PropTypes.string,
-  /*
+  /**
    * override id
    * @default idgen()
    */
   id: PropTypes.string,
-  /*
+  /**
    * render icon next to input
    */
   icon: PropTypes.node,
-  /*
+  /**
    * icon classname
    */
   iconClassName: PropTypes.string,
-  /*
+  /**
    * textarea label
    */
   label: PropTypes.string,
-  /*
+  /**
    * Input initial value
    */
   defaultValue: PropTypes.string,
-  /*
+  /**
    * predefined value
    */
   value: PropTypes.string,
-  /*
+  /**
    * Add validate class to input
    */
   validate: PropTypes.bool,
-  /*
+  /**
    * Custom success message
    */
   success: PropTypes.string,
-  /*
+  /**
    * Custom error message
    */
   error: PropTypes.string,
-  /*
+  /**
    * textarea classname
    */
   className: PropTypes.string,
-  /*
+  /**
    * onChange callback
    */
   onChange: PropTypes.func
