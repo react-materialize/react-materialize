@@ -75,7 +75,7 @@ describe('<Carousel />', () => {
     });
 
     test('uses default options if none are given', () => {
-      wrapper = shallow(<Carousel />);
+      wrapper = mount(<Carousel />);
 
       expect(carouselInitMock).toHaveBeenCalledWith({
         duration: 200,
@@ -91,33 +91,16 @@ describe('<Carousel />', () => {
     });
 
     test('handles full width sliders', () => {
-      wrapper = shallow(
+      wrapper = mount(
         <Carousel images={images} options={{ fullWidth: true }} />
       );
-      expect(wrapper).toMatchSnapshot();
       expect(carouselInitMock).toHaveBeenCalledWith({ fullWidth: true });
     });
 
     test('more options', () => {
       const options = { padding: 12, fullWidth: true, indicators: false };
-      wrapper = shallow(<Carousel images={images} options={options} />);
+      wrapper = mount(<Carousel images={images} options={options} />);
       expect(carouselInitMock).toHaveBeenCalledWith(options);
-    });
-  });
-  describe('undefined M', () => {
-    let __M;
-    beforeEach(() => {
-      __M = global.M;
-      global.M = undefined;
-    });
-    afterEach(() => {
-      global.M = __M;
-    });
-    test('doesnt throw without M', () => {
-      const tooltip = {};
-      expect(() =>
-        mount(<Carousel options={{ fullWidth: true }} />)
-      ).not.toThrow();
     });
   });
 });
