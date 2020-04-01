@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.0
+
+- Modal: new interface prop `root` to fix SSR
+
 ### 3.7.1
 
 - Storybook: fix proptypes description in docs
