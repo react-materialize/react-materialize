@@ -25,6 +25,59 @@ exports[`<Modal /> renders a modal has children 1`] = `
       "opacity": 0.4,
     }
   }
+  root={
+    <body>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4 />
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </body>
+  }
   trigger={
     <button>
       click
@@ -131,6 +184,142 @@ exports[`<Modal /> renders a trigger renders 1`] = `
       "opacity": 0.4,
     }
   }
+  root={
+    <body>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4 />
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4 />
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div />
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </body>
+  }
   trigger={
     <button>
       click
@@ -235,6 +424,113 @@ exports[`<Modal /> without a trigger renders 1`] = `
       "dismissible": true,
       "opacity": 0.4,
     }
+  }
+  root={
+    <body>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4 />
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4>
+              Modal header
+            </h4>
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="modal"
+          id="Modal-mockId"
+        >
+          <div
+            class="modal-content"
+          >
+            <h4 />
+            <div>
+              <h1>
+                Hello
+              </h1>
+            </div>
+          </div>
+          <div
+            class="modal-footer"
+          >
+            <button
+              class="waves-effect waves-green btn-flat modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </body>
   }
 >
   <Portal
