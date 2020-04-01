@@ -12,8 +12,6 @@ import cx from 'classnames';
 import idgen from './idgen';
 import Button from './Button';
 
-const MODAL_CONTAINER = document.body;
-
 const Modal = ({
   actions,
   bottomSheet,
@@ -24,6 +22,7 @@ const Modal = ({
   trigger,
   options,
   open,
+  root,
   ...props
 }) => {
   const _modal = useRef(null);
@@ -36,10 +35,10 @@ const Modal = ({
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      MODAL_CONTAINER.removeChild(_modalRoot.current);
+      root.removeChild(_modalRoot.current);
       _modalInstance.current && _modalInstance.current.destroy();
     };
-  }, [options, currentRoot]);
+  }, [options, currentRoot, root]);
 
   useEffect(() => {
     if (open) {
@@ -63,7 +62,7 @@ const Modal = ({
 
   const renderModalPortal = () => {
     _modalRoot.current = document.createElement('div');
-    MODAL_CONTAINER.appendChild(_modalRoot.current);
+    root.appendChild(_modalRoot.current);
     const classes = cx(
       'modal',
       {
@@ -186,11 +185,17 @@ Modal.propTypes = {
   /**
    * The ID to trigger the modal opening/closing
    */
-  id: PropTypes.string
+  id: PropTypes.string,
+  /**
+   * Root node where modal should be injected
+   * @default document.body
+   */
+  root: PropTypes.oneOfType([PropTypes.node, PropTypes.instanceOf(Element)])
 };
 
 Modal.defaultProps = {
   id: `Modal-${idgen()}`,
+  root: document.body,
   open: false,
   options: {
     opacity: 0.5,
