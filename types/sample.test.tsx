@@ -20,6 +20,7 @@ import {
   Modal,
   Navbar,
   NavItem,
+  Pagination,
 } from 'react-materialize';
 
 <>
@@ -110,4 +111,10 @@ import {
       Components
     </NavItem>
   </Navbar>
+  <Pagination
+    activePage={3}
+    items={5}
+    leftBtn={<Icon>chevron_left</Icon>}
+    rightBtn={<Icon>chevron_right</Icon>}
+  />
 </>
