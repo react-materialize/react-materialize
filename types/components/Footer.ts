@@ -1,8 +1,15 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
-}
+export interface FooterProps extends SharedBasic {
+  copyrights?: string;
+  links?: React.ReactElement;
+  moreLinks?: React.ReactElement;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Footer
+ */
+declare const Footer: React.FC<FooterProps>
 
-export = Checkbox;
+export default Footer;
