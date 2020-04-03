@@ -10,5 +10,5 @@ export type AnyFn = (...args: any[]) => any;
 
 export interface SharedBasic {
   className?: string;
-  children?: React.ReactElement;
+  children?: React.ReactElement | React.ReactElement[];
 }
