@@ -25,6 +25,7 @@ import {
   Preloader,
   ProgressBar,
   RadioGroup,
+  Range,
 } from 'react-materialize';
 
 <>
@@ -154,4 +155,5 @@ import {
     ]}
     value="xl"
   />
+  <Range min="0" max="50"/>
 </>
