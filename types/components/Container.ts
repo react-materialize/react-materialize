@@ -1,8 +1,12 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
+export interface ContainerProps extends SharedBasic {
 }
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Container
+ */
+declare const Container: React.FC<ContainerProps>
 
-export = Checkbox;
+export default Container;

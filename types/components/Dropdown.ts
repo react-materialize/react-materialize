@@ -1,8 +1,33 @@
 import * as React from 'react';
+import { AnyFn, SharedBasic } from './utils';
 
-declare namespace Checkbox {
+export type DropdownAlignment = 'left' | 'right';
+
+export interface DropdownOptions {
+  alignment?: DropdownAlignment;
+  autoTrigger?: boolean;
+  constrainWidth?: boolean;
+  container?: React.ReactElement;
+  coverTrigger?: boolean;
+  closeOnClick?: boolean;
+  hover?: boolean;
+  inDuration?: number;
+  outDuration?: number;
+  onOpenStart?: AnyFn,
+  onOpenEnd?: AnyFn,
+  onCloseStart?: AnyFn,
+  onCloseEnd?: AnyFn
 }
 
-declare class Checkbox extends React.Component {}
+export interface DropdownProps extends SharedBasic {
+  id?: string;
+  options?: DropdownOptions;
+  trigger: React.ReactElement;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: Dropdown
+ */
+declare const Dropdown: React.FC<DropdownProps>
+
+export default Dropdown;

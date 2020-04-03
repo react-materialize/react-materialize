@@ -1,8 +1,35 @@
 import * as React from 'react';
+import { AnyFn } from './utils';
 
-declare namespace Checkbox {
+export interface ModalOptions {
+  dismissible?: boolean;
+  endingTop?: string;
+  inDuration?: number;
+  onCloseEnd?: AnyFn;
+  onCloseStart?: AnyFn;
+  onOpenEnd?: AnyFn;
+  onOpenStart?: AnyFn;
+  opacity?: number;
+  outDuration?: number;
+  preventScrolling?: boolean;
+  startingTop?: string;
 }
 
-declare class Checkbox extends React.Component {}
+export interface ModalProps {
+  options?: ModalOptions;
+  actions?: React.ReactElement[];
+  bottomSheet?: boolean;
+  fixedFooter?: boolean;
+  header?: string;
+  id?: string;
+  open?: boolean;
+  root?: HTMLElement | null;
+  trigger?: React.ReactElement;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: Modal
+ */
+declare const Modal: React.FC<ModalProps>
+
+export default Modal;
