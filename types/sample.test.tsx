@@ -34,6 +34,7 @@ import {
   Slider,
   Slide,
   Caption,
+  Spinner,
 } from 'react-materialize';
 
 <>
@@ -286,4 +287,5 @@ import {
       </Caption>
     </Slide>
   </Slider>
+  <Spinner color="red" />
 </>

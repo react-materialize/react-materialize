@@ -1,8 +1,15 @@
 import * as React from 'react';
+import { MaterialColor } from './utils';
 
-declare namespace Checkbox {
-}
+export interface SpinnerProps {
+  className?: string;
+  color?: MaterialColor;
+  only?: boolean;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Spinner
+ */
+declare const Spinner: React.FC<SpinnerProps>
 
-export = Checkbox;
+export default Spinner;
