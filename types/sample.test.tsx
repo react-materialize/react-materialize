@@ -41,6 +41,7 @@ import {
   TimePicker,
   Toast,
   UserView,
+  Breadcrumb,
 } from 'react-materialize';
 
 <>
@@ -342,4 +343,5 @@ import {
     <p>hello</p>
   </Toast>
   <UserView background="asd" image="asd" />
+  <Breadcrumb cols={6} />
 </>

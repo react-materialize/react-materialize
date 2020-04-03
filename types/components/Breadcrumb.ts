@@ -1,8 +1,13 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Breadcrumb {
-}
+export interface BreadcrumbProps extends SharedBasic {
+  cols?: number;
+};
 
-declare class Breadcrumb extends React.Component {}
+/**
+ * React Materialize: Breadcrumb
+ */
+declare const Breadcrumb: React.FC<BreadcrumbProps>
 
-export = Breadcrumb;
+export default Breadcrumb;
