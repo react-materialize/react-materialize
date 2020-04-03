@@ -39,6 +39,7 @@ import {
   Table,
   TextInput,
   TimePicker,
+  Toast,
 } from 'react-materialize';
 
 <>
@@ -336,4 +337,7 @@ import {
       vibrate: true
     }}
   />
+  <Toast className="asdasd" options={{ displayLength: 3 }}>
+    <p>hello</p>
+  </Toast>
 </>
