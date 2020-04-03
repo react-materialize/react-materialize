@@ -10,6 +10,7 @@ import {
   Collapsible,
   CollapsibleItem,
   Container,
+  DatePicker,
 } from 'react-materialize';
 
 <>
@@ -22,4 +23,5 @@ import {
   <Collapsible options={{ accordion: true }} />
   <CollapsibleItem href="http://" active={false} />
   <Container className="hello" />
+  <DatePicker options={{ isRTL: false }} id="asd" />
 </>
