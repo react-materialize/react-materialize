@@ -18,6 +18,22 @@ import {
   Icon,
   MediaBox,
   Modal,
+  Navbar,
+  NavItem,
+  Pagination,
+  Parallax,
+  Preloader,
+  ProgressBar,
+  RadioGroup,
+  Range,
+  Row,
+  SearchForm,
+  Select,
+  SideNav,
+  SideNavItem,
+  Slider,
+  Slide,
+  Caption,
 } from 'react-materialize';
 
 <>
@@ -87,4 +103,187 @@ import {
   >
     <p>Lorem ipsum dolor sit amet</p>
   </Modal>
+  <Navbar
+    alignLinks="right"
+    brand={<a className="brand-logo" href="#">Logo</a>}
+    id="mobile-nav"
+    menuIcon={<Icon>menu</Icon>}
+    options={{
+      draggable: true,
+      edge: 'left',
+      inDuration: 250,
+      onCloseEnd: () => {},
+      outDuration: 200,
+      preventScrolling: true
+    }}
+  >
+    <NavItem href="">
+      Getting started
+    </NavItem>
+    <NavItem href="components.html">
+      Components
+    </NavItem>
+  </Navbar>
+  <Pagination
+    activePage={3}
+    items={5}
+    leftBtn={<Icon>chevron_left</Icon>}
+    rightBtn={<Icon>chevron_right</Icon>}
+  />
+  <Parallax
+    image={<img alt="" src="http://materializecss.com/images/parallax1.jpg"/>}
+    options={{
+      responsiveThreshold: 0
+    }} />
+  <Preloader
+    active
+    color="blue"
+    flashing={false}
+    size="big"
+  />
+  <ProgressBar
+    progress={50}
+  />
+  <RadioGroup
+    label="T-Shirt Size"
+    name="size"
+    options={[
+      {
+        label: 'XL',
+        value: 'xl'
+      },
+      {
+        label: 'L',
+        value: 'l'
+      },
+      {
+        label: 'M',
+        value: 'm'
+      }
+    ]}
+    value="xl"
+  />
+  <Range min="0" max="50"/>
+  <Row node="p" className="asd" />
+  <SearchForm searchIcon={<p>asd</p>} closeIcon={<i>asd</i>} />
+  <Select
+    id="Select-9"
+    label="Choose your option"
+    multiple={false}
+    options={{
+      classes: '',
+      dropdownOptions: {
+        alignment: 'left',
+        autoTrigger: true,
+        closeOnClick: true,
+        constrainWidth: true,
+        coverTrigger: true,
+        hover: false,
+        inDuration: 150,
+        onCloseEnd: () => {},
+        onCloseStart: () => {},
+        onOpenEnd: () => {},
+        onOpenStart: () => {},
+        outDuration: 250
+      }
+    }}
+    value="2"
+  >
+    <option value="1">
+      Option 1
+    </option>
+    <option value="2">
+      Option 2
+    </option>
+    <option value="3">
+      Option 3
+    </option>
+  </Select>
+  <SideNav
+    id="SideNav-10"
+    options={{
+      draggable: true
+    }}
+    trigger={<Button>SIDE NAV DEMO</Button>}
+  >
+    <SideNavItem
+      user={{
+        background: 'https://placeimg.com/640/480/tech',
+        email: 'jdandturk@gmail.com',
+        image: 'static/media/react-materialize-logo.824c6ea3.svg',
+        name: 'John Doe'
+      }}
+      userView
+    />
+    <SideNavItem
+      href="#!icon"
+      icon="cloud"
+    >
+      First Link With Icon
+    </SideNavItem>
+    <SideNavItem href="#!second">
+      Second Link
+    </SideNavItem>
+    <SideNavItem divider />
+    <SideNavItem subheader>
+      Subheader
+    </SideNavItem>
+    <SideNavItem
+      icon={<Icon>foo</Icon>}
+      href="#!third"
+      waves
+    >
+      Third Link With Waves
+    </SideNavItem>
+  </SideNav>
+  <Slider
+    fullscreen={false}
+    options={{
+      duration: 500,
+      height: 400,
+      indicators: true,
+      interval: 6000
+    }}
+  >
+    <Slide image={<img alt="" src="http://lorempixel.com/780/580/nature/1"/>}>
+      <Caption placement="center">
+        <h3>
+          This is our big Tagline!
+        </h3>
+        <h5 className="light grey-text text-lighten-3">
+          Here's our small slogan.
+        </h5>
+      </Caption>
+    </Slide>
+    <Slide image={<img alt="" src="http://lorempixel.com/780/580/nature/2"/>}>
+      <Caption placement="left">
+        <h3>
+          Left Aligned Caption
+        </h3>
+        <h5 className="light grey-text text-lighten-3">
+          Here's our small slogan.
+        </h5>
+      </Caption>
+    </Slide>
+    <Slide image={<img alt="" src="https://lorempixel.com/780/580/nature/3"/>}>
+      <Caption placement="right">
+        <h3>
+          Right Aligned Caption
+        </h3>
+        <h5 className="light grey-text text-lighten-3">
+          Here's our small slogan.
+        </h5>
+      </Caption>
+    </Slide>
+    <Slide image={<img alt="" src="https://lorempixel.com/580/250/nature/4"/>}>
+      <Caption placement="center">
+        <h3>
+          This is our big Tagline!
+        </h3>
+        <h5 className="light grey-text text-lighten-3">
+          Here's our small slogan.
+        </h5>
+      </Caption>
+    </Slide>
+  </Slider>
 </>

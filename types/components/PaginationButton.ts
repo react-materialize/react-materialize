@@ -1,8 +1,17 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface PaginationButtonProps {
+  active?: boolean;
+  children?: string,
+  className?: string,
+  disabled?: boolean;
+  href?: string,
+  onSelect?: (event: React.MouseEvent<HTMLLIElement>) => any;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: PaginationButton
+ */
+declare const PaginationButton: React.FC<PaginationButtonProps>
 
-export = Checkbox;
+export default PaginationButton;

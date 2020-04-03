@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface SearchFormProps {
+  searchIcon: React.ReactElement;
+  closeIcon: React.ReactElement;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: SearchForm
+ */
+declare const SearchForm: React.FC<SearchFormProps>
 
-export = Checkbox;
+export default SearchForm;

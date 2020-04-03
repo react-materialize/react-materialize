@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface RangeProps {
+  min: string;
+  max: string;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Range
+ */
+declare const Range: React.FC<RangeProps>
 
-export = Checkbox;
+export default Range;

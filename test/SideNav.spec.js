@@ -54,7 +54,7 @@ describe('<SideNav />', () => {
 
   test('should call sideNav with the given options', () => {
     const options = {
-      closeOnClick: true,
+      draggable: true,
       edge: 'right'
     };
     mount(<SideNav trigger={trigger} options={options} />);

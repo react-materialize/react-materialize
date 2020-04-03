@@ -1,8 +1,19 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export type PreloaderSize = 'big' | 'small' | 'medium';
+export type PreloaderColor = 'blue' | 'red' | 'yellow' | 'green';
 
-declare class Checkbox extends React.Component {}
+export interface PreloaderProps {
+  className?: string;
+  active?: boolean;
+  size?: PreloaderSize;
+  color?: PreloaderColor;
+  flashing?: boolean;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: Preloader
+ */
+declare const Preloader: React.FC<PreloaderProps>
+
+export default Preloader;

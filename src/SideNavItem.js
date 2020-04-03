@@ -26,7 +26,7 @@ const SideNavItem = ({
       {userView && user && <UserView {...user} />}
       {!userView && (
         <a className={cx(linkClasses)} href={href}>
-          {icon && <i className="material-icons">{icon}</i>}
+          {icon && React.cloneElement(icon, { className: 'prefix' })}
           {children}
         </a>
       )}

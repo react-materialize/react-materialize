@@ -1,8 +1,21 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
+export interface SliderOptions {
+  indicators?: boolean;
+  interval?: number;
+  duration?: number;
+  height?: number;
 }
 
-declare class Checkbox extends React.Component {}
+export interface SliderProps extends SharedBasic {
+  fullscreen?: boolean;
+  options?: SliderOptions;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: Slider
+ */
+declare const Slider: React.FC<SliderProps>
+
+export default Slider;

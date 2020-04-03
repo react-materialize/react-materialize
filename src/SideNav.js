@@ -79,7 +79,14 @@ SideNav.propTypes = {
    */
   options: PropTypes.shape({
     edge: PropTypes.oneOf(['left', 'right']),
-    draggable: PropTypes.bool
+    draggable: PropTypes.bool,
+    inDuration: PropTypes.number,
+    outDuration: PropTypes.number,
+    onOpenStart: PropTypes.func,
+    onOpenEnd: PropTypes.func,
+    onCloseStart: PropTypes.func,
+    onCloseEnd: PropTypes.func,
+    preventScrolling: PropTypes.bool
   }),
   /**
    * Additional classes added to 'sidenav'

@@ -1,8 +1,13 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
-}
+export interface SlideProps extends SharedBasic {
+  image: React.ReactNode;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Slide
+ */
+declare const Slide: React.FC<SlideProps>
 
-export = Checkbox;
+export default Slide;

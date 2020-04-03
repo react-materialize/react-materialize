@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface ProgressBarProps {
+  className?: string;
+  progress?: number;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: ProgressBar
+ */
+declare const ProgressBar: React.FC<ProgressBarProps>
 
-export = Checkbox;
+export default ProgressBar;

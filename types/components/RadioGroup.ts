@@ -1,8 +1,19 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface RadioGroupProps {
+  label?: string;
+  name?: string;
+  options: { label: string; value: string }[];
+  value?: string;
+  withGap?: boolean;
+  onChange?: (event: React.MouseEvent<HTMLInputElement>) => any;
+  disabled?: boolean;
+  radioClassNames?: string;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: RadioGroup
+ */
+declare const RadioGroup: React.FC<RadioGroupProps>
 
-export = Checkbox;
+export default RadioGroup;
