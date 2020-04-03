@@ -1,8 +1,25 @@
 import * as React from 'react';
+import { SharedBasic, Responsive } from './utils';
+import { DropdownOptions } from './Dropdown';
 
-declare namespace Checkbox {
+export type SelectDropdownAlignment = 'left' | 'right';
+
+interface SelectOptions {
+  classes?: string;
+  dropdownOptions?: DropdownOptions;
 }
 
-declare class Checkbox extends React.Component {}
+export interface SelectProps extends Responsive, SharedBasic {
+  id?: string;
+  label?: string;
+  multiple?: boolean;
+  options?: SelectOptions;
+  value?: string;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: Select
+ */
+declare const Select: React.FC<SelectProps>
+
+export default Select;

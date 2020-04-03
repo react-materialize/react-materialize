@@ -28,6 +28,7 @@ import {
   Range,
   Row,
   SearchForm,
+  Select,
 } from 'react-materialize';
 
 <>
@@ -160,4 +161,37 @@ import {
   <Range min="0" max="50"/>
   <Row node="p" className="asd" />
   <SearchForm searchIcon={<p>asd</p>} closeIcon={<i>asd</i>} />
+  <Select
+    id="Select-9"
+    label="Choose your option"
+    multiple={false}
+    options={{
+      classes: '',
+      dropdownOptions: {
+        alignment: 'left',
+        autoTrigger: true,
+        closeOnClick: true,
+        constrainWidth: true,
+        coverTrigger: true,
+        hover: false,
+        inDuration: 150,
+        onCloseEnd: () => {},
+        onCloseStart: () => {},
+        onOpenEnd: () => {},
+        onOpenStart: () => {},
+        outDuration: 250
+      }
+    }}
+    value="2"
+  >
+    <option value="1">
+      Option 1
+    </option>
+    <option value="2">
+      Option 2
+    </option>
+    <option value="3">
+      Option 3
+    </option>
+  </Select>
 </>

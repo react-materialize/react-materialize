@@ -128,7 +128,6 @@ describe('<Select />', () => {
           alignment: 'left',
           autoTrigger: true,
           constrainWidth: true,
-          container: null,
           coverTrigger: true,
           closeOnClick: true,
           hover: false,
