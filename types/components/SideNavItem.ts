@@ -1,8 +1,19 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface SideNavItemProps {
+  href?: string;
+  waves?: boolean;
+  children?: string;
+  divider?: boolean;
+  subheader?: boolean;
+  userView?: boolean;
+  icon?: React.ReactNode;
+  user?: any; // TODO use UserShape
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: SideNavItem
+ */
+declare const SideNavItem: React.FC<SideNavItemProps>
 
-export = Checkbox;
+export default SideNavItem;

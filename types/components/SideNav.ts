@@ -1,8 +1,30 @@
 import * as React from 'react';
+import { SharedBasic, AnyFn } from './utils';
 
-declare namespace Checkbox {
+export type SideNavEdge = 'left' | 'right';
+
+export interface SideNavOptions {
+  edge?: SideNavEdge;
+  draggable?: boolean;
+  inDuration?: number;
+  outDuration?: number;
+  onOpenStart?: AnyFn;
+  onOpenEnd?: AnyFn;
+  onCloseStart?: AnyFn;
+  onCloseEnd?: AnyFn;
+  preventScrolling?: boolean;
 }
 
-declare class Checkbox extends React.Component {}
+export interface SideNavProps extends SharedBasic {
+  id?: string;
+  options?: SideNavOptions;
+  trigger?: React.ReactElement;
+  fixed?: boolean;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: SideNav
+ */
+declare const SideNav: React.FC<SideNavProps>
+
+export default SideNav;
