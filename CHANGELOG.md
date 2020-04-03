@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.1
+
+- TS: Complete type definition for all components
+
 ### 3.8.0
 
 - Modal: new interface prop `root` to fix SSR
