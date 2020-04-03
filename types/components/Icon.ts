@@ -1,8 +1,20 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface IconProps {
+  left?: boolean;
+  center?: boolean;
+  right?: boolean;
+  tiny?: boolean;
+  small?: boolean;
+  medium?: boolean;
+  large?: boolean;
+  children?: string;
+  className?: string;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Icon
+ */
+declare const Icon: React.FC<IconProps>
 
-export = Checkbox;
+export default Icon;

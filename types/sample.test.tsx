@@ -15,6 +15,7 @@ import {
   Dropdown,
   Button,
   Footer,
+  Icon,
 } from 'react-materialize';
 
 <>
@@ -50,4 +51,5 @@ import {
     moreLinks={<a className="grey-text text-lighten-4 right" href="#!">More Links</a>}>
     <h1>Footer Content</h1>
   </Footer>
+  <Icon className="asd" left small large>cloud</Icon>
 </>
