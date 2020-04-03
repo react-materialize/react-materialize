@@ -9,6 +9,7 @@ import {
   Textarea,
   Collapsible,
   CollapsibleItem,
+  Container,
 } from 'react-materialize';
 
 <>
@@ -20,4 +21,5 @@ import {
   <Textarea disabled={false} value="hello">foo</Textarea>
   <Collapsible options={{ accordion: true }} />
   <CollapsibleItem href="http://" active={false} />
+  <Container className="hello" />
 </>
