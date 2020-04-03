@@ -38,6 +38,7 @@ import {
   Switch,
   Table,
   TextInput,
+  TimePicker,
 } from 'react-materialize';
 
 <>
@@ -312,4 +313,27 @@ import {
   >
     yes
   </TextInput>
+  <TimePicker
+    id="TimePicker-13"
+    options={{
+      autoClose: false,
+      container: 'root',
+      defaultTime: 'now',
+      duration: 350,
+      fromNow: 0,
+      i18n: {
+        cancel: 'Cancel',
+        clear: 'Clear',
+        done: 'Ok'
+      },
+      onCloseEnd: () => {},
+      onCloseStart: () => {},
+      onOpenEnd: () => {},
+      onOpenStart: () => {},
+      onSelect: () => {},
+      showClearBtn: false,
+      twelveHour: true,
+      vibrate: true
+    }}
+  />
 </>

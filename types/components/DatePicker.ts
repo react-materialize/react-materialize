@@ -1,18 +1,5 @@
 import * as React from 'react';
-import { AnyFn } from './utils';
-
-interface I18nOptions {
-  cancel?: string,
-  clear?: string,
-  done?: string,
-  previousMonth?: string,
-  nextMonth?: string,
-  months?: string[];
-  monthsShort?: string[];
-  weekdays?: string[];
-  weekdaysShort?: string[];
-  weekdaysAbbrev?: string[];
-}
+import { AnyFn, I18nOptions } from './utils';
 
 export interface DatePickerOptions {
   autoClose?: boolean;

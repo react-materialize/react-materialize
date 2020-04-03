@@ -33,3 +33,16 @@ export type MaterialColor =
   'brown' |
   'grey' |
   'blue-grey';
+
+export interface I18nOptions {
+  cancel?: string,
+  clear?: string,
+  done?: string,
+  previousMonth?: string,
+  nextMonth?: string,
+  months?: string[];
+  monthsShort?: string[];
+  weekdays?: string[];
+  weekdaysShort?: string[];
+  weekdaysAbbrev?: string[];
+}
