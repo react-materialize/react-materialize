@@ -1,8 +1,13 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
-}
+export interface RowProps extends SharedBasic {
+  node?: React.ReactElement | React.ReactNode;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Row
+ */
+declare const Row: React.FC<RowProps>
 
-export = Checkbox;
+export default Row;

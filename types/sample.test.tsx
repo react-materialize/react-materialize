@@ -26,6 +26,7 @@ import {
   ProgressBar,
   RadioGroup,
   Range,
+  Row,
 } from 'react-materialize';
 
 <>
@@ -156,4 +157,5 @@ import {
     value="xl"
   />
   <Range min="0" max="50"/>
+  <Row node="p" className="asd" />
 </>
