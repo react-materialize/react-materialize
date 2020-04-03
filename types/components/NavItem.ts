@@ -1,8 +1,17 @@
 import * as React from 'react';
+import { AnyFn } from './utils';
 
-declare namespace Checkbox {
-}
+export interface NavItemProps {
+  divider?: boolean;
+  href?: string;
+  onClick?: AnyFn;
+  className?: string;
+  children?: string;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: NavItem
+ */
+declare const NavItem: React.FC<NavItemProps>
 
-export = Checkbox;
+export default NavItem;
