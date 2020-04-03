@@ -35,6 +35,7 @@ import {
   Slide,
   Caption,
   Spinner,
+  Switch,
 } from 'react-materialize';
 
 <>
@@ -288,4 +289,5 @@ import {
     </Slide>
   </Slider>
   <Spinner color="red" />
+  <Switch onLabel="yes" offLabel="no" />
 </>

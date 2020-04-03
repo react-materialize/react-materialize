@@ -6,7 +6,7 @@ export interface RadioGroupProps {
   options: { label: string; value: string }[];
   value?: string;
   withGap?: boolean;
-  onChange?: (event: React.MouseEvent<HTMLInputElement>) => any;
+  onChange?: (event: React.MouseEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   radioClassNames?: string;
 };

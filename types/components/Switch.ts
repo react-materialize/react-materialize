@@ -1,8 +1,18 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface SwitchProps {
+  id?: string;
+  className?: string;
+  offLabel: string;
+  onLabel: string;
+  onChange?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
+  checked?: boolean;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Switch
+ */
+declare const Switch: React.FC<SwitchProps>
 
-export = Checkbox;
+export default Switch;

@@ -35,7 +35,7 @@ Switch.propTypes = {
    * override id
    * @default idgen()
    */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   className: PropTypes.string,
   /**
    * label for off
