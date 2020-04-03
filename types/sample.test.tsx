@@ -24,6 +24,7 @@ import {
   Parallax,
   Preloader,
   ProgressBar,
+  RadioGroup,
 } from 'react-materialize';
 
 <>
@@ -133,5 +134,24 @@ import {
   />
   <ProgressBar
     progress={50}
+  />
+  <RadioGroup
+    label="T-Shirt Size"
+    name="size"
+    options={[
+      {
+        label: 'XL',
+        value: 'xl'
+      },
+      {
+        label: 'L',
+        value: 'l'
+      },
+      {
+        label: 'M',
+        value: 'm'
+      }
+    ]}
+    value="xl"
   />
 </>
