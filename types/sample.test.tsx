@@ -44,6 +44,7 @@ import {
   Breadcrumb,
   Card,
   CardTitle,
+  Checkbox,
 } from 'react-materialize';
 
 <>
@@ -362,4 +363,5 @@ import {
       </a>
     </p>
   </Card>
+  <Checkbox value="yes" label="what" checked />
 </>

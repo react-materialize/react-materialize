@@ -1,8 +1,20 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface CheckboxProps {
+  value: string;
+  label: string;
+  className?: string;
+  filledIn?: boolean;
+  indeterminate?: boolean;
+  onChange?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  id?: string;
+  disabled?: boolean;
+  checked?: boolean;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Checkbox
+ */
+declare const Checkbox: React.FC<CheckboxProps>
 
-export = Checkbox;
+export default Checkbox;
