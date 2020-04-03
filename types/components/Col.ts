@@ -1,8 +1,16 @@
 import * as React from 'react';
+import { SharedBasic, Responsive } from './utils';
 
-declare namespace Checkbox {
-}
+export interface ColProps extends SharedBasic, Responsive {
+  node?: React.ReactNode;
+  offset?: string;
+  push?: string;
+  pull?: string;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Col
+ */
+declare const Col: React.FC<ColProps>
 
-export = Checkbox;
+export default Col;
