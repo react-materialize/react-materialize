@@ -16,6 +16,7 @@ import {
   Button,
   Footer,
   Icon,
+  MediaBox,
 } from 'react-materialize';
 
 <>
@@ -52,4 +53,15 @@ import {
     <h1>Footer Content</h1>
   </Footer>
   <Icon className="asd" left small large>cloud</Icon>
+  <MediaBox id="MediaBox_7" options={{
+      inDuration: 275,
+      onOpenEnd: () => {},
+      outDuration: 200
+    }}>
+    <img
+      alt=""
+      src="https://materializecss.com/images/sample-1.jpg"
+      width="650"
+    />
+  </MediaBox>
 </>

@@ -1,8 +1,24 @@
 import * as React from 'react';
+import { AnyFn } from './utils';
 
-declare namespace Checkbox {
+export interface MediaBoxOptions {
+  inDuration?: number,
+  onCloseEnd?: AnyFn,
+  onCloseStart?: AnyFn,
+  onOpenEnd?: AnyFn,
+  onOpenStart?: AnyFn,
+  outDuration?: number;
 }
 
-declare class Checkbox extends React.Component {}
+export interface MediaBoxProps {
+  id?: string;
+  options?: MediaBoxOptions;
+  children?: React.ReactElement;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: MediaBox
+ */
+declare const MediaBox: React.FC<MediaBoxProps>
+
+export default MediaBox;
