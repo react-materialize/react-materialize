@@ -1,8 +1,10 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface DividerProps {};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Divider
+ */
+declare const Divider: React.FC<DividerProps>
 
-export = Checkbox;
+export default Divider;
