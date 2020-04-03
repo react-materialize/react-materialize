@@ -5,7 +5,7 @@ interface AutocompleteData {
   [key: string]: string | null;
 }
 
-interface AutocompleteOptions {
+export interface AutocompleteOptions {
   data: AutocompleteData;
   limit?: number;
   onAutocomplete?: () => void;

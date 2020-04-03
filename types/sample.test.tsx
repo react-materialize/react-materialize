@@ -45,6 +45,7 @@ import {
   Card,
   CardTitle,
   Checkbox,
+  Chip,
 } from 'react-materialize';
 
 <>
@@ -364,4 +365,20 @@ import {
     </p>
   </Card>
   <Checkbox value="yes" label="what" checked />
-</>
+  <Chip
+    close={false}
+    closeIcon={<Icon className="close">close</Icon>}
+    options={{
+      autocompleteOptions: {
+        data: {
+          Apple: null,
+          Google: null,
+          Microsoft: null
+        },
+        limit: Infinity,
+        minLength: 1,
+        onAutocomplete: function noRefCheck() {}
+      }
+    }}
+  />
+  </>
