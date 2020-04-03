@@ -27,6 +27,7 @@ import {
   RadioGroup,
   Range,
   Row,
+  SearchForm,
 } from 'react-materialize';
 
 <>
@@ -158,4 +159,5 @@ import {
   />
   <Range min="0" max="50"/>
   <Row node="p" className="asd" />
+  <SearchForm searchIcon={<p>asd</p>} closeIcon={<i>asd</i>} />
 </>
