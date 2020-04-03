@@ -16,7 +16,7 @@ export interface DatePickerOptions {
   isRTL?: boolean;
   showMonthAfterYear?: boolean;
   showDaysInNextAndPreviousMonths?: boolean;
-  container?: React.ReactElement;
+  container?: React.ReactNode;
   showClearBtn?: boolean;
   i18n?: I18nOptions;
   events?: string[];

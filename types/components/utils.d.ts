@@ -10,7 +10,7 @@ export type AnyFn = (...args: any[]) => any;
 
 export interface SharedBasic {
   className?: string;
-  children?: React.ReactElement | React.ReactElement[];
+  children?: React.ReactNode;
 }
 
 export type MaterialColor =

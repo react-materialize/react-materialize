@@ -18,7 +18,7 @@ export interface SideNavOptions {
 export interface SideNavProps extends SharedBasic {
   id?: string;
   options?: SideNavOptions;
-  trigger?: React.ReactElement;
+  trigger?: React.ReactNode;
   fixed?: boolean;
 };
 

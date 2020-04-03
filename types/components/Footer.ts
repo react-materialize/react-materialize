@@ -3,8 +3,8 @@ import { SharedBasic } from './utils';
 
 export interface FooterProps extends SharedBasic {
   copyrights?: string;
-  links?: React.ReactElement;
-  moreLinks?: React.ReactElement;
+  links?: React.ReactNode;
+  moreLinks?: React.ReactNode;
 };
 
 /**

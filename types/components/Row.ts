@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SharedBasic } from './utils';
 
 export interface RowProps extends SharedBasic {
-  node?: React.ReactElement | React.ReactNode;
+  node?: React.ReactNode;
 };
 
 /**

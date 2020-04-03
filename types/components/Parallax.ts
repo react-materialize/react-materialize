@@ -7,7 +7,7 @@ export interface ParallaxOptions {
 
 export interface ParallaxProps extends SharedBasic {
   options?: ParallaxOptions;
-  image?: React.ReactElement;
+  image?: React.ReactNode;
 };
 
 /**

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnyFn } from './utils';
+import { AnyFn, SharedBasic } from './utils';
 
 interface CollapsibleOptions {
   accordion?: boolean;
@@ -11,10 +11,8 @@ interface CollapsibleOptions {
   outDuration?: number;
 }
 
-export interface CollapsibleProps {
+export interface CollapsibleProps extends SharedBasic {
   accordion?: boolean;
-  className?: string;
-  children?: React.ReactElement;
   popout?: boolean;
   defaultActiveKey?: string;
   onSelect?: (key: number) => any;

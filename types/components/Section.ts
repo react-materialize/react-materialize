@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-interface SectionProps {
-  node?: React.ReactElement | React.ReactNode;
+interface SectionProps extends SharedBasic {
+  node?: React.ReactNode;
   id?: string;
-  className?: string;
 }
 
 /**

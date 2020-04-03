@@ -7,7 +7,7 @@ export interface DropdownOptions {
   alignment?: DropdownAlignment;
   autoTrigger?: boolean;
   constrainWidth?: boolean;
-  container?: React.ReactElement;
+  container?: React.ReactNode;
   coverTrigger?: boolean;
   closeOnClick?: boolean;
   hover?: boolean;
@@ -22,7 +22,7 @@ export interface DropdownOptions {
 export interface DropdownProps extends SharedBasic {
   id?: string;
   options?: DropdownOptions;
-  trigger: React.ReactElement;
+  trigger: React.ReactNode;
 };
 
 /**

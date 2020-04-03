@@ -13,7 +13,7 @@ export interface MediaBoxOptions {
 export interface MediaBoxProps {
   id?: string;
   options?: MediaBoxOptions;
-  children?: React.ReactElement;
+  children?: React.ReactNode;
 };
 
 /**

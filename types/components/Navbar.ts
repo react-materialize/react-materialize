@@ -16,12 +16,12 @@ export interface NavbarOptions {
 }
 
 export interface NavbarProps extends SharedBasic {
-  menuIcon: React.ReactElement;
+  menuIcon: React.ReactNode;
   id?: string;
-  brand?: React.ReactElement;
-  extendWith?: React.ReactElement;
+  brand?: React.ReactNode;
+  extendWith?: React.ReactNode;
   search?: boolean;
-  sidenav?: React.ReactElement;
+  sidenav?: React.ReactNode;
   alignLinks?: NavbarAlignment;
   centerLogo?: boolean;
   centerChildren?: boolean;

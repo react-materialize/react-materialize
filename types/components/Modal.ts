@@ -17,14 +17,14 @@ export interface ModalOptions {
 
 export interface ModalProps {
   options?: ModalOptions;
-  actions?: React.ReactElement[];
+  actions?: React.ReactNode[];
   bottomSheet?: boolean;
   fixedFooter?: boolean;
   header?: string;
   id?: string;
   open?: boolean;
   root?: HTMLElement | null;
-  trigger?: React.ReactElement;
+  trigger?: React.ReactNode;
 };
 
 /**
