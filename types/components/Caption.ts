@@ -1,8 +1,15 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Caption {
-}
+export type CaptionPlacement = 'left' | 'center' | 'right';
 
-declare class Caption extends React.Component {}
+export interface CaptionProps extends SharedBasic {
+  placement?: CaptionPlacement;
+};
 
-export = Caption;
+/**
+ * React Materialize: Caption
+ */
+declare const Caption: React.FC<CaptionProps>
+
+export default Caption;
