@@ -37,6 +37,7 @@ import {
   Spinner,
   Switch,
   Table,
+  TextInput,
 } from 'react-materialize';
 
 <>
@@ -292,4 +293,23 @@ import {
   <Spinner color="red" />
   <Switch onLabel="yes" offLabel="no" />
   <Table centered striped />
+  <TextInput
+    noLayout
+    disabled
+    placeholder="hello"
+    id="hello"
+    label="what"
+    defaultValue="ok"
+    value="asd"
+    validate
+    success="ok"
+    error="wrong"
+    inputClassName="red"
+    type="gui"
+    onChange={e => {}}
+    password
+    email
+  >
+    yes
+  </TextInput>
 </>
