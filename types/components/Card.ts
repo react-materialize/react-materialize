@@ -1,8 +1,20 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Card {
-}
+export interface CardProps extends SharedBasic {
+  title?: string;
+  textClassName?: string;
+  reveal?: React.ReactNode;
+  header?: React.ReactNode;
+  actions?: React.ReactNode[];
+  horizontal?: boolean;
+  closeIcon?: React.ReactNode;
+  revealIcon?: React.ReactNode;
+};
 
-declare class Card extends React.Component {}
+/**
+ * React Materialize: Card
+ */
+declare const Card: React.FC<CardProps>
 
-export = Card;
+export default Card;

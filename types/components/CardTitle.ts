@@ -1,8 +1,16 @@
 import * as React from 'react';
+import { MaterialColor } from './utils';
 
-declare namespace CardTitle {
-}
+export interface CardTitleProps {
+  children?: React.ReactNode;
+  reveal?: boolean;
+  waves?: MaterialColor;
+  image: string;
+};
 
-declare class CardTitle extends React.Component {}
+/**
+ * React Materialize: CardTitle
+ */
+declare const CardTitle: React.FC<CardTitleProps>
 
-export = CardTitle;
+export default CardTitle;
