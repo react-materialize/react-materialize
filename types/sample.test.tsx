@@ -17,6 +17,7 @@ import {
   Footer,
   Icon,
   MediaBox,
+  Modal,
 } from 'react-materialize';
 
 <>
@@ -64,4 +65,26 @@ import {
       width="650"
     />
   </MediaBox>
+  <Modal
+    actions={[<Button>Close</Button>]}
+    bottomSheet={false}
+    fixedFooter={false}
+    header="Modal Header"
+    id="Modal-0"
+    open={false}
+    options={{
+      dismissible: true,
+      endingTop: '10%',
+      inDuration: 250,
+      onOpenStart: () => {},
+      opacity: 0.5,
+      outDuration: 250,
+      preventScrolling: true,
+      startingTop: '4%'
+    }}
+    root={document.getElementById('root')}
+    trigger={<Button>MODAL</Button>}
+  >
+    <p>Lorem ipsum dolor sit amet</p>
+  </Modal>
 </>
