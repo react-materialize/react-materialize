@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Responsive } from './utils';
+import * as React from "react";
+import { Responsive } from "./utils";
 
 export interface TextareaProps extends Responsive {
   noLayout?: boolean;
@@ -21,6 +21,6 @@ export interface TextareaProps extends Responsive {
 /**
  * React Materialize: Textarea
  */
-declare const Textarea: React.FC<TextareaProps>
+declare const Textarea: React.FC<TextareaProps>;
 
 export default Textarea;

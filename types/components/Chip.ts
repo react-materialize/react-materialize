@@ -1,8 +1,29 @@
-import * as React from 'react';
+import * as React from "react";
+import { AutocompleteOptions } from "./Autocomplete";
+import { AnyFn, SharedBasic } from "./utils";
 
-declare namespace Checkbox {
+interface ChipItem {[key: string]: string;}
+
+export interface ChipOptions {
+  data?: ChipItem[];
+  placeholder?: string;
+  secondaryPlaceholder?: string;
+  autocompleteOptions?: AutocompleteOptions;
+  limit?: number;
+  onChipAdd?: AnyFn;
+  onChipSelect?: (item: React.ReactNode) => void;
+  onChipDelete?: AnyFn;
 }
 
-declare class Checkbox extends React.Component {}
+export interface ChipProps extends SharedBasic {
+  close?: boolean;
+  closeIcon?: React.ReactNode;
+  options?: ChipOptions;
+}
 
-export = Checkbox;
+/**
+ * React Materialize: Chip
+ */
+declare const Chip: React.FC<ChipProps>;
+
+export default Chip;

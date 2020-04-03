@@ -41,13 +41,22 @@ import {
   TimePicker,
   Toast,
   UserView,
+  Breadcrumb,
+  Card,
+  CardTitle,
+  Checkbox,
+  Chip,
+  Col,
+  Badge,
 } from 'react-materialize';
 
 <>
   <Autocomplete options={{ data: { asd: '32' }, onAutocomplete: () => 32 }} s={3} />;
   <Tabs className="hello" defaultValue="what" options={{ duration: 32, onShow: () => {}, swipeable: true, responsiveThreshold: 32 }} onChange={() => {}} />
   <Tab idx="as" title="Hello" />
-  <Section node="div" className="foo" id="bar" />
+  <Section node="div" className="foo" id="bar">
+    <p>hello</p>
+  </Section>
   <Carousel images={['one.jpg']} options={{ numVisible: 32, onCycleTo: () => {} }} centerImages={true} />
   <Textarea disabled={false} value="hello">foo</Textarea>
   <Collapsible options={{ accordion: true }} />
@@ -309,7 +318,7 @@ import {
     error="wrong"
     inputClassName="red"
     type="gui"
-    onChange={e => {}}
+    onChange={e => { e.preventDefault() }}
     password
     email
   >
@@ -342,4 +351,38 @@ import {
     <p>hello</p>
   </Toast>
   <UserView background="asd" image="asd" />
-</>
+  <Breadcrumb cols={6} />
+  <Button node="div">click</Button>
+  <Card
+    closeIcon={<Icon>close</Icon>}
+    header={<CardTitle image="https://materializecss.com/images/sample-1.jpg" reveal waves="light"/>}
+    reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}
+    revealIcon={<Icon>more_vert</Icon>}
+    title="Card Title"
+  >
+    <p>
+      <a href="#">
+        This is a link
+      </a>
+    </p>
+  </Card>
+  <Checkbox value="yes" label="what" checked />
+  <Chip
+    close={false}
+    closeIcon={<Icon className="close">close</Icon>}
+    options={{
+      autocompleteOptions: {
+        data: {
+          Apple: null,
+          Google: null,
+          Microsoft: null
+        },
+        limit: Infinity,
+        minLength: 1,
+        onAutocomplete: function noRefCheck() {}
+      }
+    }}
+  />
+  <Col offset="23">a</Col>
+  <Badge newIcon={<i>a</i>} caption="Hello" />
+  </>

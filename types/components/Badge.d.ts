@@ -1,8 +1,14 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Badge {
+export interface BadgeProps extends SharedBasic {
+  newIcon?: React.ReactNode;
+  caption?: string;
 }
 
-declare class Badge extends React.Component {}
+/**
+ * React Materialize: Badge
+ */
+declare const Badge: React.FC<BadgeProps>
 
-export = Badge;
+export default Badge;

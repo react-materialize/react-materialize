@@ -10,7 +10,7 @@ export type AnyFn = (...args: any[]) => any;
 
 export interface SharedBasic {
   className?: string;
-  children?: React.ReactElement | React.ReactElement[];
+  children?: React.ReactNode;
 }
 
 export type MaterialColor =
@@ -20,6 +20,7 @@ export type MaterialColor =
   'deep-purple' |
   'indigo' |
   'blue' |
+  'light' |
   'light-blue' |
   'cyan' |
   'teal' |
@@ -46,3 +47,9 @@ export interface I18nOptions {
   weekdaysShort?: string[];
   weekdaysAbbrev?: string[];
 }
+
+export type Positions =
+  'top' |
+  'right' |
+  'left' |
+  'bottom';

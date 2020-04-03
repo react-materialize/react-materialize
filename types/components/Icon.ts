@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface IconProps {
   left?: boolean;
@@ -10,11 +10,11 @@ export interface IconProps {
   large?: boolean;
   children?: string;
   className?: string;
-};
+}
 
 /**
  * React Materialize: Icon
  */
-declare const Icon: React.FC<IconProps>
+declare const Icon: React.FC<IconProps>;
 
 export default Icon;

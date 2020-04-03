@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface SwitchProps {
   id?: string;
@@ -8,11 +8,11 @@ export interface SwitchProps {
   onChange?: (e: React.MouseEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   checked?: boolean;
-};
+}
 
 /**
  * React Materialize: Switch
  */
-declare const Switch: React.FC<SwitchProps>
+declare const Switch: React.FC<SwitchProps>;
 
 export default Switch;

@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { AnyFn } from './utils';
+import * as React from "react";
+import { AnyFn } from "./utils";
 
 export interface MediaBoxOptions {
-  inDuration?: number,
-  onCloseEnd?: AnyFn,
-  onCloseStart?: AnyFn,
-  onOpenEnd?: AnyFn,
-  onOpenStart?: AnyFn,
+  inDuration?: number;
+  onCloseEnd?: AnyFn;
+  onCloseStart?: AnyFn;
+  onOpenEnd?: AnyFn;
+  onOpenStart?: AnyFn;
   outDuration?: number;
 }
 
 export interface MediaBoxProps {
   id?: string;
   options?: MediaBoxOptions;
-  children?: React.ReactElement;
-};
+  children?: React.ReactNode;
+}
 
 /**
  * React Materialize: MediaBox
  */
-declare const MediaBox: React.FC<MediaBoxProps>
+declare const MediaBox: React.FC<MediaBoxProps>;
 
 export default MediaBox;

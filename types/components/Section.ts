@@ -1,14 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
+import { SharedBasic } from "./utils";
 
-interface SectionProps {
-  node?: React.ReactElement | React.ReactNode;
+interface SectionProps extends SharedBasic {
+  node?: React.ReactNode;
   id?: string;
-  className?: string;
 }
 
 /**
  * React Materialize: Section
  */
-declare const Section: React.FC<SectionProps>
+declare const Section: React.FC<SectionProps>;
 
 export default Section;

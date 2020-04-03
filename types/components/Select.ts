@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { SharedBasic, Responsive } from './utils';
-import { DropdownOptions } from './Dropdown';
+import * as React from "react";
+import { DropdownOptions } from "./Dropdown";
+import { Responsive, SharedBasic } from "./utils";
 
-export type SelectDropdownAlignment = 'left' | 'right';
+export type SelectDropdownAlignment = "left" | "right";
 
 interface SelectOptions {
   classes?: string;
@@ -15,11 +15,11 @@ export interface SelectProps extends Responsive, SharedBasic {
   multiple?: boolean;
   options?: SelectOptions;
   value?: string;
-};
+}
 
 /**
  * React Materialize: Select
  */
-declare const Select: React.FC<SelectProps>
+declare const Select: React.FC<SelectProps>;
 
 export default Select;

@@ -17,6 +17,10 @@ const Breadcrumb = ({ cols, children, className }) => (
 
 Breadcrumb.propTypes = {
   children: PropTypes.node,
+  /**
+   * responsive col value
+   * @default 12
+   */
   cols: PropTypes.number,
   className: PropTypes.string
 };

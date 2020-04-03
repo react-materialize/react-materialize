@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-export type PreloaderSize = 'big' | 'small' | 'medium';
-export type PreloaderColor = 'blue' | 'red' | 'yellow' | 'green';
+export type PreloaderSize = "big" | "small" | "medium";
+export type PreloaderColor = "blue" | "red" | "yellow" | "green";
 
 export interface PreloaderProps {
   className?: string;
@@ -9,11 +9,11 @@ export interface PreloaderProps {
   size?: PreloaderSize;
   color?: PreloaderColor;
   flashing?: boolean;
-};
+}
 
 /**
  * React Materialize: Preloader
  */
-declare const Preloader: React.FC<PreloaderProps>
+declare const Preloader: React.FC<PreloaderProps>;
 
 export default Preloader;

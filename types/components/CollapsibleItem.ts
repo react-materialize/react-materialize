@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { SharedBasic } from './utils';
+import * as React from "react";
+import { SharedBasic } from "./utils";
 
 export interface CollapsibleItemProps extends SharedBasic {
   active?: boolean;
@@ -9,6 +9,6 @@ export interface CollapsibleItemProps extends SharedBasic {
 /**
  * React Materialize: CollapsibleItem
  */
-declare const CollapsibleItem: React.FC<CollapsibleItemProps>
+declare const CollapsibleItem: React.FC<CollapsibleItemProps>;
 
 export default CollapsibleItem;
