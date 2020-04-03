@@ -36,6 +36,7 @@ import {
   Caption,
   Spinner,
   Switch,
+  Table,
 } from 'react-materialize';
 
 <>
@@ -290,4 +291,5 @@ import {
   </Slider>
   <Spinner color="red" />
   <Switch onLabel="yes" offLabel="no" />
+  <Table centered striped />
 </>
