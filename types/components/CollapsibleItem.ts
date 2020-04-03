@@ -1,8 +1,14 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
+export interface CollapsibleItemProps extends SharedBasic {
+  active?: boolean;
+  href?: string;
 }
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: CollapsibleItem
+ */
+declare const CollapsibleItem: React.FC<CollapsibleItemProps>
 
-export = Checkbox;
+export default CollapsibleItem;

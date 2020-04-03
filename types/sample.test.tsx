@@ -7,7 +7,8 @@ import {
   Section,
   Carousel,
   Textarea,
-  Collapsible
+  Collapsible,
+  CollapsibleItem,
 } from 'react-materialize';
 
 <>
@@ -18,4 +19,5 @@ import {
   <Carousel images={['one.jpg']} options={{ numVisible: 32, onCycleTo: () => {} }} centerImages={true} />
   <Textarea disabled={false} value="hello">foo</Textarea>
   <Collapsible options={{ accordion: true }} />
+  <CollapsibleItem href="http://" active={false} />
 </>
