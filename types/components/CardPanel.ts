@@ -1,8 +1,11 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace CardPanel {
-}
+export interface CardPanelProps extends SharedBasic {};
 
-declare class CardPanel extends React.Component {}
+/**
+ * React Materialize: CardPanel
+ */
+declare const CardPanel: React.FC<CardPanelProps>
 
-export = CardPanel;
+export default CardPanel;

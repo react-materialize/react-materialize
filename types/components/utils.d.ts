@@ -20,6 +20,7 @@ export type MaterialColor =
   'deep-purple' |
   'indigo' |
   'blue' |
+  'light' |
   'light-blue' |
   'cyan' |
   'teal' |
