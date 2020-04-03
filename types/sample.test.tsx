@@ -47,6 +47,7 @@ import {
   Checkbox,
   Chip,
   Col,
+  Badge,
 } from 'react-materialize';
 
 <>
@@ -383,4 +384,5 @@ import {
     }}
   />
   <Col offset="23">a</Col>
+  <Badge newIcon={<i>a</i>} caption="Hello" />
   </>
