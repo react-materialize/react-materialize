@@ -12,6 +12,8 @@ import {
   Container,
   DatePicker,
   Divider,
+  Dropdown,
+  Button,
 } from 'react-materialize';
 
 <>
@@ -26,4 +28,18 @@ import {
   <Container className="hello" />
   <DatePicker options={{ isRTL: false }} id="asd" />
   <Divider />
+  <Dropdown id="Dropdown_6" options={{
+      alignment: 'left',
+      autoTrigger: true,
+      closeOnClick: true,
+      constrainWidth: true,
+      coverTrigger: true,
+      hover: false,
+      inDuration: 150,
+      onOpenStart: () => {},
+      outDuration: 250
+    }}
+    trigger={<Button>Drop Me!</Button>}>
+    <a href="#">one</a>
+  </Dropdown>
 </>
