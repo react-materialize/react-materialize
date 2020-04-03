@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface TabsOptions {
   duration: number;
@@ -17,6 +17,6 @@ export interface TabsProps {
 /**
  * React Materialize: Tabs
  */
-declare const Tabs: React.FC<TabsProps>
+declare const Tabs: React.FC<TabsProps>;
 
 export default Tabs;

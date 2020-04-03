@@ -1,20 +1,20 @@
-import * as React from 'react';
-import { SharedBasic, MaterialColor, Positions } from './utils';
+import * as React from "react";
+import { MaterialColor, Positions, SharedBasic } from "./utils";
 
-export type ModalType = 'close' | 'confirm';
+export type ModalType = "close" | "confirm";
 
 export interface FabOptions {
   direction?: Positions;
   hoverEnabled?: boolean;
   toolbarEnabled?: boolean;
-};
+}
 
 export interface TooltipOptions {
   delay: number;
   position?: Positions;
   tooltip?: string;
   html?: boolean;
-};
+}
 
 export interface ButtonProps extends SharedBasic {
   disabled?: boolean;
@@ -30,11 +30,11 @@ export interface ButtonProps extends SharedBasic {
   tooltip?: string;
   tooltipOptions?: TooltipOptions;
   waves?: MaterialColor;
-};
+}
 
 /**
  * React Materialize: Button
  */
-declare const Button: React.FC<ButtonProps>
+declare const Button: React.FC<ButtonProps>;
 
 export default Button;

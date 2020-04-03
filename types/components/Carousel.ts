@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface CarouselOptions {
   duration?: number;
@@ -24,6 +24,6 @@ export interface CarouselProps {
 /**
  * React Materialize: Carousel
  */
-declare const Carousel: React.FC<CarouselProps>
+declare const Carousel: React.FC<CarouselProps>;
 
 export default Carousel;

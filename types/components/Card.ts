@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { SharedBasic } from './utils';
+import * as React from "react";
+import { SharedBasic } from "./utils";
 
 export interface CardProps extends SharedBasic {
   title?: string;
@@ -10,11 +10,11 @@ export interface CardProps extends SharedBasic {
   horizontal?: boolean;
   closeIcon?: React.ReactNode;
   revealIcon?: React.ReactNode;
-};
+}
 
 /**
  * React Materialize: Card
  */
-declare const Card: React.FC<CardProps>
+declare const Card: React.FC<CardProps>;
 
 export default Card;

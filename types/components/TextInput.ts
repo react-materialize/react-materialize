@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Responsive } from './utils';
+import * as React from "react";
+import { Responsive } from "./utils";
 
 export interface TextInputProps extends Responsive {
   noLayout?: boolean;
@@ -19,11 +19,11 @@ export interface TextInputProps extends Responsive {
   password?: boolean;
   email?: boolean;
   children?: React.ReactNode;
-};
+}
 
 /**
  * React Materialize: TextInput
  */
-declare const TextInput: React.FC<TextInputProps>
+declare const TextInput: React.FC<TextInputProps>;
 
 export default TextInput;

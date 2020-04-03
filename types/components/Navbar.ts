@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { SharedBasic, AnyFn } from './utils';
+import * as React from "react";
+import { AnyFn, SharedBasic } from "./utils";
 
-export type NavbarAlignment = 'left' | 'right';
+export type NavbarAlignment = "left" | "right";
 
 export interface NavbarOptions {
   edge?: NavbarAlignment;
@@ -27,11 +27,11 @@ export interface NavbarProps extends SharedBasic {
   centerChildren?: boolean;
   fixed?: boolean;
   options?: NavbarOptions;
-};
+}
 
 /**
  * React Materialize: Navbar
  */
-declare const Navbar: React.FC<NavbarProps>
+declare const Navbar: React.FC<NavbarProps>;
 
 export default Navbar;

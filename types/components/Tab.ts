@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface TabProps {
   title: string;
@@ -12,6 +12,6 @@ export interface TabProps {
 /**
  * React Materialize: Tab
  */
-declare const Tab: React.FC<TabProps>
+declare const Tab: React.FC<TabProps>;
 
 export default Tab;

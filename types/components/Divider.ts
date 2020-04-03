@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
-export interface DividerProps {};
+export interface DividerProps {}
 
 /**
  * React Materialize: Divider
  */
-declare const Divider: React.FC<DividerProps>
+declare const Divider: React.FC<DividerProps>;
 
 export default Divider;

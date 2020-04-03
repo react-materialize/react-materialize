@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface CheckboxProps {
   value: string;
@@ -10,11 +10,11 @@ export interface CheckboxProps {
   id?: string;
   disabled?: boolean;
   checked?: boolean;
-};
+}
 
 /**
  * React Materialize: Checkbox
  */
-declare const Checkbox: React.FC<CheckboxProps>
+declare const Checkbox: React.FC<CheckboxProps>;
 
 export default Checkbox;

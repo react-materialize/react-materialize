@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { AnyFn, SharedBasic } from './utils';
+import * as React from "react";
+import { AnyFn, SharedBasic } from "./utils";
 
-export type DropdownAlignment = 'left' | 'right';
+export type DropdownAlignment = "left" | "right";
 
 export interface DropdownOptions {
   alignment?: DropdownAlignment;
@@ -13,21 +13,21 @@ export interface DropdownOptions {
   hover?: boolean;
   inDuration?: number;
   outDuration?: number;
-  onOpenStart?: AnyFn,
-  onOpenEnd?: AnyFn,
-  onCloseStart?: AnyFn,
-  onCloseEnd?: AnyFn
+  onOpenStart?: AnyFn;
+  onOpenEnd?: AnyFn;
+  onCloseStart?: AnyFn;
+  onCloseEnd?: AnyFn;
 }
 
 export interface DropdownProps extends SharedBasic {
   id?: string;
   options?: DropdownOptions;
   trigger: React.ReactNode;
-};
+}
 
 /**
  * React Materialize: Dropdown
  */
-declare const Dropdown: React.FC<DropdownProps>
+declare const Dropdown: React.FC<DropdownProps>;
 
 export default Dropdown;

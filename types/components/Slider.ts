@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { SharedBasic } from './utils';
+import * as React from "react";
+import { SharedBasic } from "./utils";
 
 export interface SliderOptions {
   indicators?: boolean;
@@ -11,11 +11,11 @@ export interface SliderOptions {
 export interface SliderProps extends SharedBasic {
   fullscreen?: boolean;
   options?: SliderOptions;
-};
+}
 
 /**
  * React Materialize: Slider
  */
-declare const Slider: React.FC<SliderProps>
+declare const Slider: React.FC<SliderProps>;
 
 export default Slider;

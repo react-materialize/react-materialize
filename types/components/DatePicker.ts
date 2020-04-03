@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { AnyFn, I18nOptions } from './utils';
+import * as React from "react";
+import { AnyFn, I18nOptions } from "./utils";
 
 export interface DatePickerOptions {
   autoClose?: boolean;
@@ -30,11 +30,11 @@ export interface DatePickerProps {
   onChange?: (date: Date) => any;
   id?: string;
   options?: DatePickerOptions;
-};
+}
 
 /**
  * React Materialize: DatePicker
  */
-declare const DatePicker: React.FC<DatePickerProps>
+declare const DatePicker: React.FC<DatePickerProps>;
 
 export default DatePicker;

@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { SharedBasic, AnyFn } from './utils';
-import { AutocompleteOptions } from './Autocomplete';
+import * as React from "react";
+import { AutocompleteOptions } from "./Autocomplete";
+import { AnyFn, SharedBasic } from "./utils";
 
-type ChipItem = {[key: string]: string};
+interface ChipItem {[key: string]: string;}
 
 export interface ChipOptions {
   data?: ChipItem[];
@@ -13,17 +13,17 @@ export interface ChipOptions {
   onChipAdd?: AnyFn;
   onChipSelect?: (item: React.ReactNode) => void;
   onChipDelete?: AnyFn;
-};
+}
 
 export interface ChipProps extends SharedBasic {
   close?: boolean;
   closeIcon?: React.ReactNode;
   options?: ChipOptions;
-};
+}
 
 /**
  * React Materialize: Chip
  */
-declare const Chip: React.FC<ChipProps>
+declare const Chip: React.FC<ChipProps>;
 
 export default Chip;

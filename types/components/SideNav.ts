@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { SharedBasic, AnyFn } from './utils';
+import * as React from "react";
+import { AnyFn, SharedBasic } from "./utils";
 
-export type SideNavEdge = 'left' | 'right';
+export type SideNavEdge = "left" | "right";
 
 export interface SideNavOptions {
   edge?: SideNavEdge;
@@ -20,11 +20,11 @@ export interface SideNavProps extends SharedBasic {
   options?: SideNavOptions;
   trigger?: React.ReactNode;
   fixed?: boolean;
-};
+}
 
 /**
  * React Materialize: SideNav
  */
-declare const SideNav: React.FC<SideNavProps>
+declare const SideNav: React.FC<SideNavProps>;
 
 export default SideNav;

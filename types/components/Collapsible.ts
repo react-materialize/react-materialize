@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { AnyFn, SharedBasic } from './utils';
+import * as React from "react";
+import { AnyFn, SharedBasic } from "./utils";
 
 interface CollapsibleOptions {
   accordion?: boolean;
@@ -22,6 +22,6 @@ export interface CollapsibleProps extends SharedBasic {
 /**
  * React Materialize: Collapsible
  */
-declare const Collapsible: React.FC<CollapsibleProps>
+declare const Collapsible: React.FC<CollapsibleProps>;
 
 export default Collapsible;

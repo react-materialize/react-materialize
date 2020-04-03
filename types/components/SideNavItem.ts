@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { UserViewProps } from './UserView';
+import * as React from "react";
+import { UserViewProps } from "./UserView";
 
 export interface SideNavItemProps {
   href?: string;
@@ -10,11 +10,11 @@ export interface SideNavItemProps {
   userView?: boolean;
   icon?: React.ReactNode;
   user?: UserViewProps;
-};
+}
 
 /**
  * React Materialize: SideNavItem
  */
-declare const SideNavItem: React.FC<SideNavItemProps>
+declare const SideNavItem: React.FC<SideNavItemProps>;
 
 export default SideNavItem;

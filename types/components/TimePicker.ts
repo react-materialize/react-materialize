@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { AnyFn, I18nOptions } from './utils';
+import * as React from "react";
+import { AnyFn, I18nOptions } from "./utils";
 
 export interface TimePickerOptions {
   duration?: number;
@@ -22,11 +22,11 @@ export interface TimePickerProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id?: string;
   options?: TimePickerOptions;
-};
+}
 
 /**
  * React Materialize: TimePicker
  */
-declare const TimePicker: React.FC<TimePickerProps>
+declare const TimePicker: React.FC<TimePickerProps>;
 
 export default TimePicker;
