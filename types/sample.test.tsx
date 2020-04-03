@@ -22,6 +22,7 @@ import {
   NavItem,
   Pagination,
   Parallax,
+  Preloader,
 } from 'react-materialize';
 
 <>
@@ -123,4 +124,10 @@ import {
     options={{
       responsiveThreshold: 0
     }} />
+  <Preloader
+    active
+    color="blue"
+    flashing={false}
+    size="big"
+  />
 </>
