@@ -6,7 +6,8 @@ import {
   Tab,
   Section,
   Carousel,
-  Textarea
+  Textarea,
+  Collapsible
 } from 'react-materialize';
 
 <>
@@ -16,4 +17,5 @@ import {
   <Section node="div" className="foo" id="bar" />
   <Carousel images={['one.jpg']} options={{ numVisible: 32, onCycleTo: () => {} }} centerImages={true} />
   <Textarea disabled={false} value="hello">foo</Textarea>
+  <Collapsible options={{ accordion: true }} />
 </>

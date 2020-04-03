@@ -5,3 +5,5 @@ export interface Responsive {
   xl?: number;
   offset?: string;
 }
+
+export type AnyFn = (...args: any[]) => any;
