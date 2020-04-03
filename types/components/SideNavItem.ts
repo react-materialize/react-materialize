@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { UserViewProps } from './UserView';
 
 export interface SideNavItemProps {
   href?: string;
@@ -8,7 +9,7 @@ export interface SideNavItemProps {
   subheader?: boolean;
   userView?: boolean;
   icon?: React.ReactNode;
-  user?: any; // TODO use UserShape
+  user?: UserViewProps;
 };
 
 /**

@@ -40,6 +40,7 @@ import {
   TextInput,
   TimePicker,
   Toast,
+  UserView,
 } from 'react-materialize';
 
 <>
@@ -340,4 +341,5 @@ import {
   <Toast className="asdasd" options={{ displayLength: 3 }}>
     <p>hello</p>
   </Toast>
+  <UserView background="asd" image="asd" />
 </>
