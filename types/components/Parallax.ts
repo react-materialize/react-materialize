@@ -1,8 +1,18 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
+export interface ParallaxOptions {
+  responsiveThreshold?: number;
 }
 
-declare class Checkbox extends React.Component {}
+export interface ParallaxProps extends SharedBasic {
+  options?: ParallaxOptions;
+  image?: React.ReactElement;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: Parallax
+ */
+declare const Parallax: React.FC<ParallaxProps>
+
+export default Parallax;

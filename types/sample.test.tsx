@@ -21,6 +21,7 @@ import {
   Navbar,
   NavItem,
   Pagination,
+  Parallax,
 } from 'react-materialize';
 
 <>
@@ -117,4 +118,9 @@ import {
     leftBtn={<Icon>chevron_left</Icon>}
     rightBtn={<Icon>chevron_right</Icon>}
   />
+  <Parallax
+    image={<img alt="" src="http://materializecss.com/images/parallax1.jpg"/>}
+    options={{
+      responsiveThreshold: 0
+    }} />
 </>
