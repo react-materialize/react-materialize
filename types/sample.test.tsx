@@ -34,6 +34,13 @@ import {
   Slider,
   Slide,
   Caption,
+  Spinner,
+  Switch,
+  Table,
+  TextInput,
+  TimePicker,
+  Toast,
+  UserView,
 } from 'react-materialize';
 
 <>
@@ -286,4 +293,53 @@ import {
       </Caption>
     </Slide>
   </Slider>
+  <Spinner color="red" />
+  <Switch onLabel="yes" offLabel="no" />
+  <Table centered striped />
+  <TextInput
+    noLayout
+    disabled
+    placeholder="hello"
+    id="hello"
+    label="what"
+    defaultValue="ok"
+    value="asd"
+    validate
+    success="ok"
+    error="wrong"
+    inputClassName="red"
+    type="gui"
+    onChange={e => {}}
+    password
+    email
+  >
+    yes
+  </TextInput>
+  <TimePicker
+    id="TimePicker-13"
+    options={{
+      autoClose: false,
+      container: 'root',
+      defaultTime: 'now',
+      duration: 350,
+      fromNow: 0,
+      i18n: {
+        cancel: 'Cancel',
+        clear: 'Clear',
+        done: 'Ok'
+      },
+      onCloseEnd: () => {},
+      onCloseStart: () => {},
+      onOpenEnd: () => {},
+      onOpenStart: () => {},
+      onSelect: () => {},
+      showClearBtn: false,
+      twelveHour: true,
+      vibrate: true
+    }}
+  />
+  <Toast className="asdasd" options={{ displayLength: 3 }}>
+    <p>hello</p>
+  </Toast>
+  <UserView background="asd" image="asd" />
 </>

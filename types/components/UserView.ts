@@ -1,8 +1,15 @@
 import * as React from 'react';
 
-declare namespace Checkbox {
-}
+export interface UserViewProps {
+  background?: string;
+  image?: string;
+  name?: string;
+  email?: string;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: UserView
+ */
+declare const UserView: React.FC<UserViewProps>
 
-export = Checkbox;
+export default UserView;

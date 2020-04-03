@@ -19,7 +19,7 @@ export interface AutocompleteProps extends Responsive {
   title?: string;
   icon?: React.ReactNode;
   placeholder?: string;
-  onChange?: (e: React.ChangeEvent) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   options: AutocompleteOptions;
 }

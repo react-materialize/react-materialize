@@ -1,8 +1,23 @@
 import * as React from 'react';
+import { SharedBasic, AnyFn } from './utils';
 
-declare namespace Checkbox {
-}
+export interface ToastOptions {
+  html?: string;
+  displayLength?: number;
+  inDuration?: number;
+  outDuration?: number;
+  classes?: string;
+  completeCallback?: AnyFn;
+  activationPercent?: number;
+};
 
-declare class Checkbox extends React.Component {}
+export interface ToastProps extends SharedBasic {
+  options?: ToastOptions;
+};
 
-export = Checkbox;
+/**
+ * React Materialize: Toast
+ */
+declare const Toast: React.FC<ToastProps>
+
+export default Toast;

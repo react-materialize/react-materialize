@@ -1,8 +1,16 @@
 import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
-}
+export interface TableProps extends SharedBasic {
+  centered?: boolean;
+  hoverable?: boolean;
+  responsive?: boolean;
+  striped?: boolean;
+};
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: Table
+ */
+declare const Table: React.FC<TableProps>
 
-export = Checkbox;
+export default Table;
