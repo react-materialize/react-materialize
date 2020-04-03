@@ -46,3 +46,9 @@ export interface I18nOptions {
   weekdaysShort?: string[];
   weekdaysAbbrev?: string[];
 }
+
+export type Positions =
+  'top' |
+  'right' |
+  'left' |
+  'bottom';

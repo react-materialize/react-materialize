@@ -312,7 +312,7 @@ import {
     error="wrong"
     inputClassName="red"
     type="gui"
-    onChange={e => {}}
+    onChange={e => { e.preventDefault() }}
     password
     email
   >
@@ -346,4 +346,5 @@ import {
   </Toast>
   <UserView background="asd" image="asd" />
   <Breadcrumb cols={6} />
+  <Button node="div">click</Button>
 </>
