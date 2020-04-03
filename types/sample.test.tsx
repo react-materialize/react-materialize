@@ -23,6 +23,7 @@ import {
   Pagination,
   Parallax,
   Preloader,
+  ProgressBar,
 } from 'react-materialize';
 
 <>
@@ -129,5 +130,8 @@ import {
     color="blue"
     flashing={false}
     size="big"
+  />
+  <ProgressBar
+    progress={50}
   />
 </>
