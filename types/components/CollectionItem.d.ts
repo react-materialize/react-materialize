@@ -1,8 +1,14 @@
-import * as React from "react";
+import * as React from 'react';
+import { SharedBasic } from './utils';
 
-declare namespace Checkbox {
+export interface CollectionItemProps extends SharedBasic {
+  active?: boolean;
+  href: string;
 }
 
-declare class Checkbox extends React.Component {}
+/**
+ * React Materialize: CollectionItem
+ */
+declare const CollectionItem: React.FC<CollectionItemProps>
 
-export = Checkbox;
+export default CollectionItem;
