@@ -2,7 +2,7 @@ import * as React from "react";
 import { AutocompleteOptions } from "./Autocomplete";
 import { AnyFn, SharedBasic } from "./utils";
 
-interface ChipItem {[key: string]: string;}
+export interface ChipItem {[key: string]: string;}
 
 export interface ChipOptions {
   data?: ChipItem[];
@@ -11,7 +11,7 @@ export interface ChipOptions {
   autocompleteOptions?: AutocompleteOptions;
   limit?: number;
   onChipAdd?: AnyFn;
-  onChipSelect?: (item: React.ReactNode) => void;
+  onChipSelect?: (item: React.ReactNode, chip: HTMLElement) => void;
   onChipDelete?: AnyFn;
 }
 
