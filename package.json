@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "3.8.2",
+  "version": "3.8.3",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -16,7 +16,8 @@
     "pretest": "npm run lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
-    "build": "babel -d lib src",
+    "build": "babel src --out-dir lib && npm run copy-types",
+    "copy-types": "cp types/components/*.d.ts lib",
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",

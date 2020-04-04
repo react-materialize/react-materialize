@@ -1,6 +1,6 @@
 import * as React from "react";
 
-interface CarouselOptions {
+export interface CarouselOptions {
   duration?: number;
   dist?: number;
   shift?: number;
