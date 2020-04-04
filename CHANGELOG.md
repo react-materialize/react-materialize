@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.3
+
+- TS: copy definition files on build
+
 ### 3.8.2
 
 - TS: add types path to package.json
