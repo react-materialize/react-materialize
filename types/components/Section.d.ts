@@ -1,7 +1,7 @@
 import * as React from "react";
 import { SharedBasic } from "./utils";
 
-interface SectionProps extends SharedBasic {
+export interface SectionProps extends SharedBasic {
   node?: React.ReactNode;
   id?: string;
 }

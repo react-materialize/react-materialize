@@ -1,7 +1,7 @@
 import * as React from "react";
 import { AnyFn, SharedBasic } from "./utils";
 
-interface CollapsibleOptions {
+export interface CollapsibleOptions {
   accordion?: boolean;
   onOpenStart?: AnyFn;
   onOpenEnd?: AnyFn;
