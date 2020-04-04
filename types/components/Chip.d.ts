@@ -10,9 +10,9 @@ export interface ChipOptions {
   secondaryPlaceholder?: string;
   autocompleteOptions?: AutocompleteOptions;
   limit?: number;
-  onChipAdd?: AnyFn;
-  onChipSelect?: (item: React.ReactNode, chip: HTMLElement) => void;
-  onChipDelete?: AnyFn;
+  onChipAdd?: (item: JQuery, chip: HTMLElement) => void;
+  onChipSelect?: (item: JQuery, chip: HTMLElement) => void;
+  onChipDelete?: (item: JQuery, chip: HTMLElement) => void;
 }
 
 export interface ChipProps extends SharedBasic {
