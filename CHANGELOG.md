@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.2
+
+- TS: add types path to package.json
+
 ### 3.8.1
 
 - TS: Complete type definition for all components
