@@ -3,6 +3,7 @@
   "version": "3.8.1",
   "description": "Material design components for react",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
     "LICENSE",
     "README.md",
