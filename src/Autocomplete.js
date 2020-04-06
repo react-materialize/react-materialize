@@ -19,7 +19,7 @@ const Autocomplete = ({
   const autocompleteRef = useRef(null);
   const sizes = { s, m, l, xl };
 
-  let classes = { col: true };
+  let classes = { };
 
   constants.SIZES.forEach(size => {
     classes[size + sizes[size]] = sizes[size];
