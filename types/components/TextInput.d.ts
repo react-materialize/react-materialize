@@ -19,6 +19,7 @@ export interface TextInputProps extends Responsive {
   password?: boolean;
   email?: boolean;
   children?: React.ReactNode;
+  name?: string;
 }
 
 /**
