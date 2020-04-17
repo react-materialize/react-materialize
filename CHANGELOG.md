@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.8.4
+
+- Modal: remove Element as a proptype
+- TS: add various fixes
+
 ### 3.8.3
 
 - TS: copy definition files on build
