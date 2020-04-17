@@ -190,7 +190,7 @@ Modal.propTypes = {
    * Root node where modal should be injected
    * @default document.body
    */
-  root: PropTypes.oneOfType([PropTypes.node, PropTypes.instanceOf(Element)])
+  root: PropTypes.any
 };
 
 Modal.defaultProps = {
