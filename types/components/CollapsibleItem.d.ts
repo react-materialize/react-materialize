@@ -2,8 +2,13 @@ import * as React from "react";
 import { SharedBasic } from "./utils";
 
 export interface CollapsibleItemProps extends SharedBasic {
-  active?: boolean;
-  href?: string;
+  expanded?: boolean;
+  node?: React.ReactNode;
+  header: any;
+  icon?: React.ReactNode;
+  iconClassName?: string;
+  onSelect: (eventKey: any) => any;
+  eventKey?: any;
 }
 
 /**
