@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.5
+
+- Modal: fix renrendering bug
+
 ### 3.8.4
 
 - Modal: remove Element as a proptype
