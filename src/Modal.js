@@ -25,20 +25,19 @@ const Modal = ({
   root,
   ...props
 }) => {
-  const _modal = useRef(null);
   const _modalRoot = useRef(null);
   const _modalInstance = useRef(null);
-  const currentRoot = _modalRoot.current;
+  const _modalRef = useRef(null);
 
   useEffect(() => {
-    _modalInstance.current = M.Modal.init(_modal.current, options);
+    const modalRoot = _modalRoot.current;
+    _modalInstance.current = M.Modal.init(_modalRef.current, options);
 
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      root.removeChild(_modalRoot.current);
-      _modalInstance.current && _modalInstance.current.destroy();
+      root.removeChild(modalRoot);
+      _modalInstance.current.destroy();
     };
-  }, [options, currentRoot, root]);
+  }, [options, root]);
 
   useEffect(() => {
     if (open) {
@@ -60,30 +59,30 @@ const Modal = ({
     _modalInstance.current && _modalInstance.current.close();
   };
 
-  const renderModalPortal = () => {
-    _modalRoot.current = document.createElement('div');
-    root.appendChild(_modalRoot.current);
-    const classes = cx(
-      'modal',
-      {
-        'modal-fixed-footer': fixedFooter,
-        'bottom-sheet': bottomSheet
-      },
-      className
-    );
+  const classes = cx(
+    'modal',
+    {
+      'modal-fixed-footer': fixedFooter,
+      'bottom-sheet': bottomSheet
+    },
+    className
+  );
 
-    return (
-      _modalRoot.current &&
-      createPortal(
-        <div className={classes} ref={_modal} {...props}>
-          <div className="modal-content">
-            <h4>{header}</h4>
-            {children}
-          </div>
-          <div className="modal-footer">{Children.toArray(actions)}</div>
-        </div>,
-        _modalRoot.current
-      )
+  const renderModalPortal = () => {
+    if (!_modalRoot.current) {
+      _modalRoot.current = document.createElement('div');
+      root.appendChild(_modalRoot.current);
+    }
+
+    return createPortal(
+      <div className={classes} ref={_modalRef} {...props}>
+        <div className="modal-content">
+          <h4>{header}</h4>
+          {children}
+        </div>
+        <div className="modal-footer">{Children.toArray(actions)}</div>
+      </div>,
+      _modalRoot.current
     );
   };
 
