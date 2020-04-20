@@ -81,3 +81,18 @@ exports[`<Textarea /> Textarea 1`] = `
   />
 </div>
 `;
+
+exports[`<Textarea /> Value 1`] = `
+<div
+  className="input-field col"
+>
+  <textarea
+    className="materialize-textarea"
+    id="Textarea-mockId"
+    value="I was here"
+  />
+  <span
+    className="helper-text"
+  />
+</div>
+`;

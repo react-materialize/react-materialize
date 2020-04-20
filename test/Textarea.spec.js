@@ -28,6 +28,18 @@ describe('<Textarea />', () => {
     expect(wrapper.hasClass('m6')).toBeFalsy();
   });
 
+  test('Value', () => {
+    wrapper = shallow(<Textarea value="I was here" />);
+    expect(wrapper.find('textarea').prop('value')).toEqual('I was here');
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('defaultValue renders as value', () => {
+    wrapper = mount(<Textarea defaultValue="I was here" />);
+    expect(wrapper.find('textarea').prop('defaultValue')).toEqual('I was here');
+    expect(wrapper.find('textarea').instance().value).toEqual('I was here');
+  });
+
   test('Disabled', () => {
     wrapper = shallow(<Textarea value="I was here" disabled />);
     expect(wrapper).toMatchSnapshot();
@@ -53,5 +65,13 @@ describe('<Textarea />', () => {
     const textareaElement = wrapper.find('textarea');
     expect(textareaElement.hasClass('materialize-textarea')).toBeTruthy();
     expect(textareaElement.hasClass('custom-class')).toBeTruthy();
+  });
+
+  test('onChange is fired', () => {
+    const onChangeMock = jest.fn();
+    wrapper = shallow(<Textarea onChange={onChangeMock} />);
+    const textarea = wrapper.find('textarea');
+    textarea.simulate('change');
+    expect(onChangeMock).toHaveBeenCalled();
   });
 });
