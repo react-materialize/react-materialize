@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.6
+
+- Modal: add warning and failsafe for root prop
+
 ### 3.8.5
 
 - Modal: fix renrendering bug
