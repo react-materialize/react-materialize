@@ -19,7 +19,7 @@ globals:
   global: true
   window: true
   module: true
-  Element: true
+  console: true
 
 plugins: ['prettier', 'react-hooks']
 
