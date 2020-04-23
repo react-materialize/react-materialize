@@ -28,6 +28,11 @@ const Modal = ({
   const _modalRoot = useRef(null);
   const _modalInstance = useRef(null);
   const _modalRef = useRef(null);
+  if (root === null) {
+    console.warn(
+      'React Materialize: root should be a valid node element to render a Modal'
+    );
+  }
 
   useEffect(() => {
     const modalRoot = _modalRoot.current;
@@ -194,7 +199,7 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   id: `Modal-${idgen()}`,
-  root: document.body,
+  root: typeof window !== undefined ? document.body : null,
   open: false,
   options: {
     opacity: 0.5,
