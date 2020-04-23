@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.7
+
+- Modal: add quotes to undefined type
+
 ### 3.8.6
 
 - Modal: add warning and failsafe for root prop
