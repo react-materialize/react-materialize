@@ -199,7 +199,7 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   id: `Modal-${idgen()}`,
-  root: typeof window !== undefined ? document.body : null,
+  root: typeof window !== 'undefined' ? document.body : null,
   open: false,
   options: {
     opacity: 0.5,
