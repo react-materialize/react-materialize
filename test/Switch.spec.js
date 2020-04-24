@@ -1,10 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Switch from '../src/Switch';
 
 describe('<Switch />', () => {
   test('renders', () => {
-    const wrapper = <Switch offLabel="Off" onLabel="On" />;
-    expect(shallow(wrapper)).toMatchSnapshot();
+    const { container } = render(<Switch offLabel="Off" onLabel="On" />);
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.10
+
+- Switch: migrate test to RTL
+
 ### 3.8.9
 
 - storybook: update welcome page
