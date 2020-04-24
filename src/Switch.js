@@ -2,33 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 
-const Switch = ({
-  id,
-  checked,
-  onChange,
-  disabled,
-  offLabel,
-  onLabel,
-  ...props
-}) => {
-  return (
-    <div className="switch">
-      <label htmlFor={id}>
-        {offLabel}
-        <input
-          id={id}
-          disabled={disabled}
-          onChange={onChange}
-          type="checkbox"
-          checked={checked}
-          {...props}
-        />
-        <span className="lever" />
-        {onLabel}
-      </label>
-    </div>
-  );
-};
+const Switch = ({ id, offLabel, onLabel, ...props }) => (
+  <div className="switch">
+    <label htmlFor={id}>
+      {offLabel}
+      <input id={id} type="checkbox" {...props} />
+      <span className="lever" />
+      {onLabel}
+    </label>
+  </div>
+);
 
 Switch.propTypes = {
   /**
