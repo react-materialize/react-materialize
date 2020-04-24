@@ -1,42 +1,35 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import CardTitle from '../src/CardTitle';
 
 describe('<CardTitle />', () => {
-  let wrapper;
-
   test('renders', () => {
-    wrapper = shallow(<CardTitle image="">I am a very simple card</CardTitle>);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <CardTitle className="find" image="">
+        I am a very simple card
+      </CardTitle>
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   test('requires an image prop', () => {
-    wrapper = shallow(
+    const { getByRole } = render(
       <CardTitle image="url.jpg" reveal>
         I am a very simple card
       </CardTitle>
     );
 
-    expect(wrapper.find('img').hasClass('activator')).toBeTruthy();
+    expect(getByRole('img').className).toBe('activator');
   });
 
   test('can have waves', () => {
-    wrapper = shallow(
+    const { container } = render(
       <CardTitle image="url.jpg" waves="green">
         I am a very simple card
       </CardTitle>
     );
 
-    expect(wrapper.hasClass('waves-green')).toBeTruthy();
-  });
-
-  test('accepts classnames', () => {
-    wrapper = shallow(
-      <CardTitle image="url.jpg" waves="green" className="find">
-        I am a very simple card
-      </CardTitle>
-    );
-
-    expect(wrapper.hasClass('find')).toBeTruthy();
+    expect(container.firstChild.classList.contains('waves-green')).toBeTruthy();
   });
 });

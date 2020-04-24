@@ -1,17 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CardTitle /> renders 1`] = `
-<div
-  className="card-image"
->
-  <img
-    className=""
-    src=""
-  />
-  <span
-    className="card-title"
+<div>
+  <div
+    class="find card-image"
   >
-    I am a very simple card
-  </span>
+    <img
+      class=""
+      src=""
+    />
+    <span
+      class="card-title"
+    >
+      I am a very simple card
+    </span>
+  </div>
 </div>
 `;
