@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.9
+
+- storybook: update welcome page
+
 ### 3.8.8
 
 - npm: fix vulnerability issues
