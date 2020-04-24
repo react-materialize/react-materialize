@@ -1,6 +1,6 @@
 {
   "name": "react-materialize",
-  "version": "3.8.7",
+  "version": "3.8.8",
   "description": "Material design components for react",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
