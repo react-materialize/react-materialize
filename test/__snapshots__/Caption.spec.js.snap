@@ -1,16 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Caption /> renders 1`] = `
-<div
-  className="caption left-align"
->
-  <h3>
-    This is our big Tagline!
-  </h3>
-  <h5
-    className="light grey-text text-lighten-3"
+<div>
+  <div
+    class="caption left-align"
   >
-    Here's our small slogan.
-  </h5>
+    <h3>
+      This is our big Tagline!
+    </h3>
+    <h5
+      class="light grey-text text-lighten-3"
+    >
+      Here's our small slogan.
+    </h5>
+  </div>
 </div>
 `;
