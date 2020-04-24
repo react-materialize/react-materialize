@@ -76,6 +76,7 @@ Carousel.propTypes = {
   className: PropTypes.string,
   /**
    * Carousel ID for jQuery manipulating
+   * @default idgen()
    */
   carouselId: PropTypes.string,
   /**

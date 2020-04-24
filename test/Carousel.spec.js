@@ -1,11 +1,9 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Carousel from '../src/Carousel';
 import mocker from './helper/new-mocker';
 
 describe('<Carousel />', () => {
-  let wrapper;
-
   const images = [
     'https://lorempixel.com/250/250/nature/1',
     'https://lorempixel.com/250/250/nature/2',
@@ -14,48 +12,45 @@ describe('<Carousel />', () => {
   ];
 
   test('renders', () => {
-    wrapper = shallow(<Carousel images={images} />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Carousel images={images} />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('renders fixed items', () => {
     const fixedItem = <span>Do you rock!?</span>;
-    wrapper = shallow(<Carousel images={images} fixedItem={fixedItem} />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <Carousel images={images} fixedItem={fixedItem} />
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   test('renders centered images', () => {
-    wrapper = shallow(<Carousel images={images} centerImages />);
-    expect(wrapper).toMatchSnapshot();
-  });
+    const { container } = render(<Carousel images={images} centerImages />);
 
-  test('handles content slides', () => {
-    const child = (
-      <div className="red">
-        <h2>First Panel</h2>
-        <p>This is your first panel</p>
-      </div>
-    );
-    wrapper = shallow(<Carousel images={images}>{child}</Carousel>);
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('accepts className props', () => {
-    wrapper = shallow(<Carousel images={images} className="center" />);
-    expect(wrapper.hasClass('carousel center')).toBeTruthy();
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <Carousel images={images} className="center" />
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   test('accepts external `id` value', () => {
-    wrapper = shallow(<Carousel images={images} carouselId="ID" />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Carousel images={images} carouselId="ID" />);
+
+    expect(container).toMatchSnapshot();
   });
 
   describe('initialises', () => {
     const carouselInitMock = jest.fn();
     const carouselInstanceDestroyMock = jest.fn();
     const carouselMock = {
-      init: (el, options) => {
+      init: (_, options) => {
         carouselInitMock(options);
         return {
           destroy: carouselInstanceDestroyMock
@@ -75,7 +70,7 @@ describe('<Carousel />', () => {
     });
 
     test('uses default options if none are given', () => {
-      wrapper = mount(<Carousel />);
+      render(<Carousel />);
 
       expect(carouselInitMock).toHaveBeenCalledWith({
         duration: 200,
@@ -91,15 +86,14 @@ describe('<Carousel />', () => {
     });
 
     test('handles full width sliders', () => {
-      wrapper = mount(
-        <Carousel images={images} options={{ fullWidth: true }} />
-      );
+      render(<Carousel images={images} options={{ fullWidth: true }} />);
+
       expect(carouselInitMock).toHaveBeenCalledWith({ fullWidth: true });
     });
 
     test('more options', () => {
       const options = { padding: 12, fullWidth: true, indicators: false };
-      wrapper = mount(<Carousel images={images} options={options} />);
+      render(<Carousel images={images} options={options} />);
       expect(carouselInitMock).toHaveBeenCalledWith(options);
     });
   });
