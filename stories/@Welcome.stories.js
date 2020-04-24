@@ -15,10 +15,6 @@ stories.add('Welcome', () => (
       src={reactMaterializeLogo}
     />
     <h1>React Materialize</h1>
-    <p>
-      Welcome to the <strong>React Materialize</strong> docs.
-    </p>
-    <h2>Where am I?</h2>
     <a
       href="https://npmjs.org/package/react-materialize"
       title="View this project on npm"
@@ -31,6 +27,9 @@ stories.add('Welcome', () => (
         style={{ maxWidth: '100%' }}
       />
     </a>
+    <p>
+      Welcome to the <strong>React Materialize</strong> docs.
+    </p>
     <p>
       You should use <strong>React Materialize</strong> if you want to use{' '}
       <a href="http://materializecss.com" target="_blank">
@@ -62,7 +61,7 @@ export default () => (
     <h2>Intallation</h2>
     <pre>
       {`
-npm install materialize-css
+npm install materialize-css # or materialize-css@next
 npm install react-materialize
       `}
     </pre>
