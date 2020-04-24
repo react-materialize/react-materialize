@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.8.8
+
+- npm: fix vulnerability issues
+
 ### 3.8.7
 
 - Modal: add quotes to undefined type
