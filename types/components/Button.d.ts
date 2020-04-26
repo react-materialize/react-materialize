@@ -19,7 +19,6 @@ export interface TooltipOptions {
   transitionMovement?: number;
   delay?: number;
   position?: Positions;
-  tooltip?: string;
 }
 
 export interface ButtonProps extends SharedBasic {
