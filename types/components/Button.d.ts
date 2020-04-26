@@ -10,14 +10,14 @@ export interface FabOptions {
 }
 
 export interface TooltipOptions {
-  exitDelay: Number;
-  enterDelay: Number;
-  html: string;
-  margin: Number;
-  inDuration: Number;
-  outDuration: Number;
-  transitionMovement: Number;
-  delay: number;
+  exitDelay?: number;
+  enterDelay?: number;
+  html?: string;
+  margin?: number;
+  inDuration?: number;
+  outDuration?: number;
+  transitionMovement?: number;
+  delay?: number;
   position?: Positions;
   tooltip?: string;
 }
