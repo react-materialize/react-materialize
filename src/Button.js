@@ -151,13 +151,18 @@ Button.propTypes = {
   tooltip: PropTypes.string,
   /**
    * Tooltips options as here
-   * http://archives.materializecss.com/0.100.2/dialogs.html#tooltip
+   * https://materializecss.com/tooltips.html#options
    */
   tooltipOptions: PropTypes.shape({
+    exitDelay: PropTypes.number,
+    enterDelay: PropTypes.number,
+    html: PropTypes.string,
+    margin: PropTypes.number,
+    inDuration: PropTypes.number,
+    outDuration: PropTypes.number,
+    transitionMovement: PropTypes.number,
     delay: PropTypes.number,
-    position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-    tooltip: PropTypes.string,
-    html: PropTypes.bool
+    position: PropTypes.oneOf(['top', 'right', 'bottom', 'left'])
   }),
   waves: PropTypes.oneOf([
     'light',
