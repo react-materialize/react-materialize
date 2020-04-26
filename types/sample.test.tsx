@@ -47,24 +47,46 @@ import {
   Checkbox,
   Chip,
   Col,
-  Badge,
+  Badge
 } from 'react-materialize';
 
 <>
-  <Autocomplete options={{ data: { asd: '32' }, onAutocomplete: () => 32 }} s={3} />;
-  <Tabs className="hello" defaultValue="what" options={{ duration: 32, onShow: () => {}, swipeable: true, responsiveThreshold: 32 }} onChange={() => {}} />
+  <Autocomplete
+    options={{ data: { asd: '32' }, onAutocomplete: () => 32 }}
+    s={3}
+  />
+  ;
+  <Tabs
+    className="hello"
+    defaultValue="what"
+    options={{
+      duration: 32,
+      onShow: () => {},
+      swipeable: true,
+      responsiveThreshold: 32
+    }}
+    onChange={() => {}}
+  />
   <Tab idx="as" title="Hello" />
   <Section node="div" className="foo" id="bar">
     <p>hello</p>
   </Section>
-  <Carousel images={['one.jpg']} options={{ numVisible: 32, onCycleTo: () => {} }} centerImages={true} />
-  <Textarea disabled={false} value="hello">foo</Textarea>
+  <Carousel
+    images={['one.jpg']}
+    options={{ numVisible: 32, onCycleTo: () => {} }}
+    centerImages={true}
+  />
+  <Textarea disabled={false} value="hello">
+    foo
+  </Textarea>
   <Collapsible options={{ accordion: true }} />
   <CollapsibleItem href="http://" active={false} />
   <Container className="hello" />
   <DatePicker options={{ isRTL: false }} id="asd" />
   <Divider />
-  <Dropdown id="Dropdown_6" options={{
+  <Dropdown
+    id="Dropdown_6"
+    options={{
       alignment: 'left',
       autoTrigger: true,
       closeOnClick: true,
@@ -75,22 +97,56 @@ import {
       onOpenStart: () => {},
       outDuration: 250
     }}
-    trigger={<Button>Drop Me!</Button>}>
+    trigger={<Button>Drop Me!</Button>}
+  >
     <a href="#">one</a>
   </Dropdown>
   <Footer
     className="example"
     copyrights="&copy 2015 Copyright Text"
-    links={<ul><li><a className="grey-text text-lighten-3" href="#!">Link 1</a></li><li><a className="grey-text text-lighten-3" href="#!">Link 2</a></li><li><a className="grey-text text-lighten-3" href="#!">Link 3</a></li><li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li></ul>}
-    moreLinks={<a className="grey-text text-lighten-4 right" href="#!">More Links</a>}>
+    links={
+      <ul>
+        <li>
+          <a className="grey-text text-lighten-3" href="#!">
+            Link 1
+          </a>
+        </li>
+        <li>
+          <a className="grey-text text-lighten-3" href="#!">
+            Link 2
+          </a>
+        </li>
+        <li>
+          <a className="grey-text text-lighten-3" href="#!">
+            Link 3
+          </a>
+        </li>
+        <li>
+          <a className="grey-text text-lighten-3" href="#!">
+            Link 4
+          </a>
+        </li>
+      </ul>
+    }
+    moreLinks={
+      <a className="grey-text text-lighten-4 right" href="#!">
+        More Links
+      </a>
+    }
+  >
     <h1>Footer Content</h1>
   </Footer>
-  <Icon className="asd" left small large>cloud</Icon>
-  <MediaBox id="MediaBox_7" options={{
+  <Icon className="asd" left small large>
+    cloud
+  </Icon>
+  <MediaBox
+    id="MediaBox_7"
+    options={{
       inDuration: 275,
       onOpenEnd: () => {},
       outDuration: 200
-    }}>
+    }}
+  >
     <img
       alt=""
       src="https://materializecss.com/images/sample-1.jpg"
@@ -121,7 +177,11 @@ import {
   </Modal>
   <Navbar
     alignLinks="right"
-    brand={<a className="brand-logo" href="#">Logo</a>}
+    brand={
+      <a className="brand-logo" href="#">
+        Logo
+      </a>
+    }
     id="mobile-nav"
     menuIcon={<Icon>menu</Icon>}
     options={{
@@ -133,12 +193,8 @@ import {
       preventScrolling: true
     }}
   >
-    <NavItem href="">
-      Getting started
-    </NavItem>
-    <NavItem href="components.html">
-      Components
-    </NavItem>
+    <NavItem href="">Getting started</NavItem>
+    <NavItem href="components.html">Components</NavItem>
   </Navbar>
   <Pagination
     activePage={3}
@@ -147,19 +203,13 @@ import {
     rightBtn={<Icon>chevron_right</Icon>}
   />
   <Parallax
-    image={<img alt="" src="http://materializecss.com/images/parallax1.jpg"/>}
+    image={<img alt="" src="http://materializecss.com/images/parallax1.jpg" />}
     options={{
       responsiveThreshold: 0
-    }} />
-  <Preloader
-    active
-    color="blue"
-    flashing={false}
-    size="big"
+    }}
   />
-  <ProgressBar
-    progress={50}
-  />
+  <Preloader active color="blue" flashing={false} size="big" />
+  <ProgressBar progress={50} />
   <RadioGroup
     label="T-Shirt Size"
     name="size"
@@ -179,7 +229,7 @@ import {
     ]}
     value="xl"
   />
-  <Range min="0" max="50"/>
+  <Range min="0" max="50" />
   <Row node="p" className="asd" />
   <SearchForm searchIcon={<p>asd</p>} closeIcon={<i>asd</i>} />
   <Select
@@ -205,15 +255,9 @@ import {
     }}
     value="2"
   >
-    <option value="1">
-      Option 1
-    </option>
-    <option value="2">
-      Option 2
-    </option>
-    <option value="3">
-      Option 3
-    </option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
   </Select>
   <SideNav
     id="SideNav-10"
@@ -231,24 +275,13 @@ import {
       }}
       userView
     />
-    <SideNavItem
-      href="#!icon"
-      icon="cloud"
-    >
+    <SideNavItem href="#!icon" icon="cloud">
       First Link With Icon
     </SideNavItem>
-    <SideNavItem href="#!second">
-      Second Link
-    </SideNavItem>
+    <SideNavItem href="#!second">Second Link</SideNavItem>
     <SideNavItem divider />
-    <SideNavItem subheader>
-      Subheader
-    </SideNavItem>
-    <SideNavItem
-      icon={<Icon>foo</Icon>}
-      href="#!third"
-      waves
-    >
+    <SideNavItem subheader>Subheader</SideNavItem>
+    <SideNavItem icon={<Icon>foo</Icon>} href="#!third" waves>
       Third Link With Waves
     </SideNavItem>
   </SideNav>
@@ -261,41 +294,33 @@ import {
       interval: 6000
     }}
   >
-    <Slide image={<img alt="" src="http://lorempixel.com/780/580/nature/1"/>}>
+    <Slide image={<img alt="" src="http://lorempixel.com/780/580/nature/1" />}>
       <Caption placement="center">
-        <h3>
-          This is our big Tagline!
-        </h3>
+        <h3>This is our big Tagline!</h3>
         <h5 className="light grey-text text-lighten-3">
           Here's our small slogan.
         </h5>
       </Caption>
     </Slide>
-    <Slide image={<img alt="" src="http://lorempixel.com/780/580/nature/2"/>}>
+    <Slide image={<img alt="" src="http://lorempixel.com/780/580/nature/2" />}>
       <Caption placement="left">
-        <h3>
-          Left Aligned Caption
-        </h3>
+        <h3>Left Aligned Caption</h3>
         <h5 className="light grey-text text-lighten-3">
           Here's our small slogan.
         </h5>
       </Caption>
     </Slide>
-    <Slide image={<img alt="" src="https://lorempixel.com/780/580/nature/3"/>}>
+    <Slide image={<img alt="" src="https://lorempixel.com/780/580/nature/3" />}>
       <Caption placement="right">
-        <h3>
-          Right Aligned Caption
-        </h3>
+        <h3>Right Aligned Caption</h3>
         <h5 className="light grey-text text-lighten-3">
           Here's our small slogan.
         </h5>
       </Caption>
     </Slide>
-    <Slide image={<img alt="" src="https://lorempixel.com/580/250/nature/4"/>}>
+    <Slide image={<img alt="" src="https://lorempixel.com/580/250/nature/4" />}>
       <Caption placement="center">
-        <h3>
-          This is our big Tagline!
-        </h3>
+        <h3>This is our big Tagline!</h3>
         <h5 className="light grey-text text-lighten-3">
           Here's our small slogan.
         </h5>
@@ -318,7 +343,9 @@ import {
     error="wrong"
     inputClassName="red"
     type="gui"
-    onChange={e => { e.preventDefault() }}
+    onChange={e => {
+      e.preventDefault();
+    }}
     password
     email
   >
@@ -352,18 +379,36 @@ import {
   </Toast>
   <UserView background="asd" image="asd" />
   <Breadcrumb cols={6} />
-  <Button node="div">click</Button>
+  <Button
+    node="div"
+    tooltipOptions={{
+      position: 'bottom',
+      enterDelay: 2000,
+      html: 'Can take regular text or HTML strings.'
+    }}
+  >
+    click
+  </Button>
   <Card
     closeIcon={<Icon>close</Icon>}
-    header={<CardTitle image="https://materializecss.com/images/sample-1.jpg" reveal waves="light"/>}
-    reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}
+    header={
+      <CardTitle
+        image="https://materializecss.com/images/sample-1.jpg"
+        reveal
+        waves="light"
+      />
+    }
+    reveal={
+      <p>
+        Here is some more information about this product that is only revealed
+        once clicked on.
+      </p>
+    }
     revealIcon={<Icon>more_vert</Icon>}
     title="Card Title"
   >
     <p>
-      <a href="#">
-        This is a link
-      </a>
+      <a href="#">This is a link</a>
     </p>
   </Card>
   <Checkbox value="yes" label="what" checked />
@@ -385,4 +430,4 @@ import {
   />
   <Col offset="23">a</Col>
   <Badge newIcon={<i>a</i>} caption="Hello" />
-  </>
+</>;
