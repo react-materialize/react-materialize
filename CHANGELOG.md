@@ -1,8 +1,5 @@
 # Changelog
 
-- Textarea: fixed missing onChange prop; added test
-- Textarea: fixed missing defaultValue prop; added test
-
 ### 3.8.5
 
 - Modal: fix renrendering bug
