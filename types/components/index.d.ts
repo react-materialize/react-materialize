@@ -49,3 +49,4 @@ export { default as TextInput, TextInputProps } from './TextInput';
 export { default as TimePicker, TimePickerProps, TimePickerOptions } from './TimePicker';
 export { default as Toast, ToastProps, ToastOptions } from './Toast';
 export { default as UserView, UserViewProps } from './UserView';
+export { default as ChipItem } from './Chip';

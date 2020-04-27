@@ -10,9 +10,9 @@ export interface ChipOptions {
   secondaryPlaceholder?: string;
   autocompleteOptions?: AutocompleteOptions;
   limit?: number;
-  onChipAdd?: (item: JQuery, chip: HTMLElement) => void;
-  onChipSelect?: (item: JQuery, chip: HTMLElement) => void;
-  onChipDelete?: (item: JQuery, chip: HTMLElement) => void;
+  onChipAdd?: (item: any, chip: HTMLElement) => void;
+  onChipSelect?: (item: any, chip: HTMLElement) => void;
+  onChipDelete?: (item: any, chip: HTMLElement) => void;
 }
 
 export interface ChipProps extends SharedBasic {
