@@ -1,5 +1,12 @@
 # Changelog
 
+### 3.9.0
+
+- JS: add children as dependency for JS components
+- Range: add step prop
+- ts: various fixes
+- storybook: fix deprecation warning
+
 ### 3.8.11
 
 - Button: update tooltipOptions types/proptypes
