@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
+import { dropdownOptions } from './Dropdown';
 
 const Select = ({
   id,
@@ -189,20 +190,7 @@ Select.propTypes = {
      * Options for the dropdown
      * <a target="_blank" href="http://materializecss.com/dropdown.html#options">http://materializecss.com/dropdown.html</a>
      */
-    dropdownOptions: PropTypes.shape({
-      alignment: PropTypes.oneOf(['left', 'right']),
-      autoTrigger: PropTypes.bool,
-      constrainWidth: PropTypes.bool,
-      coverTrigger: PropTypes.bool,
-      closeOnClick: PropTypes.bool,
-      hover: PropTypes.bool,
-      inDuration: PropTypes.number,
-      outDuration: PropTypes.number,
-      onOpenStart: PropTypes.func,
-      onOpenEnd: PropTypes.func,
-      onCloseStart: PropTypes.func,
-      onCloseEnd: PropTypes.func
-    })
+    dropdownOptions: dropdownOptions
   })
 };
 

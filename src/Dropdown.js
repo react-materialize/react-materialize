@@ -52,6 +52,22 @@ const Dropdown = ({ children, className, trigger, options, ...props }) => {
   );
 };
 
+export const dropdownOptions = PropTypes.shape({
+  alignment: PropTypes.oneOf(['left', 'right']),
+  autoTrigger: PropTypes.bool,
+  constrainWidth: PropTypes.bool,
+  container: PropTypes.node,
+  coverTrigger: PropTypes.bool,
+  closeOnClick: PropTypes.bool,
+  hover: PropTypes.bool,
+  inDuration: PropTypes.number,
+  outDuration: PropTypes.number,
+  onOpenStart: PropTypes.func,
+  onOpenEnd: PropTypes.func,
+  onCloseStart: PropTypes.func,
+  onCloseEnd: PropTypes.func
+});
+
 Dropdown.propTypes = {
   id: PropTypes.string,
   /**
@@ -65,21 +81,7 @@ Dropdown.propTypes = {
    * Options hash for the dropdown
    * <a target="_blank" href="http://materializecss.com/dropdown.html#options">http://materializecss.com/dropdown.html</a>
    */
-  options: PropTypes.shape({
-    alignment: PropTypes.oneOf(['left', 'right']),
-    autoTrigger: PropTypes.bool,
-    constrainWidth: PropTypes.bool,
-    container: PropTypes.node,
-    coverTrigger: PropTypes.bool,
-    closeOnClick: PropTypes.bool,
-    hover: PropTypes.bool,
-    inDuration: PropTypes.number,
-    outDuration: PropTypes.number,
-    onOpenStart: PropTypes.func,
-    onOpenEnd: PropTypes.func,
-    onCloseStart: PropTypes.func,
-    onCloseEnd: PropTypes.func
-  })
+  options: dropdownOptions
 };
 
 Dropdown.defaultProps = {
