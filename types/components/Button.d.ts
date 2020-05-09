@@ -1,7 +1,7 @@
-import * as React from "react";
-import { MaterialColor, Positions, SharedBasic } from "./utils";
+import * as React from 'react';
+import { MaterialColor, Positions, SharedBasic } from './utils';
 
-export type ModalType = "close" | "confirm";
+export type ModalType = 'close' | 'confirm';
 
 export interface FabOptions {
   direction?: Positions;
@@ -10,10 +10,15 @@ export interface FabOptions {
 }
 
 export interface TooltipOptions {
-  delay: number;
+  exitDelay?: number;
+  enterDelay?: number;
+  html?: string;
+  margin?: number;
+  inDuration?: number;
+  outDuration?: number;
+  transitionMovement?: number;
+  delay?: number;
   position?: Positions;
-  tooltip?: string;
-  html?: boolean;
 }
 
 export interface ButtonProps extends SharedBasic {
