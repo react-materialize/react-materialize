@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import Range from '../src/Range';
 
 const stories = storiesOf('Components|Range', module);
@@ -15,4 +14,6 @@ stories.addParameters({
   }
 });
 
-stories.add('Default', () => <Range min="0" max="100" name="points" />);
+stories.add('Default', () => (
+  <Range min="0" max="100" name="points" step="0.5" />
+));
