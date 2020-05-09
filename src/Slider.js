@@ -16,7 +16,7 @@ const Slider = ({ children, className, options, fullscreen, ...props }) => {
         sliderInstance.current.destroy();
       }
     };
-  }, [_slider, options, fullscreen]);
+  }, [_slider, options, fullscreen, children]);
 
   useEffect(() => {
     if (activeIndex) {

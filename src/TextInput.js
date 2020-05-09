@@ -17,7 +17,7 @@ const TextInput = React.forwardRef((props, ref) => {
 
   useEffect(() => {
     M.updateTextFields();
-  }, [props]);
+  }, [props.children]);
 
   const {
     children,

@@ -34,7 +34,7 @@ const Navbar = ({
     return () => {
       instance && instance.destroy();
     };
-  }, [options]);
+  }, [options, children]);
 
   const brandClasses = cx({
     'brand-logo': true,

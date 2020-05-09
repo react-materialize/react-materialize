@@ -33,7 +33,7 @@ const Button = ({
         instance && instance.destroy();
       };
     }
-  }, [tooltip, tooltipOptions]);
+  }, [tooltip, tooltipOptions, children]);
 
   useEffect(() => {
     if (fab) {

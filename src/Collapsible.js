@@ -57,7 +57,7 @@ const Collapsible = ({
         instance && instance.destroy();
       };
     }
-  }, [_collapsible, accordion, options]);
+  }, [_collapsible, accordion, options, children]);
 
   return (
     <ul

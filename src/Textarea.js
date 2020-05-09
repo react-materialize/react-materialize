@@ -32,11 +32,11 @@ const Textarea = ({
     if (dataLength) {
       M.CharacterCounter.init(textareaRef.current);
     }
-  }, [dataLength]);
+  }, [dataLength, children]);
 
   useEffect(() => {
     M.textareaAutoResize(textareaRef.current);
-  }, []);
+  }, [children]);
 
   const sizes = { s, m, l, xl };
 

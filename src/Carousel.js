@@ -18,7 +18,7 @@ const Carousel = ({
     const instance = M.Carousel.init(carouselRef.current, options);
 
     return () => instance.destroy();
-  }, [options]);
+  }, [options, children, images]);
 
   const elemsToRender = children || images || [];
 

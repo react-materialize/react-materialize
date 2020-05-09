@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-const Range = props => {
+const Range = ({ min, max, step }) => {
   const rangeRef = useRef(null);
 
   useEffect(() => {
@@ -10,18 +10,19 @@ const Range = props => {
     return () => {
       instance && instance.destroy();
     };
-  }, []);
+  }, [min, max]);
 
   return (
     <p className="range-field">
-      <input type="range" ref={rangeRef} {...props} />
+      <input type="range" ref={rangeRef} min={min} max={max} step={step} />
     </p>
   );
 };
 
 Range.propTypes = {
   min: PropTypes.string.isRequired,
-  max: PropTypes.string.isRequired
+  max: PropTypes.string.isRequired,
+  step: PropTypes.string
 };
 
 export default Range;
