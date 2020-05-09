@@ -5,7 +5,7 @@ import Divider from '../src/Divider';
 import Button from '../src/Button';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Javascript|Dropdown', module);
+const stories = storiesOf('Javascript/Dropdown', module);
 
 stories.addParameters({
   info: {

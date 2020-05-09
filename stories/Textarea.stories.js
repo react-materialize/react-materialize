@@ -5,7 +5,7 @@ import Row from '../src/Row';
 import Textarea from '../src/Textarea';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Components|Textarea', module);
+const stories = storiesOf('Components/Textarea', module);
 stories.addDecorator(withKnobs);
 
 stories.addParameters({

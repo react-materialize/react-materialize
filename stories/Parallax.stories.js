@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Parallax from '../src/Parallax';
 
-const stories = storiesOf('Javascript|Parallax', module);
+const stories = storiesOf('Javascript/Parallax', module);
 
 stories.addParameters({
   info: {

@@ -8,7 +8,8 @@ import Tab from '../src/Tab';
 import Dropdown from '../src/Dropdown';
 import Button from '../src/Button';
 import Divider from '../src/Divider';
-const stories = storiesOf('Components|Navbar', module);
+
+const stories = storiesOf('Components/Navbar', module);
 
 stories.addParameters({
   info: {

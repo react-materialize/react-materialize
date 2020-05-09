@@ -4,9 +4,9 @@ import { storiesOf } from '@storybook/react';
 import Button from '../src/Button';
 import Modal from '../src/Modal';
 
-const stories = storiesOf('@|React Materialize', module);
+const stories = storiesOf('React Materialize', module);
 
-const reactMaterializeLogo = require('./react-materialize-logo.svg');
+const reactMaterializeLogo = require('../stories/react-materialize-logo.svg');
 
 stories.add('Welcome', () => (
   <div>

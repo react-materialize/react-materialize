@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
 
-const stories = storiesOf('Javascript|Tabs', module);
+const stories = storiesOf('Javascript/Tabs', module);
 
 stories.addParameters({
   info: {

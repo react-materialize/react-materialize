@@ -4,7 +4,7 @@ import { text, boolean, withKnobs } from '@storybook/addon-knobs';
 import TextInput from '../src/TextInput';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Components|TextInput', module);
+const stories = storiesOf('Components/TextInput', module);
 stories.addDecorator(withKnobs);
 
 stories.addParameters({

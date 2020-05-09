@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import DatePicker from '../src/DatePicker';
 
-const stories = storiesOf('Components|Pickers', module);
+const stories = storiesOf('Components/Pickers', module);
 
 stories.addParameters({
   info: {

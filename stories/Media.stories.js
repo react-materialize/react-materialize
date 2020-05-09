@@ -5,7 +5,7 @@ import Slider from '../src/Slider';
 import Slide from '../src/Slide';
 import Caption from '../src/Caption';
 
-const stories = storiesOf('Javascript|Media', module);
+const stories = storiesOf('Javascript/Media', module);
 
 stories.addParameters({
   info: {

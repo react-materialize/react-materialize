@@ -4,7 +4,7 @@ import { text, select, withKnobs } from '@storybook/addon-knobs';
 import Button from '../src/Button';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Components|Button', module);
+const stories = storiesOf('Components/Button', module);
 stories.addDecorator(withKnobs);
 
 stories.addParameters({
@@ -177,7 +177,7 @@ stories.add('Tooltip', () => {
   );
 });
 
-const storiesFab = storiesOf('Components|FAB', module);
+const storiesFab = storiesOf('Components/FAB', module);
 const children = [
   <Button key="1" floating icon={<Icon>insert_chart</Icon>} className="red" />,
   <Button

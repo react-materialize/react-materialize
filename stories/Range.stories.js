@@ -1,9 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import Range from '../src/Range';
 
-const stories = storiesOf('Components|Range', module);
+const stories = storiesOf('Components/Range', module);
 
 stories.addParameters({
   info: {

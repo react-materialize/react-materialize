@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Pagination from '../src/Pagination';
 
-const stories = storiesOf('Components|Pagination', module);
+const stories = storiesOf('Components/Pagination', module);
 
 stories.addParameters({
   info: {

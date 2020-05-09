@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, withKnobs } from '@storybook/addon-knobs';
 import Chip from '../src/Chip';
 
-const stories = storiesOf('Components|Chip', module);
+const stories = storiesOf('Components/Chip', module);
 
 stories.addParameters({
   info: {
@@ -42,7 +42,7 @@ stories.add(
   }
 );
 
-const JavaScriptPlugin = storiesOf('Components|Chip/Javascript Plugin', module);
+const JavaScriptPlugin = storiesOf('Components/Chip/Javascript Plugin', module);
 
 JavaScriptPlugin.add('Default', () => <Chip options={{}} />, {
   notes:

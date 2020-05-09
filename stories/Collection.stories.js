@@ -6,7 +6,7 @@ import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Components|Collection', module);
+const stories = storiesOf('Components/Collection', module);
 
 stories.addParameters({
   info: {

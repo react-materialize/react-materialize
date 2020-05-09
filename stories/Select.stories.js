@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import Select from '../src/Select';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Components|Select', module);
+const stories = storiesOf('Components/Select', module);
 
 stories.addParameters({
   info: {
@@ -62,7 +62,7 @@ stories.add('Disabled', () => (
   </Select>
 ));
 
-const browserDefault = storiesOf('Components|Select/Browser default', module);
+const browserDefault = storiesOf('Components/Select/Browser default', module);
 
 browserDefault.add('Default', () => (
   <Select browserDefault value="2">

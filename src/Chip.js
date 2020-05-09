@@ -2,6 +2,7 @@ import React, { useEffect, useRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
+import { autocompleteOptions } from './Autocomplete';
 
 const Chip = ({ children, close, closeIcon, className, options, ...other }) => {
   const instance = useRef(null);
@@ -15,7 +16,7 @@ const Chip = ({ children, close, closeIcon, className, options, ...other }) => {
   const chipContent = options ? null : (
     <Fragment>
       {children}
-      {close && closeIcon}
+      {Boolean(close) && closeIcon}
     </Fragment>
   );
 
@@ -63,23 +64,6 @@ Chip.propTypes = {
      */
     secondaryPlaceholder: PropTypes.string,
     /**
-     * Set autocomplete options.
-     */
-    autocompleteOptions: PropTypes.shape({
-      /**
-       * Data object defining autocomplete options with optional icon strings.
-       */
-      data: PropTypes.objectOf(PropTypes.string),
-      /**
-       * Limit of results the autocomplete shows.
-       */
-      limit: PropTypes.number,
-      /**
-       * Minimum number of characters before autocomplete starts.
-       */
-      minLength: PropTypes.number
-    }),
-    /**
      * Set chips limit.
      */
     limit: PropTypes.number,
@@ -94,7 +78,12 @@ Chip.propTypes = {
     /**
      * Callback for chip delete.
      */
-    onChipDelete: PropTypes.func
+    onChipDelete: PropTypes.func,
+    /**
+     * Set autocomplete options.
+     * Note: onAutocomplete does not work in Chip
+     */
+    autocompleteOptions: autocompleteOptions
   })
 };
 
