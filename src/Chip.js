@@ -15,7 +15,7 @@ const Chip = ({ children, close, closeIcon, className, options, ...other }) => {
   const chipContent = options ? null : (
     <Fragment>
       {children}
-      {close && closeIcon}
+      {Boolean(close) && closeIcon}
     </Fragment>
   );
 
@@ -63,6 +63,22 @@ Chip.propTypes = {
      */
     secondaryPlaceholder: PropTypes.string,
     /**
+     * Set chips limit.
+     */
+    limit: PropTypes.number,
+    /**
+     * Callback for chip add.
+     */
+    onChipAdd: PropTypes.func,
+    /**
+     * Callback for chip select.
+     */
+    onChipSelect: PropTypes.func,
+    /**
+     * Callback for chip delete.
+     */
+    onChipDelete: PropTypes.func,
+    /**
      * Set autocomplete options.
      */
     autocompleteOptions: PropTypes.shape({
@@ -78,23 +94,7 @@ Chip.propTypes = {
        * Minimum number of characters before autocomplete starts.
        */
       minLength: PropTypes.number
-    }),
-    /**
-     * Set chips limit.
-     */
-    limit: PropTypes.number,
-    /**
-     * Callback for chip add.
-     */
-    onChipAdd: PropTypes.func,
-    /**
-     * Callback for chip select.
-     */
-    onChipSelect: PropTypes.func,
-    /**
-     * Callback for chip delete.
-     */
-    onChipDelete: PropTypes.func
+    })
   })
 };
 

@@ -1,8 +1,11 @@
 import * as React from "react";
 import { AutocompleteOptions } from "./Autocomplete";
-import { AnyFn, SharedBasic } from "./utils";
+import { SharedBasic } from "./utils";
 
-export interface ChipItem {[key: string]: string;}
+export interface ChipItem {
+  tag: string;
+  image?: string;
+}
 
 export interface ChipOptions {
   data?: ChipItem[];
