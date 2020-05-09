@@ -55,7 +55,9 @@ const Textarea = ({
         placeholder={placeholder}
         id={id}
         value={value}
+        defaultValue={defaultValue}
         ref={textareaRef}
+        onChange={onChange}
         {...rest}
         className={cx('materialize-textarea', { validate }, className)}
       />
