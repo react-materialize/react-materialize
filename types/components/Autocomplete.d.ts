@@ -8,7 +8,7 @@ interface AutocompleteData {
 export interface AutocompleteOptions {
   data: AutocompleteData;
   limit?: number;
-  onAutocomplete?: () => void;
+  onAutocomplete?: (value: string) => void;
   minLength?: number;
   sortFunction?: <T>(a: T, b: T, inputString: string) => number;
 }
