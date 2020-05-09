@@ -11,7 +11,7 @@ export interface ChipOptions {
   data?: ChipItem[];
   placeholder?: string;
   secondaryPlaceholder?: string;
-  autocompleteOptions?: AutocompleteOptions;
+  autocompleteOptions?: Exclude<AutocompleteOptions, 'onAutocomplete'>;
   limit?: number;
   onChipAdd?: (item: any, chip: HTMLElement) => void;
   onChipSelect?: (item: any, chip: HTMLElement) => void;

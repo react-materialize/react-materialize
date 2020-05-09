@@ -81,6 +81,7 @@ Chip.propTypes = {
     onChipDelete: PropTypes.func,
     /**
      * Set autocomplete options.
+     * Note: onAutocomplete does not work in Chip
      */
     autocompleteOptions: autocompleteOptions
   })
