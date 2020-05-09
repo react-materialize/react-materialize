@@ -2,6 +2,7 @@ import React, { useEffect, useRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
+import { autocompleteOptions } from './Autocomplete';
 
 const Chip = ({ children, close, closeIcon, className, options, ...other }) => {
   const instance = useRef(null);
@@ -81,20 +82,7 @@ Chip.propTypes = {
     /**
      * Set autocomplete options.
      */
-    autocompleteOptions: PropTypes.shape({
-      /**
-       * Data object defining autocomplete options with optional icon strings.
-       */
-      data: PropTypes.objectOf(PropTypes.string),
-      /**
-       * Limit of results the autocomplete shows.
-       */
-      limit: PropTypes.number,
-      /**
-       * Minimum number of characters before autocomplete starts.
-       */
-      minLength: PropTypes.number
-    })
+    autocompleteOptions: autocompleteOptions
   })
 };
 
