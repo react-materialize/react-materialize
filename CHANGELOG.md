@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.8.11
+
+- Button: update tooltipOptions types/proptypes
+- Textarea: add onChange handler
+
 ### 3.8.10
 
 - Switch: migrate test to RTL
