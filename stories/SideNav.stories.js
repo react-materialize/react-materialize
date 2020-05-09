@@ -5,7 +5,7 @@ import SideNavItem from '../src/SideNavItem';
 import Button from '../src/Button';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Javascript|SideNav', module);
+const stories = storiesOf('Javascript/SideNav', module);
 const reactMaterializeLogo = require('./react-materialize-logo.svg');
 
 stories.addParameters({

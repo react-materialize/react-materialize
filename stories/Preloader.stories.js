@@ -6,7 +6,7 @@ import ProgressBar from '../src/ProgressBar';
 import Preloader from '../src/Preloader';
 import { number, withKnobs } from '@storybook/addon-knobs';
 
-const stories = storiesOf('Components|Preloader', module);
+const stories = storiesOf('Components/Preloader', module);
 stories.addDecorator(withKnobs);
 
 stories.addParameters({

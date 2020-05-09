@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Row from '../src/Row';
 import Col from '../src/Col';
 
-const stories = storiesOf('CSS|Grid', module);
+const stories = storiesOf('CSS/Grid', module);
 
 stories.addParameters({
   info: {

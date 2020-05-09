@@ -4,7 +4,7 @@ import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Javascript|Collapsible', module);
+const stories = storiesOf('Javascript/Collapsible', module);
 
 stories.addParameters({
   info: {

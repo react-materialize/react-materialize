@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Icon from '../src/Icon';
 
-const stories = storiesOf('Components|Icons', module);
+const stories = storiesOf('Components/Icons', module);
 
 stories.addParameters({
   info: {

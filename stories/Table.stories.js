@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Table from '../src/Table';
 
-const stories = storiesOf('CSS|Table', module);
+const stories = storiesOf('CSS/Table', module);
 
 stories.addParameters({
   info: {

@@ -4,7 +4,7 @@ import Autocomplete from '../src/Autocomplete';
 import Icon from '../src/Icon';
 import { text, withKnobs, object } from '@storybook/addon-knobs';
 
-const stories = storiesOf('Javascript|Autocomplete', module);
+const stories = storiesOf('Javascript/Autocomplete', module);
 stories.addDecorator(withKnobs);
 
 const notes = `Add an autocomplete dropdown below your input 

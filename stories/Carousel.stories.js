@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Carousel from '../src/Carousel';
 
-const stories = storiesOf('Javascript|Carousel', module);
+const stories = storiesOf('Javascript/Carousel', module);
 
 stories.addParameters({
   info: {
