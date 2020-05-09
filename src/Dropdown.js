@@ -21,7 +21,7 @@ const Dropdown = ({ children, className, trigger, options, ...props }) => {
     return () => {
       instance && instance.destroy();
     };
-  }, [options, props.id]);
+  }, [options, props.id, children]);
 
   const renderTrigger = () =>
     cloneElement(trigger, {

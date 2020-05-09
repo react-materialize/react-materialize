@@ -14,7 +14,7 @@ const Tabs = ({ children, className, defaultValue, options, onChange }) => {
   useEffect(() => {
     const instance = M.Tabs.init(_tabsRef.current, options);
     return () => instance.destroy();
-  }, [options]);
+  }, [options, children]);
 
   return (
     <React.Fragment>

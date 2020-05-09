@@ -25,7 +25,7 @@ const SideNav = ({
     const instance = M.Sidenav.init(sidenavRef.current, options);
 
     return () => instance.destroy();
-  }, [options]);
+  }, [options, children]);
 
   const renderTrigger = useMemo(() => {
     if (!trigger) return;

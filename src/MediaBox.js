@@ -13,7 +13,7 @@ const MediaBox = ({ id, options, children, className, caption, ...props }) => {
         instance.destroy();
       }
     };
-  }, [id, options]);
+  }, [id, options, children]);
 
   return React.cloneElement(children, {
     id: id,

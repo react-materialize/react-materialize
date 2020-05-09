@@ -42,7 +42,7 @@ const Modal = ({
       root.removeChild(modalRoot);
       _modalInstance.current.destroy();
     };
-  }, [options, root]);
+  }, [options, root, children]);
 
   useEffect(() => {
     if (open) {

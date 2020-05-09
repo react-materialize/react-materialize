@@ -11,7 +11,7 @@ const Parallax = ({ children, className, image, options, ...props }) => {
     return () => {
       instance && instance.destroy();
     };
-  }, [_parallax, options]);
+  }, [_parallax, options, children, image]);
 
   return (
     <div className={cx('parallax-container', className)} {...props}>
