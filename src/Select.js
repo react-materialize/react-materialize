@@ -45,7 +45,7 @@ const Select = ({
     return () => {
       _formSelectInstance.current && _formSelectInstance.current.destroy();
     };
-  }, [options]);
+  }, [options, children]);
 
   useEffect(() => {
     setSelectedValue(value);
