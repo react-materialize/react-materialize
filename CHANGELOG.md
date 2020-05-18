@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.9.1
+
+- Modal: remove children from dependency
+
 ### 3.9.0
 
 - JS: add children as dependency for JS components
