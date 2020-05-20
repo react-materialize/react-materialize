@@ -11,6 +11,7 @@ import cx from 'classnames';
 
 import idgen from './idgen';
 import Button from './Button';
+import { safeJSONStringify } from './utils';
 
 const Modal = ({
   actions,
@@ -36,13 +37,19 @@ const Modal = ({
 
   useEffect(() => {
     const modalRoot = _modalRoot.current;
-    _modalInstance.current = M.Modal.init(_modalRef.current, options);
+    if (!_modalInstance.current) {
+      _modalInstance.current = M.Modal.init(_modalRef.current, options);
+    }
 
     return () => {
-      root.removeChild(modalRoot);
+      if (root.contains(modalRoot)) {
+        root.removeChild(modalRoot);
+      }
       _modalInstance.current.destroy();
     };
-  }, [options, root]);
+    // deep comparing options object
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [safeJSONStringify(options), root]);
 
   useEffect(() => {
     if (open) {

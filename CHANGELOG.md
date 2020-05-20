@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.9.2
+
+- Modal: deep compare options dependency
+
 ### 3.9.1
 
 - Modal: remove children from dependency
