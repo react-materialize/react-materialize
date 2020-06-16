@@ -1,3 +1,4 @@
+import CSS from 'csstype';
 export interface Responsive {
   s?: number;
   m?: number;
@@ -11,6 +12,7 @@ export type AnyFn = (...args: any[]) => any;
 export interface SharedBasic {
   className?: string;
   children?: React.ReactNode;
+  style?: CSS.Properties;
 }
 
 export type MaterialColor =
