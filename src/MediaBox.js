@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import idgen from './idgen';
 
 const MediaBox = ({ id, options, children, className, caption, ...props }) => {
+  const mediaBoxRef = useRef(null);
+
   useEffect(() => {
-    const instance = M.Materialbox.init(document.getElementById(id), options);
+    const instance = M.Materialbox.init(mediaBoxRef.current, options);
 
     return () => {
       if (instance) {
@@ -17,6 +19,7 @@ const MediaBox = ({ id, options, children, className, caption, ...props }) => {
 
   return React.cloneElement(children, {
     id: id,
+    ref: mediaBoxRef,
     className: cx('materialboxed', className),
     'data-caption': caption,
     ...props
