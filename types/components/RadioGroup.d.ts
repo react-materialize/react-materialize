@@ -3,6 +3,7 @@ import * as React from "react";
 export interface RadioGroupProps {
   label?: string;
   name?: string;
+  id?: string;
   options: Array<{ label: string; value: string }>;
   value?: string;
   withGap?: boolean;

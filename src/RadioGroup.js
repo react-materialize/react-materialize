@@ -9,18 +9,21 @@ const RadioGroup = ({
   name,
   radioClassNames,
   value,
-  options
+  options,
+  id
 }) => {
+  // Generates unique radio-ids if an 'id' is provided to fix issue #989
+  const idPrefex = typeof id === 'undefined' ? `` : `RadioGroup_${id}_`;
   return (
     <React.Fragment>
       {options.map((radioItem, idx) => (
         <label
           className={radioClassNames}
-          htmlFor={`radio${idx}`}
-          key={`radio${idx}`}
+          htmlFor={`${idPrefex}radio${idx}`}
+          key={`${idPrefex}radio${idx}`}
         >
           <input
-            id={`radio${idx}`}
+            id={`${idPrefex}radio${idx}`}
             value={radioItem.value}
             type="radio"
             checked={radioItem.value === value}
@@ -66,7 +69,11 @@ RadioGroup.propTypes = {
   /**
    * classnames passed to label wrapper
    */
-  radioClassNames: PropTypes.string
+  radioClassNames: PropTypes.string,
+  /**
+   * to generate unique radio-ids for different RadioGroups if provided
+   */
+  id: PropTypes.string
 };
 
 export default RadioGroup;

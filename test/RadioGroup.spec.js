@@ -42,10 +42,19 @@ describe('<RadioGroup />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('onChange callback', () => {
+  test('onChange callback without id parameter', () => {
     wrapper = shallow(<RadioGroup {...defaultProps} />);
     wrapper
-      .find('input')
+      .find('#radio0')
+      .first()
+      .simulate('change');
+    expect(mockOnChange).toHaveBeenCalled();
+  });
+
+  test('onChange callback with id parameter', () => {
+    wrapper = shallow(<RadioGroup {...defaultProps} id="shirtSize" />);
+    wrapper
+      .find('#RadioGroup_shirtSize_radio0')
       .first()
       .simulate('change');
     expect(mockOnChange).toHaveBeenCalled();
