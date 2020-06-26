@@ -6,7 +6,7 @@ export interface NavItemProps {
   href?: string;
   onClick?: AnyFn;
   className?: string;
-  children?: string;
+  children?: string | React.ReactNode;
 }
 
 /**
