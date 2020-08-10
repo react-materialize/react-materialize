@@ -7,7 +7,7 @@ import Spinner from './Spinner';
 const colors = ['blue', 'red', 'yellow', 'green'];
 
 const Preloader = ({ active, size, color, flashing, className }) => {
-  let classes = cx('preloader-wrapper', { active, size });
+  let classes = cx('preloader-wrapper', { active }, size);
 
   let spinners;
   if (flashing) {
