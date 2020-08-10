@@ -16,6 +16,13 @@ export interface SelectProps extends Responsive, SharedBasic {
   options?: SelectOptions;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  noLayout?: boolean;
+  disabled?: boolean;
+  icon?: React.ReactNode;
+  validate?: boolean;
+  success?: string;
+  error?: string;
+  browserDefault?: boolean;
 }
 
 /**
