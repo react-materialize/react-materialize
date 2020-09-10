@@ -1,5 +1,13 @@
 # Changelog
 
+### 3.9.3
+
+- Various ts fixes
+- media-box to use ref
+- npm fix vulnerabilities
+- export spinner
+- fix spinner size prop
+
 ### 3.9.2
 
 - Modal: deep compare options dependency
