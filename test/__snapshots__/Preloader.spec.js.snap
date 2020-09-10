@@ -2,7 +2,7 @@
 
 exports[`<Preloader /> should render a Preloader 1`] = `
 <div
-  className="find preloader-wrapper size"
+  className="find preloader-wrapper big"
 >
   <Spinner
     color="blue"
