@@ -20,7 +20,7 @@ const Tabs = ({ children, className, defaultValue, options, onChange }) => {
     <React.Fragment>
       <ul className={cx('tabs', className)} ref={_tabsRef}>
         {React.Children.map(children, (child, id) => {
-          const idx = `${scope}${id}`;
+          const idx = child.props.idx ? child.props.idx : `${scope}${id}`;
           const { active, disabled, tabWidth, title } = child.props;
 
           const classes = {
@@ -45,7 +45,7 @@ const Tabs = ({ children, className, defaultValue, options, onChange }) => {
       </ul>
       <Row>
         {React.Children.map(children, (child, id) => {
-          const idx = `${scope}${id}`;
+          const idx = child.props.idx ? child.props.idx : `${scope}${id}`;
           return cloneElement(child, { idx });
         })}
       </Row>
