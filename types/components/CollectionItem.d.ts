@@ -3,7 +3,7 @@ import { SharedBasic } from './utils';
 
 export interface CollectionItemProps extends SharedBasic {
   active?: boolean;
-  href: string;
+  href?: string;
 }
 
 /**
