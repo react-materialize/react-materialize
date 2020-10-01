@@ -58,6 +58,8 @@ The main advantage of this project over e.g. material-ui is that it provides a
 grid system similar to react-bootstrap. Another advantage over material-ui is that react-materialize does not 
 include css in the js - which can be cumbersome to some project's architecture.
 
+Their are new many more libraries which i wanted to mention from my works. when i was a beginner i liked Using Reac-bootstap for styling purpose. After that i started using different style component like Momentjs ,imer and Semantic UI. After that i used some animation libraries to make it more attractive and easily understandable.
+
 ## Contributions
 
 > Yes, please!
