@@ -3,17 +3,24 @@ import PropTypes from 'prop-types';
 import constants from './constants';
 import cx from 'classnames';
 
-const Icon = props => {
+const Icon = ({ className, children, ...props }) => {
   const classes = {
     'material-icons': true
   };
+  const rest = Object.assign(props, {});
   constants.PLACEMENTS.forEach(p => {
     classes[p] = props[p];
+    delete rest[p];
   });
   constants.ICON_SIZES.forEach(s => {
     classes[s] = props[s];
+    delete rest[s];
   });
-  return <i className={cx(classes, props.className)}>{props.children}</i>;
+  return (
+    <i className={cx(classes, className)} {...rest}>
+      {children}
+    </i>
+  );
 };
 
 Icon.propTypes = {

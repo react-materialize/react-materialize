@@ -16,6 +16,19 @@ exports[`<Icon /> accepts size as a prop 1`] = `
 </i>
 `;
 
+exports[`<Icon /> accepts style size as a prop 1`] = `
+<i
+  className="material-icons"
+  style={
+    Object {
+      "fontSize": "30px",
+    }
+  }
+>
+  cloud
+</i>
+`;
+
 exports[`<Icon /> renders an icon 1`] = `
 <i
   className="material-icons"
