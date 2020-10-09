@@ -18,4 +18,8 @@ describe('<Icon />', () => {
     wrapper = shallow(<Icon left>cloud</Icon>);
     expect(wrapper).toMatchSnapshot();
   });
+  test('accepts style size as a prop', () => {
+    wrapper = shallow(<Icon style={{ fontSize: '30px' }}>cloud</Icon>);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
