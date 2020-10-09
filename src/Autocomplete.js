@@ -26,6 +26,7 @@ const Autocomplete = ({
   });
 
   useEffect(() => {
+    M.updateTextFields();
     const instance = M.Autocomplete.init(autocompleteRef.current, options);
 
     return () => {

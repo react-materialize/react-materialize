@@ -22,7 +22,7 @@ stories.add(
           ['Tuco Salamanca']: 'https://placehold.it/250x250'
         })
       }}
-      placeholder="Insert here"
+      placeholder={text('placeholder', 'Insert here')}
     />
   ),
   { notes }
@@ -39,8 +39,26 @@ stories.add(
           ['Tuco Salamanca']: 'https://placehold.it/250x250'
         })
       }}
-      placeholder="Insert here"
+      placeholder={text('placeholder', 'Insert here')}
       icon={<Icon>{text('icon', 'textsms')}</Icon>}
+    />
+  ),
+  { notes }
+);
+
+stories.add(
+  'With label',
+  () => (
+    <Autocomplete
+      options={{
+        data: object('Data', {
+          ['Gus Fring']: null,
+          ['Saul Goodman']: null,
+          ['Tuco Salamanca']: 'https://placehold.it/250x250'
+        })
+      }}
+      placeholder={text('placeholder', 'Insert here')}
+      title={text('label', 'Input Label')}
     />
   ),
   { notes }
