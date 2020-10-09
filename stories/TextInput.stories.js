@@ -75,3 +75,18 @@ stories.add('with icon string', () => (
 stories.add('with icon node', () => (
   <TextInput icon={<Icon>{text('icon', 'email')}</Icon>} label="Email" />
 ));
+
+stories.add(
+  'with error message',
+  () => (
+    <TextInput
+      label="Custom Validation"
+      error={text('error', 'This is an error')}
+    />
+  ),
+  {
+    info: {
+      text: 'Displays a validation error.'
+    }
+  }
+);
