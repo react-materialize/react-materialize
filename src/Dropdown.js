@@ -30,8 +30,13 @@ const Dropdown = ({ children, className, trigger, options, ...props }) => {
     });
 
   const renderItems = () =>
-    Children.map(children, element => {
-      if (element.type.name === 'Divider') {
+    Children.map(children.filter(Boolean), element => {
+      if (element.type === 'li') {
+        return element;
+      } else if (
+        element.type.name === 'Divider' ||
+        element.type.displayName === 'Divider'
+      ) {
         return <li key={idgen()} className="divider" tabIndex="-1" />;
       } else {
         return <li key={idgen()}>{element}</li>;
