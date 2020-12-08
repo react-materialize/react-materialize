@@ -30,7 +30,7 @@ const Dropdown = ({ children, className, trigger, options, ...props }) => {
     });
 
   const renderItems = () =>
-    Children.map(children.filter(Boolean), element => {
+    Children.map((children || []).filter(Boolean), element => {
       if (element.type === 'li') {
         return element;
       } else if (
