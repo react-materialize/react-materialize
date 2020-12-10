@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Col /> renders 1`] = `
-<div
-  className="col"
-/>
-`;
