@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.9.4
+
+- Fix href requirement in CollectionItem's typings #1151
+- fix: call updateTextFields on AutoComplete so label doesn't overlap #1154
+- Allow Dropdown to accept null, li, and Divider children. #1164
+
 ### 3.9.3
 
 - Various ts fixes
