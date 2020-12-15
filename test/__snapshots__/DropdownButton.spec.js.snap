@@ -14,3 +14,135 @@ exports[`<Dropdown /> renders 1`] = `
   />
 </Fragment>
 `;
+
+exports[`<Dropdown /> renders a single element 1`] = `
+<Fragment>
+  <span
+    className="dropdown-trigger"
+    data-target="Dropdown_mockId"
+  >
+    hi
+  </span>
+  <ul
+    className="dropdown-content"
+    id="Dropdown_mockId"
+  >
+    <li
+      key="mockId/.0"
+    >
+      <a
+        href="#"
+      >
+        I'm a Link
+      </a>
+    </li>
+  </ul>
+</Fragment>
+`;
+
+exports[`<Dropdown /> renders a single-child fragment 1`] = `
+<Fragment>
+  <span
+    className="dropdown-trigger"
+    data-target="Dropdown_mockId"
+  >
+    hi
+  </span>
+  <ul
+    className="dropdown-content"
+    id="Dropdown_mockId"
+  >
+    <li
+      key=".0/.$mockId/.0"
+    >
+      <a
+        href="#"
+      >
+        Fragment
+      </a>
+    </li>
+  </ul>
+</Fragment>
+`;
+
+exports[`<Dropdown /> renders fragments with other children 1`] = `
+<Fragment>
+  <span
+    className="dropdown-trigger"
+    data-target="Dropdown_mockId"
+  >
+    hi
+  </span>
+  <ul
+    className="dropdown-content"
+    id="Dropdown_mockId"
+  >
+    <li
+      key=".0/.$mockId/.0"
+    >
+      <a
+        href="#"
+      >
+        One
+      </a>
+    </li>
+    <li
+      key=".0/.$mockId/.1"
+    >
+      <a
+        href="#"
+      >
+        Two
+      </a>
+    </li>
+    <li
+      key="mockId/.1"
+    >
+      <a
+        href="#"
+      >
+        Three
+      </a>
+    </li>
+  </ul>
+</Fragment>
+`;
+
+exports[`<Dropdown /> renders inline conditionals, normal links, and li nodes 1`] = `
+<Fragment>
+  <span
+    className="dropdown-trigger"
+    data-target="Dropdown_mockId"
+  >
+    hi
+  </span>
+  <ul
+    className="dropdown-content"
+    id="Dropdown_mockId"
+  >
+    <li
+      key="mockId/.1"
+    >
+      <a
+        href="#"
+      >
+        Show Me
+      </a>
+    </li>
+    <li
+      className="divider"
+      key="mockId/.2"
+      tabIndex="-1"
+    />
+    <li
+      key=".3"
+    >
+      <a
+        href="#"
+      >
+        No Additional Wrapper
+      </a>
+    </li>
+  </ul>
+</Fragment>
+`;
