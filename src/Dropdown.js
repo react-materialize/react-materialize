@@ -29,16 +29,22 @@ const Dropdown = ({ children, className, trigger, options, ...props }) => {
       className: cx(trigger.props.className, 'dropdown-trigger')
     });
 
-  const renderItems = () =>
-    Children.map((children || []).filter(Boolean), element => {
-      if (element.type === 'li') {
+  const renderItems = c =>
+    Children.map(c, element => {
+      if (!element || element.type === 'li') {
+        // Skip null, undefined, or li children
         return element;
+      } else if (element.type === Fragment) {
+        // Recurse here for Fragments
+        return renderItems(element.props.children);
       } else if (
         element.type.name === 'Divider' ||
         element.type.displayName === 'Divider'
       ) {
+        // Replace <Divider/> component with proper semantics
         return <li key={idgen()} className="divider" tabIndex="-1" />;
       } else {
+        // Wrap child element in <li/>
         return <li key={idgen()}>{element}</li>;
       }
     });
@@ -51,7 +57,7 @@ const Dropdown = ({ children, className, trigger, options, ...props }) => {
         className={cx('dropdown-content', className)}
         ref={_dropdownContent}
       >
-        {renderItems()}
+        {renderItems(children)}
       </ul>
     </Fragment>
   );
