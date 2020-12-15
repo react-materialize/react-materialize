@@ -1,5 +1,9 @@
 # Changelog
 
+### 3.9.5
+
+- Allow for Dropdown children to also be Fragments. #1168
+
 ### 3.9.4
 
 - Fix href requirement in CollectionItem's typings #1151
