@@ -5,60 +5,14 @@ exports[`Tabs should create list of Tab items 1`] = `
   <ul
     className="tabs"
   >
-    <li
-      className="tab col"
-      key="tabs-mockId0/.0"
-    >
-      <a
-        className=""
-        href="#tab_tabs-mockId0"
-      >
-        one
-      </a>
-    </li>
-    <li
-      className="tab col"
-      key="tabs-mockId1/.1"
-    >
-      <a
-        className=""
-        href="#tab_tabs-mockId1"
-      >
-        Two
-      </a>
-    </li>
+    <ChildrenMap
+      tabs={true}
+    />
   </ul>
   <Row>
-    <Tab
-      idx="tabs-mockId0"
-      key=".0"
-      options={
-        Object {
-          "duration": 300,
-          "onShow": null,
-          "responsiveThreshold": Infinity,
-          "swipeable": false,
-        }
-      }
-      title="one"
-    >
-      One
-    </Tab>
-    <Tab
-      idx="tabs-mockId1"
-      key=".1"
-      options={
-        Object {
-          "duration": 300,
-          "onShow": null,
-          "responsiveThreshold": Infinity,
-          "swipeable": false,
-        }
-      }
-      title="Two"
-    >
-      Two
-    </Tab>
+    <ChildrenMap
+      content={true}
+    />
   </Row>
 </Fragment>
 `;
@@ -68,60 +22,14 @@ exports[`Tabs should create list of Tab items with Idx 1`] = `
   <ul
     className="tabs"
   >
-    <li
-      className="tab col"
-      key="tab-one/.0"
-    >
-      <a
-        className=""
-        href="#tab_tab-one"
-      >
-        one
-      </a>
-    </li>
-    <li
-      className="tab col"
-      key="tab-two/.1"
-    >
-      <a
-        className=""
-        href="#tab_tab-two"
-      >
-        Two
-      </a>
-    </li>
+    <ChildrenMap
+      tabs={true}
+    />
   </ul>
   <Row>
-    <Tab
-      idx="tab-one"
-      key=".0"
-      options={
-        Object {
-          "duration": 300,
-          "onShow": null,
-          "responsiveThreshold": Infinity,
-          "swipeable": false,
-        }
-      }
-      title="one"
-    >
-      One
-    </Tab>
-    <Tab
-      idx="tab-two"
-      key=".1"
-      options={
-        Object {
-          "duration": 300,
-          "onShow": null,
-          "responsiveThreshold": Infinity,
-          "swipeable": false,
-        }
-      }
-      title="Two"
-    >
-      Two
-    </Tab>
+    <ChildrenMap
+      content={true}
+    />
   </Row>
 </Fragment>
 `;

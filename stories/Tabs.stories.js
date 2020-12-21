@@ -1,7 +1,7 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Tabs from '../src/Tabs';
+import React from 'react';
 import Tab from '../src/Tab';
+import Tabs from '../src/Tabs';
 
 const stories = storiesOf('Javascript/Tabs', module);
 

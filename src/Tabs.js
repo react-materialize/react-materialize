@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, cloneElement } from 'react';
-import PropTypes from 'prop-types';
-import idgen from './idgen';
 import cx from 'classnames';
-
+import PropTypes from 'prop-types';
+import React, { cloneElement, useEffect, useRef } from 'react';
+import idgen from './idgen';
 import Row from './Row';
 import Tab from './Tab';
 
@@ -16,38 +15,46 @@ const Tabs = ({ children, className, defaultValue, options, onChange }) => {
     return () => instance.destroy();
   }, [options, children]);
 
+  function ChildrenMap({ tabs, content }) {
+    return React.Children.map(children, (child, id) => {
+      const {
+        active,
+        disabled,
+        tabWidth,
+        title,
+        idx = `${scope}${id}`
+      } = child.props;
+
+      const classes = {
+        [`s${tabWidth}`]: tabWidth,
+        tab: true,
+        disabled,
+        col: true
+      };
+
+      if (tabs) {
+        return (
+          <li className={cx(classes)} key={idx}>
+            <a
+              href={`#tab_${idx}`}
+              className={active || defaultValue === idx ? 'active' : ''}
+              {...(disabled ? {} : { onClick: onChange })}
+            >
+              {title}
+            </a>
+          </li>
+        );
+      } else if (content) return cloneElement(child, { idx });
+    });
+  }
+
   return (
     <React.Fragment>
       <ul className={cx('tabs', className)} ref={_tabsRef}>
-        {React.Children.map(children, (child, id) => {
-          const idx = child.props.idx ? child.props.idx : `${scope}${id}`;
-          const { active, disabled, tabWidth, title } = child.props;
-
-          const classes = {
-            [`s${tabWidth}`]: tabWidth,
-            tab: true,
-            disabled,
-            col: true
-          };
-
-          return (
-            <li className={cx(classes)} key={idx}>
-              <a
-                href={`#tab_${idx}`}
-                className={active || defaultValue === idx ? 'active' : ''}
-                {...(disabled ? {} : { onClick: onChange })}
-              >
-                {title}
-              </a>
-            </li>
-          );
-        })}
+        <ChildrenMap tabs />
       </ul>
       <Row>
-        {React.Children.map(children, (child, id) => {
-          const idx = child.props.idx ? child.props.idx : `${scope}${id}`;
-          return cloneElement(child, { idx });
-        })}
+        <ChildrenMap content />
       </Row>
     </React.Fragment>
   );
