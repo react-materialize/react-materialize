@@ -5,12 +5,12 @@ exports[`Tabs should create list of Tab items 1`] = `
   <ul
     className="tabs"
   >
-    <ChildrenMap
+    <Component
       tabs={true}
     />
   </ul>
   <Row>
-    <ChildrenMap
+    <Component
       content={true}
     />
   </Row>
@@ -22,12 +22,12 @@ exports[`Tabs should create list of Tab items with Idx 1`] = `
   <ul
     className="tabs"
   >
-    <ChildrenMap
+    <Component
       tabs={true}
     />
   </ul>
   <Row>
-    <ChildrenMap
+    <Component
       content={true}
     />
   </Row>
