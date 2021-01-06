@@ -7,7 +7,7 @@ export interface CollapsibleItemProps extends SharedBasic {
   header: any;
   icon?: React.ReactNode;
   iconClassName?: string;
-  onSelect: (eventKey: any) => any;
+  onSelect?: (eventKey: any) => any;
   eventKey?: any;
 }
 
