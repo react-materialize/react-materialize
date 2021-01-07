@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.9.6
+
+- npm dependencies fix
+- npm: install/use copyfiles pckg #1172
+- Make onSelect on CollapsibleItem optional (TypeScript) #1171
+
 ### 3.9.5
 
 - Allow for Dropdown children to also be Fragments. #1168
