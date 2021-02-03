@@ -66,7 +66,7 @@
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@testing-library/react": "^10.0.3",
+    "@testing-library/react": "^10.4.9",
     "@types/classnames": "^2.2.10",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
