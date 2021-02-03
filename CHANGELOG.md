@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.9.7
+
+- npm: dependencies fix
+- fix: Flatten folder while copying TypeScript declaration files #1175
+
 ### 3.9.6
 
 - npm dependencies fix
