@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Autocomplete from '../src/Autocomplete';
+import Icon from '../src/Icon';
 import mocker from './helper/new-mocker';
 
 describe('<Autocomplete />', () => {
@@ -11,60 +12,43 @@ describe('<Autocomplete />', () => {
     Google: 'http://placehold.it/250x250',
     'Apple Inc': null
   };
-  const componentId = 'testAutocompleteId';
-
-  let wrapper;
-
-  beforeEach(() => {
-    autocompleteInitMock.mockClear();
-  });
 
   test('renders', () => {
-    wrapper = shallow(
-      <Autocomplete title="Test Title" id={componentId} options={{ data }} />
+    const { container } = render(
+      <Autocomplete title="Test Title" options={{ data }} />
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
-  test('handles layout classes', () => {
-    wrapper = shallow(<Autocomplete s={4} m={6} />);
-    expect(wrapper.hasClass('input-field')).toBeTruthy();
-    expect(wrapper.hasClass('col')).toBeTruthy();
-    expect(wrapper.hasClass('s4')).toBeTruthy();
-    expect(wrapper.hasClass('m6')).toBeTruthy();
+  test('renders with layout classes', () => {
+    const { container } = render(<Autocomplete s={4} m={6} />);
+    expect(container.querySelector('div.input-field.col.s4.m6')).toBeTruthy();
   });
 
-  test('renders placeholder', () => {
-    wrapper = shallow(<Autocomplete placeholder="Name" />);
-    expect(wrapper.find('input').prop('placeholder')).toEqual('Name');
+  test('renders with icon', () => {
+    const { container } = render(<Autocomplete icon={<Icon>textsms</Icon>} />);
+    expect(container.querySelector('i.material-icons.prefix')).toBeTruthy();
   });
 
-  describe('initialises', () => {
+  describe('initialises javascript', () => {
     const autocompleteInstanceDestroyMock = jest.fn();
     const autocompleteMock = {
-      init: (el, options) => {
+      init: (_, options) => {
         autocompleteInitMock(options);
         return {
           destroy: autocompleteInstanceDestroyMock
         };
       }
     };
-    const restore = mocker('Autocomplete', autocompleteMock);
+    mocker('Autocomplete', autocompleteMock);
+
     beforeEach(() => {
       autocompleteInitMock.mockClear();
       autocompleteInstanceDestroyMock.mockClear();
     });
 
     test('calls Autocomplete', () => {
-      mount(<Autocomplete />);
-      expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('with new data', () => {
-    test('reinitializes', () => {
-      const wrapper = mount(<Autocomplete />);
-
+      render(<Autocomplete />);
       expect(autocompleteInitMock).lastCalledWith({
         data: {},
         limit: Infinity,
@@ -72,19 +56,29 @@ describe('<Autocomplete />', () => {
         onAutocomplete: null,
         sortFunction: null
       });
+    });
+  });
 
-      wrapper.setProps({
-        options: {
-          data: {
-            foo: 'bar'
-          }
-        }
+  describe('with new data prop', () => {
+    beforeEach(() => {
+      autocompleteInitMock.mockClear();
+    });
+
+    test('reinitializes javascript', () => {
+      const { rerender } = render(<Autocomplete />);
+
+      expect(autocompleteInitMock).toHaveBeenNthCalledWith(1, {
+        limit: Infinity,
+        minLength: 1,
+        onAutocomplete: null,
+        sortFunction: null,
+        data: {}
       });
 
-      expect(autocompleteInitMock).lastCalledWith({
-        data: {
-          foo: 'bar'
-        }
+      rerender(<Autocomplete options={{ data: { foo: 'bar' } }} />);
+
+      expect(autocompleteInitMock).toHaveBeenNthCalledWith(2, {
+        data: { foo: 'bar' }
       });
     });
   });
