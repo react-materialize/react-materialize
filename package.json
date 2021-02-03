@@ -17,7 +17,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
     "build": "babel src --out-dir lib && npm run copy-types",
-    "copy-types": "copyfiles types/components/*.d.ts lib",
+    "copy-types": "copyfiles -f types/components/*.d.ts lib",
     "lint": "eslint src test",
     "fix": "eslint src test --fix",
     "release": "npm run build && npm publish",
