@@ -20,6 +20,7 @@ export interface TextInputProps extends Responsive {
   email?: boolean;
   children?: React.ReactNode;
   name?: string;
+  ref?: React.RefObject<HTMLInputElement>;
 }
 
 /**
