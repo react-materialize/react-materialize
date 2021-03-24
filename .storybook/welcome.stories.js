@@ -58,7 +58,7 @@ export default () => (
       </Modal>
     </div>
 
-    <h2>Intallation</h2>
+    <h2>Installation</h2>
     <pre>
       {`
 npm install materialize-css # or materialize-css@next
