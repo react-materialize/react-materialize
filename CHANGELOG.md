@@ -1,5 +1,11 @@
 # Changelog
 
+### 3.9.8
+
+- add `ref` to `TextInput` type definition #1181
+- npm: dependencies fix #1180
+- storybook: fix typo #1183
+
 ### 3.9.7
 
 - npm: dependencies fix
