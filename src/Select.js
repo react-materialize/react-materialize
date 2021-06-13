@@ -195,7 +195,9 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
-  id: `Select-${idgen()}`,
+  get id() {
+    return `Select-${idgen()}`;
+  },
   multiple: false,
   options: {
     classes: '',

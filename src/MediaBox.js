@@ -67,7 +67,9 @@ MediaBox.propTypes = {
 };
 
 MediaBox.defaultProps = {
-  id: `MediaBox_${idgen()}`,
+  get id() {
+    return `MediaBox_${idgen()}`;
+  },
   options: {
     inDuration: 275,
     outDuration: 200,

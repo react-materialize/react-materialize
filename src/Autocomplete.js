@@ -113,7 +113,9 @@ Autocomplete.propTypes = {
 };
 
 Autocomplete.defaultProps = {
-  id: `Autocomplete-${idgen()}`,
+  get id() {
+    return `Autocomplete-${idgen()}`;
+  },
   options: {
     data: {},
     limit: Infinity,
