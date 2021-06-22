@@ -138,6 +138,10 @@ Select.propTypes = {
    */
   id: PropTypes.string,
   /**
+   * Select name
+   */
+  name: PropTypes.string,
+  /**
    * prefix icon
    */
   icon: PropTypes.node,
