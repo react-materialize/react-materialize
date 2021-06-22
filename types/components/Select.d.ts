@@ -11,6 +11,7 @@ interface SelectOptions {
 
 export interface SelectProps extends Responsive, SharedBasic {
   id?: string;
+  name?: string;
   label?: string;
   multiple?: boolean;
   options?: SelectOptions;
