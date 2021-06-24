@@ -129,7 +129,7 @@ const TextInput = React.forwardRef((props, ref) => {
       {renderIcon()}
       <input
         ref={inputRef}
-        className={cx({ validate }, inputClassName)}
+        className={cx({ validate }, { invalid: error }, inputClassName)}
         {...inputProps}
       />
       {renderLabel()}

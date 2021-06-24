@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<TextInput /> Displays error messages 1`] = `
+<div
+  className="input-field col"
+>
+  <input
+    className="invalid"
+    id="TextInput-mockId"
+    type="text"
+  />
+  <label
+    className=""
+    data-error="this is an error"
+    htmlFor="TextInput-mockId"
+  >
+    Input with Error
+  </label>
+  <span
+    className="helper-text"
+    data-error="this is an error"
+  />
+</div>
+`;
+
 exports[`<TextInput /> handles file type 1`] = `
 <div
   className="input-field col file-field"

@@ -59,7 +59,12 @@ const Textarea = ({
         ref={textareaRef}
         onChange={onChange}
         {...rest}
-        className={cx('materialize-textarea', { validate }, className)}
+        className={cx(
+          'materialize-textarea',
+          { validate },
+          { invalid: error },
+          className
+        )}
       />
       {Boolean(label) && (
         <label

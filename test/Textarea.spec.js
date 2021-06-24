@@ -74,4 +74,12 @@ describe('<Textarea />', () => {
     textarea.simulate('change');
     expect(onChangeMock).toHaveBeenCalled();
   });
+
+  test('Displays error messages', () => {
+    wrapper = shallow(
+      <Textarea label="Input with Error" error="this is an error" />
+    );
+    expect(wrapper.find('textarea').hasClass('invalid')).toBeTruthy();
+    expect(wrapper).toMatchSnapshot();
+  });
 });

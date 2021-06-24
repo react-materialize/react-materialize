@@ -65,3 +65,13 @@ stories.add(
     }
   }
 );
+
+stories.add(
+  'Errors',
+  () => <Textarea label="Textarea" error={text('error', 'This is an error')} />,
+  {
+    info: {
+      text: 'Displays a validation error.'
+    }
+  }
+);
