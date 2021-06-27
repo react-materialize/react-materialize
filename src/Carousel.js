@@ -123,7 +123,9 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-  carouselId: `Carousel-${idgen()}`,
+  get carouselId() {
+    return `Carousel-${idgen()}`;
+  },
   options: {
     duration: 200,
     dist: -100,

@@ -157,7 +157,9 @@ DatePicker.propTypes = {
 };
 
 DatePicker.defaultProps = {
-  id: `DatePicker-${idgen()}`,
+  get id() {
+    return `DatePicker-${idgen()}`;
+  },
   options: {
     autoClose: false,
     format: 'mmm dd, yyyy',

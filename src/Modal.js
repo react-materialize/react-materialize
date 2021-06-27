@@ -205,7 +205,9 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  id: `Modal-${idgen()}`,
+  get id() {
+    return `Modal-${idgen()}`;
+  },
   root: typeof window !== 'undefined' ? document.body : null,
   open: false,
   options: {
