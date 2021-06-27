@@ -91,7 +91,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   get id() {
-    return `Checkbox_-${idgen()}`;
+    return `Checkbox_${idgen()}`;
   }
 };
 
