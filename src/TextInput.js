@@ -230,7 +230,9 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
-  id: `TextInput-${idgen()}`
+  get id() {
+    return `TextInput-${idgen()}`;
+  }
 };
 
 export default TextInput;

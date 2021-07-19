@@ -111,7 +111,9 @@ TimePicker.propTypes = {
 };
 
 TimePicker.defaultProps = {
-  id: `TimePicker-${idgen()}`,
+  get id() {
+    return `TimePicker-${idgen()}`;
+  },
   options: {
     duration: 350,
     container: null,

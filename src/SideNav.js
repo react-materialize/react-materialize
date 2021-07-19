@@ -96,7 +96,9 @@ SideNav.propTypes = {
 };
 
 SideNav.defaultProps = {
-  id: `SideNav-${idgen()}`
+  get id() {
+    return `SideNav-${idgen()}`;
+  }
 };
 
 export default SideNav;

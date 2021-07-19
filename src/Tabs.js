@@ -6,9 +6,14 @@ import cx from 'classnames';
 import Row from './Row';
 import Tab from './Tab';
 
-const scope = `tabs-${idgen()}`;
-
-const Tabs = ({ children, className, defaultValue, options, onChange }) => {
+const Tabs = ({
+  scope,
+  children,
+  className,
+  defaultValue,
+  options,
+  onChange
+}) => {
   const _tabsRef = useRef(null);
 
   useEffect(() => {
@@ -54,6 +59,11 @@ const Tabs = ({ children, className, defaultValue, options, onChange }) => {
 };
 
 Tabs.propTypes = {
+  /**
+   * Uniquely identifies each tab item
+   * @default idgen()
+   */
+  scope: PropTypes.string,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   defaultValue: PropTypes.string,
@@ -84,6 +94,12 @@ Tabs.propTypes = {
      */
     responsiveThreshold: PropTypes.number
   })
+};
+
+Tabs.defaultProps = {
+  get scope() {
+    return `tabs-${idgen()}`;
+  }
 };
 
 Tab.defaultProps = {
