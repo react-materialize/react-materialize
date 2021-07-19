@@ -138,6 +138,10 @@ Select.propTypes = {
    */
   id: PropTypes.string,
   /**
+   * Select name
+   */
+  name: PropTypes.string,
+  /**
    * prefix icon
    */
   icon: PropTypes.node,
@@ -195,7 +199,9 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
-  id: `Select-${idgen()}`,
+  get id() {
+    return `Select-${idgen()}`;
+  },
   multiple: false,
   options: {
     classes: '',

@@ -164,7 +164,9 @@ Textarea.propTypes = {
 };
 
 Textarea.defaultProps = {
-  id: `Textarea-${idgen()}`
+  get id() {
+    return `Textarea-${idgen()}`;
+  }
 };
 
 export default Textarea;
