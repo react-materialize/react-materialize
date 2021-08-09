@@ -54,3 +54,12 @@ stories.add('Fixed Width Tabs', () => (
     <Tab title="Test 4">Test 5</Tab>
   </Tabs>
 ));
+
+stories.add('Assigned idx', () => (
+  <Tabs>
+    <Tab title="Test 1" idx="one">
+      Test 1
+    </Tab>
+    <Tab title="Test 2">Test 1</Tab>
+  </Tabs>
+));

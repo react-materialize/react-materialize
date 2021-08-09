@@ -17,22 +17,34 @@ const Tabs = ({
   const _tabsRef = useRef(null);
 
   useEffect(() => {
-    const instance = M.Tabs.init(_tabsRef.current, options);
-    return () => instance.destroy();
+    if (_tabsRef.current) {
+      const instance = M.Tabs.init(_tabsRef.current, options);
+
+      return () => {
+        instance && instance.destroy();
+      };
+    }
   }, [options, children]);
 
   return (
     <React.Fragment>
       <ul className={cx('tabs', className)} ref={_tabsRef}>
         {React.Children.map(children, (child, id) => {
-          const idx = `${scope}${id}`;
-          const { active, disabled, tabWidth, title } = child.props;
+          const {
+            idx = `${scope}${id}`,
+            active,
+            disabled,
+            tabWidth,
+            title,
+            className
+          } = child.props;
 
           const classes = {
             [`s${tabWidth}`]: tabWidth,
             tab: true,
             disabled,
-            col: true
+            col: true,
+            className
           };
 
           return (
@@ -50,7 +62,7 @@ const Tabs = ({
       </ul>
       <Row>
         {React.Children.map(children, (child, id) => {
-          const idx = `${scope}${id}`;
+          const idx = child.props.idx || `${scope}${id}`;
           return cloneElement(child, { idx });
         })}
       </Row>

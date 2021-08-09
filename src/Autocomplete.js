@@ -29,9 +29,7 @@ const Autocomplete = ({
     M.updateTextFields();
     const instance = M.Autocomplete.init(autocompleteRef.current, options);
 
-    return () => {
-      instance && instance.destroy();
-    };
+    return () => instance.destroy();
   }, [options]);
 
   return (

@@ -36,7 +36,7 @@ const Button = ({
   }, [tooltip, tooltipOptions, children]);
 
   useEffect(() => {
-    if (fab) {
+    if (fab && _fab.current) {
       const instance = M.FloatingActionButton.init(_fab.current, fab);
 
       return () => {
@@ -49,7 +49,7 @@ const Button = ({
     return (
       <div
         {...props}
-        ref={_fab.current}
+        ref={_fab}
         className={cx('fixed-action-btn', {
           toolbar: fab.toolbarEnabled
         })}
