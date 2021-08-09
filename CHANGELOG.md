@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.9.9
+
+- fixes Tabs children not using `idx` prop #1202
+- migrates some specs to RTL and configures testing library
+
 ### 3.9.8
 
 - add `ref` to `TextInput` type definition #1181
