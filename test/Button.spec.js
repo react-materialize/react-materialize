@@ -1,75 +1,69 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import Button from '../src/Button';
 import mocker from './helper/new-mocker';
 
 describe('Button', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Button waves="light">Stuff</Button>);
-  });
-
   test('renders', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  test('should output a button', () => {
-    expect(wrapper.find('button')).toHaveLength(1);
-  });
-
-  test('should output a component with btn class', () => {
-    expect(wrapper.find('.btn')).toHaveLength(1);
-  });
-
-  test('should apply waves', () => {
-    expect(wrapper.find('.waves-effect')).toHaveLength(1);
+    const { container } = render(<Button waves="light">Stuff</Button>);
+    expect(
+      container.querySelector('button.btn.waves-effect.waves-light')
+    ).toBeTruthy();
   });
 
   test('should apply large styles', () => {
-    wrapper = shallow(<Button large>Stuff</Button>);
-    expect(wrapper.find('.btn-large')).toHaveLength(1);
+    const { container } = render(<Button large>Stuff</Button>);
+    expect(container.querySelector('button.btn-large')).toBeTruthy();
   });
 
   test('should apply small styles', () => {
-    wrapper = shallow(<Button small>Stuff</Button>);
-    expect(wrapper.find('.btn-small')).toHaveLength(1);
+    const { container } = render(<Button small>Stuff</Button>);
+    expect(container.querySelector('button.btn-small')).toBeTruthy();
   });
 
   test('should apply floating styles', () => {
-    wrapper = shallow(<Button floating>Stuff</Button>);
-    expect(wrapper.find('.btn-floating')).toHaveLength(1);
+    const { container } = render(<Button floating>Stuff</Button>);
+    expect(container.querySelector('button.btn-floating')).toBeTruthy();
   });
 
   test('should apply flat styles', () => {
-    wrapper = shallow(<Button flat>Stuff</Button>);
-    expect(wrapper.find('.btn-flat')).toHaveLength(1);
+    const { container } = render(<Button flat>Stuff</Button>);
+    expect(container.querySelector('button.btn-flat')).toBeTruthy();
   });
 
   test('should apply FAB hover', () => {
-    wrapper = shallow(<Button fab>Stuff</Button>);
-    wrapper.simulate('hover');
-    expect(wrapper.find('.fixed-action-btn active'));
+    const baseClass = '.fixed-action-btn';
+    const { container } = render(<Button fab>Stuff</Button>);
+
+    const selector = container.querySelector(baseClass);
+    expect(selector).toBeTruthy();
+
+    fireEvent.mouseEnter(selector);
+    expect(`${baseClass}.active`).toBeTruthy();
   });
 
-  test('should apply FAB click-only', () => {
-    wrapper = shallow(
-      <Button fab fabOptions={{ hoverEnabled: false }}>
-        Stuff
-      </Button>
+  test('accepts FAB as object', () => {
+    const baseClass = '.fixed-action-btn';
+    const { container } = render(
+      <Button fab={{ hoverEnabled: false }}>Stuff</Button>
     );
-    wrapper.simulate('click');
-    expect(wrapper.find('.fixed-action-btn active'));
+
+    const selector = container.querySelector(baseClass);
+    expect(selector).toBeTruthy();
+
+    fireEvent.click(selector);
+    expect(`${baseClass}.active`).toBeTruthy();
   });
 
   describe('with a disabled prop', () => {
-    let wrapper = mount(<Button disabled>Stuff</Button>);
     test('should have a disabled class', () => {
-      expect(wrapper.find('.disabled')).toHaveLength(1);
+      const { container } = render(<Button disabled>Stuff</Button>);
+      expect(container.querySelector('.btn.disabled')).toBeTruthy();
     });
 
     test('should have a disabled attribute', () => {
-      expect(wrapper.prop('disabled')).toEqual(true);
+      const { getByText } = render(<Button disabled>Stuff</Button>);
+      expect(getByText('Stuff').closest('button').disabled).toBeTruthy();
     });
   });
 
@@ -77,7 +71,7 @@ describe('Button', () => {
     const tooltipInitMock = jest.fn();
     const tooltipInstanceDestroyMock = jest.fn();
     const tooltipMock = {
-      init: (el, options) => {
+      init: (_, options) => {
         tooltipInitMock(options);
         return {
           destroy: tooltipInstanceDestroyMock
@@ -93,6 +87,7 @@ describe('Button', () => {
 
     beforeEach(() => {
       tooltipInitMock.mockClear();
+      tooltipInstanceDestroyMock.mockClear();
     });
 
     afterAll(() => {
@@ -100,22 +95,24 @@ describe('Button', () => {
     });
 
     test('initializes Button with tooltip', () => {
-      wrapper = mount(<Button tooltip={tooltip}>Stuff</Button>);
-      expect(tooltipInitMock).toHaveBeenCalled();
+      render(<Button tooltip={tooltip}>Stuff</Button>);
+      expect(tooltipInitMock).toBeCalled();
     });
 
     test('initializes Button with tooltip options', () => {
-      wrapper = mount(
+      render(
         <Button tooltip={tooltip} tooltipOptions={tooltipOptions}>
           Stuff
         </Button>
       );
+
       expect(tooltipInitMock).toHaveBeenCalledWith(tooltipOptions);
     });
 
     test('destroyed when unmounted', () => {
-      wrapper = mount(<Button tooltip={tooltip}>Stuff</Button>);
-      wrapper.unmount();
+      const { unmount } = render(<Button tooltip={tooltip}>Stuff</Button>);
+      unmount();
+
       expect(tooltipInstanceDestroyMock).toHaveBeenCalled();
     });
   });
@@ -124,7 +121,7 @@ describe('Button', () => {
     const fabInitMock = jest.fn();
     const fabInstanceDestroyMock = jest.fn();
     const fabMock = {
-      init: (el, options) => {
+      init: (_, options) => {
         fabInitMock(options);
         return {
           destroy: fabInstanceDestroyMock
@@ -137,7 +134,6 @@ describe('Button', () => {
       hoverEnabled: false,
       toolbarEnabled: true
     };
-    let wrapper;
     const FabButton = (fabOptions = true, style = {}) => (
       <Button floating fab={fabOptions} className="red" large style={style}>
         <Button floating icon="insert_chart" className="red" />
@@ -156,22 +152,20 @@ describe('Button', () => {
     });
 
     test('initializes FloatingActionButton instance', () => {
-      wrapper = mount(FabButton());
-      expect(fabInitMock).toHaveBeenCalled();
+      render(FabButton());
+      expect(fabInitMock).toBeCalled();
     });
+
     test('initializes FloatingActionButton with fab options', () => {
-      wrapper = mount(FabButton(fabOptions));
+      render(FabButton(fabOptions));
       expect(fabInitMock).toHaveBeenCalledWith(fabOptions);
     });
+
     test('destroys FloatingActionButton instance when unmounted', () => {
-      wrapper = mount(FabButton());
-      wrapper.unmount();
+      const { unmount } = render(FabButton());
+      unmount();
+
       expect(fabInstanceDestroyMock).toHaveBeenCalled();
-    });
-    test('renders FloatingActionButton with passed styles', () => {
-      const style = { bottom: '45px', right: '24px' };
-      wrapper = shallow(FabButton(true, style));
-      expect(Object.keys(wrapper.props().style).length).toBeGreaterThan(0);
     });
   });
 });
