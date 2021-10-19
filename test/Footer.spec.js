@@ -17,13 +17,13 @@ let links = (
   </ul>
 );
 // let wrapper = shallow(
-  // <Footer
-    // moreLinks={moreLinks}
-    // copyrights="&copy; 2015 Copyright Text"
-    // links={links}
-  // >
-    // <p>Footer Content</p>
-  // </Footer>
+// <Footer
+// moreLinks={moreLinks}
+// copyrights="&copy; 2015 Copyright Text"
+// links={links}
+// >
+// <p>Footer Content</p>
+// </Footer>
 // );
 
 describe.skip('<Footer />', () => {

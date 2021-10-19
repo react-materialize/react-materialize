@@ -4,9 +4,9 @@ import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';
 
 // let wrapper = shallow(
-  // <Collection>
-    // <CollectionItem>Alvin</CollectionItem>
-  // </Collection>
+// <Collection>
+// <CollectionItem>Alvin</CollectionItem>
+// </Collection>
 // );
 
 describe.skip('<Collection />', () => {
