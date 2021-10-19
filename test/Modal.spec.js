@@ -1,16 +1,27 @@
 import React from 'react';
-// import { shallow, mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Modal from '../src/Modal';
 import mocker from './helper/new-mocker';
 
-describe.skip('<Modal />', () => {
-  let wrapper;
+const trigger = <button>click</button>;
+const children = (
+  <div>
+    <h1>Hello</h1>
+  </div>
+);
+const header = 'Modal header';
+const options = {
+  dismissible: true,
+  opacity: 0.4
+};
+
+describe('<Modal />', () => {
   const modalOpenMock = jest.fn();
   const modalCloseMock = jest.fn();
   const modalInitMock = jest.fn();
   const modalInstanceDestroyMock = jest.fn();
   const modalMock = {
-    init: (el, options) => {
+    init: (_, options) => {
       modalInitMock(options);
       return {
         open: modalOpenMock,
@@ -25,114 +36,53 @@ describe.skip('<Modal />', () => {
     restore();
   });
 
-  const trigger = <button>click</button>;
-  const children = (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  );
-  const header = 'Modal header';
-  const options = {
-    dismissible: true,
-    opacity: 0.4
-  };
-
-  let renderedWrapper;
+  beforeEach(() => {
+    modalInitMock.mockClear();
+  });
 
   describe('initialises', () => {
-    beforeEach(() => {
-      modalInitMock.mockClear();
-    });
-
     test('calls Modal', () => {
-      mount(<Modal />);
+      render(<Modal />);
 
-      expect(modalInitMock).toHaveBeenCalledTimes(1);
+      expect(modalInitMock).toBeCalledWith({
+        opacity: 0.5,
+        inDuration: 250,
+        outDuration: 250,
+        onOpenStart: null,
+        onOpenEnd: null,
+        onCloseStart: null,
+        onCloseEnd: null,
+        preventScrolling: true,
+        dismissible: true,
+        startingTop: '4%',
+        endingTop: '10%'
+      });
     });
   });
 
   describe('renders a modal', () => {
-    beforeEach(() => {
-      wrapper = mount(
+    test('has children', () => {
+      const { queryByText } = render(
         <Modal trigger={trigger} options={options} header={header}>
           {children}
         </Modal>
       );
 
-      renderedWrapper = document.body.lastElementChild.innerHTML;
-    });
-
-    afterEach(() => {
-      modalInitMock.mockClear();
-    });
-
-    test('has children', () => {
-      expect(renderedWrapper).toContain(header);
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    test('has a footer', () => {
-      expect(renderedWrapper).toContain('modal-footer');
-    });
-  });
-
-  describe('without a trigger', () => {
-    beforeEach(() => {
-      wrapper = mount(<Modal options={options}>{children}</Modal>);
-    });
-
-    afterEach(() => {
-      modalInitMock.mockClear();
-      document.body.removeChild(document.body.lastElementChild);
-    });
-
-    test('renders', () => {
-      expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(Modal)).toHaveLength(1);
+      expect(queryByText('Hello')).toBeTruthy();
+      expect(document.body.querySelector('.modal-footer')).toBeTruthy();
     });
   });
 
   describe('controlled modal with `open` prop', () => {
-    beforeEach(() => {
-      // initially set to open
-      wrapper = mount(<Modal open>{children}</Modal>);
-    });
-
-    afterEach(() => {
-      modalInitMock.mockClear();
-    });
-
     test('calls `open` on mount', () => {
+      render(<Modal open>{children}</Modal>);
       expect(modalOpenMock).toHaveBeenCalledTimes(1);
     });
 
     test('open on prop change', () => {
-      wrapper.setProps({ open: false });
-      // called once when mounted to `open` and once
-      // after new props to close
+      const { rerender } = render(<Modal open>{children}</Modal>);
+      rerender(<Modal open={false}>{children}</Modal>);
       expect(modalOpenMock).toHaveBeenCalledTimes(2);
-    });
-  });
-
-  describe('renders a trigger', () => {
-    beforeEach(() => {
-      wrapper = mount(
-        <Modal trigger={trigger} options={options} header={header}>
-          {children}
-        </Modal>
-      );
-    });
-
-    afterEach(() => {
-      modalInitMock.mockClear();
-    });
-
-    test('renders', () => {
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    test('initializes with options', () => {
-      expect(modalInitMock).toHaveBeenCalledWith(options);
     });
   });
 });
