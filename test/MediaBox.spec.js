@@ -1,9 +1,9 @@
 import React, { cloneElement } from 'react';
-import { mount, shallow } from 'enzyme';
+// import { mount, shallow } from 'enzyme';
 import MediaBox from '../src/MediaBox';
 import mocker from './helper/new-mocker';
 
-describe('<MediaBox />', () => {
+describe.skip('<MediaBox />', () => {
   const wrapper = (
     <MediaBox className="more" caption="A demo media box1" width="650">
       <img src="image.jpg" alt="" />

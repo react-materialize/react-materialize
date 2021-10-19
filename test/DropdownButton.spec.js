@@ -1,10 +1,10 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+// import { shallow, mount } from 'enzyme';
 import Dropdown from '../src/Dropdown';
 import Divider from '../src/Divider';
 import mocker from './helper/new-mocker';
 
-describe('<Dropdown />', () => {
+describe.skip('<Dropdown />', () => {
   let wrapper;
 
   test('renders', () => {
