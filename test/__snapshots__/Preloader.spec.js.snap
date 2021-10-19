@@ -1,39 +1,144 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Preloader /> should render a Preloader 1`] = `
-<div
-  className="find preloader-wrapper big"
->
-  <Spinner
-    color="blue"
-    key="blue"
-    only={false}
-  />
-  <Spinner
-    color="red"
-    key="red"
-    only={false}
-  />
-  <Spinner
-    color="yellow"
-    key="yellow"
-    only={false}
-  />
-  <Spinner
-    color="green"
-    key="green"
-    only={false}
-  />
+<div>
+  <div
+    class="find preloader-wrapper big"
+  >
+    <div
+      class="spinner-layer spinner-blue"
+    >
+      <div
+        class="circle-clipper left"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="gap-patch"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="circle-clipper right"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+    </div>
+    <div
+      class="spinner-layer spinner-red"
+    >
+      <div
+        class="circle-clipper left"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="gap-patch"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="circle-clipper right"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+    </div>
+    <div
+      class="spinner-layer spinner-yellow"
+    >
+      <div
+        class="circle-clipper left"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="gap-patch"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="circle-clipper right"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+    </div>
+    <div
+      class="spinner-layer spinner-green"
+    >
+      <div
+        class="circle-clipper left"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="gap-patch"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="circle-clipper right"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`<Preloader /> should render a Preloader with default properties 1`] = `
-<div
-  className="preloader-wrapper active"
->
-  <Spinner
-    color="blue"
-    only={true}
-  />
+<div>
+  <div
+    class="preloader-wrapper active"
+  >
+    <div
+      class="spinner-layer spinner-blue-only"
+    >
+      <div
+        class="circle-clipper left"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="gap-patch"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+      <div
+        class="circle-clipper right"
+      >
+        <div
+          class="circle"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;
