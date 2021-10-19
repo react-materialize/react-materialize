@@ -1,5 +1,10 @@
 # Changelog
 
+### 3.10.0
+
+- removes Enzyme
+- upgrades dependencies to react 17
+
 ### 3.9.9
 
 - fixes Tabs children not using `idx` prop #1202
