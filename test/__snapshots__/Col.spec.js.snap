@@ -1,7 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Col /> accepts sizes as props 1`] = `
+<div>
+  <div
+    class="col s4 m6 l8"
+  />
+</div>
+`;
+
+exports[`<Col /> offset renders many offset classes 1`] = `
+<div>
+  <div
+    class="col offset-s4 offset-m6 offset-xl8"
+  />
+</div>
+`;
+
+exports[`<Col /> offset renders one offset class 1`] = `
+<div>
+  <div
+    class="col offset-s4"
+  />
+</div>
+`;
+
+exports[`<Col /> pull renders many pull classes 1`] = `
+<div>
+  <div
+    class="col pull-s4 pull-m6 pull-xl8"
+  />
+</div>
+`;
+
+exports[`<Col /> pull renders one pull class 1`] = `
+<div>
+  <div
+    class="col pull-s4"
+  />
+</div>
+`;
+
+exports[`<Col /> push renders many push classes 1`] = `
+<div>
+  <div
+    class="col push-s4 push-m6 push-xl8"
+  />
+</div>
+`;
+
+exports[`<Col /> push renders one push class 1`] = `
+<div>
+  <div
+    class="col push-s4"
+  />
+</div>
+`;
+
 exports[`<Col /> renders 1`] = `
-<div
-  className="col"
-/>
+<div>
+  <div
+    class="col"
+  >
+    <p>
+      hello
+    </p>
+  </div>
+</div>
 `;

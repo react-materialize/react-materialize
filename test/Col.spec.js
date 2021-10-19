@@ -1,26 +1,55 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Col from '../src/Col';
 
-// let wrapper = shallow(<Col />);
-
-describe.skip('<Col />', () => {
+describe('<Col />', () => {
   test('renders', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <Col>
+        <p>hello</p>
+      </Col>
+    );
+    expect(container).toMatchSnapshot();
   });
 
   test('accepts sizes as props', () => {
-    wrapper = shallow(<Col s={4} m={6} l={8} />);
-    expect(wrapper.find('.col').hasClass('s4 m6 l8')).toEqual(true);
+    const { container } = render(<Col s={4} m={6} l={8} />);
+    expect(container).toMatchSnapshot();
   });
 
-  test('accepts push as props', () => {
-    wrapper = shallow(<Col push="s4" />);
-    expect(wrapper.find('.col').hasClass('push-s4'));
+  describe('offset', () => {
+    test('renders one offset class', () => {
+      const { container } = render(<Col offset="s4" />);
+      expect(container).toMatchSnapshot();
+    });
+
+    test('renders many offset classes', () => {
+      const { container } = render(<Col offset="s4 m6 xl8" />);
+      expect(container).toMatchSnapshot();
+    });
   });
 
-  test('accepts pull as props', () => {
-    wrapper = shallow(<Col pull="s4" />);
-    expect(wrapper.find('.col').hasClass('pull-s4'));
+  describe('push', () => {
+    test('renders one push class', () => {
+      const { container } = render(<Col push="s4" />);
+      expect(container).toMatchSnapshot();
+    });
+
+    test('renders many push classes', () => {
+      const { container } = render(<Col push="s4 m6 xl8" />);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('pull', () => {
+    test('renders one pull class', () => {
+      const { container } = render(<Col pull="s4" />);
+      expect(container).toMatchSnapshot();
+    });
+
+    test('renders many pull classes', () => {
+      const { container } = render(<Col pull="s4 m6 xl8" />);
+      expect(container).toMatchSnapshot();
+    });
   });
 });

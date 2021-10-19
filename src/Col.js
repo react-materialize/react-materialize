@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import constants from './constants';
+import { sizesClass } from './tools/sizes';
+
+const extendClassname = (base, classes, namespace) => {
+  return namespace.split(' ').reduce((acc, current) => {
+    acc[`${base}-${current}`] = true;
+
+    return acc;
+  }, classes);
+};
 
 const Col = ({
   children,
@@ -18,22 +26,18 @@ const Col = ({
   ...other
 }) => {
   let sizes = { s, m, l, xl };
-  let classes = {
-    col: true
-  };
+  let classes = sizesClass({ col: true }, sizes);
 
-  constants.SIZES.forEach(size => (classes[size + sizes[size]] = sizes[size]));
-
-  if (offset) {
-    offset.split(' ').forEach(offset => (classes['offset-' + offset] = true));
+  if (typeof offset !== 'undefined') {
+    classes = extendClassname('offset', classes, offset);
   }
 
-  if (push) {
-    push.split(' ').forEach(push => (classes['push-' + push] = true));
+  if (typeof push !== 'undefined') {
+    classes = extendClassname('push', classes, push);
   }
 
-  if (pull) {
-    pull.split(' ').forEach(pull => (classes['pull-' + pull] = true));
+  if (typeof pull !== 'undefined') {
+    classes = extendClassname('pull', classes, pull);
   }
 
   return (
