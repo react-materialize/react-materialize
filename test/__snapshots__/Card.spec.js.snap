@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> renders 1`] = `
-<div
-  className="blue-grey darken-1 card"
->
-  <Wrapper>
+<div>
+  <div
+    class="blue-grey darken-1 card"
+  >
     <div
-      className="card-content white-text"
+      class="card-content white-text"
     >
       <span
-        className="card-title"
+        class="card-title"
       >
         card title
       </span>
@@ -18,19 +18,19 @@ exports[`<Card /> renders 1`] = `
       </div>
     </div>
     <div
-      className="card-reveal"
+      class="card-reveal"
     >
       <span
-        className="card-title"
+        class="card-title"
       >
         card title
-        <Icon
-          right={true}
+        <i
+          class="material-icons right"
         >
           close
-        </Icon>
+        </i>
       </span>
     </div>
-  </Wrapper>
+  </div>
 </div>
 `;
