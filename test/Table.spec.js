@@ -1,18 +1,20 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Table from '../src/Table';
 
-describe.skip('<Table />', () => {
-  const wrapper = shallow(
-    <Table centered hoverable responsive striped>
-      <tr>
-        <td>foo</td>
-        <td>bar</td>
-      </tr>
-    </Table>
-  );
-
+describe('<Table />', () => {
   test('renders', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <Table centered hoverable responsive striped>
+        <tbody>
+          <tr>
+            <td>foo</td>
+            <td>bar</td>
+          </tr>
+        </tbody>
+      </Table>
+    );
+
+    expect(container).toMatchSnapshot();
   });
 });
