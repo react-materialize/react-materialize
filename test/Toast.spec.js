@@ -4,22 +4,6 @@ import Toast from '../src/Toast';
 import mocker from './helper/new-mocker';
 
 describe.skip('Toast', () => {
-  const options = {
-    html: 'foo',
-    classes: 'bar'
-  };
-
-  const toastMock = jest.fn();
-  const restore = mocker('toast', toastMock);
-
-  afterAll(() => {
-    restore();
-  });
-
-  const child = 'toast content';
-
-  const wrapper = shallow(<Toast options={options}>{child}</Toast>);
-
   test('renders', () => {
     expect(wrapper).toMatchSnapshot();
   });

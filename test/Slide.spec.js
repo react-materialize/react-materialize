@@ -3,7 +3,7 @@ import React from 'react';
 import Slide from '../src/Slide';
 
 describe.skip('<Slide />', () => {
-  let wrapper = shallow(<Slide image={<img src="#" />} />);
+  // let wrapper = shallow(<Slide image={<img src="#" />} />);
 
   test('renders', () => {
     expect(wrapper).toMatchSnapshot();

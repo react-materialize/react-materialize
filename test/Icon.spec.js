@@ -3,7 +3,7 @@ import React from 'react';
 import Icon from '../src/Icon';
 
 describe.skip('<Icon />', () => {
-  let wrapper = shallow(<Icon>cloud</Icon>);
+  // let wrapper = shallow(<Icon>cloud</Icon>);
 
   test('renders an icon', () => {
     wrapper = shallow(<Icon>cloud</Icon>);

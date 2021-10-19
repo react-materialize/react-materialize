@@ -3,12 +3,6 @@ import React from 'react';
 import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';
 
-// let wrapper = shallow(
-// <Collection>
-// <CollectionItem>Alvin</CollectionItem>
-// </Collection>
-// );
-
 describe.skip('<Collection />', () => {
   test('renders', () => {
     expect(wrapper).toMatchSnapshot();
@@ -19,13 +13,6 @@ describe.skip('<Collection />', () => {
   });
 
   describe('with header prop', () => {
-    let header = 'names';
-    wrapper = shallow(
-      <Collection header={header}>
-        <CollectionItem>Alvin</CollectionItem>
-      </Collection>
-    );
-
     test('should support "header" prop', () => {
       expect(wrapper.find('.with-header')).toHaveLength(1);
     });
