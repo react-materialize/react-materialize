@@ -47,12 +47,7 @@ const SideNav = ({
   return (
     <Fragment>
       {renderTrigger}
-      <ul
-        ref={el => (sidenavRef.current = el)}
-        id={id}
-        className={classNames}
-        {...props}
-      >
+      <ul ref={sidenavRef} id={id} className={classNames} {...props}>
         {children}
       </ul>
     </Fragment>
