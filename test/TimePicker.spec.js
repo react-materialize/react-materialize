@@ -1,31 +1,24 @@
 import React from 'react';
-// import { shallow, mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import TimePicker from '../src/TimePicker';
 import mocker from './helper/new-mocker';
 
-describe.skip('<TimePicker />', () => {
-  let wrapper;
-
+describe('<TimePicker />', () => {
   test('renders', () => {
-    wrapper = shallow(<TimePicker />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<TimePicker />);
+    expect(container).toMatchSnapshot();
   });
 
   test('renders with a label', () => {
-    wrapper = shallow(<TimePicker label="TimePicker label" />);
-    expect(wrapper).toMatchSnapshot();
+    const { queryByText } = render(<TimePicker label="TimePicker label" />);
+    expect(queryByText('TimePicker label')).toBeTruthy();
   });
 
-  test('accepts external `id` value', () => {
-    wrapper = shallow(<TimePicker id="ID" />);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  describe('initialises', () => {
+  describe('js init', () => {
     const timePickerInitMock = jest.fn();
     const timePickerInstanceDestroyMock = jest.fn();
     const timePickerMock = {
-      init: (el, options) => {
+      init: (_, options) => {
         timePickerInitMock(options);
         return {
           destroy: timePickerInstanceDestroyMock
@@ -45,7 +38,7 @@ describe.skip('<TimePicker />', () => {
     });
 
     test('uses default options if none are given', () => {
-      wrapper = mount(<TimePicker />);
+      render(<TimePicker />);
 
       expect(timePickerInitMock).toHaveBeenCalledWith({
         duration: 350,

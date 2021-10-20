@@ -1,14 +1,13 @@
 import React from 'react';
-// import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import SideNav from '../src/SideNav';
 import mocker from './helper/new-mocker';
 
-describe.skip('<SideNav />', () => {
-  let wrapper;
+describe('<SideNav />', () => {
   const sideNavInitMock = jest.fn();
   const sideNavInstanceDestroyMock = jest.fn();
   const sideNavMock = {
-    init: (el, options) => {
+    init: (_, options) => {
       sideNavInitMock(options);
       return {
         destroy: sideNavInstanceDestroyMock
@@ -16,56 +15,63 @@ describe.skip('<SideNav />', () => {
     }
   };
   const restore = mocker('Sidenav', sideNavMock);
-  const trigger = <button className="trigger">Show sidenav</button>;
+  const trigger = <button className="red">Show sidenav</button>;
 
   afterAll(() => {
     restore();
   });
 
+  beforeEach(() => {
+    sideNavInitMock.mockClear();
+    sideNavInstanceDestroyMock.mockClear();
+  });
+
   test('renders', () => {
-    wrapper = mount(<SideNav trigger={trigger} />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<SideNav trigger={trigger} />);
+    expect(container).toMatchSnapshot();
   });
 
   test('can be `fixed`', () => {
-    wrapper = mount(<SideNav trigger={trigger} fixed />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<SideNav trigger={trigger} fixed />);
+    expect(container.querySelector('.sidenav-fixed')).toBeTruthy();
   });
 
   test('is `fixed` if no trigger is passed', () => {
-    wrapper = mount(<SideNav />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<SideNav />);
+    expect(container.querySelector('.sidenav-fixed')).toBeTruthy();
   });
 
-  test('renders', () => {
-    wrapper = mount(<SideNav trigger={trigger} id="test" />);
-    expect(wrapper).toMatchSnapshot();
+  test('passes id to ul', () => {
+    const { container } = render(<SideNav trigger={trigger} id="test" />);
+    expect(container.querySelector('ul#test')).toBeTruthy();
   });
 
   test('renders children', () => {
-    wrapper = mount(
+    const { container } = render(
       <SideNav trigger={trigger}>
         <span className="test-child" />
       </SideNav>
     );
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container.querySelector('ul > .test-child')).toBeTruthy();
   });
 
-  test('should call sideNav with the given options', () => {
-    const options = {
-      draggable: true,
-      edge: 'right'
-    };
-    mount(<SideNav trigger={trigger} options={options} />);
+  describe('js init', () => {
+    test('should call sideNav with the given options', () => {
+      const options = {
+        draggable: true,
+        edge: 'right'
+      };
+      render(<SideNav trigger={trigger} options={options} />);
 
-    expect(sideNavInitMock).toHaveBeenCalledWith(options);
-  });
+      expect(sideNavInitMock).toBeCalledWith(options);
+    });
 
-  test('should be destroyed when unmounted', () => {
-    const component = mount(<SideNav />);
-    component.unmount();
+    test('should be destroyed when unmounted', () => {
+      const { unmount } = render(<SideNav />);
+      unmount();
 
-    expect(sideNavInstanceDestroyMock).toHaveBeenCalled();
+      expect(sideNavInstanceDestroyMock).toBeCalled();
+    });
   });
 });

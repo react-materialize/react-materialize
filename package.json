@@ -10,9 +10,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "npm run test:unit",
-    "test:unit": "jest",
-    "test:unit:watch": "jest --watch",
+    "test": "jest ./test --watchAll",
+    "test-ci": "jest ./test --ci",
     "pretest": "npm run lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
@@ -47,9 +46,14 @@
     "setupFiles": [
       "<rootDir>/test/setup.js"
     ],
+    "testEnvironment": "jsdom",
     "moduleDirectories": [
       "node_modules",
       "src"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
     ]
   },
   "homepage": "https://github.com/react-materialize/react-materialize",
@@ -68,7 +72,7 @@
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^27.3.1",
     "babel-loader": "^8.1.0",
     "copyfiles": "^2.4.1",
     "eslint": "^4.19.1",
@@ -81,7 +85,8 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "eslint-plugin-standard": "^2.0.0",
     "husky": "^0.14.3",
-    "jest": "^23.6.0",
+    "jest": "^27.3.1",
+    "jest-watch-typeahead": "^1.0.0",
     "jsdom": "^16.4.0",
     "materialize-css": "^1.0.0",
     "mutationobserver-shim": "^0.3.7",

@@ -1,33 +1,25 @@
 import React from 'react';
+import { render } from '@testing-library/react';
 import ProgressBar from '../src/ProgressBar';
 
-// let wrapper = shallow(<ProgressBar />);
-
-describe.skip('<ProgressBar />', () => {
+describe('<ProgressBar />', () => {
   test('renders', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<ProgressBar />);
+    expect(container).toMatchSnapshot();
   });
 
-  test('renders by default with an indeterminate state`', () => {
-    expect(
-      wrapper
-        .find('.progress')
-        .childAt(0)
-        .find('.indeterminate')
-    ).toHaveLength(1);
+  test('adds progress style', () => {
+    const { container } = render(<ProgressBar progress={32} />);
+    expect(container).toMatchSnapshot();
   });
 
-  test('handles progress prop', () => {
-    wrapper = shallow(<ProgressBar progress={50} />);
-    expect(
-      wrapper.contains(<div className="determinate" style={{ width: '50%' }} />)
-    ).toEqual(true);
+  test('handles determinate', () => {
+    const { container } = render(<ProgressBar progress={32} />);
+    expect(container.querySelector('.determinate')).toBeTruthy();
   });
 
-  test('handles different colors', () => {
-    wrapper = shallow(<ProgressBar className="red" progress={0} />);
-    expect(wrapper.containsMatchingElement(<div className="red" />)).toEqual(
-      true
-    );
+  test('handles indeterminate', () => {
+    const { container } = render(<ProgressBar />);
+    expect(container.querySelector('.indeterminate')).toBeTruthy();
   });
 });

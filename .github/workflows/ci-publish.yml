@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           registry-url: 'https://registry.npmjs.org'
+          node-version: '12'
       - uses: actions/cache@v1
         with:
           path: ~/.npm

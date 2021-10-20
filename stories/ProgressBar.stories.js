@@ -6,7 +6,7 @@ import ProgressBar from '../src/ProgressBar';
 import Preloader from '../src/Preloader';
 import { number, withKnobs } from '@storybook/addon-knobs';
 
-const stories = storiesOf('Components/Preloader', module);
+const stories = storiesOf('Components/ProgressBar', module);
 stories.addDecorator(withKnobs);
 
 stories.addParameters({
@@ -17,14 +17,11 @@ stories.addParameters({
 
 stories.add('Default', () => (
   <Row>
-    <Col s={4}>
-      <Preloader size="big" />
+    <Col s={12}>
+      <ProgressBar progress={number('progress', 70)} />
     </Col>
-    <Col s={4}>
-      <Preloader flashing />
-    </Col>
-    <Col s={4}>
-      <Preloader size="small" />
+    <Col s={12}>
+      <ProgressBar />
     </Col>
   </Row>
 ));

@@ -1,10 +1,10 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Preloader from '../src/Preloader';
 
-describe.skip('<Preloader />', () => {
+describe('<Preloader />', () => {
   test('should render a Preloader', () => {
-    const wrapper = shallow(
+    const { container } = render(
       <Preloader
         className="find"
         size="big"
@@ -14,12 +14,12 @@ describe.skip('<Preloader />', () => {
       />
     );
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render a Preloader with default properties', () => {
-    const wrapper = shallow(<Preloader />);
+    const { container } = render(<Preloader />);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
