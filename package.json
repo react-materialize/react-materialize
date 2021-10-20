@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "test": "jest ./test --watchAll",
+    "test-ci": "jest ./test --ci",
     "pretest": "npm run lint",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",

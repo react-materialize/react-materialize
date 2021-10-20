@@ -21,4 +21,4 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
       - run: npm ci
-      - run: npm test
+      - run: npm run test-ci
