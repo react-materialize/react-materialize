@@ -5,7 +5,7 @@ export function resetID() {
 }
 
 export default function idgen() {
-  let oldId = id;
+  const oldId = id;
   id += 1;
   return oldId;
 }
