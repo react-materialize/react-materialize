@@ -80,7 +80,6 @@ const Select = ({
       {Boolean(icon) && cloneElement(icon, { className: 'prefix' })}
       <select
         {...props}
-        type="select"
         id={id}
         value={selectedValue}
         ref={_selectRef}
