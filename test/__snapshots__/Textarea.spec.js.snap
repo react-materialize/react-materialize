@@ -16,6 +16,28 @@ exports[`<Textarea /> Disabled 1`] = `
 </div>
 `;
 
+exports[`<Textarea /> Displays error messages 1`] = `
+<div
+  className="input-field col"
+>
+  <textarea
+    className="materialize-textarea invalid"
+    id="Textarea-mockId"
+  />
+  <label
+    className=""
+    data-error="this is an error"
+    htmlFor="Textarea-mockId"
+  >
+    Input with Error
+  </label>
+  <span
+    className="helper-text"
+    data-error="this is an error"
+  />
+</div>
+`;
+
 exports[`<Textarea /> Icon 1`] = `
 <div
   className="input-field col"

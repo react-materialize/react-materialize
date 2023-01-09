@@ -62,6 +62,14 @@ describe.skip('<TextInput />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  test('Displays error messages', () => {
+    wrapper = shallow(
+      <TextInput label="Input with Error" error="this is an error" />
+    );
+    expect(wrapper.find('input').hasClass('invalid')).toBeTruthy();
+    expect(wrapper).toMatchSnapshot();
+  });
+
   describe('Icon', () => {
     test('renders as a string', () => {
       wrapper = shallow(<TextInput icon="cloud" />);
