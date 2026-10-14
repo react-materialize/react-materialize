@@ -1,8 +1,8 @@
-import * as React from "react";
-import { DropdownOptions } from "./Dropdown";
-import { Responsive, SharedBasic } from "./utils";
+import * as React from 'react';
+import { DropdownOptions } from './Dropdown';
+import { Responsive, SharedBasic } from './utils';
 
-export type SelectDropdownAlignment = "left" | "right";
+export type SelectDropdownAlignment = 'left' | 'right';
 
 interface SelectOptions {
   classes?: string;

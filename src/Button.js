@@ -64,8 +64,8 @@ const Button = ({
     );
   };
 
-  let C = node;
-  let classes = {
+  const C = node;
+  const classes = {
     btn: true,
     disabled,
     'waves-effect': waves
@@ -75,7 +75,7 @@ const Button = ({
     classes['waves-' + waves] = true;
   }
 
-  let styles = { flat, floating, large, small };
+  const styles = { flat, floating, large, small };
   constants.STYLES.forEach(style => {
     if (styles[style]) {
       classes.btn = false;

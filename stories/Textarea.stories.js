@@ -60,8 +60,7 @@ stories.add(
   () => <Textarea label="Textarea" data-length={120} />,
   {
     info: {
-      text:
-        'Use a character counter in fields where a character restriction is in place.'
+      text: 'Use a character counter in fields where a character restriction is in place.'
     }
   }
 );

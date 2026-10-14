@@ -16,11 +16,6 @@ describe.skip('<Container />', () => {
         <p>yes</p>
       </Container>
     );
-    expect(
-      wrapper
-        .find('.container')
-        .children()
-        .type()
-    ).toEqual('p');
+    expect(wrapper.find('.container').children().type()).toEqual('p');
   });
 });

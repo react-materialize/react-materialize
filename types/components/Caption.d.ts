@@ -1,7 +1,7 @@
-import * as React from "react";
-import { SharedBasic } from "./utils";
+import * as React from 'react';
+import { SharedBasic } from './utils';
 
-export type CaptionPlacement = "left" | "center" | "right";
+export type CaptionPlacement = 'left' | 'center' | 'right';
 
 export interface CaptionProps extends SharedBasic {
   placement?: CaptionPlacement;

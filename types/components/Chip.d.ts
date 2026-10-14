@@ -1,6 +1,6 @@
-import * as React from "react";
-import { AutocompleteOptions } from "./Autocomplete";
-import { SharedBasic } from "./utils";
+import * as React from 'react';
+import { AutocompleteOptions } from './Autocomplete';
+import { SharedBasic } from './utils';
 
 export interface ChipItem {
   tag: string;

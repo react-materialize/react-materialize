@@ -25,7 +25,7 @@ const Col = ({
   pull,
   ...other
 }) => {
-  let sizes = { s, m, l, xl };
+  const sizes = { s, m, l, xl };
   let classes = sizesClass({ col: true }, sizes);
 
   if (typeof offset !== 'undefined') {

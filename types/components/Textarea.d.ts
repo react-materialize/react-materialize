@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Responsive } from "./utils";
+import * as React from 'react';
+import { Responsive } from './utils';
 
 export interface TextareaProps extends Responsive {
   noLayout?: boolean;

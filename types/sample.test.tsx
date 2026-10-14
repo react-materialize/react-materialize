@@ -418,9 +418,11 @@ import {
     close={false}
     closeIcon={<Icon className="close">close</Icon>}
     options={{
-      data: [{
-        tag: 'Apple',
-      }],
+      data: [
+        {
+          tag: 'Apple'
+        }
+      ],
       autocompleteOptions: {
         data: {
           Apple: null,

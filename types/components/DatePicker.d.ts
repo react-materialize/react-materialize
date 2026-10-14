@@ -1,5 +1,5 @@
-import * as React from "react";
-import { AnyFn, I18nOptions } from "./utils";
+import * as React from 'react';
+import { AnyFn, I18nOptions } from './utils';
 
 export interface DatePickerOptions {
   autoClose?: boolean;

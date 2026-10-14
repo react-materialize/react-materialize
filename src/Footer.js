@@ -12,7 +12,7 @@ const Footer = ({
   moreLinks,
   ...props
 }) => {
-  let classes = {
+  const classes = {
     'page-footer': true
   };
 

@@ -27,6 +27,6 @@ export interface AutocompleteProps extends Responsive {
 /**
  * React Materialize: Autocomplete
  */
-declare const Autocomplete: React.FC<AutocompleteProps>
+declare const Autocomplete: React.FC<AutocompleteProps>;
 
 export default Autocomplete;

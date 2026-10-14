@@ -1,7 +1,7 @@
-import * as React from "react";
-import { AnyFn, SharedBasic } from "./utils";
+import * as React from 'react';
+import { AnyFn, SharedBasic } from './utils';
 
-export type SideNavEdge = "left" | "right";
+export type SideNavEdge = 'left' | 'right';
 
 export interface SideNavOptions {
   edge?: SideNavEdge;
