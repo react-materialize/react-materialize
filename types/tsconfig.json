@@ -12,7 +12,6 @@
     "jsx": "react",
     "esModuleInterop": true,
     "types": [],
-    "baseUrl": ".",
     "paths": {
       "react-materialize": ["."]
     }

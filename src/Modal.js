@@ -35,6 +35,7 @@ const Modal = ({
     );
   }
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: deep-compares options via its JSON string
   useEffect(() => {
     const modalRoot = _modalRoot.current;
     if (!_modalInstance.current) {
@@ -47,10 +48,9 @@ const Modal = ({
       }
       _modalInstance.current.destroy();
     };
-    // deep comparing options object
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [safeJSONStringify(options), root]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only re-run when `open` changes; show/hide are recreated every render
   useEffect(() => {
     if (open) {
       showModal();

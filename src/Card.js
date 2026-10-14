@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';
 
-// eslint-disable-next-line react/prop-types
 const Wrapper = ({ condition, children }) =>
   condition ? (
     <div className="card-stacked">{children}</div>

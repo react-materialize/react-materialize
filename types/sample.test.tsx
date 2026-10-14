@@ -9,6 +9,7 @@ import {
   Textarea,
   Collapsible,
   CollapsibleItem,
+  CollectionItem,
   Container,
   DatePicker,
   Divider,
@@ -80,7 +81,8 @@ import {
     foo
   </Textarea>
   <Collapsible options={{ accordion: true }} />
-  <CollapsibleItem href="http://" active={false} />
+  <CollapsibleItem header="Header" expanded={false} />
+  <CollectionItem href="http://" active={false} />
   <Container className="hello" />
   <DatePicker options={{ isRTL: false }} id="asd" />
   <Divider />
