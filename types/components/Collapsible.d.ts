@@ -14,7 +14,7 @@ export interface CollapsibleOptions {
 export interface CollapsibleProps extends SharedBasic {
   accordion?: boolean;
   popout?: boolean;
-  defaultActiveKey?: string;
+  defaultActiveKey?: number;
   onSelect?: (key: number) => any;
   options?: CollapsibleOptions;
 }

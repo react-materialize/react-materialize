@@ -19,17 +19,15 @@ const Collapsible = ({
   const renderItem = (child, key) => {
     if (!child) return null;
 
+    const itemProps = { onSelect: () => handleSelect(key) };
+
     // Extend with props if child is a react component
     if (typeof child.type === 'function') {
-      Object.assign(props, {
-        expanded: activeKey === key || child.props.expanded,
-        eventKey: key
-      });
+      itemProps.expanded = activeKey === key || child.props.expanded;
+      itemProps.eventKey = key;
     }
 
-    return React.cloneElement(child, {
-      onSelect: () => handleSelect(key)
-    });
+    return React.cloneElement(child, itemProps);
   };
 
   const handleSelect = key => {
