@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import UserView, { UserShape } from './UserView';
+import { renderPrefixIcon } from './utils';
 
 const SideNavItem = ({
   divider,
@@ -26,7 +27,7 @@ const SideNavItem = ({
       {userView && user && <UserView {...user} />}
       {!userView && (
         <a className={cx(linkClasses)} href={href}>
-          {icon && React.cloneElement(icon, { className: 'prefix' })}
+          {renderPrefixIcon(icon)}
           {children}
         </a>
       )}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
+import { renderPrefixIcon } from './utils';
 
 const TextInput = React.forwardRef((props, ref) => {
   const dataLength = props['data-length'];
@@ -93,16 +94,6 @@ const TextInput = React.forwardRef((props, ref) => {
       <span className="helper-text" data-error={error} data-success={success} />
     );
 
-  const renderIcon = () => {
-    if (!icon) return;
-
-    if (typeof icon === 'string') {
-      return <i className="material-icons prefix">{icon}</i>;
-    }
-
-    return React.cloneElement(icon, { className: 'prefix' });
-  };
-
   if (type === 'file') {
     return (
       <div className={`${wrapperClasses} file-field`}>
@@ -125,7 +116,7 @@ const TextInput = React.forwardRef((props, ref) => {
 
   return (
     <div className={wrapperClasses}>
-      {renderIcon()}
+      {renderPrefixIcon(icon)}
       <input
         ref={inputRef}
         className={cx({ validate }, inputClassName)}

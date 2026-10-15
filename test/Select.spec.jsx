@@ -105,6 +105,29 @@ describe('<Select />', () => {
     expect(getWrapper(container).firstElementChild).toBe(icon);
   });
 
+  test('with a string icon', () => {
+    const { container } = render(<Select icon="cloud" label="Fruit" />);
+
+    const icon = screen.getByText('cloud');
+    expect(icon.tagName).toBe('I');
+    expect(icon).toHaveClass('material-icons', 'prefix');
+    expect(getWrapper(container).firstElementChild).toBe(icon);
+  });
+
+  test('keeps the icon element className', () => {
+    render(
+      <Select
+        icon={<i className="material-icons red">cloud</i>}
+        label="Fruit"
+      />
+    );
+    expect(screen.getByText('cloud')).toHaveClass(
+      'material-icons',
+      'red',
+      'prefix'
+    );
+  });
+
   test('renders options', () => {
     render(
       <Select label="Fruit">
