@@ -173,6 +173,36 @@ describe('<Collapsible />', () => {
     expect(onSelect).toHaveBeenCalledWith(1);
   });
 
+  test('defaultActiveKey expands the matching item on mount', () => {
+    render(
+      <Collapsible accordion defaultActiveKey={1}>
+        <CollapsibleItem header="A">a</CollapsibleItem>
+        <CollapsibleItem header="B">b</CollapsibleItem>
+      </Collapsible>
+    );
+
+    const [first, second] = screen.getAllByRole('listitem');
+    expect(second).toHaveClass('active');
+    expect(second.querySelector('.collapsible-header')).toHaveClass('active');
+    expect(first).not.toHaveClass('active');
+  });
+
+  test('accordion moves the active item from defaultActiveKey on click', async () => {
+    const user = userEvent.setup();
+    render(
+      <Collapsible accordion defaultActiveKey={1}>
+        <CollapsibleItem header="A">a</CollapsibleItem>
+        <CollapsibleItem header="B">b</CollapsibleItem>
+      </Collapsible>
+    );
+
+    await user.click(screen.getByText('A'));
+
+    const [first, second] = screen.getAllByRole('listitem');
+    expect(first).toHaveClass('active');
+    expect(second).not.toHaveClass('active');
+  });
+
   describe('undefined M', () => {
     let __M;
     beforeEach(() => {
@@ -192,5 +222,20 @@ describe('<Collapsible />', () => {
       ).not.toThrow();
       expect(screen.getByRole('listitem')).toHaveTextContent('A');
     });
+  });
+});
+
+describe('<Collapsible /> with real M.Collapsible', () => {
+  test('init opens the body of the defaultActiveKey item', () => {
+    render(
+      <Collapsible accordion defaultActiveKey={1}>
+        <CollapsibleItem header="A">a</CollapsibleItem>
+        <CollapsibleItem header="B">b</CollapsibleItem>
+      </Collapsible>
+    );
+
+    // jsdom has no stylesheet, so check the inline style Materialize sets.
+    expect(screen.getByText('b').style.display).toBe('block');
+    expect(screen.getByText('a').style.display).toBe('');
   });
 });
