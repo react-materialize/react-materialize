@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.0.2
+
+### Patch Changes
+
+- 401bc3f: Card no longer renders a hidden `.card-reveal` panel (with a duplicate title and close icon) when no `reveal` prop is given. Fixes #1247.
+- e259762: Fix Collapsible `defaultActiveKey`: the item at that index now starts expanded (rendered as `active`, with its body open), and in an accordion the active item follows header clicks. The `defaultActiveKey` type is now `number`, matching the item index it is compared against. Fixes #1239.
+- c84c94e: `Pagination` now falls back to page 1 when `activePage` is outside `1..items` (on first render, when `activePage` changes, or when `items` shrinks below the selected page). Previously an out-of-range `activePage` left no page active and the next button enabled. Changing `items` no longer affects a valid selected page. Fixes #1244.
+- d07c3b4: `ProgressBar` with `progress={0}` now renders a determinate bar at `width: 0%` instead of an empty bar with neither the `determinate` nor the `indeterminate` class. Fixes #1245.
+- fb719fe: Fix Slider re-initialisation (when `options`, `fullscreen` or the slides change): it no longer crashes when `indicators` is `false`, and the current slide's indicator is now marked active again, including when it's the first slide. Fixes #1246.
+- 04c0814: `Textarea` no longer renders an empty `.helper-text` span when neither `error` nor `success` is set; the helper text is now rendered only when one of them is provided, matching `TextInput`. Fixes #1242.
+- 18b58f3: Textarea now applies `iconClassName` to its prefix icon, for both string icons and icon elements (the element's own classes are kept). Fixes #1243.
+
 ## 4.0.1
 
 ### Patch Changes
