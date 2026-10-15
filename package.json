@@ -80,7 +80,7 @@
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
-    "@storybook/react": "^6.5.13",
+    "@storybook/react": "^10.6.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.6.8",
