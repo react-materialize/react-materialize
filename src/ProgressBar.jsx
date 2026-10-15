@@ -4,11 +4,12 @@ import cx from 'classnames';
 
 const ProgressBar = ({ progress, className }) => {
   let style;
+  const isDeterminate = typeof progress === 'number';
   const classes = {
-    indeterminate: progress === undefined,
-    determinate: !!progress
+    indeterminate: !isDeterminate,
+    determinate: isDeterminate
   };
-  if (progress) {
+  if (isDeterminate) {
     style = {
       width: progress + '%'
     };
