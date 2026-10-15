@@ -1,5 +1,9 @@
-import idgen from '../src/idgen';
+import '@testing-library/jest-dom/vitest';
+import M from 'materialize-css';
 
-jest.mock('../src/idgen', () => jest.fn(() => 'mockId'));
+vi.mock('../src/idgen', async importOriginal => ({
+  ...(await importOriginal()),
+  default: vi.fn(() => 'mockId')
+}));
 
-global.M = require('materialize-css');
+globalThis.M = M;

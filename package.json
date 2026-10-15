@@ -10,8 +10,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "jest ./test --watchAll",
-    "test-ci": "jest ./test --ci",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc -p types --noEmit",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
@@ -39,21 +39,6 @@
   "bugs": {
     "url": "https://github.com/react-materialize/react-materialize/issues"
   },
-  "jest": {
-    "verbose": true,
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ],
-    "testEnvironment": "jsdom",
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ],
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ]
-  },
   "homepage": "https://github.com/react-materialize/react-materialize",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -66,20 +51,22 @@
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
     "@storybook/react": "^6.5.13",
-    "@testing-library/react": "^10.4.9",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/user-event": "^14.6.8",
     "@types/classnames": "^2.2.10",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
-    "babel-jest": "^27.3.1",
+    "@vitejs/plugin-react": "^6.1.2",
     "babel-loader": "^8.1.0",
     "copyfiles": "^2.4.1",
-    "jest": "^27.3.1",
-    "jest-watch-typeahead": "^1.0.0",
-    "jsdom": "^16.4.0",
+    "jsdom": "^30.1.2",
     "materialize-css": "^1.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4"
   },
   "peerDependencies": {
     "react": "^17.0.2",
