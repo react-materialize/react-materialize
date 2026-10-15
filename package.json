@@ -53,7 +53,7 @@
     "build": "vite build",
     "lint": "biome check",
     "format": "biome check --write",
-    "release": "npm run build && npm publish"
+    "changeset": "changeset"
   },
   "engines": {
     "node": ">=22"
@@ -76,6 +76,7 @@
   "homepage": "https://github.com/react-materialize/react-materialize",
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
+    "@changesets/cli": "^3.0.3",
     "@storybook/addon-docs": "^10.6.2",
     "@storybook/react-vite": "^10.6.2",
     "@testing-library/jest-dom": "^7.0.1",

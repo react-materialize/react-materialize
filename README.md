@@ -77,12 +77,15 @@ npm run typecheck   # type definitions in types/
 npm run build       # library build into lib/ (ESM + CommonJS)
 ```
 
-### Deployment workflow
+### Releasing
 
 CI runs lint, typecheck, tests and build on Node 22, 24 and 26 for every pull request.
 
-To publish a new version update the package version, update the change log and create a PR.
-Once merged, create a GitHub release: it publishes the package to npm (trusted publishing with provenance) and deploys the Storybook docs to GitHub Pages.
+Versions and the changelog are managed with [Changesets](https://changesets.dev):
+
+1. In a PR that changes the published package, run `npm run changeset`, pick the bump (patch/minor/major) and describe the change for users. Commit the generated `.changeset/*.md` file with the PR. Docs, tests and tooling-only PRs don't need one.
+2. When changesets land on `master`, a **Version Packages** PR is opened (or updated) with the version bump and `CHANGELOG.md` entries.
+3. Merging that PR publishes the package to npm (trusted publishing with provenance), creates the git tag and GitHub release, and deploys the Storybook docs to GitHub Pages.
 
 ## Support
 
