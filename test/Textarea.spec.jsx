@@ -142,6 +142,30 @@ describe('<Textarea />', () => {
     );
   });
 
+  test('applies iconClassName to a string icon', () => {
+    render(<Textarea icon="mode_edit" iconClassName="red" />);
+    expect(screen.getByText('mode_edit')).toHaveClass(
+      'material-icons',
+      'prefix',
+      'red'
+    );
+  });
+
+  test('applies iconClassName to an icon element', () => {
+    render(
+      <Textarea
+        icon={<i className="material-icons own">mode_edit</i>}
+        iconClassName="red"
+      />
+    );
+    expect(screen.getByText('mode_edit')).toHaveClass(
+      'material-icons',
+      'own',
+      'prefix',
+      'red'
+    );
+  });
+
   test('with custom className', () => {
     render(<Textarea className="custom-class" />);
     expect(screen.getByRole('textbox')).toHaveClass(
