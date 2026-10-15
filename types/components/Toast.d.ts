@@ -1,5 +1,5 @@
-import * as React from "react";
-import { AnyFn, SharedBasic } from "./utils";
+import * as React from 'react';
+import { AnyFn, SharedBasic } from './utils';
 
 export interface ToastOptions {
   html?: string;

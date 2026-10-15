@@ -1,7 +1,7 @@
-import * as React from "react";
-import { AnyFn, SharedBasic } from "./utils";
+import * as React from 'react';
+import { AnyFn, SharedBasic } from './utils';
 
-export type DropdownAlignment = "left" | "right";
+export type DropdownAlignment = 'left' | 'right';
 
 export interface DropdownOptions {
   alignment?: DropdownAlignment;

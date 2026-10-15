@@ -33,5 +33,6 @@ export default create({
 
   brandTitle: 'React Materialize',
   brandUrl: 'https://react-materialize.com',
-  brandImage: 'http://react-materialize.github.io/react-materialize/static/media/react-materialize-logo.824c6ea3.svg'
+  brandImage:
+    'http://react-materialize.github.io/react-materialize/static/media/react-materialize-logo.824c6ea3.svg'
 });

@@ -43,10 +43,7 @@ describe.skip('<RadioGroup />', () => {
 
   test('onChange callback', () => {
     wrapper = shallow(<RadioGroup {...defaultProps} />);
-    wrapper
-      .find('input')
-      .first()
-      .simulate('change');
+    wrapper.find('input').first().simulate('change');
     expect(mockOnChange).toHaveBeenCalled();
   });
 });

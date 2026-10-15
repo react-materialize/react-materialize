@@ -1,5 +1,5 @@
-import * as React from "react";
-import { UserViewProps } from "./UserView";
+import * as React from 'react';
+import { UserViewProps } from './UserView';
 
 export interface SideNavItemProps {
   href?: string;

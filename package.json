@@ -12,19 +12,17 @@
   "scripts": {
     "test": "jest ./test --watchAll",
     "test-ci": "jest ./test --ci",
-    "pretest": "npm run lint",
+    "typecheck": "tsc -p types --noEmit",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "rm -rf docs && build-storybook -c .storybook -o docs",
     "build": "babel src --out-dir lib && npm run copy-types",
     "copy-types": "copyfiles -f types/components/*.d.ts lib",
-    "lint": "eslint src test",
-    "fix": "eslint src test --fix",
-    "release": "npm run build && npm publish",
-    "prettier": "prettier --write \"{src,test,stories}/**/*.js\"",
-    "prepush": "npm run lint"
+    "lint": "biome check",
+    "format": "biome check --write",
+    "release": "npm run build && npm publish"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
@@ -62,6 +60,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
+    "@biomejs/biome": "2.5.15",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
@@ -71,34 +70,23 @@
     "@types/classnames": "^2.2.10",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
-    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.1.0",
     "copyfiles": "^2.4.1",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.10.0",
-    "eslint-config-standard": "^6.0.0",
-    "eslint-config-standard-react": "^7.0.2",
-    "eslint-plugin-prettier": "^2.7.0",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.1",
-    "eslint-plugin-standard": "^2.0.0",
-    "husky": "^0.14.3",
     "jest": "^27.3.1",
     "jest-watch-typeahead": "^1.0.0",
     "jsdom": "^16.4.0",
     "materialize-css": "^1.0.0",
-    "mutationobserver-shim": "^0.3.7",
-    "prettier": "^1.19.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "typescript": "^7.0.2"
   },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2"
   }
 }

@@ -46,8 +46,8 @@ const Pagination = ({
       hiddenPagesBefore = maxPos + 1;
     }
 
-    let from = Math.max(hiddenPagesBefore, 1);
-    let to = Math.min(items, from + maxButtons - 1);
+    const from = Math.max(hiddenPagesBefore, 1);
+    const to = Math.min(items, from + maxButtons - 1);
 
     const buttons = [
       <PaginationButton

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { AnyFn } from "./utils";
+import * as React from 'react';
+import { AnyFn } from './utils';
 
 export interface NavItemProps {
   divider?: boolean;

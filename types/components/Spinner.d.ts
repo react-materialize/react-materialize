@@ -1,5 +1,5 @@
-import * as React from "react";
-import { MaterialColor } from "./utils";
+import * as React from 'react';
+import { MaterialColor } from './utils';
 
 export interface SpinnerProps {
   className?: string;

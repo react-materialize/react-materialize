@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Responsive, SharedBasic } from "./utils";
+import * as React from 'react';
+import { Responsive, SharedBasic } from './utils';
 
 export interface ColProps extends SharedBasic, Responsive {
   node?: React.ReactNode;

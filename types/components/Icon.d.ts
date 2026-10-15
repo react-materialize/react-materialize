@@ -1,6 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-export interface IconProps extends React.HTMLAttributes<React.ReactHTMLElement<any>>{
+export interface IconProps
+  extends React.HTMLAttributes<React.ReactHTMLElement<any>> {
   left?: boolean;
   center?: boolean;
   right?: boolean;

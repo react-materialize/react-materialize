@@ -5,7 +5,6 @@ import idgen from './idgen';
 import constants from './constants';
 
 const TextInput = React.forwardRef((props, ref) => {
-  // eslint-disable-next-line react/prop-types
   const dataLength = props['data-length'];
   const inputRef = ref || createRef(null);
 

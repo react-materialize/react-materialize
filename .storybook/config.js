@@ -7,16 +7,20 @@ import './overrides.css';
 global.M = require('materialize-css');
 
 // https://www.npmjs.com/package/@storybook/addon-info
-addDecorator(withInfo({
-  inline: false,
-  header: false,
-  source: true
-}));
+addDecorator(
+  withInfo({
+    inline: false,
+    header: false,
+    source: true
+  })
+);
 
 function loadStories() {
   require('./welcome.stories.js');
   const req = require.context('../stories', true, /.js$/);
-  req.keys().forEach((filename) => req(filename));
+  req.keys().forEach(filename => {
+    req(filename);
+  });
 }
 
 addParameters({
@@ -66,7 +70,7 @@ addParameters({
      * theme storybook, see link below
      */
     theme: theme
-  },
+  }
 });
 
 configure(loadStories, module);

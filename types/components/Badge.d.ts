@@ -9,6 +9,6 @@ export interface BadgeProps extends SharedBasic {
 /**
  * React Materialize: Badge
  */
-declare const Badge: React.FC<BadgeProps>
+declare const Badge: React.FC<BadgeProps>;
 
 export default Badge;

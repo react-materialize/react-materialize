@@ -15,33 +15,33 @@ export interface SharedBasic {
 }
 
 export type MaterialColor =
-  'red' |
-  'pink' |
-  'purple' |
-  'deep-purple' |
-  'indigo' |
-  'blue' |
-  'light' |
-  'light-blue' |
-  'cyan' |
-  'teal' |
-  'green' |
-  'light-green' |
-  'lime' |
-  'yellow' |
-  'amber' |
-  'orange' |
-  'deep-orange' |
-  'brown' |
-  'grey' |
-  'blue-grey';
+  | 'red'
+  | 'pink'
+  | 'purple'
+  | 'deep-purple'
+  | 'indigo'
+  | 'blue'
+  | 'light'
+  | 'light-blue'
+  | 'cyan'
+  | 'teal'
+  | 'green'
+  | 'light-green'
+  | 'lime'
+  | 'yellow'
+  | 'amber'
+  | 'orange'
+  | 'deep-orange'
+  | 'brown'
+  | 'grey'
+  | 'blue-grey';
 
 export interface I18nOptions {
-  cancel?: string,
-  clear?: string,
-  done?: string,
-  previousMonth?: string,
-  nextMonth?: string,
+  cancel?: string;
+  clear?: string;
+  done?: string;
+  previousMonth?: string;
+  nextMonth?: string;
   months?: string[];
   monthsShort?: string[];
   weekdays?: string[];
@@ -49,8 +49,4 @@ export interface I18nOptions {
   weekdaysAbbrev?: string[];
 }
 
-export type Positions =
-  'top' |
-  'right' |
-  'left' |
-  'bottom';
+export type Positions = 'top' | 'right' | 'left' | 'bottom';

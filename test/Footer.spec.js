@@ -2,12 +2,12 @@ import React from 'react';
 // import { shallow } from 'enzyme';
 import Footer from '../src/Footer';
 
-let moreLinks = (
+const moreLinks = (
   <a className="grey-text text-lighten-4 right" href="#!">
     More Links
   </a>
 );
-let links = (
+const links = (
   <ul>
     <li>
       <a className="grey-text text-lighten-3" href="#!">

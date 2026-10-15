@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-export interface DividerProps {}
+export type DividerProps = {};
 
 /**
  * React Materialize: Divider

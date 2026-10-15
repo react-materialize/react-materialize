@@ -8,6 +8,6 @@ export interface CollectionProps extends SharedBasic {
 /**
  * React Materialize: Collection
  */
-declare const Collection: React.FC<CollectionProps>
+declare const Collection: React.FC<CollectionProps>;
 
 export default Collection;

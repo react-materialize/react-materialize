@@ -22,7 +22,7 @@ describe.skip('<CollectionItem />', () => {
   });
 
   test('should render children when passed in', () => {
-    let child = <p>child</p>;
+    const child = <p>child</p>;
     wrapper = shallow(<CollectionItem>{child}</CollectionItem>);
     expect(wrapper.contains(child)).toEqual(true);
   });

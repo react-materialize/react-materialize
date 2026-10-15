@@ -18,7 +18,7 @@ describe.skip('<Chip />', () => {
   });
 
   test('accepts children', () => {
-    let child = <p className="child">Child</p>;
+    const child = <p className="child">Child</p>;
     wrapper = shallow(<Chip close>{child}</Chip>);
     expect(wrapper).toMatchSnapshot();
   });

@@ -55,12 +55,7 @@ describe.skip('<Collection />', () => {
 
       expect(wrapper.find('.collection').type()).toBe('div');
 
-      expect(
-        wrapper
-          .find('.collection-item')
-          .first()
-          .type()
-      ).toEqual('a');
+      expect(wrapper.find('.collection-item').first().type()).toEqual('a');
     });
   });
 });

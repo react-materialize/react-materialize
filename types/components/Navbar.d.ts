@@ -1,7 +1,7 @@
-import * as React from "react";
-import { AnyFn, SharedBasic } from "./utils";
+import * as React from 'react';
+import { AnyFn, SharedBasic } from './utils';
 
-export type NavbarAlignment = "left" | "right";
+export type NavbarAlignment = 'left' | 'right';
 
 export interface NavbarOptions {
   edge?: NavbarAlignment;

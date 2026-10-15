@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Badge = ({ className, newIcon, caption, children, ...props }) => {
-  let classes = {
+  const classes = {
     badge: true,
     new: newIcon
   };

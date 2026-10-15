@@ -87,15 +87,9 @@ describe.skip('<Collapsible />', () => {
       </Collapsible>
     );
 
-    wrapper
-      .find('.collapsible-header')
-      .at(0)
-      .simulate('click');
+    wrapper.find('.collapsible-header').at(0).simulate('click');
     expect(wrapper).toMatchSnapshot();
-    wrapper
-      .find('.collapsible-header')
-      .at(1)
-      .simulate('click');
+    wrapper.find('.collapsible-header').at(1).simulate('click');
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -111,10 +105,7 @@ describe.skip('<Collapsible />', () => {
       </Collapsible>
     );
 
-    wrapper
-      .find('.collapsible-header')
-      .at(3)
-      .simulate('click');
+    wrapper.find('.collapsible-header').at(3).simulate('click');
 
     expect(onSelect).toHaveBeenCalledWith(3);
   });

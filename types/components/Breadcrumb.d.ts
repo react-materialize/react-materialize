@@ -1,5 +1,5 @@
-import * as React from "react";
-import { SharedBasic } from "./utils";
+import * as React from 'react';
+import { SharedBasic } from './utils';
 
 export interface BreadcrumbProps extends SharedBasic {
   cols?: number;
