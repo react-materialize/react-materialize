@@ -241,12 +241,32 @@ describe('<Select />', () => {
       );
     });
 
-    test('renders browserDefault so Materialize keeps the native select', () => {
-      render(<Select browserDefault label="Fruit" />);
+    test('does not initialise Materialize for a browserDefault select', () => {
+      const { unmount } = render(<Select browserDefault label="Fruit" />);
 
-      const select = screen.getByLabelText('Fruit');
-      expect(select).toHaveClass('browser-default');
-      expect(selectInit).toHaveBeenCalledWith(select, defaultOptions);
+      expect(screen.getByLabelText('Fruit')).toHaveClass('browser-default');
+      expect(selectInit).not.toHaveBeenCalled();
+      unmount();
+      expect(selectDestroy).not.toHaveBeenCalled();
+    });
+
+    test('initialises when browserDefault is turned off', () => {
+      const { rerender } = render(<Select browserDefault label="Fruit" />);
+      rerender(<Select label="Fruit" />);
+
+      expect(selectInit).toHaveBeenCalledTimes(1);
+      expect(selectInit).toHaveBeenCalledWith(
+        screen.getByLabelText('Fruit'),
+        defaultOptions
+      );
+    });
+
+    test('destroys when browserDefault is turned on', () => {
+      const { rerender } = render(<Select label="Fruit" />);
+      rerender(<Select browserDefault label="Fruit" />);
+
+      expect(selectDestroy).toHaveBeenCalledTimes(1);
+      expect(selectInit).toHaveBeenCalledTimes(1);
     });
 
     test('handles options prop', () => {
@@ -284,5 +304,49 @@ describe('<Select />', () => {
       unmount();
       expect(selectDestroy).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('unmounts a browserDefault select without errors', () => {
+    const errors = [];
+    const onError = event => {
+      errors.push(event.message);
+      event.preventDefault();
+    };
+    window.addEventListener('error', onError);
+    try {
+      const { unmount } = render(
+        <Select browserDefault label="Fruit">
+          <option value="1">One</option>
+        </Select>
+      );
+      unmount();
+    } finally {
+      window.removeEventListener('error', onError);
+    }
+
+    expect(errors).toEqual([]);
+  });
+
+  test('handles changes on a browserDefault multiple select', async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(
+      <Select
+        browserDefault
+        multiple
+        label="Fruit"
+        value={[]}
+        onChange={onChange}
+      >
+        <option value="1">One</option>
+        <option value="2">Two</option>
+      </Select>
+    );
+
+    const select = screen.getByLabelText('Fruit');
+    await user.selectOptions(select, ['1', '2']);
+
+    expect(onChange).toHaveBeenCalled();
+    expect([...select.selectedOptions].map(o => o.value)).toEqual(['1', '2']);
   });
 });
