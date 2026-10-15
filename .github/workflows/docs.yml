@@ -1,8 +1,8 @@
 name: Docs
 
+# Deployed by publish.yml after each npm release; can also be run manually.
 on:
-  release:
-    types: [published]
+  workflow_call:
   workflow_dispatch:
 
 permissions:

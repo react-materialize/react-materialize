@@ -1,17 +1,5 @@
 # Changelog
 
-### Unreleased
-
-- ships ES modules (`lib/*.mjs`) alongside CommonJS (`lib/*.js`), with an `exports` map; bundlers can now tree-shake unused components (`import { Button }` goes from ~279 KB to ~6 KB)
-- deep imports keep working: `react-materialize/lib/<Component>` (with or without `.js`), now also resolving to ESM for `import`
-- adds `"sideEffects": false`
-- type definitions ship as `.d.ts` (CommonJS) and `.d.mts` (ESM)
-- output syntax is ES2019 (previously ES5); targets that need ES5 must transpile `react-materialize`
-- declares `prop-types` as a dependency (it was imported but not declared)
-- `engines.node` is `>=22`
-- build: Vite library mode replaces Babel; tests: Vitest + Testing Library replace Jest/Enzyme; lint/format: Biome replaces ESLint/Prettier
-- docs: Storybook 10 (`@storybook/react-vite`) with Controls, Actions and autodocs replaces Storybook 5/6 Knobs/Info/Notes; dead placeholder images replaced
-
 ### 3.10.0
 
 - removes Enzyme

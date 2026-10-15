@@ -12,8 +12,19 @@ updates:
         dependency-type: production
         update-types: [minor, patch]
     ignore:
-      # Major upgrades (Jest, Babel, Storybook, React) are handled by the tooling upgrade steps.
-      - dependency-name: "*"
+      # Held back by open code decisions: React peer range (^17) and the
+      # materialize-css vs @materializecss/materialize switch.
+      - dependency-name: react
+        update-types: [version-update:semver-major]
+      - dependency-name: react-dom
+        update-types: [version-update:semver-major]
+      - dependency-name: "@types/react"
+        update-types: [version-update:semver-major]
+      - dependency-name: "@types/react-dom"
+        update-types: [version-update:semver-major]
+      - dependency-name: "@testing-library/react"
+        update-types: [version-update:semver-major]
+      - dependency-name: materialize-css
         update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
