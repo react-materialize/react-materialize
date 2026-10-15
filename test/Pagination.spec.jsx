@@ -180,4 +180,31 @@ describe('<Pagination />', () => {
     expect(items).toHaveLength(1);
     expect(items[0]).toHaveClass('custom-page');
   });
+
+  test('falls back to page 1 when activePage is out of range', () => {
+    render(<Pagination items={1} activePage={2} />);
+
+    expect(getPage(1)).toHaveClass('active');
+    expect(getItems()[2]).toHaveClass('disabled');
+  });
+
+  test('falls back to page 1 when rerendered with an out-of-range activePage', () => {
+    const { rerender } = render(<Pagination items={5} activePage={3} />);
+    rerender(<Pagination items={5} activePage={9} />);
+
+    expect(getPage(1)).toHaveClass('active');
+    expect(getPage(3)).not.toHaveClass('active');
+    expect(getItems()[0]).toHaveClass('disabled');
+  });
+
+  test('keeps the selected page when items changes', async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(<Pagination items={5} activePage={1} />);
+    await user.click(screen.getByText('4'));
+
+    rerender(<Pagination items={8} activePage={1} />);
+
+    expect(getPage(4)).toHaveClass('active');
+    expect(getPage(1)).not.toHaveClass('active');
+  });
 });

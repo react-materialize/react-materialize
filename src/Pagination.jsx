@@ -5,6 +5,8 @@ import cx from 'classnames';
 import Icon from './Icon';
 import PaginationButton from './PaginationButton';
 
+const clampPage = (page, items) => (page > 0 && page <= items ? page : 1);
+
 const Pagination = ({
   items,
   className,
@@ -15,13 +17,14 @@ const Pagination = ({
   onSelect,
   activePage: activePageProp
 }) => {
-  const [activePage, setActivePage] = useState(
-    activePageProp > 0 && activePageProp <= items ? activePageProp : 1
-  );
+  const [activePage, setActivePage] = useState(activePageProp);
 
   useEffect(() => {
     setActivePage(activePageProp);
   }, [activePageProp]);
+
+  // Out-of-range values (from props or a shrinking `items`) fall back to page 1.
+  const currentPage = clampPage(activePage, items);
 
   const onClick = useCallback(
     pageIdx => {
@@ -41,7 +44,7 @@ const Pagination = ({
     const maxPos = items - buttonsCount;
     const halfButtons = parseInt(buttonsCount / 2, 10);
 
-    let hiddenPagesBefore = activePage - halfButtons;
+    let hiddenPagesBefore = currentPage - halfButtons;
     if (hiddenPagesBefore > maxPos) {
       hiddenPagesBefore = maxPos + 1;
     }
@@ -51,9 +54,9 @@ const Pagination = ({
 
     const buttons = [
       <PaginationButton
-        disabled={activePage === 1}
+        disabled={currentPage === 1}
         key={'pagination-0'}
-        onSelect={() => onClick(activePage - 1)}
+        onSelect={() => onClick(currentPage - 1)}
       >
         {leftBtn}
       </PaginationButton>
@@ -62,7 +65,7 @@ const Pagination = ({
     for (let i = from; i <= to; i++) {
       buttons.push(
         <PaginationButton
-          active={i === activePage}
+          active={i === currentPage}
           key={`pagination-${i}`}
           onSelect={() => onClick(i)}
         >
@@ -74,15 +77,15 @@ const Pagination = ({
     buttons.push(
       <PaginationButton
         key={`pagination-${items + 1}`}
-        disabled={activePage === items}
-        onSelect={() => onClick(activePage + 1)}
+        disabled={currentPage === items}
+        onSelect={() => onClick(currentPage + 1)}
       >
         {rightBtn}
       </PaginationButton>
     );
 
     return buttons;
-  }, [children, maxButtons, items, activePage, onClick, leftBtn, rightBtn]);
+  }, [children, maxButtons, items, currentPage, onClick, leftBtn, rightBtn]);
 
   return <ul className={cx('pagination', className)}>{renderButtons}</ul>;
 };
