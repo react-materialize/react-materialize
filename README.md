@@ -64,12 +64,25 @@ include css in the js - which can be cumbersome to some project's architecture.
 
 We have a `help-wanted` label in the issues page for convenience
 
+### Development
+
+Requires Node 22+ (`nvm use` picks up `.nvmrc`).
+
+```sh
+npm ci
+npm run storybook   # docs and examples at http://localhost:9001
+npm test            # Vitest + Testing Library (npm run test:watch to watch)
+npm run lint        # Biome lint + format check (npm run format to fix)
+npm run typecheck   # type definitions in types/
+npm run build       # library build into lib/ (ESM + CommonJS)
+```
+
 ### Deployment workflow
 
-We are now using github actions. For every push, `test` action will run.
+CI runs lint, typecheck, tests and build on Node 22, 24 and 26 for every pull request.
 
 To publish a new version update the package version, update the change log and create a PR.
-Once merged to master push tags `git push --tags` and create a new release.
+Once merged, create a GitHub release: it publishes the package to npm (trusted publishing with provenance) and deploys the Storybook docs to GitHub Pages.
 
 ## Support
 

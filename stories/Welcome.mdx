@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import Button from '../src/Button';
+import Modal from '../src/Modal';
+
+<Meta title="React Materialize/Welcome" />
+
+<img src="react-materialize-logo.svg" alt="React Materialize logo" style={{ maxWidth: '100%', width: '13rem' }} />
+
+# React Materialize
+
+[![npm version](https://img.shields.io/npm/v/react-materialize.svg?style=flat)](https://npmjs.org/package/react-materialize)
+
+Welcome to the **React Materialize** docs.
+
+You should use **React Materialize** if you want to use
+[materialize-css](https://materializecss.com) components in your React application.
+This is only a wrapper around materialize-css for ease of use.
+Navigate through these docs to see the available components; each component's **Docs** page shows its props and the source of every example.
+
+```jsx
+import { Modal, Button } from 'react-materialize';
+
+const trigger = <Button>Open Modal</Button>;
+
+export default () => (
+  <Modal header="Modal Header" trigger={trigger}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </Modal>
+);
+```
+
+<Modal header="Modal Header" trigger={<Button>Open Modal</Button>}>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Modal>
+
+## Installation
+
+```sh
+npm install materialize-css
+npm install react-materialize
+```
+
+## HTML Setup
+
+```html
+<head>
+  <!-- Import Google Icon Font -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Import materialize.css -->
+  <link href="CDN OR PATH TO NODE_MODULES.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Import materialize.js -->
+  <script src="CDN OR PATH TO NODE_MODULES.js"></script>
+  <!-- And then your bundled js -->
+  <script src="path/to/your/bundle.js"></script>
+</body>
+```
+
+We have a [Gitter chat room](https://gitter.im/react-materialize/react-materialize) set up where you can talk directly with us.
+Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.
+
+[github.com/react-materialize](https://github.com/react-materialize/react-materialize)
