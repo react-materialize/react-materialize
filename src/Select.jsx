@@ -37,15 +37,20 @@ const Select = ({
   const _formSelectInstance = useRef(null);
 
   useEffect(() => {
+    // Materialize leaves `.browser-default` selects alone and returns an
+    // instance that can't be destroyed.
+    if (browserDefault) return;
+
     _formSelectInstance.current = M.FormSelect.init(
       _selectRef.current,
       options
     );
 
     return () => {
-      _formSelectInstance.current && _formSelectInstance.current.destroy();
+      _formSelectInstance.current.destroy();
+      _formSelectInstance.current = null;
     };
-  }, [options, children]);
+  }, [options, children, browserDefault]);
 
   useEffect(() => {
     setSelectedValue(value);
@@ -67,7 +72,9 @@ const Select = ({
     let value = e.target.value;
 
     if (multiple) {
-      value = _formSelectInstance.current.getSelectedValues();
+      value = _formSelectInstance.current
+        ? _formSelectInstance.current.getSelectedValues()
+        : Array.from(e.target.selectedOptions, option => option.value);
     }
 
     onChange && onChange(e);
