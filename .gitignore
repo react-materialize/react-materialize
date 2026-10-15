@@ -41,5 +41,5 @@ node_modules
 # parcel
 .cache
 
-# storybook docs folder
-docs/
+# storybook build output
+storybook-static/

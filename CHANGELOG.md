@@ -10,6 +10,7 @@
 - declares `prop-types` as a dependency (it was imported but not declared)
 - `engines.node` is `>=22`
 - build: Vite library mode replaces Babel; tests: Vitest + Testing Library replace Jest/Enzyme; lint/format: Biome replaces ESLint/Prettier
+- docs: Storybook 10 (`@storybook/react-vite`) with Controls, Actions and autodocs replaces Storybook 5/6 Knobs/Info/Notes; dead placeholder images replaced
 
 ### 3.10.0
 
