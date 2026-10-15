@@ -32,6 +32,21 @@ describe('<ProgressBar />', () => {
     });
   });
 
+  test('renders a determinate bar at 0% when progress is 0', () => {
+    const { container } = render(<ProgressBar progress={0} />);
+    const bar = container.querySelector('.progress > div');
+    expect(bar).toHaveClass('determinate');
+    expect(bar).not.toHaveClass('indeterminate');
+    expect(bar).toHaveStyle({ width: '0%' });
+  });
+
+  test('stays indeterminate when progress is null', () => {
+    const { container } = render(<ProgressBar progress={null} />);
+    const bar = container.querySelector('.progress > div');
+    expect(bar).toHaveClass('indeterminate');
+    expect(bar).not.toHaveAttribute('style');
+  });
+
   test('updates width when progress changes', () => {
     const { container, rerender } = render(<ProgressBar progress={32} />);
     rerender(<ProgressBar progress={75} />);
