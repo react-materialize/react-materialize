@@ -1,36 +1,54 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import CollectionItem from '../src/CollectionItem';
 
-describe.skip('<CollectionItem />', () => {
-  let wrapper;
+describe('<CollectionItem />', () => {
+  test('can render as a list item', () => {
+    render(<CollectionItem id="alvin">Alvin</CollectionItem>);
 
-  test('renders', () => {
-    wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
-    expect(wrapper).toMatchSnapshot();
+    const item = screen.getByRole('listitem');
+    expect(item).toHaveClass('collection-item');
+    expect(item).toHaveTextContent('Alvin');
+    expect(item).toHaveAttribute('id', 'alvin');
+    expect(screen.queryByRole('link')).toBeNull();
   });
 
   test('can render as a link', () => {
-    wrapper = shallow(<CollectionItem href="#">Alvin</CollectionItem>);
-    expect(wrapper.props().href).toEqual('#');
-    expect(wrapper.type()).toEqual('a');
-  });
+    render(<CollectionItem href="#alvin">Alvin</CollectionItem>);
 
-  test('can render as a list item', () => {
-    wrapper = shallow(<CollectionItem>Alvin</CollectionItem>);
-    expect(wrapper.type()).toEqual('li');
+    const link = screen.getByRole('link', { name: 'Alvin' });
+    expect(link).toHaveAttribute('href', '#alvin');
+    expect(link).toHaveClass('collection-item');
+    expect(link).not.toHaveClass('active');
+    expect(screen.queryByRole('listitem')).toBeNull();
   });
 
   test('should render children when passed in', () => {
-    const child = <p>child</p>;
-    wrapper = shallow(<CollectionItem>{child}</CollectionItem>);
-    expect(wrapper.contains(child)).toEqual(true);
+    render(
+      <CollectionItem>
+        <p>child</p>
+      </CollectionItem>
+    );
+
+    const child = screen.getByText('child');
+    expect(child.tagName).toBe('P');
+    expect(child.parentElement).toBe(screen.getByRole('listitem'));
   });
 
-  test('can have an active state', () => {
-    wrapper = shallow(
-      <CollectionItem className="active">Alvin</CollectionItem>
+  test('can have an active state via className', () => {
+    render(<CollectionItem className="active">Alvin</CollectionItem>);
+    expect(screen.getByRole('listitem')).toHaveClass(
+      'collection-item',
+      'active'
     );
-    expect(wrapper.find('.collection-item.active')).toHaveLength(1);
+  });
+
+  test('link can have an active state via the active prop', () => {
+    render(
+      <CollectionItem href="#" active>
+        Alvin
+      </CollectionItem>
+    );
+    expect(screen.getByRole('link')).toHaveClass('collection-item', 'active');
   });
 });

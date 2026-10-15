@@ -1,58 +1,83 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import NavItem from '../src/NavItem';
 
-describe.skip('<NavItem />', () => {
-  let wrapper;
+describe('<NavItem />', () => {
+  test('renders a link with text', () => {
+    render(<NavItem href="get-started.html">Getting</NavItem>);
 
-  test('renders', () => {
-    wrapper = shallow(<NavItem href="get-started.html">Getting</NavItem>);
-
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByRole('link', { name: 'Getting' })).toHaveAttribute(
+      'href',
+      'get-started.html'
+    );
   });
 
   test('passes node as a child', () => {
-    wrapper = shallow(
+    render(
       <NavItem href="get-started.html">
         <p>Go Home</p>
       </NavItem>
     );
 
-    expect(wrapper).toMatchSnapshot();
+    const link = screen.getByRole('link', { name: 'Go Home' });
+    const paragraph = screen.getByText('Go Home');
+    expect(paragraph.tagName).toBe('P');
+    expect(paragraph.parentElement).toBe(link);
   });
 
   test('can be a divider', () => {
-    wrapper = shallow(<NavItem divider />);
+    const { container } = render(
+      <NavItem divider href="get-started.html">
+        Getting
+      </NavItem>
+    );
 
-    expect(wrapper.find('li.divider')).toHaveLength(1);
+    const item = screen.getByRole('listitem');
+    expect(item).toHaveClass('divider');
+    expect(item).toBeEmptyDOMElement();
+    expect(container.children).toHaveLength(1);
+    expect(screen.queryByRole('link')).toBeNull();
   });
 
   test('handles multiple childs', () => {
-    wrapper = shallow(
+    render(
       <NavItem href="get-started.html">
         <span>hello</span>
         <h2>World</h2>
       </NavItem>
     );
 
-    expect(wrapper.find('span')).toHaveLength(1);
-    expect(wrapper.find('h2')).toHaveLength(1);
+    const link = screen.getByRole('link');
+    expect(screen.getByText('hello').parentElement).toBe(link);
+    expect(screen.getByRole('heading', { name: 'World' }).parentElement).toBe(
+      link
+    );
   });
 
-  test('passes onClick as parameter', () => {
-    const onClick = jest.fn();
-    wrapper = shallow(<NavItem onClick={onClick}>Getting</NavItem>);
+  test('passes onClick as parameter', async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(<NavItem onClick={onClick}>Getting</NavItem>);
 
-    expect(wrapper).toMatchSnapshot();
+    const item = screen.getByText('Getting');
+    expect(item.tagName).toBe('A');
+    expect(item).not.toHaveAttribute('href');
 
-    wrapper.simulate('click');
+    await user.click(item);
 
-    expect(onClick).toHaveBeenCalled();
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  test('passes href as parameter', () => {
-    wrapper = shallow(<NavItem href="get-started.html">Getting</NavItem>);
+  test('passes other props to the anchor', () => {
+    render(
+      <NavItem href="get-started.html" className="active" id="nav-1">
+        Getting
+      </NavItem>
+    );
 
-    expect(wrapper).toMatchSnapshot();
+    const link = screen.getByRole('link', { name: 'Getting' });
+    expect(link).toHaveClass('active');
+    expect(link).toHaveAttribute('id', 'nav-1');
   });
 });

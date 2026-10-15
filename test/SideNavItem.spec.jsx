@@ -1,81 +1,83 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import SideNavItem from '../src/SideNavItem';
+import Icon from '../src/Icon';
 
-function setup(props = {}, children) {
-  const propsIn = {
-    ...props
-  };
-  const component = <SideNavItem {...propsIn}>{children}</SideNavItem>;
-  const wrapper = shallow(component);
-  const firstChild = wrapper.childAt(0);
-  const propsOut = wrapper.props();
-  return {
-    propsIn,
-    wrapper,
-    firstChild,
-    propsOut
-  };
-}
-
-describe.skip('<SideNavItem />', () => {
-  test('renders', () => {
-    const { wrapper } = setup();
-    expect(wrapper).toMatchSnapshot();
+describe('<SideNavItem />', () => {
+  test('renders a list item with a default link', () => {
+    render(<SideNavItem>Item</SideNavItem>);
+    const item = screen.getByRole('listitem');
+    expect(item).not.toHaveClass('divider');
+    const link = screen.getByRole('link', { name: 'Item' });
+    expect(item).toContainElement(link);
+    expect(link).toHaveAttribute('href', '#!');
+    expect(link).not.toHaveClass('subheader', 'waves-effect');
   });
 
-  test('should render children', () => {
-    const { wrapper } = setup({}, <span className="test-child" />);
-    const children = wrapper.find('.test-child');
-    expect(children).toHaveLength(1);
-  });
-
-  test('should not render children for a userview', () => {
-    const { wrapper } = setup(
-      { userView: true },
-      <span className="test-child" />
+  test('should render children inside the link', () => {
+    render(
+      <SideNavItem>
+        <span className="test-child">child</span>
+      </SideNavItem>
     );
-    const children = wrapper.find('.test-child');
-    expect(children).toHaveLength(0);
+    const child = screen.getByText('child');
+    expect(child).toHaveClass('test-child');
+    expect(child.parentElement).toBe(screen.getByRole('link'));
   });
 
-  test('should consume props it uses', () => {
-    const { propsOut } = setup({
-      id: 'test123',
-      divider: true,
-      waves: true,
-      'data-someProp': 'true'
-    });
-    expect(propsOut.divider).toBeUndefined();
-    expect(propsOut.waves).toBeUndefined();
-    expect(propsOut.id).toEqual('test123');
-    expect(propsOut['data-someProp']).toEqual('true');
+  test('should render a user view instead of children for a userview', () => {
+    const { container } = render(
+      <SideNavItem userView user={{ name: 'John Doe', email: 'j@d.com' }}>
+        <span className="test-child">child</span>
+      </SideNavItem>
+    );
+    expect(screen.queryByText('child')).toBeNull();
+    const userView = container.querySelector('li > .user-view');
+    expect(userView).toBeInTheDocument();
+    expect(screen.getByText('John Doe')).toHaveClass('name');
+    expect(screen.getByText('j@d.com')).toHaveClass('email');
+  });
+
+  test('should consume props it uses and pass the rest to the list item', () => {
+    render(<SideNavItem id="test123" divider waves data-some-prop="true" />);
+    const item = screen.getByRole('listitem');
+    expect(item).toHaveAttribute('id', 'test123');
+    expect(item).toHaveAttribute('data-some-prop', 'true');
+    expect(item).not.toHaveAttribute('divider');
+    expect(item).not.toHaveAttribute('waves');
   });
 
   test('should render a divider class when needed', () => {
-    const { wrapper } = setup({ divider: true });
-    expect(wrapper.hasClass('divider')).toBeTruthy();
+    render(<SideNavItem divider />);
+    expect(screen.getByRole('listitem')).toHaveClass('divider');
   });
 
   test('should render a subheader or a waves-effect class when needed', () => {
-    const { firstChild } = setup({
-      waves: true,
-      subheader: true
-    });
-    expect(firstChild).toMatchSnapshot();
+    render(
+      <SideNavItem waves subheader>
+        Item
+      </SideNavItem>
+    );
+    expect(screen.getByRole('link', { name: 'Item' })).toHaveClass(
+      'subheader',
+      'waves-effect'
+    );
   });
 
   test('should render an icon when needed', () => {
-    const { firstChild } = setup({
-      icon: 'car'
-    });
-    expect(firstChild).toMatchSnapshot();
+    render(<SideNavItem icon={<Icon>car</Icon>}>Cars</SideNavItem>);
+    const icon = screen.getByText('car');
+    expect(icon.tagName).toBe('I');
+    expect(icon).toHaveClass('material-icons', 'prefix');
+    expect(icon.parentElement).toBe(screen.getByRole('link'));
+    expect(screen.getByRole('link')).toHaveTextContent('carCars');
   });
 
   test('should render a given href', () => {
-    const { firstChild } = setup({
-      href: 'www.test.nl'
-    });
-    expect(firstChild.props().href).toEqual('www.test.nl');
+    render(<SideNavItem href="www.test.nl">Item</SideNavItem>);
+    expect(screen.getByRole('link', { name: 'Item' })).toHaveAttribute(
+      'href',
+      'www.test.nl'
+    );
   });
 });

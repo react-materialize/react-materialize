@@ -1,25 +1,43 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Icon from '../src/Icon';
 
-describe.skip('<Icon />', () => {
-  // let wrapper = shallow(<Icon>cloud</Icon>);
-
+describe('<Icon />', () => {
   test('renders an icon', () => {
-    wrapper = shallow(<Icon>cloud</Icon>);
-    expect(wrapper).toMatchSnapshot();
+    render(<Icon>cloud</Icon>);
+    const icon = screen.getByText('cloud');
+    expect(icon.tagName).toBe('I');
+    expect(icon).toHaveClass('material-icons');
+    expect(icon.className).toBe('material-icons');
   });
 
-  test('accepts size as a prop', () => {
-    wrapper = shallow(<Icon large>cloud</Icon>);
-    expect(wrapper).toMatchSnapshot();
-  });
-  test('accepts placement as a prop', () => {
-    wrapper = shallow(<Icon left>cloud</Icon>);
-    expect(wrapper).toMatchSnapshot();
-  });
+  test.each(['tiny', 'small', 'medium', 'large'])(
+    'accepts size %s as a prop',
+    size => {
+      render(<Icon {...{ [size]: true }}>cloud</Icon>);
+      const icon = screen.getByText('cloud');
+      expect(icon).toHaveClass('material-icons', size);
+      expect(icon).not.toHaveAttribute(size);
+    }
+  );
+
+  test.each(['left', 'center', 'right'])(
+    'accepts placement %s as a prop',
+    placement => {
+      render(<Icon {...{ [placement]: true }}>cloud</Icon>);
+      const icon = screen.getByText('cloud');
+      expect(icon).toHaveClass('material-icons', placement);
+      expect(icon).not.toHaveAttribute(placement);
+    }
+  );
+
   test('accepts style size as a prop', () => {
-    wrapper = shallow(<Icon style={{ fontSize: '30px' }}>cloud</Icon>);
-    expect(wrapper).toMatchSnapshot();
+    render(<Icon style={{ fontSize: '30px' }}>cloud</Icon>);
+    expect(screen.getByText('cloud')).toHaveStyle({ fontSize: '30px' });
+  });
+
+  test('accepts className', () => {
+    render(<Icon className="red-text">cloud</Icon>);
+    expect(screen.getByText('cloud')).toHaveClass('material-icons', 'red-text');
   });
 });

@@ -1,16 +1,16 @@
 import React from 'react';
-// import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 import mocker from './helper/new-mocker';
 
-describe.skip('<Collapsible />', () => {
-  let wrapper;
-  const collapsibleInitMock = jest.fn();
-  const collapsibleInstanceDestroyMock = jest.fn();
+describe('<Collapsible />', () => {
+  const collapsibleInitMock = vi.fn();
+  const collapsibleInstanceDestroyMock = vi.fn();
   const collapsibleMock = {
     init: (el, options) => {
-      collapsibleInitMock(options);
+      collapsibleInitMock(el, options);
       return {
         destroy: collapsibleInstanceDestroyMock
       };
@@ -27,47 +27,97 @@ describe.skip('<Collapsible />', () => {
 
   beforeEach(() => {
     collapsibleInitMock.mockClear();
+    collapsibleInstanceDestroyMock.mockClear();
   });
 
   afterAll(() => {
     restore();
   });
 
-  test('initializes Collapsible with options', () => {
-    wrapper = mount(<Collapsible options={options} />);
-    expect(collapsibleInitMock).toHaveBeenCalledWith(options);
+  test('initializes Collapsible on the list with options', () => {
+    const { container } = render(<Collapsible options={options} />);
+    const list = container.querySelector('ul');
+
+    expect(collapsibleInitMock).toHaveBeenCalledTimes(1);
+    expect(collapsibleInitMock).toHaveBeenCalledWith(list, {
+      accordion: true,
+      ...options
+    });
   });
 
-  test('Destroyed when unmounted', () => {
-    wrapper = mount(<Collapsible options={options} />);
-    wrapper.unmount();
-    expect(collapsibleInstanceDestroyMock).toHaveBeenCalled();
+  test('passes accordion: false to init when expandable', () => {
+    const { container } = render(<Collapsible accordion={false} />);
+
+    expect(collapsibleInitMock).toHaveBeenCalledWith(
+      container.querySelector('ul'),
+      { accordion: false }
+    );
   });
 
-  test('renders', () => {
-    wrapper = mount(<Collapsible />);
-    expect(wrapper).toMatchSnapshot();
+  test('destroyed when unmounted', () => {
+    const { unmount } = render(<Collapsible options={options} />);
+    expect(collapsibleInstanceDestroyMock).not.toHaveBeenCalled();
+
+    unmount();
+    expect(collapsibleInstanceDestroyMock).toHaveBeenCalledTimes(1);
+  });
+
+  test('renders an accordion by default', () => {
+    render(<Collapsible className="extra" />);
+    const list = screen.getByRole('list');
+
+    expect(list).toHaveClass('collapsible', 'extra');
+    expect(list).not.toHaveClass('expandable');
+    expect(list).toHaveAttribute('data-collapsible', 'accordion');
   });
 
   test('expandable', () => {
-    wrapper = mount(<Collapsible accordion={false} />);
-    expect(wrapper).toMatchSnapshot();
+    render(<Collapsible accordion={false} />);
+    const list = screen.getByRole('list');
+
+    expect(list).toHaveClass('collapsible', 'expandable');
+    expect(list).toHaveAttribute('data-collapsible', 'expandable');
+  });
+
+  test('popout', () => {
+    render(<Collapsible popout />);
+    expect(screen.getByRole('list')).toHaveClass('collapsible', 'popout');
+  });
+
+  test('renders items with header and body', () => {
+    const { container } = render(
+      <Collapsible>
+        <CollapsibleItem header="First">A</CollapsibleItem>
+        <CollapsibleItem header="Second">B</CollapsibleItem>
+      </Collapsible>
+    );
+
+    const headers = container.querySelectorAll('li > .collapsible-header');
+    const bodies = container.querySelectorAll('li > .collapsible-body');
+    expect(headers).toHaveLength(2);
+    expect(headers[0]).toHaveTextContent('First');
+    expect(headers[1]).toHaveTextContent('Second');
+    expect(bodies[0]).toHaveTextContent('A');
+    expect(bodies[1]).toHaveTextContent('B');
   });
 
   test('with invalid elements', () => {
-    wrapper = mount(
+    render(
       <Collapsible>
         <CollapsibleItem header="First">A</CollapsibleItem>
         {null}
         <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ul').children().length).toEqual(2);
+
+    const items = screen.getAllByRole('listitem');
+    expect(items).toHaveLength(2);
+    expect(items[0]).toHaveTextContent('FirstA');
+    expect(items[1]).toHaveTextContent('SecondB');
   });
 
   test('with expanded prop', () => {
-    wrapper = mount(
+    render(
       <Collapsible>
         <CollapsibleItem expanded header="First">
           A
@@ -75,27 +125,20 @@ describe.skip('<Collapsible />', () => {
         <CollapsibleItem header="Second">B</CollapsibleItem>
       </Collapsible>
     );
-    expect(wrapper).toMatchSnapshot();
-  });
 
-  test('defaultActiveKey', () => {
-    const activeKey = 0;
-    wrapper = mount(
-      <Collapsible accordion defaultActiveKey={activeKey}>
-        <CollapsibleItem header="First">A</CollapsibleItem>
-        <CollapsibleItem header="Second">B</CollapsibleItem>
-      </Collapsible>
+    const [first, second] = screen.getAllByRole('listitem');
+    expect(first).toHaveClass('active');
+    expect(first.querySelector('.collapsible-header')).toHaveClass('active');
+    expect(second).not.toHaveClass('active');
+    expect(second.querySelector('.collapsible-header')).not.toHaveClass(
+      'active'
     );
-
-    wrapper.find('.collapsible-header').at(0).simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    wrapper.find('.collapsible-header').at(1).simulate('click');
-    expect(wrapper).toMatchSnapshot();
   });
 
-  test('onSelect called with right argument', () => {
-    const onSelect = jest.fn();
-    wrapper = mount(
+  test('onSelect called with the clicked item index', async () => {
+    const user = userEvent.setup();
+    const onSelect = vi.fn();
+    render(
       <Collapsible accordion onSelect={onSelect}>
         <CollapsibleItem header="A">A</CollapsibleItem>
         <CollapsibleItem header="B">B</CollapsibleItem>
@@ -105,28 +148,49 @@ describe.skip('<Collapsible />', () => {
       </Collapsible>
     );
 
-    wrapper.find('.collapsible-header').at(3).simulate('click');
-
+    const headers = document.querySelectorAll('.collapsible-header');
+    await user.click(headers[3]);
+    expect(onSelect).toHaveBeenCalledTimes(1);
     expect(onSelect).toHaveBeenCalledWith(3);
+
+    await user.click(headers[0]);
+    expect(onSelect).toHaveBeenCalledTimes(2);
+    expect(onSelect).toHaveBeenLastCalledWith(0);
+  });
+
+  test('onSelect called with the clicked item index when expandable', async () => {
+    const user = userEvent.setup();
+    const onSelect = vi.fn();
+    render(
+      <Collapsible accordion={false} onSelect={onSelect}>
+        <CollapsibleItem header="A">A</CollapsibleItem>
+        <CollapsibleItem header="B">B</CollapsibleItem>
+      </Collapsible>
+    );
+
+    await user.click(document.querySelectorAll('.collapsible-header')[1]);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+    expect(onSelect).toHaveBeenCalledWith(1);
   });
 
   describe('undefined M', () => {
     let __M;
     beforeEach(() => {
-      __M = global.M;
-      global.M = undefined;
+      __M = globalThis.M;
+      globalThis.M = undefined;
     });
     afterEach(() => {
-      global.M = __M;
+      globalThis.M = __M;
     });
     test('doesnt throw without M', () => {
       expect(() =>
-        mount(
+        render(
           <Collapsible accordion>
             <CollapsibleItem header="A">A</CollapsibleItem>
           </Collapsible>
         )
       ).not.toThrow();
+      expect(screen.getByRole('listitem')).toHaveTextContent('A');
     });
   });
 });

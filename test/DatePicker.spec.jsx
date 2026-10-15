@@ -1,121 +1,129 @@
 import React from 'react';
-// import { shallow, mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import DatePicker from '../src/DatePicker';
 import mocker from './helper/new-mocker';
 
-describe.skip('<DatePicker />', () => {
-  let wrapper;
+describe('<DatePicker />', () => {
+  const datePickerInitMock = vi.fn();
+  const datePickerInstanceDestroyMock = vi.fn();
+  const restore = mocker('Datepicker', {
+    init: (el, options) => {
+      datePickerInitMock(el, options);
+      return { destroy: datePickerInstanceDestroyMock };
+    }
+  });
 
-  test('renders', () => {
-    wrapper = shallow(<DatePicker />);
-    expect(wrapper).toMatchSnapshot();
+  beforeEach(() => {
+    datePickerInitMock.mockClear();
+    datePickerInstanceDestroyMock.mockClear();
+  });
+
+  afterAll(() => {
+    restore();
+  });
+
+  test('renders a datepicker text input', () => {
+    const { container } = render(<DatePicker />);
+    const input = screen.getByRole('textbox');
+
+    expect(input).toHaveClass('datepicker');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('id', 'DatePicker-mockId');
+    expect(container.firstChild).toHaveClass('input-field', 'col');
   });
 
   test('renders with a label', () => {
-    wrapper = shallow(<DatePicker label="DatePicker label" />);
-    expect(wrapper).toMatchSnapshot();
+    render(<DatePicker label="DatePicker label" />);
+    expect(screen.getByLabelText('DatePicker label')).toHaveAttribute(
+      'id',
+      'DatePicker-mockId'
+    );
   });
 
   test('accepts external `id` value', () => {
-    wrapper = shallow(<DatePicker id="ID" />);
-    expect(wrapper).toMatchSnapshot();
+    render(<DatePicker id="ID" label="Date" />);
+    expect(screen.getByLabelText('Date')).toHaveAttribute('id', 'ID');
+  });
+
+  test('passes TextInput props through', () => {
+    const { container } = render(<DatePicker s={6} disabled />);
+    expect(container.firstChild).toHaveClass('s6');
+    expect(screen.getByRole('textbox')).toBeDisabled();
   });
 
   describe('initialises', () => {
-    const datePickerInitMock = jest.fn();
-    const datePickerInstanceDestroyMock = jest.fn();
-    const datePickerMock = {
-      init: (el, options) => {
-        datePickerInitMock(options);
-        return {
-          destroy: datePickerInstanceDestroyMock
-        };
-      }
-    };
-
-    const restore = mocker('Datepicker', datePickerMock);
-
-    beforeEach(() => {
-      datePickerInitMock.mockClear();
-      datePickerInstanceDestroyMock.mockClear();
-    });
-
-    afterAll(() => {
-      restore();
-    });
-
     test('uses default options if none are given', () => {
-      wrapper = mount(<DatePicker />);
+      render(<DatePicker />);
 
-      expect(datePickerInitMock).toHaveBeenCalledWith({
-        autoClose: false,
-        format: 'mmm dd, yyyy',
-        parse: null,
-        defaultDate: null,
-        setDefaultDate: false,
-        disableWeekends: false,
-        disableDayFn: null,
-        firstDay: 0,
-        minDate: null,
-        maxDate: null,
-        yearRange: 10,
-        isRTL: false,
-        showMonthAfterYear: false,
-        showDaysInNextAndPreviousMonths: false,
-        container: null,
-        showClearBtn: false,
-        i18n: {
+      expect(datePickerInitMock).toHaveBeenCalledTimes(1);
+      const [el, options] = datePickerInitMock.mock.calls[0];
+      expect(el).toBe(screen.getByRole('textbox'));
+      expect(options).toEqual(
+        expect.objectContaining({
+          autoClose: false,
+          format: 'mmm dd, yyyy',
+          defaultDate: null,
+          setDefaultDate: false,
+          firstDay: 0,
+          yearRange: 10,
+          showClearBtn: false,
+          events: [],
+          onSelect: null
+        })
+      );
+      expect(options.i18n).toEqual(
+        expect.objectContaining({
           cancel: 'Cancel',
           clear: 'Clear',
-          done: 'Ok',
-          previousMonth: '‹',
-          nextMonth: '›',
-          months: [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-          ],
-          monthsShort: [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
-          ],
-          weekdays: [
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday'
-          ],
-          weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-          weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-        },
-        events: [],
-        onSelect: null,
-        onOpen: null,
-        onClose: null,
-        onDraw: null
-      });
+          done: 'Ok'
+        })
+      );
+    });
+
+    test('passes custom options', () => {
+      const options = { autoClose: true, format: 'yyyy-mm-dd' };
+      render(<DatePicker options={options} />);
+
+      expect(datePickerInitMock).toHaveBeenCalledWith(
+        screen.getByRole('textbox'),
+        options
+      );
+    });
+
+    test('wires onChange as onSelect, keeping other options', () => {
+      const onChange = vi.fn();
+      const options = { autoClose: true, onSelect: () => {} };
+      render(<DatePicker options={options} onChange={onChange} />);
+
+      const passed = datePickerInitMock.mock.calls[0][1];
+      expect(passed).toEqual({ autoClose: true, onSelect: onChange });
+
+      const date = new Date(2020, 0, 1);
+      passed.onSelect(date);
+      expect(onChange).toHaveBeenCalledWith(date);
+    });
+
+    test('destroys the instance on unmount', () => {
+      const { unmount } = render(<DatePicker />);
+      expect(datePickerInstanceDestroyMock).not.toHaveBeenCalled();
+
+      unmount();
+      expect(datePickerInstanceDestroyMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('re-initialises when options change', () => {
+      const { rerender } = render(<DatePicker options={{ firstDay: 0 }} />);
+      expect(datePickerInitMock).toHaveBeenCalledTimes(1);
+
+      const nextOptions = { firstDay: 1 };
+      rerender(<DatePicker options={nextOptions} />);
+
+      expect(datePickerInstanceDestroyMock).toHaveBeenCalledTimes(1);
+      expect(datePickerInitMock).toHaveBeenCalledTimes(2);
+      expect(datePickerInitMock).toHaveBeenLastCalledWith(
+        screen.getByRole('textbox'),
+        nextOptions
+      );
     });
   });
 });

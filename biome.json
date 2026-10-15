@@ -6,7 +6,14 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["src/**", "test/**", "stories/**", "types/**", ".storybook/**"]
+    "includes": [
+      "src/**",
+      "test/**",
+      "stories/**",
+      "types/**",
+      ".storybook/**",
+      "vite.config.mjs"
+    ]
   },
   "formatter": {
     "indentStyle": "space",

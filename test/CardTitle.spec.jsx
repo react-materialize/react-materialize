@@ -1,26 +1,38 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import CardTitle from '../src/CardTitle';
 
 describe('<CardTitle />', () => {
-  test('renders', () => {
+  test('renders the image and title inside card-image', () => {
     const { container } = render(
-      <CardTitle className="find" image="">
+      <CardTitle className="find" image="url.jpg" data-testid="title">
         I am a very simple card
       </CardTitle>
     );
+    const wrapper = screen.getByTestId('title');
 
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toBe(wrapper);
+    expect(wrapper).toHaveClass('find', 'card-image', { exact: true });
+
+    const img = screen.getByRole('img');
+    expect(img).toHaveAttribute('src', 'url.jpg');
+    expect(img).not.toHaveClass('activator');
+    expect(wrapper.firstChild).toBe(img);
+
+    const title = wrapper.lastChild;
+    expect(title.tagName).toBe('SPAN');
+    expect(title).toHaveClass('card-title');
+    expect(title).toHaveTextContent('I am a very simple card');
   });
 
-  test('requires an image prop', () => {
-    const { getByRole } = render(
+  test('image is the reveal activator when `reveal` is set', () => {
+    render(
       <CardTitle image="url.jpg" reveal>
         I am a very simple card
       </CardTitle>
     );
 
-    expect(getByRole('img').className).toBe('activator');
+    expect(screen.getByRole('img')).toHaveClass('activator', { exact: true });
   });
 
   test('can have waves', () => {
@@ -30,6 +42,11 @@ describe('<CardTitle />', () => {
       </CardTitle>
     );
 
-    expect(container.firstChild.classList.contains('waves-green')).toBeTruthy();
+    expect(container.firstChild).toHaveClass(
+      'card-image',
+      'waves-effect',
+      'waves-block',
+      'waves-green'
+    );
   });
 });

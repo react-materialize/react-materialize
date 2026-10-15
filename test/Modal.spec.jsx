@@ -1,9 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Modal from '../src/Modal';
 import mocker from './helper/new-mocker';
 
-const trigger = <button>click</button>;
+const trigger = <button type="button">click</button>;
 const children = (
   <div>
     <h1>Hello</h1>
@@ -16,13 +17,13 @@ const options = {
 };
 
 describe('<Modal />', () => {
-  const modalOpenMock = jest.fn();
-  const modalCloseMock = jest.fn();
-  const modalInitMock = jest.fn();
-  const modalInstanceDestroyMock = jest.fn();
+  const modalOpenMock = vi.fn();
+  const modalCloseMock = vi.fn();
+  const modalInitMock = vi.fn();
+  const modalInstanceDestroyMock = vi.fn();
   const modalMock = {
-    init: (_, options) => {
-      modalInitMock(options);
+    init: (el, options) => {
+      modalInitMock(el, options);
       return {
         open: modalOpenMock,
         close: modalCloseMock,
@@ -38,13 +39,19 @@ describe('<Modal />', () => {
 
   beforeEach(() => {
     modalInitMock.mockClear();
+    modalOpenMock.mockClear();
+    modalCloseMock.mockClear();
+    modalInstanceDestroyMock.mockClear();
   });
 
+  const getModal = () => document.body.querySelector('.modal');
+
   describe('initialises', () => {
-    test('calls Modal', () => {
+    test('calls M.Modal.init on the modal element with default options', () => {
       render(<Modal />);
 
-      expect(modalInitMock).toBeCalledWith({
+      expect(modalInitMock).toHaveBeenCalledTimes(1);
+      expect(modalInitMock).toHaveBeenCalledWith(getModal(), {
         opacity: 0.5,
         inDuration: 250,
         outDuration: 250,
@@ -58,18 +65,105 @@ describe('<Modal />', () => {
         endingTop: '10%'
       });
     });
+
+    test('calls M.Modal.init with custom options', () => {
+      render(<Modal options={options} />);
+      expect(modalInitMock).toHaveBeenCalledWith(getModal(), options);
+    });
+
+    test('destroys the instance and removes the portal root on unmount', () => {
+      const { unmount } = render(<Modal />);
+      const portalRoot = getModal().parentElement;
+      expect(portalRoot.parentElement).toBe(document.body);
+
+      unmount();
+      expect(modalInstanceDestroyMock).toHaveBeenCalledTimes(1);
+      expect(document.body.contains(portalRoot)).toBe(false);
+      expect(getModal()).toBeNull();
+    });
   });
 
   describe('renders a modal', () => {
-    test('has children', () => {
-      const { queryByText } = render(
+    test('renders into document.body outside the render container', () => {
+      const { container } = render(<Modal>{children}</Modal>);
+
+      const modal = getModal();
+      expect(modal).toBeInTheDocument();
+      expect(container.contains(modal)).toBe(false);
+      expect(modal).toHaveAttribute('id', 'Modal-mockId');
+    });
+
+    test('has header, children and default close action', () => {
+      render(
         <Modal trigger={trigger} options={options} header={header}>
           {children}
         </Modal>
       );
 
-      expect(queryByText('Hello')).toBeTruthy();
-      expect(document.body.querySelector('.modal-footer')).toBeTruthy();
+      const modal = getModal();
+      const content = modal.querySelector('.modal-content');
+      expect(
+        within(content).getByRole('heading', { level: 4, name: header })
+      ).toBeInTheDocument();
+      expect(
+        within(content).getByRole('heading', { level: 1, name: 'Hello' })
+      ).toBeInTheDocument();
+
+      const footer = modal.querySelector('.modal-footer');
+      const close = within(footer).getByRole('button', { name: 'Close' });
+      expect(close).toHaveClass('modal-close', 'btn-flat', 'waves-green');
+    });
+
+    test('renders custom actions in the footer', () => {
+      render(
+        <Modal actions={[<button key="ok">OK</button>]}>{children}</Modal>
+      );
+
+      const footer = getModal().querySelector('.modal-footer');
+      expect(within(footer).getByRole('button', { name: 'OK' })).toBeVisible();
+      expect(
+        within(footer).queryByRole('button', { name: 'Close' })
+      ).toBeNull();
+    });
+
+    test('applies className, fixedFooter and bottomSheet classes', () => {
+      render(<Modal className="custom" fixedFooter bottomSheet />);
+      expect(getModal()).toHaveClass(
+        'modal',
+        'custom',
+        'modal-fixed-footer',
+        'bottom-sheet'
+      );
+    });
+
+    test('passes extra props such as id to the modal element', () => {
+      render(<Modal id="my-modal" />);
+      expect(getModal()).toHaveAttribute('id', 'my-modal');
+    });
+
+    test('renders into a custom root', () => {
+      const root = document.createElement('section');
+      document.body.appendChild(root);
+
+      const { unmount } = render(<Modal root={root}>{children}</Modal>);
+      expect(root.querySelector('.modal')).toBeInTheDocument();
+
+      unmount();
+      expect(root.querySelector('.modal')).toBeNull();
+      root.remove();
+    });
+  });
+
+  describe('trigger', () => {
+    test('renders the trigger and opens the modal on click', async () => {
+      const user = userEvent.setup();
+      render(<Modal trigger={trigger}>{children}</Modal>);
+
+      const button = screen.getByRole('button', { name: 'click' });
+      expect(modalOpenMock).not.toHaveBeenCalled();
+
+      await user.click(button);
+      expect(modalOpenMock).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -77,12 +171,35 @@ describe('<Modal />', () => {
     test('calls `open` on mount', () => {
       render(<Modal open>{children}</Modal>);
       expect(modalOpenMock).toHaveBeenCalledTimes(1);
+      expect(modalCloseMock).not.toHaveBeenCalled();
     });
 
-    test('open on prop change', () => {
+    test('does not call `open` when mounted closed', () => {
+      render(<Modal>{children}</Modal>);
+      expect(modalOpenMock).not.toHaveBeenCalled();
+    });
+
+    test('calls `close` when `open` changes to false', () => {
+      const { rerender } = render(<Modal open>{children}</Modal>);
+      expect(modalOpenMock).toHaveBeenCalledTimes(1);
+
+      rerender(<Modal open={false}>{children}</Modal>);
+      expect(modalCloseMock).toHaveBeenCalledTimes(1);
+      expect(modalOpenMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('calls `open` when `open` changes to true', () => {
+      const { rerender } = render(<Modal open={false}>{children}</Modal>);
+      expect(modalOpenMock).not.toHaveBeenCalled();
+
+      rerender(<Modal open>{children}</Modal>);
+      expect(modalOpenMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('does not re-initialise on rerender with same options', () => {
       const { rerender } = render(<Modal open>{children}</Modal>);
       rerender(<Modal open={false}>{children}</Modal>);
-      expect(modalOpenMock).toHaveBeenCalledTimes(2);
+      expect(modalInitMock).toHaveBeenCalledTimes(1);
     });
   });
 });

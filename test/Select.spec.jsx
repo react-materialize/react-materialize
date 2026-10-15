@@ -1,144 +1,288 @@
 import React from 'react';
-// import { shallow, mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Select from '../src/Select';
+import Icon from '../src/Icon';
 import mocker from './helper/new-mocker';
 
-describe.skip('<Select />', () => {
-  let wrapper;
+const defaultOptions = {
+  classes: '',
+  dropdownOptions: {
+    alignment: 'left',
+    autoTrigger: true,
+    constrainWidth: true,
+    coverTrigger: true,
+    closeOnClick: true,
+    hover: false,
+    inDuration: 150,
+    outDuration: 250,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null
+  }
+};
+
+const fruitOptions = [
+  <option key="placeholder" value="" disabled>
+    Choose your option
+  </option>,
+  <option key="1" value="1">
+    Option 1
+  </option>,
+  <option key="2" value="2">
+    Option 2
+  </option>
+];
+
+describe('<Select />', () => {
+  const getWrapper = container => container.querySelector('.input-field');
 
   test('handles layout classes', () => {
-    wrapper = shallow(<Select s={4} m={6} />);
+    const { container } = render(<Select s={4} m={6} />);
 
-    expect(wrapper.hasClass('input-field')).toBeTruthy();
-    expect(wrapper.hasClass('col')).toBeTruthy();
-    expect(wrapper.hasClass('s4')).toBeTruthy();
-    expect(wrapper.hasClass('m6')).toBeTruthy();
+    const wrapper = getWrapper(container);
+    expect(wrapper).toHaveClass('input-field', 'col', 's4', 'm6');
+    expect(wrapper).not.toHaveClass('l', 'xl');
   });
 
   test('handles removing layout classes', () => {
-    wrapper = shallow(<Select s={4} m={6} noLayout />);
+    const { container } = render(<Select s={4} m={6} noLayout />);
 
-    expect(wrapper.hasClass('input-field')).toBeTruthy();
-    expect(wrapper.hasClass('col')).toBeFalsy();
-    expect(wrapper.hasClass('s4')).toBeFalsy();
-    expect(wrapper.hasClass('m6')).toBeFalsy();
+    const wrapper = getWrapper(container);
+    expect(wrapper).toHaveClass('input-field');
+    expect(wrapper).not.toHaveClass('col');
+    expect(wrapper).not.toHaveClass('s4');
+    expect(wrapper).not.toHaveClass('m6');
   });
 
-  test('renders browserDefault', () => {
-    wrapper = shallow(<Select browserDefault />);
-    expect(wrapper.find('select').hasClass('browser-default')).toBeTruthy();
+  test('renders label associated with the select', () => {
+    render(<Select id="name" label="Name" success="ok" error="bad" />);
+
+    const select = screen.getByLabelText('Name');
+    expect(select.tagName).toBe('SELECT');
+    expect(select).toHaveAttribute('id', 'name');
+
+    const label = screen.getByText('Name');
+    expect(label).toHaveAttribute('data-success', 'ok');
+    expect(label).toHaveAttribute('data-error', 'bad');
   });
 
-  test('renders label', () => {
-    wrapper = shallow(<Select label="Name" />);
-    expect(wrapper.find('label').text()).toEqual('Name');
+  test('generates an id when none is given', () => {
+    render(<Select label="Name" />);
+    expect(screen.getByLabelText('Name')).toHaveAttribute(
+      'id',
+      'Select-mockId'
+    );
+  });
+
+  test('renders no label when none is given', () => {
+    const { container } = render(<Select />);
+    expect(container.querySelector('label')).not.toBeInTheDocument();
   });
 
   test('handles validate', () => {
-    wrapper = shallow(<Select validate />);
-    expect(wrapper.find('select.validate')).toHaveLength(1);
+    render(<Select validate label="Fruit" />);
+    expect(screen.getByLabelText('Fruit')).toHaveClass('validate');
   });
 
   test('handles className', () => {
-    wrapper = shallow(<Select validate className={'hello red'} />);
-    expect(wrapper.find('select.hello.red.validate')).toHaveLength(1);
+    render(<Select validate className="hello red" label="Fruit" />);
+    expect(screen.getByLabelText('Fruit')).toHaveClass(
+      'hello',
+      'red',
+      'validate'
+    );
   });
 
-  // test('calls onChange if provided', () => {
-  //   const onChangeMock = jest.fn();
-  //   wrapper = mount(
-  //     <Select browserDefault onChange={onChangeMock} value="">
-  //       <option value="" disabled>
-  //         Choose your option
-  //       </option>
-  //       <option value="1">Option 1</option>
-  //       <option value="2">Option 2</option>
-  //       <option value="3">Option 3</option>
-  //     </Select>
-  //   );
-
-  //   wrapper
-  //     .find('option')
-  //     .at(2)
-  //     .simulate('click');
-
-  //   expect(onChangeMock).toHaveBeenCalled();
-  // });
-
   test('with icon', () => {
-    wrapper = shallow(<Select icon="cloud" />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <Select icon={<Icon>cloud</Icon>} label="Fruit" />
+    );
+
+    const icon = screen.getByText('cloud');
+    expect(icon).toHaveClass('material-icons', 'prefix');
+    expect(getWrapper(container).firstElementChild).toBe(icon);
   });
 
   test('renders options', () => {
-    wrapper = shallow(
-      <Select>
-        <option value={1}>1</option>
-        <option value={2}>2</option>
+    render(
+      <Select label="Fruit">
+        <option value="1">1</option>
+        <option value="2">2</option>
       </Select>
     );
 
-    expect(wrapper.find('option')).toHaveLength(2);
+    const options = screen.getAllByRole('option');
+    expect(options).toHaveLength(2);
+    expect(options.map(option => option.value)).toEqual(['1', '2']);
+    for (const option of options) {
+      expect(screen.getByLabelText('Fruit')).toContainElement(option);
+    }
   });
 
   test('renders multiple', () => {
-    wrapper = shallow(<Select multiple />);
-    expect(wrapper.find('select.multiple')).toHaveLength(1);
+    render(<Select multiple label="Fruit" />);
+
+    const select = screen.getByLabelText('Fruit');
+    expect(select).toHaveClass('multiple');
+    expect(select.multiple).toBe(true);
   });
 
   test('handles other attributes', () => {
-    wrapper = shallow(<Select name="foo" />);
-    expect(wrapper.find('select').prop('name')).toBe('foo');
+    render(<Select name="foo" disabled label="Fruit" />);
+
+    const select = screen.getByLabelText('Fruit');
+    expect(select).toHaveAttribute('name', 'foo');
+    expect(select).toBeDisabled();
+  });
+
+  test('selects the option given by value and follows value updates', () => {
+    const { rerender } = render(
+      <Select label="Fruit" value="1">
+        {fruitOptions}
+      </Select>
+    );
+
+    expect(screen.getByLabelText('Fruit')).toHaveValue('1');
+
+    rerender(
+      <Select label="Fruit" value="2">
+        {fruitOptions}
+      </Select>
+    );
+
+    expect(screen.getByLabelText('Fruit')).toHaveValue('2');
+  });
+
+  test('calls onChange when the native select changes', async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(
+      <Select label="Fruit" value="" onChange={onChange}>
+        {fruitOptions}
+      </Select>
+    );
+
+    const select = screen.getByLabelText('Fruit');
+    await user.selectOptions(select, '2');
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][0].target).toBe(select);
+    expect(select).toHaveValue('2');
+    expect(screen.getByRole('option', { name: 'Option 2' }).selected).toBe(
+      true
+    );
+  });
+
+  test('calls onChange when a Materialize option is picked', async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    const { container } = render(
+      <Select label="Fruit" value="" onChange={onChange}>
+        {fruitOptions}
+      </Select>
+    );
+
+    const materializeOption = Array.from(
+      container.querySelectorAll('ul.select-dropdown li')
+    ).find(li => li.textContent === 'Option 1');
+    await user.click(materializeOption);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(screen.getByLabelText('Fruit')).toHaveValue('1');
+  });
+
+  test('calls onChange when a Materialize multiple option is picked', async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    const { container } = render(
+      <Select multiple label="Fruit" value={[]} onChange={onChange}>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </Select>
+    );
+
+    const materializeOption = Array.from(
+      container.querySelectorAll('ul.multiple-select-dropdown li')
+    ).find(li => li.textContent === 'Option 2');
+    await user.click(materializeOption);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(screen.getByLabelText('Fruit')).toHaveValue(['2']);
   });
 
   describe('initialises', () => {
-    const selectInitMock = jest.fn();
-    const selectInstanceDestroyMock = jest.fn();
-    const selectMock = {
-      init: (el, options) => {
-        selectInitMock(options);
-        return {
-          destroy: selectInstanceDestroyMock
-        };
-      }
-    };
-    const restore = mocker('FormSelect', selectMock);
+    const selectInit = vi.fn();
+    const selectDestroy = vi.fn();
+    let restore;
+
+    beforeAll(() => {
+      restore = mocker('FormSelect', { init: selectInit });
+    });
 
     beforeEach(() => {
-      selectInitMock.mockClear();
-      selectInstanceDestroyMock.mockClear();
+      selectInit.mockReset();
+      selectDestroy.mockReset();
+      selectInit.mockReturnValue({ destroy: selectDestroy });
     });
 
     afterAll(() => {
       restore();
     });
 
-    test('calls FormSelect', () => {
-      mount(<Select />);
+    test('calls FormSelect on the select element with default options', () => {
+      render(<Select label="Fruit" />);
 
-      expect(selectInitMock).toHaveBeenCalledTimes(1);
+      expect(selectInit).toHaveBeenCalledTimes(1);
+      expect(selectInit).toHaveBeenCalledWith(
+        screen.getByLabelText('Fruit'),
+        defaultOptions
+      );
     });
 
-    test('with default options if none are given', () => {
-      mount(<Select />);
+    test('renders browserDefault so Materialize keeps the native select', () => {
+      render(<Select browserDefault label="Fruit" />);
 
-      expect(selectInitMock).toHaveBeenCalledWith({
-        classes: '',
-        dropdownOptions: {
-          alignment: 'left',
-          autoTrigger: true,
-          constrainWidth: true,
-          coverTrigger: true,
-          closeOnClick: true,
-          hover: false,
-          inDuration: 150,
-          outDuration: 250,
-          onOpenStart: null,
-          onOpenEnd: null,
-          onCloseStart: null,
-          onCloseEnd: null
-        }
-      });
+      const select = screen.getByLabelText('Fruit');
+      expect(select).toHaveClass('browser-default');
+      expect(selectInit).toHaveBeenCalledWith(select, defaultOptions);
+    });
+
+    test('handles options prop', () => {
+      const options = { classes: 'wide', dropdownOptions: { hover: true } };
+      render(<Select label="Fruit" options={options} />);
+
+      expect(selectInit).toHaveBeenCalledWith(
+        screen.getByLabelText('Fruit'),
+        options
+      );
+    });
+
+    test('re-initialises when the options children change', () => {
+      const { rerender } = render(
+        <Select label="Fruit">
+          <option value="1">Option 1</option>
+        </Select>
+      );
+
+      rerender(
+        <Select label="Fruit">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </Select>
+      );
+
+      expect(selectDestroy).toHaveBeenCalledTimes(1);
+      expect(selectInit).toHaveBeenCalledTimes(2);
+    });
+
+    test('destroys when unmounted', () => {
+      const { unmount } = render(<Select />);
+
+      expect(selectDestroy).not.toHaveBeenCalled();
+      unmount();
+      expect(selectDestroy).toHaveBeenCalledTimes(1);
     });
   });
 });

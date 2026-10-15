@@ -1,46 +1,80 @@
 import React from 'react';
-// import { shallow, mount } from 'enzyme';
+import { render, screen, within } from '@testing-library/react';
 import Navbar from '../src/Navbar';
 import mocker from './helper/new-mocker';
 
-describe.skip('<Navbar />', () => {
-  let wrapper;
-  const sidenavInitMock = jest.fn();
-  const sidenavInstanceDestroyMock = jest.fn();
-  const sidenavMock = {
-    init: (el, options) => {
-      sidenavInitMock(options);
-      return {
-        destroy: sidenavInstanceDestroyMock
-      };
-    }
-  };
-  const restore = mocker('Sidenav', sidenavMock);
+describe('<Navbar />', () => {
+  const destroyMock = vi.fn();
+  const initMock = vi.fn(() => ({ destroy: destroyMock }));
+  const restore = mocker('Sidenav', { init: initMock });
 
   beforeEach(() => {
-    sidenavInitMock.mockClear();
-    sidenavInstanceDestroyMock.mockClear();
+    initMock.mockClear();
+    destroyMock.mockClear();
   });
 
   afterAll(() => {
     restore();
   });
 
-  test('renders', () => {
-    wrapper = shallow(
+  const getSidenav = container => container.querySelector('ul.sidenav');
+
+  test('renders brand, menu trigger and links in the nav and the sidenav', () => {
+    const { container } = render(
       <Navbar brand={<a href="/">Logo</a>} alignLinks="right">
         <a href="get-started.html">Getting started</a>
         <a href="components.html">Components</a>
       </Navbar>
     );
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('nav')).toHaveLength(1);
+    const nav = screen.getByRole('navigation');
+    expect(nav.querySelector('.nav-wrapper')).not.toHaveClass('container');
+
+    const brand = within(nav).getByRole('link', { name: 'Logo' });
+    expect(brand).toHaveClass('brand-logo');
+    expect(brand).not.toHaveClass('right');
+    expect(brand).toHaveAttribute('href', '/');
+
+    const trigger = within(nav).getByRole('link', { name: 'menu' });
+    expect(trigger).toHaveClass('sidenav-trigger');
+    expect(trigger).toHaveAttribute('data-target', 'mobile-nav');
+    expect(trigger).toHaveAttribute('href', '#!');
+
+    const navLinks = nav.querySelector('ul.hide-on-med-and-down');
+    expect(navLinks).toHaveClass('right');
+    const navItems = within(navLinks).getAllByRole('listitem');
+    expect(navItems).toHaveLength(2);
+    expect(within(navItems[0]).getByRole('link')).toHaveAttribute(
+      'href',
+      'get-started.html'
+    );
+    expect(within(navItems[1]).getByRole('link')).toHaveAttribute(
+      'href',
+      'components.html'
+    );
+
+    const sidenav = getSidenav(container);
+    expect(sidenav).toHaveAttribute('id', 'mobile-nav');
+    expect(sidenav).toHaveClass('right');
+    expect(sidenav.parentElement).toBe(container);
+    const sidenavItems = within(sidenav).getAllByRole('listitem');
+    expect(sidenavItems).toHaveLength(2);
+    expect(sidenavItems[0]).toHaveTextContent('Getting started');
+    expect(sidenavItems[1]).toHaveTextContent('Components');
+  });
+
+  test('passes extra props to the nav element', () => {
+    render(<Navbar className="blue" data-testid="nav" />);
+    const nav = screen.getByTestId('nav');
+    expect(nav.tagName).toBe('NAV');
+    expect(nav).toHaveClass('blue');
+    expect(nav).not.toHaveClass('nav-extended');
   });
 
   test('sidenav get initialized with default options if none are given', () => {
-    mount(<Navbar />);
-    expect(sidenavInitMock).toHaveBeenCalledWith({
+    const { container } = render(<Navbar />);
+    expect(initMock).toHaveBeenCalledTimes(1);
+    expect(initMock).toHaveBeenCalledWith(getSidenav(container), {
       edge: 'left',
       draggable: true,
       inDuration: 250,
@@ -53,47 +87,77 @@ describe.skip('<Navbar />', () => {
     });
   });
 
+  test('sidenav gets initialized with the given options', () => {
+    const options = { edge: 'right', draggable: false };
+    const { container } = render(<Navbar options={options} />);
+    expect(initMock).toHaveBeenCalledWith(getSidenav(container), options);
+  });
+
+  test('sidenav gets destroyed when unmounted', () => {
+    const { unmount } = render(<Navbar />);
+    expect(destroyMock).not.toHaveBeenCalled();
+    unmount();
+    expect(destroyMock).toHaveBeenCalledTimes(1);
+  });
+
   test('can center the brand logo', () => {
-    wrapper = shallow(<Navbar brand={<a href="/">Logo</a>} centerLogo />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo').hasClass('center'));
+    render(<Navbar brand={<a href="/">Logo</a>} centerLogo />);
+    const brand = screen.getByRole('link', { name: 'Logo' });
+    expect(brand).toHaveClass('brand-logo', 'center');
+    expect(brand).not.toHaveClass('right');
   });
 
   test('can constrain its children to a container', () => {
-    wrapper = shallow(
+    render(
       <Navbar brand={<a href="/">Logo</a>} centerChildren>
         <a href="get-started.html">Getting started</a>
         <a href="components.html">Components</a>
       </Navbar>
     );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('div').hasClass('container')).toBe(true);
+    const wrapper = screen
+      .getByRole('navigation')
+      .querySelector('.nav-wrapper');
+    expect(wrapper).toHaveClass('container');
+    expect(
+      within(wrapper).getByRole('link', { name: 'Getting started' })
+    ).toBeInTheDocument();
   });
 
   test('places brand on right if navbar is left aligned', () => {
-    wrapper = shallow(
+    const { container } = render(
       <Navbar brand={<a href="/">Logo</a>} alignLinks="left" />
     );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('a.brand-logo').hasClass('right')).toBe(true);
+    expect(screen.getByRole('link', { name: 'Logo' })).toHaveClass(
+      'brand-logo',
+      'right'
+    );
+    expect(container.querySelector('ul.hide-on-med-and-down')).toHaveClass(
+      'left'
+    );
+    expect(getSidenav(container)).toHaveClass('left');
   });
 
   test('adds a brand node', () => {
-    const brandNode = <span className="brando">I AM BRAND</span>;
-
-    wrapper = mount(<Navbar brand={brandNode} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('span.brand-logo.brandp')).toBeTruthy();
+    render(<Navbar brand={<span className="brando">I AM BRAND</span>} />);
+    const brand = screen.getByText('I AM BRAND');
+    expect(brand.tagName).toBe('SPAN');
+    expect(brand).toHaveClass('brando', 'brand-logo');
   });
 
   test('can be fixed', () => {
-    wrapper = shallow(<Navbar fixed />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.navbar-fixed')).toHaveLength(1);
+    const { container } = render(<Navbar fixed />);
+    const fixedWrapper = container.querySelector('.navbar-fixed');
+    expect(fixedWrapper).toContainElement(screen.getByRole('navigation'));
+    expect(fixedWrapper).not.toContainElement(getSidenav(container));
+  });
+
+  test('is not fixed by default', () => {
+    const { container } = render(<Navbar />);
+    expect(container.querySelector('.navbar-fixed')).toBeNull();
   });
 
   test('can be extended with custom elements', () => {
-    wrapper = shallow(
+    render(
       <Navbar
         extendWith={
           <div className="col s12">
@@ -111,34 +175,81 @@ describe.skip('<Navbar />', () => {
       />
     );
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.breadcrumb')).toHaveLength(3);
+    const nav = screen.getByRole('navigation');
+    expect(nav).toHaveClass('nav-extended');
+    const content = nav.querySelector('.nav-content');
+    expect(content.querySelectorAll('.breadcrumb')).toHaveLength(3);
+    expect(within(content).getByRole('link', { name: 'Second' })).toHaveClass(
+      'breadcrumb'
+    );
   });
 
   test('can have custom id', () => {
-    wrapper = shallow(<Navbar id="custom-id" />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Navbar id="custom-id" />);
+    expect(getSidenav(container)).toHaveAttribute('id', 'custom-id');
+    expect(screen.getByRole('link', { name: 'menu' })).toHaveAttribute(
+      'data-target',
+      'custom-id'
+    );
   });
 
   test('can have children with custom ids', () => {
-    wrapper = shallow(
+    const { container } = render(
       <Navbar>
         <span id="custom-1">Custom 1</span>
         <span id="custom-2">Custom 2</span>
       </Navbar>
     );
-    expect(wrapper).toMatchSnapshot();
+    const navLinks = screen
+      .getByRole('navigation')
+      .querySelector('ul.hide-on-med-and-down');
+    expect(within(navLinks).getByText('Custom 1')).toHaveAttribute(
+      'id',
+      'custom-1'
+    );
+    expect(within(navLinks).getByText('Custom 2')).toHaveAttribute(
+      'id',
+      'custom-2'
+    );
+
+    const sidenav = getSidenav(container);
+    expect(within(sidenav).getByText('Custom 1')).toHaveAttribute(
+      'id',
+      'sidenav-custom-1'
+    );
+    expect(within(sidenav).getByText('Custom 2')).toHaveAttribute(
+      'id',
+      'sidenav-custom-2'
+    );
   });
 
   test('can have custom sidenav', () => {
-    wrapper = shallow(
+    const { container } = render(
       <Navbar
         brand={<a href="/">Logo</a>}
         alignLinks="left"
         sidenav={<li className="custom-node">Custom node!</li>}
-      />
+      >
+        <a href="get-started.html">Getting started</a>
+      </Navbar>
     );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('li').hasClass('custom-node'));
+    const sidenav = getSidenav(container);
+    const items = within(sidenav).getAllByRole('listitem');
+    expect(items).toHaveLength(1);
+    expect(items[0]).toHaveClass('custom-node');
+    expect(items[0]).toHaveTextContent('Custom node!');
+    expect(within(sidenav).queryByText('Getting started')).toBeNull();
+  });
+
+  test('renders a search form instead of brand and links', () => {
+    render(
+      <Navbar search brand={<a href="/">Logo</a>}>
+        <a href="get-started.html">Getting started</a>
+      </Navbar>
+    );
+    const nav = screen.getByRole('navigation');
+    expect(within(nav).getByRole('searchbox')).toBeInTheDocument();
+    expect(within(nav).queryByRole('link', { name: 'Logo' })).toBeNull();
+    expect(nav.querySelector('.sidenav-trigger')).toBeNull();
   });
 });

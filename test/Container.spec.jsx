@@ -1,21 +1,26 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Container from '../src/Container';
 
-describe.skip('<Container />', () => {
-  let wrapper;
+describe('<Container />', () => {
+  test('renders a div with the container class', () => {
+    const { container } = render(<Container className="extra" id="main" />);
+    const el = container.firstElementChild;
 
-  test('renders', () => {
-    wrapper = shallow(<Container />);
-    expect(wrapper).toMatchSnapshot();
+    expect(el.tagName).toBe('DIV');
+    expect(el).toHaveClass('container', 'extra');
+    expect(el).toHaveAttribute('id', 'main');
   });
 
   test('renders children', () => {
-    wrapper = shallow(
+    const { container } = render(
       <Container>
         <p>yes</p>
       </Container>
     );
-    expect(wrapper.find('.container').children().type()).toEqual('p');
+
+    const child = screen.getByText('yes');
+    expect(child.tagName).toBe('P');
+    expect(child.parentElement).toBe(container.querySelector('.container'));
   });
 });

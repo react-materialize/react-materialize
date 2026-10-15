@@ -1,21 +1,22 @@
 import React from 'react';
-// import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Divider from '../src/Divider';
 
-let wrapper;
-
-describe.skip('<Divider />', () => {
-  test('renders', () => {
-    wrapper = shallow(<Divider />);
-    expect(wrapper).toMatchSnapshot();
+describe('<Divider />', () => {
+  test('renders a divider', () => {
+    const { container } = render(<Divider />);
+    expect(container.childNodes).toHaveLength(1);
+    const divider = container.firstChild;
+    expect(divider.tagName).toBe('DIV');
+    expect(divider.className).toBe('divider');
   });
 
   test('does not contain children', () => {
-    wrapper = shallow(
+    const { container } = render(
       <Divider>
         <p>nope</p>
       </Divider>
     );
-    expect(wrapper.find('.divider').children().length).toEqual(0);
+    expect(container.querySelector('.divider')).toBeEmptyDOMElement();
   });
 });

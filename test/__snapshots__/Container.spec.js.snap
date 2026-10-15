@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Container /> renders 1`] = `
-<div
-  className="container"
-/>
-`;
