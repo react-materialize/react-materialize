@@ -1,31 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Slider = ({ children, className, options, fullscreen, ...props }) => {
-  const sliderInstance = useRef(null);
   const _slider = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
-    sliderInstance.current = M.Slider.init(_slider.current, options);
+    const instance = M.Slider.init(_slider.current, options);
+
+    // On re-init Materialize keeps the slide that is still `.active`, but only
+    // marks an indicator when it starts from scratch: mark the current one.
+    const indicator = instance.$indicators?.[instance.activeIndex];
+    if (indicator) indicator.classList.add('active');
 
     return () => {
-      if (sliderInstance.current) {
-        setActiveIndex(sliderInstance.current.activeIndex);
-        sliderInstance.current.destroy();
-      }
+      instance.destroy();
     };
   }, [_slider, options, fullscreen, children]);
-
-  useEffect(() => {
-    if (activeIndex) {
-      if (typeof indicators === 'undefined' || options.indicators) {
-        sliderInstance.current['$indicators'][activeIndex].className =
-          'indicator-item active';
-      }
-    }
-  }, [activeIndex, options.indicators, fullscreen]);
 
   /**
    * If the slider was not in fullscreen, the height is set as a style attribute

@@ -103,29 +103,63 @@ describe('<Slider />', () => {
     expect(initMock).toHaveBeenCalledTimes(2);
     expect(initMock).toHaveBeenLastCalledWith(container.firstChild, options);
   });
+});
 
-  test('keeps the active indicator after re-initialisation', () => {
-    const newIndicators = [
-      { className: 'indicator-item' },
-      { className: 'indicator-item' },
-      { className: 'indicator-item' }
-    ];
-    initMock
-      .mockImplementationOnce(() => ({
-        destroy: destroyMock,
-        activeIndex: 2,
-        $indicators: []
-      }))
-      .mockImplementationOnce(() => ({
-        destroy: destroyMock,
-        activeIndex: 0,
-        $indicators: newIndicators
-      }));
-    const { rerender } = render(<Slider />);
+describe('<Slider /> with Materialize', () => {
+  const options = {
+    indicators: true,
+    interval: 6000,
+    duration: 500,
+    height: 400
+  };
+  const slides = [1, 2, 3].map(n => (
+    <Slide key={n} image={<img src={`${n}.jpg`} alt={`slide ${n}`} />} />
+  ));
+  const instanceOf = container =>
+    M.Slider.getInstance(container.querySelector('.slider'));
+  const activeIndicators = container =>
+    [...container.querySelectorAll('.indicators .indicator-item')].map(li =>
+      li.classList.contains('active')
+    );
 
-    rerender(<Slider options={{ ...defaultOptions, interval: 1000 }} />);
+  test('keeps the active slide and indicator after re-initialisation', () => {
+    const { container, rerender } = render(
+      <Slider options={options}>{slides}</Slider>
+    );
+    instanceOf(container).set(2);
 
-    expect(newIndicators[2].className).toBe('indicator-item active');
-    expect(newIndicators[0].className).toBe('indicator-item');
+    rerender(
+      <Slider options={{ ...options, interval: 5000 }}>{slides}</Slider>
+    );
+
+    expect(instanceOf(container).activeIndex).toBe(2);
+    expect(activeIndicators(container)).toEqual([false, false, true]);
+  });
+
+  test('marks the first indicator after re-initialisation on the first slide', () => {
+    const { container, rerender } = render(
+      <Slider options={options}>{slides}</Slider>
+    );
+
+    rerender(
+      <Slider options={{ ...options, interval: 5000 }}>{slides}</Slider>
+    );
+
+    expect(activeIndicators(container)).toEqual([true, false, false]);
+  });
+
+  test('re-initialises without indicators', () => {
+    const noIndicators = { ...options, indicators: false };
+    const { container, rerender } = render(
+      <Slider options={noIndicators}>{slides}</Slider>
+    );
+    instanceOf(container).set(2);
+
+    rerender(
+      <Slider options={{ ...noIndicators, interval: 5000 }}>{slides}</Slider>
+    );
+
+    expect(instanceOf(container).activeIndex).toBe(2);
+    expect(container.querySelector('.indicators')).toBeNull();
   });
 });
