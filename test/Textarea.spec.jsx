@@ -108,6 +108,25 @@ describe('<Textarea />', () => {
     expect(helper).toHaveAttribute('data-error', 'Bad');
   });
 
+  test('does not render helper text without error or success', () => {
+    const { container } = render(<Textarea label="Notes" />);
+    expect(container.querySelector('.helper-text')).toBeNull();
+  });
+
+  test('renders helper text when only error or only success is set', () => {
+    const { container, rerender } = render(<Textarea error="Bad" />);
+    expect(container.querySelector('.helper-text')).toHaveAttribute(
+      'data-error',
+      'Bad'
+    );
+
+    rerender(<Textarea success="Good" />);
+    expect(container.querySelector('.helper-text')).toHaveAttribute(
+      'data-success',
+      'Good'
+    );
+  });
+
   test('handles validate', () => {
     render(<Textarea validate />);
     expect(screen.getByRole('textbox')).toHaveClass(

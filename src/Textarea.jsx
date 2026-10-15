@@ -75,7 +75,7 @@ const Textarea = ({
           {label}
         </label>
       )}
-      {[error || success] && (
+      {(error || success) && (
         <span
           className="helper-text"
           data-error={error}
