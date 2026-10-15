@@ -1,68 +1,67 @@
-<img alt='React Materialize' src="https://cloud.githubusercontent.com/assets/4152819/12703340/23b90e56-c841-11e5-933a-99bfa107db07.jpg" width="890">
+<img alt="React Materialize" src="https://cloud.githubusercontent.com/assets/4152819/12703340/23b90e56-c841-11e5-933a-99bfa107db07.jpg" width="890">
 
-[![Join the chat at https://gitter.im/react-materialize/react-materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-materialize/react-materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![npm version](http://img.shields.io/npm/v/react-materialize.svg?style=flat)](https://npmjs.org/package/react-materialize "View this project on npm")
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+[![npm version](https://img.shields.io/npm/v/react-materialize.svg?style=flat)](https://www.npmjs.com/package/react-materialize)
+[![CI](https://github.com/react-materialize/react-materialize/actions/workflows/ci.yml/badge.svg)](https://github.com/react-materialize/react-materialize/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/npm/l/react-materialize.svg?style=flat)](LICENSE)
 
+# React Materialize
 
-# [react-materialize](https://react-materialize.github.io/)
+React components for [Materialize](https://materializecss.com/), a CSS framework based on Material Design.
 
-Material design components for react, powered by [materializecss](http://materializecss.com/).
+**[Documentation and live examples](https://react-materialize.github.io/react-materialize/)**
+
+## Requirements
+
+- `react` and `react-dom` 17
+- [`materialize-css`](https://www.npmjs.com/package/materialize-css) 1.0, loaded by your app (CSS and JavaScript)
+- The [Material Icons](https://fonts.google.com/icons) font, for components that show icons
 
 ## Install
-```
-npm install materialize-css@next
-npm install react-materialize
+
+```sh
+npm install react-materialize materialize-css
 ```
 
-## Use
-#### HTML Setup (from [materializecss](http://materializecss.com/))
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="path/to/materialize.css">
-  </head>
-  <body>
-    <script src="path/to/your/bundle.js"></script>
-  </body>
-</html>
-```
+## Setup
 
-#### Javascript
-``` js
+Load Materialize once, at your app's entry point. Importing `materialize-css` defines the global `M` that the components use to initialise Materialize's JavaScript.
+
+```js
+import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css';
-import { Button, Card, Row, Col } from 'react-materialize';
 ```
 
-##### Note
-`materialize-css` exposes css via `style` field in `package.json`, if you have another tool for CSS that
-identifies this field you can remove the import from `index.html`.
+Add the Material Icons font to your HTML:
 
-## Docs && Examples
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+```
 
-See [documentation](https://react-materialize.github.io) for live examples. Try out the [boilerplate](https://github.com/react-materialize/webpack-boilplate).
+Loading Materialize from a CDN (`<link>` and `<script>` tags) works too, as long as it loads before your app renders.
 
-#### How does it compare to X.Y.Z?
+## Usage
 
-The main goal of this project is to provide react component for
-[materializecss](http://materializecss.com), at the current stage, I am
-trying to implement all possible widgets that are supported by materializecss.
-Please create an issue on github if you find you desired component is not
-available.
+```jsx
+import { Button, Modal } from 'react-materialize';
 
-There are other material design components for react.js, e.g. [material-ui](http://material-ui.com/),
-which is more mature and popular than this one.
-The main advantage of this project over e.g. material-ui is that it provides a
-grid system similar to react-bootstrap. Another advantage over material-ui is that react-materialize does not 
-include css in the js - which can be cumbersome to some project's architecture.
+export default function App() {
+  return (
+    <Modal header="Hello" trigger={<Button>Open modal</Button>}>
+      Lorem ipsum dolor sit amet.
+    </Modal>
+  );
+}
+```
 
-## Contributions
+The package ships ES modules, so bundlers only include the components you import. Each component is also available on its own, e.g. `import Button from 'react-materialize/lib/Button'`.
 
-> Yes, please!
+TypeScript definitions are included.
 
-We have a `help-wanted` label in the issues page for convenience
+See the [documentation](https://react-materialize.github.io/react-materialize/) for every component, its props and examples.
+
+## Contributing
+
+Found a bug or missing a Materialize component? [Open an issue](https://github.com/react-materialize/react-materialize/issues). Pull requests are welcome; issues labelled [`help wanted`](https://github.com/react-materialize/react-materialize/labels/help%20wanted) are a good place to start.
 
 ### Development
 
@@ -89,5 +88,4 @@ Versions and the changelog are managed with [Changesets](https://changesets.dev)
 
 ## Support
 
-This library is only a react wrapper around the awesome [materializecss](http://materializecss.com), if you or 
-your company uses this library please support them, all this work requires time :) ✌️
+React Materialize is a React wrapper around [Materialize](https://materializecss.com/). If you or your company use it, please consider supporting the Materialize project too.
