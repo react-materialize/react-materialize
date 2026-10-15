@@ -13,17 +13,18 @@ export const safeJSONStringify = s => {
 /**
  * Render an `icon` prop as a Materialize prefix icon: a string is the icon
  * name, an element keeps its own className and gets `prefix` added.
+ * `className` is appended to the icon's classes in both cases.
  */
-export const renderPrefixIcon = icon => {
+export const renderPrefixIcon = (icon, className) => {
   if (!icon) return null;
   if (typeof icon === 'string') {
     return React.createElement(
       'i',
-      { className: 'material-icons prefix' },
+      { className: cx('material-icons prefix', className) },
       icon
     );
   }
   return React.cloneElement(icon, {
-    className: cx(icon.props.className, 'prefix')
+    className: cx(icon.props.className, 'prefix', className)
   });
 };

@@ -51,7 +51,7 @@ const Textarea = ({
 
   return (
     <div className={cx('input-field', responsiveClasses)}>
-      {renderPrefixIcon(icon)}
+      {renderPrefixIcon(icon, iconClassName)}
       <textarea
         placeholder={placeholder}
         id={id}
