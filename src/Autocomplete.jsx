@@ -1,8 +1,9 @@
-import React, { cloneElement, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import constants from './constants';
 import idgen from './idgen';
+import { renderPrefixIcon } from './utils';
 
 const Autocomplete = ({
   className,
@@ -34,7 +35,7 @@ const Autocomplete = ({
 
   return (
     <div className={cx('input-field', className, classes)}>
-      {icon && cloneElement(icon, { className: 'prefix' })}
+      {renderPrefixIcon(icon)}
       <input
         className="autocomplete"
         type="text"

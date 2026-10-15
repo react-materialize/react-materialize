@@ -73,6 +73,27 @@ describe('<SideNavItem />', () => {
     expect(screen.getByRole('link')).toHaveTextContent('carCars');
   });
 
+  test('should render a string icon', () => {
+    render(<SideNavItem icon="car">Cars</SideNavItem>);
+    const icon = screen.getByText('car');
+    expect(icon.tagName).toBe('I');
+    expect(icon).toHaveClass('material-icons', 'prefix');
+    expect(icon.parentElement).toBe(screen.getByRole('link'));
+  });
+
+  test('keeps the icon element className', () => {
+    render(
+      <SideNavItem icon={<i className="material-icons red">car</i>}>
+        Cars
+      </SideNavItem>
+    );
+    expect(screen.getByText('car')).toHaveClass(
+      'material-icons',
+      'red',
+      'prefix'
+    );
+  });
+
   test('should render a given href', () => {
     render(<SideNavItem href="www.test.nl">Item</SideNavItem>);
     expect(screen.getByRole('link', { name: 'Item' })).toHaveAttribute(

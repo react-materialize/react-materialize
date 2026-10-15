@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
+import { renderPrefixIcon } from './utils';
 
 const Textarea = ({
   children,
@@ -50,7 +51,7 @@ const Textarea = ({
 
   return (
     <div className={cx('input-field', responsiveClasses)}>
-      {Boolean(icon) && React.cloneElement(icon, { className: 'prefix' })}
+      {renderPrefixIcon(icon)}
       <textarea
         placeholder={placeholder}
         id={id}

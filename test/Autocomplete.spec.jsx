@@ -78,6 +78,26 @@ describe('<Autocomplete />', () => {
     expect(icon).toBe(container.firstChild.firstChild);
   });
 
+  test('renders a string icon', () => {
+    const { container } = render(<Autocomplete icon="textsms" />);
+    const icon = screen.getByText('textsms');
+
+    expect(icon.tagName).toBe('I');
+    expect(icon).toHaveClass('material-icons', 'prefix');
+    expect(icon).toBe(container.firstChild.firstChild);
+  });
+
+  test('keeps the icon element className', () => {
+    render(
+      <Autocomplete icon={<i className="material-icons red">textsms</i>} />
+    );
+    expect(screen.getByText('textsms')).toHaveClass(
+      'material-icons',
+      'red',
+      'prefix'
+    );
+  });
+
   test('passes other props to the input', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();

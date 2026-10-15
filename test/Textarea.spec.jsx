@@ -124,6 +124,24 @@ describe('<Textarea />', () => {
     expect(icon).toBe(container.firstChild.firstChild);
   });
 
+  test('renders a string icon', () => {
+    const { container } = render(<Textarea icon="mode_edit" />);
+    const icon = screen.getByText('mode_edit');
+
+    expect(icon.tagName).toBe('I');
+    expect(icon).toHaveClass('material-icons', 'prefix');
+    expect(icon).toBe(container.firstChild.firstChild);
+  });
+
+  test('keeps the icon element className', () => {
+    render(<Textarea icon={<i className="material-icons red">mode_edit</i>} />);
+    expect(screen.getByText('mode_edit')).toHaveClass(
+      'material-icons',
+      'red',
+      'prefix'
+    );
+  });
+
   test('with custom className', () => {
     render(<Textarea className="custom-class" />);
     expect(screen.getByRole('textbox')).toHaveClass(

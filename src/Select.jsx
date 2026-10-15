@@ -10,6 +10,7 @@ import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 import { dropdownOptions } from './Dropdown';
+import { renderPrefixIcon } from './utils';
 
 const Select = ({
   id,
@@ -84,7 +85,7 @@ const Select = ({
 
   return (
     <div className={cx('input-field', responsiveClasses)}>
-      {Boolean(icon) && cloneElement(icon, { className: 'prefix' })}
+      {renderPrefixIcon(icon)}
       <select
         {...props}
         id={id}

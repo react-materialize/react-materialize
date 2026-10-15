@@ -234,5 +234,14 @@ describe('<TextInput />', () => {
       await user.click(icon);
       expect(mockIconClick).toHaveBeenCalledTimes(1);
     });
+
+    test('keeps the icon element className', () => {
+      render(<TextInput icon={<i className="material-icons red">cloud</i>} />);
+      expect(screen.getByText('cloud')).toHaveClass(
+        'material-icons',
+        'red',
+        'prefix'
+      );
+    });
   });
 });
