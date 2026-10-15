@@ -1,0 +1,26 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write # npm trusted publishing (OIDC); provenance is generated automatically
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24 # ships npm >= 11.5.1, required for trusted publishing
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false # no dependency cache in release builds
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test-ci
+      - run: npm run build
+      - run: npm publish
