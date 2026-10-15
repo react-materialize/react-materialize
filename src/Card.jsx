@@ -42,13 +42,15 @@ const Card = ({
           <div>{children}</div>
         </div>
 
-        <div className="card-reveal">
-          <span className="card-title">
-            {title}
-            {cloneElement(closeIcon, { right: true })}
-          </span>
-          {reveal}
-        </div>
+        {reveal && (
+          <div className="card-reveal">
+            <span className="card-title">
+              {title}
+              {cloneElement(closeIcon, { right: true })}
+            </span>
+            {reveal}
+          </div>
+        )}
 
         {actions && <div className="card-action">{actions}</div>}
       </Wrapper>

@@ -35,6 +35,14 @@ describe('<Card />', () => {
     expect(card.querySelector('.card-stacked')).toBeNull();
   });
 
+  test('does not render a card-reveal without reveal', () => {
+    const { container } = render(<Card title="card title">Body</Card>);
+
+    expect(container.querySelector('.card-reveal')).toBeNull();
+    expect(container.querySelectorAll('.card-title')).toHaveLength(1);
+    expect(screen.queryByText('close')).toBeNull();
+  });
+
   test('omits the content title when no title is given', () => {
     const { container } = render(<Card>Body</Card>);
 
