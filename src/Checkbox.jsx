@@ -14,7 +14,7 @@ const Checkbox = ({
 }) => {
   const [generatedId] = useState(() => `Checkbox_${idgen()}`);
   const id = idProp === undefined ? generatedId : idProp;
-  const [checked, setChecked] = useState(props.checked);
+  const [checked, setChecked] = useState(Boolean(props.checked));
   const _input = useRef(null);
 
   useEffect(() => {
@@ -26,8 +26,8 @@ const Checkbox = ({
   }, [indeterminate]);
 
   useEffect(() => {
-    setChecked(props.checked);
-    _input.current.checked = props.checked;
+    setChecked(Boolean(props.checked));
+    _input.current.checked = Boolean(props.checked);
   }, [props.checked]);
 
   return (
