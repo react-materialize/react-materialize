@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import Dropdown from '../src/Dropdown';
 import Divider from '../src/Divider';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 const defaultOptions = {
@@ -254,5 +255,32 @@ describe('<Dropdown />', () => {
       unmount();
       expect(dropdownDestroy).toHaveBeenCalledTimes(1);
     });
+
+    test('does not re-initialise when re-rendered with the same props', () => {
+      const trigger = <button type="button">Drop me!</button>;
+      const { rerender } = render(<Dropdown trigger={trigger} />);
+      rerender(<Dropdown trigger={trigger} />);
+
+      expect(dropdownInit).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const trigger = <button type="button">Drop me!</button>;
+      const { rerender } = render(<Dropdown trigger={trigger} />);
+      const before = screen.getByRole('list').id;
+      rerender(<Dropdown trigger={trigger} />);
+
+      expect(screen.getByRole('list').id).toBe(before);
+      expect(screen.getByRole('button', { name: 'Drop me!' })).toHaveAttribute(
+        'data-target',
+        before
+      );
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

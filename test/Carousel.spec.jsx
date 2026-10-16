@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Carousel from '../src/Carousel';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 describe('<Carousel />', () => {
@@ -169,5 +170,26 @@ describe('<Carousel />', () => {
         dist: 10
       });
     });
+
+    test('does not re-initialise when re-rendered with the same props', () => {
+      const { rerender } = render(<Carousel images={images} />);
+      rerender(<Carousel images={images} />);
+
+      expect(initMock).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { container, rerender } = render(<Carousel images={images} />);
+      const before = container.firstChild.id;
+      rerender(<Carousel images={images} />);
+
+      expect(container.firstChild.id).toBe(before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

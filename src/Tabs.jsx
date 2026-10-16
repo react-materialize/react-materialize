@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, cloneElement } from 'react';
+import React, { useEffect, useRef, useState, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
 
 import Row from './Row';
-import Tab from './Tab';
 
 const Tabs = ({
-  scope,
+  scope: scopeProp,
   children,
   className,
   defaultValue,
@@ -15,6 +14,8 @@ const Tabs = ({
   onChange
 }) => {
   const _tabsRef = useRef(null);
+  const [generatedScope] = useState(() => `tabs-${idgen()}`);
+  const scope = scopeProp === undefined ? generatedScope : scopeProp;
 
   useEffect(() => {
     if (_tabsRef.current) {
@@ -106,21 +107,6 @@ Tabs.propTypes = {
      */
     responsiveThreshold: PropTypes.number
   })
-};
-
-Tabs.defaultProps = {
-  get scope() {
-    return `tabs-${idgen()}`;
-  }
-};
-
-Tab.defaultProps = {
-  options: {
-    duration: 300,
-    onShow: null,
-    swipeable: false,
-    responsiveThreshold: Infinity
-  }
 };
 
 export default Tabs;

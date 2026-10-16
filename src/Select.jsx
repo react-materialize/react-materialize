@@ -12,8 +12,26 @@ import constants from './constants';
 import { dropdownOptions } from './Dropdown';
 import { renderPrefixIcon } from './utils';
 
+const defaultOptions = {
+  classes: '',
+  dropdownOptions: {
+    alignment: 'left',
+    autoTrigger: true,
+    constrainWidth: true,
+    coverTrigger: true,
+    closeOnClick: true,
+    hover: false,
+    inDuration: 150,
+    outDuration: 250,
+    onOpenStart: null,
+    onOpenEnd: null,
+    onCloseStart: null,
+    onCloseEnd: null
+  }
+};
+
 const Select = ({
-  id,
+  id: idProp,
   s,
   m,
   l,
@@ -27,12 +45,14 @@ const Select = ({
   error,
   validate,
   children,
-  multiple,
-  options,
+  multiple = false,
+  options = defaultOptions,
   value,
   onChange,
   ...props
 }) => {
+  const [generatedId] = useState(() => `Select-${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
   const [selectedValue, setSelectedValue] = useState(value);
   const _selectRef = useRef(null);
   const _formSelectInstance = useRef(null);
@@ -203,30 +223,6 @@ Select.propTypes = {
      */
     dropdownOptions: dropdownOptions
   })
-};
-
-Select.defaultProps = {
-  get id() {
-    return `Select-${idgen()}`;
-  },
-  multiple: false,
-  options: {
-    classes: '',
-    dropdownOptions: {
-      alignment: 'left',
-      autoTrigger: true,
-      constrainWidth: true,
-      coverTrigger: true,
-      closeOnClick: true,
-      hover: false,
-      inDuration: 150,
-      outDuration: 250,
-      onOpenStart: null,
-      onOpenEnd: null,
-      onCloseStart: null,
-      onCloseEnd: null
-    }
-  }
 };
 
 export default Select;

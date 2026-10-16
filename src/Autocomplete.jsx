@@ -1,9 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import constants from './constants';
 import idgen from './idgen';
 import { renderPrefixIcon } from './utils';
+
+const defaultOptions = {
+  data: {},
+  limit: Infinity,
+  onAutocomplete: null,
+  minLength: 1,
+  sortFunction: null
+};
 
 const Autocomplete = ({
   className,
@@ -13,11 +21,13 @@ const Autocomplete = ({
   m,
   l,
   xl,
-  id,
-  options,
+  id: idProp,
+  options = defaultOptions,
   ...rest
 }) => {
   const autocompleteRef = useRef(null);
+  const [generatedId] = useState(() => `Autocomplete-${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
   const sizes = { s, m, l, xl };
 
   const classes = { col: true };
@@ -109,19 +119,6 @@ Autocomplete.propTypes = {
    * <a target="_blank" rel="external" href="https://materializecss.com/autocomplete.html#options</a>
    */
   options: autocompleteOptions
-};
-
-Autocomplete.defaultProps = {
-  get id() {
-    return `Autocomplete-${idgen()}`;
-  },
-  options: {
-    data: {},
-    limit: Infinity,
-    onAutocomplete: null,
-    minLength: 1,
-    sortFunction: null
-  }
 };
 
 export default Autocomplete;

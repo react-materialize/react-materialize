@@ -1,10 +1,38 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
-const TimePicker = ({ onChange, options, ...props }) => {
+const defaultOptions = {
+  duration: 350,
+  container: null,
+  showClearBtn: false,
+  defaultTime: 'now',
+  fromNow: 0,
+  i18n: {
+    cancel: 'Cancel',
+    clear: 'Clear',
+    done: 'Ok'
+  },
+  autoClose: false,
+  twelveHour: true,
+  vibrate: true,
+  onOpenStart: null,
+  onOpenEnd: null,
+  onCloseStart: null,
+  onCloseEnd: null,
+  onSelect: null
+};
+
+const TimePicker = ({
+  id: idProp,
+  onChange,
+  options = defaultOptions,
+  ...props
+}) => {
   const timeEl = useRef(null);
+  const [generatedId] = useState(() => `TimePicker-${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
 
   useEffect(() => {
     const _options = onChange ? { ...options, onSelect: onChange } : options;
@@ -15,7 +43,9 @@ const TimePicker = ({ onChange, options, ...props }) => {
     };
   }, [options, onChange]);
 
-  return <TextInput ref={timeEl} inputClassName="timepicker" {...props} />;
+  return (
+    <TextInput ref={timeEl} inputClassName="timepicker" id={id} {...props} />
+  );
 };
 
 TimePicker.propTypes = {
@@ -108,32 +138,6 @@ TimePicker.propTypes = {
      */
     onSelect: PropTypes.func
   })
-};
-
-TimePicker.defaultProps = {
-  get id() {
-    return `TimePicker-${idgen()}`;
-  },
-  options: {
-    duration: 350,
-    container: null,
-    showClearBtn: false,
-    defaultTime: 'now',
-    fromNow: 0,
-    i18n: {
-      cancel: 'Cancel',
-      clear: 'Clear',
-      done: 'Ok'
-    },
-    autoClose: false,
-    twelveHour: true,
-    vibrate: true,
-    onOpenStart: null,
-    onOpenEnd: null,
-    onCloseStart: null,
-    onCloseEnd: null,
-    onSelect: null
-  }
 };
 
 export default TimePicker;

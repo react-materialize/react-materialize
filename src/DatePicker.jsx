@@ -1,10 +1,87 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import idgen from './idgen';
 
-const DatePicker = ({ options, onChange, ...rest }) => {
+const defaultOptions = {
+  autoClose: false,
+  format: 'mmm dd, yyyy',
+  parse: null,
+  defaultDate: null,
+  setDefaultDate: false,
+  disableWeekends: false,
+  disableDayFn: null,
+  firstDay: 0,
+  minDate: null,
+  maxDate: null,
+  yearRange: 10,
+  isRTL: false,
+  showMonthAfterYear: false,
+  showDaysInNextAndPreviousMonths: false,
+  container: null,
+  showClearBtn: false,
+  i18n: {
+    cancel: 'Cancel',
+    clear: 'Clear',
+    done: 'Ok',
+    previousMonth: '‹',
+    nextMonth: '›',
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ],
+    monthsShort: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ],
+    weekdays: [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ],
+    weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+  },
+  events: [],
+  onSelect: null,
+  onOpen: null,
+  onClose: null,
+  onDraw: null
+};
+
+const DatePicker = ({
+  id: idProp,
+  options = defaultOptions,
+  onChange,
+  ...rest
+}) => {
   const dateEl = useRef(null);
+  const [generatedId] = useState(() => `DatePicker-${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
 
   useEffect(() => {
     const _options = onChange ? { ...options, onSelect: onChange } : options;
@@ -15,7 +92,9 @@ const DatePicker = ({ options, onChange, ...rest }) => {
     };
   }, [options, onChange]);
 
-  return <TextInput ref={dateEl} inputClassName="datepicker" {...rest} />;
+  return (
+    <TextInput ref={dateEl} inputClassName="datepicker" id={id} {...rest} />
+  );
 };
 
 DatePicker.propTypes = {
@@ -154,81 +233,6 @@ DatePicker.propTypes = {
      */
     onDraw: PropTypes.func
   })
-};
-
-DatePicker.defaultProps = {
-  get id() {
-    return `DatePicker-${idgen()}`;
-  },
-  options: {
-    autoClose: false,
-    format: 'mmm dd, yyyy',
-    parse: null,
-    defaultDate: null,
-    setDefaultDate: false,
-    disableWeekends: false,
-    disableDayFn: null,
-    firstDay: 0,
-    minDate: null,
-    maxDate: null,
-    yearRange: 10,
-    isRTL: false,
-    showMonthAfterYear: false,
-    showDaysInNextAndPreviousMonths: false,
-    container: null,
-    showClearBtn: false,
-    i18n: {
-      cancel: 'Cancel',
-      clear: 'Clear',
-      done: 'Ok',
-      previousMonth: '‹',
-      nextMonth: '›',
-      months: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      ],
-      monthsShort: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ],
-      weekdays: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      weekdaysAbbrev: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-    },
-    events: [],
-    onSelect: null,
-    onOpen: null,
-    onClose: null,
-    onDraw: null
-  }
 };
 
 export default DatePicker;

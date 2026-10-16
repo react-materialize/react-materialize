@@ -3,29 +3,55 @@ import React, {
   Children,
   cloneElement,
   useRef,
-  useEffect
+  useEffect,
+  useState
 } from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
 
-const Dropdown = ({ children, className, trigger, options, ...props }) => {
+const defaultOptions = {
+  alignment: 'left',
+  autoTrigger: true,
+  constrainWidth: true,
+  container: null,
+  coverTrigger: true,
+  closeOnClick: true,
+  hover: false,
+  inDuration: 150,
+  outDuration: 250,
+  onOpenStart: null,
+  onOpenEnd: null,
+  onCloseStart: null,
+  onCloseEnd: null
+};
+
+const Dropdown = ({
+  children,
+  className,
+  trigger,
+  id: idProp,
+  options = defaultOptions,
+  ...props
+}) => {
   const _dropdownContent = useRef(null);
+  const [generatedId] = useState(() => `Dropdown_${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
 
   useEffect(() => {
     const instance = M.Dropdown.init(
-      document.querySelector(`[data-target="${props.id}"]`),
+      document.querySelector(`[data-target="${id}"]`),
       options
     );
 
     return () => {
       instance && instance.destroy();
     };
-  }, [options, props.id, children]);
+  }, [options, id, children]);
 
   const renderTrigger = () =>
     cloneElement(trigger, {
-      'data-target': props.id,
+      'data-target': id,
       className: cx(trigger.props.className, 'dropdown-trigger')
     });
 
@@ -54,6 +80,7 @@ const Dropdown = ({ children, className, trigger, options, ...props }) => {
       {renderTrigger()}
       <ul
         {...props}
+        id={id}
         className={cx('dropdown-content', className)}
         ref={_dropdownContent}
       >
@@ -93,27 +120,6 @@ Dropdown.propTypes = {
    * <a target="_blank" href="http://materializecss.com/dropdown.html#options">http://materializecss.com/dropdown.html</a>
    */
   options: dropdownOptions
-};
-
-Dropdown.defaultProps = {
-  get id() {
-    return `Dropdown_${idgen()}`;
-  },
-  options: {
-    alignment: 'left',
-    autoTrigger: true,
-    constrainWidth: true,
-    container: null,
-    coverTrigger: true,
-    closeOnClick: true,
-    hover: false,
-    inDuration: 150,
-    outDuration: 250,
-    onOpenStart: null,
-    onOpenEnd: null,
-    onCloseStart: null,
-    onCloseEnd: null
-  }
 };
 
 export default Dropdown;

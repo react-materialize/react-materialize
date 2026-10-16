@@ -2,7 +2,17 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const Parallax = ({ children, className, image, options, ...props }) => {
+const defaultOptions = {
+  responsiveThreshold: 0
+};
+
+const Parallax = ({
+  children,
+  className,
+  image,
+  options = defaultOptions,
+  ...props
+}) => {
   const _parallax = useRef(null);
 
   useEffect(() => {
@@ -36,12 +46,6 @@ Parallax.propTypes = {
      */
     responsiveThreshold: PropTypes.number
   })
-};
-
-Parallax.defaultProps = {
-  options: {
-    responsiveThreshold: 0
-  }
 };
 
 export default Parallax;

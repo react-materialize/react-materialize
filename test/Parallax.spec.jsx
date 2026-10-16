@@ -103,5 +103,12 @@ describe('<Parallax />', () => {
 
       expect(destroyMock).toHaveBeenCalledTimes(1);
     });
+
+    test('does not re-initialise when re-rendered with the same props', () => {
+      const { rerender } = render(<Parallax image={image} />);
+      rerender(<Parallax image={image} />);
+
+      expect(initMock).toHaveBeenCalledTimes(1);
+    });
   });
 });

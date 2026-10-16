@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import DatePicker from '../src/DatePicker';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 describe('<DatePicker />', () => {
@@ -125,5 +126,27 @@ describe('<DatePicker />', () => {
         nextOptions
       );
     });
+
+    test('does not re-initialise when re-rendered with the same props', () => {
+      const { rerender } = render(<DatePicker />);
+      rerender(<DatePicker />);
+
+      expect(datePickerInitMock).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { rerender } = render(<DatePicker label="Date" />);
+      const before = screen.getByRole('textbox').id;
+      rerender(<DatePicker label="Date" />);
+
+      expect(screen.getByRole('textbox').id).toBe(before);
+      expect(screen.getByLabelText('Date').id).toBe(before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

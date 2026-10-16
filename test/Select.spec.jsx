@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Select from '../src/Select';
 import Icon from '../src/Icon';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 const defaultOptions = {
@@ -74,6 +75,20 @@ describe('<Select />', () => {
       'id',
       'Select-mockId'
     );
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { rerender } = render(<Select label="Name" />);
+      const before = screen.getByLabelText('Name').id;
+      rerender(<Select label="Name" />);
+
+      expect(screen.getByLabelText('Name').id).toBe(before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 
   test('renders no label when none is given', () => {
@@ -262,6 +277,13 @@ describe('<Select />', () => {
         screen.getByLabelText('Fruit'),
         defaultOptions
       );
+    });
+
+    test('does not re-initialise when re-rendered with the same props', () => {
+      const { rerender } = render(<Select label="Fruit" />);
+      rerender(<Select label="Fruit" />);
+
+      expect(selectInit).toHaveBeenCalledTimes(1);
     });
 
     test('does not initialise Materialize for a browserDefault select', () => {

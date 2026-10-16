@@ -38,6 +38,13 @@ describe('<Slider />', () => {
     expect(initMock).toHaveBeenCalledWith(container.firstChild, defaultOptions);
   });
 
+  test('does not re-initialise when re-rendered with the same props', () => {
+    const { rerender } = render(<Slider />);
+    rerender(<Slider />);
+
+    expect(initMock).toHaveBeenCalledTimes(1);
+  });
+
   test('Destroyed when unmounted', () => {
     const { unmount } = render(<Slider />);
     expect(destroyMock).not.toHaveBeenCalled();
