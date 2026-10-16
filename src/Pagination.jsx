@@ -97,7 +97,7 @@ Pagination.propTypes = {
   /**
    * Number of items in the component
    */
-  items: PropTypes.number.isRequired,
+  items: PropTypes.number,
   /**
    * The initial activePage
    */

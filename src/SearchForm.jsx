@@ -18,8 +18,8 @@ const SearchForm = ({
 );
 
 SearchForm.propTypes = {
-  searchIcon: PropTypes.node.isRequired,
-  closeIcon: PropTypes.node.isRequired
+  searchIcon: PropTypes.node,
+  closeIcon: PropTypes.node
 };
 
 export default SearchForm;

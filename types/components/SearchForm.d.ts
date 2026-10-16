@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 export interface SearchFormProps {
-  searchIcon: React.ReactNode;
-  closeIcon: React.ReactNode;
+  searchIcon?: React.ReactNode;
+  closeIcon?: React.ReactNode;
 }
 
 /**
