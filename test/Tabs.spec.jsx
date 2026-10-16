@@ -3,6 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Tabs from '../src/Tabs';
 import Tab from '../src/Tab';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 describe('Tabs', () => {
@@ -181,6 +182,23 @@ describe('Tabs', () => {
         options
       );
     });
+  });
+
+  test('keeps its generated scope across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const tab = <Tab title="one">One</Tab>;
+      const { rerender } = render(<Tabs>{tab}</Tabs>);
+      const link = () => screen.getByRole('link', { name: 'one' });
+      const before = link().getAttribute('href');
+      rerender(<Tabs>{tab}</Tabs>);
+
+      expect(link()).toHaveAttribute('href', before);
+      expect(document.getElementById(before.slice(1))).toHaveTextContent('One');
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 
   describe('when unmounted', () => {

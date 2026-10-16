@@ -252,4 +252,12 @@ describe('<Navbar />', () => {
     expect(within(nav).queryByRole('link', { name: 'Logo' })).toBeNull();
     expect(nav.querySelector('.sidenav-trigger')).toBeNull();
   });
+
+  test('does not re-initialise when re-rendered with the same props', () => {
+    const brand = <a href="/">Logo</a>;
+    const { rerender } = render(<Navbar brand={brand} />);
+    rerender(<Navbar brand={brand} />);
+
+    expect(initMock).toHaveBeenCalledTimes(1);
+  });
 });

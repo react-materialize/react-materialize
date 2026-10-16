@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Modal from '../src/Modal';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 const trigger = <button type="button">click</button>;
@@ -201,5 +202,19 @@ describe('<Modal />', () => {
       rerender(<Modal open={false}>{children}</Modal>);
       expect(modalInitMock).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { rerender } = render(<Modal>{children}</Modal>);
+      const before = getModal().id;
+      rerender(<Modal>{children}</Modal>);
+
+      expect(getModal().id).toBe(before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

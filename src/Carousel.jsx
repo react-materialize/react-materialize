@@ -1,18 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 
+const defaultOptions = {
+  duration: 200,
+  dist: -100,
+  shift: 0,
+  padding: 0,
+  numVisible: 5,
+  fullWidth: false,
+  indicators: false,
+  noWrap: false,
+  onCycleTo: null
+};
+
 const Carousel = ({
   children,
   className,
-  carouselId,
+  carouselId: carouselIdProp,
   fixedItem,
   images,
   centerImages,
-  options
+  options = defaultOptions
 }) => {
   const carouselRef = useRef(null);
+  const [generatedId] = useState(() => `Carousel-${idgen()}`);
+  const carouselId =
+    carouselIdProp === undefined ? generatedId : carouselIdProp;
 
   useEffect(() => {
     const instance = M.Carousel.init(carouselRef.current, options);
@@ -121,23 +136,6 @@ Carousel.propTypes = {
      */
     onCycleTo: PropTypes.func
   })
-};
-
-Carousel.defaultProps = {
-  get carouselId() {
-    return `Carousel-${idgen()}`;
-  },
-  options: {
-    duration: 200,
-    dist: -100,
-    shift: 0,
-    padding: 0,
-    numVisible: 5,
-    fullWidth: false,
-    indicators: false,
-    noWrap: false,
-    onCycleTo: null
-  }
 };
 
 export default Carousel;

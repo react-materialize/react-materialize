@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Autocomplete from '../src/Autocomplete';
 import Icon from '../src/Icon';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 describe('<Autocomplete />', () => {
@@ -161,5 +162,27 @@ describe('<Autocomplete />', () => {
         { data: { foo: 'bar' } }
       );
     });
+  });
+
+  test('does not re-initialise when re-rendered with the same props', () => {
+    const { rerender } = render(<Autocomplete title="Test Title" />);
+    rerender(<Autocomplete title="Test Title" />);
+
+    expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { rerender } = render(<Autocomplete title="Test Title" />);
+      const before = screen.getByRole('textbox').id;
+      rerender(<Autocomplete title="Test Title" />);
+
+      expect(screen.getByRole('textbox').id).toBe(before);
+      expect(screen.getByLabelText('Test Title').id).toBe(before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

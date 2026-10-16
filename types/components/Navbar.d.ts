@@ -16,7 +16,7 @@ export interface NavbarOptions {
 }
 
 export interface NavbarProps extends SharedBasic {
-  menuIcon: React.ReactNode;
+  menuIcon?: React.ReactNode;
   id?: string;
   brand?: React.ReactNode;
   extendWith?: React.ReactNode;

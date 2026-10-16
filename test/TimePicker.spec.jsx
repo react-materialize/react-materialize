@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TimePicker from '../src/TimePicker';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 describe('<TimePicker />', () => {
@@ -118,5 +119,27 @@ describe('<TimePicker />', () => {
         nextOptions
       );
     });
+
+    test('does not re-initialise when re-rendered with the same props', () => {
+      const { rerender } = render(<TimePicker />);
+      rerender(<TimePicker />);
+
+      expect(timePickerInitMock).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { rerender } = render(<TimePicker label="Time" />);
+      const before = screen.getByRole('textbox').id;
+      rerender(<TimePicker label="Time" />);
+
+      expect(screen.getByRole('textbox').id).toBe(before);
+      expect(screen.getByLabelText('Time').id).toBe(before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

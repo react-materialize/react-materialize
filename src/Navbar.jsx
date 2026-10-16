@@ -10,8 +10,22 @@ import cx from 'classnames';
 import Icon from './Icon';
 import SearchForm from './SearchForm';
 
+const defaultOptions = {
+  edge: 'left',
+  draggable: true,
+  inDuration: 250,
+  outDuration: 200,
+  onOpenStart: null,
+  onOpenEnd: null,
+  onCloseStart: null,
+  onCloseEnd: null,
+  preventScrolling: true
+};
+
+const defaultMenuIcon = <Icon>menu</Icon>;
+
 const Navbar = ({
-  id,
+  id = 'mobile-nav',
   children,
   brand,
   className,
@@ -20,9 +34,9 @@ const Navbar = ({
   alignLinks,
   centerLogo,
   search,
-  menuIcon,
+  menuIcon = defaultMenuIcon,
   sidenav,
-  options,
+  options = defaultOptions,
   centerChildren,
   ...props
 }) => {
@@ -156,23 +170,7 @@ Navbar.propTypes = {
     // Prevent page from scrolling while sidenav is open.
     preventScrolling: PropTypes.bool
   }),
-  menuIcon: PropTypes.node.isRequired
-};
-
-Navbar.defaultProps = {
-  id: 'mobile-nav',
-  options: {
-    edge: 'left',
-    draggable: true,
-    inDuration: 250,
-    outDuration: 200,
-    onOpenStart: null,
-    onOpenEnd: null,
-    onCloseStart: null,
-    onCloseEnd: null,
-    preventScrolling: true
-  },
-  menuIcon: <Icon>menu</Icon>
+  menuIcon: PropTypes.node
 };
 
 export default Navbar;

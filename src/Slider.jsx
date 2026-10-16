@@ -2,7 +2,20 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const Slider = ({ children, className, options, fullscreen, ...props }) => {
+const defaultOptions = {
+  indicators: true,
+  interval: 6000,
+  duration: 500,
+  height: 400
+};
+
+const Slider = ({
+  children,
+  className,
+  options = defaultOptions,
+  fullscreen = false,
+  ...props
+}) => {
   const _slider = useRef(null);
 
   useEffect(() => {
@@ -73,16 +86,6 @@ Slider.propTypes = {
      */
     height: PropTypes.number
   })
-};
-
-Slider.defaultProps = {
-  fullscreen: false,
-  options: {
-    indicators: true,
-    interval: 6000,
-    duration: 500,
-    height: 400
-  }
 };
 
 export default Slider;

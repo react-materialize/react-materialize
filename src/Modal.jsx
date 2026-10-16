@@ -3,7 +3,8 @@ import React, {
   Children,
   cloneElement,
   useRef,
-  useEffect
+  useEffect,
+  useState
 } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
@@ -13,19 +14,44 @@ import idgen from './idgen';
 import Button from './Button';
 import { safeJSONStringify } from './utils';
 
+const defaultRoot = typeof window !== 'undefined' ? document.body : null;
+
+const defaultOptions = {
+  opacity: 0.5,
+  inDuration: 250,
+  outDuration: 250,
+  onOpenStart: null,
+  onOpenEnd: null,
+  onCloseStart: null,
+  onCloseEnd: null,
+  preventScrolling: true,
+  dismissible: true,
+  startingTop: '4%',
+  endingTop: '10%'
+};
+
+const defaultActions = [
+  <Button waves="green" modal="close" flat>
+    Close
+  </Button>
+];
+
 const Modal = ({
-  actions,
-  bottomSheet,
+  id: idProp,
+  actions = defaultActions,
+  bottomSheet = false,
   children,
-  fixedFooter,
+  fixedFooter = false,
   header,
   className,
   trigger,
-  options,
-  open,
-  root,
+  options = defaultOptions,
+  open = false,
+  root = defaultRoot,
   ...props
 }) => {
+  const [generatedId] = useState(() => `Modal-${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
   const _modalRoot = useRef(null);
   const _modalInstance = useRef(null);
   const _modalRef = useRef(null);
@@ -87,7 +113,7 @@ const Modal = ({
     }
 
     return createPortal(
-      <div className={classes} ref={_modalRef} {...props}>
+      <div className={classes} ref={_modalRef} id={id} {...props}>
         <div className="modal-content">
           <h4>{header}</h4>
           {children}
@@ -202,34 +228,6 @@ Modal.propTypes = {
    * @default document.body
    */
   root: PropTypes.any
-};
-
-Modal.defaultProps = {
-  get id() {
-    return `Modal-${idgen()}`;
-  },
-  root: typeof window !== 'undefined' ? document.body : null,
-  open: false,
-  options: {
-    opacity: 0.5,
-    inDuration: 250,
-    outDuration: 250,
-    onOpenStart: null,
-    onOpenEnd: null,
-    onCloseStart: null,
-    onCloseEnd: null,
-    preventScrolling: true,
-    dismissible: true,
-    startingTop: '4%',
-    endingTop: '10%'
-  },
-  fixedFooter: false,
-  bottomSheet: false,
-  actions: [
-    <Button waves="green" modal="close" flat>
-      Close
-    </Button>
-  ]
 };
 
 export default Modal;
