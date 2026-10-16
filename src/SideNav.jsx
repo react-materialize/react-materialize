@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useMemo } from 'react';
+import React, { Fragment, useEffect, useRef, useMemo, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -6,13 +6,15 @@ import idgen from './idgen';
 
 const SideNav = ({
   options,
-  id,
+  id: idProp,
   className,
   children,
   trigger,
   fixed,
   ...props
 }) => {
+  const [generatedId] = useState(() => `SideNav-${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
   const sidenavRef = useRef(null);
   const triggerRef = useRef(null);
   const classNames = cx(
@@ -88,12 +90,6 @@ SideNav.propTypes = {
    */
   className: PropTypes.string,
   children: PropTypes.node
-};
-
-SideNav.defaultProps = {
-  get id() {
-    return `SideNav-${idgen()}`;
-  }
 };
 
 export default SideNav;

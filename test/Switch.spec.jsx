@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Switch from '../src/Switch';
+import idgen from '../src/idgen';
 
 describe('<Switch />', () => {
   test('renders', () => {
@@ -71,5 +72,21 @@ describe('<Switch />', () => {
     await user.click(screen.getByRole('checkbox'));
 
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { container, rerender } = render(
+        <Switch offLabel="Off" onLabel="On" />
+      );
+      const before = container.querySelector('input').id;
+      rerender(<Switch offLabel="Off" onLabel="On" />);
+      expect(container.querySelector('input').id).toBe(before);
+      expect(container.querySelector('label')).toHaveAttribute('for', before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

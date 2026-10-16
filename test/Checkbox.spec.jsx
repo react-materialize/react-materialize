@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Checkbox from '../src/Checkbox';
+import idgen from '../src/idgen';
 
 describe('<Checkbox />', () => {
   test('renders a checkbox labelled by its label', () => {
@@ -105,5 +106,21 @@ describe('<Checkbox />', () => {
       'filled-in',
       'my-class'
     );
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { container, rerender } = render(
+        <Checkbox value="red" label="red" />
+      );
+      const before = container.querySelector('input').id;
+      rerender(<Checkbox value="red" label="red" />);
+      expect(container.querySelector('input').id).toBe(before);
+      expect(container.querySelector('label')).toHaveAttribute('for', before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

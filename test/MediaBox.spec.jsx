@@ -1,9 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import MediaBox from '../src/MediaBox';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 describe('<MediaBox />', () => {
+  const image = <img src="image.jpg" alt="demo" />;
   const destroyMock = vi.fn();
   const initMock = vi.fn(() => ({ destroy: destroyMock }));
   let restore;
@@ -87,5 +89,25 @@ describe('<MediaBox />', () => {
 
       expect(destroyMock).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { rerender } = render(<MediaBox>{image}</MediaBox>);
+      const before = screen.getByRole('img').id;
+      rerender(<MediaBox>{image}</MediaBox>);
+      expect(screen.getByRole('img').id).toBe(before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
+  });
+
+  test('does not re-initialise when re-rendered with the same props', () => {
+    const { rerender } = render(<MediaBox>{image}</MediaBox>);
+    rerender(<MediaBox>{image}</MediaBox>);
+
+    expect(initMock).toHaveBeenCalledTimes(1);
   });
 });

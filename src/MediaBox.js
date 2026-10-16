@@ -1,10 +1,28 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import idgen from './idgen';
 
-const MediaBox = ({ id, options, children, className, caption, ...props }) => {
+const defaultOptions = {
+  inDuration: 275,
+  outDuration: 200,
+  onOpenStart: null,
+  onOpenEnd: null,
+  onCloseStart: null,
+  onCloseEnd: null
+};
+
+const MediaBox = ({
+  id: idProp,
+  options = defaultOptions,
+  children,
+  className,
+  caption,
+  ...props
+}) => {
+  const [generatedId] = useState(() => `MediaBox_${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
   const mediaBoxRef = useRef(null);
 
   useEffect(() => {
@@ -64,20 +82,6 @@ MediaBox.propTypes = {
      */
     onCloseEnd: PropTypes.func
   })
-};
-
-MediaBox.defaultProps = {
-  get id() {
-    return `MediaBox_${idgen()}`;
-  },
-  options: {
-    inDuration: 275,
-    outDuration: 200,
-    onOpenStart: null,
-    onOpenEnd: null,
-    onCloseStart: null,
-    onCloseEnd: null
-  }
 };
 
 export default MediaBox;

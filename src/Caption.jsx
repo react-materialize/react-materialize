@@ -3,7 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import constants from './constants';
 
-const Caption = ({ className, placement, children, ...props }) => {
+const Caption = ({ className, placement = 'center', children, ...props }) => {
   return (
     <div className={cx('caption', `${placement}-align`, className)} {...props}>
       {children}
@@ -19,10 +19,6 @@ Caption.propTypes = {
    * @default 'center'
    */
   placement: PropTypes.oneOf(constants.PLACEMENTS)
-};
-
-Caption.defaultProps = {
-  placement: 'center'
 };
 
 export default Caption;

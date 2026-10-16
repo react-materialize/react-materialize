@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Textarea from '../src/Textarea';
+import idgen from '../src/idgen';
 import Icon from '../src/Icon';
 
 describe('<Textarea />', () => {
@@ -240,5 +241,19 @@ describe('<Textarea />', () => {
       render(<Textarea />);
       expect(characterCounterInitSpy).not.toHaveBeenCalled();
     });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { container, rerender } = render(<Textarea label="Bio" />);
+      const before = container.querySelector('textarea').id;
+      rerender(<Textarea label="Bio" />);
+      expect(container.querySelector('textarea').id).toBe(before);
+      expect(container.querySelector('label')).toHaveAttribute('for', before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

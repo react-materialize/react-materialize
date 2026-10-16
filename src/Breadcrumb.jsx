@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Col from './Col';
 
-const Breadcrumb = ({ cols, children, className }) => (
+const Breadcrumb = ({ cols = 12, children, className }) => (
   <nav className={cx('row', className)}>
     <div className="nav-wrapper">
       <Col s={cols}>
@@ -23,10 +23,6 @@ Breadcrumb.propTypes = {
    */
   cols: PropTypes.number,
   className: PropTypes.string
-};
-
-Breadcrumb.defaultProps = {
-  cols: 12
 };
 
 export default Breadcrumb;
