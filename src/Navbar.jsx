@@ -170,7 +170,7 @@ Navbar.propTypes = {
     // Prevent page from scrolling while sidenav is open.
     preventScrolling: PropTypes.bool
   }),
-  menuIcon: PropTypes.node.isRequired
+  menuIcon: PropTypes.node
 };
 
 export default Navbar;

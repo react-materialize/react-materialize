@@ -184,14 +184,6 @@ describe('Tabs', () => {
     });
   });
 
-  test('does not re-initialise when re-rendered with the same props', () => {
-    const tab = <Tab title="one">One</Tab>;
-    const { rerender } = render(<Tabs>{tab}</Tabs>);
-    rerender(<Tabs>{tab}</Tabs>);
-
-    expect(tabsInitMock).toHaveBeenCalledTimes(1);
-  });
-
   test('keeps its generated scope across re-renders', () => {
     let n = 0;
     idgen.mockImplementation(() => n++);

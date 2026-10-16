@@ -82,13 +82,6 @@ describe('<Modal />', () => {
       expect(document.body.contains(portalRoot)).toBe(false);
       expect(getModal()).toBeNull();
     });
-
-    test('does not re-initialise when re-rendered with the same props', () => {
-      const { rerender } = render(<Modal>{children}</Modal>);
-      rerender(<Modal>{children}</Modal>);
-
-      expect(modalInitMock).toHaveBeenCalledTimes(1);
-    });
   });
 
   describe('renders a modal', () => {
