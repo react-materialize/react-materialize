@@ -8,7 +8,7 @@ import idgen from './idgen';
 const Button = ({
   children,
   className,
-  node,
+  node = 'button',
   fab,
   modal,
   flat,
@@ -173,10 +173,6 @@ Button.propTypes = {
     'green',
     'teal'
   ])
-};
-
-Button.defaultProps = {
-  node: 'button'
 };
 
 export default Button;

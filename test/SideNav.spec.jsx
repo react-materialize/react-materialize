@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import SideNav from '../src/SideNav';
+import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
 describe('<SideNav />', () => {
@@ -103,5 +104,19 @@ describe('<SideNav />', () => {
 
       expect(destroyMock).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { container, rerender } = render(<SideNav trigger={trigger} />);
+      const before = container.querySelector('ul.sidenav').id;
+      rerender(<SideNav trigger={trigger} />);
+      expect(container.querySelector('ul.sidenav').id).toBe(before);
+      expect(screen.getByRole('button')).toHaveAttribute('data-target', before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TextInput from '../src/TextInput';
+import idgen from '../src/idgen';
 import Icon from '../src/Icon';
 
 describe('<TextInput />', () => {
@@ -243,5 +244,19 @@ describe('<TextInput />', () => {
         'prefix'
       );
     });
+  });
+
+  test('keeps its generated id across re-renders', () => {
+    let n = 0;
+    idgen.mockImplementation(() => n++);
+    try {
+      const { container, rerender } = render(<TextInput label="Name" />);
+      const before = container.querySelector('input').id;
+      rerender(<TextInput label="Name" />);
+      expect(container.querySelector('input').id).toBe(before);
+      expect(container.querySelector('label')).toHaveAttribute('for', before);
+    } finally {
+      idgen.mockImplementation(() => 'mockId');
+    }
   });
 });

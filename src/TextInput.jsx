@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
@@ -8,6 +8,7 @@ import { renderPrefixIcon } from './utils';
 const TextInput = React.forwardRef((props, ref) => {
   const dataLength = props['data-length'];
   const inputRef = ref || createRef(null);
+  const [generatedId] = useState(() => `TextInput-${idgen()}`);
 
   useEffect(() => {
     if (inputRef && dataLength) {
@@ -39,6 +40,7 @@ const TextInput = React.forwardRef((props, ref) => {
     defaultValue,
     value,
     type,
+    id: idProp,
     ...other
   } = props;
 
@@ -71,6 +73,7 @@ const TextInput = React.forwardRef((props, ref) => {
     value,
     defaultValue,
     disabled,
+    id: idProp === undefined ? generatedId : idProp,
     ...other
   };
 
@@ -217,12 +220,6 @@ TextInput.propTypes = {
    * children
    */
   children: PropTypes.node
-};
-
-TextInput.defaultProps = {
-  get id() {
-    return `TextInput-${idgen()}`;
-  }
 };
 
 export default TextInput;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
@@ -23,9 +23,11 @@ const Textarea = ({
   validate,
   defaultValue,
   value,
-  id,
+  id: idProp,
   ...rest
 }) => {
+  const [generatedId] = useState(() => `Textarea-${idgen()}`);
+  const id = idProp === undefined ? generatedId : idProp;
   const textareaRef = useRef(null);
   const dataLength = rest['data-length'];
 
@@ -162,12 +164,6 @@ Textarea.propTypes = {
    * onChange callback
    */
   onChange: PropTypes.func
-};
-
-Textarea.defaultProps = {
-  get id() {
-    return `Textarea-${idgen()}`;
-  }
 };
 
 export default Textarea;

@@ -7,15 +7,18 @@ import PaginationButton from './PaginationButton';
 
 const clampPage = (page, items) => (page > 0 && page <= items ? page : 1);
 
+const defaultLeftBtn = <Icon>chevron_left</Icon>;
+const defaultRightBtn = <Icon>chevron_right</Icon>;
+
 const Pagination = ({
-  items,
+  items = 10,
   className,
   children,
   maxButtons = items,
-  leftBtn,
-  rightBtn,
+  leftBtn = defaultLeftBtn,
+  rightBtn = defaultRightBtn,
   onSelect,
-  activePage: activePageProp
+  activePage: activePageProp = 1
 }) => {
   const [activePage, setActivePage] = useState(activePageProp);
 
@@ -94,7 +97,7 @@ Pagination.propTypes = {
   /**
    * Number of items in the component
    */
-  items: PropTypes.number.isRequired,
+  items: PropTypes.number,
   /**
    * The initial activePage
    */
@@ -105,13 +108,6 @@ Pagination.propTypes = {
   onSelect: PropTypes.func,
   leftBtn: PropTypes.node,
   rightBtn: PropTypes.node
-};
-
-Pagination.defaultProps = {
-  activePage: 1,
-  items: 10,
-  leftBtn: <Icon>chevron_left</Icon>,
-  rightBtn: <Icon>chevron_right</Icon>
 };
 
 export default Pagination;

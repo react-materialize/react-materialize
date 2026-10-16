@@ -10,6 +10,9 @@ const Wrapper = ({ condition, children }) =>
     <Fragment>{children}</Fragment>
   );
 
+const defaultCloseIcon = <Icon>close</Icon>;
+const defaultRevealIcon = <Icon>more_vert</Icon>;
+
 const Card = ({
   title,
   header,
@@ -19,8 +22,8 @@ const Card = ({
   reveal,
   children,
   horizontal,
-  closeIcon,
-  revealIcon,
+  closeIcon = defaultCloseIcon,
+  revealIcon = defaultRevealIcon,
   ...other
 }) => {
   const classes = {
@@ -76,11 +79,6 @@ Card.propTypes = {
    * @default <Icon>more_vert</Icon>
    */
   revealIcon: PropTypes.node
-};
-
-Card.defaultProps = {
-  closeIcon: <Icon>close</Icon>,
-  revealIcon: <Icon>more_vert</Icon>
 };
 
 export default Card;

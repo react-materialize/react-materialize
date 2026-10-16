@@ -6,7 +6,13 @@ import Spinner from './Spinner';
 
 const colors = ['blue', 'red', 'yellow', 'green'];
 
-const Preloader = ({ active, size, color, flashing, className }) => {
+const Preloader = ({
+  active = true,
+  size,
+  color = 'blue',
+  flashing = false,
+  className
+}) => {
   const classes = cx('preloader-wrapper', { active }, size);
 
   let spinners;
@@ -42,12 +48,6 @@ Preloader.propTypes = {
    * @default false
    */
   flashing: PropTypes.bool
-};
-
-Preloader.defaultProps = {
-  active: true,
-  flashing: false,
-  color: 'blue'
 };
 
 export default Preloader;

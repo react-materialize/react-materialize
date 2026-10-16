@@ -5,12 +5,12 @@ import cx from 'classnames';
 const CollapsibleItem = ({
   className,
   eventKey,
-  expanded,
+  expanded = false,
   header,
   children,
   icon,
   iconClassName,
-  node: Node,
+  node: Node = 'div',
   onSelect,
   ...props
 }) => (
@@ -47,11 +47,6 @@ CollapsibleItem.propTypes = {
    * @default a
    */
   node: PropTypes.node
-};
-
-CollapsibleItem.defaultProps = {
-  expanded: false,
-  node: 'div'
 };
 
 export default CollapsibleItem;

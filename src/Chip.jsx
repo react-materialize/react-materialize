@@ -4,7 +4,16 @@ import cx from 'classnames';
 import Icon from './Icon';
 import { autocompleteOptions } from './Autocomplete';
 
-const Chip = ({ children, close, closeIcon, className, options, ...other }) => {
+const defaultCloseIcon = <Icon className="close">close</Icon>;
+
+const Chip = ({
+  children,
+  close = false,
+  closeIcon = defaultCloseIcon,
+  className,
+  options = null,
+  ...other
+}) => {
   const instance = useRef(null);
   const chipRef = useRef(null);
 
@@ -85,12 +94,6 @@ Chip.propTypes = {
      */
     autocompleteOptions: autocompleteOptions
   })
-};
-
-Chip.defaultProps = {
-  close: false,
-  closeIcon: <Icon className="close">close</Icon>,
-  options: null
 };
 
 export default Chip;

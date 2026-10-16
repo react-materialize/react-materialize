@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const Spinner = ({ color, only, className }) => {
+const Spinner = ({ color, only = true, className }) => {
   const spinnerClasses = cx('spinner-layer', {
     [`spinner-${color}-only`]: only,
     [`spinner-${color}`]: !only
@@ -21,10 +21,6 @@ const Spinner = ({ color, only, className }) => {
       </div>
     </div>
   );
-};
-
-Spinner.defaultProps = {
-  only: true
 };
 
 Spinner.propTypes = {
