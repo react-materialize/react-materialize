@@ -1,4 +1,3 @@
-import React from 'react';
 import Chip from '../src/Chip';
 
 export default {

@@ -1,4 +1,3 @@
-import React from 'react';
 import Col from '../src/Col';
 import Preloader from '../src/Preloader';
 import Row from '../src/Row';

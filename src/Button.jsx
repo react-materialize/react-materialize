@@ -1,4 +1,4 @@
-import React, { Children, useRef, useEffect } from 'react';
+import { Children, useRef, useEffect } from 'react';
 import Icon from './Icon';
 import PropTypes from 'prop-types';
 import constants from './constants';

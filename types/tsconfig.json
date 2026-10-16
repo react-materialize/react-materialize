@@ -9,7 +9,7 @@
     "lib": ["es2016", "dom"],
     "module": "commonjs",
     "target": "es6",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "types": [],
     "paths": {

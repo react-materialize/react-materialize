@@ -1,4 +1,3 @@
-import React from 'react';
 import Collapsible from '../src/Collapsible';
 import CollapsibleItem from '../src/CollapsibleItem';
 import Icon from '../src/Icon';

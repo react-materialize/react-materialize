@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Range from '../src/Range';
 import mocker from './helper/new-mocker';

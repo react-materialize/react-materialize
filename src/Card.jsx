@@ -1,4 +1,4 @@
-import React, { Fragment, cloneElement } from 'react';
+import { Fragment, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';

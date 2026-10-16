@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';

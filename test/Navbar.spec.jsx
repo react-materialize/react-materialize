@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import Navbar from '../src/Navbar';
 import mocker from './helper/new-mocker';

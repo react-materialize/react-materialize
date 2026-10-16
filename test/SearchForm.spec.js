@@ -1,9 +1,9 @@
-import React from 'react';
+import { createElement } from 'react';
 import { render, screen } from '@testing-library/react';
 import SearchForm from '../src/SearchForm';
 import Icon from '../src/Icon';
 
-const h = React.createElement;
+const h = createElement;
 
 describe('<SearchForm />', () => {
   test('should render a search input labelled by the search icon', () => {

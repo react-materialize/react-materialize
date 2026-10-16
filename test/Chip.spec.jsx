@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Chip from '../src/Chip';
 import Icon from '../src/Icon';

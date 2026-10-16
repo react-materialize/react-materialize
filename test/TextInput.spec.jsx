@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TextInput from '../src/TextInput';
@@ -164,7 +164,7 @@ describe('<TextInput />', () => {
   });
 
   test('forwards ref to the input element', () => {
-    const ref = React.createRef();
+    const ref = createRef();
     render(<TextInput ref={ref} />);
     expect(ref.current).toBe(screen.getByRole('textbox'));
   });

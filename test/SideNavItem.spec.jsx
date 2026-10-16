@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import SideNavItem from '../src/SideNavItem';
 import Icon from '../src/Icon';

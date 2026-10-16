@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Carousel from '../src/Carousel';
 import idgen from '../src/idgen';

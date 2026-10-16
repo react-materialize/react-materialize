@@ -1,4 +1,3 @@
-import React from 'react';
 import Col from '../src/Col';
 import Collection from '../src/Collection';
 import CollectionItem from '../src/CollectionItem';

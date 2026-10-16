@@ -1,4 +1,3 @@
-import React from 'react';
 import TimePicker from '../src/TimePicker';
 
 export default {

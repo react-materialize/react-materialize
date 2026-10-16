@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Parallax from '../src/Parallax';
 import mocker from './helper/new-mocker';

@@ -1,4 +1,3 @@
-import React from 'react';
 import Icon from '../src/Icon';
 import TextInput from '../src/TextInput';
 

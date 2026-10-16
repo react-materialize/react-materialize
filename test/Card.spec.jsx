@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import Card from '../src/Card';
 import Icon from '../src/Icon';
