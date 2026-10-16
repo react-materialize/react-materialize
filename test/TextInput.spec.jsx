@@ -212,6 +212,22 @@ describe('<TextInput />', () => {
       render(<TextInput />);
       expect(characterCounterInitSpy).not.toHaveBeenCalled();
     });
+
+    test('initialises CharacterCounter only once across re-renders', () => {
+      const { rerender } = render(<TextInput data-length={20} />);
+      rerender(<TextInput data-length={20} />);
+
+      expect(characterCounterInitSpy).toHaveBeenCalledTimes(1);
+    });
+
+    test('initialises CharacterCounter on the input when given a callback ref', () => {
+      const ref = vi.fn();
+      render(<TextInput ref={ref} data-length={20} />);
+      const input = screen.getByRole('textbox');
+
+      expect(ref).toHaveBeenCalledWith(input);
+      expect(characterCounterInitSpy).toHaveBeenCalledWith(input);
+    });
   });
 
   describe('Icon', () => {

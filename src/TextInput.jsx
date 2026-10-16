@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
@@ -7,14 +7,25 @@ import { renderPrefixIcon } from './utils';
 
 const TextInput = React.forwardRef((props, ref) => {
   const dataLength = props['data-length'];
-  const inputRef = ref || createRef(null);
+  const inputRef = useRef(null);
+  const setInputRef = useCallback(
+    node => {
+      inputRef.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    },
+    [ref]
+  );
   const [generatedId] = useState(() => `TextInput-${idgen()}`);
 
   useEffect(() => {
-    if (inputRef && dataLength) {
+    if (inputRef.current && dataLength) {
       M.CharacterCounter.init(inputRef.current);
     }
-  }, [dataLength, inputRef]);
+  }, [dataLength]);
 
   useEffect(() => {
     M.updateTextFields();
@@ -121,7 +132,7 @@ const TextInput = React.forwardRef((props, ref) => {
     <div className={wrapperClasses}>
       {renderPrefixIcon(icon)}
       <input
-        ref={inputRef}
+        ref={setInputRef}
         className={cx({ validate }, inputClassName)}
         {...inputProps}
       />
