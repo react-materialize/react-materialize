@@ -8,6 +8,7 @@ interface TabsOptions {
 }
 
 export interface TabsProps {
+  children?: React.ReactNode;
   options?: TabsOptions;
   className?: string;
   defaultValue?: string;

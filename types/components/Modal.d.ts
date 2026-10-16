@@ -16,6 +16,7 @@ export interface ModalOptions {
 }
 
 export interface ModalProps {
+  children?: React.ReactNode;
   options?: ModalOptions;
   actions?: React.ReactNode[];
   bottomSheet?: boolean;

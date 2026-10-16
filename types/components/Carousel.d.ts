@@ -13,6 +13,7 @@ export interface CarouselOptions {
 }
 
 export interface CarouselProps {
+  children?: React.ReactNode;
   options?: CarouselOptions;
   images?: string[];
   centerImages?: boolean;

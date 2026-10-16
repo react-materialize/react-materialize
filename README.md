@@ -12,7 +12,7 @@ React components for [Materialize](https://materializecss.com/), a CSS framework
 
 ## Requirements
 
-- `react` and `react-dom` 17
+- `react` and `react-dom` 18 or 19 (react-materialize 4.x supports React 17)
 - [`materialize-css`](https://www.npmjs.com/package/materialize-css) 1.0, loaded by your app (CSS and JavaScript)
 - The [Material Icons](https://fonts.google.com/icons) font, for components that show icons
 
