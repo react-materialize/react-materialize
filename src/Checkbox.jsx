@@ -6,6 +6,10 @@ import idgen from './idgen';
 const Checkbox = ({
   id: idProp,
   className,
+  checked = false,
+  // Not supported: the box always follows `checked`. Kept off the <input> so
+  // React doesn't warn about an input with both checked and defaultChecked.
+  defaultChecked: _defaultChecked,
   indeterminate,
   filledIn,
   label,
@@ -14,21 +18,20 @@ const Checkbox = ({
 }) => {
   const [generatedId] = useState(() => `Checkbox_${idgen()}`);
   const id = idProp === undefined ? generatedId : idProp;
-  const [checked, setChecked] = useState(Boolean(props.checked));
+  // `?? false` also covers `checked={null}`: the <input> must always get a
+  // boolean, or React treats it as uncontrolled.
+  const [isChecked, setChecked] = useState(checked ?? false);
   const _input = useRef(null);
 
   useEffect(() => {
-    if (_input.current) {
-      _input.current.indeterminate = indeterminate;
-      _input.current.checked = false;
-      setChecked(false);
-    }
+    // `indeterminate` only exists as a DOM property, not as an attribute.
+    _input.current.indeterminate = indeterminate;
+    setChecked(false);
   }, [indeterminate]);
 
   useEffect(() => {
-    setChecked(Boolean(props.checked));
-    _input.current.checked = Boolean(props.checked);
-  }, [props.checked]);
+    setChecked(checked ?? false);
+  }, [checked]);
 
   return (
     <label htmlFor={id}>
@@ -43,7 +46,7 @@ const Checkbox = ({
         )}
         type="checkbox"
         ref={_input}
-        checked={checked}
+        checked={isChecked}
         onChange={e => {
           setChecked(prevChecked => !prevChecked);
           onChange && onChange(e);

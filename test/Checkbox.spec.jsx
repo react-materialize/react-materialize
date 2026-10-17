@@ -81,6 +81,28 @@ describe('<Checkbox />', () => {
     expect(checkbox).toBeChecked();
   });
 
+  test('unchecks when the checked prop is removed', () => {
+    const { rerender } = render(<Checkbox value="red" label="red" checked />);
+    const checkbox = screen.getByRole('checkbox', { name: 'red' });
+
+    rerender(<Checkbox value="red" label="red" />);
+    expect(checkbox).not.toBeChecked();
+  });
+
+  test('clears a ticked box when indeterminate turns on', async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(
+      <Checkbox value="red" label="red" indeterminate={false} />
+    );
+    const checkbox = screen.getByRole('checkbox', { name: 'red' });
+    await user.click(checkbox);
+    expect(checkbox).toBeChecked();
+
+    rerender(<Checkbox value="red" label="red" indeterminate />);
+    expect(checkbox).not.toBeChecked();
+    expect(checkbox.indeterminate).toBe(true);
+  });
+
   test('toggles and calls onChange when clicked', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
