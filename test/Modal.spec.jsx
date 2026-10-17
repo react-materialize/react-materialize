@@ -1,6 +1,8 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Modal from '../src/Modal';
+import Select from '../src/Select';
+import TextInput from '../src/TextInput';
 import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
@@ -276,5 +278,31 @@ describe('<Modal /> with the Materialize plugin', () => {
     unmount();
 
     expect(document.body.style.overflow).toBe('');
+  });
+
+  test('puts its content in the document before its children set up Materialize', () => {
+    render(
+      <Modal>
+        <Select value="1" onChange={() => {}}>
+          <option value="1">One</option>
+        </Select>
+      </Modal>,
+      { reactStrictMode: false }
+    );
+
+    expect(document.body.querySelectorAll('ul.select-dropdown')).toHaveLength(
+      1
+    );
+  });
+
+  test('activates the label of a text field inside it', () => {
+    render(
+      <Modal>
+        <TextInput label="Name" defaultValue="Bob" />
+      </Modal>,
+      { reactStrictMode: false }
+    );
+
+    expect(screen.getByText('Name')).toHaveClass('active');
   });
 });

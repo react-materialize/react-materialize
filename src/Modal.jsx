@@ -4,6 +4,7 @@ import {
   cloneElement,
   useRef,
   useEffect,
+  useLayoutEffect,
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
@@ -62,8 +63,10 @@ const Modal = ({
   }
 
   // Attach the portal root in an effect, not during render, so that every
-  // cleanup that detaches it is followed by a setup that re-attaches it.
-  useEffect(() => {
+  // cleanup that detaches it is followed by a setup that re-attaches it. A
+  // layout effect, because those all run before any regular effect: children
+  // that set up Materialize in their effects find the modal in the document.
+  useLayoutEffect(() => {
     const modalRoot = _modalRoot.current;
     root.appendChild(modalRoot);
 

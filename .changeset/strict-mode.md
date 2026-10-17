@@ -10,4 +10,6 @@ Make the components safe under React's StrictMode, which in development mounts e
 - DatePicker and TimePicker close an open picker before destroying it, so unmounting one no longer leaves page scrolling locked.
 - TextInput and Textarea destroy their character counter in the effect cleanup, so removing `data-length` now removes the counter.
 
+Because an open Modal, DatePicker or TimePicker is now closed when it unmounts, its close callbacks fire then: `onCloseStart`, plus `onCloseEnd` after the close animation, for Modal and TimePicker, and `onClose` for DatePicker.
+
 Part of #1277.
