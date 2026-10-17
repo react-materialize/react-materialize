@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React from 'react';
+import { createElement, cloneElement } from 'react';
 
 export const safeJSONStringify = s => {
   try {
@@ -18,13 +18,13 @@ export const safeJSONStringify = s => {
 export const renderPrefixIcon = (icon, className) => {
   if (!icon) return null;
   if (typeof icon === 'string') {
-    return React.createElement(
+    return createElement(
       'i',
       { className: cx('material-icons prefix', className) },
       icon
     );
   }
-  return React.cloneElement(icon, {
+  return cloneElement(icon, {
     className: cx(icon.props.className, 'prefix', className)
   });
 };

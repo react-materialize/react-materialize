@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -12,7 +12,7 @@ const RadioGroup = ({
   options
 }) => {
   return (
-    <React.Fragment>
+    <Fragment>
       {options.map((radioItem, idx) => (
         <label
           className={radioClassNames}
@@ -32,7 +32,7 @@ const RadioGroup = ({
           <span>{radioItem.label}</span>
         </label>
       ))}
-    </React.Fragment>
+    </Fragment>
   );
 };
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import Breadcrumb from '../src/Breadcrumb';
 
 export default {

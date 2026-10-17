@@ -1,4 +1,3 @@
-import React from 'react';
 import Range from '../src/Range';
 
 export default {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import DatePicker from '../src/DatePicker';
 import idgen from '../src/idgen';

@@ -1,17 +1,17 @@
-import React, { useMemo } from 'react';
+import { Children, isValidElement, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Collection = ({ children, header, className, ...other }) => {
   const getNodeType = useMemo(() => {
-    return React.Children.toArray(children).some(child => child.props.href)
+    return Children.toArray(children).some(child => child.props.href)
       ? 'div'
       : 'ul';
   }, [children]);
 
   const renderHeader = useMemo(() => {
     let _header;
-    if (React.isValidElement(header)) {
+    if (isValidElement(header)) {
       _header = header;
     } else {
       _header = <h4>{header}</h4>;

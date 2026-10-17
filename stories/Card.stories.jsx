@@ -1,4 +1,3 @@
-import React from 'react';
 import Card from '../src/Card';
 import CardPanel from '../src/CardPanel';
 import CardTitle from '../src/CardTitle';

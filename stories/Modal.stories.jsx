@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '../src/Button';
 import Modal from '../src/Modal';
 

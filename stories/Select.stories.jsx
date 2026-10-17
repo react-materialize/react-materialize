@@ -1,4 +1,3 @@
-import React from 'react';
 import { fn } from 'storybook/test';
 import Icon from '../src/Icon';
 import Select from '../src/Select';

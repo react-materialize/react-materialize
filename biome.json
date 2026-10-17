@@ -21,7 +21,6 @@
     "lineWidth": 80
   },
   "javascript": {
-    "jsxRuntime": "reactClassic",
     "formatter": {
       "quoteStyle": "single",
       "jsxQuoteStyle": "double",

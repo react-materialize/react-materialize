@@ -38,10 +38,7 @@ const handWrittenTypes = (from, to) => ({
 });
 
 export default defineConfig({
-  plugins: [
-    react({ jsxRuntime: 'classic' }),
-    handWrittenTypes('types/components', 'lib')
-  ],
+  plugins: [react(), handWrittenTypes('types/components', 'lib')],
   build: {
     outDir: 'lib',
     target: 'es2019',

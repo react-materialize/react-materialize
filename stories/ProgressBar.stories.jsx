@@ -1,4 +1,3 @@
-import React from 'react';
 import Col from '../src/Col';
 import ProgressBar from '../src/ProgressBar';
 import Row from '../src/Row';

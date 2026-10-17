@@ -1,4 +1,11 @@
-import React, { Fragment, useEffect, useRef, useMemo, useState } from 'react';
+import {
+  cloneElement,
+  Fragment,
+  useEffect,
+  useRef,
+  useMemo,
+  useState
+} from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -39,7 +46,7 @@ const SideNav = ({
       'sidenav-trigger'
     );
 
-    return React.cloneElement(trigger, {
+    return cloneElement(trigger, {
       ref: triggerRef,
       'data-target': id,
       className: classNames

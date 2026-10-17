@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, Fragment } from 'react';
+import { useEffect, useRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Icon from './Icon';

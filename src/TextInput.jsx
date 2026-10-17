@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';
 import constants from './constants';
 import { renderPrefixIcon } from './utils';
 
-const TextInput = React.forwardRef((props, ref) => {
+const TextInput = forwardRef((props, ref) => {
   const dataLength = props['data-length'];
   const inputRef = useRef(null);
   const setInputRef = useCallback(

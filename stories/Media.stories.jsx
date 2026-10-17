@@ -1,4 +1,3 @@
-import React from 'react';
 import Caption from '../src/Caption';
 import MediaBox from '../src/MediaBox';
 import Slide from '../src/Slide';

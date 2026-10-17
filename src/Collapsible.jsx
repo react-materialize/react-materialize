@@ -1,4 +1,4 @@
-import React, { Children, useState, useEffect, useRef } from 'react';
+import { cloneElement, Children, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -27,7 +27,7 @@ const Collapsible = ({
       itemProps.eventKey = key;
     }
 
-    return React.cloneElement(child, itemProps);
+    return cloneElement(child, itemProps);
   };
 
   const handleSelect = key => {

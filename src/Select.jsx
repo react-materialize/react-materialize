@@ -1,10 +1,4 @@
-import React, {
-  Children,
-  cloneElement,
-  useRef,
-  useEffect,
-  useState
-} from 'react';
+import { Children, cloneElement, useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import idgen from './idgen';

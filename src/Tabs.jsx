@@ -1,4 +1,11 @@
-import React, { useEffect, useRef, useState, cloneElement } from 'react';
+import {
+  Children,
+  Fragment,
+  useEffect,
+  useRef,
+  useState,
+  cloneElement
+} from 'react';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
 import cx from 'classnames';
@@ -28,9 +35,9 @@ const Tabs = ({
   }, [options, children]);
 
   return (
-    <React.Fragment>
+    <Fragment>
       <ul className={cx('tabs', className)} ref={_tabsRef}>
-        {React.Children.map(children, (child, id) => {
+        {Children.map(children, (child, id) => {
           const {
             idx = `${scope}${id}`,
             active,
@@ -62,12 +69,12 @@ const Tabs = ({
         })}
       </ul>
       <Row>
-        {React.Children.map(children, (child, id) => {
+        {Children.map(children, (child, id) => {
           const idx = child.props.idx || `${scope}${id}`;
           return cloneElement(child, { idx });
         })}
       </Row>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

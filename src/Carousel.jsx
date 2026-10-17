@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import idgen from './idgen';
@@ -50,7 +50,7 @@ const Carousel = ({
       {Boolean(fixedItem) && (
         <div className="carousel-fixed-item center">{fixedItem}</div>
       )}
-      {React.Children.map(elemsToRender, child => {
+      {Children.map(elemsToRender, child => {
         const classes = cx('carousel-item', { 'valign-wrapper': centerImages });
         if (typeof child === 'string') {
           return (
@@ -60,7 +60,7 @@ const Carousel = ({
           );
         }
 
-        return React.cloneElement(child, {
+        return cloneElement(child, {
           className: cx(classes, child.props.className)
         });
       })}

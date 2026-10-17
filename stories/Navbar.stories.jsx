@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import Navbar from '../src/Navbar';
 import NavItem from '../src/NavItem';
 import Icon from '../src/Icon';

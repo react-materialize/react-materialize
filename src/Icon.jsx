@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import constants from './constants';
 import cx from 'classnames';

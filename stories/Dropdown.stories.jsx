@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '../src/Button';
 import Divider from '../src/Divider';
 import Dropdown from '../src/Dropdown';

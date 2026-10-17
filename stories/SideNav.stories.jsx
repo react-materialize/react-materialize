@@ -1,4 +1,3 @@
-import React from 'react';
 import SideNav from '../src/SideNav';
 import SideNavItem from '../src/SideNavItem';
 import Button from '../src/Button';

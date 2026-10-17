@@ -1,4 +1,4 @@
-import React from 'react';
+import { cloneElement } from 'react';
 import Button from '../src/Button';
 import Icon from '../src/Icon';
 
@@ -47,8 +47,6 @@ export const ToToolbar = {
   name: 'To toolbar',
   args: {
     fab: { direction: 'top', toolbarEnabled: true },
-    children: children.map(c =>
-      React.cloneElement(c, { className: 'btn-large red' })
-    )
+    children: children.map(c => cloneElement(c, { className: 'btn-large red' }))
   }
 };

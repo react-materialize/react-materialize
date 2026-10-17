@@ -1,4 +1,3 @@
-import React from 'react';
 import Icon from '../src/Icon';
 import Row from '../src/Row';
 import Textarea from '../src/Textarea';

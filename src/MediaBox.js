@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { cloneElement, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -35,7 +35,7 @@ const MediaBox = ({
     };
   }, [id, options, children]);
 
-  return React.cloneElement(children, {
+  return cloneElement(children, {
     id: id,
     ref: mediaBoxRef,
     className: cx('materialboxed', className),

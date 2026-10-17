@@ -1,4 +1,3 @@
-import React from 'react';
 import Autocomplete from '../src/Autocomplete';
 import Icon from '../src/Icon';
 
