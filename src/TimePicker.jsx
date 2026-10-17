@@ -39,7 +39,10 @@ const TimePicker = ({
     const instance = M.Timepicker.init(timeEl.current, _options);
 
     return () => {
-      instance && instance.destroy();
+      // `destroy` leaves an open picker's body scroll lock and document
+      // listeners behind, so close it first.
+      instance.close();
+      instance.destroy();
     };
   }, [options, onChange]);
 

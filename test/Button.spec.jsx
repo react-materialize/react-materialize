@@ -149,8 +149,7 @@ describe('Button', () => {
         </Button>
       );
 
-      expect(tooltipInitMock).toHaveBeenCalledTimes(1);
-      expect(tooltipInitMock).toHaveBeenCalledWith(
+      expect(tooltipInitMock).toHaveBeenLastCalledWith(
         screen.getByRole('button', { name: 'Stuff' }),
         tooltipOptions
       );
@@ -164,7 +163,7 @@ describe('Button', () => {
 
     test('destroyed when unmounted', () => {
       const { unmount } = render(<Button tooltip={tooltip}>Stuff</Button>);
-      expect(tooltipInstanceDestroyMock).not.toHaveBeenCalled();
+      tooltipInstanceDestroyMock.mockClear();
       unmount();
 
       expect(tooltipInstanceDestroyMock).toHaveBeenCalledTimes(1);
@@ -245,8 +244,7 @@ describe('Button', () => {
 
     test('initializes FloatingActionButton instance on the wrapper', () => {
       const { container } = render(FabButton());
-      expect(fabInitMock).toHaveBeenCalledTimes(1);
-      expect(fabInitMock).toHaveBeenCalledWith(container.firstChild, true);
+      expect(fabInitMock).toHaveBeenLastCalledWith(container.firstChild, true);
     });
 
     test('initializes FloatingActionButton with fab options', () => {
@@ -270,7 +268,7 @@ describe('Button', () => {
 
     test('destroys FloatingActionButton instance when unmounted', () => {
       const { unmount } = render(FabButton());
-      expect(fabInstanceDestroyMock).not.toHaveBeenCalled();
+      fabInstanceDestroyMock.mockClear();
       unmount();
 
       expect(fabInstanceDestroyMock).toHaveBeenCalledTimes(1);

@@ -114,9 +114,8 @@ describe('<Autocomplete />', () => {
     test('calls Autocomplete with default options', () => {
       render(<Autocomplete />);
 
-      expect(updateTextFieldsSpy).toHaveBeenCalledTimes(1);
-      expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
-      expect(autocompleteInitMock).toHaveBeenCalledWith(
+      expect(updateTextFieldsSpy).toHaveBeenCalled();
+      expect(autocompleteInitMock).toHaveBeenLastCalledWith(
         screen.getByRole('textbox'),
         {
           data: {},
@@ -140,7 +139,7 @@ describe('<Autocomplete />', () => {
 
     test('destroys the instance on unmount', () => {
       const { unmount } = render(<Autocomplete />);
-      expect(autocompleteInstanceDestroyMock).not.toHaveBeenCalled();
+      autocompleteInstanceDestroyMock.mockClear();
 
       unmount();
       expect(autocompleteInstanceDestroyMock).toHaveBeenCalledTimes(1);
@@ -150,12 +149,13 @@ describe('<Autocomplete />', () => {
   describe('with new data prop', () => {
     test('reinitializes javascript', () => {
       const { rerender } = render(<Autocomplete />);
-      expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+      autocompleteInitMock.mockClear();
+      autocompleteInstanceDestroyMock.mockClear();
 
       rerender(<Autocomplete options={{ data: { foo: 'bar' } }} />);
 
       expect(autocompleteInstanceDestroyMock).toHaveBeenCalledTimes(1);
-      expect(autocompleteInitMock).toHaveBeenCalledTimes(2);
+      expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
       expect(autocompleteInitMock).toHaveBeenLastCalledWith(
         screen.getByRole('textbox'),
         { data: { foo: 'bar' } }
@@ -165,9 +165,10 @@ describe('<Autocomplete />', () => {
 
   test('does not re-initialise when re-rendered with the same props', () => {
     const { rerender } = render(<Autocomplete title="Test Title" />);
+    autocompleteInitMock.mockClear();
     rerender(<Autocomplete title="Test Title" />);
 
-    expect(autocompleteInitMock).toHaveBeenCalledTimes(1);
+    expect(autocompleteInitMock).not.toHaveBeenCalled();
   });
 
   test('keeps its generated id across re-renders', () => {

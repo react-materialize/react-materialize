@@ -94,8 +94,10 @@ describe('<Chip />', () => {
     test('calls Chips', () => {
       const { container } = render(<Chip options={options} />);
 
-      expect(chipInitMock).toHaveBeenCalledTimes(1);
-      expect(chipInitMock).toHaveBeenCalledWith(container.firstChild, options);
+      expect(chipInitMock).toHaveBeenLastCalledWith(
+        container.firstChild,
+        options
+      );
     });
 
     test('renders a chips container without static content', () => {
@@ -112,7 +114,7 @@ describe('<Chip />', () => {
 
     test('destroys the instance on unmount', () => {
       const { unmount } = render(<Chip options={options} />);
-      expect(chipInstanceDestroyMock).not.toHaveBeenCalled();
+      chipInstanceDestroyMock.mockClear();
 
       unmount();
       expect(chipInstanceDestroyMock).toHaveBeenCalledTimes(1);
@@ -120,12 +122,14 @@ describe('<Chip />', () => {
 
     test('re-initialises when options change', () => {
       const { container, rerender } = render(<Chip options={options} />);
+      chipInitMock.mockClear();
+      chipInstanceDestroyMock.mockClear();
 
       const nextOptions = { ...options, placeholder: 'Another' };
       rerender(<Chip options={nextOptions} />);
 
       expect(chipInstanceDestroyMock).toHaveBeenCalledTimes(1);
-      expect(chipInitMock).toHaveBeenCalledTimes(2);
+      expect(chipInitMock).toHaveBeenCalledTimes(1);
       expect(chipInitMock).toHaveBeenLastCalledWith(
         container.firstChild,
         nextOptions

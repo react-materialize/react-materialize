@@ -36,27 +36,28 @@ describe('<Range />', () => {
   test('initializes M.Range on the input', () => {
     render(<Range min="10" max="99" />);
 
-    expect(rangeInit).toHaveBeenCalledTimes(1);
-    expect(rangeInit).toHaveBeenCalledWith(screen.getByRole('slider'));
+    expect(rangeInit).toHaveBeenLastCalledWith(screen.getByRole('slider'));
   });
 
   test('re-initializes when min or max change', () => {
     const { rerender } = render(<Range min="10" max="99" />);
+    rangeInit.mockClear();
+    rangeDestroy.mockClear();
 
     rerender(<Range min="20" max="99" />);
     expect(rangeDestroy).toHaveBeenCalledTimes(1);
-    expect(rangeInit).toHaveBeenCalledTimes(2);
+    expect(rangeInit).toHaveBeenCalledTimes(1);
 
     rerender(<Range min="20" max="50" />);
     expect(rangeDestroy).toHaveBeenCalledTimes(2);
-    expect(rangeInit).toHaveBeenCalledTimes(3);
+    expect(rangeInit).toHaveBeenCalledTimes(2);
     expect(screen.getByRole('slider')).toHaveAttribute('max', '50');
   });
 
   test('destroys when unmounted', () => {
     const { unmount } = render(<Range min="10" max="99" />);
 
-    expect(rangeDestroy).not.toHaveBeenCalled();
+    rangeDestroy.mockClear();
     unmount();
     expect(rangeDestroy).toHaveBeenCalledTimes(1);
   });

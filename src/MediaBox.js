@@ -1,4 +1,10 @@
-import { cloneElement, useEffect, useRef, useState } from 'react';
+import {
+  cloneElement,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -13,6 +19,11 @@ const defaultOptions = {
   onCloseEnd: null
 };
 
+// Fall back to `useEffect` on the server, where layout effects never run and
+// React 18 warns about them.
+const useClientLayoutEffect =
+  typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
 const MediaBox = ({
   id: idProp,
   options = defaultOptions,
@@ -25,7 +36,10 @@ const MediaBox = ({
   const id = idProp === undefined ? generatedId : idProp;
   const mediaBoxRef = useRef(null);
 
-  useEffect(() => {
+  // Materialbox moves the image into a placeholder <div>. A layout effect's
+  // cleanup runs before React removes the image, so `destroy` can move it
+  // back first; React would fail to remove it from inside the placeholder.
+  useClientLayoutEffect(() => {
     const instance = M.Materialbox.init(mediaBoxRef.current, options);
 
     return () => {

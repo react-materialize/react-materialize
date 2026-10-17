@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import DatePicker from '../src/DatePicker';
 import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
@@ -9,7 +9,7 @@ describe('<DatePicker />', () => {
   const restore = mocker('Datepicker', {
     init: (el, options) => {
       datePickerInitMock(el, options);
-      return { destroy: datePickerInstanceDestroyMock };
+      return { close: vi.fn(), destroy: datePickerInstanceDestroyMock };
     }
   });
 
@@ -55,8 +55,7 @@ describe('<DatePicker />', () => {
     test('uses default options if none are given', () => {
       render(<DatePicker />);
 
-      expect(datePickerInitMock).toHaveBeenCalledTimes(1);
-      const [el, options] = datePickerInitMock.mock.calls[0];
+      const [el, options] = datePickerInitMock.mock.lastCall;
       expect(el).toBe(screen.getByRole('textbox'));
       expect(options).toEqual(
         expect.objectContaining({
@@ -95,7 +94,7 @@ describe('<DatePicker />', () => {
       const options = { autoClose: true, onSelect: () => {} };
       render(<DatePicker options={options} onChange={onChange} />);
 
-      const passed = datePickerInitMock.mock.calls[0][1];
+      const passed = datePickerInitMock.mock.lastCall[1];
       expect(passed).toEqual({ autoClose: true, onSelect: onChange });
 
       const date = new Date(2020, 0, 1);
@@ -105,7 +104,7 @@ describe('<DatePicker />', () => {
 
     test('destroys the instance on unmount', () => {
       const { unmount } = render(<DatePicker />);
-      expect(datePickerInstanceDestroyMock).not.toHaveBeenCalled();
+      datePickerInstanceDestroyMock.mockClear();
 
       unmount();
       expect(datePickerInstanceDestroyMock).toHaveBeenCalledTimes(1);
@@ -113,13 +112,14 @@ describe('<DatePicker />', () => {
 
     test('re-initialises when options change', () => {
       const { rerender } = render(<DatePicker options={{ firstDay: 0 }} />);
-      expect(datePickerInitMock).toHaveBeenCalledTimes(1);
+      datePickerInitMock.mockClear();
+      datePickerInstanceDestroyMock.mockClear();
 
       const nextOptions = { firstDay: 1 };
       rerender(<DatePicker options={nextOptions} />);
 
       expect(datePickerInstanceDestroyMock).toHaveBeenCalledTimes(1);
-      expect(datePickerInitMock).toHaveBeenCalledTimes(2);
+      expect(datePickerInitMock).toHaveBeenCalledTimes(1);
       expect(datePickerInitMock).toHaveBeenLastCalledWith(
         screen.getByRole('textbox'),
         nextOptions
@@ -128,9 +128,10 @@ describe('<DatePicker />', () => {
 
     test('does not re-initialise when re-rendered with the same props', () => {
       const { rerender } = render(<DatePicker />);
+      datePickerInitMock.mockClear();
       rerender(<DatePicker />);
 
-      expect(datePickerInitMock).toHaveBeenCalledTimes(1);
+      expect(datePickerInitMock).not.toHaveBeenCalled();
     });
   });
 
@@ -147,5 +148,17 @@ describe('<DatePicker />', () => {
     } finally {
       idgen.mockImplementation(() => 'mockId');
     }
+  });
+});
+
+describe('<DatePicker /> with the Materialize plugin', () => {
+  test('unlocks body scrolling when unmounted while open', () => {
+    const { unmount } = render(<DatePicker />);
+    act(() => M.Datepicker.getInstance(screen.getByRole('textbox')).open());
+    expect(document.body.style.overflow).toBe('hidden');
+
+    unmount();
+
+    expect(document.body.style.overflow).toBe('');
   });
 });

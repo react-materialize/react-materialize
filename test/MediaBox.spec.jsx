@@ -53,8 +53,7 @@ describe('<MediaBox />', () => {
     test('calls Materialbox on the child element', () => {
       renderMediaBox();
 
-      expect(initMock).toHaveBeenCalledTimes(1);
-      expect(initMock.mock.calls[0][0]).toBe(screen.getByRole('img'));
+      expect(initMock.mock.lastCall[0]).toBe(screen.getByRole('img'));
     });
 
     test('uses default options if none are given', () => {
@@ -82,7 +81,7 @@ describe('<MediaBox />', () => {
 
     test('destroys the instance on unmount', () => {
       const { unmount } = renderMediaBox();
-      expect(destroyMock).not.toHaveBeenCalled();
+      destroyMock.mockClear();
 
       unmount();
 
@@ -105,8 +104,26 @@ describe('<MediaBox />', () => {
 
   test('does not re-initialise when re-rendered with the same props', () => {
     const { rerender } = render(<MediaBox>{image}</MediaBox>);
+    initMock.mockClear();
     rerender(<MediaBox>{image}</MediaBox>);
 
-    expect(initMock).toHaveBeenCalledTimes(1);
+    expect(initMock).not.toHaveBeenCalled();
+  });
+});
+
+describe('<MediaBox /> with the Materialize plugin', () => {
+  test('unwraps the image before React removes it on unmount', () => {
+    const { container, unmount } = render(
+      <MediaBox>
+        <img src="image.jpg" alt="demo" />
+      </MediaBox>
+    );
+    expect(screen.getByRole('img').parentElement).toHaveClass(
+      'material-placeholder'
+    );
+
+    unmount();
+
+    expect(container).toBeEmptyDOMElement();
   });
 });

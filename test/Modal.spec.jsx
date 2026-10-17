@@ -1,6 +1,8 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Modal from '../src/Modal';
+import Select from '../src/Select';
+import TextInput from '../src/TextInput';
 import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
 
@@ -17,20 +19,19 @@ const options = {
 };
 
 describe('<Modal />', () => {
-  const modalOpenMock = vi.fn();
-  const modalCloseMock = vi.fn();
   const modalInitMock = vi.fn();
-  const modalInstanceDestroyMock = vi.fn();
+  // Every init returns its own instance, so tests can check the live one:
+  // StrictMode creates and destroys an instance before it.
+  let instances = [];
   const modalMock = {
     init: (el, options) => {
       modalInitMock(el, options);
-      return {
-        open: modalOpenMock,
-        close: modalCloseMock,
-        destroy: modalInstanceDestroyMock
-      };
+      const instance = { open: vi.fn(), close: vi.fn(), destroy: vi.fn() };
+      instances.push(instance);
+      return instance;
     }
   };
+  const liveInstance = () => instances.at(-1);
   const restore = mocker('Modal', modalMock);
 
   afterAll(() => {
@@ -39,9 +40,7 @@ describe('<Modal />', () => {
 
   beforeEach(() => {
     modalInitMock.mockClear();
-    modalOpenMock.mockClear();
-    modalCloseMock.mockClear();
-    modalInstanceDestroyMock.mockClear();
+    instances = [];
   });
 
   const getModal = () => document.body.querySelector('.modal');
@@ -50,8 +49,7 @@ describe('<Modal />', () => {
     test('calls M.Modal.init on the modal element with default options', () => {
       render(<Modal />);
 
-      expect(modalInitMock).toHaveBeenCalledTimes(1);
-      expect(modalInitMock).toHaveBeenCalledWith(getModal(), {
+      expect(modalInitMock).toHaveBeenLastCalledWith(getModal(), {
         opacity: 0.5,
         inDuration: 250,
         outDuration: 250,
@@ -77,9 +75,37 @@ describe('<Modal />', () => {
       expect(portalRoot.parentElement).toBe(document.body);
 
       unmount();
-      expect(modalInstanceDestroyMock).toHaveBeenCalledTimes(1);
+      for (const instance of instances) {
+        expect(instance.destroy).toHaveBeenCalledTimes(1);
+      }
       expect(document.body.contains(portalRoot)).toBe(false);
       expect(getModal()).toBeNull();
+    });
+
+    test('re-initialises when options change', () => {
+      const { rerender } = render(<Modal options={options} />);
+      const first = liveInstance();
+      modalInitMock.mockClear();
+
+      const nextOptions = { ...options, opacity: 0.8 };
+      rerender(<Modal options={nextOptions} />);
+
+      expect(first.destroy).toHaveBeenCalledTimes(1);
+      expect(modalInitMock).toHaveBeenCalledTimes(1);
+      expect(modalInitMock).toHaveBeenCalledWith(getModal(), nextOptions);
+      expect(liveInstance().destroy).not.toHaveBeenCalled();
+    });
+
+    test('closes an open modal before destroying it', () => {
+      const { unmount } = render(<Modal open />);
+      const instance = liveInstance();
+
+      unmount();
+
+      expect(instance.close).toHaveBeenCalledTimes(1);
+      expect(instance.close.mock.invocationCallOrder[0]).toBeLessThan(
+        instance.destroy.mock.invocationCallOrder[0]
+      );
     });
   });
 
@@ -160,46 +186,65 @@ describe('<Modal />', () => {
       render(<Modal trigger={trigger}>{children}</Modal>);
 
       const button = screen.getByRole('button', { name: 'click' });
-      expect(modalOpenMock).not.toHaveBeenCalled();
+      expect(liveInstance().open).not.toHaveBeenCalled();
 
       await user.click(button);
-      expect(modalOpenMock).toHaveBeenCalledTimes(1);
+      expect(liveInstance().open).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('controlled modal with `open` prop', () => {
     test('calls `open` on mount', () => {
       render(<Modal open>{children}</Modal>);
-      expect(modalOpenMock).toHaveBeenCalledTimes(1);
-      expect(modalCloseMock).not.toHaveBeenCalled();
+      expect(liveInstance().open).toHaveBeenCalledTimes(1);
+      expect(liveInstance().close).not.toHaveBeenCalled();
     });
 
     test('does not call `open` when mounted closed', () => {
       render(<Modal>{children}</Modal>);
-      expect(modalOpenMock).not.toHaveBeenCalled();
+      expect(liveInstance().open).not.toHaveBeenCalled();
     });
 
     test('calls `close` when `open` changes to false', () => {
       const { rerender } = render(<Modal open>{children}</Modal>);
-      expect(modalOpenMock).toHaveBeenCalledTimes(1);
+      const instance = liveInstance();
+      expect(instance.open).toHaveBeenCalledTimes(1);
 
       rerender(<Modal open={false}>{children}</Modal>);
-      expect(modalCloseMock).toHaveBeenCalledTimes(1);
-      expect(modalOpenMock).toHaveBeenCalledTimes(1);
+      expect(instance.close).toHaveBeenCalledTimes(1);
+      expect(instance.open).toHaveBeenCalledTimes(1);
     });
 
     test('calls `open` when `open` changes to true', () => {
       const { rerender } = render(<Modal open={false}>{children}</Modal>);
-      expect(modalOpenMock).not.toHaveBeenCalled();
+      const instance = liveInstance();
+      expect(instance.open).not.toHaveBeenCalled();
 
       rerender(<Modal open>{children}</Modal>);
-      expect(modalOpenMock).toHaveBeenCalledTimes(1);
+      expect(instance.open).toHaveBeenCalledTimes(1);
     });
 
     test('does not re-initialise on rerender with same options', () => {
       const { rerender } = render(<Modal open>{children}</Modal>);
+      modalInitMock.mockClear();
       rerender(<Modal open={false}>{children}</Modal>);
-      expect(modalInitMock).toHaveBeenCalledTimes(1);
+      expect(modalInitMock).not.toHaveBeenCalled();
+    });
+
+    test('opens the new instance when re-initialised while open', () => {
+      const { rerender } = render(
+        <Modal open options={options}>
+          {children}
+        </Modal>
+      );
+
+      rerender(
+        <Modal open options={{ ...options, opacity: 0.8 }}>
+          {children}
+        </Modal>
+      );
+
+      expect(liveInstance().open).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -215,5 +260,49 @@ describe('<Modal />', () => {
     } finally {
       idgen.mockImplementation(() => 'mockId');
     }
+  });
+});
+
+describe('<Modal /> with the Materialize plugin', () => {
+  test('opens one modal when mounted open', () => {
+    render(<Modal open>{children}</Modal>);
+
+    expect(document.body.querySelector('.modal')).toHaveClass('open');
+    expect(document.body.querySelectorAll('.modal-overlay')).toHaveLength(1);
+  });
+
+  test('unlocks body scrolling when an open modal unmounts', () => {
+    const { unmount } = render(<Modal open>{children}</Modal>);
+    expect(document.body.style.overflow).toBe('hidden');
+
+    unmount();
+
+    expect(document.body.style.overflow).toBe('');
+  });
+
+  test('puts its content in the document before its children set up Materialize', () => {
+    render(
+      <Modal>
+        <Select value="1" onChange={() => {}}>
+          <option value="1">One</option>
+        </Select>
+      </Modal>,
+      { reactStrictMode: false }
+    );
+
+    expect(document.body.querySelectorAll('ul.select-dropdown')).toHaveLength(
+      1
+    );
+  });
+
+  test('activates the label of a text field inside it', () => {
+    render(
+      <Modal>
+        <TextInput label="Name" defaultValue="Bob" />
+      </Modal>,
+      { reactStrictMode: false }
+    );
+
+    expect(screen.getByText('Name')).toHaveClass('active');
   });
 });

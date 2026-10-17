@@ -33,7 +33,9 @@ const Textarea = ({
 
   useEffect(() => {
     if (dataLength) {
-      M.CharacterCounter.init(textareaRef.current);
+      const instance = M.CharacterCounter.init(textareaRef.current);
+
+      return () => instance.destroy();
     }
   }, [dataLength, children]);
 

@@ -33,20 +33,23 @@ describe('<Slider />', () => {
   test('initializes Slider with default options', () => {
     const { container } = render(<Slider />);
 
-    expect(initMock).toHaveBeenCalledTimes(1);
-    expect(initMock).toHaveBeenCalledWith(container.firstChild, defaultOptions);
+    expect(initMock).toHaveBeenLastCalledWith(
+      container.firstChild,
+      defaultOptions
+    );
   });
 
   test('does not re-initialise when re-rendered with the same props', () => {
     const { rerender } = render(<Slider />);
+    initMock.mockClear();
     rerender(<Slider />);
 
-    expect(initMock).toHaveBeenCalledTimes(1);
+    expect(initMock).not.toHaveBeenCalled();
   });
 
   test('Destroyed when unmounted', () => {
     const { unmount } = render(<Slider />);
-    expect(destroyMock).not.toHaveBeenCalled();
+    destroyMock.mockClear();
 
     unmount();
 
@@ -95,7 +98,12 @@ describe('<Slider />', () => {
 
   test('update should destroy and re-initialize with new options', () => {
     const { container, rerender } = render(<Slider />);
-    expect(initMock).toHaveBeenCalledWith(container.firstChild, defaultOptions);
+    expect(initMock).toHaveBeenLastCalledWith(
+      container.firstChild,
+      defaultOptions
+    );
+    initMock.mockClear();
+    destroyMock.mockClear();
 
     const options = {
       indicators: false,
@@ -106,7 +114,7 @@ describe('<Slider />', () => {
     rerender(<Slider options={options} />);
 
     expect(destroyMock).toHaveBeenCalledTimes(1);
-    expect(initMock).toHaveBeenCalledTimes(2);
+    expect(initMock).toHaveBeenCalledTimes(1);
     expect(initMock).toHaveBeenLastCalledWith(container.firstChild, options);
   });
 });

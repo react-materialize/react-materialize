@@ -88,7 +88,10 @@ const DatePicker = ({
     const instance = M.Datepicker.init(dateEl.current, _options);
 
     return () => {
-      instance && instance.destroy();
+      // `destroy` leaves an open picker's body scroll lock and document
+      // listeners behind, so close it first.
+      instance.close();
+      instance.destroy();
     };
   }, [options, onChange]);
 

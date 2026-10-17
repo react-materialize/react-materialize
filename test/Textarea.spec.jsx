@@ -217,14 +217,14 @@ describe('<Textarea />', () => {
     test('calls M.textareaAutoResize on mount and when children change', () => {
       const { rerender } = render(<Textarea>a</Textarea>);
       const textarea = screen.getByRole('textbox');
-      expect(autoResizeSpy).toHaveBeenCalledTimes(1);
-      expect(autoResizeSpy).toHaveBeenCalledWith(textarea);
+      expect(autoResizeSpy).toHaveBeenLastCalledWith(textarea);
+      autoResizeSpy.mockClear();
 
       rerender(<Textarea>a</Textarea>);
-      expect(autoResizeSpy).toHaveBeenCalledTimes(1);
+      expect(autoResizeSpy).not.toHaveBeenCalled();
 
       rerender(<Textarea>b</Textarea>);
-      expect(autoResizeSpy).toHaveBeenCalledTimes(2);
+      expect(autoResizeSpy).toHaveBeenCalledTimes(1);
     });
 
     test('initialises CharacterCounter when data-length is given', () => {
@@ -232,8 +232,7 @@ describe('<Textarea />', () => {
       const textarea = screen.getByRole('textbox');
 
       expect(textarea).toHaveAttribute('data-length', '120');
-      expect(characterCounterInitSpy).toHaveBeenCalledTimes(1);
-      expect(characterCounterInitSpy).toHaveBeenCalledWith(textarea);
+      expect(characterCounterInitSpy).toHaveBeenLastCalledWith(textarea);
     });
 
     test('does not initialise CharacterCounter without data-length', () => {
@@ -254,5 +253,16 @@ describe('<Textarea />', () => {
     } finally {
       idgen.mockImplementation(() => 'mockId');
     }
+  });
+});
+
+describe('<Textarea /> with the Materialize plugin', () => {
+  test('removes the character counter when data-length is removed', () => {
+    const { container, rerender } = render(<Textarea data-length={10} />);
+    expect(container.querySelectorAll('.character-counter')).toHaveLength(1);
+
+    rerender(<Textarea />);
+
+    expect(container.querySelector('.character-counter')).toBeNull();
   });
 });

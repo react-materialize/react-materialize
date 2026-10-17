@@ -191,13 +191,14 @@ describe('<TextInput />', () => {
   describe('Materialize js', () => {
     test('calls M.updateTextFields on mount and when children change', () => {
       const { rerender } = render(<TextInput>a</TextInput>);
-      expect(updateTextFieldsSpy).toHaveBeenCalledTimes(1);
+      expect(updateTextFieldsSpy).toHaveBeenCalled();
+      updateTextFieldsSpy.mockClear();
 
       rerender(<TextInput>a</TextInput>);
-      expect(updateTextFieldsSpy).toHaveBeenCalledTimes(1);
+      expect(updateTextFieldsSpy).not.toHaveBeenCalled();
 
       rerender(<TextInput>b</TextInput>);
-      expect(updateTextFieldsSpy).toHaveBeenCalledTimes(2);
+      expect(updateTextFieldsSpy).toHaveBeenCalledTimes(1);
     });
 
     test('initialises CharacterCounter when data-length is given', () => {
@@ -213,11 +214,12 @@ describe('<TextInput />', () => {
       expect(characterCounterInitSpy).not.toHaveBeenCalled();
     });
 
-    test('initialises CharacterCounter only once across re-renders', () => {
+    test('does not re-initialise CharacterCounter across re-renders', () => {
       const { rerender } = render(<TextInput data-length={20} />);
+      characterCounterInitSpy.mockClear();
       rerender(<TextInput data-length={20} />);
 
-      expect(characterCounterInitSpy).toHaveBeenCalledTimes(1);
+      expect(characterCounterInitSpy).not.toHaveBeenCalled();
     });
 
     test('initialises CharacterCounter on the input when given a callback ref', () => {
@@ -274,5 +276,16 @@ describe('<TextInput />', () => {
     } finally {
       idgen.mockImplementation(() => 'mockId');
     }
+  });
+});
+
+describe('<TextInput /> with the Materialize plugin', () => {
+  test('removes the character counter when data-length is removed', () => {
+    const { container, rerender } = render(<TextInput data-length={10} />);
+    expect(container.querySelectorAll('.character-counter')).toHaveLength(1);
+
+    rerender(<TextInput />);
+
+    expect(container.querySelector('.character-counter')).toBeNull();
   });
 });

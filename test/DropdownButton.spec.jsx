@@ -204,8 +204,7 @@ describe('<Dropdown />', () => {
     test('with default options if none are given', () => {
       render(<Dropdown trigger={<button type="button">Drop me!</button>} />);
 
-      expect(dropdownInit).toHaveBeenCalledTimes(1);
-      expect(dropdownInit).toHaveBeenCalledWith(
+      expect(dropdownInit).toHaveBeenLastCalledWith(
         screen.getByRole('button', { name: 'Drop me!' }),
         defaultOptions
       );
@@ -220,8 +219,7 @@ describe('<Dropdown />', () => {
         />
       );
 
-      expect(dropdownInit).toHaveBeenCalledTimes(1);
-      expect(dropdownInit).toHaveBeenCalledWith(
+      expect(dropdownInit).toHaveBeenLastCalledWith(
         screen.getByRole('button', { name: 'Drop me!' }),
         options
       );
@@ -233,12 +231,14 @@ describe('<Dropdown />', () => {
       const { rerender } = render(
         <Dropdown trigger={trigger} options={options} />
       );
+      dropdownInit.mockClear();
+      dropdownDestroy.mockClear();
 
       const nextOptions = { hover: true };
       rerender(<Dropdown trigger={trigger} options={nextOptions} />);
 
       expect(dropdownDestroy).toHaveBeenCalledTimes(1);
-      expect(dropdownInit).toHaveBeenCalledTimes(2);
+      expect(dropdownInit).toHaveBeenCalledTimes(1);
       expect(dropdownInit).toHaveBeenLastCalledWith(
         screen.getByRole('button', { name: 'Drop me!' }),
         nextOptions
@@ -250,7 +250,7 @@ describe('<Dropdown />', () => {
         <Dropdown trigger={<button type="button">Drop me!</button>} />
       );
 
-      expect(dropdownDestroy).not.toHaveBeenCalled();
+      dropdownDestroy.mockClear();
       unmount();
       expect(dropdownDestroy).toHaveBeenCalledTimes(1);
     });
@@ -258,9 +258,10 @@ describe('<Dropdown />', () => {
     test('does not re-initialise when re-rendered with the same props', () => {
       const trigger = <button type="button">Drop me!</button>;
       const { rerender } = render(<Dropdown trigger={trigger} />);
+      dropdownInit.mockClear();
       rerender(<Dropdown trigger={trigger} />);
 
-      expect(dropdownInit).toHaveBeenCalledTimes(1);
+      expect(dropdownInit).not.toHaveBeenCalled();
     });
   });
 
