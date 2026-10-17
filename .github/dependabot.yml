@@ -12,18 +12,8 @@ updates:
         dependency-type: production
         update-types: [minor, patch]
     ignore:
-      # Held back by open code decisions: React peer range (^17) and the
-      # materialize-css vs @materializecss/materialize switch.
-      - dependency-name: react
-        update-types: [version-update:semver-major]
-      - dependency-name: react-dom
-        update-types: [version-update:semver-major]
-      - dependency-name: "@types/react"
-        update-types: [version-update:semver-major]
-      - dependency-name: "@types/react-dom"
-        update-types: [version-update:semver-major]
-      - dependency-name: "@testing-library/react"
-        update-types: [version-update:semver-major]
+      # Held back by an open code decision: the materialize-css vs
+      # @materializecss/materialize switch.
       - dependency-name: materialize-css
         update-types: [version-update:semver-major]
 

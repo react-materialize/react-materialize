@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Responsive } from './utils';
 
 export interface TextareaProps extends Responsive {
+  children?: React.ReactNode;
   noLayout?: boolean;
   disabled?: boolean;
   placeholder?: string;
