@@ -68,7 +68,7 @@ const Modal = ({
     root.appendChild(modalRoot);
 
     return () => {
-      root.removeChild(modalRoot);
+      modalRoot.remove();
     };
   }, [root]);
 
