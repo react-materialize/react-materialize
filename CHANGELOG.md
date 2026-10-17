@@ -1,5 +1,20 @@
 # Changelog
 
+## 5.0.0
+
+### Major Changes
+
+- e8e8d6e: Require React 18 or 19: the `react` and `react-dom` peer range is now `^18.0.0 || ^19.0.0`. React 17 is no longer supported; stay on react-materialize 4.x if you can't upgrade React yet.
+  
+  The TypeScript types now declare `children` on Carousel, Modal, Pagination, Tab, Tabs and Textarea. `@types/react` 18 and later no longer add `children` to every component, so passing children to these components was a type error there.
+  
+  Part of #1277.
+
+### Patch Changes
+
+- 1e16f24: Build with React's automatic JSX runtime: the published modules import `react/jsx-runtime` instead of calling `React.createElement`, which removes React 19's "outdated JSX transform" warning. Part of #1277.
+- 9402616: Fix React warnings in development. Checkbox no longer warns that it "is changing an uncontrolled input to be controlled" the first time it's clicked, or the reverse when the `checked` prop is removed; it also no longer sets the box directly on the DOM, since React already does that through `checked`. Modal's default Close button has a `key`. Part of #1277.
+
 ## 4.0.4
 
 ### Patch Changes
