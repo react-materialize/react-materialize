@@ -31,7 +31,7 @@ const defaultOptions = {
 };
 
 const defaultActions = [
-  <Button waves="green" modal="close" flat>
+  <Button key="close" waves="green" modal="close" flat>
     Close
   </Button>
 ];

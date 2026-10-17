@@ -64,13 +64,13 @@ describe('<TextInput />', () => {
     expect(screen.getByText('Name')).not.toHaveClass('active');
   });
 
-  test('marks label active when value or placeholder is present', () => {
-    const { rerender } = render(
-      <TextInput label="Name" value="Bob" onChange={() => {}} />
-    );
+  test('marks label active when a value is present', () => {
+    render(<TextInput label="Name" value="Bob" onChange={() => {}} />);
     expect(screen.getByText('Name')).toHaveClass('active');
+  });
 
-    rerender(<TextInput label="Name" placeholder="Type here" />);
+  test('marks label active when a placeholder is present', () => {
+    render(<TextInput label="Name" placeholder="Type here" />);
     expect(screen.getByText('Name')).toHaveClass('active');
   });
 
