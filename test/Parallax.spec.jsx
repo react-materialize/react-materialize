@@ -73,8 +73,7 @@ describe('<Parallax />', () => {
     test('calls Parallax on the .parallax element', () => {
       const { container } = render(<Parallax image={image} />);
 
-      expect(initMock).toHaveBeenCalledTimes(1);
-      expect(initMock.mock.calls[0][0]).toBe(
+      expect(initMock.mock.lastCall[0]).toBe(
         container.querySelector('.parallax')
       );
     });
@@ -96,7 +95,7 @@ describe('<Parallax />', () => {
 
     test('destroys the instance on unmount', () => {
       const { unmount } = render(<Parallax image={image} />);
-      expect(destroyMock).not.toHaveBeenCalled();
+      destroyMock.mockClear();
 
       unmount();
 
@@ -105,9 +104,10 @@ describe('<Parallax />', () => {
 
     test('does not re-initialise when re-rendered with the same props', () => {
       const { rerender } = render(<Parallax image={image} />);
+      initMock.mockClear();
       rerender(<Parallax image={image} />);
 
-      expect(initMock).toHaveBeenCalledTimes(1);
+      expect(initMock).not.toHaveBeenCalled();
     });
   });
 });

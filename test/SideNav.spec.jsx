@@ -89,8 +89,7 @@ describe('<SideNav />', () => {
         <SideNav trigger={trigger} options={options} />
       );
 
-      expect(initMock).toHaveBeenCalledTimes(1);
-      expect(initMock).toHaveBeenCalledWith(
+      expect(initMock).toHaveBeenLastCalledWith(
         container.querySelector('ul.sidenav'),
         options
       );
@@ -98,7 +97,7 @@ describe('<SideNav />', () => {
 
     test('should be destroyed when unmounted', () => {
       const { unmount } = render(<SideNav />);
-      expect(destroyMock).not.toHaveBeenCalled();
+      destroyMock.mockClear();
       unmount();
 
       expect(destroyMock).toHaveBeenCalledTimes(1);

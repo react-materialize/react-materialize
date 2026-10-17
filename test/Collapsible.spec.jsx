@@ -37,8 +37,7 @@ describe('<Collapsible />', () => {
     const { container } = render(<Collapsible options={options} />);
     const list = container.querySelector('ul');
 
-    expect(collapsibleInitMock).toHaveBeenCalledTimes(1);
-    expect(collapsibleInitMock).toHaveBeenCalledWith(list, {
+    expect(collapsibleInitMock).toHaveBeenLastCalledWith(list, {
       accordion: true,
       ...options
     });
@@ -55,7 +54,7 @@ describe('<Collapsible />', () => {
 
   test('destroyed when unmounted', () => {
     const { unmount } = render(<Collapsible options={options} />);
-    expect(collapsibleInstanceDestroyMock).not.toHaveBeenCalled();
+    collapsibleInstanceDestroyMock.mockClear();
 
     unmount();
     expect(collapsibleInstanceDestroyMock).toHaveBeenCalledTimes(1);

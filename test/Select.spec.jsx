@@ -271,8 +271,7 @@ describe('<Select />', () => {
     test('calls FormSelect on the select element with default options', () => {
       render(<Select label="Fruit" />);
 
-      expect(selectInit).toHaveBeenCalledTimes(1);
-      expect(selectInit).toHaveBeenCalledWith(
+      expect(selectInit).toHaveBeenLastCalledWith(
         screen.getByLabelText('Fruit'),
         defaultOptions
       );
@@ -280,9 +279,10 @@ describe('<Select />', () => {
 
     test('does not re-initialise when re-rendered with the same props', () => {
       const { rerender } = render(<Select label="Fruit" />);
+      selectInit.mockClear();
       rerender(<Select label="Fruit" />);
 
-      expect(selectInit).toHaveBeenCalledTimes(1);
+      expect(selectInit).not.toHaveBeenCalled();
     });
 
     test('does not initialise Materialize for a browserDefault select', () => {
@@ -307,10 +307,12 @@ describe('<Select />', () => {
 
     test('destroys when browserDefault is turned on', () => {
       const { rerender } = render(<Select label="Fruit" />);
+      selectInit.mockClear();
+      selectDestroy.mockClear();
       rerender(<Select browserDefault label="Fruit" />);
 
       expect(selectDestroy).toHaveBeenCalledTimes(1);
-      expect(selectInit).toHaveBeenCalledTimes(1);
+      expect(selectInit).not.toHaveBeenCalled();
     });
 
     test('handles options prop', () => {
@@ -329,7 +331,8 @@ describe('<Select />', () => {
           <option value="1">Option 1</option>
         </Select>
       );
-
+      selectInit.mockClear();
+      selectDestroy.mockClear();
       rerender(
         <Select label="Fruit">
           <option value="1">Option 1</option>
@@ -338,13 +341,13 @@ describe('<Select />', () => {
       );
 
       expect(selectDestroy).toHaveBeenCalledTimes(1);
-      expect(selectInit).toHaveBeenCalledTimes(2);
+      expect(selectInit).toHaveBeenCalledTimes(1);
     });
 
     test('destroys when unmounted', () => {
       const { unmount } = render(<Select />);
 
-      expect(selectDestroy).not.toHaveBeenCalled();
+      selectDestroy.mockClear();
       unmount();
       expect(selectDestroy).toHaveBeenCalledTimes(1);
     });

@@ -1,6 +1,11 @@
 import '@testing-library/jest-dom/vitest';
 import { format } from 'node:util';
+import { configure } from '@testing-library/react';
 import M from 'materialize-css';
+
+// Render every test in StrictMode, so components must survive React's
+// mount → effect cleanup → mount cycle.
+configure({ reactStrictMode: true });
 
 vi.mock('../src/idgen', async importOriginal => ({
   ...(await importOriginal()),

@@ -115,8 +115,7 @@ describe('<Carousel />', () => {
     test('uses default options if none are given', () => {
       const { container } = render(<Carousel />);
 
-      expect(initMock).toHaveBeenCalledTimes(1);
-      expect(initMock).toHaveBeenCalledWith(container.firstChild, {
+      expect(initMock).toHaveBeenLastCalledWith(container.firstChild, {
         duration: 200,
         dist: -100,
         shift: 0,
@@ -150,7 +149,7 @@ describe('<Carousel />', () => {
 
     test('destroys the instance on unmount', () => {
       const { unmount } = render(<Carousel images={images} />);
-      expect(destroyMock).not.toHaveBeenCalled();
+      destroyMock.mockClear();
 
       unmount();
 
@@ -161,10 +160,12 @@ describe('<Carousel />', () => {
       const { container, rerender } = render(
         <Carousel images={images} options={{ dist: 0 }} />
       );
+      initMock.mockClear();
+      destroyMock.mockClear();
       rerender(<Carousel images={images} options={{ dist: 10 }} />);
 
       expect(destroyMock).toHaveBeenCalledTimes(1);
-      expect(initMock).toHaveBeenCalledTimes(2);
+      expect(initMock).toHaveBeenCalledTimes(1);
       expect(initMock).toHaveBeenLastCalledWith(container.firstChild, {
         dist: 10
       });
@@ -172,9 +173,10 @@ describe('<Carousel />', () => {
 
     test('does not re-initialise when re-rendered with the same props', () => {
       const { rerender } = render(<Carousel images={images} />);
+      initMock.mockClear();
       rerender(<Carousel images={images} />);
 
-      expect(initMock).toHaveBeenCalledTimes(1);
+      expect(initMock).not.toHaveBeenCalled();
     });
   });
 
@@ -190,5 +192,20 @@ describe('<Carousel />', () => {
     } finally {
       idgen.mockImplementation(() => 'mockId');
     }
+  });
+});
+
+describe('<Carousel /> with the Materialize plugin', () => {
+  const images = ['a.png', 'b.png', 'c.png'];
+
+  test('shows one set of indicators after re-initialising', () => {
+    const { container, rerender } = render(
+      <Carousel images={images} options={{ indicators: true }} />
+    );
+    rerender(<Carousel images={images} options={{ indicators: true }} />);
+
+    const indicators = container.querySelectorAll('.indicators');
+    expect(indicators).toHaveLength(1);
+    expect(indicators[0].children).toHaveLength(images.length);
   });
 });

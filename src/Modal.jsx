@@ -61,29 +61,39 @@ const Modal = ({
     );
   }
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: deep-compares options via its JSON string
+  // Attach the portal root in an effect, not during render, so that every
+  // cleanup that detaches it is followed by a setup that re-attaches it.
   useEffect(() => {
     const modalRoot = _modalRoot.current;
-    if (!_modalInstance.current) {
-      _modalInstance.current = M.Modal.init(_modalRef.current, options);
-    }
+    root.appendChild(modalRoot);
 
     return () => {
-      if (root.contains(modalRoot)) {
-        root.removeChild(modalRoot);
-      }
-      _modalInstance.current.destroy();
+      root.removeChild(modalRoot);
+    };
+  }, [root]);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: deep-compares options via its JSON string
+  useEffect(() => {
+    const instance = M.Modal.init(_modalRef.current, options);
+    _modalInstance.current = instance;
+
+    return () => {
+      // `destroy` leaves an open modal's body scroll lock and document
+      // listeners behind, so close it first.
+      instance.close();
+      instance.destroy();
+      _modalInstance.current = null;
     };
   }, [safeJSONStringify(options), root]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only re-run when `open` changes; show/hide are recreated every render
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-run when `open` changes or the instance is re-created; show/hide are recreated every render
   useEffect(() => {
     if (open) {
       showModal();
     } else {
       hideModal();
     }
-  }, [open]);
+  }, [open, safeJSONStringify(options), root]);
 
   const showModal = e => {
     e && e.preventDefault();
@@ -109,7 +119,6 @@ const Modal = ({
   const renderModalPortal = () => {
     if (!_modalRoot.current) {
       _modalRoot.current = document.createElement('div');
-      root.appendChild(_modalRoot.current);
     }
 
     return createPortal(

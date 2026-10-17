@@ -72,8 +72,7 @@ describe('<Navbar />', () => {
 
   test('sidenav get initialized with default options if none are given', () => {
     const { container } = render(<Navbar />);
-    expect(initMock).toHaveBeenCalledTimes(1);
-    expect(initMock).toHaveBeenCalledWith(getSidenav(container), {
+    expect(initMock).toHaveBeenLastCalledWith(getSidenav(container), {
       edge: 'left',
       draggable: true,
       inDuration: 250,
@@ -94,7 +93,7 @@ describe('<Navbar />', () => {
 
   test('sidenav gets destroyed when unmounted', () => {
     const { unmount } = render(<Navbar />);
-    expect(destroyMock).not.toHaveBeenCalled();
+    destroyMock.mockClear();
     unmount();
     expect(destroyMock).toHaveBeenCalledTimes(1);
   });
@@ -255,8 +254,9 @@ describe('<Navbar />', () => {
   test('does not re-initialise when re-rendered with the same props', () => {
     const brand = <a href="/">Logo</a>;
     const { rerender } = render(<Navbar brand={brand} />);
+    initMock.mockClear();
     rerender(<Navbar brand={brand} />);
 
-    expect(initMock).toHaveBeenCalledTimes(1);
+    expect(initMock).not.toHaveBeenCalled();
   });
 });
