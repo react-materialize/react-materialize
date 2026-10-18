@@ -4,7 +4,6 @@ import {
   cloneElement,
   useRef,
   useEffect,
-  useLayoutEffect,
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
@@ -53,7 +52,6 @@ const Modal = ({
 }) => {
   const [generatedId] = useState(() => `Modal-${idgen()}`);
   const id = idProp === undefined ? generatedId : idProp;
-  const _modalRoot = useRef(null);
   const _modalInstance = useRef(null);
   const _modalRef = useRef(null);
   if (root === null) {
@@ -61,19 +59,6 @@ const Modal = ({
       'React Materialize: root should be a valid node element to render a Modal'
     );
   }
-
-  // Attach the portal root in an effect, not during render, so that every
-  // cleanup that detaches it is followed by a setup that re-attaches it. A
-  // layout effect, because those all run before any regular effect: children
-  // that set up Materialize in their effects find the modal in the document.
-  useLayoutEffect(() => {
-    const modalRoot = _modalRoot.current;
-    root.appendChild(modalRoot);
-
-    return () => {
-      modalRoot.remove();
-    };
-  }, [root]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: deep-compares options via its JSON string
   useEffect(() => {
@@ -119,12 +104,8 @@ const Modal = ({
     className
   );
 
-  const renderModalPortal = () => {
-    if (!_modalRoot.current) {
-      _modalRoot.current = document.createElement('div');
-    }
-
-    return createPortal(
+  const renderModalPortal = () =>
+    createPortal(
       <div className={classes} ref={_modalRef} id={id} {...props}>
         <div className="modal-content">
           <h4>{header}</h4>
@@ -132,9 +113,8 @@ const Modal = ({
         </div>
         <div className="modal-footer">{Children.toArray(actions)}</div>
       </div>,
-      _modalRoot.current
+      root
     );
-  };
 
   return (
     <Fragment>

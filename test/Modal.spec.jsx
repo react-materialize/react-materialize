@@ -69,16 +69,14 @@ describe('<Modal />', () => {
       expect(modalInitMock).toHaveBeenCalledWith(getModal(), options);
     });
 
-    test('destroys the instance and removes the portal root on unmount', () => {
+    test('destroys the instance and removes the modal on unmount', () => {
       const { unmount } = render(<Modal />);
-      const portalRoot = getModal().parentElement;
-      expect(portalRoot.parentElement).toBe(document.body);
+      expect(getModal().parentElement).toBe(document.body);
 
       unmount();
       for (const instance of instances) {
         expect(instance.destroy).toHaveBeenCalledTimes(1);
       }
-      expect(document.body.contains(portalRoot)).toBe(false);
       expect(getModal()).toBeNull();
     });
 
