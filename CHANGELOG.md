@@ -1,5 +1,33 @@
 # Changelog
 
+## 5.0.0
+
+### Major Changes
+
+- e8e8d6e: Require React 18 or 19: the `react` and `react-dom` peer range is now `^18.0.0 || ^19.0.0`. React 17 is no longer supported; stay on react-materialize 4.x if you can't upgrade React yet.
+  
+  The TypeScript types now declare `children` on Carousel, Modal, Pagination, Tab, Tabs and Textarea. `@types/react` 18 and later no longer add `children` to every component, so passing children to these components was a type error there.
+  
+  Part of #1277.
+
+### Patch Changes
+
+- 1e16f24: Build with React's automatic JSX runtime: the published modules import `react/jsx-runtime` instead of calling `React.createElement`, which removes React 19's "outdated JSX transform" warning. Part of #1277.
+- 9402616: Fix React warnings in development. Checkbox no longer warns that it "is changing an uncontrolled input to be controlled" the first time it's clicked, or the reverse when the `checked` prop is removed; it also no longer sets the box directly on the DOM, since React already does that through `checked`. Modal's default Close button has a `key`. Part of #1277.
+- d7e11cb: Make the components safe under React's StrictMode, which in development mounts every component, runs its effect cleanups and mounts it again:
+  
+  - Modal rendered nothing in StrictMode, and after its `options` changed it could no longer be opened. Modal now re-initialises when `options` or `root` change, and closes an open modal before destroying it, so unmounting it no longer leaves page scrolling locked.
+  - Carousel no longer shows a second set of indicators after it re-initialises.
+  - MediaBox no longer throws "The node to be removed is not a child of this node" when it unmounts.
+  - DatePicker and TimePicker close an open picker before destroying it, so unmounting one no longer leaves page scrolling locked.
+  - TextInput and Textarea destroy their character counter in the effect cleanup, so removing `data-length` now removes the counter.
+  
+  Because an open Modal, DatePicker or TimePicker is now closed when it unmounts or re-initialises, its close callbacks fire then: `onCloseStart`, plus `onCloseEnd` after the close animation, for Modal and TimePicker, and `onClose` for DatePicker. A Modal opened from its trigger closes when its `options` or `root` change. A modal controlled with `open` reopens on the new instance, unless its `onCloseStart` sets `open` to false; set it from `onCloseEnd` instead.
+  
+  Modal now renders directly into `root` (`document.body` by default) instead of into an extra `<div>` it appended there. Update any CSS or code that relied on that wrapper, such as a `body > div > .modal` selector.
+  
+  Part of #1277.
+
 ## 4.0.4
 
 ### Patch Changes
