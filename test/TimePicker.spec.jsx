@@ -6,19 +6,20 @@ import mocker from './helper/new-mocker';
 describe('<TimePicker />', () => {
   const timePickerInitMock = vi.fn();
   const timePickerInstanceDestroyMock = vi.fn();
-  const restore = mocker('Timepicker', {
-    init: (el, options) => {
-      timePickerInitMock(el, options);
-      return { close: vi.fn(), destroy: timePickerInstanceDestroyMock };
-    }
-  });
+  let restore;
 
   beforeEach(() => {
     timePickerInitMock.mockClear();
     timePickerInstanceDestroyMock.mockClear();
+    restore = mocker('Timepicker', {
+      init: (el, options) => {
+        timePickerInitMock(el, options);
+        return { close: vi.fn(), destroy: timePickerInstanceDestroyMock };
+      }
+    });
   });
 
-  afterAll(() => {
+  afterEach(() => {
     restore();
   });
 

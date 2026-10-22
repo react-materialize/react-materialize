@@ -6,19 +6,20 @@ import mocker from './helper/new-mocker';
 describe('<DatePicker />', () => {
   const datePickerInitMock = vi.fn();
   const datePickerInstanceDestroyMock = vi.fn();
-  const restore = mocker('Datepicker', {
-    init: (el, options) => {
-      datePickerInitMock(el, options);
-      return { close: vi.fn(), destroy: datePickerInstanceDestroyMock };
-    }
-  });
+  let restore;
 
   beforeEach(() => {
     datePickerInitMock.mockClear();
     datePickerInstanceDestroyMock.mockClear();
+    restore = mocker('Datepicker', {
+      init: (el, options) => {
+        datePickerInitMock(el, options);
+        return { close: vi.fn(), destroy: datePickerInstanceDestroyMock };
+      }
+    });
   });
 
-  afterAll(() => {
+  afterEach(() => {
     restore();
   });
 

@@ -32,15 +32,16 @@ describe('<Modal />', () => {
     }
   };
   const liveInstance = () => instances.at(-1);
-  const restore = mocker('Modal', modalMock);
-
-  afterAll(() => {
-    restore();
-  });
+  let restore;
 
   beforeEach(() => {
     modalInitMock.mockClear();
     instances = [];
+    restore = mocker('Modal', modalMock);
+  });
+
+  afterEach(() => {
+    restore();
   });
 
   const getModal = () => document.body.querySelector('.modal');
