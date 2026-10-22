@@ -23,7 +23,9 @@ const TextInput = forwardRef((props, ref) => {
 
   useEffect(() => {
     if (inputRef.current && dataLength) {
-      M.CharacterCounter.init(inputRef.current);
+      const instance = M.CharacterCounter.init(inputRef.current);
+
+      return () => instance.destroy();
     }
   }, [dataLength]);
 

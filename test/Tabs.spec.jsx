@@ -175,8 +175,7 @@ describe('Tabs', () => {
         </Tabs>
       );
 
-      expect(tabsInitMock).toHaveBeenCalledTimes(1);
-      expect(tabsInitMock).toHaveBeenCalledWith(
+      expect(tabsInitMock).toHaveBeenLastCalledWith(
         screen.getByRole('list'),
         options
       );
@@ -208,7 +207,7 @@ describe('Tabs', () => {
           <Tab title="Two">Two</Tab>
         </Tabs>
       );
-      expect(tabInstanceDestroyMock).not.toHaveBeenCalled();
+      tabInstanceDestroyMock.mockClear();
       unmount();
 
       expect(tabInstanceDestroyMock).toHaveBeenCalledTimes(1);

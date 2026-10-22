@@ -1,3 +1,4 @@
+import { fn } from 'storybook/test';
 import Icon from '../src/Icon';
 import TextInput from '../src/TextInput';
 
@@ -26,7 +27,7 @@ export const Placeholder = {
 
 export const PredefinedValue = {
   name: 'Predefined value',
-  args: { value: 'John' }
+  args: { value: 'John', onChange: fn() }
 };
 
 export const Disabled = {

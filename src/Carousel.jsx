@@ -32,7 +32,11 @@ const Carousel = ({
   useEffect(() => {
     const instance = M.Carousel.init(carouselRef.current, options);
 
-    return () => instance.destroy();
+    return () => {
+      instance.destroy();
+      // `destroy` leaves the indicators it added; the next init adds its own.
+      instance.$indicators?.remove();
+    };
   }, [options, children, images]);
 
   const elemsToRender = children || images || [];

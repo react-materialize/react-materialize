@@ -19,13 +19,12 @@ export default {
       { label: 'XL', value: 'xl' },
       { label: 'L', value: 'l' },
       { label: 'M', value: 'm' }
-    ]
+    ],
+    onChange: fn()
   }
 };
 
-export const Default = {
-  args: { onChange: fn() }
-};
+export const Default = {};
 
 export const PredefinedValue = {
   name: 'Predefined value',

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import TimePicker from '../src/TimePicker';
 import idgen from '../src/idgen';
 import mocker from './helper/new-mocker';
@@ -6,19 +6,20 @@ import mocker from './helper/new-mocker';
 describe('<TimePicker />', () => {
   const timePickerInitMock = vi.fn();
   const timePickerInstanceDestroyMock = vi.fn();
-  const restore = mocker('Timepicker', {
-    init: (el, options) => {
-      timePickerInitMock(el, options);
-      return { destroy: timePickerInstanceDestroyMock };
-    }
-  });
+  let restore;
 
   beforeEach(() => {
     timePickerInitMock.mockClear();
     timePickerInstanceDestroyMock.mockClear();
+    restore = mocker('Timepicker', {
+      init: (el, options) => {
+        timePickerInitMock(el, options);
+        return { close: vi.fn(), destroy: timePickerInstanceDestroyMock };
+      }
+    });
   });
 
-  afterAll(() => {
+  afterEach(() => {
     restore();
   });
 
@@ -49,8 +50,7 @@ describe('<TimePicker />', () => {
     test('uses default options if none are given', () => {
       render(<TimePicker />);
 
-      expect(timePickerInitMock).toHaveBeenCalledTimes(1);
-      expect(timePickerInitMock).toHaveBeenCalledWith(
+      expect(timePickerInitMock).toHaveBeenLastCalledWith(
         screen.getByRole('textbox'),
         {
           duration: 350,
@@ -90,7 +90,7 @@ describe('<TimePicker />', () => {
       const options = { twelveHour: false, onSelect: () => {} };
       render(<TimePicker options={options} onChange={onChange} />);
 
-      const passed = timePickerInitMock.mock.calls[0][1];
+      const passed = timePickerInitMock.mock.lastCall[1];
       expect(passed).toEqual({ twelveHour: false, onSelect: onChange });
 
       passed.onSelect(13, 37);
@@ -99,7 +99,7 @@ describe('<TimePicker />', () => {
 
     test('destroys the instance on unmount', () => {
       const { unmount } = render(<TimePicker />);
-      expect(timePickerInstanceDestroyMock).not.toHaveBeenCalled();
+      timePickerInstanceDestroyMock.mockClear();
 
       unmount();
       expect(timePickerInstanceDestroyMock).toHaveBeenCalledTimes(1);
@@ -107,12 +107,14 @@ describe('<TimePicker />', () => {
 
     test('re-initialises when options change', () => {
       const { rerender } = render(<TimePicker options={{ duration: 100 }} />);
+      timePickerInitMock.mockClear();
+      timePickerInstanceDestroyMock.mockClear();
 
       const nextOptions = { duration: 200 };
       rerender(<TimePicker options={nextOptions} />);
 
       expect(timePickerInstanceDestroyMock).toHaveBeenCalledTimes(1);
-      expect(timePickerInitMock).toHaveBeenCalledTimes(2);
+      expect(timePickerInitMock).toHaveBeenCalledTimes(1);
       expect(timePickerInitMock).toHaveBeenLastCalledWith(
         screen.getByRole('textbox'),
         nextOptions
@@ -121,9 +123,10 @@ describe('<TimePicker />', () => {
 
     test('does not re-initialise when re-rendered with the same props', () => {
       const { rerender } = render(<TimePicker />);
+      timePickerInitMock.mockClear();
       rerender(<TimePicker />);
 
-      expect(timePickerInitMock).toHaveBeenCalledTimes(1);
+      expect(timePickerInitMock).not.toHaveBeenCalled();
     });
   });
 
@@ -140,5 +143,17 @@ describe('<TimePicker />', () => {
     } finally {
       idgen.mockImplementation(() => 'mockId');
     }
+  });
+});
+
+describe('<TimePicker /> with the Materialize plugin', () => {
+  test('unlocks body scrolling when unmounted while open', () => {
+    const { unmount } = render(<TimePicker />);
+    act(() => M.Timepicker.getInstance(screen.getByRole('textbox')).open());
+    expect(document.body.style.overflow).toBe('hidden');
+
+    unmount();
+
+    expect(document.body.style.overflow).toBe('');
   });
 });

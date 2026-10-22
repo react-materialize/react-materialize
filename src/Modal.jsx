@@ -52,7 +52,6 @@ const Modal = ({
 }) => {
   const [generatedId] = useState(() => `Modal-${idgen()}`);
   const id = idProp === undefined ? generatedId : idProp;
-  const _modalRoot = useRef(null);
   const _modalInstance = useRef(null);
   const _modalRef = useRef(null);
   if (root === null) {
@@ -63,27 +62,26 @@ const Modal = ({
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: deep-compares options via its JSON string
   useEffect(() => {
-    const modalRoot = _modalRoot.current;
-    if (!_modalInstance.current) {
-      _modalInstance.current = M.Modal.init(_modalRef.current, options);
-    }
+    const instance = M.Modal.init(_modalRef.current, options);
+    _modalInstance.current = instance;
 
     return () => {
-      if (root.contains(modalRoot)) {
-        root.removeChild(modalRoot);
-      }
-      _modalInstance.current.destroy();
+      // `destroy` leaves an open modal's body scroll lock and document
+      // listeners behind, so close it first.
+      instance.close();
+      instance.destroy();
+      _modalInstance.current = null;
     };
   }, [safeJSONStringify(options), root]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only re-run when `open` changes; show/hide are recreated every render
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-run when `open` changes or the instance is re-created; show/hide are recreated every render
   useEffect(() => {
     if (open) {
       showModal();
     } else {
       hideModal();
     }
-  }, [open]);
+  }, [open, safeJSONStringify(options), root]);
 
   const showModal = e => {
     e && e.preventDefault();
@@ -106,13 +104,8 @@ const Modal = ({
     className
   );
 
-  const renderModalPortal = () => {
-    if (!_modalRoot.current) {
-      _modalRoot.current = document.createElement('div');
-      root.appendChild(_modalRoot.current);
-    }
-
-    return createPortal(
+  const renderModalPortal = () =>
+    createPortal(
       <div className={classes} ref={_modalRef} id={id} {...props}>
         <div className="modal-content">
           <h4>{header}</h4>
@@ -120,9 +113,8 @@ const Modal = ({
         </div>
         <div className="modal-footer">{Children.toArray(actions)}</div>
       </div>,
-      _modalRoot.current
+      root
     );
-  };
 
   return (
     <Fragment>

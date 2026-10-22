@@ -4,7 +4,12 @@ export default {
   addons: ['@storybook/addon-docs'],
   framework: {
     name: '@storybook/react-vite',
-    options: { builder: { viteConfigPath: '.storybook/vite.config.mjs' } }
+    options: {
+      builder: { viteConfigPath: '.storybook/vite.config.mjs' },
+      // Render stories in StrictMode, so dev mode mounts, unmounts and
+      // remounts every component as React apps in StrictMode do.
+      strictMode: true
+    }
   },
   staticDirs: ['./public']
 };
