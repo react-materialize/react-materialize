@@ -1,8 +1,10 @@
-import { Fragment, Component } from 'react';
+import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import idgen from './idgen';
 
 const RadioGroup = ({
+  id: idProp,
   onChange,
   withGap,
   disabled,
@@ -11,32 +13,39 @@ const RadioGroup = ({
   value,
   options
 }) => {
+  const [generatedId] = useState(() => `RadioGroup-${idgen()}`);
+  const groupId = idProp === undefined ? generatedId : idProp;
+
   return (
     <Fragment>
-      {options.map((radioItem, idx) => (
-        <label
-          className={radioClassNames}
-          htmlFor={`radio${idx}`}
-          key={`radio${idx}`}
-        >
-          <input
-            id={`radio${idx}`}
-            value={radioItem.value}
-            type="radio"
-            checked={radioItem.value === value}
-            name={name}
-            onChange={onChange}
-            disabled={disabled}
-            className={cx({ 'with-gap': withGap })}
-          />
-          <span>{radioItem.label}</span>
-        </label>
-      ))}
+      {options.map((radioItem, idx) => {
+        const radioId = `${groupId}-${idx}`;
+
+        return (
+          <label className={radioClassNames} htmlFor={radioId} key={radioId}>
+            <input
+              id={radioId}
+              value={radioItem.value}
+              type="radio"
+              checked={radioItem.value === value}
+              name={name}
+              onChange={onChange}
+              disabled={disabled}
+              className={cx({ 'with-gap': withGap })}
+            />
+            <span>{radioItem.label}</span>
+          </label>
+        );
+      })}
     </Fragment>
   );
 };
 
 RadioGroup.propTypes = {
+  /**
+   * id used as the prefix for each option's input id; generated when omitted
+   */
+  id: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
