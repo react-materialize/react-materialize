@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export interface RadioGroupProps {
   label?: string;
+  id?: string;
   name?: string;
   options: Array<{ label: string; value: string }>;
   value?: string;
