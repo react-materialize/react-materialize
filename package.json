@@ -75,7 +75,7 @@
   },
   "homepage": "https://github.com/react-materialize/react-materialize",
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
+    "@biomejs/biome": "2.6.3",
     "@changesets/cli": "^3.0.3",
     "@storybook/addon-docs": "^10.6.2",
     "@storybook/react-vite": "^10.6.2",
